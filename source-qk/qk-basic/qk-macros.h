@@ -5,12 +5,13 @@
 
 
 #define loop while (1)
-#define for_imn(i, m, n) for (int i = m; i < n; i++)
+#define for_imn(i, m, n) for (Int i = m; i < n; i++)
 #define for_in(i, n) for_imn(i, 0, n)
 
 
 // used to create switch statements that return strings for enum names.
-#define CASE_RETURN_TOKEN(t) case t: return #t
+#define CASE_RETURN_TOKEN(t) case t: return @#t
+#define CASE_RETURN_TOKEN_UTF8(t) case t: return #t
 
 
 // clamp a value to low and high bounds
@@ -69,7 +70,7 @@ check(IS_KIND((obj), class_name), \
 check(IS_KIND_OR_NIL((obj), class_name), \
 @"non-nil object is not of class: %@; actual: %@", [class_name class], [(obj) class])
 
-#ifdef NDEBUG
+#if QK_OPTIMIZE
 # define ASSERT_KIND(obj, class_name) ((void)0)
 # define ASSERT_KIND_OR_NIL(obj, class_name) ((void)0)
 #else
@@ -91,8 +92,7 @@ check(IS_KIND_OR_NIL((obj), class_name), \
 // inheritence
 
 // shorthand to throw an exception in abstract base methods.
-#define OVERRIDE \
-[NSException raise:NSInternalInconsistencyException format:@"%s: must override in subclass: %@", __FUNCTION__, [self class]]
+#define OVERRIDE fail(@"must override in subclass or intermediate: %@", [self class])
 
 
 // throw an exception for non-designated initialization paths:
@@ -169,8 +169,10 @@ return lazy; \
 // NS_RETURNS_INNER_POINTER
 
 // suppress compiler warnings.
-#define UNUSED __attribute__ ((unused))
+#define UNUSED __attribute__((unused))
 
+// never returns
+#define NORETURN __attribute__((noreturn))
 
 
 #ifdef __cplusplus

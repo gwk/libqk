@@ -2,6 +2,10 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#import "qk-types.h"
+#import "Duo.h"
+
+
 // maps a value to a BOOL. 
 typedef BOOL (^BlockFilter)(id);
 
@@ -12,7 +16,13 @@ typedef id (^BlockMap)(id);
 typedef id (^BlockMapPair)(id, id);
 
 // maps an int to a value.
-typedef id (^BlockMapInt)(int);
+typedef id (^BlockMapInt)(Int);
+
+// maps a value and int to a value.
+typedef id (^BlockMapObjInt)(id, Int);
+
+// maps a value to a pair of values.
+typedef Duo* (^BlockMapToPair)(id);
 
 // takes the current aggregate value and the next value (or pair of values), and returns the new aggregate value.
 typedef id (^BlockReduce)(id, id);

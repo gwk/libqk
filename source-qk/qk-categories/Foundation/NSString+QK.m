@@ -3,6 +3,7 @@
 
 
 #import "qk-macros.h"
+#import "NSArray+QK.h"
 #import "NSString+QK.h"
 
 
@@ -17,6 +18,9 @@
   va_end(args);
   return s;
 }
+
+
+#pragma mark - UTF
 
 
 + (id)withUtf8:(Utf8)string {
@@ -113,8 +117,31 @@
 }
 
 
+#pragma mark - numbered lines
+
+
+- (NSString*)numberedLinesFrom:(Int)from {
+  NSArray* a = [self componentsSeparatedByString:@"\n"];
+  NSArray* an = [a mapIndexed:^(NSString* line, Int index){
+    return [NSString withFormat:@"%3d: %@", index, line];
+  }];
+  return [an componentsJoinedByString:@"\n"];
+}
+
+
+- (NSString*)numberedLines {
+  return [self numberedLinesFrom:1];
+}
+
+- (NSString*)numeberedLinesFrom0 {
+  return [self numberedLinesFrom:0];
+}
+
+
 @end
 
+
+#pragma mark - UTF autorelease
 
 Utf8 Utf8AR(Utf8 string) {
   return [[NSString withUtf8:string] asUtf8];

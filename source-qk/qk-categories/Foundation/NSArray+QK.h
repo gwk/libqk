@@ -2,12 +2,17 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
-#import "qk-functional.h"
+#import "qk-block-types.h"
 
 
 @interface NSArray (QK)
 
-+ (id)mapIntFrom:(int)from to:(int)to block:(BlockMapInt)block;
-+ (id)mapIntTo:(int)to block:(BlockMapInt)block;
++ (id)mapIntFrom:(Int)from to:(Int)to block:(BlockMapInt)block;
++ (id)mapIntTo:(Int)to block:(BlockMapInt)block;
+
+- (id)map:(BlockMap)block;
+- (id)mapIndexed:(BlockMapObjInt)block;
+
+- (id)mapToDict:(BlockMapToPair)block;
 
 @end
