@@ -16,7 +16,7 @@
 
 
 - (id)initWithShaders:(NSArray*)shaders {
-  INIT([super init]);
+  INIT(super init);
   _handle = glCreateProgram();
   qkgl_assert();
   for (GLShader* s in shaders) {

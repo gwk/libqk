@@ -32,7 +32,7 @@ __x < __a ? __a : (__x > __b ? __b : __x); })
 
 
 // shorthand for the cocoa init idiom
-#define INIT(...) if (!((self = (__VA_ARGS__)))) return nil
+#define INIT(...) if (!((self = ([__VA_ARGS__])))) return nil
 
 
 // shorthand for checking class membership

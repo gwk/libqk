@@ -18,7 +18,7 @@
 
 
 - (id)initWithSource:(NSString*)source {
-  INIT([super init]);
+  INIT(super init);
   _handle = glCreateShader([self.class shaderType]);
   qkgl_assert();
   assert(_handle, @"no handle");

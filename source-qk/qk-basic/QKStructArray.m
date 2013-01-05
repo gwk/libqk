@@ -15,7 +15,7 @@
 
 
 - (id)initWithElSize:(Int)elSize data:(NSData*)data {
-  INIT([super init]);
+  INIT(super init);
   _elSize = elSize;
   _data = data;
   return self;
