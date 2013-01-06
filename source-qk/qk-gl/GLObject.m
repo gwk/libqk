@@ -1,4 +1,4 @@
-// Copyright 2007-2012 George King. All rights reserved.
+// Copyright 2007-2012 George King.
 // Permission to use this file is granted in libqk/license.txt.
 
 
