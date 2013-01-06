@@ -2,6 +2,9 @@
 // All rights reserved
 
 
+#import "QKApplicationDelegate.h"
+
+
 @implementation QKApplicationDelegate
 
 
