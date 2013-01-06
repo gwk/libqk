@@ -1,0 +1,13 @@
+# Copyright 2010 George King.
+# Permission to use this file is granted in libqk/license.txt.
+
+# project configuration info
+
+{
+  'project'   : 'libqk',
+  'copyright' : 'George King',
+  'licenses'  : [
+    'Permission to use this file is granted in libqk/license.txt.',
+  ],
+  'objc-acronym' : 'QK',
+}
