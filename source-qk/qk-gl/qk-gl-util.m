@@ -63,7 +63,7 @@ NSString* qkgl_error_string(GLenum error_code) {
       return [NSString stringWithFormat:@"UNKNOWN:0x%X", error_code];
   }
 #else
-  return (Utf8)gluErrorString(error);
+  return [NSString withUtf8:(Utf8)gluErrorString(error_code)];
 #endif
 }
 

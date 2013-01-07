@@ -123,7 +123,7 @@
 - (NSString*)numberedLinesFrom:(Int)from {
   NSArray* a = [self componentsSeparatedByString:@"\n"];
   NSArray* an = [a mapIndexed:^(NSString* line, Int index){
-    return [NSString withFormat:@"%3d: %@", index, line];
+    return [NSString withFormat:@"%3ld: %@", index, line];
   }];
   return [an componentsJoinedByString:@"\n"];
 }

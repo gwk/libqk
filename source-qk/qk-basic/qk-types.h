@@ -6,13 +6,8 @@
 #import <stdbool.h>
 
 
-#if TARGET_OS_IPHONE
-typedef int32_t Int;
-typedef uint32_t Uns;
-#else
-typedef int64_t Int;
-typedef uint64_t Uns;
-#endif
+typedef long Int;
+typedef unsigned long Uns;
 
 
 typedef int16_t I16;
@@ -20,6 +15,9 @@ typedef uint16_t U16;
 
 typedef int32_t I32;
 typedef uint32_t U32;
+
+typedef int64_t I64;
+typedef uint64_t U64;
 
 typedef float F32;
 typedef double F64;
