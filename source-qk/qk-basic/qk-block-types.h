@@ -6,34 +6,35 @@
 #import "Duo.h"
 
 
-// maps a value to a BOOL. 
+// perform an operation on a value
+typedef void (^BlockDo)(id);
+
+// map a value to a BOOL.
 typedef BOOL (^BlockFilter)(id);
 
-// maps a value to a value.
+// map a value to a value.
 typedef id (^BlockMap)(id);
 
-// maps a pair of values to a single value.
+// map a pair of values to a single value.
 typedef id (^BlockMapPair)(id, id);
 
-// maps an int to a value.
+// map an int to a value.
 typedef id (^BlockMapInt)(Int);
 
-// maps a value and int to a value.
+// map a value and int to a value.
 typedef id (^BlockMapObjInt)(id, Int);
 
-// maps a value to a pair of values.
+// map a value to a pair of values.
 typedef Duo* (^BlockMapToPair)(id);
 
-// takes the current aggregate value and the next value (or pair of values), and returns the new aggregate value.
+// take the current aggregate value and the next value, and return the new aggregate value.
 typedef id (^BlockReduce)(id, id);
 typedef id (^BlockReducePair)(id, id, id);
 
-// takes a mutable aggregate value and the next value (from a collection), and mutates the aggregate.
+// take a mutable aggregate value and the next value, and mutate the aggregate.
 typedef void (^BlockMutableReduce)(id, id);
 typedef void (^BlockMutableReducePair)(id, id, id);
 
-// take a value and return an index (for comparison).
+// take a value and return an index.
 typedef int (^BlockIndex)(id);
 
-// perform an operation on a value
-typedef void (^BlockDo)(id);
