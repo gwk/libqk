@@ -39,7 +39,7 @@ __x < __a ? __a : (__x > __b ? __b : __x); })
 #define IS_KIND(obj, class_name) ([(obj) isKindOfClass:[class_name class]])
 
 #define IS_KIND_OR_NIL(obj, class_name) \
-({ id _obj = (obj); (!_obj || IS_KIND(_obj, class_name))
+({ id _obj = (obj); (!_obj || IS_KIND(_obj, class_name)); })
 
 // check if an object is nil or NSNull
 #define IS_NIL_OR_NULL(obj) \
@@ -48,7 +48,7 @@ __x < __a ? __a : (__x > __b ? __b : __x); })
 
 // return the object if it is of the specified class, or else nil
 #define KIND_OR_NIL(obj, class_name) \
-({ class_name *_obj = (id)(obj); (IS_KIND((_obj), class_name) ? (_obj) : nil); })
+({ class_name* _obj = (id)(obj); (IS_KIND((_obj), class_name) ? (_obj) : nil); })
 
 
 // return the object if it is of the specified class, or else NSNull
@@ -75,13 +75,13 @@ check(IS_KIND_OR_NIL((obj), class_name), \
 # define ASSERT_KIND_OR_NIL(obj, class_name) ((void)0)
 #else
 # define ASSERT_KIND(obj, class_name) CHECK_KIND((obj), class_name)
-# define ASSERT_KIND_OR_NIL(obj, class_name) CHECK_KIND((obj), class_name)
+# define ASSERT_KIND_OR_NIL(obj, class_name) CHECK_KIND_OR_NIL((obj), class_name)
 #endif
 
 
 // cast with a run-time type kind assertion
 #define CAST(class_name, ...) \
-({ id _obj = (__VA_ARGS__); ASSERT_KIND_OR_NIL(_obj, class_name); (class_name*)_obj; })
+({ id _cast_obj = (__VA_ARGS__); ASSERT_KIND_OR_NIL(_cast_obj, class_name); (class_name*)_cast_obj; })
 
 
 // return the object if it is non-nil, else return the alternate
