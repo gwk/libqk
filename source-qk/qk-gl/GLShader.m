@@ -17,8 +17,9 @@
 }
 
 
-- (id)initWithSource:(NSString*)source {
+- (id)initWithSource:(NSString*)source name:(NSString*)name {
   INIT(super init);
+  _name = name;
   _handle = glCreateShader([self.class shaderType]);
   qkgl_assert();
   assert(_handle, @"no handle");
@@ -27,7 +28,8 @@
   qkgl_assert();
   
   check(qkgl_get_shader_param(_handle, GL_COMPILE_STATUS),
-        @"shader compile failed:\n%@\nsource:\n%@\n",
+        @"shader compile failed: %@\n%@\nsource:\n%@\n",
+        _name,
         qkgl_get_shader_info_log(_handle),
         source.numberedLines);
   
@@ -35,8 +37,8 @@
 }
 
 
-+ (id)withSource:(NSString*)source {
-  return [[self alloc] initWithSource:source];
++ (id)withSource:(NSString*)source name:(NSString*)name {
+  return [[self alloc] initWithSource:source name:name];
 }
 
 
@@ -55,7 +57,7 @@
   NSError* e = nil;
   NSString* source = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&e];
   check(!e, @"could not read shader source at path: %@\n%@", path, e);
-  return [c withSource:source];
+  return [c withSource:source name:resourceName];
 }
 
 

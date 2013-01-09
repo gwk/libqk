@@ -7,8 +7,10 @@
 
 @interface GLShader : GLObject
 
-- (id)initWithSource:(NSString*)source;
-+ (id)withSource:(NSString*)source;
+@property (nonatomic, readonly) NSString* name;
+
+- (id)initWithSource:(NSString*)source name:(NSString*)name;
++ (id)withSource:(NSString*)source name:(NSString*)name;
 + (id)named:(NSString*)resourceName;
 
 @end
