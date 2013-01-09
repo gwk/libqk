@@ -27,7 +27,7 @@
   qkgl_assert();
   
   check(qkgl_get_shader_param(_handle, GL_COMPILE_STATUS),
-        @"shader compile failed; log: %@\nsource:\n%@\n",
+        @"shader compile failed:\n%@\nsource:\n%@\n",
         qkgl_get_shader_info_log(_handle),
         source.numberedLines);
   
