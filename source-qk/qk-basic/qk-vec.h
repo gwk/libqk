@@ -58,18 +58,26 @@ static inline TV TV##Make(TE x, TE y) { return (TV) { { x, y } }; } \
 static inline NSString* TV##Desc(TV v) { \
 return [NSString stringWithFormat:@"(" fmt @" " fmt @")", v._[0], v._[1]]; \
 } \
+\
+static inline TV TV##UpdateRange(TV r, TE v) { \
+return (TV) { (v < r._[0] ? v : r._[0]), (v > r._[1] ? v : r._[1]) }; \
+}
 
 
-#define _TYPEDEF_V3_EXP(TE, TV) \
+#define _TYPEDEF_V3_EXP(TE, TV, fmt) \
 _TYPEDEF_V(TE, TV, 3) \
 static inline TV TV##Make(TE x, TE y, TE z) { return (TV) { { x, y, z } }; } \
+\
+static inline NSString* TV##Desc(TV v) { \
+return [NSString stringWithFormat:@"(" fmt @" " fmt @" " fmt @")", v._[0], v._[1], v._[2]]; \
+} \
 
 
 #define _TYPEDEF_V2(TE, fmt) \
 _TYPEDEF_V2_EXP(TE, V2##TE, fmt)
 
-#define _TYPEDEF_V3(TE) \
-_TYPEDEF_V3_EXP(TE, V3##TE)
+#define _TYPEDEF_V3(TE, fmt) \
+_TYPEDEF_V3_EXP(TE, V3##TE, fmt)
 
 
 #define _DEF_V_F_WITH_I_EXP(dim, TF, TI, TVF, TVI) \
@@ -87,10 +95,10 @@ _TYPEDEF_V2(I32, @"%d");
 _TYPEDEF_V2(F32, @"%f");
 _TYPEDEF_V2(F64, @"%f");
 
-_TYPEDEF_V3(U16);
-_TYPEDEF_V3(I32);
-_TYPEDEF_V3(F32);
-_TYPEDEF_V3(F64);
+_TYPEDEF_V3(U16, @"%hu");
+_TYPEDEF_V3(I32, @"%d");
+_TYPEDEF_V3(F32, @"%f");
+_TYPEDEF_V3(F64, @"%f");
 
 _DEF_V_F_WITH_I(2, F32, U16);
 
