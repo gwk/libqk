@@ -25,10 +25,15 @@ const UIViewAutoresizing UIFlexVertical   = UIFlexTop | UIFlexBottom;
 }
 
 
-+ (id)withFlexFrame:(CGRect)frame {
++ (id)withFrame:(CGRect)frame flex:(UIViewAutoresizing)flex {
   UIView* v = [self withFrame:frame];
-  v.autoresizingMask = UIFlexSize;
+  v.autoresizingMask = flex;
   return v;
+}
+
+
++ (id)withFlexFrame:(CGRect)frame {
+  return [self withFrame:frame flex:UIFlexSize];
 }
 
 

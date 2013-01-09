@@ -21,6 +21,7 @@ extern const UIViewAutoresizing UIFlexVertical;
 @interface UIView (QK)
 
 + (id)withFrame:(CGRect)frame;
++ (id)withFrame:(CGRect)frame flex:(UIViewAutoresizing)flex;
 + (id)withFlexFrame:(CGRect)frame;
 + (id)withFlexFrame;
 
