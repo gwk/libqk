@@ -28,4 +28,8 @@ typedef id BlockStructFilterCopy;
 + (id)withElSize:(Int)elSize structArray:(QKStructArray*)structArray copyBlock:(BlockStructCopy)block;
 + (id)withElSize:(Int)elSize structArray:(QKStructArray*)structArray filterCopyBlock:(BlockStructFilterCopy)block;
 
++ (id)join:(NSArray*)arrays;
+
+- (void)get:(int)index to:(void*)to;
+
 @end

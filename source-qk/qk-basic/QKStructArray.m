@@ -2,6 +2,7 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#import "NSData+QK.h"
 #import "NSString+QK.h"
 #import "QKStructArray.h"
 
@@ -82,6 +83,18 @@
 }
 
 
++ (id)join:(NSArray*)arrays {
+  int elSize = [arrays.el0OrNil elSize];
+  if (!QK_OPTIMIZE) {
+    for (QKStructArray* el in arrays) {
+      assert(el.elSize == elSize, @"mismatched elSize: %@; %@", arrays.el0, el);
+    }
+  }
+  return [self withElSize:elSize data:[NSData join:[arrays map:^(QKStructArray* a){
+    return a.data;
+  }]]];
+}
+
 
 - (Int)count {
   return _data.length / _elSize;
@@ -95,6 +108,13 @@
 
 - (const void*)bytes {
   return _data.bytes;
+}
+
+
+- (void)get:(int)index to:(void*)to {
+  assert(index < self.count, @"bad index: %d; %@", index, self);
+  const void* ptr = _data.bytes + index * _elSize;
+  memmove(to, ptr, _elSize);
 }
 
 
