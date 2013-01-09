@@ -19,7 +19,7 @@
 #define LOGS(x)         errFL(@"%s: %s", #x, (x))
 #define LOGP(x)         errFL(@"%s: %p", #x, (x))
 #define LOGD(x)         errFL(@"%s: %d", #x, (x))
-#define LOGLD(x)        errFL(@"%s: %ld", #x, (x))
+#define LOGL(x)         errFL(@"%s: %ld", #x, (x))
 #define LOGF(x)         errFL(@"%s: %f", #x, (x))
 #define LOGB(x)         errFL(@"%s: %@", #x, (x) ? @"YES" : @"NO")
 
