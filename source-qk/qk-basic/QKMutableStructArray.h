@@ -7,8 +7,11 @@
 
 @interface QKMutableStructArray : QKStructArray
 
+@property (nonatomic, readonly) void* mutableBytes;
 
 - (void)appendElement:(void*)element;
 
+- (void)replaceElementsInRange:(NSRange)range withBytes:(const void*)bytes count:(Int)count;
+- (void)removeElementsInRange:(NSRange)range;
 
 @end

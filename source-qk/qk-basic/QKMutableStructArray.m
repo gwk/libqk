@@ -20,8 +20,29 @@
 }
 
 
+- (void*)mutableBytes {
+  return self.mutableData.mutableBytes;
+}
+
+
 - (void)appendElement:(void*)element {
   [self.mutableData appendBytes:element length:self.elSize];
+}
+
+
+- (id)copyWithZone:(NSZone*)zone {
+  return [QKStructArray withElSize:self.elSize data:self.data];
+}
+
+
+- (void)replaceElementsInRange:(NSRange)range withBytes:(const void*)bytes count:(Int)count {
+  [self.mutableData replaceBytesInRange:[self byteRange:range]
+                              withBytes:bytes
+                                 length:count * self.elSize];
+}
+
+- (void)removeElementsInRange:(NSRange)range {
+  [self replaceElementsInRange:range withBytes:NULL count:0];
 }
 
 

@@ -12,7 +12,7 @@ typedef id BlockStructCopy;
 typedef BOOL (^BlockStructFilterCopyActual)(void*, const void*);
 typedef id BlockStructFilterCopy;
 
-@interface QKStructArray : NSObject
+@interface QKStructArray : NSObject <NSMutableCopying>
 
 @property (nonatomic, readonly) Int elSize;
 @property (nonatomic, readonly) Int count;
@@ -29,6 +29,10 @@ typedef id BlockStructFilterCopy;
 + (id)withElSize:(Int)elSize structArray:(QKStructArray*)structArray filterCopyBlock:(BlockStructFilterCopy)block;
 
 + (id)join:(NSArray*)arrays;
+
+- (QKStructArray*)subWithRange:(NSRange)range;
+
+- (NSRange)byteRange:(NSRange)range;
 
 - (void)get:(int)index to:(void*)to;
 

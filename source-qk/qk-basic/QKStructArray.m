@@ -111,10 +111,30 @@
 }
 
 
+- (NSRange)byteRange:(NSRange)range {
+  return NSRangeMake(range.location * _elSize, range.length * _elSize);
+}
+
+
 - (void)get:(int)index to:(void*)to {
   assert(index < self.count, @"bad index: %d; %@", index, self);
   const void* ptr = _data.bytes + index * _elSize;
   memmove(to, ptr, _elSize);
+}
+
+
+- (id)copyWithZone:(NSZone*)zone {
+  return self;
+}
+
+
+- (id)mutableCopyWithZone:(NSZone*)zone {
+  return [QKMutableStructArray withElSize:_elSize data:_data];
+}
+
+
+- (QKStructArray*)subWithRange:(NSRange)range {
+  return [QKStructArray withElSize:_elSize data:[_data subdataWithRange:[self byteRange:range]]];
 }
 
 
