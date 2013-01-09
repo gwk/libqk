@@ -15,8 +15,8 @@
 
 + (id)named:(NSString*)resourceName; // readonly resource database
 
+- (SqlStatement*)prepare:(NSString*)string;
 - (SqlStatement*)prepareInsert:(int)count table:(NSString*)table;
-- (SqlStatement*)prepareSelect:(NSString*)select table:(NSString*)table;
 
 @end
 

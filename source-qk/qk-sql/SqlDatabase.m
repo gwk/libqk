@@ -74,10 +74,5 @@
 }
 
 
-- (SqlStatement*)prepareSelect:(NSString*)select table:(NSString*)table {
-  return [self prepare:[NSString withFormat:@"SELECT %@ FROM %@;", select, table]];
-}
-
-
 @end
 
