@@ -73,11 +73,23 @@ return [NSString stringWithFormat:@"(" fmt @" " fmt @" " fmt @")", v._[0], v._[1
 } \
 
 
+#define _TYPEDEF_V4_EXP(TE, TV, fmt) \
+_TYPEDEF_V(TE, TV, 4) \
+static inline TV TV##Make(TE x, TE y, TE z, TE w) { return (TV) { { x, y, z, w } }; } \
+\
+static inline NSString* TV##Desc(TV v) { \
+return [NSString stringWithFormat:@"(" fmt @" " fmt @" " fmt @" " fmt @")", v._[0], v._[1], v._[2], v._[3]]; \
+} \
+
+
 #define _TYPEDEF_V2(TE, fmt) \
 _TYPEDEF_V2_EXP(TE, V2##TE, fmt)
 
 #define _TYPEDEF_V3(TE, fmt) \
 _TYPEDEF_V3_EXP(TE, V3##TE, fmt)
+
+#define _TYPEDEF_V4(TE, fmt) \
+_TYPEDEF_V4_EXP(TE, V4##TE, fmt)
 
 
 #define _DEF_V_F_WITH_I_EXP(dim, TF, TI, TVF, TVI) \
@@ -99,6 +111,9 @@ _TYPEDEF_V3(U16, @"%hu");
 _TYPEDEF_V3(I32, @"%d");
 _TYPEDEF_V3(F32, @"%f");
 _TYPEDEF_V3(F64, @"%f");
+
+_TYPEDEF_V4(F32, @"%f");
+_TYPEDEF_V4(F64, @"%f");
 
 _DEF_V_F_WITH_I(2, F32, U16);
 
