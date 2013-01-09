@@ -3,5 +3,8 @@
 #import "qk-check.h"
 #import "qk-log.h"
 #import "qk-macros.h"
+#import "qk-math.h"
 #import "qk-types.h"
+#import "qk-vec.h"
+#import "QKMutableStructArray.h"
 #import "QKStructArray.h"

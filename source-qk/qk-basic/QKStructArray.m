@@ -14,16 +14,27 @@
 }
 
 
+// mutable subclass overrides this
++ (NSData *)copyData:(NSData*)data {
+  return data.copy;
+}
+
+
 - (id)initWithElSize:(Int)elSize data:(NSData*)data {
   INIT(super init);
   _elSize = elSize;
-  _data = data;
+  _data = [self.class copyData:data];
   return self;
 }
 
 
 + (id)withElSize:(Int)elSize data:(NSData*)data {
   return [[self alloc] initWithElSize:elSize data:data];
+}
+
+
++ (id)withElSize:(Int)elSize {
+  return [self withElSize:elSize data:nil];
 }
 
 

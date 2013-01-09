@@ -5,6 +5,7 @@
 #import <Foundation/Foundation.h>
 
 
+// clang does not automatically cast between block types with specific pointer types and void pointers.
 typedef void (^BlockStructCopyActual)(void*, const void*);
 typedef id BlockStructCopy;
 
@@ -21,6 +22,7 @@ typedef id BlockStructFilterCopy;
 
 
 - (id)initWithElSize:(Int)elSize data:(NSData*)data;
++ (id)withElSize:(Int)elSize;
 + (id)withElSize:(Int)elSize data:(NSData*)data;
 + (id)withElSize:(Int)elSize bytes:(void*)bytes length:(Int)length;
 + (id)withElSize:(Int)elSize structArray:(QKStructArray*)structArray copyBlock:(BlockStructCopy)block;

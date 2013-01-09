@@ -16,7 +16,7 @@ void err_item(NSString* item, NSString* end) {
 
 
 void err_items(NSArray* items, NSString* sep, NSString* end) {
-  NSString* string = [items componentsJoinedByString:sep];
+  NSString* string = [items componentsJoinedByString:sep]; // this method calls description on each element
   err_item(string, end);
 }
 
