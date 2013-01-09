@@ -10,6 +10,38 @@
 @implementation NSArray (Oro)
 
 
+- (id)elLast {
+  return [self lastObject];
+}
+
+
+- (id)elLastOrNil {
+  Int c = self.count;
+  return c > 0 ? [self objectAtIndex:c - 1] : nil;
+}
+
+
+#define EL(I) \
+- (id)el##I { return [self objectAtIndex:I]; } \
+- (id)el##I##OrNil { return self.count > I ? [self objectAtIndex:I] : nil; } \
+
+EL(0);
+EL(1);
+EL(2);
+EL(3);
+EL(4);
+EL(5);
+EL(6);
+EL(7);
+EL(8);
+EL(9);
+
+#undef EL
+
+
+#pragma mark - map
+
+
 + (id)mapIntFrom:(Int)from to:(Int)to block:(BlockMapInt)block {
   NSMutableArray* a = [NSMutableArray arrayWithCapacity:(to - from)];
   for_imn(i, from, to) {
@@ -54,6 +86,18 @@
     [dict setItem:d];
   }
   return dict;
+}
+
+
+#pragma mark - reduce
+
+
+- (int)reduceInt:(Int)initial block:(BlockReduceToInt)block {
+  Int val = initial;
+  for (id el in self) {
+    val = block(val, el);
+  }
+  return val;
 }
 
 

@@ -36,5 +36,6 @@ typedef void (^BlockMutableReduce)(id, id);
 typedef void (^BlockMutableReducePair)(id, id, id);
 
 // take a value and return an index.
-typedef int (^BlockIndex)(id);
+typedef Int (^BlockMaptoInt)(id);
 
+typedef Int(^BlockReduceToInt)(Int, id);
