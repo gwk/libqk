@@ -33,6 +33,8 @@ typedef id BlockStructFilterCopy;
 
 + (id)join:(NSArray*)arrays;
 
+- (Int)lastIndex;
+
 - (QKStructArray*)subWithRange:(NSRange)range;
 
 - (NSRange)byteRange:(NSRange)range;

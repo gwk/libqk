@@ -101,6 +101,11 @@
 }
 
 
+- (Int)lastIndex {
+  return self.count - 1;
+}
+
+
 - (Int)length {
   return _data.length;
 }
