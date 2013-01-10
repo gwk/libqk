@@ -138,4 +138,13 @@
 }
 
 
+- (void)forEach:(BlockDoStruct)block {
+  const void* p = _data.bytes;
+  const void* end = p + _data.length;
+  BlockDoStructActual b = block;
+  while (p < end) {
+    b(p);
+  }
+}
+
 @end
