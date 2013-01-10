@@ -42,7 +42,7 @@ _COLS(9);
 - (NSString*)string;
 - (void)reset;
 - (int)columnCount;
-- (void)doBlock:(BlockDoSql)block;
+- (void)forEach:(BlockDoSql)block;
 - (NSArray*)map:(BlockMapSql)block;
 - (void)bindInt:(Int)value index:(int)index;
 - (void)bindF64:(F64)value index:(int)index;

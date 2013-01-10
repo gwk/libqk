@@ -61,13 +61,13 @@ assert(code == exp_code, @"%@" fmt, sql_failure_str(_db.handle, code), ##__VA_AR
 }
 
 
-- (void)doBlock:(BlockDoSql)block {
+- (void)forEach:(BlockDoSql)block {
   int code = sqlite3_step(_handle);
   while (code == SQLITE_ROW) {
     block(self);
     code = sqlite3_step(_handle);
   }
-  _CHECK(SQLITE_DONE, @"doBlock:");
+  _CHECK(SQLITE_DONE, @"forEach:");
   [self reset];
 }
 
@@ -80,7 +80,7 @@ assert(code == exp_code, @"%@" fmt, sql_failure_str(_db.handle, code), ##__VA_AR
     [array addObject:el];
     code = sqlite3_step(_handle);
   }
-  _CHECK(SQLITE_DONE, @"doBlock:");
+  _CHECK(SQLITE_DONE, @"forEach:");
   [self reset];
   return array;
 }
