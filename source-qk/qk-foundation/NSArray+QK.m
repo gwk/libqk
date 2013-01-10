@@ -10,6 +10,15 @@
 @implementation NSArray (Oro)
 
 
+- (id)el:(Int)index {
+  return [self objectAtIndex:index];
+}
+
+- (id)elOrNil:(Int)index {
+  return (index < self.count) ? [self objectAtIndex:index] : nil;
+}
+
+
 - (id)elLast {
   return [self lastObject];
 }
@@ -23,7 +32,7 @@
 
 #define EL(I) \
 - (id)el##I { return [self objectAtIndex:I]; } \
-- (id)el##I##OrNil { return self.count > I ? [self objectAtIndex:I] : nil; } \
+- (id)el##I##OrNil { return (I < self.count) ? [self objectAtIndex:I] : nil; } \
 
 EL(0);
 EL(1);

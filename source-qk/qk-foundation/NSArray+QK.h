@@ -7,6 +7,8 @@
 
 @interface NSArray (QK)
 
+- (id)el:(Int)index;
+- (id)elOrNil:(Int)index;
 - (id)elLast;
 - (id)elLastOrNil;
 
