@@ -27,6 +27,8 @@ EL(7);
 EL(8);
 EL(9);
 
+- (Int)lastIndex;
+
 #undef EL
 
 

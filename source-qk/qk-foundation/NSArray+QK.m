@@ -48,6 +48,11 @@ EL(9);
 #undef EL
 
 
+- (Int)lastIndex {
+  return self.count - 1;
+}
+
+
 #pragma mark - map
 
 
