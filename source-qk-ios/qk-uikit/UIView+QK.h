@@ -20,6 +20,10 @@ extern const UIViewAutoresizing UIFlexVertical;
 
 @interface UIView (QK)
 
+@property (nonatomic) CGPoint boundsOrigin;
+@property (nonatomic) CGSize boundsSize;
+@property (nonatomic) CGPoint boundsCenter;
+
 + (id)withFrame:(CGRect)frame;
 + (id)withFrame:(CGRect)frame flex:(UIViewAutoresizing)flex;
 + (id)withFlexFrame:(CGRect)frame;

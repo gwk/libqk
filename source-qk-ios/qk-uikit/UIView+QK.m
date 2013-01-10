@@ -42,4 +42,40 @@ const UIViewAutoresizing UIFlexVertical   = UIFlexTop | UIFlexBottom;
 }
 
 
+- (CGPoint)boundsOrigin {
+  return self.bounds.origin;
+}
+
+
+- (void)setBoundsOrigin:(CGPoint)boundsOrigin {
+  CGRect b = self.bounds;
+  b.origin = boundsOrigin;
+  self.bounds = b;
+}
+
+
+- (CGSize)boundsSize {
+  return self.bounds.size;
+}
+
+
+- (void)setBoundsSize:(CGSize)boundsSize {
+  CGRect b = self.bounds;
+  b.size = boundsSize;
+  self.bounds = b;
+}
+
+
+- (CGPoint)boundsCenter {
+  CGRect b = self.bounds;
+  return CGPointMake(b.origin.x + b.size.width * .5, b.origin.y + b.size.height * .5);
+}
+
+
+- (void)setBoundsCenter:(CGPoint)boundsCenter {
+  CGSize s = self.bounds.size;
+  self.boundsOrigin = CGPointMake(boundsCenter.x - s.width * .5, boundsCenter.y - s.height * .5);
+}
+
+
 @end

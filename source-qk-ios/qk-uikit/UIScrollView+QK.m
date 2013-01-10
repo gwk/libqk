@@ -9,16 +9,19 @@
 
 
 - (CGPoint)contentCenter {
-  CGPoint o = self.contentOffset;
-  CGSize s = self.bounds.size;
-  return CGPointMake(roundf(o.x + s.width * .5), roundf(o.y + s.height * .5));
+  CGSize s = self.contentSize;
+  return CGPointMake(s.width * .5, s.height * .5);
 }
 
 
-- (void)setContentCenter:(CGPoint)contentCenter {
+- (void)centerOn:(CGPoint)point {
   CGSize s = self.bounds.size;
-  self.contentOffset = CGPointMake(contentCenter.x - s.width * .5, contentCenter.y - s.height * .5);
+  CGPoint o = CGPointMake(point.x - s.width * .5, point.y - s.height * .5);
+  // TODO: keep in bounds!
+  self.contentOffset = o;
 }
+
+
 
 
 @end
