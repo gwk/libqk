@@ -103,6 +103,14 @@ check(IS_KIND_OR_NIL((obj), class_name), \
 return nil
 
 
+// properties
+
+
+#define PROPERTY_ALIAS(type, name, Name, path) \
+- (type)name { return path; } \
+- (void)set##Name:(type)name { path = name; } \
+
+
 // threads
 
 #define CHECK_MAIN_THREAD check([NSThread isMainThread], @"requires main thread")
@@ -137,17 +145,8 @@ return nil
 #define NSRangeLength(obj)  NSRangeTo([(obj) length])
 #define NSRangeCount(obj)   NSRangeTo([(obj) count])
 
-#endif // __OBJC__
 
-
-
-
-#define STATIC_LAZY(type, name, ...) \
-type name() { \
-static type lazy; \
-if (!lazy) { lazy = (__VA_ARGS__); } \
-return lazy; \
-}
+// lazy static functions
 
 #define CLASS_LAZY(type, name, ...) \
 + (type)name { \
@@ -156,6 +155,15 @@ if (!lazy) { lazy = (__VA_ARGS__); } \
 return lazy; \
 }
 
+#endif // __OBJC__
+
+
+#define STATIC_LAZY(type, name, ...) \
+type name() { \
+static type lazy; \
+if (!lazy) { lazy = (__VA_ARGS__); } \
+return lazy; \
+}
 
 // cocoa attributes (for analyzer and ARC)
 
