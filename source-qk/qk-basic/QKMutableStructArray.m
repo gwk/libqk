@@ -25,6 +25,11 @@
 }
 
 
+- (void*)mutableBytesEnd {
+  return self.mutableData.mutableBytes + self.length;
+}
+
+
 - (void)appendElement:(void*)element {
   [self.mutableData appendBytes:element length:self.elSize];
 }

@@ -8,6 +8,7 @@
 @interface QKMutableStructArray : QKStructArray
 
 @property (nonatomic, readonly) void* mutableBytes;
+@property (nonatomic, readonly) void* mutableBytesEnd;
 
 - (void)appendElement:(void*)element;
 

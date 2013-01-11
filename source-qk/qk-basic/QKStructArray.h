@@ -22,6 +22,7 @@ typedef id BlockStructFilterCopy;
 @property (nonatomic, readonly) Int length;
 @property (nonatomic, readonly) NSData* data;
 @property (nonatomic, readonly) const void* bytes;
+@property (nonatomic, readonly) const void* bytesEnd;
 
 
 - (id)initWithElSize:(Int)elSize data:(NSData*)data;

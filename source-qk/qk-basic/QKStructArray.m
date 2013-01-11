@@ -15,7 +15,7 @@
 }
 
 
-// mutable subclass overrides this
+// mutable subclass overrides this.
 + (NSData *)copyData:(NSData*)data {
   return data.copy;
 }
@@ -48,7 +48,7 @@
   NSMutableData* data = [NSMutableData dataWithLength:elSize * structArray.count];
   void* to = data.mutableBytes;
   const void* from = structArray.bytes;
-  const void* end = from + structArray.length;
+  const void* end = structArray.bytesEnd;
   size_t fromElSize = structArray.elSize;
   
   BlockStructCopyActual b = block;
@@ -64,10 +64,10 @@
 + (id)withElSize:(Int)elSize structArray:(QKStructArray*)structArray filterCopyBlock:(BlockStructFilterCopy)block {
   NSMutableData* data = [NSMutableData dataWithLength:elSize * structArray.count];
   void* to = data.mutableBytes;
-  int count = 0;
   const void* from = structArray.bytes;
-  const void* end = from + structArray.length;
+  const void* end = structArray.bytesEnd;
   size_t fromElSize = structArray.elSize;
+  int count = 0;
   
   BlockStructFilterCopyActual b = block;
   while (from < end) {
@@ -113,6 +113,11 @@
 
 - (const void*)bytes {
   return _data.bytes;
+}
+
+
+- (const void*)bytesEnd {
+  return _data.bytes + _data.length;
 }
 
 
