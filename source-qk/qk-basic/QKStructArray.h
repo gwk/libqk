@@ -6,8 +6,8 @@
 
 
 // clang does not automatically cast between block types with specific pointer types and void pointers.
-typedef void (^BlockDoStructActual)(const void*);
-typedef id BlockDoStruct;
+typedef void (^BlockStepStructActual)(const void*);
+typedef id BlockStepStruct;
 
 typedef void (^BlockStructCopyActual)(void*, const void*);
 typedef id BlockStructCopy;
@@ -42,6 +42,6 @@ typedef id BlockStructFilterCopy;
 
 - (void)get:(int)index to:(void*)to;
 
-- (void)forEach:(BlockDoStruct)block;
+- (void)step:(BlockStepStruct)block;
 
 @end

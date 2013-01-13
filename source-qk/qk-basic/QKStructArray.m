@@ -148,10 +148,10 @@
 }
 
 
-- (void)forEach:(BlockDoStruct)block {
+- (void)step:(BlockStepStruct)block {
   const void* p = _data.bytes;
   const void* end = p + _data.length;
-  BlockDoStructActual b = block;
+  BlockStepStructActual b = block;
   while (p < end) {
     b(p);
   }
