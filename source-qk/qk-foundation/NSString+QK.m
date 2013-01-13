@@ -14,7 +14,7 @@
   NSString* s;
   va_list args;
   va_start(args, format);
-  s = [[NSString alloc] initWithFormat:format arguments:args];
+  s = [[self alloc] initWithFormat:format arguments:args];
   va_end(args);
   return s;
 }
