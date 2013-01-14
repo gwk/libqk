@@ -126,10 +126,15 @@
 }
 
 
+- (NSRange)byteRangeForIndex:(int)index {
+  return NSRangeMake(index * _elSize, _elSize);
+}
+
+
 #define ASSERT_INDEX assert(index < self.count, @"bad index: %d; %@", index, self)
 
 - (void)el:(int)index to:(void*)to {
-  assert(index < self.count, @"bad index: %d; %@", index, self);
+  ASSERT_INDEX;
   const void* ptr = _data.bytes + index * _elSize;
   memmove(to, ptr, _elSize);
 }
@@ -174,6 +179,7 @@ EL(V2F64);
   BlockStepStructActual b = block;
   while (p < end) {
     b(p);
+    p += _elSize;
   }
 }
 

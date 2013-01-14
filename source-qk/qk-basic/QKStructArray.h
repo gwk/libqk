@@ -39,6 +39,7 @@ typedef id BlockStructFilterCopy;
 - (QKStructArray*)subWithRange:(NSRange)range;
 
 - (NSRange)byteRange:(NSRange)range;
+- (NSRange)byteRangeForIndex:(int)index;
 
 - (void)el:(int)index to:(void*)to;
 - (Int)elInt:(int)index;
