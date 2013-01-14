@@ -8,6 +8,11 @@
 @implementation NSDate (QK)
 
 
++ (NSTimeInterval)refTime {
+  return [self timeIntervalSinceReferenceDate];
+}
+
+
 + (NSTimeInterval)posixTime {
   static NSTimeInterval offset = 0;
   if (!offset) {

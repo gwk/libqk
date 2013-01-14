@@ -4,6 +4,7 @@
 
 @interface NSDate (QK)
 
++ (NSTimeInterval)refTime;
 + (NSTimeInterval)posixTime;
 
 @end
