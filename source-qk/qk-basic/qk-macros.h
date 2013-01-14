@@ -5,7 +5,7 @@
 
 
 #define loop while (1)
-#define for_imn(i, m, n) for (Int i = m; i < n; i++)
+#define for_imn(i, m, n) for (Int i = m, i##_end = n; i < i##_end; i++)
 #define for_in(i, n) for_imn(i, 0, n)
 
 
