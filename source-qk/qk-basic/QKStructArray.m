@@ -126,11 +126,31 @@
 }
 
 
-- (void)get:(int)index to:(void*)to {
+#define ASSERT_INDEX assert(index < self.count, @"bad index: %d; %@", index, self)
+
+- (void)el:(int)index to:(void*)to {
   assert(index < self.count, @"bad index: %d; %@", index, self);
   const void* ptr = _data.bytes + index * _elSize;
   memmove(to, ptr, _elSize);
 }
+
+
+#define EL(T) \
+- (T)el##T:(int)index { \
+assert(self.elSize == sizeof(T), @"bad type: %s", #T); \
+ASSERT_INDEX; \
+const T* p = _data.bytes; \
+return p[index]; \
+} \
+
+
+EL(Int);
+EL(I32);
+EL(I64);
+EL(F32);
+EL(F64);
+EL(V2F32);
+EL(V2F64);
 
 
 - (id)copyWithZone:(NSZone*)zone {

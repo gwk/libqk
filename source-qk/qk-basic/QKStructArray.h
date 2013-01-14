@@ -40,7 +40,14 @@ typedef id BlockStructFilterCopy;
 
 - (NSRange)byteRange:(NSRange)range;
 
-- (void)get:(int)index to:(void*)to;
+- (void)el:(int)index to:(void*)to;
+- (Int)elInt:(int)index;
+- (I32)elI32:(int)index;
+- (I64)elI64:(int)index;
+- (F32)elF32:(int)index;
+- (F64)elF64:(int)index;
+- (V2F32)elV2F32:(int)index;
+- (V2F64)elV2F64:(int)index;
 
 - (void)step:(BlockStepStruct)block;
 
