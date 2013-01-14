@@ -10,6 +10,10 @@
 
 
 @interface SqlDatabase ()
+
+@property (nonatomic) SqlStatement* commitStatement;
+@property (nonatomic) SqlStatement* selectLastId;
+
 @end
 
 
@@ -58,19 +62,51 @@
 }
 
 
-- (SqlStatement*)prepare:(NSString*)string {
-  return [[SqlStatement alloc] initWithDatabase:self string:string];
+- (SqlStatement*)prepare:(NSString*)query {
+  return [[SqlStatement alloc] initWithDatabase:self query:query];
 }
 
 
 - (SqlStatement*)prepareInsert:(int)count table:(NSString*)table {
   // count is the number of columns
   NSMutableString* s = [NSMutableString withFormat:@"INSERT INTO %@ VALUES (NULL", table];
-  for_imn(i, 1, count) {
+  for_in(i, count) {
     [s appendString:@", ?"];
   }
-  [s appendString:@");"];
+  [s appendString:@")"];
   return [self prepare:s];
+}
+
+
+- (void)execute:(NSString*)query {
+  SqlStatement* s = [self prepare:query];
+  [s execute];
+}
+
+
+- (void)log:(NSString*)query {
+  SqlStatement* statement = [self prepare:query];
+  errFL(@"%@", statement.query);
+  [statement step:^(SqlStatement* s){
+    err_items([s getStrings], @" | ", @"\n");
+  }];
+  errL();
+}
+
+
+- (void)commit {
+  if (!_commitStatement) {
+    _commitStatement = [self prepare:@"COMMIT"];
+  }
+  [_commitStatement execute];
+}
+
+
+- (I64)lastId {
+  if (!_selectLastId) {
+    _selectLastId = [self prepare:@"SELECT last_insert_rowid()"];
+  }
+  return [_selectLastId step1Int];
 }
 
 

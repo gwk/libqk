@@ -7,7 +7,7 @@
 
 // block types to perform an arbitrary actions on a statement as it steps through rows
 
-typedef void (^BlockDoSql)(SqlStatement* statement);
+typedef void (^BlockStepSql)(SqlStatement* statement);
 
 typedef id (^BlockMapSql)(SqlStatement* statement);
 
@@ -37,21 +37,26 @@ _COLS(9);
 #undef _COLS
 
 
-- (id)initWithDatabase:(SqlDatabase*)db string:(NSString*)string;
+- (id)initWithDatabase:(SqlDatabase*)db query:(NSString*)query;
 
-- (NSString*)string;
 - (void)reset;
 - (int)columnCount;
-- (void)forEach:(BlockDoSql)block;
+- (void)execute;
+- (Int)step1Int;
+- (I64)step1I64;
+- (Int)step:(BlockStepSql)block;
 - (NSArray*)map:(BlockMapSql)block;
-- (void)bindInt:(Int)value index:(int)index;
-- (void)bindF64:(F64)value index:(int)index;
-- (void)bindString:(NSString*)value index:(int)index;
+- (NSArray*)filterMap:(BlockMapSql)block;
+- (void)bindIndex:(int)index Int:(Int)value;
+- (void)bindIndex:(int)index I64:(I64)value;
+- (void)bindIndex:(int)index F64:(F64)value;
+- (void)bindIndex:(int)index string:(NSString*)value;
 - (Int)getInt:(int)index;
 - (Int)getI64:(int)index;
 - (F64)getF64:(int)index;
 - (NSString*)getString:(int)index;
 - (NSArray*)getStrings:(int)count;
+- (NSArray*)getStrings;
 
 @end
 

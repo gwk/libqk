@@ -10,13 +10,19 @@
 
 @property (nonatomic, readonly) NSString* path;
 @property (nonatomic, readonly) sqlite3* handle;
+@property (nonatomic, readonly) I64 lastId;
 
 + (id)withPath:(NSString*)path writeable:(BOOL)writeable create:(BOOL)create;
 
 + (id)named:(NSString*)resourceName; // readonly resource database
 
-- (SqlStatement*)prepare:(NSString*)string;
+- (SqlStatement*)prepare:(NSString*)query;
 - (SqlStatement*)prepareInsert:(int)count table:(NSString*)table;
+
+- (void)execute:(NSString*)query;
+- (void)log:(NSString*)query;
+
+- (void)commit;
 
 @end
 

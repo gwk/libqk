@@ -9,10 +9,10 @@
 
 
 #define _CHECK(exp_code, fmt, ...) \
-check(code == exp_code, @"%@" fmt, sql_failure_str(_db.handle, code), ##__VA_ARGS__)
+check(code == exp_code, @"%@\n%@\n" fmt, sql_failure_str(_db.handle, code), self.query, ##__VA_ARGS__)
 
 #define _ASSERT(exp_code, fmt, ...) \
-assert(code == exp_code, @"%@" fmt, sql_failure_str(_db.handle, code), ##__VA_ARGS__)
+assert(code == exp_code, @"%@\n%@\n" fmt, sql_failure_str(_db.handle, code), self.query, ##__VA_ARGS__)
 
 #define _CHECK_OK(...) _CHECK(SQLITE_OK, __VA_ARGS__)
 #define _ASSERT_OK(...) _ASSERT(SQLITE_OK, __VA_ARGS__)
@@ -34,18 +34,18 @@ assert(code == exp_code, @"%@" fmt, sql_failure_str(_db.handle, code), ##__VA_AR
 }
 
 
-- (id)initWithDatabase:(SqlDatabase*)db string:(NSString*)string {
+- (id)initWithDatabase:(SqlDatabase*)db query:(NSString*)query {
   INIT(super init);
   _db = db;
   Utf8 tail = NULL;
-  int code = sqlite3_prepare_v2(_db.handle, string.asUtf8, -1, &_handle, &tail);
-  _CHECK_OK(@"prepare: %@", string);
-  assert(!*tail, @"prepared query has unused tail: %s", tail);
+  int code = sqlite3_prepare_v2(_db.handle, query.asUtf8, -1, &_handle, &tail);
+  _CHECK_OK(@"prepare: %@", query);
+  assert(!*tail, @"prepared query has unused tail: '%s'", tail);
   return self;
 }
 
 
-- (NSString*)string {
+- (NSString*)query {
   return [NSString withUtf8:sqlite3_sql(_handle)];
 }
 
@@ -61,14 +61,56 @@ assert(code == exp_code, @"%@" fmt, sql_failure_str(_db.handle, code), ##__VA_AR
 }
 
 
-- (void)forEach:(BlockDoSql)block {
+- (void)execute {
   int code = sqlite3_step(_handle);
+  _CHECK(SQLITE_DONE, @"execute");
+  [self reset];
+}
+
+
+- (void)step1:(BlockStepSql)block {
+  int code = sqlite3_step(_handle);
+  _CHECK(SQLITE_ROW, @"step1: no rows");
+  block(self);
+  sqlite3_step(_handle);
+  _CHECK(SQLITE_DONE, @"step1: multiple rows");
+  [self reset];
+}
+
+
+- (Int)step1Int {
+  int code = sqlite3_step(_handle);
+  _CHECK(SQLITE_ROW, @"step1Int: no rows");
+  Int val = self.C0Int;
+  code = sqlite3_step(_handle);
+  _CHECK(SQLITE_DONE, @"step1Int: multiple rows");
+  [self reset];
+  return val;
+}
+
+
+- (I64)step1I64 {
+  int code = sqlite3_step(_handle);
+  _CHECK(SQLITE_ROW, @"step1Int: no rows");
+  I64 val = self.C0I64;
+  sqlite3_step(_handle);
+  _CHECK(SQLITE_DONE, @"step1Int: multiple rows");
+  [self reset];
+  return val;
+}
+
+
+- (Int)step:(BlockStepSql)block {
+  int code = sqlite3_step(_handle);
+  Int count = 0;
   while (code == SQLITE_ROW) {
     block(self);
+    count++;
     code = sqlite3_step(_handle);
   }
-  _CHECK(SQLITE_DONE, @"forEach:");
+  _CHECK(SQLITE_DONE, @"step:");
   [self reset];
+  return count;
 }
 
 
@@ -80,13 +122,29 @@ assert(code == exp_code, @"%@" fmt, sql_failure_str(_db.handle, code), ##__VA_AR
     [array addObject:el];
     code = sqlite3_step(_handle);
   }
-  _CHECK(SQLITE_DONE, @"forEach:");
+  _CHECK(SQLITE_DONE, @"map:");
   [self reset];
   return array;
 }
 
 
-- (void)bindInt:(Int)value index:(int)index {
+- (NSArray*)filterMap:(BlockMapSql)block {
+  NSMutableArray* array = [NSMutableArray array];
+  int code = sqlite3_step(_handle);
+  while (code == SQLITE_ROW) {
+    id el = block(self);
+    if (el) {
+      [array addObject:el];
+    }
+    code = sqlite3_step(_handle);
+  }
+  _CHECK(SQLITE_DONE, @"map:");
+  [self reset];
+  return array;
+}
+
+
+- (void)bindIndex:(int)index Int:(Int)value {
   int code;
   if (Int_is_64_bits) {
     code = sqlite3_bind_int64(_handle, index, value);
@@ -98,13 +156,19 @@ assert(code == exp_code, @"%@" fmt, sql_failure_str(_db.handle, code), ##__VA_AR
 }
 
 
-- (void)bindF64:(F64)value index:(int)index {
-  int code = sqlite3_bind_double(_handle, index, value);
-  _ASSERT_OK(@"bind double: %d", index);
+- (void)bindIndex:(int)index I64:(I64)value {
+  int code = sqlite3_bind_int(_handle, index, value);
+  _ASSERT_OK(@"bind I64: %d", index);  
 }
 
 
-- (void)bindString:(NSString*)value index:(int)index {
+- (void)bindIndex:(int)index F64:(F64)value {
+  int code = sqlite3_bind_double(_handle, index, value);
+  _ASSERT_OK(@"bind F64: %d", index);
+}
+
+
+- (void)bindIndex:(int)index string:(NSString*)value {
   int code = sqlite3_bind_text(_handle, index, value.asUtf8, -1, SQLITE_TRANSIENT);
   _ASSERT_OK(@"bind string: %d; '%@'", index, value);
 }
@@ -143,9 +207,17 @@ assert(index >= 0 && index < self.columnCount, @"bad index: %d; columnCount: %d"
 
 
 - (NSArray*)getStrings:(int)count {
-  assert(count >= 0 && count < self.columnCount, @"bad count: %d; columnCount: %d", count, self.columnCount);
+  assert(count <= self.columnCount, @"bad count: %d; columnCount: %d", count, self.columnCount);
   return [NSArray mapIntTo:count block:^(Int i){
     return [self getString:i];
+  }];
+}
+
+
+- (NSArray*)getStrings {
+  return [NSArray mapIntTo:self.columnCount block:^(Int i){
+    NSString* s = [self getString:i];
+    return s ? s : @"<NULL>";
   }];
 }
 
