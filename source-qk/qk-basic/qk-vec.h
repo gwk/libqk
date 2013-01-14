@@ -41,6 +41,10 @@ static inline TV TV##DivComps(TV a, TV b) { \
 TV r; for_in(i, dim) r._[i] = a._[i] / b._[i]; return r; \
 } \
 \
+static inline TV TV##Lerp(TV a, TV b, double t) { \
+TV r; for_in(i, dim) r._[i] = lerp(a._[i], b._[i], t); return r; \
+}\
+\
 static inline TV TV##WithCGPoint(CGPoint p) { return (TV) { { p.x, p.y } }; } \
 \
 static inline TV TV##WithCGSize(CGSize s) { return (TV) { { s.width, s.height } }; } \
