@@ -78,26 +78,21 @@ assert(code == exp_code, @"%@\n%@\n" fmt, sql_failure_str(_db.handle, code), sel
 }
 
 
-- (Int)step1Int {
-  int code = sqlite3_step(_handle);
-  _CHECK(SQLITE_ROW, @"step1Int: no rows");
-  Int val = self.C0Int;
-  code = sqlite3_step(_handle);
-  _CHECK(SQLITE_DONE, @"step1Int: multiple rows");
-  [self reset];
-  return val;
-}
+#define STEP1(T) \
+- (T)step1##T { \
+int code = sqlite3_step(_handle); \
+_CHECK(SQLITE_ROW, @"step1Int: no rows"); \
+T val = self.C0##T; \
+code = sqlite3_step(_handle); \
+_CHECK(SQLITE_DONE, @"step1%s: multiple rows", #T); \
+[self reset]; \
+return val; \
+} \
 
 
-- (I64)step1I64 {
-  int code = sqlite3_step(_handle);
-  _CHECK(SQLITE_ROW, @"step1Int: no rows");
-  I64 val = self.C0I64;
-  sqlite3_step(_handle);
-  _CHECK(SQLITE_DONE, @"step1Int: multiple rows");
-  [self reset];
-  return val;
-}
+STEP1(Int);
+STEP1(I64);
+STEP1(F64);
 
 
 - (Int)step:(BlockStepSql)block {
@@ -114,7 +109,7 @@ assert(code == exp_code, @"%@\n%@\n" fmt, sql_failure_str(_db.handle, code), sel
 }
 
 
-- (NSArray*)map:(BlockMapSql)block {
+- (NSMutableArray*)map:(BlockMapSql)block {
   NSMutableArray* array = [NSMutableArray array];
   int code = sqlite3_step(_handle);
   while (code == SQLITE_ROW) {
@@ -128,7 +123,7 @@ assert(code == exp_code, @"%@\n%@\n" fmt, sql_failure_str(_db.handle, code), sel
 }
 
 
-- (NSArray*)filterMap:(BlockMapSql)block {
+- (NSMutableArray*)filterMap:(BlockMapSql)block {
   NSMutableArray* array = [NSMutableArray array];
   int code = sqlite3_step(_handle);
   while (code == SQLITE_ROW) {
@@ -158,7 +153,7 @@ assert(code == exp_code, @"%@\n%@\n" fmt, sql_failure_str(_db.handle, code), sel
 
 - (void)bindIndex:(int)index I64:(I64)value {
   int code = sqlite3_bind_int(_handle, index, value);
-  _ASSERT_OK(@"bind I64: %d", index);  
+  _ASSERT_OK(@"bind I64: %d", index);
 }
 
 
@@ -190,7 +185,7 @@ assert(index >= 0 && index < self.columnCount, @"bad index: %d; columnCount: %d"
 
 - (Int)getI64:(int)index {
   _ASSERT_VALID_INDEX;
-   return sqlite3_column_int64(_handle, index);
+  return sqlite3_column_int64(_handle, index);
 }
 
 
