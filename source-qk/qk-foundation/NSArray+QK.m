@@ -56,7 +56,7 @@ EL(9);
 #pragma mark - map
 
 
-+ (id)mapIntFrom:(Int)from to:(Int)to block:(BlockMapInt)block {
++ (NSMutableArray*)mapIntFrom:(Int)from to:(Int)to block:(BlockMapInt)block {
   NSMutableArray* a = [NSMutableArray arrayWithCapacity:(to - from)];
   for_imn(i, from, to) {
     id res = block(i);
@@ -71,7 +71,7 @@ EL(9);
 }
 
 
-- (id)map:(BlockMap)block {
+- (NSMutableArray*)map:(BlockMap)block {
   NSMutableArray* a = [NSMutableArray arrayWithCapacity:self.count];
   for (id el in self) {
     id res = block(el);
@@ -81,7 +81,7 @@ EL(9);
 }
 
 
-- (id)mapIndexed:(BlockMapObjInt)block {
+- (NSMutableArray*)mapIndexed:(BlockMapObjInt)block {
   Int c = self.count;
   NSMutableArray* a = [NSMutableArray arrayWithCapacity:c];
   for_in(i, c) {
@@ -93,7 +93,7 @@ EL(9);
 }
 
 
-- (id)mapToDict:(BlockMapToPair)block {
+- (NSMutableDictionary*)mapToDict:(BlockMapToPair)block {
   NSMutableDictionary* dict = [NSMutableDictionary new];
   for (id el in self) {
     Duo* d = block(el);

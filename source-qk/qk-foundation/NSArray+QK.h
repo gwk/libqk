@@ -32,12 +32,12 @@ EL(9);
 #undef EL
 
 
-+ (id)mapIntFrom:(Int)from to:(Int)to block:(BlockMapInt)block;
-+ (id)mapIntTo:(Int)to block:(BlockMapInt)block;
++ (NSMutableArray*)mapIntFrom:(Int)from to:(Int)to block:(BlockMapInt)block;
++ (NSMutableArray*)mapIntTo:(Int)to block:(BlockMapInt)block;
 
-- (id)map:(BlockMap)block;
-- (id)mapIndexed:(BlockMapObjInt)block;
-- (id)mapToDict:(BlockMapToPair)block;
+- (NSMutableArray*)map:(BlockMap)block;
+- (NSMutableArray*)mapIndexed:(BlockMapObjInt)block;
+- (NSMutableDictionary*)mapToDict:(BlockMapToPair)block;
 
 
 - (int)reduceInt:(Int)initial block:(BlockReduceToInt)block;
