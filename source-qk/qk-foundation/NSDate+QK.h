@@ -7,5 +7,8 @@
 + (NSTimeInterval)refTime;
 + (NSTimeInterval)posixTime;
 
++ (NSDate*)withRefTime:(NSTimeInterval)refTime;
++ (NSDate*)withPosixTime:(NSTimeInterval)posixTime;
+
 @end
 

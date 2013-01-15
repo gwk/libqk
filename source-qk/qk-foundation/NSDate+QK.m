@@ -23,5 +23,15 @@
 }
 
 
++ (NSDate*)withRefTime:(NSTimeInterval)refTime {
+  return [self dateWithTimeIntervalSinceReferenceDate:refTime];
+}
+
+
++ (NSDate*)withPosixTime:(NSTimeInterval)posixTime {
+  return [self dateWithTimeIntervalSince1970:posixTime];
+}
+
+
 @end
 
