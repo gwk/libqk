@@ -13,5 +13,10 @@
 }
 
 
+- (void)push:(UIViewController*)controller {
+  [self pushViewController:controller animated:YES];
+}
+
+
 @end
 

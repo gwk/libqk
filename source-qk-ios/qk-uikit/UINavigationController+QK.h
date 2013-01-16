@@ -6,5 +6,7 @@
 
 + (id)withRoot:(UIViewController*)rootController;
 
+- (void)push:(UIViewController*)controller;
+
 @end
 
