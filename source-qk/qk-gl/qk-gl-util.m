@@ -58,9 +58,15 @@ NSString* qkgl_get_program_info_log(GLuint handle) {
 NSString* qkgl_error_string(GLenum error_code) {
 #if TARGET_OS_IPHONE
   switch (error_code) {
+      CASE_RETURN_TOKEN(GL_INVALID_ENUM);
+      CASE_RETURN_TOKEN(GL_INVALID_VALUE);
+      CASE_RETURN_TOKEN(GL_INVALID_OPERATION);
+      CASE_RETURN_TOKEN(GL_STACK_OVERFLOW);
+      CASE_RETURN_TOKEN(GL_STACK_UNDERFLOW);
+      CASE_RETURN_TOKEN(GL_OUT_OF_MEMORY);
       CASE_RETURN_TOKEN(GL_NO_ERROR);
     default:
-      return [NSString stringWithFormat:@"UNKNOWN:0x%X", error_code];
+      return [NSString stringWithFormat:@"UNKNOWN: 0x%X", error_code];
   }
 #else
   return [NSString withUtf8:(Utf8)gluErrorString(error_code)];
