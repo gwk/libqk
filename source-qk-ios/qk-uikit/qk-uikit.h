@@ -1,4 +1,5 @@
 #import "UIApplication+QK.h"
+#import "UIBarButtonItem+QK.h"
 #import "UIButton+QK.h"
 #import "UIImage+QK.h"
 #import "UIImageView+QK.h"
