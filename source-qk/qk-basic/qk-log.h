@@ -44,9 +44,7 @@
 #define LOG_FRAME(x)    errFL(@"%s frame: %@",  #x, (x) ? NSStringFromRect((x).frame) : @"(null object)")
 #define LOG_BOUNDS(x)   errFL(@"%s bounds: %@", #x, (x) ? NSStringFromRect((x).bounds) : @"(null object)")
 
-#define LOG_V2I(p)    NSLog(@"%s:\t%d %d", #p, p.x, p.y)
-#define LOG_V2F(p)    NSLog(@"%s:\t%f %f", #p, p.x, p.y)
-#define LOG_V3F(p)    NSLog(@"%s:\t%f %f %f", #p, p.x, p.y, p.z)
+#define LOG_(T, x)      errFL(@"%s: %@", #x, T##Desc(x))
 
 // log source positions.
 #define LOG_LINE            errFL(@"LOG_LINE: %04d %s", __LINE__, __FILE__)
