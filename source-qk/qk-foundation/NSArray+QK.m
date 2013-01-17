@@ -103,6 +103,18 @@ EL(9);
 }
 
 
+- (NSMutableArray*)filterMap:(BlockMap)block {
+  NSMutableArray* a = [NSMutableArray arrayWithCapacity:self.count];
+  for (id el in self) {
+    id res = block(el);
+    if (res) {
+      [a addObject:res];
+    }
+  }
+  return a;
+}
+
+
 #pragma mark - reduce
 
 
