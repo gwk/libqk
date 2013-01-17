@@ -33,6 +33,7 @@
        sharedCache:(BOOL)sharedCache {
   
   INIT(super init);
+  check(path, @"nil path");
   _path = path;
   int flags =
   (writeable ? SQLITE_OPEN_READWRITE : SQLITE_OPEN_READONLY) |
