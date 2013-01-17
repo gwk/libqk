@@ -38,6 +38,7 @@ const UIViewAutoresizing UIFlexVertical   = UIFlexTop | UIFlexBottom;
 
 
 + (id)withFlexFrame {
+  // using a small square frame will reveal any omitted autoresizing bits.
   return [self withFlexFrame:CGRectMake(0, 0, 320, 320)];
 }
 
