@@ -5,15 +5,20 @@
 #import <Foundation/Foundation.h>
 
 
-// clang does not automatically cast between block types with specific pointer types and void pointers.
-typedef void (^BlockStepStructActual)(const void*);
-typedef id BlockStepStruct;
+// clang does not automatically cast between block types with specific pointer types and void pointers,
+// so we loosely type BlockStruct arguments and then cast to the expected void* type internally.
+typedef void (^BlockStructStepActual)(const void*); // from
+typedef id BlockStructStep;
 
-typedef void (^BlockStructCopyActual)(void*, const void*);
+typedef void (^BlockStructCopyActual)(void*, const void*); // to, from
 typedef id BlockStructCopy;
 
-typedef BOOL (^BlockStructFilterCopyActual)(void*, const void*);
+typedef BOOL (^BlockStructFilterCopyActual)(void*, const void*); // to, from
 typedef id BlockStructFilterCopy;
+
+typedef BOOL (^BlockStructMapIntActual)(void*, Int); // to, index
+typedef id BlockStructMapInt;
+
 
 @interface QKStructArray : NSObject <NSMutableCopying>
 
@@ -29,6 +34,7 @@ typedef id BlockStructFilterCopy;
 + (id)withElSize:(Int)elSize;
 + (id)withElSize:(Int)elSize data:(NSData*)data;
 + (id)withElSize:(Int)elSize bytes:(void*)bytes length:(Int)length;
++ (id)withElSize:(Int)elSize from:(Int)from to:(Int)to mapIntBlock:(BlockStructMapInt)block;
 + (id)withElSize:(Int)elSize structArray:(QKStructArray*)structArray copyBlock:(BlockStructCopy)block;
 + (id)withElSize:(Int)elSize structArray:(QKStructArray*)structArray filterCopyBlock:(BlockStructFilterCopy)block;
 
@@ -50,6 +56,6 @@ typedef id BlockStructFilterCopy;
 - (V2F32)elV2F32:(int)index;
 - (V2F64)elV2F64:(int)index;
 
-- (void)step:(BlockStepStruct)block;
+- (void)step:(BlockStructStep)block;
 
 @end

@@ -44,6 +44,19 @@
 }
 
 
++ (id)withElSize:(Int)elSize from:(Int)from to:(Int)to mapIntBlock:(BlockStructMapInt)block {
+  Int count = to - from;
+  NSMutableData* data = [NSMutableData dataWithLength:elSize * count];
+  void* p = data.mutableBytes;
+  BlockStructMapIntActual b = block;
+  for_imn(i, from, to) {
+    b(p, i);
+    p += elSize;
+  }
+  return [self withElSize:elSize data:data];
+}
+
+
 + (id)withElSize:(Int)elSize structArray:(QKStructArray*)structArray copyBlock:(BlockStructCopy)block {
   NSMutableData* data = [NSMutableData dataWithLength:elSize * structArray.count];
   void* to = data.mutableBytes;
@@ -173,10 +186,10 @@ EL(V2F64);
 }
 
 
-- (void)step:(BlockStepStruct)block {
+- (void)step:(BlockStructStep)block {
   const void* p = _data.bytes;
   const void* end = p + _data.length;
-  BlockStepStructActual b = block;
+  BlockStructStepActual b = block;
   while (p < end) {
     b(p);
     p += _elSize;
