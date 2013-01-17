@@ -2,6 +2,15 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#if QK_SILENCE_ERR
+# define err_item(...) ((void)0)
+# define err_items(...) ((void)0)
+#else
+# define err_item(...) qk_err_item(__VA_ARGS__)
+# define err_items(...) qk_err_items(__VA_ARGS__)
+#endif
+
+
 #define eprintf(...) fprintf(stderr, __VA_ARGS__)
 
 #define err(...)    err_items(@[__VA_ARGS__], @"", nil)
@@ -67,6 +76,6 @@ errFL(@"%s: %@", #array, [array map:^id(id var) { return __VA_ARGS__; }])
 // log a Python object.
 #define LOGPY(x) { fprintf(stderr, "%s: ", #x); PyObject_Print((x), stderr, 0); fputc('\n', stderr); }
 
-void err_item(NSString* item, NSString* end);
-void err_items(NSArray* items, NSString* sep, NSString* end);
+void qk_err_item(NSString* item, NSString* end);
+void qk_err_items(NSArray* items, NSString* sep, NSString* end);
 

@@ -7,7 +7,7 @@
 #import "NSString+QK.h"
 
 
-void err_item(NSString* item, NSString* end) {
+void qk_err_item(NSString* item, NSString* end) {
   fputs(item.description.asUtf8, stderr);
   if (end) {
     fputs(end.asUtf8, stderr);
@@ -15,9 +15,9 @@ void err_item(NSString* item, NSString* end) {
 }
 
 
-void err_items(NSArray* items, NSString* sep, NSString* end) {
+void qk_err_items(NSArray* items, NSString* sep, NSString* end) {
   NSString* string = [items componentsJoinedByString:sep]; // this method calls description on each element
-  err_item(string, end);
+  qk_err_item(string, end);
 }
 
 
