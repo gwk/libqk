@@ -40,9 +40,9 @@
 #define LOG_CENTER(x)   errFL(@"%s center: %@", #x, (x) ? NSStringFromCGPoint((x).center) : @"(null object)")
 #define LOG_TRANSFORM(x) errFL(@"%s transform: %@", #x, (x) ? NSStringFromCGAffineTransform((x).transform) : @"(null object)")
 
-#define LOG_OBJ_SIZE(x) errFL(@"%s size: %@",   #x, (x) ? NSStringFromSize((x).size) : @"(null object)")
-#define LOG_FRAME(x)    errFL(@"%s frame: %@",  #x, (x) ? NSStringFromRect((x).frame) : @"(null object)")
-#define LOG_BOUNDS(x)   errFL(@"%s bounds: %@", #x, (x) ? NSStringFromRect((x).bounds) : @"(null object)")
+#define LOG_OBJ_SIZE(x) errFL(@"%s size: %@",   #x, (x) ? NSStringFromCGSize((x).size) : @"(null object)")
+#define LOG_FRAME(x)    errFL(@"%s frame: %@",  #x, (x) ? NSStringFromCGRect((x).frame) : @"(null object)")
+#define LOG_BOUNDS(x)   errFL(@"%s bounds: %@", #x, (x) ? NSStringFromCGRect((x).bounds) : @"(null object)")
 
 #define LOG_(T, x)      errFL(@"%s: %@", #x, T##Desc(x))
 
