@@ -177,10 +177,16 @@ return lazy; \
 // NS_RETURNS_INNER_POINTER
 
 // suppress compiler warnings.
-#define UNUSED __attribute__((unused))
+#define UNUSED_FN __attribute__((unused))
 
 // never returns
 #define NORETURN __attribute__((noreturn))
+
+
+// suppress unused var warnings
+#define QK_STRINGIFY(x) #x
+#define SUPPRESS_UNUSED(x) _Pragma(QK_STRINGIFY(unused(x)))
+
 
 
 #ifdef __cplusplus
