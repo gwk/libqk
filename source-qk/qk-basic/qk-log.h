@@ -65,6 +65,9 @@
 #define LOG_METHOD1D(d1)    errFL(@"%p\t(%@)\t%s %s: %d",   self, [self class], __FUNCTION__, #d1, d1)
 #define LOG_METHOD1F(f1)    errFL(@"%p\t(%@)\t%s %s: %f",   self, [self class], __FUNCTION__, #f1, f1)
 
+#define LOG_TIME_INTERVAL(start) \
+errFL(@"time interval: %s: %s: %f", __PRETTY_FUNCTION__, #start, [NSDate refTime] - (start))
+
 
 // log the contents of an array by mapping each value using the variadic macro
 // for example: LOG_ARRAY(array, v, [NSString stringWithFormat:@"%p -> %@", v, v])
