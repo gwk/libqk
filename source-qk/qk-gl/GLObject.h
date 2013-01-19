@@ -3,7 +3,7 @@
 
 
 @interface GLObject : NSObject {
-  GLuint _handle;
+  GLuint _handle; // exposed for convenience of subclass implementations
 }
 
 @property (nonatomic) GLuint handle;
