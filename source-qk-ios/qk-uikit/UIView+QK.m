@@ -43,28 +43,17 @@ const UIViewAutoresizing UIFlexVertical   = UIFlexTop | UIFlexBottom;
 }
 
 
-- (CGPoint)boundsOrigin {
-  return self.bounds.origin;
-}
+PROPERTY_STRUCT_FIELD(CGPoint, origin, Origin, CGRect, frame, origin);
+PROPERTY_STRUCT_FIELD(CGSize, size, Size, CGRect, frame, size);
+PROPERTY_STRUCT_FIELD(CGFloat, x, X, CGRect, frame, origin.x);
+PROPERTY_STRUCT_FIELD(CGFloat, y, Y, CGRect, frame, origin.y);
+PROPERTY_STRUCT_FIELD(CGFloat, width, Width, CGRect, frame, size.width);
+PROPERTY_STRUCT_FIELD(CGFloat, height, Height, CGRect, frame, size.height);
+PROPERTY_STRUCT_FIELD(CGFloat, centerX, CenterX, CGPoint, center, x);
+PROPERTY_STRUCT_FIELD(CGFloat, centerY, CenterY, CGPoint, center, y);
 
-
-- (void)setBoundsOrigin:(CGPoint)boundsOrigin {
-  CGRect b = self.bounds;
-  b.origin = boundsOrigin;
-  self.bounds = b;
-}
-
-
-- (CGSize)boundsSize {
-  return self.bounds.size;
-}
-
-
-- (void)setBoundsSize:(CGSize)boundsSize {
-  CGRect b = self.bounds;
-  b.size = boundsSize;
-  self.bounds = b;
-}
+PROPERTY_STRUCT_FIELD(CGPoint, boundsOrigin, BoundsOrigin, CGRect, bounds, origin);
+PROPERTY_STRUCT_FIELD(CGSize, boundsSize, BoundsSize, CGRect, bounds, size);
 
 
 - (CGPoint)boundsCenter {

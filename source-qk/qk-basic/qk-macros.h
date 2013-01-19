@@ -111,6 +111,11 @@ return nil
 - (void)set##Name:(type)name { path = name; } \
 
 
+#define PROPERTY_STRUCT_FIELD(type, name, Name, structType, structPath, fieldPath) \
+- (type)name { return self.structPath.fieldPath; } \
+- (void)set##Name:(type)name { structType temp = self.structPath; temp.fieldPath = name; self.structPath = temp; } \
+
+
 // threads
 
 #define CHECK_MAIN_THREAD check([NSThread isMainThread], @"requires main thread")
