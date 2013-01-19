@@ -7,4 +7,10 @@
 
 @implementation GLObject
 
+
+- (NSString*)description {
+  return [NSString withFormat:@"<%@ %p: %d", self.class, self, _handle];
+}
+
+
 @end

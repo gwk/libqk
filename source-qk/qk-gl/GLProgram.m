@@ -7,6 +7,13 @@
 #import "GLProgram.h"
 
 
+@interface GLProgram ()
+
+@property (nonatomic) NSArray* shaders;
+
+@end
+
+
 @implementation GLProgram
 
 
@@ -15,8 +22,14 @@
 }
 
 
+- (NSString*)description {
+  return [NSString withFormat:@"<%@ %p %d; %@>", self.class, self, _handle, _shaders];
+}
+
+
 - (id)initWithShaders:(NSArray*)shaders {
   INIT(super init);
+  _shaders = shaders;
   _handle = glCreateProgram();
   qkgl_assert();
   for (GLShader* s in shaders) {

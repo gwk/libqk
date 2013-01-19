@@ -9,6 +9,13 @@
 #import "GLShader.h"
 
 
+@interface GLShader ()
+
+@property (nonatomic) NSString* source;
+
+@end
+
+
 @implementation GLShader
 
 
@@ -17,8 +24,14 @@
 }
 
 
+- (NSString*)description {
+  return [NSString withFormat:@"<%@ %p: %d>", self.class, self, _handle];
+}
+
+
 - (id)initWithSource:(NSString*)source name:(NSString*)name {
   INIT(super init);
+  _source = source;
   _name = name;
   _handle = glCreateShader([self.class shaderType]);
   qkgl_assert();
