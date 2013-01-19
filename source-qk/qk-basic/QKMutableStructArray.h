@@ -10,7 +10,7 @@
 @property (nonatomic, readonly) void* mutableBytes;
 @property (nonatomic, readonly) void* mutableBytesEnd;
 
-- (void)appendElement:(void*)element;
+- (void)appendElement:(const void*)element;
 
 - (void)replaceElementsInRange:(NSRange)range withBytes:(const void*)bytes count:(Int)count;
 - (void)removeElementsInRange:(NSRange)range;

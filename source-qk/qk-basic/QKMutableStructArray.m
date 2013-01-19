@@ -30,7 +30,7 @@
 }
 
 
-- (void)appendElement:(void*)element {
+- (void)appendElement:(const void*)element {
   [self.mutableData appendBytes:element length:self.elSize];
 }
 
