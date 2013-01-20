@@ -5,8 +5,9 @@
 
 
 #define loop while (1)
-#define for_imn(i, m, n) for (Int i = m, i##_end = n; i < i##_end; i++)
-#define for_in(i, n) for_imn(i, 0, n)
+#define for_imns(i, m, n, s) for (Int i = (m), _i##_end = (n), _i##_step = (s); i < _i##_end; i += _i##_step)
+#define for_imn(i, m, n) for_imns(i, (m), (n), 1)
+#define for_in(i, n) for_imns(i, 0, (n), 1)
 
 
 // used to create switch statements that return strings for enum names.
