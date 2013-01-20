@@ -11,6 +11,8 @@
 typedef long Int;
 typedef unsigned long Uns;
 
+typedef char I8;
+typedef unsigned char U8;
 
 typedef int16_t I16;
 typedef uint16_t U16;
