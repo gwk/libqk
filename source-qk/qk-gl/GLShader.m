@@ -33,18 +33,14 @@
   INIT(super init);
   _source = source;
   _name = name;
-  _handle = glCreateShader([self.class shaderType]);
-  qkgl_assert();
+  _handle = glCreateShader([self.class shaderType]); qkgl_assert();
   assert(_handle, @"no handle");
   qkgl_set_shader_source(_handle, source.UTF8String);
-  glCompileShader(_handle);
-  qkgl_assert();
+  glCompileShader(_handle); qkgl_assert();
   
   check(qkgl_get_shader_param(_handle, GL_COMPILE_STATUS),
         @"shader compile failed: %@\n%@\nsource:\n%@\n",
-        _name,
-        qkgl_get_shader_info_log(_handle),
-        source.numberedLines);
+        _name, self.infoLog, source.numberedLines);
   
   return self;
 }
@@ -76,6 +72,11 @@
 
 + (GLenum)shaderType {
   OVERRIDE;
+}
+
+
+- (NSString*)infoLog {
+  return qkgl_get_shader_info_log(_handle);
 }
 
 

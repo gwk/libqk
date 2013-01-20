@@ -18,4 +18,6 @@
 - (GLint)locForAttribute:(NSString*)attribute;
 - (GLint)locForUniform:(NSString*)uniform;
 
+- (NSString*)infoLog;
+
 @end

@@ -13,4 +13,6 @@
 + (id)withSource:(NSString*)source name:(NSString*)name;
 + (id)named:(NSString*)resourceName;
 
+- (NSString*)infoLog;
+
 @end
