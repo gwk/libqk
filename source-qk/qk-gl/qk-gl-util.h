@@ -16,6 +16,8 @@ NSString* qkgl_get_shader_info_log(GLuint handle);
 GLint qkgl_get_program_param(GLuint handle, GLenum param_name);
 NSString* qkgl_get_program_info_log(GLuint handle);
 
+int qkgl_max_vertex_attributes();
+
 NSString* qkgl_error_string(GLenum error);
 void qkgl_check();
 

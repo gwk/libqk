@@ -10,15 +10,13 @@
 
 
 void qkgl_set_shader_source(GLuint handle, Ascii source) {
-  glShaderSource(handle, 1, &source, NULL);
-  qkgl_assert();
+  glShaderSource(handle, 1, &source, NULL); qkgl_assert();
 }
 
 
 GLint qkgl_get_shader_param(GLuint handle, GLenum param_name) {
   GLint param = 0; // returned if error occurs
-  glGetShaderiv(handle, param_name, &param);
-  qkgl_assert();
+  glGetShaderiv(handle, param_name, &param); qkgl_assert();
   return param;
 }
 
@@ -26,8 +24,7 @@ GLint qkgl_get_shader_param(GLuint handle, GLenum param_name) {
 NSString* qkgl_get_shader_info_log(GLuint handle) {
   int len = qkgl_get_shader_param(handle, GL_INFO_LOG_LENGTH);
   GLchar info[len];
-  glGetShaderInfoLog(handle, len, NULL, info);
-  qkgl_assert();
+  glGetShaderInfoLog(handle, len, NULL, info); qkgl_assert();
   return [NSString withUtf8:info];
 }
 
@@ -37,8 +34,7 @@ NSString* qkgl_get_shader_info_log(GLuint handle) {
 
 GLint qkgl_get_program_param(GLuint handle, GLenum param_name) {
   GLint param = 0; // returned if error occurs
-  glGetProgramiv(handle, param_name, &param);
-  qkgl_assert();
+  glGetProgramiv(handle, param_name, &param); qkgl_assert();
   return param;
 }
 
@@ -46,13 +42,19 @@ GLint qkgl_get_program_param(GLuint handle, GLenum param_name) {
 NSString* qkgl_get_program_info_log(GLuint handle) {
   int len = qkgl_get_program_param(handle, GL_INFO_LOG_LENGTH);
   GLchar info[len];
-  glGetProgramInfoLog(handle, len, NULL, info);
-  qkgl_assert();
+  glGetProgramInfoLog(handle, len, NULL, info); qkgl_assert();
   return [NSString withUtf8:info];
 }
 
 
 #pragma mark - utilities
+
+
+int qkgl_max_vertex_attributes() {
+  int val;
+  glGetIntegerv(GL_MAX_VERTEX_ATTRIBS, &val);
+  return val;
+}
 
 
 NSString* qkgl_error_string(GLenum error_code) {
