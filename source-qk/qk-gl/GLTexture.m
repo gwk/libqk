@@ -15,17 +15,16 @@
 }
 
 
-- (id)initWithTarget:(GLenum)target
-              format:(GLenum)format
+- (id)initWithFormat:(GLenum)format
                 size:(V2I32)size
           dataFormat:(GLenum)dataFormat
             dataType:(GLenum)dataType
-               bytes:(void*)bytes {
+               bytes:(const void*)bytes {
   
   INIT(super init);
   glGenTextures(1, &_handle); qkgl_assert();
   check(_handle != -1, @"could not generate texture handle");
-  _target = target;
+  _target = GL_TEXTURE_2D; // only target supported by ES
   _format = format;
   _size = size;
   glBindTexture(_target, _handle); qkgl_assert();
@@ -38,15 +37,13 @@
 }
 
 
-+ (id)withTarget:(GLenum)target
-          format:(GLenum)format
++ (id)withFormat:(GLenum)format
             size:(V2I32)size
       dataFormat:(GLenum)dataFormat
         dataType:(GLenum)dataType
-           bytes:(void*)bytes {
+           bytes:(const void*)bytes {
   
-  return [[self alloc] initWithTarget:target
-                               format:format
+  return [[self alloc] initWithFormat:format
                                  size:size
                            dataFormat:dataFormat
                              dataType:dataType
@@ -122,7 +119,7 @@
   }
   LOG_TIME_INTERVAL(t, @"remove alpha");
   id texture =
-  [self withTarget:GL_TEXTURE_2D format:format size:size dataFormat:dataFormat dataType:GL_UNSIGNED_BYTE bytes:bytes];
+  [self withFormat:format size:size dataFormat:dataFormat dataType:GL_UNSIGNED_BYTE bytes:bytes];
   LOG_TIME_INTERVAL(t, @"GL");
   CGContextRelease(ctx);
   return texture;

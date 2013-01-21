@@ -12,19 +12,11 @@
 @property (nonatomic, readonly) GLenum format; // e.g. ?
 @property (nonatomic, readonly) V2I32 size;
 
-- (id)initWithTarget:(GLenum)target // e.g. GL_TEXTURE_2D
-              format:(GLenum)format // e.g. GL_RGBA8
-                size:(V2I32)size
-          dataFormat:(GLenum)dataFormat // e.g. GL_RGBA
-            dataType:(GLenum)dataType   // e.g. GL_FLOAT
-               bytes:(void*)bytes;
-
-+ (id)withTarget:(GLenum)target
-          format:(GLenum)format
++ (id)withFormat:(GLenum)format     // e.g. GL_RGBA
             size:(V2I32)size
-      dataFormat:(GLenum)dataFormat
-        dataType:(GLenum)dataType
-           bytes:(void*)bytes;
+      dataFormat:(GLenum)dataFormat // e.g. GL_RGBA
+        dataType:(GLenum)dataType   // e.g. GL_FLOAT
+           bytes:(const void*)bytes;
 
 + (id)withFormat:(GLenum)format CGImage:(CGImageRef)image;
 
