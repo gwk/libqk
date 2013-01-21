@@ -26,6 +26,8 @@
         dataType:(GLenum)dataType
            bytes:(void*)bytes;
 
++ (id)withFormat:(GLenum)format CGImage:(CGImageRef)image;
+
 - (void)setFilter:(GLenum)filter;
 - (void)setWrap:(GLenum)wrap;
 
