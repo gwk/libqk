@@ -156,17 +156,17 @@ SET_UNIFORM(I32, glUniform1iv);
 }
 
 
-- (BOOL)setAttribute:(NSString*)name stride:(int)stride pointerV2F32:(const F32*)pointer {
+- (BOOL)setAttribute:(NSString*)name stride:(int)stride pointerV2F32:(const V2F32*)pointer {
   return [self setAttribute:name size:2 type:GL_FLOAT normalize:NO stride:stride pointer:pointer];
 }
 
 
-- (BOOL)setAttribute:(NSString*)name stride:(int)stride pointerV3F32:(const F32*)pointer {
+- (BOOL)setAttribute:(NSString*)name stride:(int)stride pointerV3F32:(const V3F32*)pointer {
   return [self setAttribute:name size:3 type:GL_FLOAT normalize:NO stride:stride pointer:pointer];
 }
 
 
-- (BOOL)setAttribute:(NSString*)name stride:(int)stride pointerV4F32:(const F32*)pointer {
+- (BOOL)setAttribute:(NSString*)name stride:(int)stride pointerV4F32:(const V4F32*)pointer {
   return [self setAttribute:name size:4 type:GL_FLOAT normalize:NO stride:stride pointer:pointer];
 }
 
