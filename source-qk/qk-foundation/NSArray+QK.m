@@ -115,6 +115,16 @@ EL(9);
 }
 
 
+- (NSMutableDictionary*)filterMapToDict:(BlockMapToPair)block {
+  NSMutableDictionary* dict = [NSMutableDictionary new];
+  for (id el in self) {
+    Duo* d = block(el);
+   [dict setItemIgnoreNil:d];
+  }
+  return dict;
+}
+
+
 #pragma mark - reduce
 
 

@@ -40,6 +40,7 @@ EL(9);
 - (NSMutableDictionary*)mapToDict:(BlockMapToPair)block;
 
 - (NSMutableArray*)filterMap:(BlockMap)block;
+- (NSMutableDictionary*)filterMapToDict:(BlockMapToPair)block;
 
 - (int)reduceInt:(Int)initial block:(BlockReduceToInt)block;
 
