@@ -102,17 +102,21 @@ return r; \
 _DEF_V_F_WITH_I_EXP(dim, TF, TI, V##dim##TF, V##dim##TI)
 
 
+_TYPEDEF_V2(U8, @"%uc");
 _TYPEDEF_V2(U16, @"%hu");
 _TYPEDEF_V2(I32, @"%d");
 _TYPEDEF_V2(I64, @"%lld");
 _TYPEDEF_V2(F32, @"% f");
 _TYPEDEF_V2(F64, @"% f");
 
+_TYPEDEF_V3(U8, @"%uc");
 _TYPEDEF_V3(U16, @"%hu");
 _TYPEDEF_V3(I32, @"%d");
 _TYPEDEF_V3(F32, @"% f");
 _TYPEDEF_V3(F64, @"% f");
 
+_TYPEDEF_V4(U8, @"%uc");
+_TYPEDEF_V4(U16, @"%hu");
 _TYPEDEF_V4(F32, @"% f");
 _TYPEDEF_V4(F64, @"% f");
 
