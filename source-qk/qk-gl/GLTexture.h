@@ -29,7 +29,6 @@
 - (void)setFilter:(GLenum)filter;
 - (void)setWrap:(GLenum)wrap;
 
-- (void)bindToLocation:(GLint)location unit:(int)unit;
 - (void)bindToTarget;
 - (void)unbindFromTarget;
 

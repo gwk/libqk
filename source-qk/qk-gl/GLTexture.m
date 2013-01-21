@@ -109,14 +109,6 @@
 }
 
 
-- (void)bindToLocation:(GLint)location unit:(int)unit {
-  // NOTE: this addition assumes that the unit enums are consecutive.
-  glActiveTexture(GL_TEXTURE0 + unit); qkgl_assert();
-  [self bindToTarget];
-  glUniform1i(location, unit); qkgl_assert();
-}
-
-
 - (void)bindToTarget {
   //glEnable(_target); qkgl_assert(); // necessary in OpenGL? invalid in ES2
   glBindTexture(_target, _handle); qkgl_assert();
