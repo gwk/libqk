@@ -98,6 +98,7 @@
     default:
       fail(@"bad format: 0x%X", format);
   }
+  F64 t = [NSDate refTime];
   CGContextRef ctx = CGBitmapContextCreate(NULL, size._[0], size._[1], 8, size._[0] * comps, space, info);
   check(ctx, @"could not create context for gl format: 0x%X; comps: %d;", format, comps);
   // flip y
@@ -105,6 +106,7 @@
   CGContextTranslateCTM(ctx, 0, -size._[1]);
   CGContextDrawImage(ctx, CGRectMake(0, 0, size._[0], size._[1]), image);
   void* bytes = CGBitmapContextGetData(ctx);
+  LOG_TIME_INTERVAL(t, @"CG");
   switch (dataFormat) {
     case GL_RGB: { // remove alpha bytes, which CG skipped over; we can do this in place because ctx is done rendering.
       V4U8* from = bytes;
@@ -118,8 +120,10 @@
       break;
     }
   }
+  LOG_TIME_INTERVAL(t, @"remove alpha");
   id texture =
   [self withTarget:GL_TEXTURE_2D format:format size:size dataFormat:dataFormat dataType:GL_UNSIGNED_BYTE bytes:bytes];
+  LOG_TIME_INTERVAL(t, @"GL");
   CGContextRelease(ctx);
   return texture;
 }
