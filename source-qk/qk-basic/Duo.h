@@ -10,6 +10,6 @@
 @property (nonatomic) id a;
 @property (nonatomic) id b;
 
-+ (id)a:(id)a b:(id)b;
++ (Duo*)a:(id)a b:(id)b;
 
 @end

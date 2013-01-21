@@ -7,7 +7,7 @@
 
 @implementation Duo
 
-+ (id)a:(id)a b:(id)b {
++ (Duo*)a:(id)a b:(id)b {
   Duo* d = [self new];
   d.a = a;
   d.b = b;
