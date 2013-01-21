@@ -8,5 +8,6 @@
 @interface NSMutableDictionary (QK)
 
 - (void)setItem:(Duo*)item;
+- (void)setItemIgnoreNil:(Duo*)item;
 
 @end

@@ -13,4 +13,11 @@
 }
 
 
+- (void)setItemIgnoreNil:(Duo*)item {
+  if (item.a && item.b) {
+    [self setObject:item.b forKey:item.a];
+  }
+}
+
+
 @end
