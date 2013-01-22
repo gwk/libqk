@@ -7,7 +7,8 @@
 
 @interface UIScrollView (QK)
 
-@property(nonatomic, readonly) CGPoint contentCenter;
+@property (nonatomic, readonly) CGRect contentFrame;
+@property (nonatomic, readonly) CGPoint contentCenter;
 
 - (void)centerOn:(CGPoint)point;
 

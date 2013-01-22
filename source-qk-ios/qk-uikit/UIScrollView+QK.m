@@ -8,6 +8,11 @@
 @implementation UIScrollView (QK)
 
 
+- (CGRect)contentFrame {
+  return (CGRect) { CGPointZero, self.contentSize };
+}
+
+
 - (CGPoint)contentCenter {
   CGSize s = self.contentSize;
   return CGPointMake(s.width * .5, s.height * .5);

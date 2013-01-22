@@ -20,26 +20,41 @@ const UIViewAutoresizing UIFlexVertical   = UIFlexTop | UIFlexBottom;
 @implementation UIView (QK)
 
 
+- (id)initWithFrame:(CGRect)frame flex:(UIViewAutoresizing)flex {
+  INIT(self initWithFrame:frame);
+  self.autoresizingMask = flex;
+  return self;
+}
+
+
+- (id)initWithFlexFrame:(CGRect)frame {
+  return [self initWithFrame:frame flex:UIFlexSize];
+}
+
+
+- (id)initWithFlexFrame {
+  // using a small square frame will reveal any omitted autoresizing bits.
+  return [self initWithFlexFrame:CGRectMake(0, 0, 320, 320)];
+}
+
+
 + (id)withFrame:(CGRect)frame {
   return [[self alloc] initWithFrame:frame];
 }
 
 
 + (id)withFrame:(CGRect)frame flex:(UIViewAutoresizing)flex {
-  UIView* v = [self withFrame:frame];
-  v.autoresizingMask = flex;
-  return v;
+  return [[self alloc] initWithFrame:frame flex:flex];
 }
 
 
 + (id)withFlexFrame:(CGRect)frame {
-  return [self withFrame:frame flex:UIFlexSize];
+  return [[self alloc] initWithFlexFrame:frame];
 }
 
 
 + (id)withFlexFrame {
-  // using a small square frame will reveal any omitted autoresizing bits.
-  return [self withFlexFrame:CGRectMake(0, 0, 320, 320)];
+  return [[self alloc] initWithFlexFrame];
 }
 
 
