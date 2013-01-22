@@ -125,6 +125,11 @@ return nil
 #define CHECK_NOT_MAIN_THREAD check(![NSThread isMainThread], @"requires background thread")
 #define ASSERT_NOT_MAIN_THREAD assert(![NSThread isMainThread], @"requires background thread")
 
+#define THREAD_SLEEP(interval) { \
+NSTimeInterval _sleep_interval = (interval); \
+errFL(@"THREAD_SLEEP: %f", _sleep_interval); \
+[NSThread sleepForTimeInterval:_sleep_interval]; \
+}
 
 
 // blocks
@@ -191,7 +196,7 @@ return lazy; \
 
 // suppress unused var warnings
 #define QK_STRINGIFY(x) #x
-#define SUPPRESS_UNUSED(x) _Pragma(QK_STRINGIFY(unused(x)))
+#define UNUSED_VAR(x) _Pragma(QK_STRINGIFY(unused(x)))
 
 
 
