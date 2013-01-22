@@ -3,6 +3,10 @@
 
 
 #import <Foundation/Foundation.h>
+#import "qk-block-types.h"
+
+
+void  executeAsync(BlockExecute asyncBlock, BlockDo syncBlock);
 
 
 @interface NSObject (Oro)

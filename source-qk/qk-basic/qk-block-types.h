@@ -6,7 +6,10 @@
 #import "Duo.h"
 
 
-// perform an operation on a value
+// return a value.
+typedef id (^BlockExecute)();
+
+// perform an operation on a value.
 typedef void (^BlockDo)(id);
 
 // map a value to a BOOL.
