@@ -19,14 +19,21 @@
 }
 
 
-- (void)centerOn:(CGPoint)point {
-  CGSize s = self.bounds.size;
-  CGPoint o = CGPointMake(point.x - s.width * .5, point.y - s.height * .5);
-  // TODO: keep in bounds!
-  self.contentOffset = o;
+- (void)centerOnPoint:(CGPoint)point animated:(BOOL)animated {
+  CGSize bs = self.bounds.size;
+  CGPoint bh = CGPointMake(bs.width * .5, bs.height * .5); // size 'center' (unlike boundsCenter not offset by origin)
+  CGSize cs = self.contentSize;
+  
+  CGPoint o = CGPointMake(clamp(point.x - bh.x, 0, MAX(0, cs.width - bs.width)),
+                          clamp(point.y - bh.y, 0, MAX(0, cs.height - bs.height)));
+
+  [self setContentOffset:o animated:animated];
 }
 
 
+- (void)centerOnPoint:(CGPoint)point {
+  [self centerOnPoint:point animated:NO];
+}
 
 
 @end

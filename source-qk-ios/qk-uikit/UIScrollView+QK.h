@@ -10,6 +10,7 @@
 @property (nonatomic, readonly) CGRect contentFrame;
 @property (nonatomic, readonly) CGPoint contentCenter;
 
-- (void)centerOn:(CGPoint)point;
+- (void)centerOnPoint:(CGPoint)point animated:(BOOL)animated;
+- (void)centerOnPoint:(CGPoint)point; // no animation
 
 @end
