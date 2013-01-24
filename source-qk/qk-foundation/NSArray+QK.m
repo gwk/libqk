@@ -128,12 +128,35 @@ EL(9);
 #pragma mark - reduce
 
 
+- (id)reduce:(BlockReduce)block {
+  id agg = nil;
+  for (id el in self) {
+    agg = block(agg, el);
+  }
+  return agg;
+}
+
+
 - (int)reduceInt:(Int)initial block:(BlockReduceToInt)block {
   Int val = initial;
   for (id el in self) {
     val = block(val, el);
   }
   return val;
+}
+
+
+- (id)max:(BlockMap)block {
+  id max = nil;
+  id maxKey = nil;
+  for (id el in self) {
+    id key = block(el);
+    if (!max || [maxKey compare:key] == NSOrderedAscending) {
+      max = el;
+      maxKey = key;
+    }
+  }
+  return max;
 }
 
 

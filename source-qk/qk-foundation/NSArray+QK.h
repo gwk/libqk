@@ -44,4 +44,6 @@ EL(9);
 
 - (int)reduceInt:(Int)initial block:(BlockReduceToInt)block;
 
+- (id)max:(BlockMap)block;
+
 @end
