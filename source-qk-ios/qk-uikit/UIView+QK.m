@@ -58,6 +58,14 @@ const UIViewAutoresizing UIFlexVertical   = UIFlexTop | UIFlexBottom;
 }
 
 
++ (id)withFrame:(CGRect)frame color:(UIColor*)color {
+  UIView* v = [self withFrame:frame];
+  v.opaque = (color.a == 1.0);
+  v.backgroundColor = color;
+  return v;
+}
+
+
 PROPERTY_STRUCT_FIELD(CGPoint, origin, Origin, CGRect, frame, origin);
 PROPERTY_STRUCT_FIELD(CGSize, size, Size, CGRect, frame, size);
 PROPERTY_STRUCT_FIELD(CGFloat, x, X, CGRect, frame, origin.x);
@@ -82,5 +90,38 @@ PROPERTY_STRUCT_FIELD(CGSize, boundsSize, BoundsSize, CGRect, bounds, size);
   self.boundsOrigin = CGPointMake(boundsCenter.x - s.width * .5, boundsCenter.y - s.height * .5);
 }
 
+
+// MARK: debugging
+
+
+- (void)inspectRec:(NSString*)indent {
+  
+  errL(indent, self, (self.isHidden ? @"(HIDDEN)" : @""));
+  
+  NSString* indent1 = [indent stringByAppendingString:@"  "];
+  for (UIView* v  in self.subviews) {
+    [v inspectRec:indent1];
+  }
+}
+
+
+- (void)inspect:(NSString*)label {
+  errL();
+  if (label) errL(label, @":");
+  [self inspectRec:@""];
+  errL();
+}
+
+
+- (void)inspectParents:(NSString*)label {
+  errL();
+  if (label) errL(label, @":");
+  UIView* v = self;
+  while (v) {
+    errL(v, (self.isHidden ? @"(HIDDEN)" : @""));
+    v = v.superview;
+  }
+  errL();
+}
 
 @end

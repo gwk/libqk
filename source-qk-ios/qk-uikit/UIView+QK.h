@@ -42,4 +42,10 @@ extern const UIViewAutoresizing UIFlexVertical;
 + (id)withFlexFrame:(CGRect)frame;
 + (id)withFlexFrame;
 
++ (id)withFrame:(CGRect)frame color:(UIColor*)color;
+
+- (void)inspect:(NSString*)label;
+- (void)inspectParents:(NSString*)label;
+
+
 @end
