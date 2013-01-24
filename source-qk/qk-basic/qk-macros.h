@@ -20,7 +20,8 @@
 __typeof__(x) __x = (x); \
 __typeof__(a) __a = (a); \
 __typeof__(b) __b = (b); \
-__x < __a ? __a : (__x > __b ? __b : __x); })
+__x < __a ? __a : (__x > __b ? MAX(__a, __b) : __x); })
+
 
 // get a true binary value from an expression
 #define bit(x) ((x) ? 1 : 0)
