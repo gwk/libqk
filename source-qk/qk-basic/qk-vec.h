@@ -142,3 +142,19 @@ static inline V2F32 V2F32Perp(V2F32 v) { return V2F32Make(v._[1], -v._[0]); }
 static inline V2F32 V2F32NormPerp(V2F32 v) { return V2F32Norm(V2F32Perp(v)); }
 
 
+// expand a range stored in a vector with a scalar value.
+#define EXPAND_RANGE_VEC(range, val) { \
+__typeof__(val) __val = (val); \
+if (__val < range._[0]) range._[0] = __val; \
+if (__val > range._[1]) range._[1] = __val; \
+}
+
+// expand a range stored as two vectors with a vector value.
+#define EXPAND_VEC_RANGE(dim, a, b, v) { \
+__typeof__(v) __v = (v); \
+for_in(i, dim) { \
+if (__v._[i] < a._[i]) a._[i] = __v._[i]; \
+if (__v._[i] > b._[i]) b._[i] = __v._[i]; \
+} \
+}
+
