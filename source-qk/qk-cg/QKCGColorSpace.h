@@ -2,6 +2,7 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#import "QKPixFmt.h"
 #import "QKCFObject.h"
 
 
