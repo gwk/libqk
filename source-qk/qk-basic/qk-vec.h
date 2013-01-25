@@ -106,8 +106,16 @@ return r; \
 _DEF_V_F_WITH_I_EXP(dim, TF, TI, V##dim##TF, V##dim##TI)
 
 
+#define _DEF_TVA_WITH_TVB(dim, TVA, TVB) \
+static inline TVA TVA##With##TVB(TVB v) { \
+TVA r; for_in(i ,dim) r._[i] = v._[i]; \
+return r; \
+}
+
+
 _TYPEDEF_V2(U8, @"%uc");
 _TYPEDEF_V2(U16, @"%hu");
+_TYPEDEF_V2(U32, @"%u");
 _TYPEDEF_V2(I32, @"%d");
 _TYPEDEF_V2(I64, @"%lld");
 _TYPEDEF_V2(F32, @"% f");
@@ -132,7 +140,12 @@ _DEF_V_F(4, V4F32);
 _DEF_V_F(4, V4F64);
 
 _DEF_V_F_WITH_I(2, F32, U16);
+_DEF_V_F_WITH_I(2, F32, U32);
+_DEF_V_F_WITH_I(2, F64, U16);
+_DEF_V_F_WITH_I(2, F64, U32);
 
+_DEF_TVA_WITH_TVB(2, V2F32, V2F64);
+_DEF_TVA_WITH_TVB(2, V2F64, V2F32);
 
 typedef V2U16 Seg;
 typedef V3U16 Tri;
