@@ -2,6 +2,11 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#if !TARGET_OS_IPHONE
+#import <OpenGL/glu.h>
+#endif
+
+
 #import "NSString+QK.h"
 #import "qk-gl-util.h"
 

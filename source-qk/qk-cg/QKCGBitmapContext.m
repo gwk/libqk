@@ -37,13 +37,6 @@
 }
 
 
-+ (id)withFormat:(QKPixFmt)format image:(UIImage*)image flipY:(BOOL)flipY {
-  QKCGBitmapContext* ctx = [self withFormat:format size:V2I32WithCGSize(image.size)];
-  [ctx fillWithImage:image flipY:flipY];
-  return ctx;
-}
-
-
 - (const void*)bytes {
   return CGBitmapContextGetData(_ref);
 }
@@ -54,6 +47,16 @@
 }
 
 
+#if TARGET_OS_IPHONE
+
+
++ (id)withFormat:(QKPixFmt)format image:(UIImage*)image flipY:(BOOL)flipY {
+  QKCGBitmapContext* ctx = [self withFormat:format size:V2I32WithCGSize(image.size)];
+  [ctx fillWithImage:image flipY:flipY];
+  return ctx;
+}
+
+
 - (void)fillWithImage:(UIImage*)image flipY:(BOOL)flipY {
   if (flipY) {
     CGContextScaleCTM(self.ref, 1, -1);
@@ -61,6 +64,9 @@
   }
   CGContextDrawImage(self.ref, CGRectMake(0, 0, _size._[0], _size._[1]), image.CGImage);
 }
+
+
+#endif // TARGE_OS_IPHONE
 
 
 // remove alpha bytes; we do this in place and require user to act appropriately.

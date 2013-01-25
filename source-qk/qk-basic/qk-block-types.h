@@ -41,4 +41,4 @@ typedef void (^BlockMutableReducePair)(id, id, id); // e.g. mutable_result, key,
 // take a value and return an index.
 typedef Int (^BlockMaptoInt)(id);
 
-typedef Int(^BlockReduceToInt)(Int, id); // agg, val
+typedef Int (^BlockReduceToInt)(Int, id); // agg, val
