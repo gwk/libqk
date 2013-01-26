@@ -46,4 +46,6 @@ EL(9);
 
 - (id)max:(BlockMap)block;
 
+- (NSArray*)sortedGroupedWithComparator:(NSComparator)comparator;
+
 @end

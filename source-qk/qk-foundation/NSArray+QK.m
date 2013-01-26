@@ -160,4 +160,30 @@ EL(9);
 }
 
 
+
+- (NSArray*)sortedGroupedWithComparator:(NSComparator)comparator {
+  NSArray* sorted = [self sortedArrayUsingComparator:comparator];
+  NSMutableArray* g = [NSMutableArray new];
+  id prev = nil;
+  NSMutableArray* a = nil;
+  for (id el in sorted) {
+    NSComparisonResult r;
+    if (prev) {
+      r = comparator(prev, el);
+    }
+    else {
+      r = NSOrderedAscending;
+    }
+    assert(r == NSOrderedSame || r == NSOrderedAscending, @"comparator or sort failed: %@", sorted);
+    if (r == NSOrderedAscending) {
+      a = [NSMutableArray new];
+      [g addObject:a];
+    }
+    [a addObject:el];
+    prev = el;
+  }
+  return g;
+}
+
+
 @end

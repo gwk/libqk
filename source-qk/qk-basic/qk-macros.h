@@ -23,6 +23,16 @@ __typeof__(b) __b = (b); \
 __x < __a ? __a : (__x > __b ? MAX(__a, __b) : __x); })
 
 
+#define compare(a, b) ({ \
+__typeof__(a) __a = (a); \
+__typeof__(b) __b = (b); \
+__a == __b ? NSOrderedSame : (__a < __b ? NSOrderedAscending : NSOrderedDescending); \
+})
+
+#define compare_ret_diff(c, a, b) c = compare(a, b); if (c != NSOrderedSame) return c;
+
+
+
 // get a true binary value from an expression
 #define bit(x) ((x) ? 1 : 0)
 
