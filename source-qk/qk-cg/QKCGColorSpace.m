@@ -12,8 +12,8 @@
 @implementation QKCGColorSpace
 
 
-CLASS_LAZY(QKCGColorSpace*, w,    [self withRetainedRef:CGColorSpaceCreateDeviceGray()]);
-CLASS_LAZY(QKCGColorSpace*, rgb,  [self withRetainedRef:CGColorSpaceCreateDeviceRGB()]);
+LAZY_CLASS_METHOD(QKCGColorSpace*, w,    [self withRetainedRef:CGColorSpaceCreateDeviceGray()]);
+LAZY_CLASS_METHOD(QKCGColorSpace*, rgb,  [self withRetainedRef:CGColorSpaceCreateDeviceRGB()]);
 
 + (QKCGColorSpace*)rgb:(BOOL)rgb {
   return rgb ? [self rgb] : [self w];

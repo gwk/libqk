@@ -37,6 +37,17 @@ __a == __b ? NSOrderedSame : (__a < __b ? NSOrderedAscending : NSOrderedDescendi
 #define bit(x) ((x) ? 1 : 0)
 
 
+#define LAZY_STATIC(type, name, ...) \
+static type name; \
+if (!name) { name = (__VA_ARGS__); }
+
+#define LAZY_STATIC_FN(type, name, ...) \
+type name() { \
+LAZY_STATIC(type, name, __VA_ARGS__); \
+return name; \
+}
+
+
 #ifdef __OBJC__
 
 // get a "Y" or "N" string from the boolean value of an expression
@@ -168,24 +179,14 @@ errFL(@"THREAD_SLEEP: %f", _sleep_interval); \
 #define NSRangeCount(obj)   NSRangeTo([(obj) count])
 
 
-// lazy static functions
-
-#define CLASS_LAZY(type, name, ...) \
+#define LAZY_CLASS_METHOD(type, name, ...) \
 + (type)name { \
-static type lazy; \
-if (!lazy) { lazy = (__VA_ARGS__); } \
-return lazy; \
+LAZY_STATIC(type, name, __VA_ARGS__); \
+return name; \
 }
 
 #endif // __OBJC__
 
-
-#define STATIC_LAZY(type, name, ...) \
-type name() { \
-static type lazy; \
-if (!lazy) { lazy = (__VA_ARGS__); } \
-return lazy; \
-}
 
 // cocoa attributes (for analyzer and ARC)
 
