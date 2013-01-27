@@ -155,6 +155,20 @@
 }
 
 
+void qkpng_error_fn(png_structp png_ptr, png_const_charp error_msg) {
+  LAZY_STATIC(NSDictionary*, explanations, @{
+              @"CgBI: unknown critical chunk" : @"The png file was most likely mangled by during iOS copy resources build phase."
+              });
+  NSString* e = [explanations objectForKey:[NSString withUtf8:error_msg]];
+  errFL(@"PNG error: %s", error_msg);
+  if (e) {
+    errL(e);
+  }
+}
+
+void qkpng_warning_fn(png_structp png_ptr,
+                     png_const_charp warning_msg);
+
 - (id)initWithFile:(FILE*)file alpha:(BOOL)alpha {
   U8 sig[8];
   fread(sig, 1, 8, file);
@@ -164,9 +178,8 @@
   }
   
   png_voidp error_ptr = NULL;
-  png_error_ptr error_fn = NULL;
   png_error_ptr warn_fn = NULL;
-  png_structp readPtr = png_create_read_struct(PNG_LIBPNG_VER_STRING, error_ptr, error_fn, warn_fn);
+  png_structp readPtr = png_create_read_struct(PNG_LIBPNG_VER_STRING, error_ptr, qkpng_error_fn, warn_fn);
   check(readPtr, @"png_create_read_struct failed (out of memory?)");
   png_infop infoPtr = png_create_info_struct(readPtr);
   check(infoPtr, @"png_create_info_struct failed (out of memory?)");
@@ -186,7 +199,7 @@
 
 
 + (PNGImage*)named:(NSString*)resourceName alpha:(BOOL)alpha {
-  NSString* path = [[NSBundle mainBundle] pathForResource:resourceName ofType:@".png"];
+  NSString* path = [[NSBundle mainBundle] pathForResource:resourceName ofType:nil];
   check(path, @"no image named: %@", resourceName);
   return [[self alloc] initWithPath:path alpha:alpha];
 }
