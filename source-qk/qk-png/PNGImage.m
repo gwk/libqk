@@ -199,7 +199,7 @@ void qkpng_warning_fn(png_structp png_ptr,
 
 
 + (PNGImage*)named:(NSString*)resourceName alpha:(BOOL)alpha {
-  NSString* path = [[NSBundle mainBundle] pathForResource:resourceName ofType:nil];
+  NSString* path = [NSBundle resPath:resourceName ofType:nil];
   check(path, @"no image named: %@", resourceName);
   return [[self alloc] initWithPath:path alpha:alpha];
 }

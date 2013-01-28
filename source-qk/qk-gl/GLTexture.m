@@ -51,6 +51,15 @@
 }
 
 
++ (id)withFormat:(GLenum)format image:(QKImage*)image {
+  return [[self alloc] initWithFormat:format
+                                 size:image.size
+                           dataFormat:image.glDataFormat
+                             dataType:image.glDataType
+                                bytes:image.bytes];
+}
+
+
 - (void)setMinFilter:(GLenum)filter {
   [self bindToTarget]; // does texture need to be bound when this is called?
   switch (filter) {

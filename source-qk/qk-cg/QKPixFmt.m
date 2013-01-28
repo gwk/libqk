@@ -4,6 +4,59 @@
 
 #import "QKPixFmt.h"
 
+NSString* QKPixFmtDesc(QKPixFmt format) {
+  switch (format) {
+      CASE_RET_TOK_SPLIT_STR(QKPixFmt, Unknown);
+      CASE_RET_TOK_SPLIT_STR(QKPixFmt, AU8);
+      CASE_RET_TOK_SPLIT_STR(QKPixFmt, AU16);
+      CASE_RET_TOK_SPLIT_STR(QKPixFmt, AF32);
+      CASE_RET_TOK_SPLIT_STR(QKPixFmt, LU8);
+      CASE_RET_TOK_SPLIT_STR(QKPixFmt, LU16);
+      CASE_RET_TOK_SPLIT_STR(QKPixFmt, LF32);
+      CASE_RET_TOK_SPLIT_STR(QKPixFmt, LAU8);
+      CASE_RET_TOK_SPLIT_STR(QKPixFmt, LAU16);
+      CASE_RET_TOK_SPLIT_STR(QKPixFmt, LAF32);
+      CASE_RET_TOK_SPLIT_STR(QKPixFmt, RGBU8);
+      CASE_RET_TOK_SPLIT_STR(QKPixFmt, RGBU16);
+      CASE_RET_TOK_SPLIT_STR(QKPixFmt, RGBF32);
+      CASE_RET_TOK_SPLIT_STR(QKPixFmt, RGBAU8);
+      CASE_RET_TOK_SPLIT_STR(QKPixFmt, RGBAU16);
+      CASE_RET_TOK_SPLIT_STR(QKPixFmt, RGBAF32);
+      CASE_RET_TOK_SPLIT_STR(QKPixFmt, RGBXU8);
+      CASE_RET_TOK_SPLIT_STR(QKPixFmt, RGBXU16);
+      CASE_RET_TOK_SPLIT_STR(QKPixFmt, RGBXF32);
+  }
+fail(@"bad format: 0x%02X", format);
+}
+
+
+QKPixFmt QKPixFmtFromString(NSString* string) {
+  // map two strings: bare, and prefixed
+#define FI(fmt) @#fmt : @(QKPixFmt##fmt), @"QKPixFmt" @#fmt : @(QKPixFmt##fmt)
+  LAZY_STATIC(NSDictionary*, formats, @{
+              FI(Unknown),
+              FI(AU8),
+              FI(AU16),
+              FI(AF32),
+              FI(LU8),
+              FI(LU16),
+              FI(LF32),
+              FI(LAU8),
+              FI(LAU16),
+              FI(LAF32),
+              FI(RGBU8),
+              FI(RGBU16),
+              FI(RGBF32),
+              FI(RGBAU8),
+              FI(RGBAU16),
+              FI(RGBAF32),
+              FI(RGBXU8),
+              FI(RGBXU16),
+              FI(RGBXF32),
+              });
+#undef FI
+  return [[formats objectForKey:string] intValue];
+}
 
 
 int QKPixFmtBitsPerChannel(QKPixFmt format) {
@@ -13,7 +66,7 @@ int QKPixFmtBitsPerChannel(QKPixFmt format) {
   if (format & QKPixFmtBitU16) {
     return 16;
   }
-  assert(format & QKPixFmtBitU8, @"bad format: 0x%X", format);
+  assert(format & QKPixFmtBitU8, @"bad format: %@", QKPixFmtDesc(format));
   return 8;
 }
 
@@ -23,7 +76,7 @@ int QKPixFmtChannels(QKPixFmt format) {
   if (format & QKPixFmtBitRGB) {
     comps = 3;
   }
-  else if (format & QKPixFmtBitW) {
+  else if (format & QKPixFmtBitL) {
     comps = 1;
   }
   if (format & (QKPixFmtBitA | QKPixFmtBitX)) {
@@ -35,7 +88,7 @@ int QKPixFmtChannels(QKPixFmt format) {
 
 int QKPixFmtBitmapInfo(QKPixFmt format) {
   CGBitmapInfo info;
-  if (format & (QKPixFmtBitW | QKPixFmtBitRGB)) {
+  if (format & (QKPixFmtBitL | QKPixFmtBitRGB)) {
     if (format & QKPixFmtBitA) {
       info = kCGImageAlphaPremultipliedLast;
     }
@@ -50,11 +103,42 @@ int QKPixFmtBitmapInfo(QKPixFmt format) {
     info = kCGImageAlphaOnly;
   }
   else {
-    fail(@"bad format: 0x%X", format);
+    fail(@"bad format: %@", QKPixFmtDesc(format));
   }
   if (format & QKPixFmtBitF32) {
     info |= kCGBitmapFloatComponents;
   }
   return info;
 }
+
+
+// OpenGLES 3.0 dataFormat must be one of:
+// GL_RED, GL_RED_INTEGER, GL_RG, GL_RG_INTEGER, GL_RGB, GL_RGB_INTEGER, GL_RGBA, GL_RGBA_INTEGER, GL_ALPHA,
+// GL_DEPTH_COMPONENT, GL_DEPTH_STENCIL, GL_LUMINANCE_ALPHA, GL_LUMINANCE.
+
+int QKPixFmtGlDataFormat(QKPixFmt format) {
+  switch (format) {
+    case QKPixFmtRGBU8: return GL_RGB;
+    case QKPixFmtRGBAU8: return GL_RGBA;
+    default:
+      fail(@"pixel format is not mapped to OpenGL data format: %@", QKPixFmtDesc(format));
+  }
+}
+
+
+// OpenGLES 3.0 dataType must be one of:
+// GL_UNSIGNED_BYTE, GL_BYTE, GL_UNSIGNED_SHORT, GL_SHORT, GL_UNSIGNED_INT, GL_INT, GL_HALF_FLOAT, GL_FLOAT,
+// GL_UNSIGNED_SHORT_5_6_5, GL_UNSIGNED_SHORT_4_4_4_4, GL_UNSIGNED_SHORT_5_5_5_1,
+// GL_UNSIGNED_INT_2_10_10_10_REV, GL_UNSIGNED_INT_10F_11F_11F_REV, GL_UNSIGNED_INT_5_9_9_9_REV,
+// GL_UNSIGNED_INT_24_8, GL_FLOAT_32_UNSIGNED_INT_24_8_REV.
+
+int QKPixFmtGlDataType(QKPixFmt format) {
+  switch (format) {
+    case QKPixFmtRGBU8:
+    case QKPixFmtRGBAU8: return GL_UNSIGNED_BYTE;
+    default:
+      fail(@"pixel format is not mapped to OpenGL data type: %@", QKPixFmtDesc(format));
+  }
+}
+
 

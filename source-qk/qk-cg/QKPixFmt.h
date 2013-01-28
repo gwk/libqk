@@ -26,10 +26,10 @@
 static const U32 QKPixFmtBitU8  = 1 << 0;
 static const U32 QKPixFmtBitU16 = 1 << 1;
 static const U32 QKPixFmtBitF32 = 1 << 2;
-static const U32 QKPixFmtBitA   = 1 << 3;
+static const U32 QKPixFmtBitA   = 1 << 3; // alpha
 static const U32 QKPixFmtBitX   = 1 << 4; // indicates skip fourth channel
-static const U32 QKPixFmtBitW   = 1 << 5;
-static const U32 QKPixFmtBitRGB = 1 << 6;
+static const U32 QKPixFmtBitL   = 1 << 5; // luminance (grayscale)
+static const U32 QKPixFmtBitRGB = 1 << 6; // rgb
 
 typedef enum {
   QKPixFmtUnknown = 0,
@@ -37,13 +37,13 @@ typedef enum {
   QKPixFmtAU8  = QKPixFmtBitA | QKPixFmtBitU8,
   QKPixFmtAU16 = QKPixFmtBitA | QKPixFmtBitU16,
   QKPixFmtAF32 = QKPixFmtBitA | QKPixFmtBitF32,
-  // grayscale
-  QKPixFmtWU8    = QKPixFmtBitW | QKPixFmtBitU8,
-  QKPixFmtWU16   = QKPixFmtBitW | QKPixFmtBitU16,
-  QKPixFmtWF32   = QKPixFmtBitW | QKPixFmtBitF32,
-  QKPixFmtWAU8   = QKPixFmtBitW | QKPixFmtBitA | QKPixFmtBitU8,
-  QKPixFmtWAU16  = QKPixFmtBitW | QKPixFmtBitA | QKPixFmtBitU16,
-  QKPixFmtWAF32  = QKPixFmtBitW | QKPixFmtBitA | QKPixFmtBitF32,
+  // luminance (grayscale)
+  QKPixFmtLU8    = QKPixFmtBitL | QKPixFmtBitU8,
+  QKPixFmtLU16   = QKPixFmtBitL | QKPixFmtBitU16,
+  QKPixFmtLF32   = QKPixFmtBitL | QKPixFmtBitF32,
+  QKPixFmtLAU8   = QKPixFmtBitL | QKPixFmtBitA | QKPixFmtBitU8,
+  QKPixFmtLAU16  = QKPixFmtBitL | QKPixFmtBitA | QKPixFmtBitU16,
+  QKPixFmtLAF32  = QKPixFmtBitL | QKPixFmtBitA | QKPixFmtBitF32,
   // rgb
   QKPixFmtRGBU8    = QKPixFmtBitRGB | QKPixFmtBitU8,
   QKPixFmtRGBU16   = QKPixFmtBitRGB | QKPixFmtBitU16,
@@ -56,7 +56,12 @@ typedef enum {
   QKPixFmtRGBXF32  = QKPixFmtBitRGB | QKPixFmtBitX | QKPixFmtBitF32,
 } QKPixFmt;
 
+NSString* QKPixFmtDesc(QKPixFmt format);
+QKPixFmt QKPixFmtFromString(NSString* string);
 
 int QKPixFmtBitsPerChannel(QKPixFmt format);
 int QKPixFmtChannels(QKPixFmt format);
 int QKPixFmtBitmapInfo(QKPixFmt format);
+int QKPixFmtGlDataFormat(QKPixFmt format);
+int QKPixFmtGlDataType(QKPixFmt format);
+

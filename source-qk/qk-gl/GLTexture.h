@@ -12,6 +12,7 @@
 @property (nonatomic, readonly) GLenum format; // e.g. ?
 @property (nonatomic, readonly) V2I32 size;
 
+
 + (id)withFormat:(GLenum)format     // e.g. GL_RGBA
             size:(V2I32)size
       dataFormat:(GLenum)dataFormat // e.g. GL_RGBA

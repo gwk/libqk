@@ -57,7 +57,7 @@
 
 
 + (id)named:(NSString*)resourceName {
-  return [self withPath:[[NSBundle mainBundle] pathForResource:resourceName ofType:@"sqlite3"]
+  return [self withPath:[NSBundle resPath:resourceName ofType:@"sqlite3"]
               writeable:NO
                  create:NO];
 }

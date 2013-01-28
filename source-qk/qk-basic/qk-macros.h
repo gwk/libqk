@@ -11,8 +11,10 @@
 
 
 // used to create switch statements that return strings for enum names.
-#define CASE_RETURN_TOKEN(t) case t: return @#t
-#define CASE_RETURN_TOKEN_UTF8(t) case t: return #t
+#define CASE_RET_TOK_STR(t) case t: return @#t
+#define CASE_RET_TOK_UTF8(t) case t: return #t
+#define CASE_RET_TOK_SPLIT_STR(prefix, t) case prefix##t: return @#t
+#define CASE_RET_TOK_SPLIT_UTF8(prefix, t) case prefix##t: return #t
 
 
 // clamp a value to low and high bounds

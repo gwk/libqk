@@ -7,13 +7,13 @@
 @property (nonatomic, readonly) CGFloat r;
 @property (nonatomic, readonly) CGFloat g;
 @property (nonatomic, readonly) CGFloat b;
-@property (nonatomic, readonly) CGFloat w;
+@property (nonatomic, readonly) CGFloat l;
 @property (nonatomic, readonly) CGFloat a;
 
 + (id)r:(CGFloat)r g:(CGFloat)g b:(CGFloat)b a:(CGFloat)a;
 + (id)r:(CGFloat)r g:(CGFloat)g b:(CGFloat)b;
-+ (id)w:(CGFloat)w a:(CGFloat)a;
-+ (id)w:(CGFloat)w;
++ (id)w:(CGFloat)l a:(CGFloat)a;
++ (id)w:(CGFloat)l;
 
 @end
 

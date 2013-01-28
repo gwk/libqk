@@ -6,5 +6,7 @@
 #import "qk-math.h"
 #import "qk-types.h"
 #import "qk-vec.h"
+#import "QKImage.h"
 #import "QKMutableStructArray.h"
 #import "QKStructArray.h"
+#import "QKSubData.h"

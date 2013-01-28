@@ -24,7 +24,7 @@ LAZY_CLASS_METHOD(QKCGColorSpace*, rgb,  [self withRetainedRef:CGColorSpaceCreat
   if (format & QKPixFmtBitRGB) {
     return [self rgb];
   }
-  if (format & QKPixFmtBitW) {
+  if (format & QKPixFmtBitL) {
     return [self w];
   }
   return nil; // mask format; no color space

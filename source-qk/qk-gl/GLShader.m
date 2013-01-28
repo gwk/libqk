@@ -62,7 +62,7 @@
   
   Class c = [ext_classes objectForKey:resourceName.pathExtension];
   assert(c, @"bad shader name extension: %@", resourceName);
-  NSString* path = [[NSBundle mainBundle] pathForResource:resourceName ofType:nil];
+  NSString* path = [NSBundle resPath:resourceName];
   NSError* e = nil;
   NSString* source = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&e];
   check(!e, @"could not read shader source at path: %@\n%@", path, e);

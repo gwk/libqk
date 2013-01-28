@@ -18,13 +18,13 @@
 }
 
 
-+ (id)w:(CGFloat)w a:(CGFloat)a {
-  return [self colorWithWhite:w alpha:a];
++ (id)w:(CGFloat)l a:(CGFloat)a {
+  return [self colorWithWhite:l alpha:a];
 }
 
 
-+ (id)w:(CGFloat)w {
-  return [self colorWithWhite:w alpha:1];
++ (id)w:(CGFloat)l {
+  return [self colorWithWhite:l alpha:1];
 }
 
 
@@ -42,9 +42,9 @@ GET_COLOR(b);
 GET_COLOR(a);
 
 
-- (CGFloat)w {
-  CGFloat w, a;
-  [self getWhite:&w alpha:&a];
+- (CGFloat)l {
+  CGFloat l, a;
+  [self getWhite:&l alpha:&a];
   return a;
 }
 
