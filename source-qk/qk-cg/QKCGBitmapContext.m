@@ -47,6 +47,22 @@
 }
 
 
+- (Int)area {
+  return _size._[0] * _size._[1];
+}
+
+
+- (Int)length {
+  return QKPixFmtBytesPerPixel(_format) * self.area;
+}
+
+
+
+- (BOOL)isMutable {
+  return YES;
+}
+
+
 #if TARGET_OS_IPHONE
 
 
@@ -89,6 +105,13 @@
     default:
       fail(@"unsupported format: 0x%X", _format);
   }
+}
+
+
+- (QKImage*)imageByExcisingAlphaChannel {
+  QKPixFmt f = [self exciseAlphaChannel];
+  QKSubData* d = [QKSubData withData:self offset:0 length:QKPixFmtBytesPerPixel(f) * self.area];
+  return [QKImage withFormat:f size:_size data:d];
 }
 
 

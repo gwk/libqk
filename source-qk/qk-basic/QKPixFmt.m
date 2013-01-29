@@ -26,7 +26,7 @@ NSString* QKPixFmtDesc(QKPixFmt format) {
       CASE_RET_TOK_SPLIT_STR(QKPixFmt, RGBXU16);
       CASE_RET_TOK_SPLIT_STR(QKPixFmt, RGBXF32);
   }
-fail(@"bad format: 0x%02X", format);
+  fail(@"bad format: 0x%02X", format);
 }
 
 
@@ -83,6 +83,11 @@ int QKPixFmtChannels(QKPixFmt format) {
     comps += 1;
   }
   return comps;
+}
+
+
+int QKPixFmtBytesPerPixel(QKPixFmt format) {
+  return QKPixFmtBitsPerChannel(format) * QKPixFmtChannels(format) / 8;
 }
 
 

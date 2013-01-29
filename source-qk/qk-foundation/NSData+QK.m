@@ -82,6 +82,10 @@ NSString* const QKJsonErrorDomain = @"QKJsonErrorDomain";
 }
 
 
+- (BOOL)isMutable {
+  return NO;
+}
+
 
 @end
 

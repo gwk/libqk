@@ -66,17 +66,17 @@ const UIViewAutoresizing UIFlexVertical   = UIFlexTop | UIFlexBottom;
 }
 
 
-PROPERTY_STRUCT_FIELD(CGPoint, origin, Origin, CGRect, frame, origin);
-PROPERTY_STRUCT_FIELD(CGSize, size, Size, CGRect, frame, size);
-PROPERTY_STRUCT_FIELD(CGFloat, x, X, CGRect, frame, origin.x);
-PROPERTY_STRUCT_FIELD(CGFloat, y, Y, CGRect, frame, origin.y);
-PROPERTY_STRUCT_FIELD(CGFloat, width, Width, CGRect, frame, size.width);
-PROPERTY_STRUCT_FIELD(CGFloat, height, Height, CGRect, frame, size.height);
-PROPERTY_STRUCT_FIELD(CGFloat, centerX, CenterX, CGPoint, center, x);
-PROPERTY_STRUCT_FIELD(CGFloat, centerY, CenterY, CGPoint, center, y);
+PROPERTY_STRUCT_FIELD(CGPoint, origin, Origin, CGRect, self.frame, origin);
+PROPERTY_STRUCT_FIELD(CGSize, size, Size, CGRect, self.frame, size);
+PROPERTY_STRUCT_FIELD(CGFloat, x, X, CGRect, self.frame, origin.x);
+PROPERTY_STRUCT_FIELD(CGFloat, y, Y, CGRect, self.frame, origin.y);
+PROPERTY_STRUCT_FIELD(CGFloat, width, Width, CGRect, self.frame, size.width);
+PROPERTY_STRUCT_FIELD(CGFloat, height, Height, CGRect, self.frame, size.height);
+PROPERTY_STRUCT_FIELD(CGFloat, centerX, CenterX, CGPoint, self.center, x);
+PROPERTY_STRUCT_FIELD(CGFloat, centerY, CenterY, CGPoint, self.center, y);
 
-PROPERTY_STRUCT_FIELD(CGPoint, boundsOrigin, BoundsOrigin, CGRect, bounds, origin);
-PROPERTY_STRUCT_FIELD(CGSize, boundsSize, BoundsSize, CGRect, bounds, size);
+PROPERTY_STRUCT_FIELD(CGPoint, boundsOrigin, BoundsOrigin, CGRect, self.bounds, origin);
+PROPERTY_STRUCT_FIELD(CGSize, boundsSize, BoundsSize, CGRect, self.bounds, size);
 
 
 - (CGPoint)boundsCenter {

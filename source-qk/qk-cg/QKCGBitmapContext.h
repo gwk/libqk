@@ -6,13 +6,19 @@
 #import "QKCGContext.h"
 
 
-@interface QKCGBitmapContext : QKCGContext
+@interface QKCGBitmapContext : QKCGContext <QKData>
 
 @property (nonatomic, readonly) QKPixFmt format;
 @property (nonatomic, readonly) V2I32 size;
 
-@property (nonatomic, readonly) const void* bytes;
-@property (nonatomic, readonly) void* mutableBytes;
+
+
+@property (nonatomic, readonly) QKSubData* subdata;
+
+- (Int)area;
+- (Int)length;
+- (void*)mutableBytes;
+
 
 + (id)withFormat:(QKPixFmt)format size:(V2I32)size;
 
@@ -24,6 +30,7 @@
 // remove alpha bytes; we do this in place and require user to act appropriately.
 // note that this is useful both for RGBX and RGBA formats.
 - (QKPixFmt)exciseAlphaChannel;
+- (QKImage*)imageByExcisingAlphaChannel;
 
 @end
 

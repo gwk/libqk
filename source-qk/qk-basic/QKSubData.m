@@ -12,25 +12,24 @@
 @implementation QKSubData
 
 
-- (id)initWithData:(NSData*)data offset:(Int)offset length:(Int)length mapped:(BOOL)mapped {
+- (id)initWithData:(id<QKData>)data offset:(Int)offset length:(Int)length {
   check(offset + length <= data.length,
         @"out of bounds: data.length: %lu; offset: %ld; length: %ld", (unsigned long)data.length, offset, length);
   INIT(super init);
   _data = data;
   _bytes = data.bytes + offset;
   _length = length;
-  _isDataMapped = mapped;
   return self;
 }
 
 
-+ (id)withData:(NSData*)data offset:(Int)offset length:(Int)length mapped:(BOOL)mapped {
-  return [[self alloc] initWithData:data offset:offset length:length mapped:mapped];
++ (id)withData:(id<QKData>)data offset:(Int)offset length:(Int)length {
+  return [[self alloc] initWithData:data offset:offset length:length];
 }
 
 
-- (BOOL)isDataMutable {
-  return IS_KIND(_data, NSMutableData);
+- (BOOL)isMutable {
+  return _data.isMutable;
 }
 
 

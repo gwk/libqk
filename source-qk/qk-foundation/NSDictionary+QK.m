@@ -7,4 +7,10 @@
 
 @implementation NSDictionary (QK)
 
+
+- (BOOL)isMutable {
+  return NO;
+}
+
+
 @end

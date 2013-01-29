@@ -2,12 +2,9 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
-#import <GLKit/GLKit.h>
+@interface NSOutputStream (QK)
 
-
-@interface GLKView (QK)
-
-- (V2I32)drawableSize;
+- (Int)writeData:(id<QKData>)data;
 
 @end
 

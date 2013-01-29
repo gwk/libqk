@@ -19,6 +19,8 @@
         dataType:(GLenum)dataType   // e.g. GL_FLOAT
            bytes:(const void*)bytes;
 
++ (id)withFormat:(GLenum)format image:(QKImage*)image;
+
 - (void)setFilter:(GLenum)filter;
 - (void)setWrap:(GLenum)wrap;
 

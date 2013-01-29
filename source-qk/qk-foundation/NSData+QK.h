@@ -10,13 +10,12 @@ typedef enum {
 } QKJsonErrorCode;
 
 
-@interface NSData (QK)
+@interface NSData (QK) <QKData>
 
 + (id)join:(NSArray*)array;
 + (id)withPath:(NSString*)path map:(BOOL)map error:(NSError**)errorPtr;
 + (id)withPath:(NSString*)path map:(BOOL)map;
 + (id)named:(NSString *)resourceName;
-
 
 - (id)dictFromJsonWithError:(NSError **)errorPtr;
 - (id)arrayFromJsonWithError:(NSError **)errorPtr;

@@ -2,12 +2,16 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
-#import <GLKit/GLKit.h>
+#import "NSMutableData+QK.h"
 
 
-@interface GLKView (QK)
+@implementation NSMutableData (QK)
 
-- (V2I32)drawableSize;
+
+- (BOOL)isMutable {
+  return YES;
+}
+
 
 @end
 

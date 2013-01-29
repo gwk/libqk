@@ -60,11 +60,18 @@ return name; \
 #define INIT(...) if (!((self = ([__VA_ARGS__])))) return nil
 
 
-// shorthand for checking class membership
-#define IS_KIND(obj, class_name) ([(obj) isKindOfClass:[class_name class]])
+// shorthand for checking class membership and protocol conformation
+
+#define IS_KIND(obj, class_name) [(obj) isKindOfClass:[class_name class]]
 
 #define IS_KIND_OR_NIL(obj, class_name) \
 ({ id _obj = (obj); (!_obj || IS_KIND(_obj, class_name)); })
+
+#define CONFORMS(obj, protocol_name) [(obj) conformsToProtocol:@protocol(protocol_name)]
+
+#define CONFORMS_OR_NIL(obj, protocol_name) \
+({ id _obj = (obj); (!_obj || CONFORMS(_obj, protocol_name)); })
+
 
 // check if an object is nil or NSNull
 #define IS_NIL_OR_NULL(obj) \
@@ -95,18 +102,36 @@ check(IS_KIND((obj), class_name), \
 check(IS_KIND_OR_NIL((obj), class_name), \
 @"non-nil object is not of class: %@; actual: %@", [class_name class], [(obj) class])
 
+
+#define CHECK_CONFORMS(obj, protocol_name) \
+check(CONFORMS((obj), protocol_name), \
+@"object does not conform: %s; class: %@", #protocol_name, [(obj) class])
+
+#define CHECK_CONFORMS_OR_NIL(obj, protocol_name) \
+check(CONFORMS_OR_NIL((obj), protocol_name), \
+@"non-nil object does not conform: %s; class: %@", #protocol_name, [(obj) class])
+
+
+
 #if QK_OPTIMIZE
 # define ASSERT_KIND(obj, class_name) ((void)0)
 # define ASSERT_KIND_OR_NIL(obj, class_name) ((void)0)
+# define ASSERT_CONFORMS(obj, protocol_name) ((void)0)
+# define ASSERT_CONFORMS_OR_NIL(obj, protocol_name) ((void)0)
 #else
 # define ASSERT_KIND(obj, class_name) CHECK_KIND((obj), class_name)
 # define ASSERT_KIND_OR_NIL(obj, class_name) CHECK_KIND_OR_NIL((obj), class_name)
+# define ASSERT_CONFORMS(obj, protocol_name) CHECK_CONFORMS((obj), protocol_name)
+# define ASSERT_CONFORMS_OR_NIL(obj, protocol_name) CHECK_CONFORMS_OR_NIL((obj), protocol_name)
 #endif
 
 
 // cast with a run-time type kind assertion
 #define CAST(class_name, ...) \
 ({ id _cast_obj = (__VA_ARGS__); ASSERT_KIND_OR_NIL(_cast_obj, class_name); (class_name*)_cast_obj; })
+
+#define CAST_PROTO(protocol_name, ...) \
+({ id _cast_obj = (__VA_ARGS__); ASSERT_CONFORMS_OR_NIL(_cast_obj, protocol_name); (id<protocol_name>)_cast_obj; })
 
 
 // return the object if it is non-nil, else return the alternate
@@ -137,8 +162,8 @@ return nil
 
 
 #define PROPERTY_STRUCT_FIELD(type, name, Name, structType, structPath, fieldPath) \
-- (type)name { return self.structPath.fieldPath; } \
-- (void)set##Name:(type)name { structType temp = self.structPath; temp.fieldPath = name; self.structPath = temp; } \
+- (type)name { return structPath.fieldPath; } \
+- (void)set##Name:(type)name { structType temp = structPath; temp.fieldPath = name; structPath = temp; } \
 
 
 // threads

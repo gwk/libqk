@@ -3,4 +3,3 @@
 #import "QKCGColorSpace.h"
 #import "QKCGContext.h"
 #import "QKCGImage.h"
-#import "QKPixFmt.h"

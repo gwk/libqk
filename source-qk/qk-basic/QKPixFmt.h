@@ -61,7 +61,10 @@ QKPixFmt QKPixFmtFromString(NSString* string);
 
 int QKPixFmtBitsPerChannel(QKPixFmt format);
 int QKPixFmtChannels(QKPixFmt format);
+int QKPixFmtBytesPerPixel(QKPixFmt format);
+
 int QKPixFmtBitmapInfo(QKPixFmt format);
+
 int QKPixFmtGlDataFormat(QKPixFmt format);
 int QKPixFmtGlDataType(QKPixFmt format);
 

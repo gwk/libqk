@@ -186,4 +186,9 @@ EL(9);
 }
 
 
+- (BOOL)isMutable {
+  return NO;
+}
+
+
 @end

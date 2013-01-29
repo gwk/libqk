@@ -20,4 +20,9 @@
 }
 
 
+- (BOOL)isMutable {
+  return YES;
+}
+
+
 @end

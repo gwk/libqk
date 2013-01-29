@@ -3,17 +3,26 @@
 
 
 #import "QKPixFmt.h"
-#import "QKSubData.h"
+#import "QKData.h"
 
 
-@interface QKImage : NSObject
+@interface QKImage : NSObject <QKData>
 
-@property (nonatomic, readonly) V2I32 size;
-@property (nonatomic, readonly) QKSubData* data;
 @property (nonatomic, readonly) QKPixFmt format;
+@property (nonatomic, readonly) V2I32 size;
+@property (nonatomic, readonly) id<QKData> data;
 @property (nonatomic, readonly) GLenum glDataFormat;
 @property (nonatomic, readonly) GLenum glDataType;
-@property (nonatomic, readonly) const void* bytes;
+
+- (const void*)bytes;
+- (Int)length;
+- (BOOL)isMutable;
+
+- (id)initWithFormat:(QKPixFmt)format size:(V2I32)size data:(id<QKData>)data;
++ (id)withFormat:(QKPixFmt)format size:(V2I32)size data:(id<QKData>)data;
+
+- (void)validate;
 
 @end
+
 
