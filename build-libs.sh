@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Copyright 2013 George King.
-# Permission to use this file is granted in libqk/licenset.txt.
+# Permission to use this file is granted in libqk/license.txt.
 
 # build fat static libs from autoconf/make based source.
 
