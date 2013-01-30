@@ -10,7 +10,7 @@
 
 - (void)dealloc {
   if (_handle) {
-    glDeleteTextures(1, &(_handle));
+    glDeleteTextures(1, &(_handle)); qkgl_assert();
   }
 }
 
@@ -31,8 +31,8 @@
   glTexImage2D(_target, 0, _format, _size._[0], _size._[1], 0, dataFormat, dataType, bytes); qkgl_assert();
   // set default wrap and filter for convenience.
   // forgetting to set the filter appears to result in undefined behavior? (black samples).
-  [self setWrap:GL_CLAMP_TO_EDGE]; // probably friendlier for debugging, as it allows vertices to range from 0 to 1.
-  [self setFilter:GL_LINEAR]; // choose better results over performance as default.
+  [self setWrap:GL_CLAMP_TO_EDGE]; // friendlier for debugging, as it allows vertices to range from 0 to 1.
+  [self setFilter:GL_LINEAR]; // choose smooth results over performance as default.
   return self;
 }
 

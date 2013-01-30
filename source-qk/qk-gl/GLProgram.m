@@ -22,7 +22,7 @@
 
 
 - (void)dealloc {
-  glDeleteProgram(_handle);
+  glDeleteProgram(_handle); qkgl_assert();
 }
 
 

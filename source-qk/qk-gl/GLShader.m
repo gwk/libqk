@@ -20,7 +20,7 @@
 
 
 - (void)dealloc {
-  glDeleteShader(_handle);
+  glDeleteShader(_handle); qkgl_assert();
 }
 
 
