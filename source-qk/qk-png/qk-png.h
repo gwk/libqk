@@ -1,2 +1,1 @@
-#import "GLTexture+PNG.h"
-#import "PNGImage.h"
+#import "QKImage+PNG.h"

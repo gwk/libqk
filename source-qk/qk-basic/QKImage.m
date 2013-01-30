@@ -47,19 +47,19 @@ PROPERTY_STRUCT_FIELD(I32, height, Height, V2I32, _size, _[1]);
 
 
 
-LAZY_CLASS_METHOD(NSDictionary*, qkdValTypes, @{
+LAZY_CLASS_METHOD(NSDictionary*, jnbValTypes, @{
                   @"format" : [NSString class],
                   @"width" : [NSNumber class],
                   @"height" : [NSNumber class],
                   });
 
 
-LAZY_CLASS_METHOD(NSDictionary*, qkdValDecoders, @{
+LAZY_CLASS_METHOD(NSDictionary*, jnbValDecoders, @{
                   
                   @"format" : ^(NSString* format){
   QKPixFmt f = QKPixFmtFromString(format);
   if (!f) {
-    return (id)[NSError withDomain:QKDErrorDomain code:QKDErrorCodeKeyMissing desc:@"bad format" info:@{
+    return (id)[NSError withDomain:JNBErrorDomain code:JNBErrorCodeKeyMissing desc:@"bad format" info:@{
                 @"format" : format
                 }];
   }
@@ -67,7 +67,7 @@ LAZY_CLASS_METHOD(NSDictionary*, qkdValDecoders, @{
 },
                   @"width" : ^(NSNumber* width) {
   if (width.intValue < 0) {
-    return (id)[NSError withDomain:QKDErrorDomain code:QKDErrorCodeKeyMissing desc:@"bad width" info:@{
+    return (id)[NSError withDomain:JNBErrorDomain code:JNBErrorCodeKeyMissing desc:@"bad width" info:@{
                 @"width" : width
                 }];
   }
@@ -76,7 +76,7 @@ LAZY_CLASS_METHOD(NSDictionary*, qkdValDecoders, @{
                   
                   @"height" : ^(NSNumber* height) {
   if (height.intValue < 0) {
-    return (id)[NSError withDomain:QKDErrorDomain code:QKDErrorCodeKeyMissing desc:@"bad height" info:@{
+    return (id)[NSError withDomain:JNBErrorDomain code:JNBErrorCodeKeyMissing desc:@"bad height" info:@{
                 @"height" : height
                 }];
   }
@@ -85,24 +85,24 @@ LAZY_CLASS_METHOD(NSDictionary*, qkdValDecoders, @{
                   });
 
 
-LAZY_CLASS_METHOD(NSDictionary*, qkdValEncoders, @{
+LAZY_CLASS_METHOD(NSDictionary*, jnbValEncoders, @{
                   @"format" : ^(NSNumber* format) {
   return QKPixFmtDesc(format.intValue);
 }
                   });
 
 
-- (NSError*)qkdDataDecode:(QKSubData*)data {
+- (NSError*)jnbDataDecode:(QKSubData*)data {
   _data = data;
   if (!data) {
-    return [NSError withDomain:QKDErrorDomain code:QKDErrorCodeDataMissing desc:@"nil data" info:nil];
+    return [NSError withDomain:JNBErrorDomain code:JNBErrorCodeDataMissing desc:@"nil data" info:nil];
   }
   
   return nil;
 }
 
 
-- (NSError*)qkdDataEncode:(NSOutputStream *)stream {
+- (NSError*)jnbDataEncode:(NSOutputStream *)stream {
   Int written = [stream writeData:_data];
   return written < 0 ? stream.streamError : nil;
 }
@@ -112,7 +112,8 @@ LAZY_CLASS_METHOD(NSDictionary*, qkdValEncoders, @{
   check(_size._[0] >= 0 && _size._[1] >= 0 && _size._[0] * _size._[1] * QKPixFmtBytesPerPixel(_format) == _data.length,
         @"bad args; %@; data.length: %ld", self, _data.length);
 }
-  
+
+
 - (id)initWithFormat:(QKPixFmt)format size:(V2I32)size data:(QKSubData*)data {
   INIT(super init);
   _format = format;
@@ -126,6 +127,7 @@ LAZY_CLASS_METHOD(NSDictionary*, qkdValEncoders, @{
 + (id)withFormat:(QKPixFmt)format size:(V2I32)size data:(QKSubData*)data {
   return [[self alloc] initWithFormat:format size:size data:data];
 }
+
 
 @end
 

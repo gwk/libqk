@@ -2,6 +2,12 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#if TARGET_OS_IPHONE
+# import <OpenGLES/ES2/gl.h>
+#else
+# import <OpenGL/gl3.h>
+#endif
+
 #import "QKPixFmt.h"
 #import "QKData.h"
 
@@ -24,5 +30,3 @@
 - (void)validate;
 
 @end
-
-
