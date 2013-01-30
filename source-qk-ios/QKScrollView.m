@@ -8,7 +8,7 @@
 @interface QKScrollView ()
 
 @property (nonatomic) UIView* zoomView;
-@property (nonatomic) id<UIScrollViewDelegate> delegate;
+@property (nonatomic, weak) id<UIScrollViewDelegate> delegate;
 
 @end
 
