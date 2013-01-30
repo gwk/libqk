@@ -42,7 +42,7 @@ EL(9);
 - (NSMutableArray*)filterMap:(BlockMap)block;
 - (NSMutableDictionary*)filterMapToDict:(BlockMapToPair)block;
 
-- (int)reduceInt:(Int)initial block:(BlockReduceToInt)block;
+- (Int)reduceInt:(Int)initial block:(BlockReduceToInt)block;
 
 - (id)max:(BlockMap)block;
 

@@ -137,7 +137,7 @@ EL(9);
 }
 
 
-- (int)reduceInt:(Int)initial block:(BlockReduceToInt)block {
+- (Int)reduceInt:(Int)initial block:(BlockReduceToInt)block {
   Int val = initial;
   for (id el in self) {
     val = block(val, el);
