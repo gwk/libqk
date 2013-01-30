@@ -2,6 +2,9 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#import <stdio.h>
+#import <string.h>
+
 #import "qk-check.h"
 
 
