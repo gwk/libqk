@@ -89,6 +89,8 @@ return name; \
 ({ id _obj = (obj); (IS_KIND((_obj), class_name) ? (_obj) : [NSNull null]); })
 
 
+#define OBJ_OR_NULL(obj) ({ id _obj = (obj); _obj ? _obj : [NSNull null]; })
+
 // checks
 
 
