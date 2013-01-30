@@ -97,7 +97,7 @@
 
 
 + (id)join:(NSArray*)arrays {
-  int elSize = [arrays.el0OrNil elSize];
+  Int elSize = [arrays.el0OrNil elSize];
   if (!QK_OPTIMIZE) {
     for (QKStructArray* el in arrays) {
       assert(el.elSize == elSize, @"mismatched elSize: %@; %@", arrays.el0, el);

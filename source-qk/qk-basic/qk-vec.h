@@ -22,8 +22,6 @@ static const TV TV##Zero = (TV) {{}}; \
 \
 static inline TV TV##Neg(TV v) { TV r; for_in(i, dim) r._[i] = -v._[i]; return r; } \
 \
-static inline TV TV##InvComps(TV v) { TV r; for_in(i, dim) r._[i] = 1.0 / v._[i]; return r; } \
-\
 static inline TV TV##Add(TV a, TV b) { TV r; for_in(i, dim) r._[i] = a._[i] + b._[i]; return r; } \
 static inline TV TV##Sub(TV a, TV b) { TV r; for_in(i, dim) r._[i] = a._[i] - b._[i]; return r; } \
 \
@@ -86,6 +84,8 @@ return [NSString stringWithFormat:@"(" fmt @" " fmt @" " fmt @" " fmt @")", v._[
 
 
 #define _DEF_V_F(dim, TV) \
+\
+static inline TV TV##InvComps(TV v) { TV r; for_in(i, dim) r._[i] = 1.0 / v._[i]; return r; } \
 \
 static inline F64 TV##Dot(TV a, TV b) { F64 d = 0; for_in(i, dim) d += a._[i] * b._[i]; return d; } \
 \
