@@ -2,53 +2,53 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
-// QKD is a file format consisting of:
+// JNB is a file format consisting of:
 // - a UTF-8 JSON header
 // - zero or more null terminator bytes (if none then the file is pure JSON).
 // - optional binary data beginning on the next 16-byte-aligned offset after the first null terminator.
 
-// serialized data that specifies this item can loaded polymorphically.
-static NSString* const QKDTypeKey = @"qkd-type";
+// serialized data type string that specifies this item can loaded polymorphically.
+static NSString* const JNBTypeKey = @"jnb-type";
 
-extern NSString* const QKDErrorDomain;
+extern NSString* const JNBErrorDomain;
 
 typedef enum {
-  QKDErrorCodeUnknown             = 0,
-  QKDErrorCodeTypeMissing         = 1,    // "type" item is missing from header.
-  QKDErrorCodeTypeUnkown          = 2,     // "type" item has bad value.
-  QKDErrorCodeTypeUnexpected      = 3, // type is valid, but does not match calling class.
-  QKDErrorCodeKeyMissing          = 4,     // key is required but missing.
-  QKDErrorCodeValTypeUnexpected   = 5,  // value is of unexpected type.
-  QKDErrorCodeValInvalid          = 6,         // value is invalid.
-  QKDErrorCodeValTransformFailed  = 7, // transform returned an error.
-  QKDErrorCodeDataMalformed       = 8, // data region is not properly offset.
-  QKDErrorCodeDataMissing         = 9,  // intended to be returned by decoder blocks that require non-nil data.
-} QKDErrorCode;
+  JNBErrorCodeUnknown             = 0,
+  JNBErrorCodeTypeMissing         = 1,    // "type" item is missing from header.
+  JNBErrorCodeTypeUnkown          = 2,     // "type" item has bad value.
+  JNBErrorCodeTypeUnexpected      = 3, // type is valid, but does not match calling class.
+  JNBErrorCodeKeyMissing          = 4,     // key is required but missing.
+  JNBErrorCodeValTypeUnexpected   = 5,  // value is of unexpected type.
+  JNBErrorCodeValInvalid          = 6,         // value is invalid.
+  JNBErrorCodeValTransformFailed  = 7, // transform returned an error.
+  JNBErrorCodeDataMalformed       = 8, // data region is not properly offset.
+  JNBErrorCodeDataMissing         = 9,  // intended to be returned by decoder blocks that require non-nil data.
+} JNBErrorCode;
 
 
-@interface NSObject (QKD)
+@interface NSObject (JNB)
 
 // generic decoding is accomplished by overriding these methods:
-+ (NSDictionary*)qkdValTypes; // maps header keys to expected value classes.
++ (NSDictionary*)jnbValTypes; // maps header keys to expected value classes.
 
 // maps header keys to optional value transform blocks. blocks may signal an error by returning an NSError.
 // subclasses should override these to provide BlockMap blocks for keys that require additional handling.
-+ (NSDictionary*)qkdValDecoders;
-+ (NSDictionary*)qkdValEncoders;
++ (NSDictionary*)jnbValDecoders;
++ (NSDictionary*)jnbValEncoders;
 
 // optional method for handling data section.
-- (NSError*)qkdDataDecode:(QKSubData*)data;
-- (NSError*)qkdDataEncode:(NSOutputStream*)stream;
+- (NSError*)jnbDataDecode:(QKSubData*)data;
+- (NSError*)jnbDataEncode:(NSOutputStream*)stream;
 
-// QKD-serialized classes may also override these methods to implement custom coding.
-- (NSError*)updateWithQkdDict:(NSDictionary*)dict data:(QKSubData*)data;
-- (NSError*)qkdEncode:(NSOutputStream*)stream;
+// JNB-serialized classes may also override these methods to implement custom coding.
+- (NSError*)updateWithJnbDict:(NSDictionary*)dict data:(QKSubData*)data;
+- (NSError*)jnbEncode:(NSOutputStream*)stream;
 
-- (id)initWithQkdDict:(NSDictionary*)dict data:(QKSubData*)data error:(NSError**)errorPtr;
-+ (id)withQkdPath:(NSString*)path map:(BOOL)map error:(NSError**)errorPtr;
-+ (id)qkdNamed:(NSString*)resourceName;
+- (id)initWithJnbDict:(NSDictionary*)dict data:(QKSubData*)data error:(NSError**)errorPtr;
++ (id)withJnbPath:(NSString*)path map:(BOOL)map error:(NSError**)errorPtr;
++ (id)jnbNamed:(NSString*)resourceName;
 
-- (NSError*)qkdWriteToPath:(NSString*)path;
+- (NSError*)writeJnbToPath:(NSString*)path;
 
 @end
 

@@ -6,9 +6,6 @@
 #import "NSObject+QK.h"
 
 
-NSString* const QKDErrorDomain = @"QKDErrorDomain";
-
-
 void  executeAsync(BlockExecute asyncBlock, BlockDo syncBlock) {
   
   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{

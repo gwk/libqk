@@ -6,7 +6,7 @@
 #import "NSError+QK.h"
 #import "NSMutableData+QK.h"
 #import "NSMutableDictionary+QK.h"
+#import "NSObject+JNB.h"
 #import "NSObject+QK.h"
-#import "NSObject+QKD.h"
 #import "NSOutputStream+QK.h"
 #import "NSString+QK.h"

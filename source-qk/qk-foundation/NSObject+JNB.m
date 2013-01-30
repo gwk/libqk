@@ -2,53 +2,56 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
-#import "NSObject+QKD.h"
+#import "NSObject+JNB.h"
 
 
-@implementation NSObject (QKD)
+NSString* const JNBErrorDomain = @"JNBErrorDomain";
 
 
-+ (NSDictionary*)qkdValTypes {
+@implementation NSObject (JNB)
+
+
++ (NSDictionary*)jnbValTypes {
   OVERRIDE;
 }
 
 
-+ (NSDictionary*)qkdValDecoders {
-  return nil; 
-}
-
-
-+ (NSDictionary*)qkdValEncoders {
++ (NSDictionary*)jnbValDecoders {
   return nil;
 }
 
 
-- (NSError*)qkdDataDecode:(QKSubData*)data {
++ (NSDictionary*)jnbValEncoders {
   return nil;
 }
 
 
-- (NSError*)qkdDataEncode:(NSOutputStream*)stream {
+- (NSError*)jnbDataDecode:(QKSubData*)data {
   return nil;
 }
 
 
-- (NSError*)updateWithQkdDict:(NSDictionary*)dict data:(QKSubData*)data {
-  NSDictionary* valTypes = [self.class qkdValTypes];
-  NSDictionary* valDecoders = [self.class qkdValDecoders];
+- (NSError*)jnbDataEncode:(NSOutputStream*)stream {
+  return nil;
+}
+
+
+- (NSError*)updateWithJnbDict:(NSDictionary*)dict data:(QKSubData*)data {
+  NSDictionary* valTypes = [self.class jnbValTypes];
+  NSDictionary* valDecoders = [self.class jnbValDecoders];
   for (NSString* key in valTypes.allKeys) {
     id val = [dict objectForKey:key];
     if (!val) {
-      return [NSError withDomain:QKDErrorDomain code:QKDErrorCodeKeyMissing desc:@"missing key" info:@{
+      return [NSError withDomain:JNBErrorDomain code:JNBErrorCodeKeyMissing desc:@"missing key" info:@{
               @"dict" : dict,
               @"class" : self.class,
               @"key" : key,
               }];
     }
     Class expectedClass = [valTypes objectForKey:key];
-    assert(expectedClass, @"qkdValTypes dictionary is missing key: %@", key);
+    assert(expectedClass, @"jnbValTypes dictionary is missing key: %@", key);
     if (![val isKindOfClass:expectedClass]) {
-      return [NSError withDomain:QKDErrorDomain code:QKDErrorCodeValTypeUnexpected desc:@"bad value type" info:@{
+      return [NSError withDomain:JNBErrorDomain code:JNBErrorCodeValTypeUnexpected desc:@"bad value type" info:@{
               @"dict" : dict,
               @"class" : self.class,
               @"key" : key,
@@ -61,8 +64,8 @@
     if (mapBlock) {
       id val_transformed = mapBlock(val);
       if (IS_KIND(val_transformed, NSError)) {
-        return [NSError withDomain:QKDErrorDomain
-                              code:QKDErrorCodeValTransformFailed
+        return [NSError withDomain:JNBErrorDomain
+                              code:JNBErrorCodeValTransformFailed
                               desc:@"value transform failed"
                               info:@{
                 @"dict" : dict,
@@ -76,13 +79,13 @@
     }
     [self setValue:val forKey:key];
   }
-  return [self qkdDataDecode:data];
+  return [self jnbDataDecode:data];
 }
 
 
-- (NSError*)qkdEncode:(NSOutputStream*)stream {
-  NSDictionary* valTypes = [self.class qkdValTypes];
-  NSDictionary* valEncoders = [self.class qkdValEncoders];
+- (NSError*)jnbEncode:(NSOutputStream*)stream {
+  NSDictionary* valTypes = [self.class jnbValTypes];
+  NSDictionary* valEncoders = [self.class jnbValEncoders];
   NSDictionary* dict = [valTypes.allKeys mapToDict:^(NSString* key){
     id val = [self valueForKey:key];
     BlockMap mapBlock = [valEncoders objectForKey:key];
@@ -106,21 +109,24 @@
   if (pad_written < 0) {
     return stream.streamError;
   }
-  return [self qkdDataEncode:stream];
+  return [self jnbDataEncode:stream];
 }
 
 
 
-- (id)initWithQkdDict:(NSDictionary*)dict data:(QKSubData*)data error:(NSError**)errorPtr {
+- (id)initWithJnbDict:(NSDictionary*)dict data:(QKSubData*)data error:(NSError**)errorPtr {
   INIT(self init);
-  *errorPtr = [self updateWithQkdDict:dict data:data];
-  return *errorPtr ? nil : self;
+  NSError* e = [self updateWithJnbDict:dict data:data];
+  if (errorPtr) {
+    *errorPtr = e;
+  }
+  return e ? nil : self;
 }
 
 
-+ (id)withQkdPath:(NSString*)path map:(BOOL)map error:(NSError**)errorPtr {
++ (id)withJnbPath:(NSString*)path map:(BOOL)map error:(NSError**)errorPtr {
 #define ERROR(_code, _desc, ...) \
-*errorPtr = [NSError withDomain:QKDErrorDomain code:_code desc:_desc info:@{ @"path" : path, ##__VA_ARGS__ }]; \
+*errorPtr = [NSError withDomain:JNBErrorDomain code:_code desc:_desc info:@{ @"path" : path, ##__VA_ARGS__ }]; \
 return nil;
   
   LAZY_STATIC(NSDictionary*, typesToClasses, @{
@@ -145,18 +151,18 @@ return nil;
   }
   assert(dict, @"nil dict");
   
-  NSString* typeName = [dict objectForKey:QKDTypeKey];
+  NSString* typeName = [dict objectForKey:JNBTypeKey];
   Class targetClass;
   if (typeName) {
     targetClass = [typesToClasses objectForKey:typeName];
     if (!targetClass) {
-      ERROR(QKDErrorCodeTypeUnkown, @"QKD header specifies unknown type",
+      ERROR(JNBErrorCodeTypeUnkown, @"JNB header specifies unknown type",
             @"dict" : dict,
             @"type" : typeName,
             );
     }
     if (![targetClass isSubclassOfClass:self]) {
-      ERROR(QKDErrorCodeTypeUnexpected, @"QKD header specifies unexpected type",
+      ERROR(JNBErrorCodeTypeUnexpected, @"JNB header specifies unexpected type",
             @"dict" : dict,
             @"type" : typeName,
             @"calling-class" : self,
@@ -175,32 +181,38 @@ return nil;
     Int data_offset = (offset_header_terminator + 0x10) & ~(size_t)0x0F;
     Int data_length = length - data_offset;
     if (data_offset >= length) {
-      ERROR(QKDErrorCodeDataMalformed, @"QKD is missing 16-byte-aligned data region");
+      ERROR(JNBErrorCodeDataMalformed, @"JNB is missing 16-byte-aligned data region");
     }
     subdata = [QKSubData withData:data offset:data_offset length:data_length];
   }
   else {
     subdata = nil;
   }
-  return [[targetClass alloc] initWithQkdDict:dict data:subdata error:errorPtr];
+  return [[targetClass alloc] initWithJnbDict:dict data:subdata error:errorPtr];
 #undef ERROR
 }
 
 
-+ (id)qkdNamed:(NSString*)resourceName {
++ (id)jnbNamed:(NSString*)resourceName {
   NSString* path = [NSBundle resPath:resourceName ofType:nil];
   NSError* e = nil;
-  id obj = [self withQkdPath:path map:YES error:&e];
-  assert(!e, @"error loading qkd resource: %@; %@", resourceName, e);
+  id obj = [self withJnbPath:path map:YES error:&e];
+  assert(!e, @"error loading JNB resource: %@; %@", resourceName, e);
   return obj;
 }
 
 
-- (NSError*)qkdWriteToPath:(NSString*)path {
+- (NSError*)writeJnbToPath:(NSString*)path {
   NSOutputStream* s = [NSOutputStream outputStreamToFileAtPath:path append:NO];
-  assert(s, @"nil stream (this should return error)");
+  if (!s) {
+    return [NSError withDomain:NSCocoaErrorDomain
+                          code:NSFileWriteInvalidFileNameError
+                          desc:@"could not open output stream" info:@{
+            @"path" : OBJ_OR_NULL(path)
+            }];
+  }
   [s open];
-  NSError* e = [self qkdEncode:s];
+  NSError* e = [self jnbEncode:s];
   [s close];
   return e;
 }
