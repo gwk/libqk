@@ -11,14 +11,19 @@ error() { echo 'error:' "$@" 1>&2; exit 1; }
 
 [[ $0 =~ \./build-lib-.*\.sh ]] || error "must invoke as ./build-lib-*.sh (not $0)"
 
-lib_name="$1"; shift
-lib_path="$1"; shift
-dst_path="$PWD/$1"; shift
-config_args="$@"
-
-qk_root="$PWD"
-
 echo
-echo "build-lib-common.sh: $lib_name $lib_path $dst_path $config_args"
+echo "build-lib-common.sh: $@"
 
-cd "$lib_path"
+lib_name="$1"; shift
+src_dir="$1"; shift
+install_dir="$PWD/$1"; shift
+config_args="$@"
+qk_root="$PWD"
+build_dir="build/$lib_name"
+
+echo "lib_name: $lib_name; src_dir: $src_dir; install_dir: $install_dir"
+echo "config_args: $config_args"
+echo "qk_root: $qk_root"
+echo "build_dir: $build_dir"
+
+rm -rf "$install_dir"

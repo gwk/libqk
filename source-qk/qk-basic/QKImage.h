@@ -23,6 +23,7 @@
 - (const void*)bytes;
 - (Int)length;
 - (BOOL)isMutable;
+- (NSString*)formatDesc;
 
 - (id)initWithFormat:(QKPixFmt)format size:(V2I32)size data:(id<QKData>)data;
 + (id)withFormat:(QKPixFmt)format size:(V2I32)size data:(id<QKData>)data;

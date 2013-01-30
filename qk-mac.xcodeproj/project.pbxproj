@@ -1,0 +1,889 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EC0D9A9116B830F1005D2C2B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0D9A9016B830F1005D2C2B /* Cocoa.framework */; };
+		EC0D9A9316B830F7005D2C2B /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0D9A9216B830F7005D2C2B /* AppKit.framework */; };
+		EC0D9B4E16B84FDA005D2C2B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0D9B4D16B84FDA005D2C2B /* libz.dylib */; };
+		EC0D9B5016B85794005D2C2B /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0D9B4F16B85794005D2C2B /* GLKit.framework */; };
+		EC0D9B5216B85799005D2C2B /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0D9B5116B85799005D2C2B /* OpenGL.framework */; };
+		EC0D9B5B16B8588B005D2C2B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0D9B5A16B8588B005D2C2B /* Foundation.framework */; };
+		EC0D9B6916B85903005D2C2B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0D9B4D16B84FDA005D2C2B /* libz.dylib */; };
+		EC0D9BB116B87683005D2C2B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BAE16B87683005D2C2B /* AppDelegate.m */; };
+		EC0D9BB216B87683005D2C2B /* test-qk-mac.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BAF16B87683005D2C2B /* test-qk-mac.m */; };
+		EC0D9BD816B9983C005D2C2B /* jnb-image-with-png.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BD616B9983C005D2C2B /* jnb-image-with-png.m */; };
+		EC0D9C4616B998CB005D2C2B /* Duo.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BE116B998CB005D2C2B /* Duo.m */; };
+		EC0D9C4716B998CB005D2C2B /* Duo.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BE116B998CB005D2C2B /* Duo.m */; };
+		EC0D9C4816B998CB005D2C2B /* qk-check.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BE516B998CB005D2C2B /* qk-check.m */; };
+		EC0D9C4916B998CB005D2C2B /* qk-check.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BE516B998CB005D2C2B /* qk-check.m */; };
+		EC0D9C4A16B998CB005D2C2B /* qk-log.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BE716B998CB005D2C2B /* qk-log.m */; };
+		EC0D9C4B16B998CB005D2C2B /* qk-log.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BE716B998CB005D2C2B /* qk-log.m */; };
+		EC0D9C4C16B998CB005D2C2B /* qk-math.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BEA16B998CB005D2C2B /* qk-math.m */; };
+		EC0D9C4D16B998CB005D2C2B /* qk-math.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BEA16B998CB005D2C2B /* qk-math.m */; };
+		EC0D9C4E16B998CB005D2C2B /* QKData.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BEE16B998CB005D2C2B /* QKData.m */; };
+		EC0D9C4F16B998CB005D2C2B /* QKData.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BEE16B998CB005D2C2B /* QKData.m */; };
+		EC0D9C5016B998CB005D2C2B /* QKImage.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BF016B998CB005D2C2B /* QKImage.m */; };
+		EC0D9C5116B998CB005D2C2B /* QKImage.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BF016B998CB005D2C2B /* QKImage.m */; };
+		EC0D9C5216B998CB005D2C2B /* QKMutableStructArray.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BF216B998CB005D2C2B /* QKMutableStructArray.m */; };
+		EC0D9C5316B998CB005D2C2B /* QKMutableStructArray.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BF216B998CB005D2C2B /* QKMutableStructArray.m */; };
+		EC0D9C5416B998CB005D2C2B /* QKPixFmt.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BF416B998CB005D2C2B /* QKPixFmt.m */; };
+		EC0D9C5516B998CB005D2C2B /* QKPixFmt.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BF416B998CB005D2C2B /* QKPixFmt.m */; };
+		EC0D9C5616B998CB005D2C2B /* QKStructArray.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BF616B998CB005D2C2B /* QKStructArray.m */; };
+		EC0D9C5716B998CB005D2C2B /* QKStructArray.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BF616B998CB005D2C2B /* QKStructArray.m */; };
+		EC0D9C5816B998CB005D2C2B /* QKSubData.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BF816B998CB005D2C2B /* QKSubData.m */; };
+		EC0D9C5916B998CB005D2C2B /* QKSubData.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BF816B998CB005D2C2B /* QKSubData.m */; };
+		EC0D9C5A16B998CB005D2C2B /* QKCFObject.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BFC16B998CB005D2C2B /* QKCFObject.m */; };
+		EC0D9C5C16B998CB005D2C2B /* qk-cg-util.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BFF16B998CB005D2C2B /* qk-cg-util.m */; };
+		EC0D9C5E16B998CB005D2C2B /* QKCGBitmapContext.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C0216B998CB005D2C2B /* QKCGBitmapContext.m */; };
+		EC0D9C6016B998CB005D2C2B /* QKCGColorSpace.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C0416B998CB005D2C2B /* QKCGColorSpace.m */; };
+		EC0D9C6216B998CB005D2C2B /* QKCGContext.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C0616B998CB005D2C2B /* QKCGContext.m */; };
+		EC0D9C6416B998CB005D2C2B /* QKCGImage.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C0816B998CB005D2C2B /* QKCGImage.m */; };
+		EC0D9C6616B998CB005D2C2B /* NSArray+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C0B16B998CB005D2C2B /* NSArray+QK.m */; };
+		EC0D9C6716B998CB005D2C2B /* NSArray+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C0B16B998CB005D2C2B /* NSArray+QK.m */; };
+		EC0D9C6816B998CB005D2C2B /* NSBundle+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C0D16B998CB005D2C2B /* NSBundle+QK.m */; };
+		EC0D9C6916B998CB005D2C2B /* NSBundle+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C0D16B998CB005D2C2B /* NSBundle+QK.m */; };
+		EC0D9C6A16B998CB005D2C2B /* NSData+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C0F16B998CB005D2C2B /* NSData+QK.m */; };
+		EC0D9C6B16B998CB005D2C2B /* NSData+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C0F16B998CB005D2C2B /* NSData+QK.m */; };
+		EC0D9C6C16B998CB005D2C2B /* NSDate+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C1116B998CB005D2C2B /* NSDate+QK.m */; };
+		EC0D9C6D16B998CB005D2C2B /* NSDate+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C1116B998CB005D2C2B /* NSDate+QK.m */; };
+		EC0D9C6E16B998CB005D2C2B /* NSDictionary+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C1316B998CB005D2C2B /* NSDictionary+QK.m */; };
+		EC0D9C6F16B998CB005D2C2B /* NSDictionary+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C1316B998CB005D2C2B /* NSDictionary+QK.m */; };
+		EC0D9C7016B998CB005D2C2B /* NSError+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C1516B998CB005D2C2B /* NSError+QK.m */; };
+		EC0D9C7116B998CB005D2C2B /* NSError+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C1516B998CB005D2C2B /* NSError+QK.m */; };
+		EC0D9C7216B998CB005D2C2B /* NSMutableData+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C1716B998CB005D2C2B /* NSMutableData+QK.m */; };
+		EC0D9C7316B998CB005D2C2B /* NSMutableData+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C1716B998CB005D2C2B /* NSMutableData+QK.m */; };
+		EC0D9C7416B998CB005D2C2B /* NSMutableDictionary+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C1916B998CB005D2C2B /* NSMutableDictionary+QK.m */; };
+		EC0D9C7516B998CB005D2C2B /* NSMutableDictionary+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C1916B998CB005D2C2B /* NSMutableDictionary+QK.m */; };
+		EC0D9C7616B998CB005D2C2B /* NSObject+JNB.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C1B16B998CB005D2C2B /* NSObject+JNB.m */; };
+		EC0D9C7716B998CB005D2C2B /* NSObject+JNB.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C1B16B998CB005D2C2B /* NSObject+JNB.m */; };
+		EC0D9C7816B998CB005D2C2B /* NSObject+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C1D16B998CB005D2C2B /* NSObject+QK.m */; };
+		EC0D9C7916B998CB005D2C2B /* NSObject+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C1D16B998CB005D2C2B /* NSObject+QK.m */; };
+		EC0D9C7A16B998CB005D2C2B /* NSOutputStream+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C1F16B998CB005D2C2B /* NSOutputStream+QK.m */; };
+		EC0D9C7B16B998CB005D2C2B /* NSOutputStream+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C1F16B998CB005D2C2B /* NSOutputStream+QK.m */; };
+		EC0D9C7C16B998CB005D2C2B /* NSString+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C2116B998CB005D2C2B /* NSString+QK.m */; };
+		EC0D9C7D16B998CB005D2C2B /* NSString+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C2116B998CB005D2C2B /* NSString+QK.m */; };
+		EC0D9C7E16B998CB005D2C2B /* GLFragmentShader.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C2516B998CB005D2C2B /* GLFragmentShader.m */; };
+		EC0D9C8016B998CB005D2C2B /* GLObject.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C2716B998CB005D2C2B /* GLObject.m */; };
+		EC0D9C8216B998CB005D2C2B /* GLProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C2916B998CB005D2C2B /* GLProgram.m */; };
+		EC0D9C8416B998CB005D2C2B /* GLShader.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C2B16B998CB005D2C2B /* GLShader.m */; };
+		EC0D9C8616B998CB005D2C2B /* GLTexture.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C2D16B998CB005D2C2B /* GLTexture.m */; };
+		EC0D9C8816B998CB005D2C2B /* GLVertexShader.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C2F16B998CB005D2C2B /* GLVertexShader.m */; };
+		EC0D9C8A16B998CB005D2C2B /* qk-gl-util.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C3116B998CB005D2C2B /* qk-gl-util.m */; };
+		EC0D9C8C16B998CB005D2C2B /* QKImage+PNG.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C3616B998CB005D2C2B /* QKImage+PNG.m */; };
+		EC0D9C8D16B998CB005D2C2B /* QKImage+PNG.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C3616B998CB005D2C2B /* QKImage+PNG.m */; };
+		EC0D9C8E16B998CB005D2C2B /* qk-sql-util.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C3916B998CB005D2C2B /* qk-sql-util.m */; };
+		EC0D9C9016B998CB005D2C2B /* SqlDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C3C16B998CB005D2C2B /* SqlDatabase.m */; };
+		EC0D9C9216B998CB005D2C2B /* SqlStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C3E16B998CB005D2C2B /* SqlStatement.m */; };
+		EC0D9C9416B998CB005D2C2B /* NSView+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C4316B998CB005D2C2B /* NSView+QK.m */; };
+		EC0D9CA816B9A753005D2C2B /* libpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0D9CA116B9A753005D2C2B /* libpng.a */; };
+		EC0D9CA916B9A753005D2C2B /* libpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0D9CA116B9A753005D2C2B /* libpng.a */; };
+		EC0D9CAA16B9A753005D2C2B /* libsqlite3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0D9CA716B9A753005D2C2B /* libsqlite3.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EC0D9B5516B8588B005D2C2B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		EC0D9A6916B82EBD005D2C2B /* test-qk-mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "test-qk-mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC0D9A8F16B830E2005D2C2B /* test-qk-mac-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "test-qk-mac-Info.plist"; sourceTree = "<group>"; };
+		EC0D9A9016B830F1005D2C2B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		EC0D9A9216B830F7005D2C2B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		EC0D9B4D16B84FDA005D2C2B /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		EC0D9B4F16B85794005D2C2B /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		EC0D9B5116B85799005D2C2B /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		EC0D9B5716B8588B005D2C2B /* jnb-image-with-png */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "jnb-image-with-png"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC0D9B5A16B8588B005D2C2B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		EC0D9BAD16B87683005D2C2B /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		EC0D9BAE16B87683005D2C2B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		EC0D9BAF16B87683005D2C2B /* test-qk-mac.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "test-qk-mac.m"; sourceTree = "<group>"; };
+		EC0D9BB016B87683005D2C2B /* test-qk-mac.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "test-qk-mac.pch"; sourceTree = "<group>"; };
+		EC0D9BD616B9983C005D2C2B /* jnb-image-with-png.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "jnb-image-with-png.m"; sourceTree = "<group>"; };
+		EC0D9BD716B9983C005D2C2B /* jnb-image-with-png.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "jnb-image-with-png.pch"; sourceTree = "<group>"; };
+		EC0D9BE016B998CB005D2C2B /* Duo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Duo.h; sourceTree = "<group>"; };
+		EC0D9BE116B998CB005D2C2B /* Duo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Duo.m; sourceTree = "<group>"; };
+		EC0D9BE216B998CB005D2C2B /* qk-basic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-basic.h"; sourceTree = "<group>"; };
+		EC0D9BE316B998CB005D2C2B /* qk-block-types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-block-types.h"; sourceTree = "<group>"; };
+		EC0D9BE416B998CB005D2C2B /* qk-check.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-check.h"; sourceTree = "<group>"; };
+		EC0D9BE516B998CB005D2C2B /* qk-check.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "qk-check.m"; sourceTree = "<group>"; };
+		EC0D9BE616B998CB005D2C2B /* qk-log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-log.h"; sourceTree = "<group>"; };
+		EC0D9BE716B998CB005D2C2B /* qk-log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "qk-log.m"; sourceTree = "<group>"; };
+		EC0D9BE816B998CB005D2C2B /* qk-macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-macros.h"; sourceTree = "<group>"; };
+		EC0D9BE916B998CB005D2C2B /* qk-math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-math.h"; sourceTree = "<group>"; };
+		EC0D9BEA16B998CB005D2C2B /* qk-math.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "qk-math.m"; sourceTree = "<group>"; };
+		EC0D9BEB16B998CB005D2C2B /* qk-types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-types.h"; sourceTree = "<group>"; };
+		EC0D9BEC16B998CB005D2C2B /* qk-vec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-vec.h"; sourceTree = "<group>"; };
+		EC0D9BED16B998CB005D2C2B /* QKData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKData.h; sourceTree = "<group>"; };
+		EC0D9BEE16B998CB005D2C2B /* QKData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKData.m; sourceTree = "<group>"; };
+		EC0D9BEF16B998CB005D2C2B /* QKImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKImage.h; sourceTree = "<group>"; };
+		EC0D9BF016B998CB005D2C2B /* QKImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKImage.m; sourceTree = "<group>"; };
+		EC0D9BF116B998CB005D2C2B /* QKMutableStructArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKMutableStructArray.h; sourceTree = "<group>"; };
+		EC0D9BF216B998CB005D2C2B /* QKMutableStructArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKMutableStructArray.m; sourceTree = "<group>"; };
+		EC0D9BF316B998CB005D2C2B /* QKPixFmt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKPixFmt.h; sourceTree = "<group>"; };
+		EC0D9BF416B998CB005D2C2B /* QKPixFmt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKPixFmt.m; sourceTree = "<group>"; };
+		EC0D9BF516B998CB005D2C2B /* QKStructArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKStructArray.h; sourceTree = "<group>"; };
+		EC0D9BF616B998CB005D2C2B /* QKStructArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKStructArray.m; sourceTree = "<group>"; };
+		EC0D9BF716B998CB005D2C2B /* QKSubData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKSubData.h; sourceTree = "<group>"; };
+		EC0D9BF816B998CB005D2C2B /* QKSubData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKSubData.m; sourceTree = "<group>"; };
+		EC0D9BFA16B998CB005D2C2B /* qk-cf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-cf.h"; sourceTree = "<group>"; };
+		EC0D9BFB16B998CB005D2C2B /* QKCFObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKCFObject.h; sourceTree = "<group>"; };
+		EC0D9BFC16B998CB005D2C2B /* QKCFObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKCFObject.m; sourceTree = "<group>"; };
+		EC0D9BFE16B998CB005D2C2B /* qk-cg-util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-cg-util.h"; sourceTree = "<group>"; };
+		EC0D9BFF16B998CB005D2C2B /* qk-cg-util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "qk-cg-util.m"; sourceTree = "<group>"; };
+		EC0D9C0016B998CB005D2C2B /* qk-cg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-cg.h"; sourceTree = "<group>"; };
+		EC0D9C0116B998CB005D2C2B /* QKCGBitmapContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKCGBitmapContext.h; sourceTree = "<group>"; };
+		EC0D9C0216B998CB005D2C2B /* QKCGBitmapContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKCGBitmapContext.m; sourceTree = "<group>"; };
+		EC0D9C0316B998CB005D2C2B /* QKCGColorSpace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKCGColorSpace.h; sourceTree = "<group>"; };
+		EC0D9C0416B998CB005D2C2B /* QKCGColorSpace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKCGColorSpace.m; sourceTree = "<group>"; };
+		EC0D9C0516B998CB005D2C2B /* QKCGContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKCGContext.h; sourceTree = "<group>"; };
+		EC0D9C0616B998CB005D2C2B /* QKCGContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKCGContext.m; sourceTree = "<group>"; };
+		EC0D9C0716B998CB005D2C2B /* QKCGImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKCGImage.h; sourceTree = "<group>"; };
+		EC0D9C0816B998CB005D2C2B /* QKCGImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKCGImage.m; sourceTree = "<group>"; };
+		EC0D9C0A16B998CB005D2C2B /* NSArray+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+QK.h"; sourceTree = "<group>"; };
+		EC0D9C0B16B998CB005D2C2B /* NSArray+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+QK.m"; sourceTree = "<group>"; };
+		EC0D9C0C16B998CB005D2C2B /* NSBundle+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+QK.h"; sourceTree = "<group>"; };
+		EC0D9C0D16B998CB005D2C2B /* NSBundle+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+QK.m"; sourceTree = "<group>"; };
+		EC0D9C0E16B998CB005D2C2B /* NSData+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+QK.h"; sourceTree = "<group>"; };
+		EC0D9C0F16B998CB005D2C2B /* NSData+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+QK.m"; sourceTree = "<group>"; };
+		EC0D9C1016B998CB005D2C2B /* NSDate+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+QK.h"; sourceTree = "<group>"; };
+		EC0D9C1116B998CB005D2C2B /* NSDate+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+QK.m"; sourceTree = "<group>"; };
+		EC0D9C1216B998CB005D2C2B /* NSDictionary+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+QK.h"; sourceTree = "<group>"; };
+		EC0D9C1316B998CB005D2C2B /* NSDictionary+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+QK.m"; sourceTree = "<group>"; };
+		EC0D9C1416B998CB005D2C2B /* NSError+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+QK.h"; sourceTree = "<group>"; };
+		EC0D9C1516B998CB005D2C2B /* NSError+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+QK.m"; sourceTree = "<group>"; };
+		EC0D9C1616B998CB005D2C2B /* NSMutableData+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableData+QK.h"; sourceTree = "<group>"; };
+		EC0D9C1716B998CB005D2C2B /* NSMutableData+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableData+QK.m"; sourceTree = "<group>"; };
+		EC0D9C1816B998CB005D2C2B /* NSMutableDictionary+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+QK.h"; sourceTree = "<group>"; };
+		EC0D9C1916B998CB005D2C2B /* NSMutableDictionary+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+QK.m"; sourceTree = "<group>"; };
+		EC0D9C1A16B998CB005D2C2B /* NSObject+JNB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JNB.h"; sourceTree = "<group>"; };
+		EC0D9C1B16B998CB005D2C2B /* NSObject+JNB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JNB.m"; sourceTree = "<group>"; };
+		EC0D9C1C16B998CB005D2C2B /* NSObject+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+QK.h"; sourceTree = "<group>"; };
+		EC0D9C1D16B998CB005D2C2B /* NSObject+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+QK.m"; sourceTree = "<group>"; };
+		EC0D9C1E16B998CB005D2C2B /* NSOutputStream+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSOutputStream+QK.h"; sourceTree = "<group>"; };
+		EC0D9C1F16B998CB005D2C2B /* NSOutputStream+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSOutputStream+QK.m"; sourceTree = "<group>"; };
+		EC0D9C2016B998CB005D2C2B /* NSString+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+QK.h"; sourceTree = "<group>"; };
+		EC0D9C2116B998CB005D2C2B /* NSString+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+QK.m"; sourceTree = "<group>"; };
+		EC0D9C2216B998CB005D2C2B /* qk-foundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-foundation.h"; sourceTree = "<group>"; };
+		EC0D9C2416B998CB005D2C2B /* GLFragmentShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLFragmentShader.h; sourceTree = "<group>"; };
+		EC0D9C2516B998CB005D2C2B /* GLFragmentShader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLFragmentShader.m; sourceTree = "<group>"; };
+		EC0D9C2616B998CB005D2C2B /* GLObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLObject.h; sourceTree = "<group>"; };
+		EC0D9C2716B998CB005D2C2B /* GLObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLObject.m; sourceTree = "<group>"; };
+		EC0D9C2816B998CB005D2C2B /* GLProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLProgram.h; sourceTree = "<group>"; };
+		EC0D9C2916B998CB005D2C2B /* GLProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLProgram.m; sourceTree = "<group>"; };
+		EC0D9C2A16B998CB005D2C2B /* GLShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLShader.h; sourceTree = "<group>"; };
+		EC0D9C2B16B998CB005D2C2B /* GLShader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLShader.m; sourceTree = "<group>"; };
+		EC0D9C2C16B998CB005D2C2B /* GLTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLTexture.h; sourceTree = "<group>"; };
+		EC0D9C2D16B998CB005D2C2B /* GLTexture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLTexture.m; sourceTree = "<group>"; };
+		EC0D9C2E16B998CB005D2C2B /* GLVertexShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLVertexShader.h; sourceTree = "<group>"; };
+		EC0D9C2F16B998CB005D2C2B /* GLVertexShader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLVertexShader.m; sourceTree = "<group>"; };
+		EC0D9C3016B998CB005D2C2B /* qk-gl-util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-gl-util.h"; sourceTree = "<group>"; };
+		EC0D9C3116B998CB005D2C2B /* qk-gl-util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "qk-gl-util.m"; sourceTree = "<group>"; };
+		EC0D9C3216B998CB005D2C2B /* qk-gl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-gl.h"; sourceTree = "<group>"; };
+		EC0D9C3416B998CB005D2C2B /* qk-png.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-png.h"; sourceTree = "<group>"; };
+		EC0D9C3516B998CB005D2C2B /* QKImage+PNG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QKImage+PNG.h"; sourceTree = "<group>"; };
+		EC0D9C3616B998CB005D2C2B /* QKImage+PNG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "QKImage+PNG.m"; sourceTree = "<group>"; };
+		EC0D9C3816B998CB005D2C2B /* qk-sql-util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-sql-util.h"; sourceTree = "<group>"; };
+		EC0D9C3916B998CB005D2C2B /* qk-sql-util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "qk-sql-util.m"; sourceTree = "<group>"; };
+		EC0D9C3A16B998CB005D2C2B /* qk-sql.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-sql.h"; sourceTree = "<group>"; };
+		EC0D9C3B16B998CB005D2C2B /* SqlDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqlDatabase.h; sourceTree = "<group>"; };
+		EC0D9C3C16B998CB005D2C2B /* SqlDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SqlDatabase.m; sourceTree = "<group>"; };
+		EC0D9C3D16B998CB005D2C2B /* SqlStatement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqlStatement.h; sourceTree = "<group>"; };
+		EC0D9C3E16B998CB005D2C2B /* SqlStatement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SqlStatement.m; sourceTree = "<group>"; };
+		EC0D9C3F16B998CB005D2C2B /* source-qk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "source-qk.h"; sourceTree = "<group>"; };
+		EC0D9C4216B998CB005D2C2B /* NSView+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+QK.h"; sourceTree = "<group>"; };
+		EC0D9C4316B998CB005D2C2B /* NSView+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+QK.m"; sourceTree = "<group>"; };
+		EC0D9C4416B998CB005D2C2B /* qk-cocoa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-cocoa.h"; sourceTree = "<group>"; };
+		EC0D9C4516B998CB005D2C2B /* source-qk-mac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "source-qk-mac.h"; sourceTree = "<group>"; };
+		EC0D9C9A16B9A753005D2C2B /* png.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = png.h; sourceTree = "<group>"; };
+		EC0D9C9B16B9A753005D2C2B /* pngconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pngconf.h; sourceTree = "<group>"; };
+		EC0D9C9C16B9A753005D2C2B /* pnglibconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pnglibconf.h; sourceTree = "<group>"; };
+		EC0D9C9D16B9A753005D2C2B /* png.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = png.h; sourceTree = "<group>"; };
+		EC0D9C9E16B9A753005D2C2B /* pngconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pngconf.h; sourceTree = "<group>"; };
+		EC0D9C9F16B9A753005D2C2B /* pnglibconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pnglibconf.h; sourceTree = "<group>"; };
+		EC0D9CA116B9A753005D2C2B /* libpng.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libpng.a; sourceTree = "<group>"; };
+		EC0D9CA416B9A753005D2C2B /* sqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3.h; sourceTree = "<group>"; };
+		EC0D9CA516B9A753005D2C2B /* sqlite3ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3ext.h; sourceTree = "<group>"; };
+		EC0D9CA716B9A753005D2C2B /* libsqlite3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libsqlite3.a; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EC0D9A6616B82EBD005D2C2B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC0D9B5216B85799005D2C2B /* OpenGL.framework in Frameworks */,
+				EC0D9B5016B85794005D2C2B /* GLKit.framework in Frameworks */,
+				EC0D9B4E16B84FDA005D2C2B /* libz.dylib in Frameworks */,
+				EC0D9A9316B830F7005D2C2B /* AppKit.framework in Frameworks */,
+				EC0D9A9116B830F1005D2C2B /* Cocoa.framework in Frameworks */,
+				EC0D9CA816B9A753005D2C2B /* libpng.a in Frameworks */,
+				EC0D9CAA16B9A753005D2C2B /* libsqlite3.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC0D9B5416B8588B005D2C2B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC0D9B5B16B8588B005D2C2B /* Foundation.framework in Frameworks */,
+				EC0D9B6916B85903005D2C2B /* libz.dylib in Frameworks */,
+				EC0D9CA916B9A753005D2C2B /* libpng.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EC0D9A5E16B82EBD005D2C2B = {
+			isa = PBXGroup;
+			children = (
+				EC0D9A8F16B830E2005D2C2B /* test-qk-mac-Info.plist */,
+				EC0D9BDE16B998CB005D2C2B /* source-qk */,
+				EC0D9C4016B998CB005D2C2B /* source-qk-mac */,
+				EC0D9BD516B9983C005D2C2B /* jnb-image-with-png */,
+				EC0D9BAC16B87683005D2C2B /* test-qk-mac */,
+				EC0D9A9B16B831A1005D2C2B /* dependencies */,
+				EC0D9B5916B8588B005D2C2B /* Frameworks */,
+				EC0D9A6A16B82EBD005D2C2B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EC0D9A6A16B82EBD005D2C2B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EC0D9A6916B82EBD005D2C2B /* test-qk-mac.app */,
+				EC0D9B5716B8588B005D2C2B /* jnb-image-with-png */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EC0D9A9B16B831A1005D2C2B /* dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				EC0D9C9716B9A753005D2C2B /* png */,
+				EC0D9CA216B9A753005D2C2B /* sqlite3 */,
+				EC0D9B5116B85799005D2C2B /* OpenGL.framework */,
+				EC0D9B4F16B85794005D2C2B /* GLKit.framework */,
+				EC0D9B4D16B84FDA005D2C2B /* libz.dylib */,
+				EC0D9A9216B830F7005D2C2B /* AppKit.framework */,
+				EC0D9A9016B830F1005D2C2B /* Cocoa.framework */,
+			);
+			name = dependencies;
+			sourceTree = "<group>";
+		};
+		EC0D9B5916B8588B005D2C2B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EC0D9B5A16B8588B005D2C2B /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EC0D9BAC16B87683005D2C2B /* test-qk-mac */ = {
+			isa = PBXGroup;
+			children = (
+				EC0D9BAD16B87683005D2C2B /* AppDelegate.h */,
+				EC0D9BAE16B87683005D2C2B /* AppDelegate.m */,
+				EC0D9BAF16B87683005D2C2B /* test-qk-mac.m */,
+				EC0D9BB016B87683005D2C2B /* test-qk-mac.pch */,
+			);
+			path = "test-qk-mac";
+			sourceTree = "<group>";
+		};
+		EC0D9BD516B9983C005D2C2B /* jnb-image-with-png */ = {
+			isa = PBXGroup;
+			children = (
+				EC0D9BD616B9983C005D2C2B /* jnb-image-with-png.m */,
+				EC0D9BD716B9983C005D2C2B /* jnb-image-with-png.pch */,
+			);
+			path = "jnb-image-with-png";
+			sourceTree = "<group>";
+		};
+		EC0D9BDE16B998CB005D2C2B /* source-qk */ = {
+			isa = PBXGroup;
+			children = (
+				EC0D9BDF16B998CB005D2C2B /* qk-basic */,
+				EC0D9BF916B998CB005D2C2B /* qk-cf */,
+				EC0D9BFD16B998CB005D2C2B /* qk-cg */,
+				EC0D9C0916B998CB005D2C2B /* qk-foundation */,
+				EC0D9C2316B998CB005D2C2B /* qk-gl */,
+				EC0D9C3316B998CB005D2C2B /* qk-png */,
+				EC0D9C3716B998CB005D2C2B /* qk-sql */,
+				EC0D9C3F16B998CB005D2C2B /* source-qk.h */,
+			);
+			path = "source-qk";
+			sourceTree = "<group>";
+		};
+		EC0D9BDF16B998CB005D2C2B /* qk-basic */ = {
+			isa = PBXGroup;
+			children = (
+				EC0D9BE016B998CB005D2C2B /* Duo.h */,
+				EC0D9BE116B998CB005D2C2B /* Duo.m */,
+				EC0D9BE216B998CB005D2C2B /* qk-basic.h */,
+				EC0D9BE316B998CB005D2C2B /* qk-block-types.h */,
+				EC0D9BE416B998CB005D2C2B /* qk-check.h */,
+				EC0D9BE516B998CB005D2C2B /* qk-check.m */,
+				EC0D9BE616B998CB005D2C2B /* qk-log.h */,
+				EC0D9BE716B998CB005D2C2B /* qk-log.m */,
+				EC0D9BE816B998CB005D2C2B /* qk-macros.h */,
+				EC0D9BE916B998CB005D2C2B /* qk-math.h */,
+				EC0D9BEA16B998CB005D2C2B /* qk-math.m */,
+				EC0D9BEB16B998CB005D2C2B /* qk-types.h */,
+				EC0D9BEC16B998CB005D2C2B /* qk-vec.h */,
+				EC0D9BED16B998CB005D2C2B /* QKData.h */,
+				EC0D9BEE16B998CB005D2C2B /* QKData.m */,
+				EC0D9BEF16B998CB005D2C2B /* QKImage.h */,
+				EC0D9BF016B998CB005D2C2B /* QKImage.m */,
+				EC0D9BF116B998CB005D2C2B /* QKMutableStructArray.h */,
+				EC0D9BF216B998CB005D2C2B /* QKMutableStructArray.m */,
+				EC0D9BF316B998CB005D2C2B /* QKPixFmt.h */,
+				EC0D9BF416B998CB005D2C2B /* QKPixFmt.m */,
+				EC0D9BF516B998CB005D2C2B /* QKStructArray.h */,
+				EC0D9BF616B998CB005D2C2B /* QKStructArray.m */,
+				EC0D9BF716B998CB005D2C2B /* QKSubData.h */,
+				EC0D9BF816B998CB005D2C2B /* QKSubData.m */,
+			);
+			path = "qk-basic";
+			sourceTree = "<group>";
+		};
+		EC0D9BF916B998CB005D2C2B /* qk-cf */ = {
+			isa = PBXGroup;
+			children = (
+				EC0D9BFA16B998CB005D2C2B /* qk-cf.h */,
+				EC0D9BFB16B998CB005D2C2B /* QKCFObject.h */,
+				EC0D9BFC16B998CB005D2C2B /* QKCFObject.m */,
+			);
+			path = "qk-cf";
+			sourceTree = "<group>";
+		};
+		EC0D9BFD16B998CB005D2C2B /* qk-cg */ = {
+			isa = PBXGroup;
+			children = (
+				EC0D9BFE16B998CB005D2C2B /* qk-cg-util.h */,
+				EC0D9BFF16B998CB005D2C2B /* qk-cg-util.m */,
+				EC0D9C0016B998CB005D2C2B /* qk-cg.h */,
+				EC0D9C0116B998CB005D2C2B /* QKCGBitmapContext.h */,
+				EC0D9C0216B998CB005D2C2B /* QKCGBitmapContext.m */,
+				EC0D9C0316B998CB005D2C2B /* QKCGColorSpace.h */,
+				EC0D9C0416B998CB005D2C2B /* QKCGColorSpace.m */,
+				EC0D9C0516B998CB005D2C2B /* QKCGContext.h */,
+				EC0D9C0616B998CB005D2C2B /* QKCGContext.m */,
+				EC0D9C0716B998CB005D2C2B /* QKCGImage.h */,
+				EC0D9C0816B998CB005D2C2B /* QKCGImage.m */,
+			);
+			path = "qk-cg";
+			sourceTree = "<group>";
+		};
+		EC0D9C0916B998CB005D2C2B /* qk-foundation */ = {
+			isa = PBXGroup;
+			children = (
+				EC0D9C0A16B998CB005D2C2B /* NSArray+QK.h */,
+				EC0D9C0B16B998CB005D2C2B /* NSArray+QK.m */,
+				EC0D9C0C16B998CB005D2C2B /* NSBundle+QK.h */,
+				EC0D9C0D16B998CB005D2C2B /* NSBundle+QK.m */,
+				EC0D9C0E16B998CB005D2C2B /* NSData+QK.h */,
+				EC0D9C0F16B998CB005D2C2B /* NSData+QK.m */,
+				EC0D9C1016B998CB005D2C2B /* NSDate+QK.h */,
+				EC0D9C1116B998CB005D2C2B /* NSDate+QK.m */,
+				EC0D9C1216B998CB005D2C2B /* NSDictionary+QK.h */,
+				EC0D9C1316B998CB005D2C2B /* NSDictionary+QK.m */,
+				EC0D9C1416B998CB005D2C2B /* NSError+QK.h */,
+				EC0D9C1516B998CB005D2C2B /* NSError+QK.m */,
+				EC0D9C1616B998CB005D2C2B /* NSMutableData+QK.h */,
+				EC0D9C1716B998CB005D2C2B /* NSMutableData+QK.m */,
+				EC0D9C1816B998CB005D2C2B /* NSMutableDictionary+QK.h */,
+				EC0D9C1916B998CB005D2C2B /* NSMutableDictionary+QK.m */,
+				EC0D9C1A16B998CB005D2C2B /* NSObject+JNB.h */,
+				EC0D9C1B16B998CB005D2C2B /* NSObject+JNB.m */,
+				EC0D9C1C16B998CB005D2C2B /* NSObject+QK.h */,
+				EC0D9C1D16B998CB005D2C2B /* NSObject+QK.m */,
+				EC0D9C1E16B998CB005D2C2B /* NSOutputStream+QK.h */,
+				EC0D9C1F16B998CB005D2C2B /* NSOutputStream+QK.m */,
+				EC0D9C2016B998CB005D2C2B /* NSString+QK.h */,
+				EC0D9C2116B998CB005D2C2B /* NSString+QK.m */,
+				EC0D9C2216B998CB005D2C2B /* qk-foundation.h */,
+			);
+			path = "qk-foundation";
+			sourceTree = "<group>";
+		};
+		EC0D9C2316B998CB005D2C2B /* qk-gl */ = {
+			isa = PBXGroup;
+			children = (
+				EC0D9C2416B998CB005D2C2B /* GLFragmentShader.h */,
+				EC0D9C2516B998CB005D2C2B /* GLFragmentShader.m */,
+				EC0D9C2616B998CB005D2C2B /* GLObject.h */,
+				EC0D9C2716B998CB005D2C2B /* GLObject.m */,
+				EC0D9C2816B998CB005D2C2B /* GLProgram.h */,
+				EC0D9C2916B998CB005D2C2B /* GLProgram.m */,
+				EC0D9C2A16B998CB005D2C2B /* GLShader.h */,
+				EC0D9C2B16B998CB005D2C2B /* GLShader.m */,
+				EC0D9C2C16B998CB005D2C2B /* GLTexture.h */,
+				EC0D9C2D16B998CB005D2C2B /* GLTexture.m */,
+				EC0D9C2E16B998CB005D2C2B /* GLVertexShader.h */,
+				EC0D9C2F16B998CB005D2C2B /* GLVertexShader.m */,
+				EC0D9C3016B998CB005D2C2B /* qk-gl-util.h */,
+				EC0D9C3116B998CB005D2C2B /* qk-gl-util.m */,
+				EC0D9C3216B998CB005D2C2B /* qk-gl.h */,
+			);
+			path = "qk-gl";
+			sourceTree = "<group>";
+		};
+		EC0D9C3316B998CB005D2C2B /* qk-png */ = {
+			isa = PBXGroup;
+			children = (
+				EC0D9C3416B998CB005D2C2B /* qk-png.h */,
+				EC0D9C3516B998CB005D2C2B /* QKImage+PNG.h */,
+				EC0D9C3616B998CB005D2C2B /* QKImage+PNG.m */,
+			);
+			path = "qk-png";
+			sourceTree = "<group>";
+		};
+		EC0D9C3716B998CB005D2C2B /* qk-sql */ = {
+			isa = PBXGroup;
+			children = (
+				EC0D9C3816B998CB005D2C2B /* qk-sql-util.h */,
+				EC0D9C3916B998CB005D2C2B /* qk-sql-util.m */,
+				EC0D9C3A16B998CB005D2C2B /* qk-sql.h */,
+				EC0D9C3B16B998CB005D2C2B /* SqlDatabase.h */,
+				EC0D9C3C16B998CB005D2C2B /* SqlDatabase.m */,
+				EC0D9C3D16B998CB005D2C2B /* SqlStatement.h */,
+				EC0D9C3E16B998CB005D2C2B /* SqlStatement.m */,
+			);
+			path = "qk-sql";
+			sourceTree = "<group>";
+		};
+		EC0D9C4016B998CB005D2C2B /* source-qk-mac */ = {
+			isa = PBXGroup;
+			children = (
+				EC0D9C4116B998CB005D2C2B /* qk-cocoa */,
+				EC0D9C4516B998CB005D2C2B /* source-qk-mac.h */,
+			);
+			path = "source-qk-mac";
+			sourceTree = "<group>";
+		};
+		EC0D9C4116B998CB005D2C2B /* qk-cocoa */ = {
+			isa = PBXGroup;
+			children = (
+				EC0D9C4216B998CB005D2C2B /* NSView+QK.h */,
+				EC0D9C4316B998CB005D2C2B /* NSView+QK.m */,
+				EC0D9C4416B998CB005D2C2B /* qk-cocoa.h */,
+			);
+			path = "qk-cocoa";
+			sourceTree = "<group>";
+		};
+		EC0D9C9716B9A753005D2C2B /* png */ = {
+			isa = PBXGroup;
+			children = (
+				EC0D9C9816B9A753005D2C2B /* include */,
+				EC0D9CA016B9A753005D2C2B /* lib */,
+			);
+			name = png;
+			path = "built-mac/png";
+			sourceTree = "<group>";
+		};
+		EC0D9C9816B9A753005D2C2B /* include */ = {
+			isa = PBXGroup;
+			children = (
+				EC0D9C9916B9A753005D2C2B /* libpng15 */,
+				EC0D9C9D16B9A753005D2C2B /* png.h */,
+				EC0D9C9E16B9A753005D2C2B /* pngconf.h */,
+				EC0D9C9F16B9A753005D2C2B /* pnglibconf.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		EC0D9C9916B9A753005D2C2B /* libpng15 */ = {
+			isa = PBXGroup;
+			children = (
+				EC0D9C9A16B9A753005D2C2B /* png.h */,
+				EC0D9C9B16B9A753005D2C2B /* pngconf.h */,
+				EC0D9C9C16B9A753005D2C2B /* pnglibconf.h */,
+			);
+			path = libpng15;
+			sourceTree = "<group>";
+		};
+		EC0D9CA016B9A753005D2C2B /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				EC0D9CA116B9A753005D2C2B /* libpng.a */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		EC0D9CA216B9A753005D2C2B /* sqlite3 */ = {
+			isa = PBXGroup;
+			children = (
+				EC0D9CA316B9A753005D2C2B /* include */,
+				EC0D9CA616B9A753005D2C2B /* lib */,
+			);
+			name = sqlite3;
+			path = "built-mac/sqlite3";
+			sourceTree = "<group>";
+		};
+		EC0D9CA316B9A753005D2C2B /* include */ = {
+			isa = PBXGroup;
+			children = (
+				EC0D9CA416B9A753005D2C2B /* sqlite3.h */,
+				EC0D9CA516B9A753005D2C2B /* sqlite3ext.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		EC0D9CA616B9A753005D2C2B /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				EC0D9CA716B9A753005D2C2B /* libsqlite3.a */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EC0D9A6816B82EBD005D2C2B /* test-qk-mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC0D9A8716B82EBD005D2C2B /* Build configuration list for PBXNativeTarget "test-qk-mac" */;
+			buildPhases = (
+				EC0D9A6516B82EBD005D2C2B /* Sources */,
+				EC0D9A6616B82EBD005D2C2B /* Frameworks */,
+				EC0D9A6716B82EBD005D2C2B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "test-qk-mac";
+			productName = "libqk-mac";
+			productReference = EC0D9A6916B82EBD005D2C2B /* test-qk-mac.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EC0D9B5616B8588B005D2C2B /* jnb-image-with-png */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC0D9B6316B8588B005D2C2B /* Build configuration list for PBXNativeTarget "jnb-image-with-png" */;
+			buildPhases = (
+				EC0D9B5316B8588B005D2C2B /* Sources */,
+				EC0D9B5416B8588B005D2C2B /* Frameworks */,
+				EC0D9B5516B8588B005D2C2B /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "jnb-image-with-png";
+			productName = "qkd-image-from-png";
+			productReference = EC0D9B5716B8588B005D2C2B /* jnb-image-with-png */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EC0D9A6016B82EBD005D2C2B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = QK;
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "George King";
+			};
+			buildConfigurationList = EC0D9A6316B82EBD005D2C2B /* Build configuration list for PBXProject "qk-mac" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = EC0D9A5E16B82EBD005D2C2B;
+			productRefGroup = EC0D9A6A16B82EBD005D2C2B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EC0D9A6816B82EBD005D2C2B /* test-qk-mac */,
+				EC0D9B5616B8588B005D2C2B /* jnb-image-with-png */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EC0D9A6716B82EBD005D2C2B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EC0D9A6516B82EBD005D2C2B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC0D9BB116B87683005D2C2B /* AppDelegate.m in Sources */,
+				EC0D9BB216B87683005D2C2B /* test-qk-mac.m in Sources */,
+				EC0D9C4616B998CB005D2C2B /* Duo.m in Sources */,
+				EC0D9C4816B998CB005D2C2B /* qk-check.m in Sources */,
+				EC0D9C4A16B998CB005D2C2B /* qk-log.m in Sources */,
+				EC0D9C4C16B998CB005D2C2B /* qk-math.m in Sources */,
+				EC0D9C4E16B998CB005D2C2B /* QKData.m in Sources */,
+				EC0D9C5016B998CB005D2C2B /* QKImage.m in Sources */,
+				EC0D9C5216B998CB005D2C2B /* QKMutableStructArray.m in Sources */,
+				EC0D9C5416B998CB005D2C2B /* QKPixFmt.m in Sources */,
+				EC0D9C5616B998CB005D2C2B /* QKStructArray.m in Sources */,
+				EC0D9C5816B998CB005D2C2B /* QKSubData.m in Sources */,
+				EC0D9C5A16B998CB005D2C2B /* QKCFObject.m in Sources */,
+				EC0D9C5C16B998CB005D2C2B /* qk-cg-util.m in Sources */,
+				EC0D9C5E16B998CB005D2C2B /* QKCGBitmapContext.m in Sources */,
+				EC0D9C6016B998CB005D2C2B /* QKCGColorSpace.m in Sources */,
+				EC0D9C6216B998CB005D2C2B /* QKCGContext.m in Sources */,
+				EC0D9C6416B998CB005D2C2B /* QKCGImage.m in Sources */,
+				EC0D9C6616B998CB005D2C2B /* NSArray+QK.m in Sources */,
+				EC0D9C6816B998CB005D2C2B /* NSBundle+QK.m in Sources */,
+				EC0D9C6A16B998CB005D2C2B /* NSData+QK.m in Sources */,
+				EC0D9C6C16B998CB005D2C2B /* NSDate+QK.m in Sources */,
+				EC0D9C6E16B998CB005D2C2B /* NSDictionary+QK.m in Sources */,
+				EC0D9C7016B998CB005D2C2B /* NSError+QK.m in Sources */,
+				EC0D9C7216B998CB005D2C2B /* NSMutableData+QK.m in Sources */,
+				EC0D9C7416B998CB005D2C2B /* NSMutableDictionary+QK.m in Sources */,
+				EC0D9C7616B998CB005D2C2B /* NSObject+JNB.m in Sources */,
+				EC0D9C7816B998CB005D2C2B /* NSObject+QK.m in Sources */,
+				EC0D9C7A16B998CB005D2C2B /* NSOutputStream+QK.m in Sources */,
+				EC0D9C7C16B998CB005D2C2B /* NSString+QK.m in Sources */,
+				EC0D9C7E16B998CB005D2C2B /* GLFragmentShader.m in Sources */,
+				EC0D9C8016B998CB005D2C2B /* GLObject.m in Sources */,
+				EC0D9C8216B998CB005D2C2B /* GLProgram.m in Sources */,
+				EC0D9C8416B998CB005D2C2B /* GLShader.m in Sources */,
+				EC0D9C8616B998CB005D2C2B /* GLTexture.m in Sources */,
+				EC0D9C8816B998CB005D2C2B /* GLVertexShader.m in Sources */,
+				EC0D9C8A16B998CB005D2C2B /* qk-gl-util.m in Sources */,
+				EC0D9C8C16B998CB005D2C2B /* QKImage+PNG.m in Sources */,
+				EC0D9C8E16B998CB005D2C2B /* qk-sql-util.m in Sources */,
+				EC0D9C9016B998CB005D2C2B /* SqlDatabase.m in Sources */,
+				EC0D9C9216B998CB005D2C2B /* SqlStatement.m in Sources */,
+				EC0D9C9416B998CB005D2C2B /* NSView+QK.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC0D9B5316B8588B005D2C2B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC0D9BD816B9983C005D2C2B /* jnb-image-with-png.m in Sources */,
+				EC0D9C4716B998CB005D2C2B /* Duo.m in Sources */,
+				EC0D9C4916B998CB005D2C2B /* qk-check.m in Sources */,
+				EC0D9C4B16B998CB005D2C2B /* qk-log.m in Sources */,
+				EC0D9C4D16B998CB005D2C2B /* qk-math.m in Sources */,
+				EC0D9C4F16B998CB005D2C2B /* QKData.m in Sources */,
+				EC0D9C5116B998CB005D2C2B /* QKImage.m in Sources */,
+				EC0D9C5316B998CB005D2C2B /* QKMutableStructArray.m in Sources */,
+				EC0D9C5516B998CB005D2C2B /* QKPixFmt.m in Sources */,
+				EC0D9C5716B998CB005D2C2B /* QKStructArray.m in Sources */,
+				EC0D9C5916B998CB005D2C2B /* QKSubData.m in Sources */,
+				EC0D9C6716B998CB005D2C2B /* NSArray+QK.m in Sources */,
+				EC0D9C6916B998CB005D2C2B /* NSBundle+QK.m in Sources */,
+				EC0D9C6B16B998CB005D2C2B /* NSData+QK.m in Sources */,
+				EC0D9C6D16B998CB005D2C2B /* NSDate+QK.m in Sources */,
+				EC0D9C6F16B998CB005D2C2B /* NSDictionary+QK.m in Sources */,
+				EC0D9C7116B998CB005D2C2B /* NSError+QK.m in Sources */,
+				EC0D9C7316B998CB005D2C2B /* NSMutableData+QK.m in Sources */,
+				EC0D9C7516B998CB005D2C2B /* NSMutableDictionary+QK.m in Sources */,
+				EC0D9C7716B998CB005D2C2B /* NSObject+JNB.m in Sources */,
+				EC0D9C7916B998CB005D2C2B /* NSObject+QK.m in Sources */,
+				EC0D9C7B16B998CB005D2C2B /* NSOutputStream+QK.m in Sources */,
+				EC0D9C7D16B998CB005D2C2B /* NSString+QK.m in Sources */,
+				EC0D9C8D16B998CB005D2C2B /* QKImage+PNG.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		EC0D9A8516B82EBD005D2C2B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CXX0X_EXTENSIONS = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJCPP_ARC_ABI = YES;
+				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CLANG_WARN__EXIT_TIME_DESTRUCTORS = YES;
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = "$(SOURCE_ROOT)/built-mac/$(TARGET_NAME)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(TARGET_NAME)/$(TARGET_NAME).pch";
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;
+				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "$(TARGET_NAME)-info.plist";
+				INSTALL_PATH = /bin;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		EC0D9A8616B82EBD005D2C2B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CXX0X_EXTENSIONS = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJCPP_ARC_ABI = YES;
+				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CLANG_WARN__EXIT_TIME_DESTRUCTORS = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DSTROOT = "$(SOURCE_ROOT)/built-mac/$(TARGET_NAME)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(TARGET_NAME)/$(TARGET_NAME).pch";
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;
+				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "$(TARGET_NAME)-info.plist";
+				INSTALL_PATH = /bin;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		EC0D9A8816B82EBD005D2C2B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/built-mac/png/lib\"",
+					"\"$(SRCROOT)/built-mac/sqlite3/lib\"",
+				);
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		EC0D9A8916B82EBD005D2C2B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/built-mac/png/lib\"",
+					"\"$(SRCROOT)/built-mac/sqlite3/lib\"",
+				);
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		EC0D9B6416B8588B005D2C2B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/built-mac/png/lib\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		EC0D9B6516B8588B005D2C2B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				DEAD_CODE_STRIPPING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/built-mac/png/lib\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EC0D9A6316B82EBD005D2C2B /* Build configuration list for PBXProject "qk-mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC0D9A8516B82EBD005D2C2B /* Debug */,
+				EC0D9A8616B82EBD005D2C2B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EC0D9A8716B82EBD005D2C2B /* Build configuration list for PBXNativeTarget "test-qk-mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC0D9A8816B82EBD005D2C2B /* Debug */,
+				EC0D9A8916B82EBD005D2C2B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EC0D9B6316B8588B005D2C2B /* Build configuration list for PBXNativeTarget "jnb-image-with-png" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC0D9B6416B8588B005D2C2B /* Debug */,
+				EC0D9B6516B8588B005D2C2B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EC0D9A6016B82EBD005D2C2B /* Project object */;
+}

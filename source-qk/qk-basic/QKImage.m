@@ -32,6 +32,11 @@
 }
 
 
+- (NSString*)formatDesc {
+  return QKPixFmtDesc(_format);
+}
+
+
 PROPERTY_STRUCT_FIELD(I32, width, Width, V2I32, _size, _[0]);
 PROPERTY_STRUCT_FIELD(I32, height, Height, V2I32, _size, _[1]);
 

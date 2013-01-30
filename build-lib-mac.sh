@@ -6,13 +6,15 @@ source ./build-lib-common.sh
 
 lipo=lipo
 
-"$qk_root/build-lib-arch.sh" MacOSX10.8 i686-apple-darwin x86_64
+"$qk_root/build-lib-arch.sh" "$src_dir" "$build_dir" MacOSX10.8 i686-apple-darwin x86_64
 
-echo "creating fat lib: $dst_path"
-mkdir -p "$dst_path/lib"
+echo
+echo "creating fat lib: $install_dir"
+mkdir -p "$install_dir/lib"
 
-cp -RP build-x86_64/install/include "$dst_path/include"
+cp -RP "$build_dir/x86_64/install/include" "$install_dir/include"
 
+# lipo is not necessary with only one arch, but this is how to do it.
 $lipo \
--arch x86_64 build-x86_64/install/lib/$lib_name.a \
--create -output "$dst_path/lib/$lib_name.a"
+-arch x86_64 "$build_dir/x86_64/install/lib/$lib_name.a" \
+-create -output "$install_dir/lib/$lib_name.a"

@@ -1,0 +1,10 @@
+
+
+// under 10.8, CoreVideo imports gl.h, so need to suppress warning.
+#define GL_DO_NOT_WARN_IF_MULTI_GL_VERSION_HEADERS_INCLUDED 1
+
+#ifdef __OBJC__
+# import <Cocoa/Cocoa.h>
+# import "source-qk.h"
+# import "source-qk-mac.h"
+#endif

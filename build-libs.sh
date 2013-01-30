@@ -10,13 +10,13 @@ error() { echo 'error:' "$@" 1>&2; exit 1; }
 
 [[ $0 == "./build-libs.sh" ]] || error "must invoke as ./build-libs.sh"
 
-[[ ${#@} == 2 ]] || error "usage: sqlite3-path png-path"
+[[ ${#@} == 2 ]] || error "usage: png-path sqlite3-path"
 
-sqlite3=$1; shift
 png=$1; shift
+sqlite3=$1; shift
 libqk="$PWD"
 
-platforms="ios mac"
+platforms="mac ios"
 libs="png sqlite3"
 
 for l in $libs; do
@@ -26,7 +26,7 @@ for l in $libs; do
     d="libs-$p/$l"
     [[ -d "$d" ]] && rm -rf "$d"
     mkdir -p "$d"
-    ./build-lib-$p.sh lib$l "$lib_path" libs-$p/$l
+    ./build-lib-$p.sh lib$l "$lib_path" built-$p/$l
   done
 done
 
