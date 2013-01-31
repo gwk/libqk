@@ -48,15 +48,15 @@ _COLS(9);
 - (Int)step:(BlockStepSql)block;
 - (NSMutableArray*)map:(BlockMapSql)block;
 - (NSMutableArray*)filterMap:(BlockMapSql)block;
-- (void)bindIndex:(int)index Int:(Int)value;
-- (void)bindIndex:(int)index I64:(I64)value;
-- (void)bindIndex:(int)index F64:(F64)value;
-- (void)bindIndex:(int)index string:(NSString*)value;
-- (Int)getInt:(int)index;
-- (Int)getI64:(int)index;
-- (F64)getF64:(int)index;
-- (NSString*)getString:(int)index;
-- (NSArray*)getStrings:(int)count;
+- (void)bindIndex:(I32)index Int:(Int)value;
+- (void)bindIndex:(I32)index I64:(I64)value;
+- (void)bindIndex:(I32)index F64:(F64)value;
+- (void)bindIndex:(I32)index string:(NSString*)value;
+- (Int)getInt:(I32)index;
+- (Int)getI64:(I32)index;
+- (F64)getF64:(I32)index;
+- (NSString*)getString:(I32)index;
+- (NSArray*)getStrings:(I32)count;
 - (NSArray*)getStrings;
 
 @end

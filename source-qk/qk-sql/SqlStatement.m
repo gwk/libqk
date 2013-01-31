@@ -139,7 +139,7 @@ STEP1(F64);
 }
 
 
-- (void)bindIndex:(int)index Int:(Int)value {
+- (void)bindIndex:(I32)index Int:(Int)value {
   int code;
   if (Int_is_64_bits) {
     code = sqlite3_bind_int64(_handle, index, value);
@@ -151,19 +151,19 @@ STEP1(F64);
 }
 
 
-- (void)bindIndex:(int)index I64:(I64)value {
-  int code = sqlite3_bind_int(_handle, index, value);
+- (void)bindIndex:(I32)index I64:(I64)value {
+  int code = sqlite3_bind_int64(_handle, index, value);
   _ASSERT_OK(@"bind I64: %d", index);
 }
 
 
-- (void)bindIndex:(int)index F64:(F64)value {
+- (void)bindIndex:(I32)index F64:(F64)value {
   int code = sqlite3_bind_double(_handle, index, value);
   _ASSERT_OK(@"bind F64: %d", index);
 }
 
 
-- (void)bindIndex:(int)index string:(NSString*)value {
+- (void)bindIndex:(I32)index string:(NSString*)value {
   int code = sqlite3_bind_text(_handle, index, value.asUtf8, -1, SQLITE_TRANSIENT);
   _ASSERT_OK(@"bind string: %d; '%@'", index, value);
 }
@@ -172,7 +172,7 @@ STEP1(F64);
 #define _ASSERT_VALID_INDEX \
 assert(index >= 0 && index < self.columnCount, @"bad index: %d; columnCount: %d", index, self.columnCount)
 
-- (Int)getInt:(int)index {
+- (Int)getInt:(I32)index {
   _ASSERT_VALID_INDEX;
   if (Int_is_64_bits) {
     return sqlite3_column_int64(_handle, index);
@@ -183,35 +183,35 @@ assert(index >= 0 && index < self.columnCount, @"bad index: %d; columnCount: %d"
 }
 
 
-- (Int)getI64:(int)index {
+- (Int)getI64:(I32)index {
   _ASSERT_VALID_INDEX;
   return sqlite3_column_int64(_handle, index);
 }
 
 
-- (F64)getF64:(int)index {
+- (F64)getF64:(I32)index {
   _ASSERT_VALID_INDEX;
   return sqlite3_column_double(_handle, index);
 }
 
 
-- (NSString*)getString:(int)index {
+- (NSString*)getString:(I32)index {
   _ASSERT_VALID_INDEX;
   return [NSString withUtf8:(Utf8)sqlite3_column_text(_handle, index)];
 }
 
 
-- (NSArray*)getStrings:(int)count {
+- (NSArray*)getStrings:(I32)count {
   assert(count <= self.columnCount, @"bad count: %d; columnCount: %d", count, self.columnCount);
   return [NSArray mapIntTo:count block:^(Int i){
-    return [self getString:i];
+    return [self getString:(I32)i];
   }];
 }
 
 
 - (NSArray*)getStrings {
   return [NSArray mapIntTo:self.columnCount block:^(Int i){
-    NSString* s = [self getString:i];
+    NSString* s = [self getString:(I32)i];
     return s ? s : @"<NULL>";
   }];
 }
