@@ -4,6 +4,18 @@
 
 #import "NSView+QK.h"
 
+const UIViewAutoresizing UIFlexNone   = NSViewNotSizable;
+const UIViewAutoresizing UIFlexWidth  = NSViewWidthSizable;
+const UIViewAutoresizing UIFlexHeight = NSViewHeightSizable;
+const UIViewAutoresizing UIFlexLeft   = NSViewMinXMargin;
+const UIViewAutoresizing UIFlexRight  = NSViewMaxXMargin;
+const UIViewAutoresizing UIFlexTop    = NSViewMaxYMargin;
+const UIViewAutoresizing UIFlexBottom = NSViewMinYMargin;
+
+const UIViewAutoresizing UIFlexSize       = UIFlexWidth | UIFlexHeight;
+const UIViewAutoresizing UIFlexHorizontal = UIFlexLeft | UIFlexRight;
+const UIViewAutoresizing UIFlexVertical   = UIFlexTop | UIFlexBottom;
+
 
 @implementation NSView (QK)
 
