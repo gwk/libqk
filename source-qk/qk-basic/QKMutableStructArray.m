@@ -30,11 +30,6 @@
 }
 
 
-- (void)appendElement:(const void*)element {
-  [self.mutableData appendBytes:element length:self.elSize];
-}
-
-
 - (id)copyWithZone:(NSZone*)zone {
   return [QKStructArray withElSize:self.elSize data:self.data];
 }
@@ -60,23 +55,33 @@
 }
 
 
-#define SET_EL(T) \
-- (void)setEl:(int)index T:(T)val { \
+- (void)appendElement:(const void*)element {
+  [self.mutableData appendBytes:element length:self.elSize];
+}
+
+
+#define EL(T) \
+- (void)setEl:(int)index T:(T)element { \
 assert(self.elSize == sizeof(T), @"bad type: %s", #T); \
 ASSERT_INDEX; \
-[self.mutableData replaceBytesInRange:[self byteRangeForIndex:index] withBytes:&val]; \
+[self.mutableData replaceBytesInRange:[self byteRangeForIndex:index] withBytes:&element]; \
+} \
+\
+- (void)append##T:(T)element { \
+assert(self.elSize == sizeof(T), @"bad type: %s", #T); \
+[self.mutableData appendBytes:&element length:self.elSize]; \
 } \
 
 
-SET_EL(Int);
-SET_EL(I32);
-SET_EL(I64);
-SET_EL(F32);
-SET_EL(F64);
-SET_EL(V2F32);
-SET_EL(V2F64);
+EL(Int);
+EL(I32);
+EL(I64);
+EL(F32);
+EL(F64);
+EL(V2F32);
+EL(V2F64);
 
-
+#undef EL
 
 
 @end
