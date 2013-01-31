@@ -31,6 +31,12 @@ static const U32 QKPixFmtBitX   = 1 << 4; // indicates skip fourth channel
 static const U32 QKPixFmtBitL   = 1 << 5; // luminance (grayscale)
 static const U32 QKPixFmtBitRGB = 1 << 6; // rgb
 
+// OpenGL flags
+static const U32 QKPixFmtBitD16 = 1 << 7; // 16 bit depth buffer
+static const U32 QKPixFmtBitD24 = 1 << 8; // 24 bit depth buffer
+static const U32 QKPixFmtBitMS4 = 1 << 9;   // 4 multisample
+static const U32 QKPixFmtBitMS9 = 1 << 10;  // 9 multisample
+
 typedef enum {
   QKPixFmtUnknown = 0,
   // alpha-only masks
@@ -67,4 +73,7 @@ int QKPixFmtBitmapInfo(QKPixFmt format);
 
 int QKPixFmtGlDataFormat(QKPixFmt format);
 int QKPixFmtGlDataType(QKPixFmt format);
+
+int QKPixFmtDepth(QKPixFmt format);
+int QKPixFmtMultisamples(QKPixFmt format);
 

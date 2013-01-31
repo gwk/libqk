@@ -147,3 +147,16 @@ int QKPixFmtGlDataType(QKPixFmt format) {
 }
 
 
+int QKPixFmtDepth(QKPixFmt format) {
+  if (format & QKPixFmtBitD16) return 16;
+  if (format & QKPixFmtBitD24) return 24;
+  return 0;
+}
+
+
+int QKPixFmtMultisamples(QKPixFmt format) {
+  if (format & QKPixFmtBitMS4) return 4;
+  if (format & QKPixFmtBitMS9) return 9;
+  return 0;
+}
+
