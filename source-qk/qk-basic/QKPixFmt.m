@@ -147,7 +147,23 @@ int QKPixFmtGlDataType(QKPixFmt format) {
 }
 
 
-int QKPixFmtDepth(QKPixFmt format) {
+int QKPixFmtColorSize(QKPixFmt format) {
+  if (format & (QKPixFmtBitL | QKPixFmtBitRGB)) {
+    return QKPixFmtBitsPerChannel(format);
+  }
+  return 0;
+}
+
+
+int QKPixFmtAlphaSize(QKPixFmt format) {
+  if (format & QKPixFmtBitA) {
+    return QKPixFmtBitsPerChannel(format);
+  }
+  return 0;
+}
+
+
+int QKPixFmtDepthSize(QKPixFmt format) {
   if (format & QKPixFmtBitD16) return 16;
   if (format & QKPixFmtBitD24) return 24;
   return 0;

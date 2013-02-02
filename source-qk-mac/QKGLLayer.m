@@ -2,6 +2,8 @@
 // Permission to use this file is granted in oropendula/license.txt.
 
 
+#import "qk-macros.h"
+#import "QKMutableStructArray.h"
 #import "QKGLLayer.h"
 
 
@@ -22,7 +24,7 @@
 
 
 - (void)setMaxContentScale:(CGFloat)maxContentScale {
-  _maxContentScale = maxContentScale;
+  _maxContentScale = MIN(maxContentScale, 1); // setting to zero causes render not to be called; confusing.
   self.contentsScale = self.contentsScale;
 }
 
@@ -31,6 +33,10 @@
   INIT(super init);
   _format = format;
   _renderer = renderer;
+  self.opaque = YES;
+  self.opacity = 1;
+  self.asynchronous = NO;
+  _maxContentScale = 1.0;
   return self;
 }
 
@@ -94,16 +100,16 @@ void describeAllPFA(CGLPixelFormatObj format, GLint virtualScreen) {
 }
 
 
-
 - (CGLPixelFormatObj)copyCGLPixelFormatForDisplayMask:(uint32_t)mask {
   
   QKMutableStructArray* attributes = [QKMutableStructArray withElSize:sizeof(CGLPixelFormatAttribute)];
   [attributes appendI32:kCGLPFADoubleBuffer];
-  int depth = QKPixFmtDepth(_format);
-  if (depth) {
-    [attributes appendI32:kCGLPFADepthSize];
-    [attributes appendI32:depth];
-  }
+  [attributes appendI32:kCGLPFAColorSize];
+  [attributes appendI32:QKPixFmtColorSize(_format)];
+  [attributes appendI32:kCGLPFAAlphaSize];
+  [attributes appendI32:QKPixFmtAlphaSize(_format)];
+  [attributes appendI32:kCGLPFADepthSize];
+  [attributes appendI32:QKPixFmtDepthSize(_format)];
   int samples = QKPixFmtMultisamples(_format);
   if (samples) {
     [attributes appendI32:kCGLPFAMultisample];
@@ -128,9 +134,16 @@ void describeAllPFA(CGLPixelFormatObj format, GLint virtualScreen) {
 
 
 - (CGLContextObj)copyCGLContextForPixelFormat:(CGLPixelFormatObj)pixelFormat {
-  CGLContextObj ctx = [super copyCGLContextForPixelFormat:pixelFormat];
   _needsSetup = YES;
+  CGLContextObj ctx = [super copyCGLContextForPixelFormat:pixelFormat];
   return ctx;
+}
+
+
+- (BOOL)canDrawInCGLContext:(CGLContextObj)ctx
+                pixelFormat:(CGLPixelFormatObj)pf forLayerTime:(CFTimeInterval)t
+                displayTime:(const CVTimeStamp *)ts {
+  return YES;
 }
 
 
@@ -138,15 +151,18 @@ void describeAllPFA(CGLPixelFormatObj format, GLint virtualScreen) {
              pixelFormat:(CGLPixelFormatObj)pixelFormat
             forLayerTime:(CFTimeInterval)layerTime
              displayTime:(const CVTimeStamp *)displayTime {
-  
+
+  ASSERT_CONFORMS(self.renderer, QKGLRenderer);
   CGLSetCurrentContext(ctx);
   CGSize s = self.bounds.size;
   if (_needsSetup) {
-    [self.renderer setupCGLContext:ctx time:layerTime];
+    [self.renderer setupGLContext:ctx time:layerTime];
     _needsSetup = NO;
   }
-  [self.renderer drawInCGLContext:ctx time:layerTime size:s];
+  [self.renderer drawInGLContext:ctx time:layerTime size:s];
   CGLSetCurrentContext(NULL);
+  // according to the header comments, we should call super to flush correctly.
+  [super drawInCGLContext:ctx pixelFormat:pixelFormat forLayerTime:layerTime displayTime:displayTime]; // calls flush
 }
 
 @end

@@ -3,6 +3,8 @@
 
 
 #import <Cocoa/Cocoa.h>
+#import "qk-types.h"
+
 
 typedef Int UIViewAutoresizing;
 
@@ -21,6 +23,7 @@ extern const UIViewAutoresizing UIFlexVertical;
 
 @interface NSView (QK)
 
+- (void)setNeedsDisplay;
 - (void)inspect:(NSString*)label;
 - (void)inspectParents:(NSString*)label;
 

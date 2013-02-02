@@ -2,6 +2,7 @@
 // Permission to use this file is granted in oropendula/license.txt.
 
 
+#import "QKPixFmt.h"
 #import "QKGLLayer.h"
 
 
@@ -16,6 +17,9 @@
 
 - (id)initWithFrame:(CGRect)frame renderer:(id)renderer glFormat:(QKPixFmt)glFormat;
 - (id)initWithFrame:(CGRect)frame renderer:(id)renderer;
+
++ (id)withFrame:(CGRect)frame renderer:(id)renderer glFormat:(QKPixFmt)glFormat;
++ (id)withFrame:(CGRect)frame renderer:(id)renderer;
 
 @end
 

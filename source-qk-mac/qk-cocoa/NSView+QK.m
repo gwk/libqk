@@ -20,6 +20,11 @@ const UIViewAutoresizing UIFlexVertical   = UIFlexTop | UIFlexBottom;
 @implementation NSView (QK)
 
 
+- (void)setNeedsDisplay {
+  [self setNeedsDisplay:YES];
+}
+
+
 // MARK: debugging
 
 

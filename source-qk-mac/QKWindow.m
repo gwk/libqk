@@ -12,7 +12,7 @@
 @property (nonatomic) NSInteger normalLevel;
 @property (nonatomic) BOOL normalOpaque;
 @property (nonatomic) BOOL normalHidesOnDeactivate;
-@property (nonatomic) NSButton* coverScreenButton;
+@property (nonatomic) NSButton* screenButton;
 @property (nonatomic) NSTimer* timer;
 
 @end
@@ -28,32 +28,67 @@
 }
 
 
-- (id)initWithView:(NSView *)view styleMask:(NSUInteger)styleMask {
+- (id)initWithView:(NSView *)view
+         styleMask:(NSUInteger)styleMask
+        screenMode:(QKWindowScreenMode)screenMode
+          position:(CGPoint)position
+          activate:(BOOL)activate {
   
   INIT(super initWithContentRect:view.frame styleMask:styleMask backing:NSBackingStoreBuffered defer:YES);
+  
+  _screenMode = screenMode;
+  self.contentView = view;
+  self.backgroundColor = [NSColor blueColor]; // for debugging blank windows
+  self.releasedWhenClosed = NO;
+  
+  if (_screenMode) {
+    [self addScreenButton];
+  }
+  
+  if (activate) {
+    [self makeKeyAndOrderFront:nil];
+    [self makeMainWindow]; // must come after makeKeyAndOrderFront
+  }
+  else {
+    [self orderBack:nil];
+  }
+  self.originFromVisibleTopLeft = position;
   
   [[NSNotificationCenter defaultCenter] addObserver:self
                                            selector:@selector(screenDidChange:)
                                                name:NSWindowDidChangeScreenNotification
                                              object:self];
   
-  self.contentView = view;
-  [self addCoverScreenButton];
   [self screenDidChange:nil]; // retina resolution factor is not recognized on first frame, so this is necessary.
-  
   return self;
 }
 
 
-- (id)initWithView:(NSView *)view {
++ (id)withView:(NSView*)view
+     styleMask:(NSUInteger)styleMask
+    screenMode:(QKWindowScreenMode)screenMode
+      position:(CGPoint)position
+      activate:(BOOL)activate {
+  
+  return [[self alloc] initWithView:view styleMask:styleMask screenMode:screenMode position:position activate:activate];
+}
+
+
++ (id)withView:(NSView*)view
+     closeable:(BOOL)closeable
+miniaturizable:(BOOL)miniaturizable
+     resizable:(BOOL)resizable
+    screenMode:(BOOL)screenMode
+      position:(CGPoint)position
+      activate:(BOOL)activate {
   
   NSUInteger styleMask =
   NSTitledWindowMask
-  | NSClosableWindowMask
-  | NSMiniaturizableWindowMask
-  | NSResizableWindowMask;
+  | (closeable ? NSClosableWindowMask : 0)
+  | (miniaturizable ? NSMiniaturizableWindowMask : 0)
+  | (resizable ? NSResizableWindowMask : 0);
   
-  return [self initWithView:view styleMask:styleMask];
+  return [self withView:view styleMask:styleMask screenMode:screenMode position:position activate:activate];
 }
 
 
@@ -75,9 +110,8 @@
 }
 
 
-// since the title bar gets removed on cover screen,
-// we must add the button on init and every time we uncover.
-- (void)addCoverScreenButton {
+// since the title bar gets removed on cover screen, we must add the button on init and every time we uncover.
+- (void)addScreenButton {
   // setup cover screen button
   NSView* windowView = [self.contentView superview];
   CGRect wf = windowView.frame;
@@ -85,17 +119,17 @@
   CGSize s = image.size;
   CGRect frame = CGRectMake(wf.size.width - s.width - 3, wf.size.height - s.height - 3, s.width, s.height);
   
-  if (!_coverScreenButton) {
-    _coverScreenButton =  [[NSButton alloc] initWithFrame:frame];
-    _coverScreenButton.target = self;
-    _coverScreenButton.action = @selector(toggleCoversScreen);
-    _coverScreenButton.autoresizingMask = NSViewMinXMargin | NSViewMinYMargin;
-    _coverScreenButton.image = image;
-    _coverScreenButton.bordered = NO;
+  if (!_screenButton) {
+    _screenButton =  [[NSButton alloc] initWithFrame:frame];
+    _screenButton.target = self;
+    _screenButton.action = @selector(toggleCoversScreen);
+    _screenButton.autoresizingMask = NSViewMinXMargin | NSViewMinYMargin;
+    _screenButton.image = image;
+    _screenButton.bordered = NO;
     // TODO: fix white in highlight state.
   }
   
-  [windowView addSubview:_coverScreenButton];
+  [windowView addSubview:_screenButton];
 }
 
 
@@ -125,7 +159,7 @@
     self.level = self.normalLevel;
     self.opaque = self.normalOpaque;
     self.hidesOnDeactivate = self.normalHidesOnDeactivate;
-    [self addCoverScreenButton];
+    [self addScreenButton];
   }
   [self display];
 }
@@ -142,7 +176,7 @@
   }
   if ([self.delegate respondsToSelector:@selector(keyUp:)]) {
     [(NSResponder*)self.delegate keyUp:event];
-  } 
+  }
 }
 
 

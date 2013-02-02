@@ -17,6 +17,12 @@
 @implementation QKView
 
 
+- (NSString*)description {
+  return [NSString withFormat:@"<%@ %p: %@ %@>",
+          self.class, self, NSStringFromCGRect(self.frame), self.layer];
+}
+
+
 - (id)initWithFrame:(CGRect)frame {
   NON_DESIGNATED_INIT(@"initWithFrame:renderer:glFormat:");
 }
@@ -25,14 +31,20 @@
 - (id)initWithFrame:(CGRect)frame renderer:(id)renderer glFormat:(QKPixFmt)glFormat {
   INIT(super initWithFrame:frame);
   self.renderer = renderer;
-  if (CONFORMS(renderer, QKGLRenderer)) {
+  if (glFormat) {
     [self setupLayer:[[QKGLLayer alloc] initWithFormat:glFormat renderer:renderer]];
   }
   else {
     [self setupLayer:[CALayer new]];
   }
-  [self.layer setNeedsDisplay]; // not sure if this is needed for none, one, or both.
+  self.layerContentsRedrawPolicy = NSViewLayerContentsRedrawBeforeViewResize;
+  //[self.layer setNeedsDisplay]; // not sure if this is needed for none, one, or both.
   return self;
+}
+
+
+- (BOOL)isOpaque {
+  return self.layer.opaque;
 }
 
 
@@ -41,8 +53,19 @@
 }
 
 
++ (id)withFrame:(CGRect)frame renderer:(id)renderer glFormat:(QKPixFmt)glFormat {
+  return [[self alloc] initWithFrame:frame renderer:renderer glFormat:glFormat];
+}
+
+
++ (id)withFrame:(CGRect)frame renderer:(id)renderer {
+  return [[self alloc] initWithFrame:frame renderer:renderer];
+}
+
+
 - (void)setupLayer:(CALayer*)layer {
   self.layer = layer;
+  self.layer.delegate = self;
   self.layer.autoresizingMask = kCALayerWidthSizable | kCALayerHeightSizable;
   self.layer.needsDisplayOnBoundsChange = YES;
   self.wantsLayer = YES; // set wantsLayer after layer for layer-hosting view behavior (programmatic layer).
@@ -54,8 +77,8 @@
 }
 
 
+// CALayerDelegate method gets called only for CG case.
 - (void)drawLayer:(CALayer *)layer inContext:(CGContextRef)ctx {
-  LOG_METHOD;
   ASSERT_CONFORMS(self.renderer, QKCGRenderer);
   [self.renderer drawInCGContext:ctx time:-[_animationStartDate timeIntervalSinceNow] size:self.bounds.size];
 }

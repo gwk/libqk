@@ -16,9 +16,9 @@
 
 
 
-@protocol QKGLRenderer
+@protocol QKGLRenderer <NSObject>
 
-- (void)setupCGLContext:(CGLContextObj)ctx time:(NSTimeInterval)time;
-- (void)drawInCGLContext:(CGLContextObj)ctx time:(NSTimeInterval)time size:(CGSize)size;
+- (void)setupGLContext:(CGLContextObj)ctx time:(NSTimeInterval)time;
+- (void)drawInGLContext:(CGLContextObj)ctx time:(NSTimeInterval)time size:(CGSize)size;
 
 @end

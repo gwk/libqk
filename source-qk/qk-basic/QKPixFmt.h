@@ -74,6 +74,8 @@ int QKPixFmtBitmapInfo(QKPixFmt format);
 int QKPixFmtGlDataFormat(QKPixFmt format);
 int QKPixFmtGlDataType(QKPixFmt format);
 
-int QKPixFmtDepth(QKPixFmt format);
+int QKPixFmtColorSize(QKPixFmt format);
+int QKPixFmtAlphaSize(QKPixFmt format);
+int QKPixFmtDepthSize(QKPixFmt format);
 int QKPixFmtMultisamples(QKPixFmt format);
 

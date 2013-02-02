@@ -8,6 +8,7 @@
 
 
 #import "NSString+QK.h"
+#import "qk-check.h"
 #import "qk-gl-util.h"
 
 
