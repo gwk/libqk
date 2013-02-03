@@ -153,12 +153,22 @@
   else { // self is thin/tall relative to content; zoom is constrained by y.
     self.minimumZoomScale = bs.height / cs.height;
   }
-  if (self.zoomScale < self.minimumZoomScale) {
-    self.zoomScale = self.minimumZoomScale;
-  }
   if (self.maximumZoomScale < self.minimumZoomScale) {
     self.maximumZoomScale = self.minimumZoomScale;
   }
+  if (self.zoomScale < self.minimumZoomScale) {
+    self.zoomScale = self.minimumZoomScale;
+  }
+}
+
+
+- (void)setZoomScaleClamped:(float)scale animated:(BOOL)animated {
+  [self setZoomScale:clamp(scale, self.minimumZoomScale, self.maximumZoomScale) animated:animated];
+}
+
+
+- (void)setZoomScaleClamped:(float)scale {
+  [self setZoomScaleClamped:scale animated:NO];
 }
 
 

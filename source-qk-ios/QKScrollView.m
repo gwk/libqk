@@ -144,8 +144,8 @@ zoomView = _zoomViewQKScrollView;
 #pragma mark - QKScrollView
 
 
-- (CGSize)zoomSize {
-  return self.zoomView.bounds.size;
+- (CGRect)zoomContentRect {
+  return self.zoomView.bounds;
 }
 
 
@@ -171,13 +171,18 @@ zoomView = _zoomViewQKScrollView;
   CGSize bs = self.bounds.size;
   CGRect r = CGRectWithAspectEnclosingRect(CGSizeAspect(bs), validRect);
   CGFloat z = bs.width / r.size.width;
-  [self setZoomScale:z animated:animated];
+  [self setZoomScaleClamped:z animated:animated];
   [self centerOnZoomRect:r animated:animated];
 }
 
 
 - (void)zoomToRect:(CGRect)rect {
   [self zoomToRect:rect animated:NO];
+}
+
+
+- (void)zoomOutAnimated:(BOOL)animated {
+  [self zoomToRect:self.zoomContentRect animated:animated];
 }
 
 

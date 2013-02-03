@@ -13,9 +13,10 @@
 - (void)addZoomSubview:(UIView*)view;
 
 // content size in the zoom view coordinate system.
-- (CGSize)zoomSize;
+- (CGRect)zoomContentRect;
 - (void)zoomToRect:(CGRect)rect animated:(BOOL)animated;
 - (void)zoomToRect:(CGRect)rect;
+- (void)zoomOutAnimated:(BOOL)animated;
 
 @end
 

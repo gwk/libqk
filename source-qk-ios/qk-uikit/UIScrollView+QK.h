@@ -30,6 +30,8 @@
 - (void)centerOnZoomRect:(CGRect)rect point:(CGPoint)point animated:(BOOL)animated;
 - (void)centerOnZoomRect:(CGRect)rect point:(CGPoint)point;
 
+- (void)setZoomScaleClamped:(float)scale animated:(BOOL)animated;
+- (void)setZoomScaleClamped:(float)scale;
 - (void)constrainMinZoomToInsideContent;
 
 @end
