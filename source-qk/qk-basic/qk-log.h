@@ -13,7 +13,8 @@
 
 #define eprintf(...) fprintf(stderr, __VA_ARGS__)
 
-#define err(...)    err_items(@[__VA_ARGS__], @"", nil)
+// would name errN as err but it is too common of a name for a macro.
+#define errN(...)   err_items(@[__VA_ARGS__], @"", nil)
 #define errS(...)   err_items(@[__VA_ARGS__], @" ", nil)
 #define errL(...)   err_items(@[__VA_ARGS__], @"", @"\n")
 #define errSL(...)  err_items(@[__VA_ARGS__], @" ", @"\n")
