@@ -18,12 +18,12 @@
 }
 
 
-+ (id)w:(CGFloat)l a:(CGFloat)a {
++ (id)l:(CGFloat)l a:(CGFloat)a {
   return [self colorWithWhite:l alpha:a];
 }
 
 
-+ (id)w:(CGFloat)l {
++ (id)l:(CGFloat)l {
   return [self colorWithWhite:l alpha:1];
 }
 
