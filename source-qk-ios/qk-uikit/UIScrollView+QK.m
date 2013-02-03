@@ -147,14 +147,17 @@
   }
   CGFloat bar = CGSizeAspect(bs);
   CGFloat car = CGSizeAspect(cs);
-  if (bar < car) { // self is skinny relative to content; zoom is constrained by y
-    self.minimumZoomScale = bs.height / cs.height;
-  }
-  else { // self is fat relative to content; zoom is constrained by x
+  if (car < bar) { // self is wide/short relative to content; zoom is constrained by x.
     self.minimumZoomScale = bs.width / cs.width;
+  }
+  else { // self is thin/tall relative to content; zoom is constrained by y.
+    self.minimumZoomScale = bs.height / cs.height;
   }
   if (self.zoomScale < self.minimumZoomScale) {
     self.zoomScale = self.minimumZoomScale;
+  }
+  if (self.maximumZoomScale < self.minimumZoomScale) {
+    self.maximumZoomScale = self.minimumZoomScale;
   }
 }
 

@@ -58,3 +58,5 @@ static inline CGRect CGRectExpand(CGRect r, CGFloat width, CGFloat height) {
 }
 
 
+CGRect CGRectWithAspectEnclosingRect(CGFloat aspect, CGRect r);
+

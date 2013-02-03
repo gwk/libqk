@@ -25,6 +25,9 @@ delegate = _delegateQKScrollView,
 zoomView = _zoomViewQKScrollView;
 
 
+#pragma mark - UIView
+
+
 - (id)initWithFrame:(CGRect)frame {
   INIT(super initWithFrame:frame);
   [super setDelegate:self];
@@ -33,6 +36,9 @@ zoomView = _zoomViewQKScrollView;
   _constantScaleSet = [NSMutableSet new];
   return self;
 }
+
+
+#pragma mark - UIScrollView
 
 
 - (void)setContentSize:(CGSize)contentSize {
@@ -46,6 +52,11 @@ zoomView = _zoomViewQKScrollView;
   if (constantScale) {
     [_constantScaleSet addObject:view];
   }
+}
+
+
+- (void)addZoomSubview:(UIView*)view {
+  [self addZoomSubview:view constantScale:NO];
 }
 
 
@@ -130,9 +141,43 @@ zoomView = _zoomViewQKScrollView;
 }
 
 
-// rect in scroll view system.
+#pragma mark - QKScrollView
+
+
 - (CGSize)zoomSize {
   return self.zoomView.bounds.size;
+}
+
+
+#pragma mark zoom
+
+
+- (UIEdgeInsets)interactionInsetsInZoomSystem {
+  CGFloat z = 1.0 / self.zoomScale; 
+  UIEdgeInsets e = _interactionInsets;
+  return UIEdgeInsetsMake(-z * e.top, -z * e.left, -z * e.bottom, -z * e.right);
+}
+
+
+- (void)zoomToRect:(CGRect)rect animated:(BOOL)animated {
+  // TODO: respect interactionInsets.
+  // the solution is not so simple because the interactionInsetsInZoomSystem uses the old zoomScale,
+  // but it seems to need the z value that we solve for below.
+  //[self addZoomSubview:[UIView withFrame:rect color:[UIColor l:0 a:.3]]];
+  CGRect validRect = CGRectIntersection(rect, self.zoomView.bounds);
+  if (CGRectIsEmpty(validRect)) {
+    errFL(@"zoomToRect: invalid rect: %@", NSStringFromCGRect(rect));
+  }
+  CGSize bs = self.bounds.size;
+  CGRect r = CGRectWithAspectEnclosingRect(CGSizeAspect(bs), validRect);
+  CGFloat z = bs.width / r.size.width;
+  [self setZoomScale:z animated:animated];
+  [self centerOnZoomRect:r animated:animated];
+}
+
+
+- (void)zoomToRect:(CGRect)rect {
+  [self zoomToRect:rect animated:NO];
 }
 
 
