@@ -16,7 +16,7 @@
 }
 
 
-- (id)initWithRetainedRef:(void*)ref {
+- (id)initWithRetainedRef:(void*) CF_RELEASES_ARGUMENT ref {
   INIT(super init);
   check(ref, @"NULL ref");
   _ref = ref;
@@ -29,7 +29,7 @@
 }
 
 
-+ (id)withRetainedRef:(void*)ref {
++ (id)withRetainedRef:(void*) CF_RELEASES_ARGUMENT ref {
   return [[self alloc] initWithRetainedRef:ref];
 }
 

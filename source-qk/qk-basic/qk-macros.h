@@ -54,6 +54,7 @@ return name; \
 
 #ifdef __OBJC__
 
+
 // get a "Y" or "N" string from the boolean value of an expression
 #define bit_YN(x) ((x) ? @"Y" : @"N")
 
@@ -225,10 +226,12 @@ return name; \
 // NS_RETURNS_RETAINED
 // NS_RETURNS_NOT_RETAINED
 // NS_REPLACES_RECEIVER
-// NS_RELEASES_ARGUMENT
+// NS_RELEASES_ARGUMENT - ns_consumed
 // NS_VALID_UNTIL_END_OF_SCOPE
 // NS_ROOT_CLASS
 // NS_RETURNS_INNER_POINTER
+
+// CF_RELEASES_ARGUMENT - cf_consumed
 
 // suppress compiler warnings.
 #define UNUSED_FN __attribute__((unused))
