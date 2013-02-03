@@ -2,6 +2,8 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#import "qk-macros.h"
+#import "qk-cg-util.h"
 #import "QKScrollView.h"
 
 
@@ -115,6 +117,12 @@ zoomView = _zoomViewQKScrollView;
 
 - (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView {
   DEL_PASS1(scrollViewDidScrollToTop);
+}
+
+
+// rect in scroll view system.
+- (CGSize)zoomSize {
+  return self.zoomView.bounds.size;
 }
 
 

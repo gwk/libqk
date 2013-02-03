@@ -12,11 +12,24 @@
 
 - (void)setContentOffsetClamped:(CGPoint)contentOffset animated:(BOOL)animated;
 - (void)setContentOffsetClamped:(CGPoint)contentOffset;
-- (void)centerOnPoint:(CGPoint)point animated:(BOOL)animated;
-- (void)centerOnPoint:(CGPoint)point;
-- (void)centerOnRect:(CGRect)rect animated:(BOOL)animated;
-- (void)centerOnRect:(CGRect)rect;
-- (void)centerOnRect:(CGRect)rect point:(CGPoint)point animated:(BOOL)animated;
-- (void)centerOnRect:(CGRect)rect point:(CGPoint)point;
+
+// in the coordinate system of the scroll view.
+// this matches the coordinate system of zoomed content only when zoomScale == 1.
+- (void)centerOnContentPoint:(CGPoint)point animated:(BOOL)animated;
+- (void)centerOnContentPoint:(CGPoint)point;
+- (void)centerOnContentRect:(CGRect)rect animated:(BOOL)animated;
+- (void)centerOnContentRect:(CGRect)rect;
+- (void)centerOnContentRect:(CGRect)rect point:(CGPoint)point animated:(BOOL)animated;
+- (void)centerOnContentRect:(CGRect)rect point:(CGPoint)point;
+
+// in the coordinate system of zoomed content.
+- (void)centerOnZoomPoint:(CGPoint)point animated:(BOOL)animated;
+- (void)centerOnZoomPoint:(CGPoint)point;
+- (void)centerOnZoomRect:(CGRect)rect animated:(BOOL)animated;
+- (void)centerOnZoomRect:(CGRect)rect;
+- (void)centerOnZoomRect:(CGRect)rect point:(CGPoint)point animated:(BOOL)animated;
+- (void)centerOnZoomRect:(CGRect)rect point:(CGPoint)point;
+
+- (void)constrainMinZoomToInsideContent;
 
 @end

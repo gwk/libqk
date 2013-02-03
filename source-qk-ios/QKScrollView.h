@@ -6,5 +6,7 @@
 
 - (void)addZoomSubview:(UIView*)view;
 
+- (CGSize)zoomSize;
+
 @end
 
