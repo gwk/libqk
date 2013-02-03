@@ -38,6 +38,8 @@ __a == __b ? NSOrderedSame : (__a < __b ? NSOrderedAscending : NSOrderedDescendi
 // get a true binary value from an expression
 #define bit(x) ((x) ? 1 : 0)
 
+#define bit_xor(a, b) (bit(a) ^ bit(b))
+
 
 #define LAZY_STATIC(type, name, ...) \
 static type name; \
