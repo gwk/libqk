@@ -84,7 +84,6 @@
 }
 
 
-
 - (void)setAnimationInterval:(NSTimeInterval)animationInterval {
   
   _animationInterval = animationInterval;
@@ -107,7 +106,7 @@
 
 
 - (void)animationTimerFired:(NSEvent*)event {
-  [self setNeedsDisplay:YES];
+  [self setNeedsDisplay];
 }
 
 
