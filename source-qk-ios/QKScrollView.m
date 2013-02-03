@@ -11,6 +11,7 @@
 
 @property (nonatomic) UIView* zoomView;
 @property (nonatomic, weak) id<UIScrollViewDelegate> delegate;
+@property (nonatomic) NSMutableSet* constantScaleSet;
 
 @end
 
@@ -29,6 +30,7 @@ zoomView = _zoomViewQKScrollView;
   [super setDelegate:self];
   self.zoomView = [UIView withFrame:CGRectWithS(self.contentSize)];
   [self addSubview:self.zoomView];
+  _constantScaleSet = [NSMutableSet new];
   return self;
 }
 
@@ -39,8 +41,11 @@ zoomView = _zoomViewQKScrollView;
 }
 
 
-- (void)addZoomSubview:(UIView*)view {
+- (void)addZoomSubview:(UIView*)view constantScale:(BOOL)constantScale {
   [self.zoomView addSubview:view];
+  if (constantScale) {
+    [_constantScaleSet addObject:view];
+  }
 }
 
 
@@ -56,8 +61,13 @@ zoomView = _zoomViewQKScrollView;
   DEL_PASS1(scrollViewDidScroll);
 }
 
+
 - (void)scrollViewDidZoom:(UIScrollView *)scrollView {
-  DEL_PASS1(scrollViewDidScroll);
+  CGFloat s = 1.0 / self.zoomScale;
+  for (UIView* v in _constantScaleSet) {
+    v.transform = CGAffineTransformMakeScale(s, s);
+  }
+  DEL_PASS1(scrollViewDidZoom);
 }
 
 

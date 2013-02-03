@@ -133,7 +133,7 @@
 }
 
 
-#pragma mark -
+#pragma mark - constrain zoom
 
 
 - (void)constrainMinZoomToInsideContent {

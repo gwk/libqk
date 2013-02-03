@@ -4,7 +4,7 @@
 
 @interface QKScrollView : UIScrollView <UIScrollViewDelegate>
 
-- (void)addZoomSubview:(UIView*)view;
+- (void)addZoomSubview:(UIView*)view constantScale:(BOOL)constantScale;
 
 - (CGSize)zoomSize;
 
