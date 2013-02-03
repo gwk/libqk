@@ -91,7 +91,7 @@ PROPERTY_STRUCT_FIELD(CGSize, boundsSize, BoundsSize, CGRect, self.bounds, size)
 }
 
 
-// MARK: debugging
+#pragma mark debugging
 
 
 - (void)inspectRec:(NSString*)indent {
