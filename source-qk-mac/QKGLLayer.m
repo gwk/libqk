@@ -104,16 +104,21 @@ void describeAllPFA(CGLPixelFormatObj format, GLint virtualScreen) {
   
   QKMutableStructArray* attributes = [QKMutableStructArray withElSize:sizeof(CGLPixelFormatAttribute)];
   [attributes appendI32:kCGLPFADoubleBuffer];
+  
   [attributes appendI32:kCGLPFAColorSize];
   [attributes appendI32:QKPixFmtColorSize(_format)];
   [attributes appendI32:kCGLPFAAlphaSize];
   [attributes appendI32:QKPixFmtAlphaSize(_format)];
   [attributes appendI32:kCGLPFADepthSize];
   [attributes appendI32:QKPixFmtDepthSize(_format)];
+  if (_format & QKPixFmtBitF32) {
+    [attributes appendI32:kCGLPFAColorFloat];
+  }
   int samples = QKPixFmtMultisamples(_format);
   if (samples) {
     [attributes appendI32:kCGLPFAMultisample];
     [attributes appendI32:samples];
+    //kCGLPFASampleAlpha?
   }
   //kCGLPFAAcceleratedCompute,
   [attributes appendI32:0]; // null terminator
