@@ -29,10 +29,10 @@
 }
 
 
-- (id)initWithFormat:(QKPixFmt)format renderer:(id<QKGLRenderer>)renderer {
+- (id)initWithFormat:(QKPixFmt)format scene:(id<GLScene>)scene {
   INIT(super init);
   _format = format;
-  _renderer = renderer;
+  _scene = scene;
   self.opaque = YES;
   self.opacity = 1;
   self.asynchronous = NO;
@@ -157,14 +157,15 @@ void describeAllPFA(CGLPixelFormatObj format, GLint virtualScreen) {
             forLayerTime:(CFTimeInterval)layerTime
              displayTime:(const CVTimeStamp *)displayTime {
 
-  ASSERT_CONFORMS(self.renderer, QKGLRenderer);
+  ASSERT_CONFORMS(self.scene, GLScene);
   CGLSetCurrentContext(ctx);
-  CGSize s = self.bounds.size;
+  CGSize size = self.bounds.size;
+  CGFloat scale = self.contentsScale;
   if (_needsSetup) {
-    [self.renderer setupGLContext:ctx time:layerTime];
+    [self.scene setupGLContext:ctx time:layerTime size:size scale:scale];
     _needsSetup = NO;
   }
-  [self.renderer drawInGLContext:ctx time:layerTime size:s];
+  [self.scene drawInGLContext:ctx time:layerTime size:size scale:scale];
   CGLSetCurrentContext(NULL);
   // according to the header comments, we should call super to flush correctly.
   [super drawInCGLContext:ctx pixelFormat:pixelFormat forLayerTime:layerTime displayTime:displayTime]; // calls flush

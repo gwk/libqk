@@ -15,10 +15,10 @@
 - (void)use;
 + (void)disable;
 
+- (NSString*)infoLog;
+
 - (GLint)locForAttribute:(NSString*)attribute;
 - (GLint)locForUniform:(NSString*)uniform;
-
-- (NSString*)infoLog;
 
 - (BOOL)setUniform:(NSString*)name F32:(F32)val;
 - (BOOL)setUniform:(NSString*)name V2F32:(V2F32)val;
@@ -38,5 +38,7 @@
 - (BOOL)setAttribute:(NSString*)name stride:(int)stride pointerV2F32:(const V2F32*)pointer;
 - (BOOL)setAttribute:(NSString*)name stride:(int)stride pointerV3F32:(const V3F32*)pointer;
 - (BOOL)setAttribute:(NSString*)name stride:(int)stride pointerV4F32:(const V4F32*)pointer;
+
+- (BOOL)setAttributeToUnitSquare:(NSString*)name;
 
 @end

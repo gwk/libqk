@@ -107,6 +107,20 @@
 }
 
 
+- (GLint)locForAttribute:(NSString*)attribute {
+  GLint loc = glGetAttribLocation(_handle, attribute.asUtf8); qkgl_assert();
+  check(loc != -1, @"bad attribute: %@", attribute);
+  return loc;
+}
+
+
+- (GLint)locForUniform:(NSString*)uniform {
+  GLint loc = glGetUniformLocation(_handle, uniform.asUtf8); qkgl_assert();
+  check(loc != -1, @"bad uniform: %@", uniform);
+  return loc;
+}
+
+
 #define SET_UNIFORM(T, f) \
 - (BOOL)setUniform:(NSString*)name count:(int)count T:(T*)pointer { \
 NSNumber* loc = [_uniformLocations objectForKey:name]; \
@@ -171,17 +185,14 @@ SET_UNIFORM(I32, glUniform1iv);
 }
 
 
-- (GLint)locForAttribute:(NSString*)attribute {
-  GLint loc = glGetAttribLocation(_handle, attribute.asUtf8); qkgl_assert();
-  check(loc != -1, @"bad attribute: %@", attribute);
-  return loc;
-}
-
-
-- (GLint)locForUniform:(NSString*)uniform {
-  GLint loc = glGetUniformLocation(_handle, uniform.asUtf8); qkgl_assert();
-  check(loc != -1, @"bad uniform: %@", uniform);
-  return loc;
+- (BOOL)setAttributeToUnitSquare:(NSString*)name {
+  const V2F32 unit_square[4] = {
+    {{0, 0}},
+    {{1, 0}},
+    {{0, 1}},
+    {{1, 1}},
+  };
+  return [self setAttribute:name stride:0 pointerV2F32:unit_square];
 }
 
 

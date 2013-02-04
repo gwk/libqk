@@ -7,7 +7,6 @@
 
 @interface QKView ()
 
-@property (nonatomic, weak, readwrite) id renderer; // QKGLRenderer or QKCGRenderer
 @property (nonatomic) NSTimer* timer;
 @property (nonatomic) NSDate*  animationStartDate;
 
@@ -24,15 +23,15 @@
 
 
 - (id)initWithFrame:(CGRect)frame {
-  NON_DESIGNATED_INIT(@"initWithFrame:renderer:glFormat:");
+  NON_DESIGNATED_INIT(@"initWithFrame:renderer:format:");
 }
 
 
-- (id)initWithFrame:(CGRect)frame renderer:(id)renderer glFormat:(QKPixFmt)glFormat {
+- (id)initWithFrame:(CGRect)frame scene:(id)scene format:(QKPixFmt)format {
   INIT(super initWithFrame:frame);
-  self.renderer = renderer;
-  if (glFormat) {
-    [self setupLayer:[[QKGLLayer alloc] initWithFormat:glFormat renderer:renderer]];
+  self.scene = scene;
+  if (format) {
+    [self setupLayer:[[QKGLLayer alloc] initWithFormat:format scene:scene]];
   }
   else {
     [self setupLayer:[CALayer new]];
@@ -48,18 +47,18 @@
 }
 
 
-- (id)initWithFrame:(CGRect)frame renderer:(id)renderer {
-  return [self initWithFrame:frame renderer:renderer glFormat:QKPixFmtUnknown];
+- (id)initWithFrame:(CGRect)frame scene:(id)scene {
+  return [self initWithFrame:frame scene:scene format:QKPixFmtUnknown];
 }
 
 
-+ (id)withFrame:(CGRect)frame renderer:(id)renderer glFormat:(QKPixFmt)glFormat {
-  return [[self alloc] initWithFrame:frame renderer:renderer glFormat:glFormat];
++ (id)withFrame:(CGRect)frame scene:(id)scene format:(QKPixFmt)format {
+  return [[self alloc] initWithFrame:frame scene:scene format:format];
 }
 
 
-+ (id)withFrame:(CGRect)frame renderer:(id)renderer {
-  return [[self alloc] initWithFrame:frame renderer:renderer];
++ (id)withFrame:(CGRect)frame scene:(id)scene {
+  return [[self alloc] initWithFrame:frame scene:scene];
 }
 
 
@@ -79,8 +78,8 @@
 
 // CALayerDelegate method gets called only for CG case.
 - (void)drawLayer:(CALayer *)layer inContext:(CGContextRef)ctx {
-  ASSERT_CONFORMS(self.renderer, QKCGRenderer);
-  [self.renderer drawInCGContext:ctx time:-[_animationStartDate timeIntervalSinceNow] size:self.bounds.size];
+  ASSERT_CONFORMS(self.scene, QKCGScene);
+  [self.scene drawInCGContext:ctx time:-[_animationStartDate timeIntervalSinceNow] size:self.bounds.size];
 }
 
 

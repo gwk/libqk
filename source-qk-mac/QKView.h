@@ -6,26 +6,26 @@
 #import "QKGLLayer.h"
 
 
-@protocol QKCGRenderer;
+@protocol QKCGScene;
 
 
 @interface QKView : NSView
 
-@property (nonatomic, weak, readonly) id renderer; // QKGLRenderer or QKCGRenderer
+@property (nonatomic, weak) id scene; // GLScene or QKCGScene
 @property (nonatomic, readonly) QKGLLayer* glLayer;
 @property (nonatomic) NSTimeInterval animationInterval;
 
-- (id)initWithFrame:(CGRect)frame renderer:(id)renderer glFormat:(QKPixFmt)glFormat;
-- (id)initWithFrame:(CGRect)frame renderer:(id)renderer;
+- (id)initWithFrame:(CGRect)frame scene:(id)scene format:(QKPixFmt)format;
+- (id)initWithFrame:(CGRect)frame scene:(id)scene;
 
-+ (id)withFrame:(CGRect)frame renderer:(id)renderer glFormat:(QKPixFmt)glFormat;
-+ (id)withFrame:(CGRect)frame renderer:(id)renderer;
++ (id)withFrame:(CGRect)frame scene:(id)scene format:(QKPixFmt)format;
++ (id)withFrame:(CGRect)frame scene:(id)scene;
 
 @end
 
 
 
-@protocol QKCGRenderer <NSObject>
+@protocol QKCGScene <NSObject>
 
 - (void)drawInCGContext:(CGContextRef)ctx time:(NSTimeInterval)time size:(CGSize)size;
 
