@@ -64,6 +64,25 @@ abort(); \
 #define BREAK _pseudo_breakpoint(__FILE__, __LINE__, __func__)
 
 
+#define CHECK_RET_ERROR(expr, domain_prefix, code_suffix, _desc, ...) \
+if (!(expr)) { \
+return [NSError withDomain:domain_prefix##ErrorDomain \
+code:domain_prefix##ErrorCode##code_suffix \
+desc:(_desc) \
+info:__VA_ARGS__]; \
+}
+
+#define CHECK_SET_ERROR_RET_NIL(expr, domain_prefix, code_suffix, _desc, ...) \
+if (!(expr)) { \
+*errorPtr = [NSError withDomain:domain_prefix##ErrorDomain \
+code:domain_prefix##ErrorCode##code_suffix \
+desc:(_desc) \
+info:__VA_ARGS__]; \
+return nil; \
+}
+
+
+
 #ifdef __cplusplus
 extern "C" {
 #endif
