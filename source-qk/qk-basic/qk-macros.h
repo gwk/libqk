@@ -63,6 +63,22 @@ return name; \
 #define INIT(...) if (!((self = ([__VA_ARGS__])))) return nil
 
 
+// define + (id)with... and - (id)initWith... simultaneously.
+#define DEC_INIT(...) \
++ (id)with##__VA_ARGS__; \
+- (id)initWith##__VA_ARGS__
+
+#define DEF_INIT(...) \
++ (id)with##__VA_ARGS__ { return [[self alloc] initWith##__VA_ARGS__]; } \
+- (id)initWith##__VA_ARGS__
+
+
+// delegate method passing
+#define DEL_RESPONDS(sel) ([self.delegate respondsToSelector:@selector(sel)] ? (id)self.delegate : nil)
+#define DEL_PASS1(sel) [DEL_RESPONDS(sel:) sel:scrollView]
+#define DEL_PASS2(sel1, sel2) [DEL_RESPONDS(sel1:sel2:) sel1:scrollView sel2:sel2]
+#define DEL_PASS3(sel1, sel2, sel3) [DEL_RESPONDS(sel1:sel2:sel3:) sel1:scrollView sel2:sel2 sel3:sel3]
+
 // shorthand for checking class membership and protocol conformation
 
 #define IS_KIND(obj, class_name) [(obj) isKindOfClass:[class_name class]]

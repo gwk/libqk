@@ -62,11 +62,6 @@ zoomView = _zoomViewQKScrollView;
 
 #pragma mark - UIScrollViewDelegate
 
-#define DEL_RESPONDS(sel) ([self.delegate respondsToSelector:@selector(sel)] ? self.delegate : nil)
-#define DEL_PASS1(sel) [DEL_RESPONDS(sel:) sel:scrollView]
-#define DEL_PASS2(sel1, sel2) [DEL_RESPONDS(sel1:sel2:) sel1:scrollView sel2:sel2]
-#define DEL_PASS3(sel1, sel2, sel3) [DEL_RESPONDS(sel1:sel2:sel3:) sel1:scrollView sel2:sel2 sel3:sel3]
-
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
   DEL_PASS1(scrollViewDidScroll);
