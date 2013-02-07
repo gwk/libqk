@@ -11,7 +11,7 @@
 
 
 - (NSString*)description {
-  return [NSString withFormat:@"<QKStructArray %p: es:%lu count:%lu>", self, self.elSize, self.count];
+  return [NSString withFormat:@"<QKStructArray %p: es:%u count:%lu>", self, self.elSize, self.count];
 }
 
 
@@ -21,7 +21,7 @@
 }
 
 
-- (id)initWithElSize:(Int)elSize data:(NSData*)data {
+- (id)initWithElSize:(I32)elSize data:(NSData*)data {
   INIT(super init);
   _elSize = elSize;
   _data = [self.class copyData:data];
@@ -29,22 +29,22 @@
 }
 
 
-+ (id)withElSize:(Int)elSize data:(NSData*)data {
++ (id)withElSize:(I32)elSize data:(NSData*)data {
   return [[self alloc] initWithElSize:elSize data:data];
 }
 
 
-+ (id)withElSize:(Int)elSize {
++ (id)withElSize:(I32)elSize {
   return [self withElSize:elSize data:nil];
 }
 
 
-+ (id)withElSize:(Int)elSize bytes:(void*)bytes length:(Int)length {
++ (id)withElSize:(I32)elSize bytes:(void*)bytes length:(Int)length {
   return [self withElSize:elSize data:[NSData dataWithBytes:bytes length:length]];
 }
 
 
-+ (id)withElSize:(Int)elSize from:(Int)from to:(Int)to mapIntBlock:(BlockStructMapInt)block {
++ (id)withElSize:(I32)elSize from:(Int)from to:(Int)to mapIntBlock:(BlockStructMapInt)block {
   Int count = to - from;
   NSMutableData* data = [NSMutableData dataWithLength:elSize * count];
   void* p = data.mutableBytes;
@@ -57,7 +57,7 @@
 }
 
 
-+ (id)withElSize:(Int)elSize structArray:(QKStructArray*)structArray copyBlock:(BlockStructCopy)block {
++ (id)withElSize:(I32)elSize structArray:(QKStructArray*)structArray copyBlock:(BlockStructCopy)block {
   NSMutableData* data = [NSMutableData dataWithLength:elSize * structArray.count];
   void* to = data.mutableBytes;
   const void* from = structArray.bytes;
@@ -74,7 +74,7 @@
 }
 
 
-+ (id)withElSize:(Int)elSize structArray:(QKStructArray*)structArray filterCopyBlock:(BlockStructFilterCopy)block {
++ (id)withElSize:(I32)elSize structArray:(QKStructArray*)structArray filterCopyBlock:(BlockStructFilterCopy)block {
   NSMutableData* data = [NSMutableData dataWithLength:elSize * structArray.count];
   void* to = data.mutableBytes;
   const void* from = structArray.bytes;
@@ -97,7 +97,10 @@
 
 
 + (id)join:(NSArray*)arrays {
-  Int elSize = [arrays.el0OrNil elSize];
+  if (!arrays.count) {
+    return nil;
+  }
+  I32 elSize = [arrays.el0 elSize];
   if (!QK_OPTIMIZE) {
     for (QKStructArray* el in arrays) {
       assert(el.elSize == elSize, @"mismatched elSize: %@; %@", arrays.el0, el);
@@ -139,14 +142,14 @@
 }
 
 
-- (NSRange)byteRangeForIndex:(int)index {
+- (NSRange)byteRangeForIndex:(Int)index {
   return NSRangeMake(index * _elSize, _elSize);
 }
 
 
-#define ASSERT_INDEX assert(index < self.count, @"bad index: %d; %@", index, self)
+#define ASSERT_INDEX assert(index < self.count, @"bad index: %ld; %@", index, self)
 
-- (void)el:(int)index to:(void*)to {
+- (void)el:(Int)index to:(void*)to {
   ASSERT_INDEX;
   const void* ptr = _data.bytes + index * _elSize;
   memmove(to, ptr, _elSize);
@@ -154,7 +157,7 @@
 
 
 #define EL(T) \
-- (T)el##T:(int)index { \
+- (T)el##T:(Int)index { \
 assert(self.elSize == sizeof(T), @"bad type: %s", #T); \
 ASSERT_INDEX; \
 const T* p = _data.bytes; \

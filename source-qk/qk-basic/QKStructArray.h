@@ -22,7 +22,7 @@ typedef id BlockStructMapInt;
 
 @interface QKStructArray : NSObject <NSMutableCopying>
 
-@property (nonatomic, readonly) Int elSize;
+@property (nonatomic, readonly) I32 elSize;
 @property (nonatomic, readonly) Int count;
 @property (nonatomic, readonly) Int length;
 @property (nonatomic, readonly) NSData* data;
@@ -30,13 +30,13 @@ typedef id BlockStructMapInt;
 @property (nonatomic, readonly) const void* bytesEnd;
 
 
-- (id)initWithElSize:(Int)elSize data:(NSData*)data;
-+ (id)withElSize:(Int)elSize;
-+ (id)withElSize:(Int)elSize data:(NSData*)data;
-+ (id)withElSize:(Int)elSize bytes:(void*)bytes length:(Int)length;
-+ (id)withElSize:(Int)elSize from:(Int)from to:(Int)to mapIntBlock:(BlockStructMapInt)block;
-+ (id)withElSize:(Int)elSize structArray:(QKStructArray*)structArray copyBlock:(BlockStructCopy)block;
-+ (id)withElSize:(Int)elSize structArray:(QKStructArray*)structArray filterCopyBlock:(BlockStructFilterCopy)block;
+- (id)initWithElSize:(I32)elSize data:(NSData*)data;
++ (id)withElSize:(I32)elSize;
++ (id)withElSize:(I32)elSize data:(NSData*)data;
++ (id)withElSize:(I32)elSize bytes:(void*)bytes length:(Int)length;
++ (id)withElSize:(I32)elSize from:(Int)from to:(Int)to mapIntBlock:(BlockStructMapInt)block;
++ (id)withElSize:(I32)elSize structArray:(QKStructArray*)structArray copyBlock:(BlockStructCopy)block;
++ (id)withElSize:(I32)elSize structArray:(QKStructArray*)structArray filterCopyBlock:(BlockStructFilterCopy)block;
 
 + (id)join:(NSArray*)arrays;
 
@@ -45,16 +45,16 @@ typedef id BlockStructMapInt;
 - (QKStructArray*)subWithRange:(NSRange)range;
 
 - (NSRange)byteRange:(NSRange)range;
-- (NSRange)byteRangeForIndex:(int)index;
+- (NSRange)byteRangeForIndex:(Int)index;
 
-- (void)el:(int)index to:(void*)to;
-- (Int)elInt:(int)index;
-- (I32)elI32:(int)index;
-- (I64)elI64:(int)index;
-- (F32)elF32:(int)index;
-- (F64)elF64:(int)index;
-- (V2F32)elV2F32:(int)index;
-- (V2F64)elV2F64:(int)index;
+- (void)el:(Int)index to:(void*)to;
+- (Int)elInt:(Int)index;
+- (I32)elI32:(Int)index;
+- (I64)elI64:(Int)index;
+- (F32)elF32:(Int)index;
+- (F64)elF64:(Int)index;
+- (V2F32)elV2F32:(Int)index;
+- (V2F64)elV2F64:(Int)index;
 
 - (void)step:(BlockStructStep)block;
 
