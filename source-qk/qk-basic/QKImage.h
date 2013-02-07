@@ -17,13 +17,14 @@
 @property (nonatomic, readonly) QKPixFmt format;
 @property (nonatomic, readonly) V2I32 size;
 @property (nonatomic, readonly) id<QKData> data;
-@property (nonatomic, readonly) GLenum glDataFormat;
-@property (nonatomic, readonly) GLenum glDataType;
 
 - (const void*)bytes;
 - (Int)length;
 - (BOOL)isMutable;
+
 - (NSString*)formatDesc;
+- (GLenum)glDataFormat;
+- (GLenum)glDataType;
 
 - (id)initWithFormat:(QKPixFmt)format size:(V2I32)size data:(id<QKData>)data;
 + (id)withFormat:(QKPixFmt)format size:(V2I32)size data:(id<QKData>)data;

@@ -9,52 +9,79 @@ set -e
 
 error() { echo 'error:' "$@" 1>&2; exit 1; }
 
-echo
 echo "build-lib-arch.sh: $@"
 
-src_dir=$1; shift
-build_dir=$1; shift
-sdk=$1; shift
-host=$1; shift
-arch=$1; shift
-config_args="$@"
+sdk=$1;   shift
+host=$1;  shift
+arch=$1;  shift
+cpu=$1;   shift
+
 platform=${sdk%%[0-9]*}
+platform_dir=$DEV_DIR/Platforms/$platform.platform
+sdk_dir=$platform_dir/Developer/SDKs/$sdk.sdk
 
-echo "build-lib-arch.sh:"
-echo "src_dir: $src_dir"
-echo "build_dir: $build_dir"
-echo "sdk: $sdk; platform: $platform; host: $host;  arch: $arch"
-echo "config args: $config_args"
-echo "----"
+cc_clang=$TOOL_DIR/clang
+cxx_clang=$TOOL_DIR/clang++
+flags_clang="-O4 -arch $arch"
 
-dev_dir=/Applications/Xcode.app/Contents/Developer
-tool_dir=$dev_dir/Toolchains/XcodeDefault.xctoolchain/usr/bin
-platform_dir=$dev_dir/Platforms/$platform.platform
-sdk_root=$platform_dir/Developer/SDKs/$sdk.sdk
+cc_gcc=$PLATFORM_TOOL_DIR/$host-llvm-gcc-4.2
+cxx_gcc=$PLATFORM_TOOL_DIR/$host-llvm-g++-4.2
+if [[ $platform == 'iPhoneOS' ]]; then
+  flags_gcc="-O3 -march=$arch -mfloat-abi=softfp -mfpu=neon -mcpu=$cpu -mtune=$cpu"
+elif [[ $platform == 'iPhoneSimulator' ]]; then
+  flags_gcc="-O3 -march=$arch"
+elif [[ $platform == 'MacOSX' ]]; then
+  flags_gcc="-O3 -march=$arch"
+else
+  error "bad platform: $platform"
+fi
 
-for n in dev_dir tool_dir platform_dir sdk_root src_dir; do
+
+eval cc=\$cc_$CC_NAME
+eval cxx=\$cxx_$CC_NAME
+eval flags=\$flags_$CC_NAME
+
+ld=$TOOL_DIR/ld
+
+echo "
+sdk: $sdk; host: $host; arch: $arch; cpu: $cpu;
+CC_NAME: $CC_NAME
+platform: $platform
+cc: $cc
+cxx: $cxx
+flags: $flags
+config args: $config_args
+----"
+
+
+for n in SRC_DIR DEV_DIR TOOL_DIR PLATFORM_TOOL_DIR QK_DIR platform_dir sdk_dir; do
   eval v=\$$n
   echo "$n: $v"
   [[ -d "$v" ]] || error "bad $n"
 done
 
-mkdir -p "$build_dir/$arch"
-cd "$build_dir/$arch"
+set -x
+mkdir -p "$BUILD_DIR/$arch"
+cd "$BUILD_DIR/$arch"
 rm -rf * # clean aggressively
-"$src_dir/configure" \
+"$SRC_DIR/configure" \
 --prefix="$PWD/install" \
 --host=$host \
---disable-shared \
 --enable-static \
-CC=$tool_dir/clang \
-LD=$tool_dir/ld \
-CPPFLAGS="-I$sdk_root/usr/include/" \
-CFLAGS="-I$sdk_root/usr/include/ -arch $arch -isysroot $sdk_root -O3" \
-LDFLAGS="-L$SDKROOT/usr/lib/" \
-$config_args
+--disable-shared \
+CC="$cc" \
+CPP="$cc -E" \
+CXX="$cxx" \
+LD="$cc" \
+CPPFLAGS="-I$sdk_dir/usr/include" \
+CFLAGS="  -I$sdk_dir/usr/include  -isysroot $sdk_dir $flags" \
+LDFLAGS=" -L$sdk_dir/usr/lib      -isysroot $sdk_dir $flags" \
+$CONFIG_ARGS > "$OUT"
 
-make
-make install
+make > "$OUT"
+make install > "$OUT"
+set +x
 
-echo "----"
-echo
+echo "----
+COMPLETE: $sdk $host $arch $SRC_DIR
+"

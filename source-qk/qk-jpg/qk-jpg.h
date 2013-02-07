@@ -1,0 +1,1 @@
+#import "QKImage+JPG.h"

@@ -12,9 +12,15 @@
 @implementation QKImage
 
 
+#pragma mark - NSObject
+
+
 - (NSString*)description {
   return [NSString withFormat:@"<%@ %p: %@ %@>", self.class, self, QKPixFmtDesc(_format), V2I32Desc(_size)];
 }
+
+
+#pragma mark - QKData
 
 
 - (const void*)bytes {
@@ -30,6 +36,9 @@
 - (BOOL)isMutable {
   return _data.isMutable;
 }
+
+
+#pragma mark - QKImage
 
 
 - (NSString*)formatDesc {

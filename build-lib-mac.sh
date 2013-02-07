@@ -4,17 +4,19 @@
 
 source ./build-lib-common.sh
 
+export PLATFORM_TOOL_DIR=$DEV_DIR/usr/bin
+
 lipo=lipo
 
-"$qk_root/build-lib-arch.sh" "$src_dir" "$build_dir" MacOSX10.8 i686-apple-darwin x86_64
+"$QK_DIR/build-lib-arch.sh" MacOSX10.8 x86_64-apple-darwin x86_64 cpu_unknown
 
 echo
-echo "creating fat lib: $install_dir"
-mkdir -p "$install_dir/lib"
+echo "creating fat lib: $INSTALL_DIR"
+mkdir -p "$INSTALL_DIR/lib"
 
-cp -RP "$build_dir/x86_64/install/include" "$install_dir/include"
+cp -RP "$BUILD_DIR/x86_64/install/include" "$INSTALL_DIR/include"
 
 # lipo is not necessary with only one arch, but this is how to do it.
 $lipo \
--arch x86_64 "$build_dir/x86_64/install/lib/$lib_name.a" \
--create -output "$install_dir/lib/$lib_name.a"
+-arch x86_64 "$BUILD_DIR/x86_64/install/lib/$LIB_NAME.a" \
+-create -output "$INSTALL_DIR/lib/$LIB_NAME.a"

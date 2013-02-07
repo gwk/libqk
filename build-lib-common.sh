@@ -14,16 +14,26 @@ error() { echo 'error:' "$@" 1>&2; exit 1; }
 echo
 echo "build-lib-common.sh: $@"
 
-lib_name="$1"; shift
-src_dir="$1"; shift
-install_dir="$PWD/$1"; shift
-config_args="$@"
-qk_root="$PWD"
-build_dir="build/$lib_name"
+export SRC_DIR="$1"; shift
+export LIB_NAME="$1"; shift
+export CC_NAME="$1"; shift
+export INSTALL_DIR="$PWD/$1"; shift
+export CONFIG_ARGS="$@"
 
-echo "lib_name: $lib_name; src_dir: $src_dir; install_dir: $install_dir"
-echo "config_args: $config_args"
-echo "qk_root: $qk_root"
-echo "build_dir: $build_dir"
+export QK_DIR="$PWD"
+export BUILD_DIR="$QK_DIR/build/$LIB_NAME"
+export DEV_DIR=/Applications/Xcode.app/Contents/Developer
+export TOOL_DIR=$DEV_DIR/Toolchains/XcodeDefault.xctoolchain/usr/bin
 
-rm -rf "$install_dir"
+echo "
+LIB_NAME: $LIB_NAME
+CC_NAME: $CC_NAME
+INSTALL_DIR: $INSTALL_DIR
+CONFIG_ARGS: $CONFIG_ARGS
+QK_DIR: $QK_DIR
+BUILD_DIR: $BUILD_DIR
+DEV_DIR: $DEV_DIR
+TOOL_DIR: $TOOL_DIR
+"
+
+rm -rf "$INSTALL_DIR"

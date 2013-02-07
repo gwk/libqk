@@ -4,6 +4,7 @@
 
 #import "qk-basic.h"
 #import "qk-foundation.h"
+#import "qk-jpg.h"
 #import "qk-png.h"
 
 
@@ -13,8 +14,15 @@ NSString* convert(NSString* fmt_str, NSString* src_path, NSString* dst_path) {
   if (!fmt) {
     return [NSString withFormat:@"unkown format: %@", fmt_str];
   }
+  NSString* ext = src_path.pathExtension;
   BOOL alpha = fmt & QKPixFmtBitA;
-  QKImage* image = [QKImage withPngPath:src_path alpha:alpha];
+  QKImage* image;
+  if ([ext isEqualToString:@"png"]) {
+    image = [QKImage withPngPath:src_path alpha:alpha];
+  }
+  else if ([ext isEqualToString:@"jpg"]) {
+    image = [QKImage withJpgPath:src_path alpha:alpha];
+  }
   errFL(@"%@: %@ -> %@", image.formatDesc, src_path, dst_path);
   [image writeJnbToPath:dst_path];
   return nil;
@@ -25,7 +33,7 @@ int main(int argc, char *argv[]) {
   @autoreleasepool {
     NSArray* args = [[NSProcessInfo processInfo] arguments];
     if (args.count < 4) {
-      errFL(@"usage: jnb-image-convert format src_path.png dst_path.jnb");
+      errFL(@"usage: jnb-image-convert format src_path dst_path.jnb");
       return 1;
     }
     NSString* errorString = convert(args.el1, args.el2, args.el3);

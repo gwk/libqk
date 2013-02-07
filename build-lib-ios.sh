@@ -4,22 +4,25 @@
 
 source ./build-lib-common.sh
 
-dev_dir=/Applications/Xcode.app/Contents/Developer
-platform_dir=$dev_dir/Platforms/iPhoneOS.platform
-lipo=$platform_dir/Developer/usr/bin/lipo
+# compilers for simulator are in iPhoneOS, not iPhoneSimulator, so this is necessary.
+export PLATFORM_TOOL_DIR=$DEV_DIR/Platforms/iPhoneOS.platform/Developer/usr/bin
+
+lipo=$PLATFORM_TOOL_DIR/lipo
 [[ -f $lipo ]] || error "missing lipo: $lipo"
 
-"$qk_root/build-lib-arch.sh" "$src_dir" "$build_dir" iPhoneOS6.0 arm-apple-darwin armv7
-"$qk_root/build-lib-arch.sh" "$src_dir" "$build_dir" iPhoneOS6.0 arm-apple-darwin armv7s
-"$qk_root/build-lib-arch.sh" "$src_dir" "$build_dir" iPhoneSimulator6.0 i686-apple-darwin i386 
+"$QK_DIR/build-lib-arch.sh" iPhoneOS6.1        arm-apple-darwin10  armv7   cortex-a8
+"$QK_DIR/build-lib-arch.sh" iPhoneOS6.1        arm-apple-darwin10  armv7s  swift
+"$QK_DIR/build-lib-arch.sh" iPhoneSimulator6.1 i686-apple-darwin10 i386    cpu_unknown
 
-echo "creating fat lib: $install_dir"
-mkdir -p "$install_dir/lib"
+echo "creating fat lib: $INSTALL_DIR"
+mkdir -p "$INSTALL_DIR/lib"
 
-cp -RP "$build_dir/armv7/install/include" "$install_dir/include"
+cp -RP "$BUILD_DIR/armv7/install/include" "$INSTALL_DIR/include"
 
 $lipo \
--arch armv7   "$build_dir/armv7/install/lib/$lib_name.a" \
--arch armv7s  "$build_dir/armv7s/install/lib/$lib_name.a" \
--arch i386    "$build_dir/i386/install/lib/$lib_name.a" \
--create -output "$install_dir/lib/$lib_name.a"
+-arch armv7   "$BUILD_DIR/armv7/install/lib/$LIB_NAME.a" \
+-arch armv7s  "$BUILD_DIR/armv7s/install/lib/$LIB_NAME.a" \
+-arch i386    "$BUILD_DIR/i386/install/lib/$LIB_NAME.a" \
+-create -output "$INSTALL_DIR/lib/$LIB_NAME.a"
+
+echo "COMPLETE: $LIB_NAME"
