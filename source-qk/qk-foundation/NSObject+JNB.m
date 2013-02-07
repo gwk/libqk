@@ -41,40 +41,34 @@ NSString* const JNBErrorDomain = @"JNBErrorDomain";
   NSDictionary* valDecoders = [self.class jnbValDecoders];
   for (NSString* key in valTypes.allKeys) {
     id val = [dict objectForKey:key];
-    if (!val) {
-      return [NSError withDomain:JNBErrorDomain code:JNBErrorCodeKeyMissing desc:@"missing key" info:@{
-              @"dict" : dict,
-              @"class" : self.class,
-              @"key" : key,
-              }];
-    }
+    CHECK_RET_ERROR(val, JNB, KeyMissing, @"missing key", @{
+                    @"dict" : dict,
+                    @"class" : self.class,
+                    @"key" : key,
+                    });
+    
     Class expectedClass = [valTypes objectForKey:key];
     assert(expectedClass, @"jnbValTypes dictionary is missing key: %@", key);
-    if (![val isKindOfClass:expectedClass]) {
-      return [NSError withDomain:JNBErrorDomain code:JNBErrorCodeValTypeUnexpected desc:@"bad value type" info:@{
-              @"dict" : dict,
-              @"class" : self.class,
-              @"key" : key,
-              @"val" : val,
-              @"val-type-expected" : expectedClass,
-              @"val-type-actual" : [val class],
-              }];
-    }
+    CHECK_RET_ERROR([val isKindOfClass:expectedClass], JNB, ValTypeUnexpected, @"bad value type",
+                    @{
+                    @"dict" : dict,
+                    @"class" : self.class,
+                    @"key" : key,
+                    @"val" : val,
+                    @"val-type-expected" : expectedClass,
+                    @"val-type-actual" : [val class],
+                    });
+    
     BlockMap mapBlock = [valDecoders objectForKey:key];
     if (mapBlock) {
       id val_transformed = mapBlock(val);
-      if (IS_KIND(val_transformed, NSError)) {
-        return [NSError withDomain:JNBErrorDomain
-                              code:JNBErrorCodeValTransformFailed
-                              desc:@"value transform failed"
-                              info:@{
-                @"dict" : dict,
-                @"class" : self.class,
-                @"key" : key,
-                @"val" : val,
-             NSUnderlyingErrorKey : val_transformed
-                }];
-      }
+      CHECK_RET_ERROR(!IS_KIND(val_transformed, NSError), JNB, ValTransformFailed, @"value transform failed", @{
+                      @"dict" : dict,
+                      @"class" : self.class,
+                      @"key" : key,
+                      @"val" : val,
+                      NSUnderlyingErrorKey : val_transformed
+                      });
       val = val_transformed;
     }
     [self setValue:val forKey:key];
@@ -125,11 +119,8 @@ NSString* const JNBErrorDomain = @"JNBErrorDomain";
 
 
 + (id)withJnbPath:(NSString*)path map:(BOOL)map error:(NSError**)errorPtr {
-#define ERROR(_code, _desc, ...) \
-*errorPtr = [NSError withDomain:JNBErrorDomain code:_code desc:_desc info:@{ @"path" : path, ##__VA_ARGS__ }]; \
-return nil;
-  
   LAZY_STATIC(NSDictionary*, typesToClasses, @{
+              @"path" : path,
               @"image" : [QKImage class],
               });
   
@@ -155,20 +146,19 @@ return nil;
   Class targetClass;
   if (typeName) {
     targetClass = [typesToClasses objectForKey:typeName];
-    if (!targetClass) {
-      ERROR(JNBErrorCodeTypeUnkown, @"JNB header specifies unknown type",
-            @"dict" : dict,
-            @"type" : typeName,
-            );
-    }
-    if (![targetClass isSubclassOfClass:self]) {
-      ERROR(JNBErrorCodeTypeUnexpected, @"JNB header specifies unexpected type",
-            @"dict" : dict,
-            @"type" : typeName,
-            @"calling-class" : self,
-            @"target-class" : targetClass
-            );
-    }
+    CHECK_SET_ERROR_RET_NIL(targetClass, JNB, TypeUnkown, @"JNB header specifies unknown type", @{
+                            @"path" : path,
+                            @"dict" : dict,
+                            @"type" : typeName,
+                            });
+    CHECK_SET_ERROR_RET_NIL([targetClass isSubclassOfClass:self], JNB, TypeUnexpected,
+                            @"JNB header specifies unexpected type", @{
+                            @"path" : path,
+                            @"dict" : dict,
+                            @"type" : typeName,
+                            @"calling-class" : self,
+                            @"target-class" : targetClass
+                            });
   }
   else {
     targetClass = self;
@@ -180,9 +170,9 @@ return nil;
     // conceptually we want to add 1, then 15, then mask out the low 4 bits.
     Int data_offset = (offset_header_terminator + 0x10) & ~(size_t)0x0F;
     Int data_length = length - data_offset;
-    if (data_offset >= length) {
-      ERROR(JNBErrorCodeDataMalformed, @"JNB is missing 16-byte-aligned data region");
-    }
+    CHECK_SET_ERROR_RET_NIL(data_offset < length, JNB, DataMalformed, @"JNB is missing 16-byte-aligned data region", @{
+                            @"path" : path
+                            });
     subdata = [QKSubData withData:data offset:data_offset length:data_length];
   }
   else {

@@ -57,17 +57,11 @@ NSString* const QKJsonErrorDomain = @"QKJsonErrorDomain";
     return nil;
   }
   assert(result, @"nil result");
-  if (![result isKindOfClass:class]) {
-    NSString* desc = [NSString withFormat:@"JSON result type is not expected: %@; actual: %@", class, [result class]];
-    *errorPtr =
-    [NSError errorWithDomain:QKJsonErrorDomain
-                        code:QKJsonErrorCodeUnexpectedRootType
-                    userInfo:@{
-  NSLocalizedDescriptionKey : desc,
-     @"result" : result
-     }];
-    return nil;
-  }
+  CHECK_SET_ERROR_RET_NIL([result isKindOfClass:class], QKJson, UnexpectedRootType, @"unexpected JSON result type", @{
+                          @"expected-type" : class,
+                          @"actual-type" : [result class],
+                          @"result" : result
+                          });
   return result;
 }
 
