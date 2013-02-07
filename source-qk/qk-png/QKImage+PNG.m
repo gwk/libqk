@@ -7,6 +7,9 @@
 #import "QKImage.h"
 
 
+NSString* const QKImagePNGErrorDomain = @"QKImagePNGErrorDomain";
+
+
 @implementation QKImage (PNG)
 
 
@@ -21,26 +24,25 @@
                  infoPtr:(png_infop)infoPtr
                    alpha:(BOOL)alpha
             gammaCorrect:(BOOL)gammaCorrect
-         displayExponent:(F64)displayExponent {
+         displayExponent:(F64)displayExponent
+                    name:(NSString*)name
+                   error:(NSError**)errorPtr {
     
   // setjmp() must be called prior to libng read function calls
 #ifdef PNG_SETJMP_SUPPORTED
-  if (setjmp(png_jmpbuf(readPtr))) {
-    fail(@"PNG read failed");
-    return nil;
-  }
+  CHECK_SET_ERROR_RET_NIL(!setjmp(png_jmpbuf(readPtr)), QKImagePNG, Read, @"PNG read failed", @{
+                          @"name" : name
+                          });
 #endif
-  
+
   png_read_info(readPtr, infoPtr);
-  
+
   png_uint_32 w, h;
   int srcBitDepth;
   int colorType;
   int interlaceType;
   int compressionType;
   int filterType;
-  int channels;
-  Int rowByteSize;
 
   png_get_IHDR(readPtr, infoPtr, &w, &h, &srcBitDepth, &colorType, &interlaceType, &compressionType, &filterType);
   V2I32 size = V2I32Make(w, h);
@@ -92,13 +94,17 @@
   // all transformations have been registered; update infoPtr
   png_read_update_info(readPtr, infoPtr);
   
-  channels = png_get_channels(readPtr, infoPtr);
-  rowByteSize = png_get_rowbytes(readPtr, infoPtr);
-  check(rowByteSize == size._[0] * channels * dstBitDepth / 8,
-        @"unexpected rowByteSize: %ld; size: %@; channels: %d; depth: %d",
-        rowByteSize, V2I32Desc(size), channels, dstBitDepth);
+  int channels = png_get_channels(readPtr, infoPtr);
+  Int rowsLength = png_get_rowbytes(readPtr, infoPtr);
+  CHECK_SET_ERROR_RET_NIL(rowsLength == size._[0] * channels * dstBitDepth / 8,
+                          QKImagePNG, RowsLength, @"unexpected rows array byte length", @{
+                          @"length" : @(rowsLength),
+                          @"size" : V2I32Desc(size),
+                          @"channels" : @(channels),
+                          @"depth" : @(dstBitDepth),
+                          });
   
-  Int l =  rowByteSize * size._[1];
+  Int l =  rowsLength * size._[1];
   NSMutableData* data = [NSMutableData dataWithCapacity:l];
   data.length = l;
   
@@ -108,7 +114,7 @@
   // fill out row_pointers
   const BOOL flip = YES; // make data layout match OpenGL texturing expectations.
   for_in(i, size._[1]) {
-    row_pointers[flip ? ((size._[1] - 1) - i) : i] = data.mutableBytes + i * rowByteSize;
+    row_pointers[flip ? ((size._[1] - 1) - i) : i] = data.mutableBytes + i * rowsLength;
   }
   // read data
   png_read_image(readPtr, row_pointers);
@@ -150,7 +156,7 @@
 
 void qkpng_error_fn(png_structp png_ptr, png_const_charp error_msg) {
   LAZY_STATIC(NSDictionary*, explanations, @{
-              @"CgBI: unknown critical chunk" : @"The png file was most likely mangled by during iOS copy resources build phase."
+              @"CgBI: unknown critical chunk" : @"The PNG file was most likely mangled by Xcode during iOS 'Copy Resources' build phase."
               });
   NSString* e = [explanations objectForKey:[NSString withUtf8:error_msg]];
   errFL(@"PNG error: %s", error_msg);
@@ -163,14 +169,12 @@ void qkpng_error_fn(png_structp png_ptr, png_const_charp error_msg) {
 //void qkpng_warning_fn(png_structp png_ptr, png_const_charp warning_msg) {}
 
 
-- (id)initWithPngFile:(FILE*)file alpha:(BOOL)alpha {
+- (id)initWithPngFile:(FILE*)file alpha:(BOOL)alpha name:(NSString*)name error:(NSError**)errorPtr {
   U8 sig[8];
   fread(sig, 1, 8, file);
-  if (!png_check_sig(sig, 8)) {
-    errFL(@"bad png signature");
-    return nil;
-  }
-  
+  CHECK_SET_ERROR_RET_NIL(png_check_sig(sig, 8), QKImagePNG, Signature, @"bad PNG signature", @{
+                          @"name" : name
+                          });
   png_voidp error_ptr = NULL;
   png_error_ptr warn_fn = NULL;
   png_structp readPtr = png_create_read_struct(PNG_LIBPNG_VER_STRING, error_ptr, qkpng_error_fn, warn_fn);
@@ -179,28 +183,43 @@ void qkpng_error_fn(png_structp png_ptr, png_const_charp error_msg) {
   check(infoPtr, @"png_create_info_struct failed (out of memory?)");
   png_init_io(readPtr, file);
   png_set_sig_bytes(readPtr, 8); // since we already read the signature bytes
-  self = [self initWithPngReadPtr:readPtr infoPtr:infoPtr alpha:alpha gammaCorrect:NO displayExponent:0];
+  
+  self = [self initWithPngReadPtr:readPtr
+                          infoPtr:infoPtr
+                            alpha:alpha
+                     gammaCorrect:NO
+                  displayExponent:0
+                             name:name
+                            error:errorPtr];
+  
   png_destroy_read_struct(&readPtr, &infoPtr, NULL);
   return self;
 }
 
 
-- (id)initWithPngPath:(NSString*)path alpha:(BOOL)alpha {
+- (id)initWithPngPath:(NSString*)path alpha:(BOOL)alpha error:(NSError**)errorPtr {
   FILE* file = fopen(path.asUtf8, "rb");
-  check(file, @"could not open file: %@", path);
-  return [self initWithPngFile:file alpha:alpha];
+  CHECK_SET_ERROR_RET_NIL(file, QKImagePNG, OpenFile, @"could not open file", @{
+                          @"path" : path
+                          });
+  self = [self initWithPngFile:file alpha:alpha name:path error:errorPtr];
+  fclose(file);
+  return self;
 }
 
 
-+ (id)withPngPath:(NSString*)path alpha:(BOOL)alpha {
-  return [[self alloc] initWithPngPath:path alpha:alpha];
++ (id)withPngPath:(NSString*)path alpha:(BOOL)alpha error:(NSError**)errorPtr {
+  return [[self alloc] initWithPngPath:path alpha:alpha error:errorPtr];
 }
 
 
 + (QKImage*)pngNamed:(NSString*)resourceName alpha:(BOOL)alpha {
   NSString* path = [NSBundle resPath:resourceName ofType:nil];
   check(path, @"no image named: %@", resourceName);
-  return [self withPngPath:path alpha:alpha];
+  NSError* e = nil;
+  QKImage* i = [self withPngPath:path alpha:alpha error:&e];
+  check(i && !e, @"error loading image named: %@\n  %@", resourceName, e);
+  return i;
 }
 
 
