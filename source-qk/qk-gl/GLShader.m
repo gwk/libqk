@@ -29,18 +29,41 @@
 }
 
 
++ (NSString*)prefix {
+  return
+#if TARGET_OS_IPHONE
+  @""
+#else
+  // ignore GLSL ES precision specifiers
+  @"#define lowp   \n"
+  @"#define mediump\n"
+  @"#define highp  \n"
+  @"\n"
+#endif
+  ;
+}
+
+
+LAZY_CLASS_METHOD(Int, prefixLineCount, [[self prefix] lineCount]);
+
+
+- (NSString*)sourceNumberedFromOriginal {
+  return [_source numberedLinesFrom:1 - [self.class prefixLineCount]];
+}
+
+
 - (id)initWithSource:(NSString*)source name:(NSString*)name {
   INIT(super init);
-  _source = source;
+  _source = [[self.class prefix] stringByAppendingString:source];
   _name = name;
   _handle = glCreateShader([self.class shaderType]); qkgl_assert();
   assert(_handle, @"no handle");
-  qkgl_set_shader_source(_handle, source.UTF8String);
+  qkgl_set_shader_source(_handle, _source.UTF8String);
   glCompileShader(_handle); qkgl_assert();
   
   check(qkgl_get_shader_param(_handle, GL_COMPILE_STATUS),
         @"shader compile failed: %@\n%@\nsource:\n%@\n",
-        _name, self.infoLog, source.numberedLines);
+        _name, self.infoLog, _source.numberedLines);
   
   return self;
 }
