@@ -51,8 +51,9 @@ miniaturizable:(BOOL)miniaturizable
 
 
 @protocol QKWindowDelegate <NSWindowDelegate>
-
 @optional
-- (void)windowCovered:(QKWindow*)window;
+
+- (void)windowChangedCoversScreen:(QKWindow*)window;
+- (void)windowChangedScreen:(QKWindow*)window;
 
 @end

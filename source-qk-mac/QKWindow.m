@@ -45,6 +45,8 @@
     [self addScreenButton];
   }
   
+  self.originFromVisibleTopLeft = position;
+  
   if (activate) {
     [self makeKeyAndOrderFront:nil];
     [self makeMainWindow]; // must come after makeKeyAndOrderFront
@@ -52,7 +54,6 @@
   else {
     [self orderBack:nil];
   }
-  self.originFromVisibleTopLeft = position;
   
   [[NSNotificationCenter defaultCenter] addObserver:self
                                            selector:@selector(screenDidChange:)
@@ -161,7 +162,7 @@ miniaturizable:(BOOL)miniaturizable
     self.hidesOnDeactivate = self.normalHidesOnDeactivate;
     [self addScreenButton];
   }
-  [self display];
+  [DEL_RESPONDS(windowChangedCoversScreen:) windowChangedCoversScreen:self];
 }
 
 
@@ -171,12 +172,10 @@ miniaturizable:(BOOL)miniaturizable
 
 
 - (void)keyUp:(NSEvent *)event {
-  if (_coversScreen && [event keyCode] == 53) {
+  if (_coversScreen && [event keyCode] == 53) { // escape key
     [self toggleCoversScreen];
   }
-  if ([self.delegate respondsToSelector:@selector(keyUp:)]) {
-    [(NSResponder*)self.delegate keyUp:event];
-  }
+  [DEL_RESPONDS(keyUp:) keyUp:event];
 }
 
 
@@ -184,7 +183,7 @@ miniaturizable:(BOOL)miniaturizable
 - (void)screenDidChange:(NSNotification *)notification {
   errFL(@"window: %p screenDidChange:", self);
   CAST(NSView, self.contentView).layer.contentsScale = self.screen.backingScaleFactor;
-  // should this notify handler?
+  [DEL_RESPONDS(windowChangedScreen:) windowChangedScreen:self];
 }
 
 
