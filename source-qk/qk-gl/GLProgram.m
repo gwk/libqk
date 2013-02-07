@@ -144,7 +144,7 @@ SET_UNIFORM(I32, glUniform1iv);
 - (BOOL)setUniform:(NSString *)name texture:(GLTexture*)texture unit:(I32)unit {
   // NOTE: this addition assumes that the unit enums are consecutive.
   glActiveTexture(GL_TEXTURE0 + unit); qkgl_assert();
-  [texture bindToTarget];
+  [GLTexture bind:texture target:GL_TEXTURE_2D];
   return [self setUniform:name I32:unit];
 }
 

@@ -27,6 +27,8 @@
 - (void)bindToTarget;
 - (void)unbindFromTarget;
 
++ (BOOL)bind:(GLTexture*)texture target:(GLenum)target; // handles nil texture by binding 0 and returning NO.
+
 - (GLenum) target;
 - (GLint) width;
 - (GLint) height;

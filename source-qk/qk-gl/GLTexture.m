@@ -24,7 +24,7 @@
   INIT(super init);
   glGenTextures(1, &_handle); qkgl_assert();
   check(_handle != -1, @"could not generate texture handle");
-  _target = GL_TEXTURE_2D; // only target supported by ES
+  _target = GL_TEXTURE_2D; // ES also supports GL_CUBE_MAP
   _format = format;
   _size = size;
   glBindTexture(_target, _handle); qkgl_assert();
@@ -124,6 +124,19 @@
 - (void)unbindFromTarget {
   //glEnable(_target); qkgl_assert(); // necessary in OpenGL? invalid in ES2
   glBindTexture(_target, 0); qkgl_assert();
+}
+
+
++ (BOOL)bind:(GLTexture*)texture target:(GLenum)target {
+  if (texture) {
+    assert(target == texture.target, @"target %u does not match texture: %u", target, texture.target);
+    [texture bindToTarget];
+    return YES;
+  }
+  else {
+    glBindTexture(target, 0);
+    return NO;
+  }
 }
 
 
