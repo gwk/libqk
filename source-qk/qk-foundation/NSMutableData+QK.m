@@ -13,5 +13,10 @@
 }
 
 
++ (id)withLength:(Int)length {
+  return [[self alloc] initWithLength:length];
+}
+
+
 @end
 

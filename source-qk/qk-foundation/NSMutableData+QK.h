@@ -3,5 +3,8 @@
 
 
 @interface NSMutableData (QK)
+
++ (id)withLength:(Int)length;
+
 @end
 
