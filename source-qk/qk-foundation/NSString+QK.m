@@ -117,7 +117,18 @@
 }
 
 
-#pragma mark - numbered lines
+#pragma mark - lines
+
+
+- (Int)lineCount {
+  Int c = 0;
+  for_in(i, self.length) {
+    if ([self characterAtIndex:i] == '\n') {
+      c++;
+    }
+  }
+  return c;
+}
 
 
 - (NSString*)numberedLinesFrom:(Int)from {

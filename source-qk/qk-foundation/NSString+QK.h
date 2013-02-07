@@ -30,6 +30,7 @@
 - (Utf8M)asUtf8M; // mallocs a copy of Utf8
 - (Utf32M)asUtf32M; // mallocs a copy of Utf32
 
+- (Int)lineCount;
 - (NSString*)numberedLinesFrom:(Int)from;
 - (NSString*)numberedLines;
 - (NSString*)numeberedLinesFrom0;
