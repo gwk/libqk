@@ -35,6 +35,11 @@ static inline CGRect CGRectWithS(CGSize size) {
 }
 
 
+static inline CGRect CGRectWithWH(CGFloat w, CGFloat h) {
+  return CGRectMake(0, 0, w, h);
+}
+
+
 // left, bottom, size
 static inline CGRect CGRectWithLBS(CGFloat l, CGFloat b, CGSize s) {
   return CGRectMake(l, b - s.height, s.width, s.height);
