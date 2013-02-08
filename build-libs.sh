@@ -10,42 +10,41 @@ error() { echo 'error:' "$@" 1>&2; exit 1; }
 
 [[ $0 == "./build-libs.sh" ]] || error "must invoke as ./build-libs.sh"
 
-[[ ${#@} == 4 ]] || error "usage: std-out sqlite3 png jpeg-turbo"
+(( ${#@} >= 3 )) || error "usage: sqlite3 png jpeg-turbo [--quiet]"
+
+sqlite3=$1;   shift
+png=$1;       shift
+turbojpeg=$1;  shift
+export QUIET=$1;
 
 libqk="$PWD"
 
-platforms="mac ios"
+# note: string compare is not great, but catches the common case.
+nasm_version_req='version 2.10.00'
+nasm_version=$(nasm -v | egrep --only-matching --max-count=1 'version [0-9]+(\.[0-9]+)*')
+echo "nasm $nasm_version (above $nasm_version_req required)"
+[[ "$nasm_version" > "$nasm_version_req" ]] || error "modern nasm required: $nasm_version_req; using $(nasm -v)"
 
 # libjpeg-turbo requires gas-preprocessor, obtained from https://github.com/yuvi/gas-preprocessor
 [[ -r "$libqk/tools/gas-preprocessor.pl" ]] || error "missing tools/gas-preprocessor.pl"
-#export PATH="$libqk/tools:$PATH"
+export PATH="$libqk/tools:$PATH"
 
 build_lib() {
-  local path="$1"; shift
+  local platform=$1; shift
   local name="$1"; shift
-  local cc_name_mac="$1"; shift
-  local cc_name_ios="$1"; shift
   local config_args="$@"
-  echo "building $name: $path"
-  for p in $platforms; do
-    eval local cc_name=\$cc_name_$p
-    local d="libs-$p/$name"
-    [[ -d "$d" ]] && rm -rf "$d"
-    mkdir -p "$d"
-    ./build-lib-$p.sh "$path" lib$name $cc_name built-$p/$name $config_args
-    echo
-  done
+  eval local path=\$$name
+  echo "building $platform $name: $path"
+  local d="libs-$platform/$name"
+  [[ -d "$d" ]] && rm -rf "$d"
+  mkdir -p "$d"
+  ./build-lib-$platform.sh clang lib$name "$path" built-$platform/$name $config_args
   echo
 }
 
-export OUT="$1"
-shift
-echo "redirecting build output to $OUT..."
-[[ -w "$OUT" ]] || "bad output file: $OUT"
-
-#build_lib "$1" sqlite3 clang clang
-shift
-#build_lib "$1" png clang clang
-shift
-build_lib "$1" turbojpeg clang gcc --with-jpeg8 --with-gas-preprocessor
-shift
+build_lib mac sqlite3
+build_lib ios sqlite3
+build_lib mac png
+build_lib ios png --enable-arm-neon
+build_lib mac turbojpeg --with-jpeg8
+build_lib ios turbojpeg --with-jpeg8 --without-simd --with-gas-preprocessor # cannot yet compile neon successfully

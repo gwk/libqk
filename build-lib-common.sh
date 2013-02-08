@@ -14,9 +14,9 @@ error() { echo 'error:' "$@" 1>&2; exit 1; }
 echo
 echo "build-lib-common.sh: $@"
 
-export SRC_DIR="$1"; shift
-export LIB_NAME="$1"; shift
 export CC_NAME="$1"; shift
+export LIB_NAME="$1"; shift
+export SRC_DIR="$1"; shift
 export INSTALL_DIR="$PWD/$1"; shift
 export CONFIG_ARGS="$@"
 

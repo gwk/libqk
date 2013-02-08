@@ -22,26 +22,25 @@ sdk_dir=$platform_dir/Developer/SDKs/$sdk.sdk
 
 cc_clang=$TOOL_DIR/clang
 cxx_clang=$TOOL_DIR/clang++
-flags_clang="-O4 -arch $arch"
 
 cc_gcc=$PLATFORM_TOOL_DIR/$host-llvm-gcc-4.2
 cxx_gcc=$PLATFORM_TOOL_DIR/$host-llvm-g++-4.2
-if [[ $platform == 'iPhoneOS' ]]; then
-  flags_gcc="-O3 -march=$arch -mfloat-abi=softfp -mfpu=neon -mcpu=$cpu -mtune=$cpu"
-elif [[ $platform == 'iPhoneSimulator' ]]; then
-  flags_gcc="-O3 -march=$arch"
-elif [[ $platform == 'MacOSX' ]]; then
-  flags_gcc="-O3 -march=$arch"
-else
-  error "bad platform: $platform"
-fi
-
 
 eval cc=\$cc_$CC_NAME
 eval cxx=\$cxx_$CC_NAME
-eval flags=\$flags_$CC_NAME
 
+c_flags="-O3 -arch $arch"
+as=$cc
 ld=$TOOL_DIR/ld
+libtool=$TOOL_DIR/libtool
+
+
+if [[ $platform == 'iPhoneOS' ]]; then
+  c_flags="-O3 -arch $arch"
+  as="gas-preprocessor.pl $cc"
+  # original flags from turbojpg gcc recipe:
+  #c_flags="-O3 -march=$arch -mfloat-abi=softfp -mfpu=neon -mcpu=$cpu -mtune=$cpu"
+fi
 
 echo "
 sdk: $sdk; host: $host; arch: $arch; cpu: $cpu;
@@ -49,6 +48,9 @@ CC_NAME: $CC_NAME
 platform: $platform
 cc: $cc
 cxx: $cxx
+as: $as
+ld: $ld
+libtool: $libtool
 flags: $flags
 config args: $config_args
 ----"
@@ -64,22 +66,29 @@ set -x
 mkdir -p "$BUILD_DIR/$arch"
 cd "$BUILD_DIR/$arch"
 rm -rf * # clean aggressively
+
 "$SRC_DIR/configure" \
 --prefix="$PWD/install" \
 --host=$host \
 --enable-static \
 --disable-shared \
-CC="$cc" \
 CPP="$cc -E" \
+CC="$cc" \
+CXXCPP="$cxx -E" \
 CXX="$cxx" \
-LD="$cc" \
-CPPFLAGS="-I$sdk_dir/usr/include" \
-CFLAGS="  -I$sdk_dir/usr/include  -isysroot $sdk_dir $flags" \
-LDFLAGS=" -L$sdk_dir/usr/lib      -isysroot $sdk_dir $flags" \
-$CONFIG_ARGS > "$OUT"
+CCAS="$as" \
+LD="$ld -arch $arch" \
+LIBTOOL="$libtool" \
+CPPFLAGS="   -I$sdk_dir/usr/include" \
+CXXCPPFLAGS="-I$sdk_dir/usr/include" \
+CFLAGS="     -I$sdk_dir/usr/include  -isysroot $sdk_dir $c_flags" \
+CXXFLAGS="   -I$sdk_dir/usr/include  -isysroot $sdk_dir $c_flags" \
+LDFLAGS="    -L$sdk_dir/usr/lib      -isysroot $sdk_dir" \
+$CONFIG_ARGS \
+$QUIET
 
-make > "$OUT"
-make install > "$OUT"
+make $QUIET
+make install $QUIET
 set +x
 
 echo "----
