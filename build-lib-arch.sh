@@ -36,7 +36,7 @@ libtool=$TOOL_DIR/libtool
 
 
 if [[ $platform == 'iPhoneOS' ]]; then
-  c_flags="-O3 -arch $arch"
+  c_flags="-Oz -arch $arch" # prefer smaller libs
   as="gas-preprocessor.pl $cc"
   # original flags from turbojpg gcc recipe:
   #c_flags="-O3 -march=$arch -mfloat-abi=softfp -mfpu=neon -mcpu=$cpu -mtune=$cpu"
@@ -62,11 +62,12 @@ for n in SRC_DIR DEV_DIR TOOL_DIR PLATFORM_TOOL_DIR QK_DIR platform_dir sdk_dir;
   [[ -d "$v" ]] || error "bad $n"
 done
 
-set -x
 mkdir -p "$BUILD_DIR/$arch"
 cd "$BUILD_DIR/$arch"
 rm -rf * # clean aggressively
+rm -rf .deps .libs # hidden directories
 
+set -x
 "$SRC_DIR/configure" \
 --prefix="$PWD/install" \
 --host=$host \
@@ -87,9 +88,19 @@ LDFLAGS="    -L$sdk_dir/usr/lib      -isysroot $sdk_dir" \
 $CONFIG_ARGS \
 $QUIET
 
-make $QUIET
-make install $QUIET
 set +x
+
+# make does not seem to respond to --quiet or --silent despite man page.
+if [[ -n "$QUIET" ]]; then
+  OUT=/dev/null
+else
+  OUT=/dev/stdout
+fi
+
+echo "running make..."
+make > $OUT
+echo "running make install..."
+make install > $OUT
 
 echo "----
 COMPLETE: $sdk $host $arch $SRC_DIR
