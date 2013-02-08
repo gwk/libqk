@@ -2,6 +2,9 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#import "qk-types.h"
+
+
 @protocol QKData <NSObject>
 
 - (const void*)bytes;

@@ -8,6 +8,7 @@
 # import <OpenGL/gl3.h>
 #endif
 
+#import "qk-vec.h"
 #import "QKPixFmt.h"
 #import "QKData.h"
 

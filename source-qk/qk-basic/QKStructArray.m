@@ -2,9 +2,11 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#import "NSArray+QK.h"
 #import "NSData+QK.h"
 #import "NSString+QK.h"
 #import "QKStructArray.h"
+#import "QKMutableStructArray.h"
 
 
 @implementation QKStructArray

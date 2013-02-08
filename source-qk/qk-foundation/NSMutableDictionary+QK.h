@@ -2,7 +2,7 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
-#import <Foundation/Foundation.h>
+#import "Duo.h"
 
 
 @interface NSMutableDictionary (QK)

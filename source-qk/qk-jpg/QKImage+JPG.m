@@ -2,34 +2,88 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#import "turbojpeg.h"
+#import "NSBundle+QK.h"
+#import "NSData+QK.h"
+#import "NSMutableData+QK.h"
 #import "QKImage+JPG.h"
+
+
+NSString* const QKImageJPGErrorDomain = @"QKImageJPGErrorDomain";
 
 
 @implementation QKImage (JPG)
 
 
-- (id)initWithJpgFile:(FILE*)file alpha:(BOOL)alpha {
-  self = [self init];
-  return self;
+- (id)initWithJpgData:(id<QKData>)jpgData alpha:(BOOL)alpha name:(NSString*)name error:(NSError**)errorPtr {
+
+  tjhandle handle = tjInitDecompress();
+  check(handle, @"could not init JPG decompressor");
+  
+  V2I32 s = {0, 0};
+  int subsamples = 0;
+
+  int code = tjDecompressHeader2(handle, (void*)jpgData.bytes, jpgData.length, &s._[0], &s._[1], &subsamples);
+  CHECK_SET_ERROR_RET_NIL(code == 0, QKImageJPG, ReadHeader, @"JPG read header failed", @{
+                          @"name" : name
+                          });
+
+  int jpgPixFmt;
+  QKPixFmt fmt;
+  int channels;
+  if (alpha) {
+    jpgPixFmt = TJPF_RGBA;
+    fmt = QKPixFmtRGBAU8;
+    channels = 4;
+  }
+  else {
+    jpgPixFmt = TJPF_RGB;
+    fmt = QKPixFmtRGBU8;
+    channels = 3;
+  }
+  int flags = TJFLAG_BOTTOMUP | TJFLAG_ACCURATEDCT;
+  NSMutableData* data = [NSMutableData withLength:V2I32Measure(s) * channels];
+  code = tjDecompress2(handle,
+                       (void*)jpgData.bytes, // API is not const-correct
+                       jpgData.length,
+                       data.mutableBytes,
+                       s._[0],
+                       0, // pitch; set to 0 for tightly packed data
+                       s._[1],
+                       jpgPixFmt,
+                       flags);
+
+  CHECK_SET_ERROR_RET_NIL(code == 0, QKImageJPG, Decompress, @"JPG decompression failed", @{
+                          @"name" : name
+                          });
+    
+  tjDestroy(handle);
+
+  return [self initWithFormat:fmt size:s data:data];
 }
 
 
-- (id)initWithJpgPath:(NSString*)path alpha:(BOOL)alpha {
-  FILE* file = fopen(path.asUtf8, "rb");
-  check(file, @"could not open file: %@", path);
-  return [self initWithJpgFile:file alpha:alpha];
+- (id)initWithJpgPath:(NSString*)path map:(BOOL)map alpha:(BOOL)alpha error:(NSError**)errorPtr {
+  NSData* jpgData = [NSData withPath:path map:map error:errorPtr];
+  if (*errorPtr) {
+    return nil;
+  }
+  return [self initWithJpgData:jpgData alpha:alpha name:path error:errorPtr];
 }
 
 
-+ (id)withJpgPath:(NSString*)path alpha:(BOOL)alpha {
-  return [[self alloc] initWithJpgPath:path alpha:alpha];
++ (id)withJpgPath:(NSString*)path map:(BOOL)map alpha:(BOOL)alpha error:(NSError**)errorPtr {
+  return [[self alloc] initWithJpgPath:path map:(BOOL)map alpha:alpha error:errorPtr];
 }
 
 
 + (QKImage*)jpgNamed:(NSString*)resourceName alpha:(BOOL)alpha {
   NSString* path = [NSBundle resPath:resourceName ofType:nil];
-  check(path, @"no image named: %@", resourceName);
-  return [self withJpgPath:path alpha:alpha];
+  check(path, @"no JPG image named: %@", resourceName);
+  NSError* e = nil;
+  QKImage* i = [self withJpgPath:path map:YES alpha:alpha error:&e];
+  check(!e, @"JPG resource failed to load: %@", e);
+  return i;
 }
 
 

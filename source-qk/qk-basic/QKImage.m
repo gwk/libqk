@@ -2,6 +2,9 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#import "NSOutputStream+QK.h"
+#import "NSString+QK.h"
+#import "NSObject+JNB.h"
 #import "QKImage.h"
 
 
@@ -106,7 +109,7 @@ LAZY_CLASS_METHOD(NSDictionary*, jnbValEncoders, @{
                   });
 
 
-- (NSError*)jnbDataDecode:(QKSubData*)data {
+- (NSError*)jnbDataDecode:(id<QKData>)data {
   _data = data;
   if (!data) {
     return [NSError withDomain:JNBErrorDomain code:JNBErrorCodeDataMissing desc:@"nil data" info:nil];
@@ -128,7 +131,7 @@ LAZY_CLASS_METHOD(NSDictionary*, jnbValEncoders, @{
 }
 
 
-- (id)initWithFormat:(QKPixFmt)format size:(V2I32)size data:(QKSubData*)data {
+- (id)initWithFormat:(QKPixFmt)format size:(V2I32)size data:(id<QKData>)data {
   INIT(super init);
   _format = format;
   _size = size;
@@ -138,7 +141,7 @@ LAZY_CLASS_METHOD(NSDictionary*, jnbValEncoders, @{
 }
 
 
-+ (id)withFormat:(QKPixFmt)format size:(V2I32)size data:(QKSubData*)data {
++ (id)withFormat:(QKPixFmt)format size:(V2I32)size data:(id<QKData>)data {
   return [[self alloc] initWithFormat:format size:size data:data];
 }
 

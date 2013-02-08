@@ -2,6 +2,9 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#import "QKData.h"
+
+
 extern NSString* const QKJsonErrorDomain;
 
 typedef enum {

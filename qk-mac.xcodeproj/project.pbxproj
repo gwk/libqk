@@ -80,13 +80,15 @@
 		EC0D9C9016B998CB005D2C2B /* SqlDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C3C16B998CB005D2C2B /* SqlDatabase.m */; };
 		EC0D9C9216B998CB005D2C2B /* SqlStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C3E16B998CB005D2C2B /* SqlStatement.m */; };
 		EC0D9C9416B998CB005D2C2B /* NSView+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C4316B998CB005D2C2B /* NSView+QK.m */; };
-		EC0D9CA816B9A753005D2C2B /* libpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0D9CA116B9A753005D2C2B /* libpng.a */; };
-		EC0D9CA916B9A753005D2C2B /* libpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0D9CA116B9A753005D2C2B /* libpng.a */; };
-		EC0D9CAA16B9A753005D2C2B /* libsqlite3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0D9CA716B9A753005D2C2B /* libsqlite3.a */; };
-		EC26861A16C31D1500FD35FB /* libjpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC26861916C31D1500FD35FB /* libjpeg.a */; };
-		EC26861B16C31D1500FD35FB /* libjpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC26861916C31D1500FD35FB /* libjpeg.a */; };
 		EC26861F16C31F1500FD35FB /* QKImage+JPG.m in Sources */ = {isa = PBXBuildFile; fileRef = EC26861E16C31F1500FD35FB /* QKImage+JPG.m */; };
 		EC26862016C31F1500FD35FB /* QKImage+JPG.m in Sources */ = {isa = PBXBuildFile; fileRef = EC26861E16C31F1500FD35FB /* QKImage+JPG.m */; };
+		EC2686A316C42EE000FD35FB /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = EC26868516C42EE000FD35FB /* .gitignore */; };
+		EC2686A416C42EE000FD35FB /* jnb-image-with-png in Resources */ = {isa = PBXBuildFile; fileRef = EC26868816C42EE000FD35FB /* jnb-image-with-png */; };
+		EC2686A516C42EE000FD35FB /* libpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC26869316C42EE000FD35FB /* libpng.a */; };
+		EC2686A616C42EE000FD35FB /* libpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC26869316C42EE000FD35FB /* libpng.a */; };
+		EC2686A716C42EE000FD35FB /* libsqlite3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC26869916C42EE000FD35FB /* libsqlite3.a */; };
+		EC2686A916C42EE000FD35FB /* libturbojpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC2686A216C42EE000FD35FB /* libturbojpeg.a */; };
+		EC2686AA16C42EE000FD35FB /* libturbojpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC2686A216C42EE000FD35FB /* libturbojpeg.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -211,25 +213,27 @@
 		EC0D9C4316B998CB005D2C2B /* NSView+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+QK.m"; sourceTree = "<group>"; };
 		EC0D9C4416B998CB005D2C2B /* qk-cocoa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-cocoa.h"; sourceTree = "<group>"; };
 		EC0D9C4516B998CB005D2C2B /* source-qk-mac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "source-qk-mac.h"; sourceTree = "<group>"; };
-		EC0D9C9A16B9A753005D2C2B /* png.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = png.h; sourceTree = "<group>"; };
-		EC0D9C9B16B9A753005D2C2B /* pngconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pngconf.h; sourceTree = "<group>"; };
-		EC0D9C9C16B9A753005D2C2B /* pnglibconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pnglibconf.h; sourceTree = "<group>"; };
-		EC0D9C9D16B9A753005D2C2B /* png.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = png.h; sourceTree = "<group>"; };
-		EC0D9C9E16B9A753005D2C2B /* pngconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pngconf.h; sourceTree = "<group>"; };
-		EC0D9C9F16B9A753005D2C2B /* pnglibconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pnglibconf.h; sourceTree = "<group>"; };
-		EC0D9CA116B9A753005D2C2B /* libpng.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libpng.a; sourceTree = "<group>"; };
-		EC0D9CA416B9A753005D2C2B /* sqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3.h; sourceTree = "<group>"; };
-		EC0D9CA516B9A753005D2C2B /* sqlite3ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3ext.h; sourceTree = "<group>"; };
-		EC0D9CA716B9A753005D2C2B /* libsqlite3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libsqlite3.a; sourceTree = "<group>"; };
-		EC26861316C31D1500FD35FB /* jconfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jconfig.h; sourceTree = "<group>"; };
-		EC26861416C31D1500FD35FB /* jerror.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jerror.h; sourceTree = "<group>"; };
-		EC26861516C31D1500FD35FB /* jmorecfg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jmorecfg.h; sourceTree = "<group>"; };
-		EC26861616C31D1500FD35FB /* jpeglib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jpeglib.h; sourceTree = "<group>"; };
-		EC26861716C31D1500FD35FB /* turbojpeg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = turbojpeg.h; sourceTree = "<group>"; };
-		EC26861916C31D1500FD35FB /* libjpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libjpeg.a; sourceTree = "<group>"; };
 		EC26861D16C31F1500FD35FB /* QKImage+JPG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QKImage+JPG.h"; sourceTree = "<group>"; };
 		EC26861E16C31F1500FD35FB /* QKImage+JPG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "QKImage+JPG.m"; sourceTree = "<group>"; };
 		EC26862116C31F2A00FD35FB /* qk-jpg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "qk-jpg.h"; sourceTree = "<group>"; };
+		EC26868516C42EE000FD35FB /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		EC26868816C42EE000FD35FB /* jnb-image-with-png */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "jnb-image-with-png"; sourceTree = "<group>"; };
+		EC26868C16C42EE000FD35FB /* png.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = png.h; sourceTree = "<group>"; };
+		EC26868D16C42EE000FD35FB /* pngconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pngconf.h; sourceTree = "<group>"; };
+		EC26868E16C42EE000FD35FB /* pnglibconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pnglibconf.h; sourceTree = "<group>"; };
+		EC26868F16C42EE000FD35FB /* png.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = png.h; sourceTree = "<group>"; };
+		EC26869016C42EE000FD35FB /* pngconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pngconf.h; sourceTree = "<group>"; };
+		EC26869116C42EE000FD35FB /* pnglibconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pnglibconf.h; sourceTree = "<group>"; };
+		EC26869316C42EE000FD35FB /* libpng.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libpng.a; sourceTree = "<group>"; };
+		EC26869616C42EE000FD35FB /* sqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3.h; sourceTree = "<group>"; };
+		EC26869716C42EE000FD35FB /* sqlite3ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3ext.h; sourceTree = "<group>"; };
+		EC26869916C42EE000FD35FB /* libsqlite3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libsqlite3.a; sourceTree = "<group>"; };
+		EC26869C16C42EE000FD35FB /* jconfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jconfig.h; sourceTree = "<group>"; };
+		EC26869D16C42EE000FD35FB /* jerror.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jerror.h; sourceTree = "<group>"; };
+		EC26869E16C42EE000FD35FB /* jmorecfg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jmorecfg.h; sourceTree = "<group>"; };
+		EC26869F16C42EE000FD35FB /* jpeglib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jpeglib.h; sourceTree = "<group>"; };
+		EC2686A016C42EE000FD35FB /* turbojpeg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = turbojpeg.h; sourceTree = "<group>"; };
+		EC2686A216C42EE000FD35FB /* libturbojpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libturbojpeg.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,9 +246,9 @@
 				EC0D9B4E16B84FDA005D2C2B /* libz.dylib in Frameworks */,
 				EC0D9A9316B830F7005D2C2B /* AppKit.framework in Frameworks */,
 				EC0D9A9116B830F1005D2C2B /* Cocoa.framework in Frameworks */,
-				EC0D9CA816B9A753005D2C2B /* libpng.a in Frameworks */,
-				EC0D9CAA16B9A753005D2C2B /* libsqlite3.a in Frameworks */,
-				EC26861A16C31D1500FD35FB /* libjpeg.a in Frameworks */,
+				EC2686A516C42EE000FD35FB /* libpng.a in Frameworks */,
+				EC2686A716C42EE000FD35FB /* libsqlite3.a in Frameworks */,
+				EC2686A916C42EE000FD35FB /* libturbojpeg.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,8 +258,8 @@
 			files = (
 				EC0D9B5B16B8588B005D2C2B /* Foundation.framework in Frameworks */,
 				EC0D9B6916B85903005D2C2B /* libz.dylib in Frameworks */,
-				EC0D9CA916B9A753005D2C2B /* libpng.a in Frameworks */,
-				EC26861B16C31D1500FD35FB /* libjpeg.a in Frameworks */,
+				EC2686A616C42EE000FD35FB /* libpng.a in Frameworks */,
+				EC2686AA16C42EE000FD35FB /* libturbojpeg.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +274,7 @@
 				EC0D9C4016B998CB005D2C2B /* source-qk-mac */,
 				EC0D9BD516B9983C005D2C2B /* jnb-image-with-png */,
 				EC0D9BAC16B87683005D2C2B /* test-qk-mac */,
+				EC26868416C42EE000FD35FB /* built-mac */,
 				EC0D9A9B16B831A1005D2C2B /* dependencies */,
 				EC0D9B5916B8588B005D2C2B /* Frameworks */,
 				EC0D9A6A16B82EBD005D2C2B /* Products */,
@@ -288,9 +293,6 @@
 		EC0D9A9B16B831A1005D2C2B /* dependencies */ = {
 			isa = PBXGroup;
 			children = (
-				EC26861116C31D1500FD35FB /* jpeg */,
-				EC0D9C9716B9A753005D2C2B /* png */,
-				EC0D9CA216B9A753005D2C2B /* sqlite3 */,
 				EC0D9B5116B85799005D2C2B /* OpenGL.framework */,
 				EC0D9B4F16B85794005D2C2B /* GLKit.framework */,
 				EC0D9B4D16B84FDA005D2C2B /* libz.dylib */,
@@ -501,102 +503,6 @@
 			path = "qk-cocoa";
 			sourceTree = "<group>";
 		};
-		EC0D9C9716B9A753005D2C2B /* png */ = {
-			isa = PBXGroup;
-			children = (
-				EC0D9C9816B9A753005D2C2B /* include */,
-				EC0D9CA016B9A753005D2C2B /* lib */,
-			);
-			name = png;
-			path = "built-mac/png";
-			sourceTree = "<group>";
-		};
-		EC0D9C9816B9A753005D2C2B /* include */ = {
-			isa = PBXGroup;
-			children = (
-				EC0D9C9916B9A753005D2C2B /* libpng15 */,
-				EC0D9C9D16B9A753005D2C2B /* png.h */,
-				EC0D9C9E16B9A753005D2C2B /* pngconf.h */,
-				EC0D9C9F16B9A753005D2C2B /* pnglibconf.h */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		EC0D9C9916B9A753005D2C2B /* libpng15 */ = {
-			isa = PBXGroup;
-			children = (
-				EC0D9C9A16B9A753005D2C2B /* png.h */,
-				EC0D9C9B16B9A753005D2C2B /* pngconf.h */,
-				EC0D9C9C16B9A753005D2C2B /* pnglibconf.h */,
-			);
-			path = libpng15;
-			sourceTree = "<group>";
-		};
-		EC0D9CA016B9A753005D2C2B /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				EC0D9CA116B9A753005D2C2B /* libpng.a */,
-			);
-			path = lib;
-			sourceTree = "<group>";
-		};
-		EC0D9CA216B9A753005D2C2B /* sqlite3 */ = {
-			isa = PBXGroup;
-			children = (
-				EC0D9CA316B9A753005D2C2B /* include */,
-				EC0D9CA616B9A753005D2C2B /* lib */,
-			);
-			name = sqlite3;
-			path = "built-mac/sqlite3";
-			sourceTree = "<group>";
-		};
-		EC0D9CA316B9A753005D2C2B /* include */ = {
-			isa = PBXGroup;
-			children = (
-				EC0D9CA416B9A753005D2C2B /* sqlite3.h */,
-				EC0D9CA516B9A753005D2C2B /* sqlite3ext.h */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		EC0D9CA616B9A753005D2C2B /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				EC0D9CA716B9A753005D2C2B /* libsqlite3.a */,
-			);
-			path = lib;
-			sourceTree = "<group>";
-		};
-		EC26861116C31D1500FD35FB /* jpeg */ = {
-			isa = PBXGroup;
-			children = (
-				EC26861216C31D1500FD35FB /* include */,
-				EC26861816C31D1500FD35FB /* lib */,
-			);
-			name = jpeg;
-			path = "built-mac/jpeg";
-			sourceTree = "<group>";
-		};
-		EC26861216C31D1500FD35FB /* include */ = {
-			isa = PBXGroup;
-			children = (
-				EC26861316C31D1500FD35FB /* jconfig.h */,
-				EC26861416C31D1500FD35FB /* jerror.h */,
-				EC26861516C31D1500FD35FB /* jmorecfg.h */,
-				EC26861616C31D1500FD35FB /* jpeglib.h */,
-				EC26861716C31D1500FD35FB /* turbojpeg.h */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		EC26861816C31D1500FD35FB /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				EC26861916C31D1500FD35FB /* libjpeg.a */,
-			);
-			path = lib;
-			sourceTree = "<group>";
-		};
 		EC26861C16C31F1500FD35FB /* qk-jpg */ = {
 			isa = PBXGroup;
 			children = (
@@ -605,6 +511,127 @@
 				EC26861E16C31F1500FD35FB /* QKImage+JPG.m */,
 			);
 			path = "qk-jpg";
+			sourceTree = "<group>";
+		};
+		EC26868416C42EE000FD35FB /* built-mac */ = {
+			isa = PBXGroup;
+			children = (
+				EC26868516C42EE000FD35FB /* .gitignore */,
+				EC26868616C42EE000FD35FB /* jnb-image-with-png */,
+				EC26868916C42EE000FD35FB /* png */,
+				EC26869416C42EE000FD35FB /* sqlite3 */,
+				EC26869A16C42EE000FD35FB /* turbojpeg */,
+			);
+			path = "built-mac";
+			sourceTree = "<group>";
+		};
+		EC26868616C42EE000FD35FB /* jnb-image-with-png */ = {
+			isa = PBXGroup;
+			children = (
+				EC26868716C42EE000FD35FB /* bin */,
+			);
+			path = "jnb-image-with-png";
+			sourceTree = "<group>";
+		};
+		EC26868716C42EE000FD35FB /* bin */ = {
+			isa = PBXGroup;
+			children = (
+				EC26868816C42EE000FD35FB /* jnb-image-with-png */,
+			);
+			path = bin;
+			sourceTree = "<group>";
+		};
+		EC26868916C42EE000FD35FB /* png */ = {
+			isa = PBXGroup;
+			children = (
+				EC26868A16C42EE000FD35FB /* include */,
+				EC26869216C42EE000FD35FB /* lib */,
+			);
+			path = png;
+			sourceTree = "<group>";
+		};
+		EC26868A16C42EE000FD35FB /* include */ = {
+			isa = PBXGroup;
+			children = (
+				EC26868B16C42EE000FD35FB /* libpng15 */,
+				EC26868F16C42EE000FD35FB /* png.h */,
+				EC26869016C42EE000FD35FB /* pngconf.h */,
+				EC26869116C42EE000FD35FB /* pnglibconf.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		EC26868B16C42EE000FD35FB /* libpng15 */ = {
+			isa = PBXGroup;
+			children = (
+				EC26868C16C42EE000FD35FB /* png.h */,
+				EC26868D16C42EE000FD35FB /* pngconf.h */,
+				EC26868E16C42EE000FD35FB /* pnglibconf.h */,
+			);
+			path = libpng15;
+			sourceTree = "<group>";
+		};
+		EC26869216C42EE000FD35FB /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				EC26869316C42EE000FD35FB /* libpng.a */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		EC26869416C42EE000FD35FB /* sqlite3 */ = {
+			isa = PBXGroup;
+			children = (
+				EC26869516C42EE000FD35FB /* include */,
+				EC26869816C42EE000FD35FB /* lib */,
+			);
+			path = sqlite3;
+			sourceTree = "<group>";
+		};
+		EC26869516C42EE000FD35FB /* include */ = {
+			isa = PBXGroup;
+			children = (
+				EC26869616C42EE000FD35FB /* sqlite3.h */,
+				EC26869716C42EE000FD35FB /* sqlite3ext.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		EC26869816C42EE000FD35FB /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				EC26869916C42EE000FD35FB /* libsqlite3.a */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		EC26869A16C42EE000FD35FB /* turbojpeg */ = {
+			isa = PBXGroup;
+			children = (
+				EC26869B16C42EE000FD35FB /* include */,
+				EC2686A116C42EE000FD35FB /* lib */,
+			);
+			path = turbojpeg;
+			sourceTree = "<group>";
+		};
+		EC26869B16C42EE000FD35FB /* include */ = {
+			isa = PBXGroup;
+			children = (
+				EC26869C16C42EE000FD35FB /* jconfig.h */,
+				EC26869D16C42EE000FD35FB /* jerror.h */,
+				EC26869E16C42EE000FD35FB /* jmorecfg.h */,
+				EC26869F16C42EE000FD35FB /* jpeglib.h */,
+				EC2686A016C42EE000FD35FB /* turbojpeg.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		EC2686A116C42EE000FD35FB /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				EC2686A216C42EE000FD35FB /* libturbojpeg.a */,
+			);
+			path = lib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -677,6 +704,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC2686A316C42EE000FD35FB /* .gitignore in Resources */,
+				EC2686A416C42EE000FD35FB /* jnb-image-with-png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -853,6 +882,7 @@
 					"\"$(SRCROOT)/built-mac/png/lib\"",
 					"\"$(SRCROOT)/built-mac/sqlite3/lib\"",
 					"\"$(SRCROOT)/built-mac/jpeg/lib\"",
+					"\"$(SRCROOT)/built-mac/turbojpeg/lib\"",
 				);
 				WRAPPER_EXTENSION = app;
 			};
@@ -867,6 +897,7 @@
 					"\"$(SRCROOT)/built-mac/png/lib\"",
 					"\"$(SRCROOT)/built-mac/sqlite3/lib\"",
 					"\"$(SRCROOT)/built-mac/jpeg/lib\"",
+					"\"$(SRCROOT)/built-mac/turbojpeg/lib\"",
 				);
 				WRAPPER_EXTENSION = app;
 			};
@@ -891,7 +922,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/built-mac/png/lib\"",
-					"\"$(SRCROOT)/built-mac/jpeg/lib\"",
+					"\"$(SRCROOT)/built-mac/sqlite3/lib\"",
+					"\"$(SRCROOT)/built-mac/turbojpeg/lib\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -910,7 +942,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/built-mac/png/lib\"",
-					"\"$(SRCROOT)/built-mac/jpeg/lib\"",
+					"\"$(SRCROOT)/built-mac/sqlite3/lib\"",
+					"\"$(SRCROOT)/built-mac/turbojpeg/lib\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

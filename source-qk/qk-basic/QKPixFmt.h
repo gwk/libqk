@@ -2,6 +2,9 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#import "qk-types.h"
+
+
 /* From Quartz 2D Programming Guide: Graphics Contexts
  ColorSpace, Bits per pixel, Bytes per component, Flags
  Null -   8 bpp,  8 bpc, kCGImageAlphaOnly - Mac OS X, iOS

@@ -2,7 +2,8 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
-#import <Foundation/Foundation.h>
+#import "qk-types.h"
+#import "qk-vec.h"
 
 
 // clang does not automatically cast between block types with specific pointer types and void pointers,

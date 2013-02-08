@@ -2,7 +2,14 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#import "qk-macros.h"
+#import "qk-block-types.h"
+#import "NSArray+QK.h"
+#import "NSBundle+QK.h"
+#import "NSData+QK.h"
 #import "NSObject+JNB.h"
+#import "QKSubData.h"
+#import "QKImage.h"
 
 
 NSString* const JNBErrorDomain = @"JNBErrorDomain";
@@ -26,7 +33,7 @@ NSString* const JNBErrorDomain = @"JNBErrorDomain";
 }
 
 
-- (NSError*)jnbDataDecode:(QKSubData*)data {
+- (NSError*)jnbDataDecode:(id<QKData>)data {
   return nil;
 }
 
@@ -36,7 +43,7 @@ NSString* const JNBErrorDomain = @"JNBErrorDomain";
 }
 
 
-- (NSError*)updateWithJnbDict:(NSDictionary*)dict data:(QKSubData*)data {
+- (NSError*)updateWithJnbDict:(NSDictionary*)dict data:(id<QKData>)data {
   NSDictionary* valTypes = [self.class jnbValTypes];
   NSDictionary* valDecoders = [self.class jnbValDecoders];
   for (NSString* key in valTypes.allKeys) {
@@ -108,7 +115,7 @@ NSString* const JNBErrorDomain = @"JNBErrorDomain";
 
 
 
-- (id)initWithJnbDict:(NSDictionary*)dict data:(QKSubData*)data error:(NSError**)errorPtr {
+- (id)initWithJnbDict:(NSDictionary*)dict data:(id<QKData>)data error:(NSError**)errorPtr {
   INIT(self init);
   NSError* e = [self updateWithJnbDict:dict data:data];
   if (errorPtr) {

@@ -2,6 +2,9 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#import "QKData.h"
+
+
 // JNB is a file format consisting of:
 // - a UTF-8 JSON header
 // - zero or more null terminator bytes (if none then the file is pure JSON).
@@ -37,14 +40,14 @@ typedef enum {
 + (NSDictionary*)jnbValEncoders;
 
 // optional method for handling data section.
-- (NSError*)jnbDataDecode:(QKSubData*)data;
+- (NSError*)jnbDataDecode:(id<QKData>)data;
 - (NSError*)jnbDataEncode:(NSOutputStream*)stream;
 
 // JNB-serialized classes may also override these methods to implement custom coding.
-- (NSError*)updateWithJnbDict:(NSDictionary*)dict data:(QKSubData*)data;
+- (NSError*)updateWithJnbDict:(NSDictionary*)dict data:(id<QKData>)data;
 - (NSError*)jnbEncode:(NSOutputStream*)stream;
 
-- (id)initWithJnbDict:(NSDictionary*)dict data:(QKSubData*)data error:(NSError**)errorPtr;
+- (id)initWithJnbDict:(NSDictionary*)dict data:(id<QKData>)data error:(NSError**)errorPtr;
 + (id)withJnbPath:(NSString*)path map:(BOOL)map error:(NSError**)errorPtr;
 + (id)jnbNamed:(NSString*)resourceName;
 

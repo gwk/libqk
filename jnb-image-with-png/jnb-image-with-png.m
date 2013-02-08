@@ -7,9 +7,12 @@
 #import "qk-jpg.h"
 #import "qk-png.h"
 
+#import "QKImage+PNG.h"
+#import "QKImage+JPG.h"
 
-// return an error string or nil for success.
-NSString* convert(NSString* fmt_str, NSString* src_path, NSString* dst_path) {
+
+// return an error object or nil for success.
+id convert(NSString* fmt_str, NSString* src_path, NSString* dst_path) {
   QKPixFmt fmt =QKPixFmtFromString(fmt_str);
   if (!fmt) {
     return [NSString withFormat:@"unkown format: %@", fmt_str];
@@ -17,15 +20,18 @@ NSString* convert(NSString* fmt_str, NSString* src_path, NSString* dst_path) {
   NSString* ext = src_path.pathExtension;
   BOOL alpha = fmt & QKPixFmtBitA;
   QKImage* image;
+  NSError* e = nil;
   if ([ext isEqualToString:@"png"]) {
-    image = [QKImage withPngPath:src_path alpha:alpha];
+    image = [QKImage withPngPath:src_path alpha:alpha error:&e];
   }
   else if ([ext isEqualToString:@"jpg"]) {
-    image = [QKImage withJpgPath:src_path alpha:alpha];
+    image = [QKImage withJpgPath:src_path map:NO alpha:alpha error:&e];
+  }
+  if (e) {
+    return e;
   }
   errFL(@"%@: %@ -> %@", image.formatDesc, src_path, dst_path);
-  [image writeJnbToPath:dst_path];
-  return nil;
+  return [image writeJnbToPath:dst_path];
 }
 
 
@@ -36,9 +42,9 @@ int main(int argc, char *argv[]) {
       errFL(@"usage: jnb-image-convert format src_path dst_path.jnb");
       return 1;
     }
-    NSString* errorString = convert(args.el1, args.el2, args.el3);
-    if (errorString) {
-      errFL(@"error: %@", errorString);
+    id error = convert(args.el1, args.el2, args.el3);
+    if (error) {
+      errFL(@"error: %@", error);
       return 1;
     }
     return 0;

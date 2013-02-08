@@ -2,9 +2,14 @@
 // Permission to use this file is granted in libqk/license.txt.
 // Derived from readpng.c, which is licensed under the terms of libqk/license-readpng.txt.
 
+
 #import <zlib.h>
 #import "png.h"
+#import "NSBundle+QK.h"
+#import "NSData+QK.h"
+#import "NSString+QK.h"
 #import "QKImage.h"
+#import "QKImage+PNG.h"
 
 
 NSString* const QKImagePNGErrorDomain = @"QKImagePNGErrorDomain";
