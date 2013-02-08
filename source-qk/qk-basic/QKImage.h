@@ -27,8 +27,8 @@
 - (GLenum)glDataFormat;
 - (GLenum)glDataType;
 
-- (id)initWithFormat:(QKPixFmt)format size:(V2I32)size data:(id<QKData>)data;
-+ (id)withFormat:(QKPixFmt)format size:(V2I32)size data:(id<QKData>)data;
+DEC_INIT(Format:(QKPixFmt)format size:(V2I32)size data:(id<QKData>)data);
+DEC_INIT(Path:(NSString*)path map:(BOOL)map alpha:(BOOL)alpha error:(NSError**)errorPtr);
 
 - (void)validate;
 

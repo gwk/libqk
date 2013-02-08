@@ -2,10 +2,13 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#import "NSError+QK.h"
 #import "NSOutputStream+QK.h"
 #import "NSString+QK.h"
 #import "NSObject+JNB.h"
 #import "QKImage.h"
+#import "QKImage+PNG.h"
+#import "QKImage+JPG.h"
 
 
 @interface QKImage ()
@@ -131,7 +134,7 @@ LAZY_CLASS_METHOD(NSDictionary*, jnbValEncoders, @{
 }
 
 
-- (id)initWithFormat:(QKPixFmt)format size:(V2I32)size data:(id<QKData>)data {
+DEF_INIT(Format:(QKPixFmt)format size:(V2I32)size data:(id<QKData>)data) {
   INIT(super init);
   _format = format;
   _size = size;
@@ -141,8 +144,23 @@ LAZY_CLASS_METHOD(NSDictionary*, jnbValEncoders, @{
 }
 
 
-+ (id)withFormat:(QKPixFmt)format size:(V2I32)size data:(id<QKData>)data {
-  return [[self alloc] initWithFormat:format size:size data:data];
+DEF_INIT(Path:(NSString*)path map:(BOOL)map alpha:(BOOL)alpha error:(NSError**)errorPtr) {
+  CHECK_SET_ERROR_RET_NIL(path, QK, NilPath, @"nil path", nil);
+  
+  NSString* ext = path.pathExtension;
+  if ([ext isEqualToString:@"png"]) {
+    return [self initWithPngPath:path map:map alpha:alpha error:errorPtr];
+  }
+  if ([ext isEqualToString:@"jpg"]) {
+    return [self initWithJpgPath:path map:map alpha:alpha error:errorPtr];
+  }
+  *errorPtr = [NSError withDomain:QKErrorDomain
+                             code:QKErrorCodeImageUnrecognizedPathExtension
+                             desc:@"unrecognized path extension"
+                             info:@{
+               @"path" : path
+               }];
+  return nil;
 }
 
 
