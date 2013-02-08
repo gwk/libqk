@@ -22,7 +22,11 @@ typedef struct { TE _[dim]; } TV; \
 \
 static const TV TV##Zero = (TV) {{}}; \
 \
+\
+static inline F64 TV##Aspect(TV v) { return (F64)v._[0] / (F64)v._[1]; } \
+\
 static inline TE TV##Measure(TV v) { TE m = 1; for_in(i, dim) m *= v._[i]; return m; } \
+\
 static inline TV TV##Neg(TV v) { TV r; for_in(i, dim) r._[i] = -v._[i]; return r; } \
 \
 static inline TV TV##Add(TV a, TV b) { TV r; for_in(i, dim) r._[i] = a._[i] + b._[i]; return r; } \
