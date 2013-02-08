@@ -15,7 +15,7 @@ static inline CGSize CGSizeMul(CGSize v, CGFloat s) {
 }
 
 
-static inline CGFloat CGSizeAspect(CGSize s) {
+static inline CGFloat CGSizeAspect(CGSize s, CGFloat eps) {
   return s.width / s.height;
 }
 

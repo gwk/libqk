@@ -23,7 +23,9 @@ typedef struct { TE _[dim]; } TV; \
 static const TV TV##Zero = (TV) {{}}; \
 \
 \
-static inline F64 TV##Aspect(TV v) { return (F64)v._[0] / (F64)v._[1]; } \
+static inline F64 TV##Aspect(TV v, TE eps) { \
+return (v._[0] < eps || v._[1] < eps) ? 0 : (F64)v._[0] / (F64)v._[1]; \
+} \
 \
 static inline TE TV##Measure(TV v) { TE m = 1; for_in(i, dim) m *= v._[i]; return m; } \
 \
