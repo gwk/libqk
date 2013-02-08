@@ -5,14 +5,6 @@
 #import "QKData.h"
 
 
-extern NSString* const QKJsonErrorDomain;
-
-typedef enum {
-  QKJsonErrorCodeUnknown = 0,
-  QKJsonErrorCodeUnexpectedRootType,
-} QKJsonErrorCode;
-
-
 @interface NSData (QK) <QKData>
 
 + (id)join:(NSArray*)array;

@@ -7,6 +7,7 @@
 #import "qk-types.h"
 #import "qk-vec.h"
 #import "QKData.h"
+#import "QKErrorDomain.h"
 #import "QKImage.h"
 #import "QKMutableStructArray.h"
 #import "QKPixFmt.h"

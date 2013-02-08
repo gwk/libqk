@@ -9,9 +9,6 @@
 #import "NSData+QK.h"
 
 
-NSString* const QKJsonErrorDomain = @"QKJsonErrorDomain";
-
-
 @implementation NSData (QK)
 
 
@@ -60,7 +57,7 @@ NSString* const QKJsonErrorDomain = @"QKJsonErrorDomain";
     return nil;
   }
   assert(result, @"nil result");
-  CHECK_SET_ERROR_RET_NIL([result isKindOfClass:class], QKJson, UnexpectedRootType, @"unexpected JSON result type", @{
+  CHECK_SET_ERROR_RET_NIL([result isKindOfClass:class], QK, JsonUnexpectedRootType, @"unexpected JSON result type", @{
                           @"expected-type" : class,
                           @"actual-type" : [result class],
                           @"result" : result

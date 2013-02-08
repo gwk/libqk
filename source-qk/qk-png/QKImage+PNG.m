@@ -12,9 +12,6 @@
 #import "QKImage+PNG.h"
 
 
-NSString* const QKImagePNGErrorDomain = @"QKImagePNGErrorDomain";
-
-
 @implementation QKImage (PNG)
 
 
@@ -35,7 +32,7 @@ NSString* const QKImagePNGErrorDomain = @"QKImagePNGErrorDomain";
     
   // setjmp() must be called prior to libng read function calls
 #ifdef PNG_SETJMP_SUPPORTED
-  CHECK_SET_ERROR_RET_NIL(!setjmp(png_jmpbuf(readPtr)), QKImagePNG, Read, @"PNG read failed", @{
+  CHECK_SET_ERROR_RET_NIL(!setjmp(png_jmpbuf(readPtr)), QK, ImagePNGRead, @"PNG read failed", @{
                           @"name" : name
                           });
 #endif
@@ -102,7 +99,7 @@ NSString* const QKImagePNGErrorDomain = @"QKImagePNGErrorDomain";
   int channels = png_get_channels(readPtr, infoPtr);
   Int rowsLength = png_get_rowbytes(readPtr, infoPtr);
   CHECK_SET_ERROR_RET_NIL(rowsLength == size._[0] * channels * dstBitDepth / 8,
-                          QKImagePNG, RowsLength, @"unexpected rows array byte length", @{
+                          QK, ImagePNGRowsLength, @"unexpected rows array byte length", @{
                           @"length" : @(rowsLength),
                           @"size" : V2I32Desc(size),
                           @"channels" : @(channels),
@@ -177,7 +174,7 @@ void qkpng_error_fn(png_structp png_ptr, png_const_charp error_msg) {
 - (id)initWithPngFile:(FILE*)file alpha:(BOOL)alpha name:(NSString*)name error:(NSError**)errorPtr {
   U8 sig[8];
   fread(sig, 1, 8, file);
-  CHECK_SET_ERROR_RET_NIL(png_check_sig(sig, 8), QKImagePNG, Signature, @"bad PNG signature", @{
+  CHECK_SET_ERROR_RET_NIL(png_check_sig(sig, 8), QK, ImagePNGSignature, @"bad PNG signature", @{
                           @"name" : name
                           });
   png_voidp error_ptr = NULL;
@@ -202,9 +199,10 @@ void qkpng_error_fn(png_structp png_ptr, png_const_charp error_msg) {
 }
 
 
-- (id)initWithPngPath:(NSString*)path alpha:(BOOL)alpha error:(NSError**)errorPtr {
+DEF_INIT(PngPath:(NSString*)path map:(BOOL)map alpha:(BOOL)alpha error:(NSError**)errorPtr) {
+  // TODO: implement in-memory loading and mmap loading.
   FILE* file = fopen(path.asUtf8, "rb");
-  CHECK_SET_ERROR_RET_NIL(file, QKImagePNG, OpenFile, @"could not open file", @{
+  CHECK_SET_ERROR_RET_NIL(file, QK, ImagePNGOpenFile, @"could not open file", @{
                           @"path" : path
                           });
   self = [self initWithPngFile:file alpha:alpha name:path error:errorPtr];
@@ -213,16 +211,11 @@ void qkpng_error_fn(png_structp png_ptr, png_const_charp error_msg) {
 }
 
 
-+ (id)withPngPath:(NSString*)path alpha:(BOOL)alpha error:(NSError**)errorPtr {
-  return [[self alloc] initWithPngPath:path alpha:alpha error:errorPtr];
-}
-
-
 + (QKImage*)pngNamed:(NSString*)resourceName alpha:(BOOL)alpha {
   NSString* path = [NSBundle resPath:resourceName ofType:nil];
   check(path, @"no image named: %@", resourceName);
   NSError* e = nil;
-  QKImage* i = [self withPngPath:path alpha:alpha error:&e];
+  QKImage* i = [self withPngPath:path map:YES alpha:alpha error:&e];
   check(i && !e, @"error loading image named: %@\n  %@", resourceName, e);
   return i;
 }

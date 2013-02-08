@@ -9,9 +9,6 @@
 #import "QKImage+JPG.h"
 
 
-NSString* const QKImageJPGErrorDomain = @"QKImageJPGErrorDomain";
-
-
 @implementation QKImage (JPG)
 
 
@@ -24,7 +21,7 @@ NSString* const QKImageJPGErrorDomain = @"QKImageJPGErrorDomain";
   int subsamples = 0;
 
   int code = tjDecompressHeader2(handle, (void*)jpgData.bytes, jpgData.length, &s._[0], &s._[1], &subsamples);
-  CHECK_SET_ERROR_RET_NIL(code == 0, QKImageJPG, ReadHeader, @"JPG read header failed", @{
+  CHECK_SET_ERROR_RET_NIL(code == 0, QK, ImageJPGReadHeader, @"JPG read header failed", @{
                           @"name" : name
                           });
 
@@ -53,7 +50,7 @@ NSString* const QKImageJPGErrorDomain = @"QKImageJPGErrorDomain";
                        jpgPixFmt,
                        flags);
 
-  CHECK_SET_ERROR_RET_NIL(code == 0, QKImageJPG, Decompress, @"JPG decompression failed", @{
+  CHECK_SET_ERROR_RET_NIL(code == 0, QK, ImageJPGDecompress, @"JPG decompression failed", @{
                           @"name" : name
                           });
     
@@ -63,17 +60,12 @@ NSString* const QKImageJPGErrorDomain = @"QKImageJPGErrorDomain";
 }
 
 
-- (id)initWithJpgPath:(NSString*)path map:(BOOL)map alpha:(BOOL)alpha error:(NSError**)errorPtr {
+DEF_INIT(JpgPath:(NSString*)path map:(BOOL)map alpha:(BOOL)alpha error:(NSError**)errorPtr) {
   NSData* jpgData = [NSData withPath:path map:map error:errorPtr];
   if (*errorPtr) {
     return nil;
   }
   return [self initWithJpgData:jpgData alpha:alpha name:path error:errorPtr];
-}
-
-
-+ (id)withJpgPath:(NSString*)path map:(BOOL)map alpha:(BOOL)alpha error:(NSError**)errorPtr {
-  return [[self alloc] initWithJpgPath:path map:(BOOL)map alpha:alpha error:errorPtr];
 }
 
 

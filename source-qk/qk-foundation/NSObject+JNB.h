@@ -16,16 +16,16 @@ static NSString* const JNBTypeKey = @"jnb-type";
 extern NSString* const JNBErrorDomain;
 
 typedef enum {
-  JNBErrorCodeUnknown             = 0,
-  JNBErrorCodeTypeMissing         = 1,    // "type" item is missing from header.
-  JNBErrorCodeTypeUnkown          = 2,     // "type" item has bad value.
-  JNBErrorCodeTypeUnexpected      = 3, // type is valid, but does not match calling class.
-  JNBErrorCodeKeyMissing          = 4,     // key is required but missing.
-  JNBErrorCodeValTypeUnexpected   = 5,  // value is of unexpected type.
-  JNBErrorCodeValInvalid          = 6,         // value is invalid.
-  JNBErrorCodeValTransformFailed  = 7, // transform returned an error.
-  JNBErrorCodeDataMalformed       = 8, // data region is not properly offset.
-  JNBErrorCodeDataMissing         = 9,  // intended to be returned by decoder blocks that require non-nil data.
+  JNBErrorCodeUnknown,
+  JNBErrorCodeTypeMissing,        // "jnb-type" item is missing from header.
+  JNBErrorCodeTypeUnkown,         // "jnb-type" item has bad value.
+  JNBErrorCodeTypeUnexpected,     // type is valid, but does not match calling class.
+  JNBErrorCodeKeyMissing,         // key is required but missing.
+  JNBErrorCodeValTypeUnexpected,  // value is of unexpected type.
+  JNBErrorCodeValInvalid,         // value is invalid.
+  JNBErrorCodeValTransformFailed, // transform returned an error.
+  JNBErrorCodeDataMalformed,      // data region is not properly offset.
+  JNBErrorCodeDataMissing,        // intended to be returned by decoder blocks that require non-nil data.
 } JNBErrorCode;
 
 

@@ -5,17 +5,10 @@
 #import "QKImage.h"
 
 
-extern NSString* const QKImageJPGErrorDomain;
-
-typedef enum {
-  QKImageJPGErrorCodeReadHeader,
-  QKImageJPGErrorCodeDecompress,
-} QKImageJPGErrorCode;
-
-
 @interface QKImage (JPG)
 
-+ (id)withJpgPath:(NSString*)path map:(BOOL)map alpha:(BOOL)alpha error:(NSError**)errorPtr;
+DEC_INIT(JpgPath:(NSString*)path map:(BOOL)map alpha:(BOOL)alpha error:(NSError**)errorPtr);
+
 + (QKImage*)jpgNamed:(NSString*)resourceName alpha:(BOOL)alpha;
 
 @end

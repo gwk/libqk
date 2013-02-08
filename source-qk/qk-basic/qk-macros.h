@@ -69,13 +69,17 @@ return name; \
 #define INIT(...) if (!((self = ([__VA_ARGS__])))) return nil
 
 
+#define DEF_WITH(...) \
++ (id)with##__VA_ARGS__ { return [[self alloc] initWith##__VA_ARGS__]; }
+
+
 // define + (id)with... and - (id)initWith... simultaneously.
 #define DEC_INIT(...) \
 + (id)with##__VA_ARGS__; \
 - (id)initWith##__VA_ARGS__
 
 #define DEF_INIT(...) \
-+ (id)with##__VA_ARGS__ { return [[self alloc] initWith##__VA_ARGS__]; } \
+DEF_WITH(__VA_ARGS__) \
 - (id)initWith##__VA_ARGS__
 
 
