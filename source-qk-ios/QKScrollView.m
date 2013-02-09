@@ -164,7 +164,7 @@ zoomView = _zoomViewQKScrollView;
     errFL(@"zoomToRect: invalid rect: %@", NSStringFromCGRect(rect));
   }
   CGSize bs = self.bounds.size;
-  CGRect r = CGRectWithAspectEnclosingRect(CGSizeAspect(bs), validRect);
+  CGRect r = CGRectWithAspectEnclosingRect(CGSizeAspect(bs, 1), validRect);
   CGFloat z = bs.width / r.size.width;
   [self setZoomScaleClamped:z animated:animated];
   [self centerOnZoomRect:r animated:animated];
