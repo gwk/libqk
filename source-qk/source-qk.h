@@ -3,5 +3,7 @@
 #import "qk-cg.h"
 #import "qk-foundation.h"
 #import "qk-gl.h"
+#import "qk-jpg.h"
+#import "qk-nsui.h"
 #import "qk-png.h"
 #import "qk-sql.h"

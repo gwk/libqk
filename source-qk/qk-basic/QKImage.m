@@ -7,8 +7,20 @@
 #import "NSString+QK.h"
 #import "NSObject+JNB.h"
 #import "QKImage.h"
-#import "QKImage+PNG.h"
-#import "QKImage+JPG.h"
+
+#ifdef PNG_H
+# define LIB_PNG_AVAILABLE 1
+# import "QKImage+PNG.h"
+#else
+# define LIB_PNG_AVAILABLE 0
+#endif
+
+#ifdef __TURBOJPEG_H__
+# define LIB_JPG_AVAILABLE 1
+# import "QKImage+JPG.h"
+#else
+# define LIB_JPG_AVAILABLE 0
+#endif
 
 
 @interface QKImage ()
@@ -147,13 +159,18 @@ DEF_INIT(Format:(QKPixFmt)format size:(V2I32)size data:(id<QKData>)data) {
 DEF_INIT(Path:(NSString*)path map:(BOOL)map alpha:(BOOL)alpha error:(NSError**)errorPtr) {
   CHECK_SET_ERROR_RET_NIL(path, QK, NilPath, @"nil path", nil);
   
-  NSString* ext = path.pathExtension;
+  NSString* ext = path.pathExtension; UNUSED_VAR(ext);
+  
+#if LIB_PNG_AVAILABLE
   if ([ext isEqualToString:@"png"]) {
     return [self initWithPngPath:path map:map alpha:alpha error:errorPtr];
   }
+#endif
+#if LIB_JPG_AVAILABLE
   if ([ext isEqualToString:@"jpg"]) {
     return [self initWithJpgPath:path map:map alpha:alpha error:errorPtr];
   }
+#endif
   *errorPtr = [NSError withDomain:QKErrorDomain
                              code:QKErrorCodeImageUnrecognizedPathExtension
                              desc:@"unrecognized path extension"
