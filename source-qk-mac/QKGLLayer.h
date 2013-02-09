@@ -11,6 +11,6 @@
 @property (nonatomic, weak, readonly) id<GLScene> scene;
 @property (nonatomic) CGFloat maxContentScale;
 
-- (id)initWithFormat:(QKPixFmt)format scene:(id<GLScene>)scene;
+DEC_INIT(Format:(QKPixFmt)format scene:(id<GLScene>)scene);
 
 @end

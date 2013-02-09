@@ -21,31 +21,29 @@ typedef enum {
 @property (nonatomic, readonly) QKWindowScreenMode screenMode;
 @property (nonatomic) BOOL coversScreen;
 
-- (id)initWithView:(NSView *)view
+DEC_INIT(View:(NSView *)view
+         delegate:(id<QKWindowDelegate>)delegate
          styleMask:(NSUInteger)styleMask
-        screenMode:(QKWindowScreenMode)screenMode
-          position:(CGPoint)position
-          activate:(BOOL)activate;
+         screenMode:(QKWindowScreenMode)screenMode
+         position:(CGPoint)position
+         activate:(BOOL)activate);
 
-+ (id)withView:(NSView*)view
-     styleMask:(NSUInteger)styleMask
-    screenMode:(QKWindowScreenMode)screenMode
-      position:(CGPoint)position
-      activate:(BOOL)activate;
-
-+ (id)withView:(NSView*)view
-     closeable:(BOOL)closeable
-miniaturizable:(BOOL)miniaturizable
-     resizable:(BOOL)resizable
-    screenMode:(BOOL)screenMode
-      position:(CGPoint)position
-      activate:(BOOL)activate;
+DEC_INIT(View:(NSView*)view
+         delegate:(id<QKWindowDelegate>)delegate
+         closeable:(BOOL)closeable
+         miniaturizable:(BOOL)miniaturizable
+         resizable:(BOOL)resizable
+         screenMode:(BOOL)screenMode
+         position:(CGPoint)position
+         activate:(BOOL)activate);
 
 - (QKView*)qkView;
 
 - (void)setOriginFromVisibleTopLeft:(CGPoint)origin;
-
 - (void)toggleCoversScreen;
+- (void)setContentSizeConstrainingAspect:(CGSize)size;
+
+- (NSView*)contentView;
 
 @end
 

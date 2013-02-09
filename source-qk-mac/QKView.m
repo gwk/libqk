@@ -27,7 +27,7 @@
 }
 
 
-- (id)initWithFrame:(CGRect)frame scene:(id)scene format:(QKPixFmt)format {
+DEF_INIT(Frame:(CGRect)frame scene:(id)scene format:(QKPixFmt)format) {
   INIT(super initWithFrame:frame);
   self.scene = scene;
   if (format) {
@@ -37,28 +37,21 @@
     [self setupLayer:[CALayer new]];
   }
   self.layerContentsRedrawPolicy = NSViewLayerContentsRedrawBeforeViewResize;
+  self.layer.minificationFilter = kCAFilterNearest;
+  self.layer.magnificationFilter = kCAFilterNearest;
+
   //[self.layer setNeedsDisplay]; // not sure if this is needed for none, one, or both.
   return self;
 }
 
 
-- (BOOL)isOpaque {
-  return self.layer.opaque;
-}
-
-
-- (id)initWithFrame:(CGRect)frame scene:(id)scene {
+DEF_INIT(Frame:(CGRect)frame scene:(id)scene) {
   return [self initWithFrame:frame scene:scene format:QKPixFmtUnknown];
 }
 
 
-+ (id)withFrame:(CGRect)frame scene:(id)scene format:(QKPixFmt)format {
-  return [[self alloc] initWithFrame:frame scene:scene format:format];
-}
-
-
-+ (id)withFrame:(CGRect)frame scene:(id)scene {
-  return [[self alloc] initWithFrame:frame scene:scene];
+- (BOOL)isOpaque {
+  return self.layer.opaque;
 }
 
 

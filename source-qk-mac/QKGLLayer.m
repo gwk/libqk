@@ -29,14 +29,14 @@
 }
 
 
-- (id)initWithFormat:(QKPixFmt)format scene:(id<GLScene>)scene {
+DEF_INIT(Format:(QKPixFmt)format scene:(id<GLScene>)scene) {
   INIT(super init);
   _format = format;
   _scene = scene;
+  _maxContentScale = 2;
   self.opaque = YES;
   self.opacity = 1;
   self.asynchronous = NO;
-  _maxContentScale = 1.0;
   return self;
 }
 

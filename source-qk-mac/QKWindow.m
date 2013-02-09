@@ -28,25 +28,38 @@
 }
 
 
-- (id)initWithView:(NSView *)view
+- (NSString*)description {
+  return [NSString withFormat:@"<%@ %p: %@>", self.class, self, NSStringFromCGRect(self.frame)];
+}
+
+
+- (NSView*)contentView {
+  return [super contentView];
+}
+
+
+DEF_INIT(View:(NSView *)view
+         delegate:(id<QKWindowDelegate>)delegate
          styleMask:(NSUInteger)styleMask
-        screenMode:(QKWindowScreenMode)screenMode
-          position:(CGPoint)position
-          activate:(BOOL)activate {
+         screenMode:(QKWindowScreenMode)screenMode
+         position:(CGPoint)position
+         activate:(BOOL)activate) {
   
+  if (view.width < 1 || view.height < 1) {
+    errFL(@"WARNING: view is degenerate: %@", view);
+  }
   INIT(super initWithContentRect:view.frame styleMask:styleMask backing:NSBackingStoreBuffered defer:YES);
   
   _screenMode = screenMode;
   self.contentView = view;
+  self.delegate = delegate;
   self.backgroundColor = [NSColor blueColor]; // for debugging blank windows
   self.releasedWhenClosed = NO;
   
   if (_screenMode) {
     [self addScreenButton];
   }
-  
-  self.originFromVisibleTopLeft = position;
-  
+    
   if (activate) {
     [self makeKeyAndOrderFront:nil];
     [self makeMainWindow]; // must come after makeKeyAndOrderFront
@@ -54,7 +67,8 @@
   else {
     [self orderBack:nil];
   }
-  
+  self.originFromVisibleTopLeft = position;
+
   [[NSNotificationCenter defaultCenter] addObserver:self
                                            selector:@selector(screenDidChange:)
                                                name:NSWindowDidChangeScreenNotification
@@ -65,23 +79,14 @@
 }
 
 
-+ (id)withView:(NSView*)view
-     styleMask:(NSUInteger)styleMask
-    screenMode:(QKWindowScreenMode)screenMode
-      position:(CGPoint)position
-      activate:(BOOL)activate {
-  
-  return [[self alloc] initWithView:view styleMask:styleMask screenMode:screenMode position:position activate:activate];
-}
-
-
-+ (id)withView:(NSView*)view
-     closeable:(BOOL)closeable
-miniaturizable:(BOOL)miniaturizable
-     resizable:(BOOL)resizable
-    screenMode:(BOOL)screenMode
-      position:(CGPoint)position
-      activate:(BOOL)activate {
+DEF_INIT(View:(NSView*)view
+         delegate:(id<QKWindowDelegate>)delegate
+         closeable:(BOOL)closeable
+         miniaturizable:(BOOL)miniaturizable
+         resizable:(BOOL)resizable
+         screenMode:(BOOL)screenMode
+         position:(CGPoint)position
+         activate:(BOOL)activate) {
   
   NSUInteger styleMask =
   NSTitledWindowMask
@@ -89,7 +94,12 @@ miniaturizable:(BOOL)miniaturizable
   | (miniaturizable ? NSMiniaturizableWindowMask : 0)
   | (resizable ? NSResizableWindowMask : 0);
   
-  return [self withView:view styleMask:styleMask screenMode:screenMode position:position activate:activate];
+  return [self initWithView:view
+                   delegate:delegate
+                  styleMask:styleMask
+                 screenMode:screenMode
+                   position:position
+                   activate:activate];
 }
 
 
@@ -114,7 +124,7 @@ miniaturizable:(BOOL)miniaturizable
 // since the title bar gets removed on cover screen, we must add the button on init and every time we uncover.
 - (void)addScreenButton {
   // setup cover screen button
-  NSView* windowView = [self.contentView superview];
+  NSView* windowView = self.contentView.superview;
   CGRect wf = windowView.frame;
   NSImage* image = [NSImage imageNamed:NSImageNameEnterFullScreenTemplate];
   CGSize s = image.size;
@@ -181,10 +191,15 @@ miniaturizable:(BOOL)miniaturizable
 
 
 - (void)screenDidChange:(NSNotification *)notification {
-  errFL(@"window: %p screenDidChange:", self);
-  CAST(NSView, self.contentView).layer.contentsScale = self.screen.backingScaleFactor;
+  errFL(@"window: %p screenDidChange:; scale: %f", self, self.screen.backingScaleFactor);
+  self.contentView.layer.contentsScale = self.screen.backingScaleFactor;
   [DEL_RESPONDS(windowChangedScreen:) windowChangedScreen:self];
 }
 
+
+- (void)setContentSizeConstrainingAspect:(CGSize)size {
+  self.contentSize = size;
+  self.contentAspectRatio = size;
+}
 
 @end

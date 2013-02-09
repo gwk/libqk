@@ -15,11 +15,8 @@
 @property (nonatomic, readonly) QKGLLayer* glLayer;
 @property (nonatomic) NSTimeInterval animationInterval;
 
-- (id)initWithFrame:(CGRect)frame scene:(id)scene format:(QKPixFmt)format;
-- (id)initWithFrame:(CGRect)frame scene:(id)scene;
-
-+ (id)withFrame:(CGRect)frame scene:(id)scene format:(QKPixFmt)format;
-+ (id)withFrame:(CGRect)frame scene:(id)scene;
+DEC_INIT(Frame:(CGRect)frame scene:(id)scene format:(QKPixFmt)format);
+DEC_INIT(Frame:(CGRect)frame scene:(id)scene);
 
 @end
 
