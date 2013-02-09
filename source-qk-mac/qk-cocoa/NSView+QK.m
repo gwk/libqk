@@ -4,58 +4,35 @@
 
 #import "NSView+QK.h"
 
-const UIViewAutoresizing UIFlexNone   = NSViewNotSizable;
-const UIViewAutoresizing UIFlexWidth  = NSViewWidthSizable;
-const UIViewAutoresizing UIFlexHeight = NSViewHeightSizable;
-const UIViewAutoresizing UIFlexLeft   = NSViewMinXMargin;
-const UIViewAutoresizing UIFlexRight  = NSViewMaxXMargin;
-const UIViewAutoresizing UIFlexTop    = NSViewMaxYMargin;
-const UIViewAutoresizing UIFlexBottom = NSViewMinYMargin;
-
-const UIViewAutoresizing UIFlexSize       = UIFlexWidth | UIFlexHeight;
-const UIViewAutoresizing UIFlexHorizontal = UIFlexLeft | UIFlexRight;
-const UIViewAutoresizing UIFlexVertical   = UIFlexTop | UIFlexBottom;
-
 
 @implementation NSView (QK)
 
 
+- (CGPoint)center {
+  CGRect f = self.frame;
+  return CGPointMake(f.origin.x + f.size.width * .5, f.origin.y + f.size.height * .5);
+};
+
+
+- (void)setCenter:(CGPoint)center {
+  CGRect f = self.frame;
+  f.origin = CGPointMake(center.x - f.size.width * .5, center.y - f.size.height * .5);
+  self.frame = f;
+}
+
+
+- (CGPoint)boundsOrigin {
+  return self.bounds.origin;
+}
+
+
+- (CGSize)boundsSize {
+  return self.bounds.size;
+}
+
+
 - (void)setNeedsDisplay {
   [self setNeedsDisplay:YES];
-}
-
-
-// MARK: debugging
-
-
-- (void)inspectRec:(NSString*)indent {
-  
-  errL(indent, self, (self.isHidden ? @"(HIDDEN)" : @""));
-  
-  NSString* indent1 = [indent stringByAppendingString:@"  "];
-  for (NSView* v  in self.subviews) {
-    [v inspectRec:indent1];
-  }
-}
-
-
-- (void)inspect:(NSString*)label {
-  errL();
-  if (label) errL(label, @":");
-  [self inspectRec:@""];
-  errL();
-}
-
-
-- (void)inspectParents:(NSString*)label {
-  errL();
-  if (label) errL(label, @":");
-  NSView* v = self;
-  while (v) {
-    errL(v, (self.isHidden ? @"(HIDDEN)" : @""));
-    v = v.superview;
-  }
-  errL();
 }
 
 

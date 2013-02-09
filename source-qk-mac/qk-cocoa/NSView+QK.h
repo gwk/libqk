@@ -2,29 +2,17 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
-#import <Cocoa/Cocoa.h>
 #import "qk-types.h"
-
-
-typedef Int UIViewAutoresizing;
-
-extern const UIViewAutoresizing UIFlexNone;
-extern const UIViewAutoresizing UIFlexWidth;
-extern const UIViewAutoresizing UIFlexHeight;
-extern const UIViewAutoresizing UIFlexLeft;
-extern const UIViewAutoresizing UIFlexRight;
-extern const UIViewAutoresizing UIFlexTop;
-extern const UIViewAutoresizing UIFlexBottom;
-
-extern const UIViewAutoresizing UIFlexSize;
-extern const UIViewAutoresizing UIFlexHorizontal;
-extern const UIViewAutoresizing UIFlexVertical;
 
 
 @interface NSView (QK)
 
+@property (nonatomic) CGPoint center;
+
+// these are defined only to match the property field structs declared in UIView+QK
+- (CGPoint)boundsOrigin;
+- (CGSize)boundsSize;
+
 - (void)setNeedsDisplay;
-- (void)inspect:(NSString*)label;
-- (void)inspectParents:(NSString*)label;
 
 @end
