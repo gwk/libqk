@@ -7,15 +7,19 @@
 
 @interface QKMutableStructArray : QKStructArray
 
+@property (nonatomic, readwrite) Int count; // element count
 @property (nonatomic, readonly) void* mutableBytes;
 @property (nonatomic, readonly) void* mutableBytesEnd;
+
+
+DEC_INIT(ElSize:(I32)elSize count:(Int)count);
 
 
 - (void)replaceElementsInRange:(NSRange)range withBytes:(const void*)bytes count:(Int)count;
 - (void)removeElementsInRange:(NSRange)range;
 
 - (void)setEl:(int)index from:(void*)from;
-- (void)appendElement:(const void*)element;
+- (void)appendEl:(const void*)element;
 
 #define EL(T) \
 - (void)setEl:(int)index T:(T)element; \
@@ -28,6 +32,9 @@ EL(F32);
 EL(F64);
 EL(V2F32);
 EL(V2F64);
+EL(V3U16);
+EL(V3F32);
+EL(V3F64);
 
 #undef EL
 

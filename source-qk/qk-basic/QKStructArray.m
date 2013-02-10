@@ -17,13 +17,23 @@
 }
 
 
+- (BOOL)isMutable {
+  return NO;
+}
+
+
 // mutable subclass overrides this.
 + (NSData *)copyData:(NSData*)data {
   return data.copy;
 }
 
 
-- (id)initWithElSize:(I32)elSize data:(NSData*)data {
+DEF_INIT(ElSize:(I32)elSize) {
+  return [self initWithElSize:elSize data:nil];
+}
+
+
+DEF_INIT(ElSize:(I32)elSize data:(NSData*)data) {
   INIT(super init);
   _elSize = elSize;
   _data = [self.class copyData:data];
@@ -31,22 +41,12 @@
 }
 
 
-+ (id)withElSize:(I32)elSize data:(NSData*)data {
-  return [[self alloc] initWithElSize:elSize data:data];
+DEF_INIT(ElSize:(I32)elSize bytes:(void*)bytes length:(Int)length) {
+  return [self initWithElSize:elSize data:[NSData dataWithBytes:bytes length:length]];
 }
 
 
-+ (id)withElSize:(I32)elSize {
-  return [self withElSize:elSize data:nil];
-}
-
-
-+ (id)withElSize:(I32)elSize bytes:(void*)bytes length:(Int)length {
-  return [self withElSize:elSize data:[NSData dataWithBytes:bytes length:length]];
-}
-
-
-+ (id)withElSize:(I32)elSize from:(Int)from to:(Int)to mapIntBlock:(BlockStructMapInt)block {
+DEF_INIT(ElSize:(I32)elSize from:(Int)from to:(Int)to mapIntBlock:(BlockStructMapInt)block) {
   Int count = to - from;
   NSMutableData* data = [NSMutableData dataWithLength:elSize * count];
   void* p = data.mutableBytes;
@@ -55,11 +55,11 @@
     b(p, i);
     p += elSize;
   }
-  return [self withElSize:elSize data:data];
+  return [self initWithElSize:elSize data:data];
 }
 
 
-+ (id)withElSize:(I32)elSize structArray:(QKStructArray*)structArray copyBlock:(BlockStructCopy)block {
+DEF_INIT(ElSize:(I32)elSize structArray:(QKStructArray*)structArray copyBlock:(BlockStructCopy)block) {
   NSMutableData* data = [NSMutableData dataWithLength:elSize * structArray.count];
   void* to = data.mutableBytes;
   const void* from = structArray.bytes;
@@ -72,11 +72,11 @@
     to += elSize;
     from += fromElSize;
   }
-  return [self withElSize:elSize data:data];
+  return [self initWithElSize:elSize data:data];
 }
 
 
-+ (id)withElSize:(I32)elSize structArray:(QKStructArray*)structArray filterCopyBlock:(BlockStructFilterCopy)block {
+DEF_INIT(ElSize:(I32)elSize structArray:(QKStructArray*)structArray filterCopyBlock:(BlockStructFilterCopy)block) {
   NSMutableData* data = [NSMutableData dataWithLength:elSize * structArray.count];
   void* to = data.mutableBytes;
   const void* from = structArray.bytes;
@@ -94,7 +94,17 @@
     from += fromElSize;
   }
   data.length = elSize * count;
-  return [self withElSize:elSize data:data];
+  return [self initWithElSize:elSize data:data];
+}
+
+
+- (NSData*)rowPointersForWidth:(Int)width {
+  return [self rowPointersForElSize:_elSize width:width];
+}
+
+
+- (NSMutableData*)mutableRowPointersForWidth:(Int)width {
+  return [self mutableRowPointersForElSize:_elSize width:width];
 }
 
 

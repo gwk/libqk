@@ -4,6 +4,7 @@
 
 #import "qk-types.h"
 #import "qk-vec.h"
+#import "QKData.h"
 
 
 // clang does not automatically cast between block types with specific pointer types and void pointers,
@@ -21,23 +22,24 @@ typedef BOOL (^BlockStructMapIntActual)(void*, Int); // to, index
 typedef id BlockStructMapInt;
 
 
-@interface QKStructArray : NSObject <NSMutableCopying>
+@interface QKStructArray : NSObject <NSMutableCopying, QKData>
 
 @property (nonatomic, readonly) I32 elSize;
-@property (nonatomic, readonly) Int count;
-@property (nonatomic, readonly) Int length;
+@property (nonatomic, readonly) Int count; // element count
+@property (nonatomic, readonly) Int length; // data length in bytes
 @property (nonatomic, readonly) NSData* data;
 @property (nonatomic, readonly) const void* bytes;
 @property (nonatomic, readonly) const void* bytesEnd;
 
+DEC_INIT(ElSize:(I32)elSize);
+DEC_INIT(ElSize:(I32)elSize data:(NSData*)data);
+DEC_INIT(ElSize:(I32)elSize bytes:(void*)bytes length:(Int)length);
+DEC_INIT(ElSize:(I32)elSize from:(Int)from to:(Int)to mapIntBlock:(BlockStructMapInt)block);
+DEC_INIT(ElSize:(I32)elSize structArray:(QKStructArray*)structArray copyBlock:(BlockStructCopy)block);
+DEC_INIT(ElSize:(I32)elSize structArray:(QKStructArray*)structArray filterCopyBlock:(BlockStructFilterCopy)block);
 
-- (id)initWithElSize:(I32)elSize data:(NSData*)data;
-+ (id)withElSize:(I32)elSize;
-+ (id)withElSize:(I32)elSize data:(NSData*)data;
-+ (id)withElSize:(I32)elSize bytes:(void*)bytes length:(Int)length;
-+ (id)withElSize:(I32)elSize from:(Int)from to:(Int)to mapIntBlock:(BlockStructMapInt)block;
-+ (id)withElSize:(I32)elSize structArray:(QKStructArray*)structArray copyBlock:(BlockStructCopy)block;
-+ (id)withElSize:(I32)elSize structArray:(QKStructArray*)structArray filterCopyBlock:(BlockStructFilterCopy)block;
+- (NSData*)rowPointersForWidth:(Int)width;
+- (NSMutableData*)mutableRowPointersForWidth:(Int)width;
 
 + (id)join:(NSArray*)arrays;
 

@@ -8,6 +8,11 @@
 @implementation QKMutableStructArray
 
 
+- (BOOL)isMutable {
+  return YES;
+}
+
+
 // override creates mutable copy
 + (NSData *)copyData:(NSData*)data {
   return data ? data.mutableCopy : [NSMutableData new];
@@ -30,8 +35,20 @@
 }
 
 
+- (void)setCount:(Int)count {
+  self.mutableData.length = count * self.elSize;
+}
+
+
 - (id)copyWithZone:(NSZone*)zone {
   return [QKStructArray withElSize:self.elSize data:self.data];
+}
+
+
+DEF_INIT(ElSize:(I32)elSize count:(Int)count) {
+  INIT(self initWithElSize:elSize);
+  self.count = count;
+  return self;
 }
 
 
@@ -55,7 +72,7 @@
 }
 
 
-- (void)appendElement:(const void*)element {
+- (void)appendEl:(const void*)element {
   [self.mutableData appendBytes:element length:self.elSize];
 }
 
@@ -80,6 +97,9 @@ EL(F32);
 EL(F64);
 EL(V2F32);
 EL(V2F64);
+EL(V3U16);
+EL(V3F32);
+EL(V3F64);
 
 #undef EL
 
