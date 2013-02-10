@@ -37,12 +37,20 @@ static inline TV TV##Sub(TV a, TV b) { TV r; for_in(i, dim) r._[i] = a._[i] - b.
 static inline TV TV##Mul(TV v, TE s) { TV r; for_in(i, dim) r._[i] = v._[i] * s; return r; } \
 static inline TV TV##Div(TV v, TE s) { TV r; for_in(i, dim) r._[i] = v._[i] / s; return r; } \
 \
-static inline TV TV##MulComps(TV a, TV b) { TV r; for_in(i, dim) r._[i] = a._[i] * b._[i]; return r; } \
-static inline TV TV##DivComps(TV a, TV b) { TV r; for_in(i, dim) r._[i] = a._[i] / b._[i]; return r; } \
+static inline TV TV##MulVec(TV a, TV b) { TV r; for_in(i, dim) r._[i] = a._[i] * b._[i]; return r; } \
+static inline TV TV##DivVec(TV a, TV b) { TV r; for_in(i, dim) r._[i] = a._[i] / b._[i]; return r; } \
 \
 static inline TV TV##Lerp(TV a, TV b, F64 t) { \
 TV r; for_in(i, dim) r._[i] = lerp(a._[i], b._[i], t); return r; \
 }\
+\
+static inline BOOL TV##LT(TV a, TV b) { \
+for_in(i, dim) { if (a._[i] < b._[i]) return YES; if (a._[i] > b._[i]) return NO; } return NO; \
+} \
+\
+static inline BOOL TV##LTRev(TV a, TV b) { \
+for_in_rev(i, dim) { if (a._[i] < b._[i]) return YES; if (a._[i] > b._[i]) return NO; } return NO; \
+} \
 \
 static inline TV TV##WithCGPoint(CGPoint p) { return (TV) {{ p.x, p.y }}; } \
 \
@@ -94,7 +102,7 @@ return [NSString stringWithFormat:@"(" fmt @" " fmt @" " fmt @" " fmt @")", v._[
 
 #define _DEF_V_F(dim, TV) \
 \
-static inline TV TV##InvComps(TV v) { TV r; for_in(i, dim) r._[i] = 1.0 / v._[i]; return r; } \
+static inline TV TV##InvVec(TV v) { TV r; for_in(i, dim) r._[i] = 1.0 / v._[i]; return r; } \
 \
 static inline F64 TV##Dot(TV a, TV b) { F64 d = 0; for_in(i, dim) d += a._[i] * b._[i]; return d; } \
 \
