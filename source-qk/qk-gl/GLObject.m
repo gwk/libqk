@@ -9,7 +9,7 @@
 
 
 - (NSString*)description {
-  return [NSString withFormat:@"<%@ %p: %d", self.class, self, _handle];
+  return [NSString withFormat:@"<%@ %p: %d>", self.class, self, _handle];
 }
 
 

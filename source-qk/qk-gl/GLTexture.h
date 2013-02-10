@@ -13,13 +13,13 @@
 @property (nonatomic, readonly) V2I32 size;
 
 
-+ (id)withFormat:(GLenum)format     // e.g. GL_RGBA
+DEC_INIT(Format:(GLenum)format      // e.g. GL_RGBA
             size:(V2I32)size
       dataFormat:(GLenum)dataFormat // e.g. GL_RGBA
         dataType:(GLenum)dataType   // e.g. GL_FLOAT
-           bytes:(const void*)bytes;
+         bytes:(const void*)bytes);
 
-+ (id)withFormat:(GLenum)format image:(QKImage*)image;
+DEC_INIT(Format:(GLenum)format image:(QKImage*)image);
 
 - (void)setFilter:(GLenum)filter;
 - (void)setWrap:(GLenum)wrap;

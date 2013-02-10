@@ -15,11 +15,11 @@
 }
 
 
-- (id)initWithFormat:(GLenum)format
-                size:(V2I32)size
-          dataFormat:(GLenum)dataFormat
-            dataType:(GLenum)dataType
-               bytes:(const void*)bytes {
+DEF_INIT(Format:(GLenum)format      // e.g. GL_RGBA
+         size:(V2I32)size
+         dataFormat:(GLenum)dataFormat // e.g. GL_RGBA
+         dataType:(GLenum)dataType   // e.g. GL_FLOAT
+         bytes:(const void*)bytes) {
   
   INIT(super init);
   glGenTextures(1, &_handle); qkgl_assert();
@@ -37,26 +37,12 @@
 }
 
 
-+ (id)withFormat:(GLenum)format
-            size:(V2I32)size
-      dataFormat:(GLenum)dataFormat
-        dataType:(GLenum)dataType
-           bytes:(const void*)bytes {
-  
-  return [[self alloc] initWithFormat:format
-                                 size:size
-                           dataFormat:dataFormat
-                             dataType:dataType
-                                bytes:bytes];
-}
-
-
-+ (id)withFormat:(GLenum)format image:(QKImage*)image {
-  return [[self alloc] initWithFormat:format
-                                 size:image.size
-                           dataFormat:image.glDataFormat
-                             dataType:image.glDataType
-                                bytes:image.bytes];
+DEF_INIT(Format:(GLenum)format image:(QKImage*)image) {
+  return [self initWithFormat:format
+                         size:image.size
+                   dataFormat:image.glDataFormat
+                     dataType:image.glDataType
+                        bytes:image.bytes];
 }
 
 
