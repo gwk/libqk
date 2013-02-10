@@ -59,7 +59,7 @@ DEF_INIT(View:(NSView *)view
   if (_screenMode) {
     [self addScreenButton];
   }
-    
+  
   if (activate) {
     [self makeKeyAndOrderFront:nil];
     [self makeMainWindow]; // must come after makeKeyAndOrderFront
