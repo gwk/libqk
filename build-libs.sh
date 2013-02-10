@@ -31,6 +31,8 @@ export PATH="$libqk/tools:$PATH"
 
 build_lib() {
   local platform=$1; shift
+  local cc_name=$1; shift
+  local cc_opt=$1; shift
   local name="$1"; shift
   local config_args="$@"
   eval local path=\$$name
@@ -38,13 +40,13 @@ build_lib() {
   local d="libs-$platform/$name"
   [[ -d "$d" ]] && rm -rf "$d"
   mkdir -p "$d"
-  ./build-lib-$platform.sh clang lib$name "$path" built-$platform/$name $config_args
+  ./build-lib-$platform.sh $cc_name $cc_opt lib$name "$path" built-$platform/$name $config_args
   echo
 }
 
-build_lib mac sqlite3
-build_lib ios sqlite3
-build_lib mac png
-build_lib ios png --enable-arm-neon
-build_lib mac turbojpeg --with-jpeg8
-build_lib ios turbojpeg --with-jpeg8 --without-simd --with-gas-preprocessor # cannot yet compile neon successfully
+build_lib mac clang -Oz sqlite3
+build_lib ios clang -Oz sqlite3
+build_lib mac clang -O3 png
+build_lib ios clang -O3 png --enable-arm-neon
+build_lib mac clang -O3 turbojpeg --with-jpeg8
+build_lib ios gcc -O3 turbojpeg --with-jpeg8 --with-gas-preprocessor # cannot yet compile neon successfully

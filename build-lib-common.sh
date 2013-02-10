@@ -15,6 +15,7 @@ echo
 echo "build-lib-common.sh: $@"
 
 export CC_NAME="$1"; shift
+export CC_OPT="$1"; shift
 export LIB_NAME="$1"; shift
 export SRC_DIR="$1"; shift
 export INSTALL_DIR="$PWD/$1"; shift
@@ -28,6 +29,7 @@ export TOOL_DIR=$DEV_DIR/Toolchains/XcodeDefault.xctoolchain/usr/bin
 echo "
 LIB_NAME: $LIB_NAME
 CC_NAME: $CC_NAME
+CC_OPT: $CC_OPT
 INSTALL_DIR: $INSTALL_DIR
 CONFIG_ARGS: $CONFIG_ARGS
 QK_DIR: $QK_DIR
