@@ -16,6 +16,9 @@
 
 @interface NSObject (QKData)
 
+- (NSMutableData*)mutableRowPointersForElSize:(I32)elSize width:(Int)width;
+- (NSData*)rowPointersForElSize:(I32)elSize width:(Int)width;
+
 - (NSString *)debugDataString:(Int)limit;
 - (NSString *)debugDataString;
 

@@ -3,10 +3,30 @@
 
 
 #import "qk-macros.h"
+#import "NSMutableData+QK.h"
 #import "QKData.h"
 
 
 @implementation NSObject (QKData)
+
+
+- (NSMutableData*)mutableRowPointersForElSize:(I32)elSize width:(Int)width {
+  id<QKData> data = CAST_PROTO(QKData, self);
+  Int rowLength = elSize * width;
+  Int rowCount = data.length / rowLength;
+  NSMutableData* r = [NSMutableData withLength:sizeof(void*) * rowCount];
+  void* sb = (void*)data.bytes;
+  void** rb = r.mutableBytes;
+  for_in(i, rowCount) {
+    rb[i] = sb + i * rowLength;
+  }
+  return r;
+}
+
+
+- (NSData*)rowPointersForElSize:(I32)elSize width:(Int)width {
+  return [self mutableRowPointersForElSize:elSize width:width];
+}
 
 
 - (NSString *)debugDataString:(Int)limit {
