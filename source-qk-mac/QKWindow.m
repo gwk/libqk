@@ -181,11 +181,23 @@ DEF_INIT(View:(NSView*)view
 }
 
 
+- (void)keyDown:(NSEvent *)event {
+  if (_coversScreen && [event keyCode] == 53) { // escape key
+    // nop to prevent system beep
+  }
+  else {
+    [super keyDown:event];
+  }
+}
+
+
 - (void)keyUp:(NSEvent *)event {
   if (_coversScreen && [event keyCode] == 53) { // escape key
     [self toggleCoversScreen];
   }
-  [DEL_RESPONDS(keyUp:) keyUp:event];
+  else {
+    [super keyUp:event];
+  }
 }
 
 
