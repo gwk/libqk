@@ -20,6 +20,7 @@ typedef enum {
 @property (nonatomic) id<QKWindowDelegate> delegate;
 @property (nonatomic, readonly) QKWindowScreenMode screenMode;
 @property (nonatomic) BOOL coversScreen;
+@property (nonatomic) CGPoint position; // top-down coordinate for visible screen rect.
 
 DEC_INIT(View:(NSView *)view
          delegate:(id<QKWindowDelegate>)delegate
@@ -37,13 +38,10 @@ DEC_INIT(View:(NSView*)view
          position:(CGPoint)position
          activate:(BOOL)activate);
 
-- (QKView*)qkView;
+- (QKView*)view; // strongly typed content view
 
-- (void)setOriginFromVisibleTopLeft:(CGPoint)origin;
 - (void)toggleCoversScreen;
-- (void)setContentSizeConstrainingAspect:(CGSize)size;
-
-- (NSView*)contentView;
+- (void)setContentSizeAndAspect:(CGSize)size;
 
 @end
 

@@ -33,11 +33,6 @@
 }
 
 
-- (NSView*)contentView {
-  return [super contentView];
-}
-
-
 DEF_INIT(View:(NSView *)view
          delegate:(id<QKWindowDelegate>)delegate
          styleMask:(NSUInteger)styleMask
@@ -55,7 +50,8 @@ DEF_INIT(View:(NSView *)view
   self.delegate = delegate;
   self.backgroundColor = [NSColor blueColor]; // for debugging blank windows
   self.releasedWhenClosed = NO;
-  
+  self.position = position;
+  self.minSize = CGSizeMake(96, 0); // this needs to be enforced elsewhere, probably due to aspect ratio. 
   if (_screenMode) {
     [self addScreenButton];
   }
@@ -67,7 +63,6 @@ DEF_INIT(View:(NSView *)view
   else {
     [self orderBack:nil];
   }
-  self.originFromVisibleTopLeft = position;
 
   [[NSNotificationCenter defaultCenter] addObserver:self
                                            selector:@selector(screenDidChange:)
@@ -103,7 +98,7 @@ DEF_INIT(View:(NSView*)view
 }
 
 
-- (QKView*)qkView {
+- (QKView*)view {
   return CAST(QKView, self.contentView);
 }
 
@@ -113,18 +108,28 @@ DEF_INIT(View:(NSView*)view
 }
 
 
-- (void)setOriginFromVisibleTopLeft:(CGPoint)origin {
+- (CGPoint)position {
   CGRect svf = self.screen.visibleFrame;
   CGFloat vsh = svf.origin.y + svf.size.height; // visible screen height accounts for possible menu bar
-  CGFloat wh = self.frame.size.height;
-  self.frameOrigin = CGPointMake(origin.x, vsh - (origin.y + wh));
+  CGRect f = self.frame;
+  return CGPointMake(f.origin.x, vsh - (f.origin.y + f.size.height));
+}
+
+
+- (void)setPosition:(CGPoint)position {
+  CGRect svf = self.screen.visibleFrame;
+  CGFloat vsh = svf.origin.y + svf.size.height; // visible screen height accounts for possible menu bar
+  CGRect f = self.frame;
+  f.origin = CGPointMake(position.x, vsh - (position.y + f.size.height));
+  self.frame = f;
+  [self constrainFrameRect:f toScreen:self.screen];
 }
 
 
 // since the title bar gets removed on cover screen, we must add the button on init and every time we uncover.
 - (void)addScreenButton {
   // setup cover screen button
-  NSView* windowView = self.contentView.superview;
+  NSView* windowView = self.view.superview;
   CGRect wf = windowView.frame;
   NSImage* image = [NSImage imageNamed:NSImageNameEnterFullScreenTemplate];
   CGSize s = image.size;
@@ -203,15 +208,17 @@ DEF_INIT(View:(NSView*)view
 
 
 - (void)screenDidChange:(NSNotification *)notification {
-  errFL(@"window: %p screenDidChange:; scale: %f", self, self.screen.backingScaleFactor);
-  self.contentView.layer.contentsScale = self.screen.backingScaleFactor;
+  //errFL(@"window: %p screenDidChange:; scale: %f", self, self.screen.backingScaleFactor);
+  self.view.layer.contentsScale = self.screen.backingScaleFactor;
   [DEL_RESPONDS(windowChangedScreen:) windowChangedScreen:self];
 }
 
 
-- (void)setContentSizeConstrainingAspect:(CGSize)size {
+- (void)setContentSizeAndAspect:(CGSize)size {
+  CGPoint p = self.position;
   self.contentSize = size;
   self.contentAspectRatio = size;
+  self.position = p;
 }
 
 @end
