@@ -58,44 +58,44 @@ void describePFA(CGLPixelFormatObj format, GLint virtualScreen, CGLPixelFormatAt
 
 void describeAllPFA(CGLPixelFormatObj format, GLint virtualScreen) {
   errFL(@"pixel format %p", format);
-  descPFA(format, virtualScreen, kCGLPFAAllRenderers);
-  descPFA(format, virtualScreen, kCGLPFADoubleBuffer);
-  descPFA(format, virtualScreen, kCGLPFAStereo);
-  descPFA(format, virtualScreen, kCGLPFAAuxBuffers);
-  descPFA(format, virtualScreen, kCGLPFAColorSize);
-  descPFA(format, virtualScreen, kCGLPFAAlphaSize);
-  descPFA(format, virtualScreen, kCGLPFADepthSize);
-  descPFA(format, virtualScreen, kCGLPFAStencilSize);
-  descPFA(format, virtualScreen, kCGLPFAAccumSize);
-  descPFA(format, virtualScreen, kCGLPFAMinimumPolicy);
-  descPFA(format, virtualScreen, kCGLPFAMaximumPolicy);
-  descPFA(format, virtualScreen, kCGLPFAOffScreen);
-  descPFA(format, virtualScreen, kCGLPFAFullScreen);
-  descPFA(format, virtualScreen, kCGLPFASampleBuffers);
-  descPFA(format, virtualScreen, kCGLPFASamples);
-  descPFA(format, virtualScreen, kCGLPFAAuxDepthStencil);
-  descPFA(format, virtualScreen, kCGLPFAColorFloat);
-  descPFA(format, virtualScreen, kCGLPFAMultisample);
-  descPFA(format, virtualScreen, kCGLPFASupersample);
-  descPFA(format, virtualScreen, kCGLPFASampleAlpha);
-  descPFA(format, virtualScreen, kCGLPFARendererID);
-  descPFA(format, virtualScreen, kCGLPFASingleRenderer);
-  descPFA(format, virtualScreen, kCGLPFANoRecovery);
   descPFA(format, virtualScreen, kCGLPFAAccelerated);
-  descPFA(format, virtualScreen, kCGLPFAClosestPolicy);
-  descPFA(format, virtualScreen, kCGLPFARobust);
+  descPFA(format, virtualScreen, kCGLPFAAcceleratedCompute);
+  descPFA(format, virtualScreen, kCGLPFAAccumSize);
+  descPFA(format, virtualScreen, kCGLPFAAllRenderers);
+  descPFA(format, virtualScreen, kCGLPFAAllowOfflineRenderers);
+  descPFA(format, virtualScreen, kCGLPFAAlphaSize);
+  descPFA(format, virtualScreen, kCGLPFAAuxBuffers);
+  descPFA(format, virtualScreen, kCGLPFAAuxDepthStencil);
   descPFA(format, virtualScreen, kCGLPFABackingStore);
-  descPFA(format, virtualScreen, kCGLPFAMPSafe);
-  descPFA(format, virtualScreen, kCGLPFAWindow);
-  descPFA(format, virtualScreen, kCGLPFAMultiScreen);
+  descPFA(format, virtualScreen, kCGLPFAClosestPolicy);
+  descPFA(format, virtualScreen, kCGLPFAColorFloat);
+  descPFA(format, virtualScreen, kCGLPFAColorSize);
   descPFA(format, virtualScreen, kCGLPFACompliant);
+  descPFA(format, virtualScreen, kCGLPFADepthSize);
   descPFA(format, virtualScreen, kCGLPFADisplayMask);
+  descPFA(format, virtualScreen, kCGLPFADoubleBuffer);
+  descPFA(format, virtualScreen, kCGLPFAFullScreen);
+  descPFA(format, virtualScreen, kCGLPFAMPSafe);
+  descPFA(format, virtualScreen, kCGLPFAMaximumPolicy);
+  descPFA(format, virtualScreen, kCGLPFAMinimumPolicy);
+  descPFA(format, virtualScreen, kCGLPFAMultiScreen);
+  descPFA(format, virtualScreen, kCGLPFAMultisample);
+  descPFA(format, virtualScreen, kCGLPFANoRecovery);
+  descPFA(format, virtualScreen, kCGLPFAOffScreen);
+  descPFA(format, virtualScreen, kCGLPFAOpenGLProfile);
   descPFA(format, virtualScreen, kCGLPFAPBuffer);
   descPFA(format, virtualScreen, kCGLPFARemotePBuffer);
-  descPFA(format, virtualScreen, kCGLPFAAllowOfflineRenderers);
-  descPFA(format, virtualScreen, kCGLPFAAcceleratedCompute);
-  descPFA(format, virtualScreen, kCGLPFAOpenGLProfile);
+  descPFA(format, virtualScreen, kCGLPFARendererID);
+  descPFA(format, virtualScreen, kCGLPFARobust);
+  descPFA(format, virtualScreen, kCGLPFASampleAlpha);
+  descPFA(format, virtualScreen, kCGLPFASampleBuffers);
+  descPFA(format, virtualScreen, kCGLPFASamples);
+  descPFA(format, virtualScreen, kCGLPFASingleRenderer);
+  descPFA(format, virtualScreen, kCGLPFAStencilSize);
+  descPFA(format, virtualScreen, kCGLPFAStereo);
+  descPFA(format, virtualScreen, kCGLPFASupersample);
   descPFA(format, virtualScreen, kCGLPFAVirtualScreenCount);
+  descPFA(format, virtualScreen, kCGLPFAWindow);
   errL(@"");
 }
 
@@ -117,6 +117,7 @@ void describeAllPFA(CGLPixelFormatObj format, GLint virtualScreen) {
   int samples = QKPixFmtMultisamples(_format);
   if (samples) {
     [attributes appendI32:kCGLPFAMultisample];
+    [attributes appendI32:kCGLPFASamples];
     [attributes appendI32:samples];
     //kCGLPFASampleAlpha?
   }
