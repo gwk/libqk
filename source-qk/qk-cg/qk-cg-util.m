@@ -4,11 +4,42 @@
 
 #import "qk-cg-util.h"
 
-
+const CGSize CGSizeUnit = { 1, 1};
 const CGRect CGRectUnit = { 0, 0, 1, 1};
 
 
+CGSize CGSizeWithAspectEnclosingSize(CGFloat aspect, CGSize s) {
+  if (!aspect) {
+    return s;
+  }
+  CGFloat r_aspect = CGSizeAspect(s, 0);
+  if (r_aspect < aspect) { // e is wide/short relative to r; expand r width
+    return CGSizeMake(s.height * aspect, s.height);
+  }
+  else { // e is thin/tall relative to r; expand r height
+    return CGSizeMake(s.width, s.width / aspect);
+  }
+}
+
+
+CGSize CGSizeWithAspectEnclosedBySize(CGFloat aspect, CGSize s) {
+  if (!aspect) {
+    return s;
+  }
+  CGFloat r_aspect = CGSizeAspect(s, 0);
+  if (r_aspect < aspect) { // e is wide/short relative to r; shrink r height
+    return CGSizeMake(s.width, s.width / aspect);
+  }
+  else { // e is thin/tall relative to r; shrink r width
+    return CGSizeMake(s.height * aspect, s.height);
+  }
+}
+
+
 CGRect CGRectWithAspectEnclosingRect(CGFloat aspect, CGRect r) {
+  if (!aspect) {
+    return r;
+  }
   CGFloat r_aspect = CGSizeAspect(r.size, 0);
   CGRect e; // rect enclosing r
   if (r_aspect < aspect) { // e is wide/short relative to r; expand r width
@@ -24,6 +55,9 @@ CGRect CGRectWithAspectEnclosingRect(CGFloat aspect, CGRect r) {
 
 
 CGRect CGRectWithAspectEnclosedByRect(CGFloat aspect, CGRect r) {
+  if (!aspect) {
+    return r;
+  }
   CGFloat r_aspect = CGSizeAspect(r.size, 0);
   CGRect e; // rect enclosed by r
   if (r_aspect < aspect) { // e is wide/short relative to r; shrink r height

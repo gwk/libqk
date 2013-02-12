@@ -2,6 +2,7 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+extern const CGSize CGSizeUnit;
 extern const CGRect CGRectUnit;
 
 
@@ -63,6 +64,7 @@ static inline CGRect CGRectExpand(CGRect r, CGFloat width, CGFloat height) {
 }
 
 
+CGSize CGSizeWithAspectEnclosingSize(CGFloat aspect, CGSize s);
+CGSize CGSizeWithAspectEnclosedBySize(CGFloat aspect, CGSize s);
 CGRect CGRectWithAspectEnclosingRect(CGFloat aspect, CGRect r);
 CGRect CGRectWithAspectEnclosedByRect(CGFloat aspect, CGRect r);
-
