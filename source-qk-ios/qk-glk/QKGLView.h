@@ -10,8 +10,7 @@
 @property (nonatomic, weak) id<GLScene> scene;
 @property (nonatomic, readonly) QKPixFmt format;
 
-- (id)initWithFrame:(CGRect)frame scene:(id<GLScene>)scene format:(QKPixFmt)glFormat;
-+ (id)withFrame:(CGRect)frame scene:(id<GLScene>)scene format:(QKPixFmt)glFormat;
+DEC_INIT(Frame:(CGRect)frame scene:(id<GLScene>)scene format:(QKPixFmt)glFormat);
 
 @end
 

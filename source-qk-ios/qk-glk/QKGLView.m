@@ -6,7 +6,9 @@
 
 
 @interface QKGLView ()
+
 @property (nonatomic) BOOL needsSetup;
+
 @end
 
 
@@ -26,7 +28,7 @@
 }
 
 
-- (id)initWithFrame:(CGRect)frame scene:(id<GLScene>)scene format:(QKPixFmt)format {
+DEF_INIT(Frame:(CGRect)frame scene:(id<GLScene>)scene format:(QKPixFmt)format) {
   EAGLContext* ctx = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
   if (!ctx) { // in case host does not support ES2
     assert(0, @"nil EAGLContext"); // debug
@@ -43,11 +45,6 @@
   self.drawableDepthFormat = GLKViewDrawableDepthFormat16;
   self.drawableMultisample = GLKViewDrawableMultisampleNone;
   return self;
-}
-
-
-+ (id)withFrame:(CGRect)frame scene:(id)scene format:(QKPixFmt)format {
-  return [[self alloc] initWithFrame:frame scene:scene format:format];
 }
 
 
