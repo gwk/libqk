@@ -2,10 +2,12 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#import "NSBundle+QK.h"
 #import "NSError+QK.h"
 #import "NSOutputStream+QK.h"
 #import "NSString+QK.h"
 #import "NSObject+JNB.h"
+#import "QKErrorDomain.h"
 #import "QKImage.h"
 
 #ifdef PNG_H
@@ -171,6 +173,7 @@ DEF_INIT(Path:(NSString*)path map:(BOOL)map alpha:(BOOL)alpha error:(NSError**)e
     return [self initWithJpgPath:path map:map alpha:alpha error:errorPtr];
   }
 #endif
+  check(errorPtr, @"QKImage: unrecognized path extension: %@", path);
   *errorPtr = [NSError withDomain:QKErrorDomain
                              code:QKErrorCodeImageUnrecognizedPathExtension
                              desc:@"unrecognized path extension"
@@ -180,6 +183,10 @@ DEF_INIT(Path:(NSString*)path map:(BOOL)map alpha:(BOOL)alpha error:(NSError**)e
   return nil;
 }
 
+
++ (QKImage*)named:(NSString*)resourceName alpha:(BOOL)alpha {
+  return [self withPath:[NSBundle resPath:resourceName] map:YES alpha:alpha error:nil];
+}
 
 @end
 

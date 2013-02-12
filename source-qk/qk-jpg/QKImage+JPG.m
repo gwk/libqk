@@ -6,6 +6,7 @@
 #import "NSBundle+QK.h"
 #import "NSData+QK.h"
 #import "NSMutableData+QK.h"
+#import "QKErrorDomain.h"
 #import "QKImage+JPG.h"
 
 
@@ -62,7 +63,7 @@
 
 DEF_INIT(JpgPath:(NSString*)path map:(BOOL)map alpha:(BOOL)alpha error:(NSError**)errorPtr) {
   NSData* jpgData = [NSData withPath:path map:map error:errorPtr];
-  if (*errorPtr) {
+  if (errorPtr && *errorPtr) {
     return nil;
   }
   return [self initWithJpgData:jpgData alpha:alpha name:path error:errorPtr];

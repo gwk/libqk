@@ -74,10 +74,13 @@ info:__VA_ARGS__]; \
 
 #define CHECK_SET_ERROR_RET_NIL(expr, domain_prefix, code_suffix, _desc, ...) \
 if (!(expr)) { \
+NSString* __desc = (_desc); \
+NSDictionary* __info = __VA_ARGS__; \
+check(errorPtr, @"%@ (no errorPtr provided): %@", _desc, __info); \
 *errorPtr = [NSError withDomain:domain_prefix##ErrorDomain \
 code:domain_prefix##ErrorCode##code_suffix \
-desc:(_desc) \
-info:__VA_ARGS__]; \
+desc:__desc \
+info:__info]; \
 return nil; \
 }
 

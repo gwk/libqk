@@ -25,7 +25,14 @@
 
 
 + (id)withPath:(NSString*)path map:(BOOL)map error:(NSError**)errorPtr {
-  assert(errorPtr, @"NULL error pointer");
+  // give application code the option of handling error.
+  if (!errorPtr) {
+    NSError* e = nil;
+    id res = [self withPath:path map:map error:&e];
+    check(!e, @"NSData withPath: %@; map: %d; error: %@", path, map, e);
+    return res;
+  }
+  
   NSData* d = [self dataWithContentsOfURL:[NSURL fileURLWithPath:path]
                                   options:(map ? NSDataReadingMappedIfSafe : 0)
                                     error:errorPtr];
