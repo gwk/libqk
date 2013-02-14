@@ -37,14 +37,11 @@ extern const UIViewAutoresizing UIFlexVertical;
 @property (nonatomic) CGPoint boundsCenter;
 
 
-- (id)initWithFrame:(CGRect)frame flex:(UIViewAutoresizing)flex;
-- (id)initWithFlexFrame:(CGRect)frame;
-- (id)initWithFlexFrame;
-
 + (id)withFrame:(CGRect)frame;
-+ (id)withFrame:(CGRect)frame flex:(UIViewAutoresizing)flex;
-+ (id)withFlexFrame:(CGRect)frame;
-+ (id)withFlexFrame;
+
+DEC_INIT(Frame:(CGRect)frame flex:(UIViewAutoresizing)flex);
+DEC_INIT(FlexFrame:(CGRect)frame);
+DEC_INIT(FlexFrame);
 
 - (void)inspect:(NSString*)label;
 - (void)inspectParents:(NSString*)label;

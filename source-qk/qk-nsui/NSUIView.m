@@ -31,41 +31,26 @@ const UIViewAutoresizing UIFlexVertical   = UIFlexTop | UIFlexBottom;
 @implementation NSUIView (NSUI)
 
 
-- (id)initWithFrame:(CGRect)frame flex:(UIViewAutoresizing)flex {
++ (id)withFrame:(CGRect)frame {
+  return [[self alloc] initWithFrame:frame];
+}
+
+
+DEF_INIT(Frame:(CGRect)frame flex:(UIViewAutoresizing)flex) {
   INIT(self initWithFrame:frame);
   self.autoresizingMask = flex;
   return self;
 }
 
 
-- (id)initWithFlexFrame:(CGRect)frame {
+DEF_INIT(FlexFrame:(CGRect)frame) {
   return [self initWithFrame:frame flex:UIFlexSize];
 }
 
 
-- (id)initWithFlexFrame {
+DEF_INIT(FlexFrame) {
   // using a small square frame will reveal any omitted autoresizing bits.
   return [self initWithFlexFrame:CGRectMake(0, 0, 320, 320)];
-}
-
-
-+ (id)withFrame:(CGRect)frame {
-  return [[self alloc] initWithFrame:frame];
-}
-
-
-+ (id)withFrame:(CGRect)frame flex:(UIViewAutoresizing)flex {
-  return [[self alloc] initWithFrame:frame flex:flex];
-}
-
-
-+ (id)withFlexFrame:(CGRect)frame {
-  return [[self alloc] initWithFlexFrame:frame];
-}
-
-
-+ (id)withFlexFrame {
-  return [[self alloc] initWithFlexFrame];
 }
 
 
