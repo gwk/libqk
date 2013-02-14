@@ -2,6 +2,7 @@
 #import "GLObject.h"
 #import "GLProgram.h"
 #import "GLScene.h"
+#import "GLSceneInfo.h"
 #import "GLShader.h"
 #import "GLTexture.h"
 #import "GLVertexShader.h"

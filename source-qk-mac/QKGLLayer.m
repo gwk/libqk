@@ -4,12 +4,14 @@
 
 #import "qk-macros.h"
 #import "QKMutableStructArray.h"
+#import "QKPixFmt.h"
 #import "QKGLLayer.h"
 
 
 @interface QKGLLayer ()
 
 @property (nonatomic) BOOL needsSetup;
+@property (nonatomic) GLSceneInfo* sceneInfo;
 
 @end
 
@@ -34,6 +36,7 @@ DEF_INIT(Format:(QKPixFmt)format scene:(id<GLScene>)scene) {
   _format = format;
   _scene = scene;
   _maxContentScale = 2;
+  _sceneInfo = [GLSceneInfo new];
   self.opaque = YES;
   self.opacity = 1;
   self.asynchronous = NO;
@@ -160,13 +163,13 @@ void describeAllPFA(CGLPixelFormatObj format, GLint virtualScreen) {
 
   ASSERT_CONFORMS(self.scene, GLScene);
   CGLSetCurrentContext(ctx);
-  CGSize size = self.bounds.size;
-  CGFloat scale = self.contentsScale;
+  _sceneInfo.contentSize = self.bounds.size;
+  _sceneInfo.visibleRect = CGRectMake(0, 0, 1, 1);
   if (_needsSetup) {
-    [self.scene setupGLContext:ctx time:layerTime size:size scale:scale];
+    [self.scene setupGLLayer:self time:layerTime info:_sceneInfo];
     _needsSetup = NO;
   }
-  [self.scene drawInGLContext:ctx time:layerTime size:size scale:scale];
+  [self.scene drawInGLLayer:self time:layerTime info:_sceneInfo];
   CGLSetCurrentContext(NULL);
   // according to the header comments, we should call super to flush correctly.
   [super drawInCGLContext:ctx pixelFormat:pixelFormat forLayerTime:layerTime displayTime:displayTime]; // calls flush

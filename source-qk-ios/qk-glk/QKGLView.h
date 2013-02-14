@@ -2,15 +2,16 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#import "QKScrollView.h"
 #import "GLScene.h"
 
 
-@interface QKGLView : GLKView
+@interface QKGLView : GLKView <QKScrollTrackingDelegate>
 
 @property (nonatomic, weak) id<GLScene> scene;
 @property (nonatomic, readonly) QKPixFmt format;
 
-DEC_INIT(Frame:(CGRect)frame scene:(id<GLScene>)scene format:(QKPixFmt)glFormat);
+DEC_INIT(Frame:(CGRect)frame format:(QKPixFmt)format scene:(id<GLScene>)scene);
 
 @end
 

@@ -3,11 +3,12 @@
 
 
 // UIScrollView can be rather confusing to use once zooming is enabled.
+// essentially, the bounds and content rect have the zoomScale applied to them,
+// which makes working with the coordinates dependent on the current zoomScale.
 // contentOffset is always equal to self.bounds.origin.
-// contentSize changes with zoomScale to keep it in self's coordinate system.
-// we can talk about 
-// contentSize is in the content coordinate system; in particular it is scaled by zoomScale.
-// contentFrame denotes geometry in the coordinate system of the scroll view.
+
+// to deal with this, we define helper methods for the 'zoom' coordinate system,
+// which is the self system divided by the zoom scale.
 
 
 

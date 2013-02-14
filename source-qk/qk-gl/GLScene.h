@@ -2,16 +2,13 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
-#if TARGET_OS_IPHONE
-typedef EAGLContext* QKGLContext;
-#else
-typedef CGLContextObj QKGLContext;
-#endif
+#import "GLSceneInfo.h"
+
 
 @protocol GLScene <NSObject>
 
-- (void)setupGLContext:(QKGLContext)ctx time:(NSTimeInterval)time size:(CGSize)size scale:(CGFloat)scale;
-- (void)drawInGLContext:(QKGLContext)ctx time:(NSTimeInterval)time size:(CGSize)size scale:(CGFloat)scale;
+- (void)setupGLLayer:(CALayer*)layer time:(NSTimeInterval)time info:(GLSceneInfo*)info;
+- (void)drawInGLLayer:(CALayer*)layer time:(NSTimeInterval)time info:(GLSceneInfo*)info;
 
 @end
 

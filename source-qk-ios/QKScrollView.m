@@ -4,6 +4,7 @@
 
 #import "qk-macros.h"
 #import "qk-cg-util.h"
+#import "NSUIView.h"
 #import "QKScrollView.h"
 
 
@@ -41,26 +42,43 @@ zoomView = _zoomViewQKScrollView;
 #pragma mark - UIScrollView
 
 
+#define UPDATE_TRACKING_DELEGATE \
+[_trackingDelegate setScrollBounds:self.bounds contentSize:self.contentSize insets:self.contentInset zoomScale:self.zoomScale];
+
+
+- (void)setContentOffset:(CGPoint)contentOffset {
+  [super setContentOffset:contentOffset];
+  UPDATE_TRACKING_DELEGATE;
+}
+
+
 - (void)setContentSize:(CGSize)contentSize {
-  self.zoomView.size = contentSize;
   [super setContentSize:contentSize];
+  _zoomViewQKScrollView.size = self.contentSize;
+  UPDATE_TRACKING_DELEGATE;
 }
 
 
-- (void)addZoomSubview:(UIView*)view constantScale:(BOOL)constantScale {
-  [self.zoomView addSubview:view];
-  if (constantScale) {
-    [_constantScaleSet addObject:view];
-  }
+- (void)setContentInset:(UIEdgeInsets)contentInset {
+  [super setContentInset:contentInset];
+  UPDATE_TRACKING_DELEGATE;
 }
 
 
-- (void)addZoomSubview:(UIView*)view {
-  [self addZoomSubview:view constantScale:NO];
+- (void)setZoomScale:(float)zoomScale {
+  [super setZoomScale:zoomScale];
+  UPDATE_TRACKING_DELEGATE;
 }
 
 
 #pragma mark - UIScrollViewDelegate
+
+
+- (void)logState {
+  errFL(@"scroll view: b: %@; co: %@; cs: %@; zcr: %@; zs: %f",
+        NSStringFromCGRect(self.bounds), NSStringFromCGPoint(self.contentOffset), NSStringFromCGSize(self.contentSize),
+        NSStringFromCGRect(self.zoomContentRect), self.zoomScale);
+}
 
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -139,40 +157,54 @@ zoomView = _zoomViewQKScrollView;
 #pragma mark - QKScrollView
 
 
+- (void)addZoomSubview:(UIView*)view constantScale:(BOOL)constantScale {
+  [self.zoomView addSubview:view];
+  if (constantScale) {
+    [_constantScaleSet addObject:view];
+  }
+}
+
+
+- (void)addZoomSubview:(UIView*)view {
+  [self addZoomSubview:view constantScale:NO];
+}
+
+
+- (void)setTrackingDelegate:(id<QKScrollTrackingDelegate>)trackingDelegate {
+  _trackingDelegate = trackingDelegate;
+  UPDATE_TRACKING_DELEGATE;
+}
+
+
 - (CGRect)zoomContentRect {
   return self.zoomView.bounds;
+}
+
+
+- (CGSize)zoomContentSize {
+  return self.zoomView.bounds.size;
 }
 
 
 #pragma mark zoom
 
 
-- (UIEdgeInsets)interactionInsetsInZoomSystem {
-  CGFloat z = 1.0 / self.zoomScale; 
-  UIEdgeInsets e = _interactionInsets;
-  return UIEdgeInsetsMake(-z * e.top, -z * e.left, -z * e.bottom, -z * e.right);
-}
-
-
 - (void)zoomToRect:(CGRect)rect animated:(BOOL)animated {
-  // TODO: respect interactionInsets.
-  // the solution is not so simple because the interactionInsetsInZoomSystem uses the old zoomScale,
-  // but it seems to need the z value that we solve for below.
   //[self addZoomSubview:[UIView withFrame:rect color:[UIColor l:0 a:.3]]];
   CGRect validRect = CGRectIntersection(rect, self.zoomView.bounds);
   if (CGRectIsEmpty(validRect)) {
     errFL(@"zoomToRect: invalid rect: %@", NSStringFromCGRect(rect));
+    return;
   }
   CGSize bs = self.bounds.size;
   CGRect r = CGRectWithAspectEnclosingRect(CGSizeAspect(bs, 1), validRect);
   CGFloat z = bs.width / r.size.width;
+  
+  // NOTE: separate animations cause mild distortion in animation paths of the markers.
+  // nothing to be done about this at the moment; if we do not override this method
+  // then the trackingDelegate gets no callbacks.
   [self setZoomScaleClamped:z animated:animated];
   [self centerOnZoomRect:r animated:animated];
-}
-
-
-- (void)zoomToRect:(CGRect)rect {
-  [self zoomToRect:rect animated:NO];
 }
 
 
