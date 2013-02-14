@@ -2,6 +2,7 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#import "NSArray+QK.h"
 #import "NSString+QK.h"
 #import "qk-gl-util.h"
 #import "GLVertexShader.h"
@@ -47,17 +48,12 @@
 LAZY_CLASS_METHOD(Int, prefixLineCount, [[self prefix] lineCount]);
 
 
-- (NSString*)sourceNumberedFromOriginal {
-  return [_source numberedLinesFrom:1 - [self.class prefixLineCount]];
-}
-
-
-- (id)initWithSource:(NSString*)source name:(NSString*)name {
+DEF_INIT(Sources:(NSArray*)sources name:(NSString*)name) {
   INIT(super init);
-  _source = [[self.class prefix] stringByAppendingString:source];
   _name = name;
   _handle = glCreateShader([self.class shaderType]); qkgl_assert();
   assert(_handle, @"no handle");
+  _source = [[self.class prefix] stringByAppendingString:[sources componentsJoinedByString:@"\n"]];
   qkgl_set_shader_source(_handle, _source.UTF8String);
   glCompileShader(_handle); qkgl_assert();
   
@@ -69,12 +65,8 @@ LAZY_CLASS_METHOD(Int, prefixLineCount, [[self prefix] lineCount]);
 }
 
 
-+ (id)withSource:(NSString*)source name:(NSString*)name {
-  return [[self alloc] initWithSource:source name:name];
-}
-
-
-+ (id)named:(NSString*)resourceName {
++ (id)withResourceNames:(NSArray*)resourceNames {
+  
   static NSDictionary* ext_classes = nil;
   if (!ext_classes) {
     ext_classes = @{
@@ -83,13 +75,18 @@ LAZY_CLASS_METHOD(Int, prefixLineCount, [[self prefix] lineCount]);
     };
   }
   
-  Class c = [ext_classes objectForKey:resourceName.pathExtension];
-  assert(c, @"bad shader name extension: %@", resourceName);
-  NSString* path = [NSBundle resPath:resourceName];
-  NSError* e = nil;
-  NSString* source = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&e];
-  check(!e, @"could not read shader source at path: %@\n%@", path, e);
-  return [c withSource:source name:resourceName];
+  NSString* ext0 = [resourceNames.el0 pathExtension];
+  Class c = [ext_classes objectForKey:ext0];
+  assert(c, @"bad shader name extension: %@", resourceNames.el0);
+  NSArray* sources = [resourceNames map:^(NSString* name){
+    assert([ext0 isEqualToString:name.pathExtension], @"mismatched shader name extension: %@", name);
+    NSString* path = [NSBundle resPath:name];
+    NSError* e = nil;
+    NSString* source = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&e];
+    check(!e, @"could not read shader source at path: %@\n%@", path, e);
+    return source;
+  }];
+  return [c withSources:sources name:resourceNames.elLast];
 }
 
 

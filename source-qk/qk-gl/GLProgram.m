@@ -31,7 +31,7 @@
 }
 
 
-- (id)initWithShaders:(NSArray*)shaders uniforms:(NSArray*)uniforms attributes:(NSArray*)attributes {
+DEF_INIT(Shaders:(NSArray*)shaders uniforms:(NSArray*)uniforms attributes:(NSArray*)attributes) {
   INIT(super init);
   _shaders = shaders;
   _uniforms = uniforms;
@@ -74,16 +74,12 @@
 }
 
 
-+ (id)withShaders:(NSArray*)shaders uniforms:(NSArray*)uniforms attributes:(NSArray*)attributes {
-  return [[self alloc] initWithShaders:shaders uniforms:uniforms attributes:attributes];
-}
-
-
-+ (id)withShaderNames:(NSArray*)shaderNames uniforms:(NSArray*)uniforms attributes:(NSArray*)attributes {
-  NSArray* shaders = [shaderNames map:^(NSString* resourceName){
-    return [GLShader named:resourceName];
+DEF_INIT(ShaderNames:(NSArray*)shaderNames uniforms:(NSArray*)uniforms attributes:(NSArray*)attributes) {
+  NSArray* shaders = [shaderNames map:^(id el){
+    NSArray* resourceNames = IS_KIND(el, NSArray) ? el : @[el];
+    return [GLShader withResourceNames:resourceNames];
   }];
-  return [self withShaders:shaders uniforms:uniforms attributes:attributes];
+  return [self initWithShaders:shaders uniforms:uniforms attributes:attributes];
 }
 
 

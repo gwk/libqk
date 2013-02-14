@@ -8,9 +8,8 @@
 
 @interface GLProgram : GLObject
 
-- (id)initWithShaders:(NSArray*)shaders uniforms:(NSArray*)uniforms attributes:(NSArray*)attributes;
-+ (id)withShaders:(NSArray*)shaders uniforms:(NSArray*)uniforms attributes:(NSArray*)attributes;
-+ (id)withShaderNames:(NSArray*)shaderNames uniforms:(NSArray*)uniforms attributes:(NSArray*)attributes;
+DEC_INIT(Shaders:(NSArray*)shaders uniforms:(NSArray*)uniforms attributes:(NSArray*)attributes);
+DEC_INIT(ShaderNames:(NSArray*)shaderNames uniforms:(NSArray*)uniforms attributes:(NSArray*)attributes);
 
 - (void)use;
 + (void)disable;

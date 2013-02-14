@@ -9,9 +9,9 @@
 
 @property (nonatomic, readonly) NSString* name;
 
-- (id)initWithSource:(NSString*)source name:(NSString*)name;
-+ (id)withSource:(NSString*)source name:(NSString*)name;
-+ (id)named:(NSString*)resourceName;
+DEC_INIT(Sources:(NSArray*)source name:(NSString*)name);
+
++ (id)withResourceNames:(NSArray*)resourceNames;
 
 - (NSString*)infoLog;
 
