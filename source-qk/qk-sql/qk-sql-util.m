@@ -2,6 +2,8 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#import "qk-macros.h"
+#import "NSString+QK.h"
 #import "qk-sql-util.h"
 
 

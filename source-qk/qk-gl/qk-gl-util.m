@@ -2,12 +2,15 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
-#if !TARGET_OS_IPHONE
+#if TARGET_OS_IPHONE
+#import <OpenGLES/ES2/gl.h>
+#else
 #import <OpenGL/glu.h>
 #endif
 
 
 #import "NSString+QK.h"
+#import "qk-macros.h"
 #import "qk-check.h"
 #import "qk-gl-util.h"
 
@@ -69,8 +72,6 @@ NSString* qkgl_error_string(GLenum error_code) {
       CASE_RET_TOK_STR(GL_INVALID_ENUM);
       CASE_RET_TOK_STR(GL_INVALID_VALUE);
       CASE_RET_TOK_STR(GL_INVALID_OPERATION);
-      CASE_RET_TOK_STR(GL_STACK_OVERFLOW);
-      CASE_RET_TOK_STR(GL_STACK_UNDERFLOW);
       CASE_RET_TOK_STR(GL_OUT_OF_MEMORY);
       CASE_RET_TOK_STR(GL_NO_ERROR);
     default:
@@ -93,6 +94,6 @@ void qkgl_check() {
     [s appendFormat:@" %@", qkgl_error_string(code)];
     code = glGetError();
   }
-  fail(@"OpenGL: %s", s.UTF8String);
+  qk_fail(@"OpenGL: %s", s.UTF8String);
 }
 

@@ -2,6 +2,7 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#import "qk-gl-util.h"
 #import "NSArray+QK.h"
 #import "NSString+QK.h"
 #import "GLProgram.h"
@@ -41,16 +42,16 @@ DEF_INIT(Shaders:(NSArray*)shaders uniforms:(NSArray*)uniforms attributes:(NSArr
     glAttachShader(_handle, s.handle); qkgl_assert();
   }
   glLinkProgram(_handle); qkgl_assert();
-  check(qkgl_get_program_param(_handle, GL_LINK_STATUS),
+  qk_check(qkgl_get_program_param(_handle, GL_LINK_STATUS),
         @"program link failed: %@\n", self.infoLog);
   if (!QK_OPTIMIZE) {
     glValidateProgram(_handle); qkgl_assert();
-    check(qkgl_get_program_param(_handle, GL_VALIDATE_STATUS),
+    qk_check(qkgl_get_program_param(_handle, GL_VALIDATE_STATUS),
           @"program validation failed: %@\n", self.infoLog);
   }
   
   // is it even possible to get here?
-  check(_attributes.count <= qkgl_max_vertex_attributes(),
+  qk_check(_attributes.count <= qkgl_max_vertex_attributes(),
         @"too many attributes (max %d): %@", qkgl_max_vertex_attributes(), _attributes);
 
   // GLSL will optimize out unused uniforms/attributes, which is annyoing during development and debugging.
@@ -105,14 +106,14 @@ DEF_INIT(ShaderNames:(NSArray*)shaderNames uniforms:(NSArray*)uniforms attribute
 
 - (GLint)locForAttribute:(NSString*)attribute {
   GLint loc = glGetAttribLocation(_handle, attribute.asUtf8); qkgl_assert();
-  check(loc != -1, @"bad attribute: %@", attribute);
+  qk_check(loc != -1, @"bad attribute: %@", attribute);
   return loc;
 }
 
 
 - (GLint)locForUniform:(NSString*)uniform {
   GLint loc = glGetUniformLocation(_handle, uniform.asUtf8); qkgl_assert();
-  check(loc != -1, @"bad uniform: %@", uniform);
+  qk_check(loc != -1, @"bad uniform: %@", uniform);
   return loc;
 }
 
@@ -120,7 +121,7 @@ DEF_INIT(ShaderNames:(NSArray*)shaderNames uniforms:(NSArray*)uniforms attribute
 #define SET_UNIFORM(T, f) \
 - (BOOL)setUniform:(NSString*)name count:(int)count T:(T*)pointer { \
 NSNumber* loc = [_uniformLocations objectForKey:name]; \
-check(loc, @"bad uniform: %@", name); \
+qk_check(loc, @"bad uniform: %@", name); \
 if (loc.intValue == -1) return NO; \
 f(loc.intValue, count, (void*)pointer); qkgl_assert(); \
 return YES; \
@@ -152,7 +153,7 @@ SET_UNIFORM(I32, glUniform1iv);
              pointer:(const void*)pointer {
   
   NSNumber* loc = [_attributeLocations objectForKey:name];
-  check(loc, @"bad attribute: %@", name);
+  qk_check(loc, @"bad attribute: %@", name);
   if (loc.intValue == -1) { // known missing name
     return NO;
   }

@@ -5,6 +5,7 @@
 #import "qk-macros.h"
 #import "qk-cg-util.h"
 #import "NSUIView.h"
+#import "UIScrollView+QK.h"
 #import "QKScrollView.h"
 
 

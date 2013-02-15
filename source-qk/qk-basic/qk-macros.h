@@ -31,11 +31,12 @@ for (Int i = (n) - 1, _##i##_end = (m), _##i##_step = (s); i >= _##i##_end; i -=
 
 
 // clamp a value to low and high bounds
+// variables have _clamp suffix so as not to conflict with variables inside of MAX.
 #define clamp(x, a, b) ({ \
-__typeof__(x) __x = (x); \
-__typeof__(a) __a = (a); \
-__typeof__(b) __b = (b); \
-__x < __a ? __a : (__x > __b ? MAX(__a, __b) : __x); })
+__typeof__(x) __x_clamp = (x); \
+__typeof__(a) __a_clamp = (a); \
+__typeof__(b) __b_clamp = (b); \
+__x_clamp < __a_clamp ? __a_clamp : (__x_clamp > __b_clamp ? MAX(__a_clamp, __b_clamp) : __x_clamp); })
 
 
 #define compare(a, b) ({ \
@@ -133,20 +134,20 @@ DEF_WITH(__VA_ARGS__) \
 // type checks
 
 #define CHECK_KIND(obj, class_name) \
-check(IS_KIND((obj), class_name), \
+qk_check(IS_KIND((obj), class_name), \
 @"object is not of class: %@; actual: %@", [class_name class], [(obj) class])
 
 #define CHECK_KIND_OR_NIL(obj, class_name) \
-check(IS_KIND_OR_NIL((obj), class_name), \
+qk_check(IS_KIND_OR_NIL((obj), class_name), \
 @"non-nil object is not of class: %@; actual: %@", [class_name class], [(obj) class])
 
 
 #define CHECK_CONFORMS(obj, protocol_name) \
-check(CONFORMS((obj), protocol_name), \
+qk_check(CONFORMS((obj), protocol_name), \
 @"object does not conform: %s; class: %@", #protocol_name, [(obj) class])
 
 #define CHECK_CONFORMS_OR_NIL(obj, protocol_name) \
-check(CONFORMS_OR_NIL((obj), protocol_name), \
+qk_check(CONFORMS_OR_NIL((obj), protocol_name), \
 @"non-nil object does not conform: %s; class: %@", #protocol_name, [(obj) class])
 
 
@@ -180,7 +181,7 @@ check(CONFORMS_OR_NIL((obj), protocol_name), \
 // inheritence
 
 // shorthand to throw an exception in abstract base methods.
-#define OVERRIDE fail(@"must override in subclass or intermediate: %@", [self class])
+#define OVERRIDE qk_fail(@"must override in subclass or intermediate: %@", [self class])
 
 
 // throw an exception for non-designated initialization paths:
@@ -206,11 +207,11 @@ return nil
 
 // threads
 
-#define CHECK_MAIN_THREAD check([NSThread isMainThread], @"requires main thread")
-#define ASSERT_MAIN_THREAD assert([NSThread isMainThread], @"requires main thread")
+#define CHECK_MAIN_THREAD qk_check([NSThread isMainThread], @"requires main thread")
+#define ASSERT_MAIN_THREAD qk_assert([NSThread isMainThread], @"requires main thread")
 
-#define CHECK_NOT_MAIN_THREAD check(![NSThread isMainThread], @"requires background thread")
-#define ASSERT_NOT_MAIN_THREAD assert(![NSThread isMainThread], @"requires background thread")
+#define CHECK_NOT_MAIN_THREAD qk_check(![NSThread isMainThread], @"requires background thread")
+#define ASSERT_NOT_MAIN_THREAD qk_assert(![NSThread isMainThread], @"requires background thread")
 
 #define THREAD_SLEEP(interval) { \
 NSTimeInterval _sleep_interval = (interval); \

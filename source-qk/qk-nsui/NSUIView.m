@@ -6,6 +6,8 @@
 
 
 #if TARGET_OS_IPHONE
+#import "UIView+QK.h"
+
 const UIViewAutoresizing UIFlexNone   = UIViewAutoresizingNone;
 const UIViewAutoresizing UIFlexWidth  = UIViewAutoresizingFlexibleWidth;
 const UIViewAutoresizing UIFlexHeight = UIViewAutoresizingFlexibleHeight;

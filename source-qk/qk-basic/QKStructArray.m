@@ -115,7 +115,7 @@ DEF_INIT(ElSize:(I32)elSize structArray:(QKStructArray*)structArray filterCopyBl
   I32 elSize = [arrays.el0 elSize];
   if (!QK_OPTIMIZE) {
     for (QKStructArray* el in arrays) {
-      assert(el.elSize == elSize, @"mismatched elSize: %@; %@", arrays.el0, el);
+      qk_assert(el.elSize == elSize, @"mismatched elSize: %@; %@", arrays.el0, el);
     }
   }
   return [self withElSize:elSize data:[NSData join:[arrays map:^(QKStructArray* a){
@@ -159,7 +159,7 @@ DEF_INIT(ElSize:(I32)elSize structArray:(QKStructArray*)structArray filterCopyBl
 }
 
 
-#define ASSERT_INDEX assert(index < self.count, @"bad index: %ld; %@", index, self)
+#define ASSERT_INDEX qk_assert(index < self.count, @"bad index: %ld; %@", index, self)
 
 - (void)el:(Int)index to:(void*)to {
   ASSERT_INDEX;
@@ -170,7 +170,7 @@ DEF_INIT(ElSize:(I32)elSize structArray:(QKStructArray*)structArray filterCopyBl
 
 #define EL(T) \
 - (T)el##T:(Int)index { \
-assert(self.elSize == sizeof(T), @"bad type: %s", #T); \
+qk_assert(self.elSize == sizeof(T), @"bad type: %s", #T); \
 ASSERT_INDEX; \
 const T* p = _data.bytes; \
 return p[index]; \

@@ -55,7 +55,7 @@ NSString* const JNBErrorDomain = @"JNBErrorDomain";
                     });
     
     Class expectedClass = [valTypes objectForKey:key];
-    assert(expectedClass, @"jnbValTypes dictionary is missing key: %@", key);
+    qk_assert(expectedClass, @"jnbValTypes dictionary is missing key: %@", key);
     CHECK_RET_ERROR([val isKindOfClass:expectedClass], JNB, ValTypeUnexpected, @"bad value type",
                     @{
                     @"dict" : dict,
@@ -93,7 +93,7 @@ NSString* const JNBErrorDomain = @"JNBErrorDomain";
     if (mapBlock) {
       val = mapBlock(val);
     }
-    assert([val isKindOfClass:[valTypes objectForKey:key]], @"bad value type: %@; %@", [val class], val);
+    qk_assert([val isKindOfClass:[valTypes objectForKey:key]], @"bad value type: %@; %@", [val class], val);
     return [Duo a:key b:val];
   }];
   NSError* e = nil;
@@ -103,7 +103,7 @@ NSString* const JNBErrorDomain = @"JNBErrorDomain";
   }
   Int data_offset = (written + 0x10) & ~(size_t)0x0F;
   Int pad_length = data_offset - written;
-  assert(pad_length > 0, @"bad pad length: %ld", pad_length);
+  qk_assert(pad_length > 0, @"bad pad length: %ld", pad_length);
   U8 pad[pad_length];
   memset(pad, 0, pad_length);
   Int pad_written = [stream write:pad maxLength:pad_length];
@@ -147,7 +147,7 @@ NSString* const JNBErrorDomain = @"JNBErrorDomain";
   if (*errorPtr) {
     return nil;
   }
-  assert(dict, @"nil dict");
+  qk_assert(dict, @"nil dict");
   
   NSString* typeName = [dict objectForKey:JNBTypeKey];
   Class targetClass;
@@ -194,7 +194,7 @@ NSString* const JNBErrorDomain = @"JNBErrorDomain";
   NSString* path = [NSBundle resPath:resourceName ofType:nil];
   NSError* e = nil;
   id obj = [self withJnbPath:path map:YES error:&e];
-  assert(!e, @"error loading JNB resource: %@; %@", resourceName, e);
+  qk_assert(!e, @"error loading JNB resource: %@; %@", resourceName, e);
   return obj;
 }
 

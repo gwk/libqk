@@ -2,6 +2,9 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#import <GLKit/GLKit.h>
+#import "qk-macros.h"
+#import "QKPixFmt.h"
 #import "QKScrollView.h"
 #import "GLScene.h"
 

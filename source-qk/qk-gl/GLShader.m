@@ -3,6 +3,7 @@
 
 
 #import "NSArray+QK.h"
+#import "NSBundle+QK.h"
 #import "NSString+QK.h"
 #import "qk-gl-util.h"
 #import "GLVertexShader.h"
@@ -52,12 +53,12 @@ DEF_INIT(Sources:(NSArray*)sources name:(NSString*)name) {
   INIT(super init);
   _name = name;
   _handle = glCreateShader([self.class shaderType]); qkgl_assert();
-  assert(_handle, @"no handle");
+  qk_assert(_handle, @"no handle");
   _source = [[self.class prefix] stringByAppendingString:[sources componentsJoinedByString:@"\n"]];
   qkgl_set_shader_source(_handle, _source.UTF8String);
   glCompileShader(_handle); qkgl_assert();
   
-  check(qkgl_get_shader_param(_handle, GL_COMPILE_STATUS),
+  qk_check(qkgl_get_shader_param(_handle, GL_COMPILE_STATUS),
         @"shader compile failed: %@\n%@\nsource:\n%@\n",
         _name, self.infoLog, _source.numberedLines);
   
@@ -77,13 +78,13 @@ DEF_INIT(Sources:(NSArray*)sources name:(NSString*)name) {
   
   NSString* ext0 = [resourceNames.el0 pathExtension];
   Class c = [ext_classes objectForKey:ext0];
-  assert(c, @"bad shader name extension: %@", resourceNames.el0);
+  qk_assert(c, @"bad shader name extension: %@", resourceNames.el0);
   NSArray* sources = [resourceNames map:^(NSString* name){
-    assert([ext0 isEqualToString:name.pathExtension], @"mismatched shader name extension: %@", name);
+    qk_assert([ext0 isEqualToString:name.pathExtension], @"mismatched shader name extension: %@", name);
     NSString* path = [NSBundle resPath:name];
     NSError* e = nil;
     NSString* source = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&e];
-    check(!e, @"could not read shader source at path: %@\n%@", path, e);
+    qk_check(!e, @"could not read shader source at path: %@\n%@", path, e);
     return source;
   }];
   return [c withSources:sources name:resourceNames.elLast];

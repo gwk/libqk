@@ -143,7 +143,7 @@ LAZY_CLASS_METHOD(NSDictionary*, jnbValEncoders, @{
 
 
 - (void)validate {
-  check(_size._[0] >= 0 && _size._[1] >= 0 && _size._[0] * _size._[1] * QKPixFmtBytesPerPixel(_format) == _data.length,
+  qk_check(_size._[0] >= 0 && _size._[1] >= 0 && _size._[0] * _size._[1] * QKPixFmtBytesPerPixel(_format) == _data.length,
         @"bad args; %@; data.length: %ld", self, _data.length);
 }
 
@@ -173,7 +173,7 @@ DEF_INIT(Path:(NSString*)path map:(BOOL)map alpha:(BOOL)alpha error:(NSError**)e
     return [self initWithJpgPath:path map:map alpha:alpha error:errorPtr];
   }
 #endif
-  check(errorPtr, @"QKImage: unrecognized path extension: %@", path);
+  qk_check(errorPtr, @"QKImage: unrecognized path extension: %@", path);
   *errorPtr = [NSError withDomain:QKErrorDomain
                              code:QKErrorCodeImageUnrecognizedPathExtension
                              desc:@"unrecognized path extension"

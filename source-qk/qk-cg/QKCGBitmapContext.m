@@ -103,7 +103,7 @@
     case QKPixFmtRGBU8:
     return QKPixFmtRGBU8;
     default:
-      fail(@"unsupported format: 0x%X", _format);
+      qk_fail(@"unsupported format: 0x%X", _format);
   }
 }
 

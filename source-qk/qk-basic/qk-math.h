@@ -83,7 +83,7 @@ static inline F64 mean4(F64 a, F64 b, F64 c, F64 d) {
 
 
 static inline int next_POT(Int x) {
-  assert(x >= 0, @"bad value: %ld", x);
+  qk_assert(x >= 0, @"bad value: %ld", x);
   return 1 << (highest_bit(x) + 1);
 }
 

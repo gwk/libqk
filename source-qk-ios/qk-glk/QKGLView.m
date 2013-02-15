@@ -40,7 +40,7 @@
 DEF_INIT(Frame:(CGRect)frame format:(QKPixFmt)format scene:(id<GLScene>)scene) {
   EAGLContext* ctx = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
   if (!ctx) { // in case host does not support ES2
-    assert(0, @"nil EAGLContext"); // debug
+    qk_assert(0, @"nil EAGLContext"); // debug
     return nil; // for release, just return a nil view
   }
   INIT(super initWithFrame:frame context:ctx);

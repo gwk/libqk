@@ -3,16 +3,18 @@
 
 
 #import "qk-types.h"
+#import "NSArray+QK.h"
+#import "NSString+QK.h"
 #import "qk-sql-util.h"
 #import "SqlDatabase.h"
 #import "SqlStatement.h"
 
 
 #define _CHECK(exp_code, fmt, ...) \
-check(code == exp_code, @"%@\n%@\n" fmt, sql_failure_str(_db.handle, code), self.query, ##__VA_ARGS__)
+qk_check(code == exp_code, @"%@\n%@\n" fmt, sql_failure_str(_db.handle, code), self.query, ##__VA_ARGS__)
 
 #define _ASSERT(exp_code, fmt, ...) \
-assert(code == exp_code, @"%@\n%@\n" fmt, sql_failure_str(_db.handle, code), self.query, ##__VA_ARGS__)
+qk_assert(code == exp_code, @"%@\n%@\n" fmt, sql_failure_str(_db.handle, code), self.query, ##__VA_ARGS__)
 
 #define _CHECK_OK(...) _CHECK(SQLITE_OK, __VA_ARGS__)
 #define _ASSERT_OK(...) _ASSERT(SQLITE_OK, __VA_ARGS__)
@@ -40,7 +42,7 @@ assert(code == exp_code, @"%@\n%@\n" fmt, sql_failure_str(_db.handle, code), sel
   Utf8 tail = NULL;
   int code = sqlite3_prepare_v2(_db.handle, query.asUtf8, -1, &_handle, &tail);
   _CHECK_OK(@"prepare: %@", query);
-  assert(!*tail, @"prepared query has unused tail: '%s'", tail);
+  qk_assert(!*tail, @"prepared query has unused tail: '%s'", tail);
   return self;
 }
 
@@ -170,7 +172,7 @@ STEP1(F64);
 
 
 #define _ASSERT_VALID_INDEX \
-assert(index >= 0 && index < self.columnCount, @"bad index: %d; columnCount: %d", index, self.columnCount)
+qk_assert(index >= 0 && index < self.columnCount, @"bad index: %d; columnCount: %d", index, self.columnCount)
 
 - (Int)getInt:(I32)index {
   _ASSERT_VALID_INDEX;
@@ -202,7 +204,7 @@ assert(index >= 0 && index < self.columnCount, @"bad index: %d; columnCount: %d"
 
 
 - (NSArray*)getStrings:(I32)count {
-  assert(count <= self.columnCount, @"bad count: %d; columnCount: %d", count, self.columnCount);
+  qk_assert(count <= self.columnCount, @"bad count: %d; columnCount: %d", count, self.columnCount);
   return [NSArray mapIntTo:count block:^(Int i){
     return [self getString:(I32)i];
   }];

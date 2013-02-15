@@ -2,6 +2,9 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#import "qk-macros.h"
+
+
 #if TARGET_OS_IPHONE
 # define NSUIView UIView
 #else

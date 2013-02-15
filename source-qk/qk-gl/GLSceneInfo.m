@@ -2,6 +2,7 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#import "NSString+QK.h"
 #import "GLSceneInfo.h"
 
 

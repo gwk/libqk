@@ -3,15 +3,16 @@
 
 
 #import "UIImage+QK.h"
+#import "qk-check.h"
 
 
 @implementation UIImage (QK)
 
 
 + (UIImage *)named:(NSString*)name {
-    assert(name, @"nil image name");    
+    qk_assert(name, @"nil image name");    
     UIImage* image = [self imageNamed:name];
-    assert(image, @"no image for name: %@", name);
+    qk_assert(image, @"no image for name: %@", name);
     return image;
 }
 

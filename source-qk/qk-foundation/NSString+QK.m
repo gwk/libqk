@@ -58,7 +58,7 @@
   if (!string) {
     return nil;
   }
-  assert(sizeof(wchar_t) == 4, @"bad wchar size");
+  qk_assert(sizeof(wchar_t) == 4, @"bad wchar size");
   int length = 0;
   while (string[length]) length++; // count non-null 4-byte characters.
   id s = [[self alloc] initWithBytes:string length:length * 4 encoding:NSUTF32LittleEndianStringEncoding];
@@ -86,8 +86,8 @@
            range:NSRangeLength(self)
   remainingRange:&range_left];
   
-  assert(len_act == len, @"Utf32 buffer filled %lu; expected %lu", (unsigned long)len_act, (unsigned long)len);
-  assert(!range_left.length, @"Utf32 buffer could not be filled; terminated at position %lu", (unsigned long)range_left.location);
+  qk_assert(len_act == len, @"Utf32 buffer filled %lu; expected %lu", (unsigned long)len_act, (unsigned long)len);
+  qk_assert(!range_left.length, @"Utf32 buffer could not be filled; terminated at position %lu", (unsigned long)range_left.location);
   
   memset(bytes + len, 0, pad); // null terminate
   return bytes;

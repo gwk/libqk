@@ -2,6 +2,10 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#import "qk-vec.h"
+#import "QKData.h"
+#import "QKSubData.h"
+#import "QKImage.h"
 #import "QKCGColorSpace.h"
 #import "QKCGContext.h"
 

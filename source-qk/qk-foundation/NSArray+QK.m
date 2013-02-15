@@ -174,7 +174,7 @@ EL(9);
     else {
       r = NSOrderedAscending;
     }
-    assert(r == NSOrderedSame || r == NSOrderedAscending, @"comparator or sort failed: %@", sorted);
+    qk_assert(r == NSOrderedSame || r == NSOrderedAscending, @"comparator or sort failed: %@", sorted);
     if (r == NSOrderedAscending) {
       a = [NSMutableArray new];
       [g addObject:a];

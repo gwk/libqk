@@ -2,6 +2,9 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#import "qk-vec.h"
+
+
 @class SqlDatabase;
 @class SqlStatement;
 

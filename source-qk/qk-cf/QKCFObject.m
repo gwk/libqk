@@ -18,7 +18,7 @@
 
 - (id)initWithRetainedRef:(void*) CF_RELEASES_ARGUMENT ref {
   INIT(super init);
-  check(ref, @"NULL ref");
+  qk_check(ref, @"NULL ref");
   _ref = ref;
   return self;
 }

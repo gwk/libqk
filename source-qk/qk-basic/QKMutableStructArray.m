@@ -64,7 +64,7 @@ DEF_INIT(ElSize:(I32)elSize count:(Int)count) {
 }
 
 
-#define ASSERT_INDEX assert(index < self.count, @"bad index: %d; %@", index, self)
+#define ASSERT_INDEX qk_assert(index < self.count, @"bad index: %d; %@", index, self)
 
 - (void)setEl:(int)index from:(void*)from {
   ASSERT_INDEX;
@@ -79,13 +79,13 @@ DEF_INIT(ElSize:(I32)elSize count:(Int)count) {
 
 #define EL(T) \
 - (void)setEl:(int)index T:(T)element { \
-assert(self.elSize == sizeof(T), @"bad type: %s", #T); \
+qk_assert(self.elSize == sizeof(T), @"bad type: %s", #T); \
 ASSERT_INDEX; \
 [self.mutableData replaceBytesInRange:[self byteRangeForIndex:index] withBytes:&element]; \
 } \
 \
 - (void)append##T:(T)element { \
-assert(self.elSize == sizeof(T), @"bad type: %s", #T); \
+qk_assert(self.elSize == sizeof(T), @"bad type: %s", #T); \
 [self.mutableData appendBytes:&element length:self.elSize]; \
 } \
 

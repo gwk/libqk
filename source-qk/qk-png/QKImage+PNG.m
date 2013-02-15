@@ -8,6 +8,7 @@
 #import "NSBundle+QK.h"
 #import "NSData+QK.h"
 #import "NSString+QK.h"
+#import "QKErrorDomain.h"
 #import "QKImage.h"
 #import "QKImage+PNG.h"
 
@@ -111,7 +112,7 @@
   data.length = l;
   
   png_bytepp row_pointers = malloc(size._[1] * sizeof(png_bytep));
-  check(row_pointers, @"malloc row_pointers failed");
+  qk_check(row_pointers, @"malloc row_pointers failed");
   
   // fill out row_pointers
   const BOOL flip = YES; // make data layout match OpenGL texturing expectations.
@@ -143,7 +144,7 @@
         case 2: v = (255/3) * c->gray;  break;
         case 4: v = (255/15) * c->gray; break;
         default:
-          fail(@"unexpected bit depth: %d", srcBitDepth);
+          qk_fail(@"unexpected bit depth: %d", srcBitDepth);
       }
       backgroundColor = V3U8Make(v, v, v);
     }
@@ -180,9 +181,9 @@ void qkpng_error_fn(png_structp png_ptr, png_const_charp error_msg) {
   png_voidp error_ptr = NULL;
   png_error_ptr warn_fn = NULL;
   png_structp readPtr = png_create_read_struct(PNG_LIBPNG_VER_STRING, error_ptr, qkpng_error_fn, warn_fn);
-  check(readPtr, @"png_create_read_struct failed (out of memory?)");
+  qk_check(readPtr, @"png_create_read_struct failed (out of memory?)");
   png_infop infoPtr = png_create_info_struct(readPtr);
-  check(infoPtr, @"png_create_info_struct failed (out of memory?)");
+  qk_check(infoPtr, @"png_create_info_struct failed (out of memory?)");
   png_init_io(readPtr, file);
   png_set_sig_bytes(readPtr, 8); // since we already read the signature bytes
   
@@ -213,10 +214,10 @@ DEF_INIT(PngPath:(NSString*)path map:(BOOL)map alpha:(BOOL)alpha error:(NSError*
 
 + (QKImage*)pngNamed:(NSString*)resourceName alpha:(BOOL)alpha {
   NSString* path = [NSBundle resPath:resourceName ofType:nil];
-  check(path, @"no image named: %@", resourceName);
+  qk_check(path, @"no image named: %@", resourceName);
   NSError* e = nil;
   QKImage* i = [self withPngPath:path map:YES alpha:alpha error:&e];
-  check(i && !e, @"error loading image named: %@\n  %@", resourceName, e);
+  qk_check(i && !e, @"error loading image named: %@\n  %@", resourceName, e);
   return i;
 }
 

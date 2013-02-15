@@ -3,7 +3,7 @@
 
 
 #import <GLKit/GLKit.h>
-
+#import "qk-vec.h"
 
 @interface GLKView (QK)
 

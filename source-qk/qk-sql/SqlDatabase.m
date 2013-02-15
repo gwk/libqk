@@ -22,7 +22,7 @@
 
 - (void)dealloc {
   int code = sqlite3_close_v2(_handle);
-  check(code == SQLITE_OK, @"SQLite database close failed: %@; %@", sql_code_description(code), _path);
+  qk_check(code == SQLITE_OK, @"SQLite database close failed: %@; %@", sql_code_description(code), _path);
 }
 
 
@@ -33,7 +33,7 @@
        sharedCache:(BOOL)sharedCache {
   
   INIT(super init);
-  check(path, @"nil path");
+  qk_check(path, @"nil path");
   _path = path;
   int flags =
   (writeable ? SQLITE_OPEN_READWRITE : SQLITE_OPEN_READONLY) |
@@ -44,7 +44,7 @@
   int code = sqlite3_open_v2(path.asUtf8, &_handle, flags, NULL);
   if (code != SQLITE_OK) {
     sqlite3_close(_handle);// close database even in the event of error to release all resources.
-    fail(@"SQLite database open failed: %@; %@", sql_code_description(code), _path);
+    qk_fail(@"SQLite database open failed: %@; %@", sql_code_description(code), _path);
   }
   return self;
 }

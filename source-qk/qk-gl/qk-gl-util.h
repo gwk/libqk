@@ -2,6 +2,9 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#import "qk-types.h"
+
+
 #if QK_OPTIMIZE
 # define qkgl_assert() ((void)0)
 #else

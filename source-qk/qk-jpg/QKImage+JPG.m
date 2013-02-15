@@ -16,7 +16,7 @@
 - (id)initWithJpgData:(id<QKData>)jpgData alpha:(BOOL)alpha name:(NSString*)name error:(NSError**)errorPtr {
 
   tjhandle handle = tjInitDecompress();
-  check(handle, @"could not init JPG decompressor");
+  qk_check(handle, @"could not init JPG decompressor");
   
   V2I32 s = {0, 0};
   int subsamples = 0;
@@ -72,10 +72,10 @@ DEF_INIT(JpgPath:(NSString*)path map:(BOOL)map alpha:(BOOL)alpha error:(NSError*
 
 + (QKImage*)jpgNamed:(NSString*)resourceName alpha:(BOOL)alpha {
   NSString* path = [NSBundle resPath:resourceName ofType:nil];
-  check(path, @"no JPG image named: %@", resourceName);
+  qk_check(path, @"no JPG image named: %@", resourceName);
   NSError* e = nil;
   QKImage* i = [self withJpgPath:path map:YES alpha:alpha error:&e];
-  check(!e, @"JPG resource failed to load: %@", e);
+  qk_check(!e, @"JPG resource failed to load: %@", e);
   return i;
 }
 

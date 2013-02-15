@@ -28,7 +28,7 @@ NSString* QKPixFmtDesc(QKPixFmt format) {
       CASE_RET_TOK_SPLIT_STR(QKPixFmt, RGBXU16);
       CASE_RET_TOK_SPLIT_STR(QKPixFmt, RGBXF32);
   }
-  fail(@"bad format: 0x%02X", format);
+  qk_fail(@"bad format: 0x%02X", format);
 }
 
 
@@ -68,7 +68,7 @@ int QKPixFmtBitsPerChannel(QKPixFmt format) {
   if (format & QKPixFmtBitU16) {
     return 16;
   }
-  assert(format & QKPixFmtBitU8, @"bad format: %@", QKPixFmtDesc(format));
+  qk_assert(format & QKPixFmtBitU8, @"bad format: %@", QKPixFmtDesc(format));
   return 8;
 }
 
@@ -110,7 +110,7 @@ int QKPixFmtBitmapInfo(QKPixFmt format) {
     info = kCGImageAlphaOnly;
   }
   else {
-    fail(@"bad format: %@", QKPixFmtDesc(format));
+    qk_fail(@"bad format: %@", QKPixFmtDesc(format));
   }
   if (format & QKPixFmtBitF32) {
     info |= kCGBitmapFloatComponents;
@@ -128,7 +128,7 @@ int QKPixFmtGlDataFormat(QKPixFmt format) {
     case QKPixFmtRGBU8: return GL_RGB;
     case QKPixFmtRGBAU8: return GL_RGBA;
     default:
-      fail(@"pixel format is not mapped to OpenGL data format: %@", QKPixFmtDesc(format));
+      qk_fail(@"pixel format is not mapped to OpenGL data format: %@", QKPixFmtDesc(format));
   }
 }
 
@@ -144,7 +144,7 @@ int QKPixFmtGlDataType(QKPixFmt format) {
     case QKPixFmtRGBU8:
     case QKPixFmtRGBAU8: return GL_UNSIGNED_BYTE;
     default:
-      fail(@"pixel format is not mapped to OpenGL data type: %@", QKPixFmtDesc(format));
+      qk_fail(@"pixel format is not mapped to OpenGL data type: %@", QKPixFmtDesc(format));
   }
 }
 

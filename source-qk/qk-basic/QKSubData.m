@@ -14,7 +14,7 @@
 
 
 - (id)initWithData:(id<QKData>)data offset:(Int)offset length:(Int)length {
-  check(offset + length <= data.length,
+  qk_check(offset + length <= data.length,
         @"out of bounds: data.length: %lu; offset: %ld; length: %ld", (unsigned long)data.length, offset, length);
   INIT(super init);
   _data = data;

@@ -3,6 +3,7 @@
 
 
 #import "qk-vec.h"
+#import "QKImage.h"
 #import "GLObject.h"
 
 

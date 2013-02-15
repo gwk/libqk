@@ -2,6 +2,9 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#import "qk-macros.h"
+
+
 @interface QKCFObject : NSObject {
   void* _ref; // CFTypeRef
 }

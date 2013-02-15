@@ -6,6 +6,7 @@
 #import "NSArray+QK.h"
 #import "NSBundle+QK.h"
 #import "NSError+QK.h"
+#import "QKErrorDomain.h"
 #import "NSData+QK.h"
 
 
@@ -29,7 +30,7 @@
   if (!errorPtr) {
     NSError* e = nil;
     id res = [self withPath:path map:map error:&e];
-    check(!e, @"NSData withPath: %@; map: %d; error: %@", path, map, e);
+    qk_check(!e, @"NSData withPath: %@; map: %d; error: %@", path, map, e);
     return res;
   }
   
@@ -46,7 +47,7 @@
 + (id)withPath:(NSString*)path map:(BOOL)map {
   NSError* e = nil;
   NSData* d = [self withPath:path map:map error:&e];
-  check(!e, @"withPath:map: failed; path: %@\n  map: %d\n  error: %@", path, map, e);
+  qk_check(!e, @"withPath:map: failed; path: %@\n  map: %d\n  error: %@", path, map, e);
   return d;
 }
 
@@ -58,12 +59,12 @@
 
 
 - (id)objectOfType:(Class)class fromJsonWithError:(NSError **)errorPtr {
-  assert(errorPtr, @"NULL error pointer");
+  qk_assert(errorPtr, @"NULL error pointer");
   id result = [NSJSONSerialization JSONObjectWithData:self options:0 error:errorPtr];
   if (*errorPtr || !result) {
     return nil;
   }
-  assert(result, @"nil result");
+  qk_assert(result, @"nil result");
   CHECK_SET_ERROR_RET_NIL([result isKindOfClass:class], QK, JsonUnexpectedRootType, @"unexpected JSON result type", @{
                           @"expected-type" : class,
                           @"actual-type" : [result class],

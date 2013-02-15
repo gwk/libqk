@@ -2,6 +2,8 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#import "qk-check.h"
+#import "NSArray+QK.h"
 #import "UIApplication+QK.h"
 
 
@@ -10,7 +12,7 @@
 
 + (NSString *)pathForDir:(NSSearchPathDirectory)dir {
   NSArray* paths = NSSearchPathForDirectoriesInDomains(dir, NSUserDomainMask, YES);
-  assert(paths.count == 1, @"no single path for dir: %d; %@", dir, paths);
+  qk_assert(paths.count == 1, @"no single path for dir: %d; %@", dir, paths);
   return paths.el0;
 }
 

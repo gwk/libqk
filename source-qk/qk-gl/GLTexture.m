@@ -2,6 +2,7 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#import "qk-gl-util.h"
 #import "GLTexture.h"
 
 
@@ -23,7 +24,7 @@ DEF_INIT(Format:(GLenum)format      // e.g. GL_RGBA
   
   INIT(super init);
   glGenTextures(1, &_handle); qkgl_assert();
-  check(_handle != -1, @"could not generate texture handle");
+  qk_check(_handle != -1, @"could not generate texture handle");
   _target = GL_TEXTURE_2D; // ES also supports GL_CUBE_MAP
   _format = format;
   _size = size;
@@ -56,7 +57,7 @@ DEF_INIT(Format:(GLenum)format image:(QKImage*)image) {
     case GL_NEAREST_MIPMAP_LINEAR:
     case GL_LINEAR_MIPMAP_LINEAR:
       break;
-    default: fail(@"bad texture filter parameter: %d", filter);
+    default: qk_fail(@"bad texture filter parameter: %d", filter);
   }
   glTexParameteri(_target, GL_TEXTURE_MIN_FILTER, filter); qkgl_assert();
 }
@@ -68,7 +69,7 @@ DEF_INIT(Format:(GLenum)format image:(QKImage*)image) {
     case GL_NEAREST:
     case GL_LINEAR:
       break;
-    default: fail(@"bad texture filter parameter: %d", filter);
+    default: qk_fail(@"bad texture filter parameter: %d", filter);
   }
   glTexParameteri(_target, GL_TEXTURE_MAG_FILTER, filter); qkgl_assert();
 }
@@ -88,7 +89,7 @@ DEF_INIT(Format:(GLenum)format image:(QKImage*)image) {
     case GL_MIRRORED_REPEAT:
     case GL_REPEAT:
       break;
-    default: fail(@"bad texture wrap parameter: %d", wrap);
+    default: qk_fail(@"bad texture wrap parameter: %d", wrap);
   }
   glTexParameteri(_target, parameter, wrap); qkgl_assert();
   glTexParameteri(_target, parameter, wrap); qkgl_assert();
@@ -115,7 +116,7 @@ DEF_INIT(Format:(GLenum)format image:(QKImage*)image) {
 
 + (BOOL)bind:(GLTexture*)texture target:(GLenum)target {
   if (texture) {
-    assert(target == texture.target, @"target %u does not match texture: %u", target, texture.target);
+    qk_assert(target == texture.target, @"target %u does not match texture: %u", target, texture.target);
     [texture bindToTarget];
     return YES;
   }
