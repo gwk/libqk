@@ -9,9 +9,9 @@
 @property (nonatomic, readonly) void* ref;
 
 - (id)initWithRetainedRef:(void*) CF_RELEASES_ARGUMENT ref;
-- (id)initWithRef:(void*)ref;
 + (id)withRetainedRef:(void*) CF_RELEASES_ARGUMENT ref;
-+ (id)withRef:(void*)ref;
+
+DEC_INIT(Ref:(void*)ref);
 
 - (void*)ref NS_RETURNS_INNER_POINTER;
 

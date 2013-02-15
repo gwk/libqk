@@ -24,18 +24,13 @@
 }
 
 
-- (id)initWithRef:(void*)ref {
-  return [self initWithRetainedRef:(void*)CFRetain(ref)];
-}
-
-
 + (id)withRetainedRef:(void*) CF_RELEASES_ARGUMENT ref {
   return [[self alloc] initWithRetainedRef:ref];
 }
 
 
-+ (id)withRef:(void*)ref {
-  return [[self alloc] initWithRef:ref];
+DEF_INIT(Ref:(void*)ref) {
+  return [self initWithRetainedRef:(void*)CFRetain(ref)];
 }
 
 
