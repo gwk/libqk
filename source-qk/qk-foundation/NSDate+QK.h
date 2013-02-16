@@ -10,5 +10,8 @@
 + (NSDate*)withRefTime:(NSTimeInterval)refTime;
 + (NSDate*)withPosixTime:(NSTimeInterval)posixTime;
 
+- (NSTimeInterval)refInterval;
+- (NSTimeInterval)posixInterval;
+
 @end
 

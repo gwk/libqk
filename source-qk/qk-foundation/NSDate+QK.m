@@ -33,5 +33,15 @@
 }
 
 
+- (NSTimeInterval)refInterval {
+    return self.timeIntervalSinceReferenceDate;
+}
+
+
+- (NSTimeInterval)posixInterval {
+    return self.timeIntervalSince1970;
+}
+
+
 @end
 
