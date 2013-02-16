@@ -160,6 +160,38 @@ EL(9);
 }
 
 
+- (F64)minF64:(BlockMapToF64)block {
+  F64 min = INFINITY;
+  for (id el in self) {
+    F64 v = block(el);
+    if (v < min) {
+      min = v;
+    }
+  }
+  return min;
+}
+
+
+- (F64)maxF64:(BlockMapToF64)block {
+  F64 max = -INFINITY;
+  for (id el in self) {
+    F64 v = block(el);
+    if (v > max) {
+      max = v;
+    }
+  }
+  return max;
+}
+
+
+- (F64)sum:(BlockMapToF64)block {
+  F64 sum = 0;
+  for (id el in self) {
+    sum += block(el);
+  }
+  return sum;
+}
+
 
 - (NSArray*)sortedGroupedWithComparator:(NSComparator)comparator {
   NSArray* sorted = [self sortedArrayUsingComparator:comparator];

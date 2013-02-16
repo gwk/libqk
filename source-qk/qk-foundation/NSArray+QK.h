@@ -45,6 +45,9 @@ EL(9);
 - (Int)reduceInt:(Int)initial block:(BlockReduceToInt)block;
 
 - (id)max:(BlockMap)block;
+- (F64)minF64:(BlockMapToF64)block;
+- (F64)maxF64:(BlockMapToF64)block;
+- (F64)sum:(BlockMapToF64)block;
 
 - (NSArray*)sortedGroupedWithComparator:(NSComparator)comparator;
 
