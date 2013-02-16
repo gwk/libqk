@@ -70,6 +70,16 @@ qk_assert(code == exp_code, @"%@\n%@\n" fmt, sql_failure_str(_db.handle, code), 
 }
 
 
+- (BOOL)step {
+  int code = sqlite3_step(_handle);
+  if (code == SQLITE_ROW) {
+    return YES;
+  }
+  _CHECK(SQLITE_DONE, @"step");
+  return NO;
+}
+
+
 - (void)step1:(BlockStepSql)block {
   int code = sqlite3_step(_handle);
   _CHECK(SQLITE_ROW, @"step1: no rows");

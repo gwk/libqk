@@ -45,6 +45,7 @@ _COLS(9);
 - (void)reset;
 - (int)columnCount;
 - (void)execute;
+- (BOOL)step;
 - (Int)step1Int;
 - (I64)step1I64;
 - (F64)step1F64;
