@@ -27,7 +27,7 @@ void  executeAsync(BlockExecute asyncBlock, BlockDo syncBlock) {
 }
 
 
-@implementation NSObject (Oro)
+@implementation NSObject (QK)
 
 
 - (void)dissolve {}

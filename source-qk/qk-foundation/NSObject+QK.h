@@ -9,7 +9,7 @@
 void  executeAsync(BlockExecute asyncBlock, BlockDo syncBlock);
 
 
-@interface NSObject (Oro)
+@interface NSObject (QK)
 
 - (void)dissolve;
 
