@@ -12,6 +12,8 @@
 - (void)addZoomSubview:(UIView*)view constantScale:(BOOL)constantScale;
 - (void)addZoomSubview:(UIView*)view;
 
+- (void)updateTrackingDelegate;
+
 // content size in the zoom view coordinate system.
 - (CGRect)zoomContentRect;
 - (CGSize)zoomContentSize; // zoomContentRect.size

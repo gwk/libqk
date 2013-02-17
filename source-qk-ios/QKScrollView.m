@@ -45,6 +45,13 @@ zoomView = _zoomViewQKScrollView;
 
 #define UPDATE_TRACKING_DELEGATE \
 [_trackingDelegate setScrollBounds:self.bounds contentSize:self.contentSize insets:self.contentInset zoomScale:self.zoomScale];
+//errFL(@"b: %@; cs: %@; zs: %f", NSStringFromCGRect(self.bounds), NSStringFromCGSize(self.contentSize), self.zoomScale);
+
+
+- (void)setBounds:(CGRect)bounds {
+  [super setBounds:bounds];
+  UPDATE_TRACKING_DELEGATE;
+}
 
 
 - (void)setContentOffset:(CGPoint)contentOffset {
@@ -177,6 +184,12 @@ zoomView = _zoomViewQKScrollView;
 }
 
 
+- (void)updateTrackingDelegate {
+  // hack for iOS 5 bug
+  UPDATE_TRACKING_DELEGATE;
+}
+
+
 - (CGRect)zoomContentRect {
   return self.zoomView.bounds;
 }
@@ -202,10 +215,12 @@ zoomView = _zoomViewQKScrollView;
   CGFloat z = bs.width / r.size.width;
   
   // NOTE: separate animations cause mild distortion in animation paths of the markers.
-  // nothing to be done about this at the moment; if we do not override this method
-  // then the trackingDelegate gets no callbacks.
-  [self setZoomScaleClamped:z animated:animated];
-  [self centerOnZoomRect:r animated:animated];
+  // not sure what to do about this;
+  // if we do not override this method then the trackingDelegate gets no callbacks during animation.
+  // even worse, on iOS 5 passing animated:YES causes weird rect on first display only.
+  // for now, just do away with animations entirely.
+  [self setZoomScaleClamped:z animated:NO];
+  [self centerOnZoomRect:r animated:NO];
 }
 
 
