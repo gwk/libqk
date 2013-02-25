@@ -47,6 +47,6 @@ build_lib() {
 build_lib mac clang -Oz sqlite3
 build_lib ios clang -Oz sqlite3
 build_lib mac clang -O3 png
-build_lib ios clang -O3 png --enable-arm-neon
+build_lib ios clang -O3 png #--enable-arm-neon
 build_lib mac clang -O3 turbojpeg --with-jpeg8
-build_lib ios gcc -O3 turbojpeg --with-jpeg8 --with-gas-preprocessor # cannot yet compile neon successfully
+build_lib ios gcc -O3 turbojpeg --with-jpeg8 --with-gas-preprocessor
