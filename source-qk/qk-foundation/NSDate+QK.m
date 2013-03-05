@@ -43,5 +43,13 @@
 }
 
 
+- (BOOL)isSameDayAs:(NSDate *)date {
+    NSCalendarUnit units = NSEraCalendarUnit | NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
+    NSDateComponents *d = [[NSCalendar currentCalendar] components:units fromDate:self];
+    NSDateComponents *s = [[NSCalendar currentCalendar] components:units fromDate:date];
+    return (d.day == s.day && d.month == s.month && d.year == s.year && d.era == s.era);
+}
+
+
 @end
 

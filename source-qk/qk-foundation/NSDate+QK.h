@@ -13,5 +13,7 @@
 - (NSTimeInterval)refInterval;
 - (NSTimeInterval)posixInterval;
 
+- (BOOL)isSameDayAs:(NSDate*)date;
+
 @end
 
