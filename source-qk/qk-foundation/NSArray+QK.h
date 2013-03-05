@@ -51,4 +51,6 @@ EL(9);
 
 - (NSArray*)sortedGroupedWithComparator:(NSComparator)comparator;
 
+- (NSArray*)subarrayTo:(Int)to;
+
 @end

@@ -223,4 +223,9 @@ EL(9);
 }
 
 
+- (NSArray*)subarrayTo:(Int)to {
+    return [self subarrayWithRange:NSRangeMake(0, to)];
+}
+
+
 @end
