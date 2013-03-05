@@ -47,6 +47,8 @@ __a == __b ? NSOrderedSame : (__a < __b ? NSOrderedAscending : NSOrderedDescendi
 
 #define compare_ret_diff(c, a, b) c = compare(a, b); if (c != NSOrderedSame) return c;
 
+#define UPDATE_MAX(var, val) ({ __typeof__(val) __val = (val); if (var < __val) var = __val; })
+#define UPDATE_MIN(var, val) ({ __typeof__(val) __val = (val); if (var > __val) var = __val; })
 
 
 // get a true binary value from an expression
