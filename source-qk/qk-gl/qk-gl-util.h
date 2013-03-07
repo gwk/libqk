@@ -3,6 +3,7 @@
 
 
 #import "qk-types.h"
+#import "qk-vec.h"
 
 
 #if QK_OPTIMIZE
@@ -24,3 +25,5 @@ int qkgl_max_vertex_attributes();
 NSString* qkgl_error_string(GLenum error);
 void qkgl_check();
 
+V2F32 viewportOriginLetterboxed(V2F32 origin, F32 contentAR, F32 canvasAR);
+V2F32 viewportScaleLetterboxed(V2F32 scale, F32 contentAR, F32 canvasAR);

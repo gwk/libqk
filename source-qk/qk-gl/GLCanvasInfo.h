@@ -2,9 +2,9 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
-@interface GLSceneInfo : NSObject
+@interface GLCanvasInfo : NSObject
 
-@property (nonatomic) CGSize contentSize;
+@property (nonatomic) CGSize size;
 @property (nonatomic) CGRect visibleRect;
 @property (nonatomic) CGFloat zoomScale;
 

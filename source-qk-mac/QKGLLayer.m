@@ -11,7 +11,7 @@
 @interface QKGLLayer ()
 
 @property (nonatomic) BOOL needsSetup;
-@property (nonatomic) GLSceneInfo* sceneInfo;
+@property (nonatomic) GLCanvasInfo* sceneInfo;
 
 @end
 
@@ -36,7 +36,7 @@ DEF_INIT(Format:(QKPixFmt)format scene:(id<GLScene>)scene) {
   _format = format;
   _scene = scene;
   _maxContentScale = 2;
-  _sceneInfo = [GLSceneInfo new];
+  _sceneInfo = [GLCanvasInfo new];
   self.opaque = YES;
   self.opacity = 1;
   self.asynchronous = NO;
@@ -163,7 +163,7 @@ void describeAllPFA(CGLPixelFormatObj format, GLint virtualScreen) {
 
   ASSERT_CONFORMS(self.scene, GLScene);
   CGLSetCurrentContext(ctx);
-  _sceneInfo.contentSize = self.bounds.size;
+  _sceneInfo.size = self.bounds.size;
   _sceneInfo.visibleRect = CGRectMake(0, 0, 1, 1);
   if (_needsSetup) {
     [self.scene setupGLLayer:self time:layerTime info:_sceneInfo];

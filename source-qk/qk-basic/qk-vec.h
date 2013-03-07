@@ -114,9 +114,14 @@ static inline TV TV##Norm(TV v) { return TV##Div(v, TV##Mag(v)); } \
 
 
 #define _DEF_V_F_WITH_I_EXP(dim, TF, TI, TVF, TVI) \
-static inline TVF TVF##With##TI(TVI v, F64 scale) { \
-TVF r; for_in(i ,dim) r._[i] = v._[i] / scale; \
+static inline TVF TVF##With##TI(TVI v) { \
+TVF r; for_in(i ,dim) r._[i] = v._[i]; \
 return r; \
+} \
+\
+static inline TVF TVF##With##TI##Scaled(TVI v, F64 scale) { \
+  TVF r; for_in(i ,dim) r._[i] = v._[i] / scale; \
+  return r; \
 }
 
 #define _DEF_V_F_WITH_I(dim, TF, TI) \
@@ -157,8 +162,10 @@ _DEF_V_F(4, V4F32);
 _DEF_V_F(4, V4F64);
 
 _DEF_V_F_WITH_I(2, F32, U16);
+_DEF_V_F_WITH_I(2, F32, I32);
 _DEF_V_F_WITH_I(2, F32, U32);
 _DEF_V_F_WITH_I(2, F64, U16);
+_DEF_V_F_WITH_I(2, F64, I32);
 _DEF_V_F_WITH_I(2, F64, U32);
 
 _DEF_TVA_WITH_TVB(2, V2F32, V2F64);

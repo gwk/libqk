@@ -8,7 +8,7 @@
 @interface QKGLView ()
 
 @property (nonatomic) BOOL needsSetup;
-@property (nonatomic) GLSceneInfo* sceneInfo;
+@property (nonatomic) GLCanvasInfo* canvasInfo;
 
 @end
 
@@ -21,10 +21,10 @@
 
 - (void)drawRect:(CGRect)rect {
   if (_needsSetup) {
-    [self.scene setupGLLayer:self.layer time:0 info:_sceneInfo];
+    [self.scene setupGLLayer:self.layer time:0 info:_canvasInfo];
     _needsSetup = NO;
   }
-  [self.scene drawInGLLayer:self.layer time:0 info:_sceneInfo];
+  [self.scene drawInGLLayer:self.layer time:0 info:_canvasInfo];
 }
 
 
@@ -74,21 +74,21 @@ DEF_INIT(Frame:(CGRect)frame format:(QKPixFmt)format scene:(id<GLScene>)scene) {
                  insets:(UIEdgeInsets)insets
               zoomScale:(CGFloat)zoomScale {
   
-  if (!_sceneInfo) {
-    _sceneInfo = [GLSceneInfo new];
+  if (!_canvasInfo) {
+    _canvasInfo = [GLCanvasInfo new];
   }
-  _sceneInfo.contentSize = contentSize;
-  _sceneInfo.visibleRect = CGRectMake(scrollBounds.origin.x / contentSize.width,
-                                      scrollBounds.origin.y / contentSize.height,
-                                      scrollBounds.size.width / contentSize.width,
-                                      scrollBounds.size.height / contentSize.height);
+  _canvasInfo.size = contentSize;
+  _canvasInfo.visibleRect = CGRectMake(scrollBounds.origin.x / contentSize.width,
+                                       scrollBounds.origin.y / contentSize.height,
+                                       scrollBounds.size.width / contentSize.width,
+                                       scrollBounds.size.height / contentSize.height);
   
 #if !QK_OPTIMIZE
   if (!UIEdgeInsetsEqualToEdgeInsets(insets, UIEdgeInsetsZero)) {
     errFL(@"WARNING: QKGLView does not currently consider edge insets when calculating visibleRect");
   }
 #endif
-  _sceneInfo.zoomScale = zoomScale;
+  _canvasInfo.zoomScale = zoomScale;
   [self setNeedsDisplay];
 }
 

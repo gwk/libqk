@@ -11,6 +11,7 @@
 @interface QKWindow ()
 
 @property (nonatomic) CGRect normalFrame;
+@property (nonatomic) CGSize normalAspect;
 @property (nonatomic) NSUInteger normalStyleMask;
 @property (nonatomic) NSInteger normalLevel;
 @property (nonatomic) BOOL normalOpaque;
@@ -178,6 +179,9 @@ DEF_INIT(View:(NSView*)view
     self.level = self.normalLevel;
     self.opaque = self.normalOpaque;
     self.hidesOnDeactivate = self.normalHidesOnDeactivate;
+    if (!CGSizeEqualToSize(_normalAspect, CGSizeZero)) {
+      self.contentAspectRatio = _normalAspect;
+    }
     [self addScreenButton];
   }
   [DEL_RESPONDS(windowChangedCoversScreen:) windowChangedCoversScreen:self];
@@ -218,9 +222,11 @@ DEF_INIT(View:(NSView*)view
 
 
 - (void)setContentSizeAndAspect:(CGSize)size {
+  LOG_METHOD;
   CGPoint p = self.position;
   self.contentSize = size;
   self.contentAspectRatio = size;
+  _normalAspect = size;
   self.position = p;
 }
 
