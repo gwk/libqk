@@ -182,7 +182,7 @@ SET_UNIFORM(I32, glUniform1iv);
 }
 
 
-- (BOOL)setAttributeToUnitSquare:(NSString*)name {
+- (BOOL)setAttributeToUnitSquareV2F32:(NSString*)name {
   const V2F32 unit_square[4] = {
     {{0, 0}},
     {{1, 0}},

@@ -38,6 +38,6 @@ DEC_INIT(ShaderNames:(NSArray*)shaderNames uniforms:(NSArray*)uniforms attribute
 - (BOOL)setAttribute:(NSString*)name stride:(int)stride pointerV3F32:(const V3F32*)pointer;
 - (BOOL)setAttribute:(NSString*)name stride:(int)stride pointerV4F32:(const V4F32*)pointer;
 
-- (BOOL)setAttributeToUnitSquare:(NSString*)name;
+- (BOOL)setAttributeToUnitSquareV2F32:(NSString*)name;
 
 @end
