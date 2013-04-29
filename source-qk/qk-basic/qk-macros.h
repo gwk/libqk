@@ -29,34 +29,34 @@ for (Int i = (n) - 1, _##i##_end = (m), _##i##_step = (s); i >= _##i##_end; i -=
 #define CASE_RET_TOK_SPLIT_STR(prefix, t) case prefix##t: return @#t
 #define CASE_RET_TOK_SPLIT_UTF8(prefix, t) case prefix##t: return #t
 
+// get a true binary value from an expression
+#define BIT(x) ((x) ? 1 : 0)
+
+#define BIT_XOR(a, b) (bit(a) ^ bit(b))
+
+#define SIGN(x) ({__typeof__(x) __x = (x); __x > 0 ? 1 : (__x < 0 ? -1 : 0); })
+
+#define SIGN_NORM_01(x) ({__typeof__(x) __x = (x); __x > 0 ? 1.0 : (__x < 0 ? 0.0 : 0.5); })
 
 // clamp a value to low and high bounds
-// variables have _clamp suffix so as not to conflict with variables inside of MAX.
-#define clamp(x, a, b) ({ \
+// variables have _clamp suffix so as not to collide with variables inside of MAX.
+#define CLAMP(x, a, b) ({ \
 __typeof__(x) __x_clamp = (x); \
 __typeof__(a) __a_clamp = (a); \
 __typeof__(b) __b_clamp = (b); \
 __x_clamp < __a_clamp ? __a_clamp : (__x_clamp > __b_clamp ? MAX(__a_clamp, __b_clamp) : __x_clamp); })
 
 
-#define compare(a, b) ({ \
+#define COMPARE(a, b) ({ \
 __typeof__(a) __a = (a); \
 __typeof__(b) __b = (b); \
 __a == __b ? NSOrderedSame : (__a < __b ? NSOrderedAscending : NSOrderedDescending); \
 })
 
-#define compare_ret_diff(c, a, b) c = compare(a, b); if (c != NSOrderedSame) return c;
+#define COMPARE_RET_DIFF(c, a, b) c = COMPARE(a, b); if (c != NSOrderedSame) return c;
 
 #define UPDATE_MAX(var, val) ({ __typeof__(val) __val = (val); if (var < __val) var = __val; })
 #define UPDATE_MIN(var, val) ({ __typeof__(val) __val = (val); if (var > __val) var = __val; })
-
-
-// get a true binary value from an expression
-#define bit(x) ((x) ? 1 : 0)
-
-#define bit_xor(a, b) (bit(a) ^ bit(b))
-
-
 #define LAZY_STATIC(type, name, ...) \
 static type name; \
 if (!name) { name = (__VA_ARGS__); }
