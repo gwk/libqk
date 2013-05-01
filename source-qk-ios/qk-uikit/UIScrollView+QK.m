@@ -38,8 +38,8 @@
 - (void)setContentOffsetClamped:(CGPoint)contentOffset animated:(BOOL)animated {
   CGSize bs = self.boundsSize;
   CGSize cs = self.contentSize;
-  CGPoint o = CGPointMake(clamp(contentOffset.x, 0, cs.width - bs.width),
-                          clamp(contentOffset.y, 0, cs.height - bs.height));
+  CGPoint o = CGPointMake(CLAMP(contentOffset.x, 0, cs.width - bs.width),
+                          CLAMP(contentOffset.y, 0, cs.height - bs.height));
   [self setContentOffset:o animated:animated];
 }
 
@@ -168,7 +168,7 @@
 
 
 - (void)setZoomScaleClamped:(float)scale animated:(BOOL)animated {
-  [self setZoomScale:clamp(scale, self.minimumZoomScale, self.maximumZoomScale) animated:animated];
+  [self setZoomScale:CLAMP(scale, self.minimumZoomScale, self.maximumZoomScale) animated:animated];
 }
 
 

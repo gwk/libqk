@@ -32,7 +32,7 @@ for (Int i = (n) - 1, _##i##_end = (m), _##i##_step = (s); i >= _##i##_end; i -=
 // get a true binary value from an expression
 #define BIT(x) ((x) ? 1 : 0)
 
-#define BIT_XOR(a, b) (bit(a) ^ bit(b))
+#define BIT_XOR(a, b) (BIT(a) ^ BIT(b))
 
 #define SIGN(x) ({__typeof__(x) __x = (x); __x > 0 ? 1 : (__x < 0 ? -1 : 0); })
 
