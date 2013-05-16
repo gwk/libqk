@@ -77,6 +77,7 @@
 		ECB7FD0C17447086002A4B71 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB7FD0B17447086002A4B71 /* GLKit.framework */; };
 		ECB7FD11174471D0002A4B71 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB7FD0E174471D0002A4B71 /* AppDelegate.m */; };
 		ECB7FD12174471D0002A4B71 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB7FD0F174471D0002A4B71 /* main.m */; };
+		ECB7FE281745816E002A4B71 /* QKUITableView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB7FE271745816E002A4B71 /* QKUITableView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -242,6 +243,8 @@
 		ECB7FD0E174471D0002A4B71 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		ECB7FD0F174471D0002A4B71 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ECB7FD10174471D0002A4B71 /* test-qk-ios-prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "test-qk-ios-prefix.pch"; sourceTree = "<group>"; };
+		ECB7FE261745816E002A4B71 /* QKUITableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKUITableView.h; sourceTree = "<group>"; };
+		ECB7FE271745816E002A4B71 /* QKUITableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKUITableView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -491,6 +494,8 @@
 				ECB7FC0A17445F8F002A4B71 /* QKApplicationDelegate.m */,
 				ECB7FC0B17445F8F002A4B71 /* QKScrollView.h */,
 				ECB7FC0C17445F8F002A4B71 /* QKScrollView.m */,
+				ECB7FE261745816E002A4B71 /* QKUITableView.h */,
+				ECB7FE271745816E002A4B71 /* QKUITableView.m */,
 				ECB7FC0D17445F8F002A4B71 /* source-qk-ios.h */,
 			);
 			path = "source-qk-ios";
@@ -778,6 +783,7 @@
 				ECB7FC4A17445FBA002A4B71 /* QKImage+JPG.m in Sources */,
 				ECB7FD11174471D0002A4B71 /* AppDelegate.m in Sources */,
 				ECB7FD12174471D0002A4B71 /* main.m in Sources */,
+				ECB7FE281745816E002A4B71 /* QKUITableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -850,9 +856,6 @@
 				INFOPLIST_FILE = "$(SRCROOT)/test-qk-ios/test-qk-ios-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../libqk-built-ios/png/lib\"",
-					"\"$(SRCROOT)/../libqk-built-ios/sqlite3/lib\"",
-					"\"$(SRCROOT)/../libqk-built-ios/turbojpeg/lib\"",
 					"\"$(SRCROOT)/submodules/libqk-built-ios/png/lib\"",
 					"\"$(SRCROOT)/submodules/libqk-built-ios/sqlite3/lib\"",
 					"\"$(SRCROOT)/submodules/libqk-built-ios/turbojpeg/lib\"",
@@ -870,9 +873,6 @@
 				INFOPLIST_FILE = "$(SRCROOT)/test-qk-ios/test-qk-ios-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../libqk-built-ios/png/lib\"",
-					"\"$(SRCROOT)/../libqk-built-ios/sqlite3/lib\"",
-					"\"$(SRCROOT)/../libqk-built-ios/turbojpeg/lib\"",
 					"\"$(SRCROOT)/submodules/libqk-built-ios/png/lib\"",
 					"\"$(SRCROOT)/submodules/libqk-built-ios/sqlite3/lib\"",
 					"\"$(SRCROOT)/submodules/libqk-built-ios/turbojpeg/lib\"",
