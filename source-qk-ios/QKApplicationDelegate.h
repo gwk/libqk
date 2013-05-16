@@ -2,7 +2,7 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
-@interface QKApplicationDelegate : NSObject<UIApplicationDelegate>
+@interface QKApplicationDelegate : UIResponder <UIApplicationDelegate>
 
 @property (nonatomic) UIWindow* window;
 @property (nonatomic, readonly) UIViewController* rootController;
