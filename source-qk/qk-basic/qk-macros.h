@@ -79,6 +79,9 @@ return name; \
 #define INIT(...) if (!((self = ([__VA_ARGS__])))) return nil
 
 
+#define DEC_WITH(...) \
++ (id)with##__VA_ARGS__;
+
 #define DEF_WITH(...) \
 + (id)with##__VA_ARGS__ { return [[self alloc] initWith##__VA_ARGS__]; }
 
