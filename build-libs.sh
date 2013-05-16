@@ -4,13 +4,12 @@
 
 # build fat static libs from autoconf/make based source.
 
-set -e
 
 error() { echo 'error:' "$@" 1>&2; exit 1; }
 
 [[ $(dirname $0) == "." ]] || error "must invoke as ./build-libs.sh"
 
-(( ${#@} >= 3 )) || error "usage: sqlite3 png jpeg-turbo [--quiet]"
+(( ${#@} >= 3 )) || error "usage: sqlite3-root png-root jpeg-turbo-root [--quiet]"
 
 sqlite3=$1;   shift
 png=$1;       shift
@@ -29,6 +28,8 @@ echo "nasm $nasm_version (above $nasm_version_req required)"
 [[ -r "$libqk/tools/gas-preprocessor.pl" ]] \
 || error "missing tools/gas-preprocessor.pl (obtained from obtained from https://github.com/yuvi/gas-preprocessor)"
 
+set -e
+
 export PATH="$libqk/tools:$PATH"
 
 build_lib() {
@@ -42,7 +43,7 @@ build_lib() {
   local d="libs-$platform/$name"
   [[ -d "$d" ]] && rm -rf "$d"
   mkdir -p "$d"
-  ./build-lib-$platform.sh $cc_name $cc_opt lib$name "$path" ../libqk-built-$platform/$name $config_args
+  ./build-lib-$platform.sh $cc_name $cc_opt lib$name "$path" submodules/libqk-built-$platform/$name $config_args
   echo
 }
 

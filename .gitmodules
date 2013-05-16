@@ -1,0 +1,6 @@
+[submodule "submodules/libqk-built-mac"]
+	path = submodules/libqk-built-mac
+	url = git@github.com:gwk/libqk-built-mac.git
+[submodule "submodules/libqk-built-ios"]
+	path = submodules/libqk-built-ios
+	url = git@github.com:gwk/libqk-built-ios.git

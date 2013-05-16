@@ -22,7 +22,7 @@ id convert(NSString* fmt_str, NSString* src_path, NSString* dst_path) {
   QKImage* image;
   NSError* e = nil;
   if ([ext isEqualToString:@"png"]) {
-    image = [QKImage withPngPath:src_path alpha:alpha error:&e];
+    image = [QKImage withPngPath:src_path map:NO alpha:alpha error:&e];
   }
   else if ([ext isEqualToString:@"jpg"]) {
     image = [QKImage withJpgPath:src_path map:NO alpha:alpha error:&e];
