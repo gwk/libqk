@@ -4,6 +4,14 @@
 
 # build fat static libs from autoconf/make based source.
 
+# NOTE:
+# libjpegturbo sources are preconfigured with an older, incompatible version of autotools.
+# in order to compile 1.3.0, you must install the gnu autoconf toolchain (with some dependencies), and then run the following in the libjpegturbo root dir:
+# $ autoreconf -fiv
+# however, be aware that the gnu toolchain may not work for other libraries. the safest approach is to install the gnu tools in /usr/local/gnu, then add it to the path only for this build proces:
+# $ export PATH=/usr/local/gnu:$PATH
+# TODO: check that this does not interfere with any of the other lib build steps.
+
 
 error() { echo 'error:' "$@" 1>&2; exit 1; }
 
@@ -11,9 +19,9 @@ error() { echo 'error:' "$@" 1>&2; exit 1; }
 
 (( ${#@} >= 3 )) || error "usage: sqlite3-root png-root jpeg-turbo-root [--quiet]"
 
-sqlite3=$1;   shift
-png=$1;       shift
-turbojpeg=$1;  shift
+sqlite3=$1; shift
+png=$1; shift
+turbojpeg=$1; shift
 export QUIET=$1; shift
 
 libqk="$PWD"
@@ -39,6 +47,10 @@ build_lib() {
   local name="$1"; shift
   local config_args="$@"
   eval local path=\$$name
+  [[ -d "$path" ]] || {
+    echo "skipping missing source dir for $name: $path"
+    return
+  }
   echo "building $platform $name: $path"
   local d="libs-$platform/$name"
   [[ -d "$d" ]] && rm -rf "$d"
@@ -50,6 +62,6 @@ build_lib() {
 build_lib mac clang -Oz sqlite3
 build_lib ios clang -Oz sqlite3
 build_lib mac clang -O3 png
-build_lib ios clang -O3 png #--enable-arm-neon
+build_lib ios clang -O3 png #--enable-arm-neon=on # neon=on compiles; need to test if it works
 build_lib mac clang -O3 turbojpeg --with-jpeg8
 build_lib ios gcc -O3 turbojpeg --with-jpeg8 --with-gas-preprocessor
