@@ -7,5 +7,7 @@
 + (NSString*)resPath:(NSString*)resourceName ofType:(NSString*)type;
 + (NSString*)resPath:(NSString*)resourceName;
 
++ (id)jsonNamed:(NSString*)resourceName options:(NSJSONReadingOptions)options;
+
 @end
 

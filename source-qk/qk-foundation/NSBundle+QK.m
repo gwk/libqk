@@ -3,6 +3,7 @@
 
 
 #import "qk-check.h"
+#import "NSJSONSerialization+QK.h"
 #import "NSBundle+QK.h"
 
 
@@ -20,6 +21,14 @@
   return [self resPath:resourceName ofType:nil];
 }
 
+
++ (id)jsonNamed:(NSString*)resourceName options:(NSJSONReadingOptions)options {
+  NSString* path = [self resPath:resourceName ofType:@"json"];
+  NSError* error = nil;
+  id json = [NSJSONSerialization JSONObjectFromFilePath:path options:options error:&error];
+  qk_assert(!error, @"error reading json resource: %@", error);
+  return json;
+}
 
 @end
 

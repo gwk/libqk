@@ -9,7 +9,7 @@
 
 
 + (id)withFrame:(CGRect)frame
-           flex:(UIViewAutoresizing)flex
+           flex:(UIFlex)flex
          target:(id)target
          action:(SEL)action
           title:(NSString*)title {

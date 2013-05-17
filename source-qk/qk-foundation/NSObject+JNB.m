@@ -19,7 +19,7 @@ NSString* const JNBErrorDomain = @"JNBErrorDomain";
 
 
 + (NSDictionary*)jnbValTypes {
-  OVERRIDE;
+  MUST_OVERRIDE;
 }
 
 

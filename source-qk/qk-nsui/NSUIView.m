@@ -8,37 +8,36 @@
 #if TARGET_OS_IPHONE
 #import "UIView+QK.h"
 
-const UIViewAutoresizing UIFlexNone   = UIViewAutoresizingNone;
-const UIViewAutoresizing UIFlexWidth  = UIViewAutoresizingFlexibleWidth;
-const UIViewAutoresizing UIFlexHeight = UIViewAutoresizingFlexibleHeight;
-const UIViewAutoresizing UIFlexLeft   = UIViewAutoresizingFlexibleLeftMargin;
-const UIViewAutoresizing UIFlexRight  = UIViewAutoresizingFlexibleRightMargin;
-const UIViewAutoresizing UIFlexTop    = UIViewAutoresizingFlexibleTopMargin;
-const UIViewAutoresizing UIFlexBottom = UIViewAutoresizingFlexibleBottomMargin;
+const UIFlex UIFlexNone   = UIViewAutoresizingNone;
+const UIFlex UIFlexWidth  = UIViewAutoresizingFlexibleWidth;
+const UIFlex UIFlexHeight = UIViewAutoresizingFlexibleHeight;
+const UIFlex UIFlexLeft   = UIViewAutoresizingFlexibleLeftMargin;
+const UIFlex UIFlexRight  = UIViewAutoresizingFlexibleRightMargin;
+const UIFlex UIFlexTop    = UIViewAutoresizingFlexibleTopMargin;
+const UIFlex UIFlexBottom = UIViewAutoresizingFlexibleBottomMargin;
 #else
-const UIViewAutoresizing UIFlexNone   = NSViewNotSizable;
-const UIViewAutoresizing UIFlexWidth  = NSViewWidthSizable;
-const UIViewAutoresizing UIFlexHeight = NSViewHeightSizable;
-const UIViewAutoresizing UIFlexLeft   = NSViewMinXMargin;
-const UIViewAutoresizing UIFlexRight  = NSViewMaxXMargin;
-const UIViewAutoresizing UIFlexTop    = NSViewMaxYMargin;
-const UIViewAutoresizing UIFlexBottom = NSViewMinYMargin;
+const UIFlex UIFlexNone   = NSViewNotSizable;
+const UIFlex UIFlexWidth  = NSViewWidthSizable;
+const UIFlex UIFlexHeight = NSViewHeightSizable;
+const UIFlex UIFlexLeft   = NSViewMinXMargin;
+const UIFlex UIFlexRight  = NSViewMaxXMargin;
+const UIFlex UIFlexTop    = NSViewMaxYMargin;
+const UIFlex UIFlexBottom = NSViewMinYMargin;
 #endif
 
-const UIViewAutoresizing UIFlexSize       = UIFlexWidth | UIFlexHeight;
-const UIViewAutoresizing UIFlexHorizontal = UIFlexLeft | UIFlexRight;
-const UIViewAutoresizing UIFlexVertical   = UIFlexTop | UIFlexBottom;
+const UIFlex UIFlexSize       = UIFlexWidth | UIFlexHeight;
+const UIFlex UIFlexHorizontal = UIFlexLeft | UIFlexRight;
+const UIFlex UIFlexVertical   = UIFlexTop | UIFlexBottom;
 
 
 @implementation NSUIView (NSUI)
 
 
-+ (id)withFrame:(CGRect)frame {
-  return [[self alloc] initWithFrame:frame];
-}
+
+DEF_WITH(Frame:(CGRect)frame);
 
 
-DEF_INIT(Frame:(CGRect)frame flex:(UIViewAutoresizing)flex) {
+DEF_INIT(Frame:(CGRect)frame flex:(UIFlex)flex) {
   INIT(self initWithFrame:frame);
   self.autoresizingMask = flex;
   return self;
@@ -64,6 +63,32 @@ PROPERTY_STRUCT_FIELD(CGFloat, width, Width, CGRect, self.frame, size.width);
 PROPERTY_STRUCT_FIELD(CGFloat, height, Height, CGRect, self.frame, size.height);
 PROPERTY_STRUCT_FIELD(CGFloat, centerX, CenterX, CGPoint, self.center, x);
 PROPERTY_STRUCT_FIELD(CGFloat, centerY, CenterY, CGPoint, self.center, y);
+
+
+- (CGFloat)right {
+  CGRect f = self.frame;
+  return f.origin.x + f.size.width;
+}
+
+
+- (void)setRight:(CGFloat)right {
+  CGRect f = self.frame;
+  f.origin.x = f.origin.x + right - f.size.width;
+  self.frame = f;
+}
+
+
+- (CGFloat)bottom {
+  CGRect f = self.frame;
+  return f.origin.y + f.size.height;
+}
+
+
+- (void)setBottom:(CGFloat)bottom {
+  CGRect f = self.frame;
+  f.origin.y = f.origin.y + bottom - f.size.height;
+  self.frame = f;
+}
 
 
 - (CGPoint)boundsCenter {

@@ -186,7 +186,7 @@ qk_check(CONFORMS_OR_NIL((obj), protocol_name), \
 // inheritence
 
 // shorthand to throw an exception in abstract base methods.
-#define OVERRIDE qk_fail(@"must override in subclass or intermediate: %@", [self class])
+#define MUST_OVERRIDE qk_fail(@"must override in subclass or intermediate: %@", [self class])
 
 
 // throw an exception for non-designated initialization paths:
@@ -203,6 +203,11 @@ return nil
 #define PROPERTY_ALIAS(type, name, Name, path) \
 - (type)name { return path; } \
 - (void)set##Name:(type)name { path = name; } \
+
+
+#define PROPERTY_SUBCLASS_ALIAS(class_name, name, Name, path) \
+- (class_name*)name { return CAST(class_name, path); } \
+- (void)set##Name:(class_name*)name { path = name; } \
 
 
 #define PROPERTY_STRUCT_FIELD(type, name, Name, structType, structPath, fieldPath) \

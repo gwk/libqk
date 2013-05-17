@@ -28,6 +28,21 @@
 }
 
 
++ (id)r:(CGFloat)r {
+  return [self colorWithRed:r green:0 blue:0 alpha:1];
+}
+
+
++ (id)g:(CGFloat)g {
+  return [self colorWithRed:0 green:g blue:0 alpha:1];
+}
+
+
++ (id)b:(CGFloat)b {
+  return [self colorWithRed:0 green:0 blue:b alpha:1];
+}
+
+
 #define GET_COLOR(c) \
 - (CGFloat)c { \
 CGFloat r, g, b, a; \

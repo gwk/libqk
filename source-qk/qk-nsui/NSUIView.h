@@ -9,21 +9,22 @@
 # define NSUIView UIView
 #else
 # define NSUIView NSView
-typedef Int UIViewAutoresizing;
+typedef Int UIFlex;
 #endif
 
+typedef UIViewAutoresizing UIFlex;
 
-extern const UIViewAutoresizing UIFlexNone;
-extern const UIViewAutoresizing UIFlexWidth;
-extern const UIViewAutoresizing UIFlexHeight;
-extern const UIViewAutoresizing UIFlexLeft;
-extern const UIViewAutoresizing UIFlexRight;
-extern const UIViewAutoresizing UIFlexTop;
-extern const UIViewAutoresizing UIFlexBottom;
+extern const UIFlex UIFlexNone;
+extern const UIFlex UIFlexWidth;
+extern const UIFlex UIFlexHeight;
+extern const UIFlex UIFlexLeft;
+extern const UIFlex UIFlexRight;
+extern const UIFlex UIFlexTop;
+extern const UIFlex UIFlexBottom;
 
-extern const UIViewAutoresizing UIFlexSize;
-extern const UIViewAutoresizing UIFlexHorizontal;
-extern const UIViewAutoresizing UIFlexVertical;
+extern const UIFlex UIFlexSize;
+extern const UIFlex UIFlexHorizontal;
+extern const UIFlex UIFlexVertical;
 
 
 @interface NSUIView (NSUI)
@@ -37,12 +38,13 @@ extern const UIViewAutoresizing UIFlexVertical;
 @property (nonatomic) CGFloat height;
 @property (nonatomic) CGFloat centerX;
 @property (nonatomic) CGFloat centerY;
+@property (nonatomic) CGFloat right;
+@property (nonatomic) CGFloat bottom;
 @property (nonatomic) CGPoint boundsCenter;
 
 
-+ (id)withFrame:(CGRect)frame;
-
-DEC_INIT(Frame:(CGRect)frame flex:(UIViewAutoresizing)flex);
+DEC_WITH(Frame:(CGRect)frame);
+DEC_INIT(Frame:(CGRect)frame flex:(UIFlex)flex);
 DEC_INIT(FlexFrame:(CGRect)frame);
 DEC_INIT(FlexFrame);
 

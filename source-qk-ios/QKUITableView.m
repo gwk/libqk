@@ -2,13 +2,36 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#import "UITableViewCell+QK.h"
 #import "QKUITableView.h"
 
 
 static NSString* const defaultCellIdentifier = @"default-identifier";
 
 
+@interface QKUITableView ()
+
+@property (nonatomic) NSMutableDictionary* identifierCellClasses;
+
+@end
+
+
 @implementation QKUITableView
+
+
+
+#pragma mark - UITableView
+
+
+- (void)registerClass:(Class)cellClass forCellReuseIdentifier:(NSString *)identifier {
+  [super registerClass:cellClass forCellReuseIdentifier:identifier];
+  if (cellClass) {
+    _identifierCellClasses[identifier] = cellClass;
+  }
+  else {
+    [_identifierCellClasses removeObjectForKey:identifier];
+  }
+}
 
 
 #pragma mark - UITableViewDataSource
@@ -16,6 +39,12 @@ static NSString* const defaultCellIdentifier = @"default-identifier";
 
 #define ASSERT_SELF \
 qk_assert(tableView == self, @"QKUITableView %@ received data source / delegate call or another table view: %@", self, tableView)
+
+#define DEF_ROW \
+id row = [self rowAtIndexPath:indexPath];
+
+#define DEF_IDENTIFIER \
+NSString* identifier = _blockRowIdentifier ? ((BlockRowIdentifier)_blockRowIdentifier)(indexPath, row) : defaultCellIdentifier;
 
 
 - (int)numberOfSectionsInTableView:(UITableView*)tableView {
@@ -36,20 +65,26 @@ qk_assert(tableView == self, @"QKUITableView %@ received data source / delegate 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
   ASSERT_SELF;
-  return _blockRowHeight ? _blockRowHeight(indexPath, [self rowAtIndexPath:indexPath]) : self.rowHeight;
+  DEF_ROW;
+  if (_blockRowHeight) {
+    return ((BlockRowHeight)_blockRowHeight)(indexPath, row);
+  }
+  DEF_IDENTIFIER;
+  Class c = _identifierCellClasses[identifier];
+  return [c heightForRow:row];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   ASSERT_SELF;
-  id row = [self rowAtIndexPath:indexPath];
-  NSString* identifier = _blockRowIdentifier ? _blockRowIdentifier(indexPath, row) : defaultCellIdentifier;
+  DEF_ROW;
+  DEF_IDENTIFIER;
   UITableViewCell *cell = [self dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
   if (_blockConfigureCell) {
-    _blockConfigureCell(cell, indexPath, row);
+    ((BlockConfigureCell)_blockConfigureCell)(cell, indexPath, row);
   }
-  else { // default for prototyping and debugging
-    cell.textLabel.text = [row description];
+  else {
+    [cell configureWithRow:row];
   }
   return cell;
 }
@@ -61,7 +96,7 @@ qk_assert(tableView == self, @"QKUITableView %@ received data source / delegate 
 - (NSIndexPath*)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   ASSERT_SELF;
   if (_blockWillSelect) {
-    return _blockWillSelect(indexPath, [self rowAtIndexPath:indexPath]);
+    return ((BlockWillSelect)_blockWillSelect)(indexPath, [self rowAtIndexPath:indexPath]);
   }
   else {
     return (_blockDidSelect ? indexPath : nil);
@@ -95,6 +130,7 @@ qk_assert(tableView == self, @"QKUITableView %@ received data source / delegate 
 DEF_INIT(Frame:(CGRect)frame rows:(NSArray *)rows cellTypes:(id)cellTypes) {
   INIT(super initWithFrame:frame);
   _rows = rows;
+  _identifierCellClasses = [NSMutableDictionary new];
   self.dataSource = self;
   self.delegate = self;
   if (IS_KIND(cellTypes, NSArray)) {
@@ -108,7 +144,7 @@ DEF_INIT(Frame:(CGRect)frame rows:(NSArray *)rows cellTypes:(id)cellTypes) {
       [self registerClass:cellClass forCellReuseIdentifier:identifier];
     }
   }
-  else { // assume cellTypes is a cell class or else nil
+  else { // assume cellTypes is a single cell class or else nil, in which case default to base cell class.
     Class c = (cellTypes ? cellTypes : [UITableViewCell class]);
     [self registerClass:c forCellReuseIdentifier:defaultCellIdentifier];
   }
