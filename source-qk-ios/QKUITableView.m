@@ -44,7 +44,7 @@ qk_assert(tableView == self, @"QKUITableView %@ received data source / delegate 
 id row = [self rowAtIndexPath:indexPath];
 
 #define DEF_IDENTIFIER \
-NSString* identifier = _blockRowIdentifier ? ((BlockRowIdentifier)_blockRowIdentifier)(indexPath, row) : defaultCellIdentifier;
+NSString* identifier = _blockRowIdentifier ? _blockRowIdentifier(indexPath, row) : defaultCellIdentifier;
 
 
 - (int)numberOfSectionsInTableView:(UITableView*)tableView {
@@ -67,7 +67,7 @@ NSString* identifier = _blockRowIdentifier ? ((BlockRowIdentifier)_blockRowIdent
   ASSERT_SELF;
   DEF_ROW;
   if (_blockRowHeight) {
-    return ((BlockRowHeight)_blockRowHeight)(indexPath, row);
+    return _blockRowHeight(indexPath, row);
   }
   DEF_IDENTIFIER;
   Class c = _identifierCellClasses[identifier];
@@ -81,7 +81,7 @@ NSString* identifier = _blockRowIdentifier ? ((BlockRowIdentifier)_blockRowIdent
   DEF_IDENTIFIER;
   UITableViewCell *cell = [self dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
   if (_blockConfigureCell) {
-    ((BlockConfigureCell)_blockConfigureCell)(cell, indexPath, row);
+    _blockConfigureCell(cell, indexPath, row);
   }
   else {
     [cell configureWithRow:row];
@@ -96,7 +96,7 @@ NSString* identifier = _blockRowIdentifier ? ((BlockRowIdentifier)_blockRowIdent
 - (NSIndexPath*)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   ASSERT_SELF;
   if (_blockWillSelect) {
-    return ((BlockWillSelect)_blockWillSelect)(indexPath, [self rowAtIndexPath:indexPath]);
+    return _blockWillSelect(indexPath, [self rowAtIndexPath:indexPath]);
   }
   else {
     return (_blockDidSelect ? indexPath : nil);
