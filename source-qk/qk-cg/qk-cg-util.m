@@ -6,6 +6,7 @@
 
 const CGSize CGSizeUnit = { 1, 1};
 const CGRect CGRectUnit = { 0, 0, 1, 1};
+const CGRect CGRect256 = { 0, 0, 256, 256 };
 
 
 CGSize CGSizeWithAspectEnclosingSize(CGFloat aspect, CGSize s) {

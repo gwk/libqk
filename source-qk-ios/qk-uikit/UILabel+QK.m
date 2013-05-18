@@ -8,22 +8,24 @@
 @implementation UILabel (QK)
 
 
-+ (id)withFont:(UIFont*)font lines:(int)lines x:(CGFloat)x y:(CGFloat)y width:(CGFloat)width flex:(UIFlex)flex {
-  CGFloat height = font.lineHeight * lines;
-  UILabel* l = [UILabel withFrame:CGRectMake(x, y, width, height) flex:flex];
++ (id)withFont:(UIFont*)font lines:(int)lines x:(CGFloat)x y:(CGFloat)y w:(CGFloat)w h:(CGFloat)h flex:(UIFlex)flex {
+  if (h <= 0) {
+    h = font.lineHeight * lines;
+  }
+  UILabel* l = [UILabel withFrame:CGRectMake(x, y, w, h) flex:flex];
   l.font = font;
   l.numberOfLines = lines;
   return l;
 }
 
 
-+ (id)withFontSize:(CGFloat)fontSize lines:(int)lines x:(CGFloat)x y:(CGFloat)y width:(CGFloat)width flex:(UIFlex)flex {
-  return [self withFont:[UIFont systemFontOfSize:fontSize] lines:lines x:x y:y width:width flex:flex];
++ (id)withFontSize:(CGFloat)fontSize lines:(int)lines x:(CGFloat)x y:(CGFloat)y w:(CGFloat)w h:(CGFloat)h flex:(UIFlex)flex {
+  return [self withFont:[UIFont systemFontOfSize:fontSize] lines:lines x:x y:y w:w h:h flex:flex];
 }
 
 
-+ (id)withBoldFontSize:(CGFloat)fontSize lines:(int)lines x:(CGFloat)x y:(CGFloat)y width:(CGFloat)width flex:(UIFlex)flex {
-  return [self withFont:[UIFont boldSystemFontOfSize:fontSize] lines:lines x:x y:y width:width flex:flex];
++ (id)withFontBoldSize:(CGFloat)fontSize lines:(int)lines x:(CGFloat)x y:(CGFloat)y w:(CGFloat)w h:(CGFloat)h flex:(UIFlex)flex {
+  return [self withFont:[UIFont boldSystemFontOfSize:fontSize] lines:lines x:x y:y w:w h:h flex:flex];
 }
 
 

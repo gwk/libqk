@@ -4,6 +4,7 @@
 #import "NSDate+QK.h"
 #import "NSDictionary+QK.h"
 #import "NSError+QK.h"
+#import "NSJSONSerialization+QK.h"
 #import "NSMutableData+QK.h"
 #import "NSMutableDictionary+QK.h"
 #import "NSObject+JNB.h"

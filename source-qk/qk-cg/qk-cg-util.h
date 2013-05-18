@@ -4,7 +4,7 @@
 
 extern const CGSize CGSizeUnit;
 extern const CGRect CGRectUnit;
-
+extern const CGRect CGRect256;
 
 static inline CGPoint CGPointMul(CGPoint v, CGFloat s) {
   return (CGPoint){ v.x * s, v.y * s };

@@ -7,6 +7,6 @@
 @property (nonatomic) CGPoint boundsOrigin;
 @property (nonatomic) CGSize boundsSize;
 
-+ (id)withFrame:(CGRect)frame color:(UIColor*)color;
++ (id)withFrame:(CGRect)frame flex:(UIFlex)flex  color:(UIColor*)color;
 
 @end
