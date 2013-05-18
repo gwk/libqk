@@ -92,7 +92,7 @@ DEF_INIT(Sources:(NSArray*)sources name:(NSString*)name) {
 
 
 + (GLenum)shaderType {
-  OVERRIDE;
+  MUST_OVERRIDE;
 }
 
 
