@@ -7,6 +7,8 @@
 
 @implementation UILabel (QK)
 
+@dynamic highlighted;
+
 
 + (id)withFont:(UIFont*)font lines:(int)lines x:(CGFloat)x y:(CGFloat)y w:(CGFloat)w h:(CGFloat)h flex:(UIFlex)flex {
   if (h <= 0) {

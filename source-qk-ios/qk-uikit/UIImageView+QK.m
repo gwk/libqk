@@ -9,6 +9,8 @@
 
 @implementation UIImageView (QK)
 
+@dynamic highlighted;
+
 
 + (id)withImage:(UIImage *)image {
     return [[self alloc] initWithImage:image];
