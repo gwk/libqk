@@ -2,6 +2,9 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#import "CUIView.h"
+
+
 @interface UIView (QK)
 
 @property (nonatomic) CGPoint boundsOrigin;

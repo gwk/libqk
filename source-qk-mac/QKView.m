@@ -40,7 +40,7 @@ DEF_INIT(Frame:(CGRect)frame scene:(id)scene format:(QKPixFmt)format) {
   self.layer.minificationFilter = kCAFilterNearest;
   self.layer.magnificationFilter = kCAFilterNearest;
 
-  //[self.layer setNeedsDisplay]; // not sure if this is needed for none, one, or both.
+  //[self.layer setNeedsDisplay]; // not sure if this is needed for none, one, or both cases.
   return self;
 }
 

@@ -6,10 +6,10 @@
 
 
 #if TARGET_OS_IPHONE
-# define NSUIView UIView
+# define CUIView UIView
 #else
-# define NSUIView NSView
-typedef Int UIFlex;
+# define CUIView NSView
+typedef Int UIViewAutoresizing;
 #endif
 
 typedef UIViewAutoresizing UIFlex;
@@ -27,7 +27,7 @@ extern const UIFlex UIFlexHorizontal;
 extern const UIFlex UIFlexVertical;
 
 
-@interface NSUIView (NSUI)
+@interface CUIView (CUI)
 
 
 @property (nonatomic) CGPoint origin;

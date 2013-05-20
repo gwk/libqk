@@ -2,7 +2,8 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
-#import "NSUIView.h"
+#import "qk-cg-util.h"
+#import "CUIView.h"
 
 
 #if TARGET_OS_IPHONE
@@ -30,7 +31,7 @@ const UIFlex UIFlexHorizontal = UIFlexLeft | UIFlexRight;
 const UIFlex UIFlexVertical   = UIFlexTop | UIFlexBottom;
 
 
-@implementation NSUIView (NSUI)
+@implementation CUIView (CUI)
 
 
 
@@ -51,7 +52,7 @@ DEF_INIT(FlexFrame:(CGRect)frame) {
 
 DEF_INIT(FlexFrame) {
   // using a small square frame will reveal any omitted autoresizing bits.
-  return [self initWithFlexFrame:CGRectMake(0, 0, 320, 320)];
+  return [self initWithFlexFrame:CGRect256];
 }
 
 
@@ -111,7 +112,7 @@ PROPERTY_STRUCT_FIELD(CGFloat, centerY, CenterY, CGPoint, self.center, y);
   errL(indent, self, (self.isHidden ? @"(HIDDEN)" : @""));
   
   NSString* indent1 = [indent stringByAppendingString:@"  "];
-  for (NSUIView* v  in self.subviews) {
+  for (CUIView* v  in self.subviews) {
     [v inspectRec:indent1];
   }
 }
@@ -128,7 +129,7 @@ PROPERTY_STRUCT_FIELD(CGFloat, centerY, CenterY, CGPoint, self.center, y);
 - (void)inspectParents:(NSString*)label {
   errL();
   if (label) errL(label, @":");
-  NSUIView* v = self;
+  CUIView* v = self;
   while (v) {
     errL(v, (self.isHidden ? @"(HIDDEN)" : @""));
     v = v.superview;

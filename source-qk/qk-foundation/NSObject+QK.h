@@ -6,7 +6,7 @@
 #import "qk-block-types.h"
 
 
-void  executeAsync(BlockExecute asyncBlock, BlockDo syncBlock);
+void  executeAsync(BlockCompute asyncBlock, BlockDo syncBlock);
 
 
 @interface NSObject (QK)

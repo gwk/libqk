@@ -210,6 +210,10 @@ return nil
 - (void)set##Name:(class_name*)name { path = name; } \
 
 
+#define PROPERTY_SUBCLASS_ALIAS_RO(class_name, name, path) \
+- (class_name*)name { return CAST(class_name, path); } \
+
+
 #define PROPERTY_STRUCT_FIELD(type, name, Name, structType, structPath, fieldPath) \
 - (type)name { return structPath.fieldPath; } \
 - (void)set##Name:(type)name { structType temp = structPath; temp.fieldPath = name; structPath = temp; } \
@@ -228,6 +232,11 @@ NSTimeInterval _sleep_interval = (interval); \
 errFL(@"THREAD_SLEEP: %f", _sleep_interval); \
 [NSThread sleepForTimeInterval:_sleep_interval]; \
 }
+
+
+// timers
+
+#define INVALIDATE(timer) { [(timer) invalidate]; (timer) = nil; }
 
 
 // blocks

@@ -6,7 +6,7 @@
 #import "NSObject+QK.h"
 
 
-void  executeAsync(BlockExecute asyncBlock, BlockDo syncBlock) {
+void  executeAsync(BlockCompute asyncBlock, BlockDo syncBlock) {
   
   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
     id result;

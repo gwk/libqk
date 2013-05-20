@@ -1,4 +1,4 @@
-#import "qk-glk.h"
+#import "qk-gl.h"
 #import "qk-uikit.h"
 #import "QKApplicationDelegate.h"
 #import "QKScrollView.h"

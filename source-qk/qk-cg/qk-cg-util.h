@@ -59,8 +59,13 @@ static inline CGRect CGRectWithRBS(CGFloat r, CGFloat b, CGSize s) {
 }
 
 
-static inline CGRect CGRectExpand(CGRect r, CGFloat width, CGFloat height) {
-  return (CGRect){r.origin.x - width, r.origin.y - height, r.size.width + width * 2, r.size.height + height * 2};
+static inline CGRect CGRectExpand(CGRect r, CGFloat padX, CGFloat padY) {
+  return (CGRect){r.origin.x - padX, r.origin.y - padY, r.size.width + padX * 2, r.size.height + padY * 2};
+}
+
+
+static inline CGRect CGRectSurround(CGPoint center, CGFloat padX, CGFloat padY) {
+    return (CGRect){center.x - padX, center.y - padY, padX * 2, padY * 2};
 }
 
 

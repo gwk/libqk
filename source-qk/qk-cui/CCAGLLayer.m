@@ -2,12 +2,8 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
-#import <GLKit/GLKit.h>
-#import "qk-vec.h"
+#import "CCAGLLayer.h"
 
-@interface GLKView (QK)
-
-- (V2I32)drawableSize;
+@implementation CCAGLLayer (CCA)
 
 @end
-

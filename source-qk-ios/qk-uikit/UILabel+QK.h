@@ -2,7 +2,7 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
-#import "NSUIView.h"
+#import "CUIView.h"
 
 
 @interface UILabel (QK)

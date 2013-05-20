@@ -15,7 +15,7 @@
 #import "qk-macros.h"
 #import "qk-cg-util.h"
 #import "qk-log.h"
-#import "NSUIView.h"
+#import "CUIView.h"
 #import "UIView+QK.h"
 #import "UIScrollView+QK.h"
 
@@ -87,8 +87,7 @@
   // offset for rectangle
   CGPoint o = CGPointMake(rect.origin.x - (bs.width - rect.size.width) * .5,
                           rect.origin.y - (bs.height - rect.size.height) * .5);
-  if (CGRectContainsPoint(rect, point) &&
-      CGRectContainsPoint(cb, point)) {
+  if (CGRectContainsPoint(rect, point) && CGRectContainsPoint(cb, point)) {
     // possible to accommodate point; move the rectangle to contain it.
     if (o.x > point.x) o.x = point.x;
     if (o.y > point.y) o.y = point.y;

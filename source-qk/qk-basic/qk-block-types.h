@@ -6,8 +6,11 @@
 #import "Duo.h"
 
 
+// perform an action.
+typedef void (^BlockAction)();
+
 // return a value.
-typedef id (^BlockExecute)();
+typedef id (^BlockCompute)();
 
 // perform an operation on a value.
 typedef void (^BlockDo)(id);
