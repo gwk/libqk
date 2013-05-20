@@ -72,7 +72,7 @@ return name; \
 
 
 // get a "Y" or "N" string from the boolean value of an expression
-#define bit_YN(x) ((x) ? @"Y" : @"N")
+#define BIT_YN(x) ((x) ? @"Y" : @"N")
 
 
 // shorthand for the cocoa init idiom
