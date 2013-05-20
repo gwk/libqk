@@ -5,8 +5,10 @@
 #import <QuartzCore/QuartzCore.h>
 #import <OpenGLES/EAGLDrawable.h>
 
-#import "QKGLView.h"
+#import "qk-macros.h"
 #import "qk-gl-util.h"
+#import "CADisplayLink+QK.h"
+#import "QKGLView.h"
 
 
 Utf8 frameBufferStatusDesc(GLenum status) {
@@ -43,7 +45,10 @@ Utf8 frameBufferStatusDesc(GLenum status) {
 
 
 - (void) dealloc {
+  LOG_METHOD;
+  [self enableContext];
   [self destroyBuffers];
+  [self disableContext];
 }
 
 
@@ -112,6 +117,18 @@ DEF_INIT(Frame:(CGRect)frame format:(QKPixFmt)format scene:(id<GLScene>)scene) {
 PROPERTY_SUBCLASS_ALIAS_RO(CCAGLLayer, glLayer, self.layer);
 
 
+- (void)enableContext {
+  BOOL ok = [EAGLContext setCurrentContext:_context];
+  qk_assert(ok, @"could not enable context");
+}
+
+
+- (void)disableContext {
+  BOOL ok = [EAGLContext setCurrentContext:nil];
+  qk_assert(ok, @"could not disable context");
+}
+
+
 - (void)destroyBuffers {
   glDeleteFramebuffers(1, &_frameBuffer);
   glDeleteRenderbuffers(1, &_renderBuffer);
@@ -178,8 +195,7 @@ PROPERTY_SUBCLASS_ALIAS_RO(CCAGLLayer, glLayer, self.layer);
 
 
 - (void)updateBuffers {
-  BOOL ok = [EAGLContext setCurrentContext:_context];
-  qk_assert(ok, @"QKGLView render: could not make context current");
+  [self enableContext];
   [self destroyBuffers];
   [self createBuffers];
 }
@@ -191,7 +207,6 @@ PROPERTY_SUBCLASS_ALIAS_RO(CCAGLLayer, glLayer, self.layer);
   if (redisplayInterval > 0) { // animate
     _displayLink.paused = NO;
   }
-  [self render]; // render immediately so that content always shows up in viewWillAppear animations.
 }
 
 
@@ -201,24 +216,27 @@ PROPERTY_SUBCLASS_ALIAS_RO(CCAGLLayer, glLayer, self.layer);
   _displayLink.frameInterval = interval;
   [_displayLink addToRunLoop:[NSRunLoop currentRunLoop]
                      forMode:(duringTracking ? NSRunLoopCommonModes : NSDefaultRunLoopMode)];
+  [self render]; // render immediately so that content always shows up in viewWillAppear animations.
 }
 
 
 - (void)disableRedisplay {
-  INVALIDATE(_displayLink);
+  DISSOLVE(_displayLink);
   _redisplayInterval = 0;
 }
 
 
 - (void)render {
+  LOG_METHOD;
   if (_redisplayInterval <= 0) { // no repeat; do not fire again until setNeedsDisplay is called.
     _displayLink.paused = YES;
   }
   if (!_frameBuffer) {
     [self updateBuffers];
   }
-  BOOL ok = [EAGLContext setCurrentContext:_context];
-  qk_assert(ok, @"QKGLView render: could not make context current");
+  else {
+    [self enableContext];
+  }
   glBindFramebuffer(GL_FRAMEBUFFER, _frameBuffer);
   glViewport(0, 0, _drawableSize._[0], _drawableSize._[1]);
   qkgl_assert();
@@ -226,15 +244,12 @@ PROPERTY_SUBCLASS_ALIAS_RO(CCAGLLayer, glLayer, self.layer);
   // for frames after the first, duration is defined, and we should add:
   // + _displayLink.frameInterval + _displayLink.duration; // TODO: verify that this is correct.
   if (_needsSetup) {
-    [self.scene setupGLLayer:self.glLayer time:time info:_canvasInfo];
-    qkgl_assert();
+    [self.scene setupGLLayer:self.glLayer time:time info:_canvasInfo]; qkgl_assert();
     _needsSetup = NO;
   }
-  [self.scene drawInGLLayer:self.glLayer time:time info:_canvasInfo];
-  qkgl_assert();
-  glBindRenderbuffer(GL_RENDERBUFFER, _renderBuffer);
-  qkgl_assert();
-  ok = [_context presentRenderbuffer:GL_RENDERBUFFER];
+  [self.scene drawInGLLayer:self.glLayer time:time info:_canvasInfo]; qkgl_assert();
+  glBindRenderbuffer(GL_RENDERBUFFER, _renderBuffer); qkgl_assert();
+  BOOL ok = [_context presentRenderbuffer:GL_RENDERBUFFER];
   qk_assert(ok, @"presentRenderbuffer failed");
   qkgl_assert();
 }

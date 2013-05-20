@@ -234,9 +234,9 @@ errFL(@"THREAD_SLEEP: %f", _sleep_interval); \
 }
 
 
-// timers
+// retain cycle mitigation
 
-#define INVALIDATE(timer) { [(timer) invalidate]; (timer) = nil; }
+#define DISSOLVE(obj) { [(obj) dissolve]; (obj) = nil; }
 
 
 // blocks

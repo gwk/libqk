@@ -8,4 +8,6 @@
 
 @property (nonatomic) GLuint handle;
 
+- (void)dissolve;
+
 @end

@@ -22,8 +22,12 @@
 @implementation GLProgram
 
 
-- (void)dealloc {
+- (void)dissolve {
+  for (GLShader* s in _shaders) {
+    [s dissolve];
+  }
   glDeleteProgram(_handle); qkgl_assert();
+  _handle = 0;
 }
 
 

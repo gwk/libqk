@@ -9,10 +9,9 @@
 @implementation GLTexture
 
 
-- (void)dealloc {
-  if (_handle) {
-    glDeleteTextures(1, &(_handle)); qkgl_assert();
-  }
+- (void)dissolve {
+  glDeleteTextures(1, &(_handle)); qkgl_assert();
+  _handle = 0;
 }
 
 

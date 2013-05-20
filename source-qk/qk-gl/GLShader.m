@@ -21,8 +21,9 @@
 @implementation GLShader
 
 
-- (void)dealloc {
+- (void)dissolve {
   glDeleteShader(_handle); qkgl_assert();
+  _handle = 0;
 }
 
 

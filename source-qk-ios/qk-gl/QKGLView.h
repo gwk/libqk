@@ -18,6 +18,9 @@
 
 DEC_INIT(Frame:(CGRect)frame format:(QKPixFmt)format scene:(id<GLScene>)scene);
 
+- (void)enableContext;
+- (void)disableContext;
+
 - (void)enableRedisplayWithInterval:(int)interval duringTracking:(BOOL)duringTracking; // typically called at viewWillAppear
 - (void)disableRedisplay; // typically called at viewWillDisappear
 - (void)render; // render immediately. to avoid excessive rendering use enableRedisplay... and disableRedisplay.
