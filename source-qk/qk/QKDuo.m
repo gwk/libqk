@@ -2,13 +2,13 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
-#import "Duo.h"
+#import "QKDuo.h"
 
 
-@implementation Duo
+@implementation QKDuo
 
-+ (Duo*)a:(id)a b:(id)b {
-  Duo* d = [self new];
++ (QKDuo*)a:(id)a b:(id)b {
+  QKDuo* d = [self new];
   d.a = a;
   d.b = b;
   return d;

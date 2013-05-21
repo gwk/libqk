@@ -3,7 +3,7 @@
 
 
 #import "qk-types.h"
-#import "Duo.h"
+#import "QKDuo.h"
 
 
 // perform an action.
@@ -31,7 +31,7 @@ typedef id (^BlockMapInt)(Int);
 typedef id (^BlockMapObjInt)(id, Int); // e.g. value, index
 
 // map a value to a pair of values.
-typedef Duo* (^BlockMapToPair)(id);
+typedef QKDuo* (^BlockMapToPair)(id);
 
 // take the current aggregate value and the next value, and return the new aggregate value.
 typedef id (^BlockReduce)(id, id); // agg, val

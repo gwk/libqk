@@ -2,12 +2,12 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
-#import "Duo.h"
+#import "QKDuo.h"
 
 
 @interface NSMutableDictionary (QK)
 
-- (void)setItem:(Duo*)item;
-- (void)setItemIgnoreNil:(Duo*)item;
+- (void)setItem:(QKDuo*)item;
+- (void)setItemIgnoreNil:(QKDuo*)item;
 
 @end

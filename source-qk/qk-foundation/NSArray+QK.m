@@ -96,7 +96,7 @@ EL(9);
 - (NSMutableDictionary*)mapToDict:(BlockMapToPair)block {
   NSMutableDictionary* dict = [NSMutableDictionary new];
   for (id el in self) {
-    Duo* d = block(el);
+    QKDuo* d = block(el);
     [dict setItem:d];
   }
   return dict;
@@ -118,7 +118,7 @@ EL(9);
 - (NSMutableDictionary*)filterMapToDict:(BlockMapToPair)block {
   NSMutableDictionary* dict = [NSMutableDictionary new];
   for (id el in self) {
-    Duo* d = block(el);
+    QKDuo* d = block(el);
    [dict setItemIgnoreNil:d];
   }
   return dict;

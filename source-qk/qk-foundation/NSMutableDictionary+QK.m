@@ -2,19 +2,19 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
-#import "Duo.h"
+#import "QKDuo.h"
 #import "NSMutableDictionary+QK.h"
 
 
 @implementation NSMutableDictionary (QK)
 
 
-- (void)setItem:(Duo*)item {
+- (void)setItem:(QKDuo*)item {
   [self setObject:item.b forKey:item.a];
 }
 
 
-- (void)setItemIgnoreNil:(Duo*)item {
+- (void)setItemIgnoreNil:(QKDuo*)item {
   if (item.a && item.b) {
     [self setObject:item.b forKey:item.a];
   }

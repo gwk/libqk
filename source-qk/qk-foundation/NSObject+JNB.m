@@ -94,7 +94,7 @@ NSString* const JNBErrorDomain = @"JNBErrorDomain";
       val = mapBlock(val);
     }
     qk_assert([val isKindOfClass:[valTypes objectForKey:key]], @"bad value type: %@; %@", [val class], val);
-    return [Duo a:key b:val];
+    return [QKDuo a:key b:val];
   }];
   NSError* e = nil;
   Int written = [NSJSONSerialization writeJSONObject:dict toStream:stream options:0 error:&e];

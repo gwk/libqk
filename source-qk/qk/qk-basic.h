@@ -1,4 +1,3 @@
-#import "Duo.h"
 #import "qk-block-types.h"
 #import "qk-check.h"
 #import "qk-log.h"
@@ -7,6 +6,7 @@
 #import "qk-types.h"
 #import "qk-vec.h"
 #import "QKData.h"
+#import "QKDuo.h"
 #import "QKErrorDomain.h"
 #import "QKImage.h"
 #import "QKMutableStructArray.h"

@@ -5,11 +5,11 @@
 #import <Foundation/Foundation.h>
 
 
-@interface Duo : NSObject
+@interface QKDuo : NSObject
 
 @property (nonatomic) id a;
 @property (nonatomic) id b;
 
-+ (Duo*)a:(id)a b:(id)b;
++ (QKDuo*)a:(id)a b:(id)b;
 
 @end
