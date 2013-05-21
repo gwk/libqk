@@ -14,7 +14,7 @@
   if (h <= 0) {
     h = font.lineHeight * lines;
   }
-  UILabel* l = [UILabel withFrame:CGRectMake(x, y, w, h) flex:flex];
+  UILabel* l = [self withFrame:CGRectMake(x, y, w, h) flex:flex];
   l.font = font;
   l.numberOfLines = lines;
   return l;
