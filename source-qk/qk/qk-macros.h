@@ -150,7 +150,8 @@ qk_check(CONFORMS_OR_NIL((obj), protocol_name), \
 ({ id __cast_obj = (__VA_ARGS__); ASSERT_CONFORMS_OR_NIL(__cast_obj, protocol_name); (id<protocol_name>)__cast_obj; })
 
 
-// return the object if it is non-nil, else return the alternate
+// return the object if it is non-nil, else return the alternate.
+// necessary because ARC forbids a || b syntax with objc pointers.
 #define LIVE_ELSE(obj, alternate) \
 ({ id __obj = (obj); __obj ? __obj : (alternate); })
 
