@@ -9,3 +9,4 @@
 #import "UIScrollView+QK.h"
 #import "UITableViewCell+QK.h"
 #import "UIView+QK.h"
+#import "UIViewController+QK.h"
