@@ -71,8 +71,99 @@ return name; \
 #ifdef __OBJC__
 
 
+#pragma mark - types
+
+
 // get a "Y" or "N" string from the boolean value of an expression
 #define BIT_YN(x) ((x) ? @"Y" : @"N")
+
+
+// shorthand for checking class membership and protocol conformation
+#define IS_KIND(obj, class_name) [(obj) isKindOfClass:[class_name class]]
+
+#define IS_KIND_OR_NIL(obj, class_name) \
+({ id __obj = (obj); (!__obj || IS_KIND(__obj, class_name)); })
+
+#define CONFORMS(obj, protocol_name) [(obj) conformsToProtocol:@protocol(protocol_name)]
+
+#define CONFORMS_OR_NIL(obj, protocol_name) \
+({ id __obj = (obj); (!__obj || CONFORMS(__obj, protocol_name)); })
+
+
+// check if an object is nil or NSNull
+#define IS_NIL_OR_NULL(obj) \
+({ id __obj = (obj); !__obj || IS_KIND(__obj, NSNull); })
+
+
+// return the object if it is of the specified class, or else nil
+#define KIND_OR_NIL(obj, class_name) \
+({ class_name* __obj = (id)(obj); (IS_KIND((__obj), class_name) ? (__obj) : nil); })
+
+
+// return the object if it is of the specified class, or else NSNull
+// this is useful for specifying values for dictionaryWithObjectsForKeys:
+#define KIND_OR_NULL(obj, class_name) \
+({ id __obj = (obj); (IS_KIND((__obj), class_name) ? (__obj) : [NSNull null]); })
+
+
+#define OBJ_OR_NULL(obj) ({ id __obj = (obj); __obj ? __obj : [NSNull null]; })
+
+
+// type checks
+
+#define CHECK_KIND(obj, class_name) \
+qk_check(IS_KIND((obj), class_name), \
+@"object is not of class: %@; actual: %@", [class_name class], [(obj) class])
+
+#define CHECK_KIND_OR_NIL(obj, class_name) \
+qk_check(IS_KIND_OR_NIL((obj), class_name), \
+@"non-nil object is not of class: %@; actual: %@", [class_name class], [(obj) class])
+
+
+#define CHECK_CONFORMS(obj, protocol_name) \
+qk_check(CONFORMS((obj), protocol_name), \
+@"object does not conform: %s; class: %@", #protocol_name, [(obj) class])
+
+#define CHECK_CONFORMS_OR_NIL(obj, protocol_name) \
+qk_check(CONFORMS_OR_NIL((obj), protocol_name), \
+@"non-nil object does not conform: %s; class: %@", #protocol_name, [(obj) class])
+
+
+#if QK_OPTIMIZE
+# define ASSERT_KIND(obj, class_name) ((void)0)
+# define ASSERT_KIND_OR_NIL(obj, class_name) ((void)0)
+# define ASSERT_CONFORMS(obj, protocol_name) ((void)0)
+# define ASSERT_CONFORMS_OR_NIL(obj, protocol_name) ((void)0)
+#else
+# define ASSERT_KIND(obj, class_name) CHECK_KIND((obj), class_name)
+# define ASSERT_KIND_OR_NIL(obj, class_name) CHECK_KIND_OR_NIL((obj), class_name)
+# define ASSERT_CONFORMS(obj, protocol_name) CHECK_CONFORMS((obj), protocol_name)
+# define ASSERT_CONFORMS_OR_NIL(obj, protocol_name) CHECK_CONFORMS_OR_NIL((obj), protocol_name)
+#endif
+
+
+// cast with a run-time type kind assertion
+#define CAST(class_name, ...) \
+({ id __cast_obj = (__VA_ARGS__); ASSERT_KIND_OR_NIL(__cast_obj, class_name); (class_name*)__cast_obj; })
+
+#define CAST_PROTO(protocol_name, ...) \
+({ id __cast_obj = (__VA_ARGS__); ASSERT_CONFORMS_OR_NIL(__cast_obj, protocol_name); (id<protocol_name>)__cast_obj; })
+
+
+// return the object if it is non-nil, else return the alternate
+#define LIVE_ELSE(obj, alternate) \
+({ id __obj = (obj); __obj ? __obj : (alternate); })
+
+
+
+#pragma mark - reference counting
+
+
+// retain cycle mitigation
+#define DISSOLVE(obj) { [(obj) dissolve]; (obj) = nil; }
+
+
+#pragma mark - initialization
 
 
 // shorthand for the cocoa init idiom
@@ -96,108 +187,7 @@ DEF_WITH(__VA_ARGS__) \
 - (id)initWith##__VA_ARGS__
 
 
-// delegate method passing
-#define DEL_RESPONDS(sel) ([self.delegate respondsToSelector:@selector(sel)] ? (id)self.delegate : nil)
-#define DEL_PASS1(sel) [DEL_RESPONDS(sel:) sel:scrollView]
-#define DEL_PASS2(sel1, sel2) [DEL_RESPONDS(sel1:sel2:) sel1:scrollView sel2:sel2]
-#define DEL_PASS3(sel1, sel2, sel3) [DEL_RESPONDS(sel1:sel2:sel3:) sel1:scrollView sel2:sel2 sel3:sel3]
-
-// shorthand for checking class membership and protocol conformation
-
-#define IS_KIND(obj, class_name) [(obj) isKindOfClass:[class_name class]]
-
-#define IS_KIND_OR_NIL(obj, class_name) \
-({ id _obj = (obj); (!_obj || IS_KIND(_obj, class_name)); })
-
-#define CONFORMS(obj, protocol_name) [(obj) conformsToProtocol:@protocol(protocol_name)]
-
-#define CONFORMS_OR_NIL(obj, protocol_name) \
-({ id _obj = (obj); (!_obj || CONFORMS(_obj, protocol_name)); })
-
-
-// check if an object is nil or NSNull
-#define IS_NIL_OR_NULL(obj) \
-({ id _obj = (obj); !_obj || IS_KIND(_obj, NSNull); })
-
-
-// return the object if it is of the specified class, or else nil
-#define KIND_OR_NIL(obj, class_name) \
-({ class_name* _obj = (id)(obj); (IS_KIND((_obj), class_name) ? (_obj) : nil); })
-
-
-// return the object if it is of the specified class, or else NSNull
-// this is useful for specifying values for dictionaryWithObjectsForKeys:
-#define KIND_OR_NULL(obj, class_name) \
-({ id _obj = (obj); (IS_KIND((_obj), class_name) ? (_obj) : [NSNull null]); })
-
-
-#define OBJ_OR_NULL(obj) ({ id _obj = (obj); _obj ? _obj : [NSNull null]; })
-
-// checks
-
-
-// type checks
-
-#define CHECK_KIND(obj, class_name) \
-qk_check(IS_KIND((obj), class_name), \
-@"object is not of class: %@; actual: %@", [class_name class], [(obj) class])
-
-#define CHECK_KIND_OR_NIL(obj, class_name) \
-qk_check(IS_KIND_OR_NIL((obj), class_name), \
-@"non-nil object is not of class: %@; actual: %@", [class_name class], [(obj) class])
-
-
-#define CHECK_CONFORMS(obj, protocol_name) \
-qk_check(CONFORMS((obj), protocol_name), \
-@"object does not conform: %s; class: %@", #protocol_name, [(obj) class])
-
-#define CHECK_CONFORMS_OR_NIL(obj, protocol_name) \
-qk_check(CONFORMS_OR_NIL((obj), protocol_name), \
-@"non-nil object does not conform: %s; class: %@", #protocol_name, [(obj) class])
-
-
-
-#if QK_OPTIMIZE
-# define ASSERT_KIND(obj, class_name) ((void)0)
-# define ASSERT_KIND_OR_NIL(obj, class_name) ((void)0)
-# define ASSERT_CONFORMS(obj, protocol_name) ((void)0)
-# define ASSERT_CONFORMS_OR_NIL(obj, protocol_name) ((void)0)
-#else
-# define ASSERT_KIND(obj, class_name) CHECK_KIND((obj), class_name)
-# define ASSERT_KIND_OR_NIL(obj, class_name) CHECK_KIND_OR_NIL((obj), class_name)
-# define ASSERT_CONFORMS(obj, protocol_name) CHECK_CONFORMS((obj), protocol_name)
-# define ASSERT_CONFORMS_OR_NIL(obj, protocol_name) CHECK_CONFORMS_OR_NIL((obj), protocol_name)
-#endif
-
-
-// cast with a run-time type kind assertion
-#define CAST(class_name, ...) \
-({ id _cast_obj = (__VA_ARGS__); ASSERT_KIND_OR_NIL(_cast_obj, class_name); (class_name*)_cast_obj; })
-
-#define CAST_PROTO(protocol_name, ...) \
-({ id _cast_obj = (__VA_ARGS__); ASSERT_CONFORMS_OR_NIL(_cast_obj, protocol_name); (id<protocol_name>)_cast_obj; })
-
-
-// return the object if it is non-nil, else return the alternate
-#define LIVE_ELSE(obj, alternate) \
-({ id _obj = (obj); _obj ? _obj : (alternate); })
-
-
-// inheritence
-
-// shorthand to throw an exception in abstract base methods.
-#define MUST_OVERRIDE qk_fail(@"must override in subclass or intermediate: %@", [self class])
-
-
-// throw an exception for non-designated initialization paths:
-// place this macro in the implementation of a subclass method
-// that is implemented by superclass but should never get called.
-#define NON_DESIGNATED_INIT(designated_name) \
-[NSException raise:NSInternalInconsistencyException format:@"%s: non-designated initializer: instead use %@", __FUNCTION__, designated_name]; \
-return nil
-
-
-// properties
+#pragma mark - properties
 
 
 #define PROPERTY_ALIAS(type, name, Name, path) \
@@ -219,7 +209,62 @@ return nil
 - (void)set##Name:(type)name { structType temp = structPath; temp.fieldPath = name; structPath = temp; } \
 
 
-// threads
+#pragma mark - inheritence
+
+// shorthand to throw an exception in abstract base methods.
+#define MUST_OVERRIDE qk_fail(@"must override in subclass or intermediate: %@", [self class])
+
+
+// throw an exception for non-designated initialization paths:
+// place this macro in the implementation of a subclass method
+// that is implemented by superclass but should never get called.
+#define NON_DESIGNATED_INIT(designated_name) \
+[NSException raise:NSInternalInconsistencyException format:@"%s: non-designated initializer: instead use %@", __FUNCTION__, designated_name]; \
+return nil
+
+
+#pragma mark - delegates
+
+
+#define DEL_RESPONDS(sel) ([self.delegate respondsToSelector:@selector(sel)] ? (id)self.delegate : nil)
+#define DEL_PASS1(sel) [DEL_RESPONDS(sel:) sel:scrollView]
+#define DEL_PASS2(sel1, sel2) [DEL_RESPONDS(sel1:sel2:) sel1:scrollView sel2:sel2]
+#define DEL_PASS3(sel1, sel2, sel3) [DEL_RESPONDS(sel1:sel2:sel3:) sel1:scrollView sel2:sel2 sel3:sel3]
+
+
+#pragma mark - blocks
+
+
+// declare a temporary qualified version of a variable
+#define BLOCK_VAR(temp,     var) __block                __typeof__(var) temp = var
+#define WEAK_VAR(temp,      var) __weak                 __typeof__(var) temp = var
+#define UNSAFE_VAR(temp,    var) __unsafe_unretained    __typeof__(var) temp = var
+
+#define BLOCK(var)  BLOCK_VAR(block_ ## var,    var)
+#define WEAK(var)   WEAK_VAR(weak_ ## var,      var)
+#define UNSAFE(var) UNSAFE_VAR(unsafe_ ## var,  var)
+
+// if block is live, apply it to value; otherwise return alt.
+#define APPLY_BLOCK_ELSE(block, value, alt) \
+({ __typeof__(block) __b = (block); __b ? __b(value) : (alt); })
+
+// if block is live, apply it to value; otherwise return nil.
+#define APPLY_BLOCK_ELSE_NIL(block, value) \
+({ __typeof__(block) __b = (block); __b ? __b(value) : nil; })
+
+// if block is live, apply it to value; otherwise return value.
+#define APPLY_BLOCK_OR_IDENTITY(block, value) \
+({ __typeof__(block) __b = (block); __typeof__(value) __v = (value); __b ? __b(__v) : __v; })
+
+#pragma mark - exceptions
+
+
+// catch clause for non-critical try blocks, where we want to ignore failure
+#define CATCH_AND_LOG @catch (id exception) { errFL(@"CAUGHT EXCEPTION: %s\n\%@", __FUNCTION__, exception); }
+
+
+#pragma mark - threads
+
 
 #define CHECK_MAIN_THREAD qk_check([NSThread isMainThread], @"requires main thread")
 #define ASSERT_MAIN_THREAD qk_assert([NSThread isMainThread], @"requires main thread")
@@ -234,27 +279,8 @@ errFL(@"THREAD_SLEEP: %f", _sleep_interval); \
 }
 
 
-// retain cycle mitigation
+#pragma mark - miscellaneous cocoa utilities
 
-#define DISSOLVE(obj) { [(obj) dissolve]; (obj) = nil; }
-
-
-// blocks
-
-// catch clause for non-critical try blocks, where we want to ignore failure
-#define CATCH_AND_LOG @catch (id exception) { errFL(@"CAUGHT EXCEPTION: %s\n\%@", __FUNCTION__, exception); }
-
-// declare a temporary qualified version of a variable
-#define BLOCK_VAR(temp,     var) __block                __typeof__(var) temp = var
-#define WEAK_VAR(temp,      var) __weak                 __typeof__(var) temp = var
-#define UNSAFE_VAR(temp,    var) __unsafe_unretained    __typeof__(var) temp = var
-
-#define BLOCK(var)  BLOCK_VAR(block_ ## var,    var)
-#define WEAK(var)   WEAK_VAR(weak_ ## var,      var)
-#define UNSAFE(var) UNSAFE_VAR(unsafe_ ## var,  var)
-
-
-// miscellaneous cocoa utilities
 
 #define NSRangeMake NSMakeRange
 
