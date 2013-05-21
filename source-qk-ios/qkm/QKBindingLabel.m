@@ -19,7 +19,7 @@
 #pragma mark - UILabel
 
 
-- (void)setText:(NSString *)text {
+- (void)setText:(NSString*)text {
   if (text) {
     self.enabled = YES;
   }
@@ -34,7 +34,7 @@
 #pragma  mark - QKBindingLabel
 
 
-- (void)setPlaceholderText:(NSString *)placeholderText {
+- (void)setPlaceholderText:(NSString*)placeholderText {
   _placeholderText = placeholderText;
   if (!self.text) {
     self.enabled = NO;
