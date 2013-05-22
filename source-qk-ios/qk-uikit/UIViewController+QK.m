@@ -2,6 +2,9 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#import "qk-macros.h"
+#import "UIBarButtonItem+QK.h"
+#import "UINavigationController+QK.h"
 #import "UIViewController+QK.h"
 
 
@@ -9,11 +12,13 @@
 
 
 - (void)push:(UIViewController*)controller {
+  qk_assert(self.navigationController, @"no navigation controller to push onto: %@", self);
   [self.navigationController pushViewController:controller animated:YES];
 }
 
 
 - (void)pop {
+  qk_assert(self.navigationController, @"no navigation controller to pop from: %@", self);
   [self.navigationController popViewControllerAnimated:YES];
 }
 
