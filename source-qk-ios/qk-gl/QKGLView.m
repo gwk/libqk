@@ -98,7 +98,7 @@ DEF_INIT(Frame:(CGRect)frame format:(QKPixFmt)format scene:(id<GLScene>)scene) {
   }
   _format = format;
   _scene = scene;
-  self.needsSetup = YES;
+  _needsSetup = YES;
   self.opaque = YES;
   qk_assert(self.glLayer.opaque, @"glLayer is not opaque");
   self.contentMode = UIViewContentModeRedraw; // for view resize on orientation change
@@ -244,10 +244,10 @@ PROPERTY_SUBCLASS_ALIAS_RO(CCAGLLayer, glLayer, self.layer);
   // for frames after the first, duration is defined, and we should add:
   // + _displayLink.frameInterval + _displayLink.duration; // TODO: verify that this is correct.
   if (_needsSetup) {
-    [self.scene setupGLLayer:self.glLayer time:time info:_canvasInfo]; qkgl_assert();
+    [_scene setupGLLayer:self.glLayer time:time info:_canvasInfo]; qkgl_assert();
     _needsSetup = NO;
   }
-  [self.scene drawInGLLayer:self.glLayer time:time info:_canvasInfo]; qkgl_assert();
+  [_scene drawInGLLayer:self.glLayer time:time info:_canvasInfo]; qkgl_assert();
   glBindRenderbuffer(GL_RENDERBUFFER, _renderBuffer); qkgl_assert();
   BOOL ok = [_context presentRenderbuffer:GL_RENDERBUFFER];
   qk_assert(ok, @"presentRenderbuffer failed");

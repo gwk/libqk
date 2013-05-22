@@ -48,6 +48,14 @@
 		ECB517CA174CF73400B24789 /* QKTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB517C9174CF73400B24789 /* QKTableController.m */; };
 		ECB517CD174CF95E00B24789 /* QKTag.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB517CC174CF95E00B24789 /* QKTag.m */; };
 		ECB517D0174CFA8500B24789 /* ScrollController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB517CF174CFA8500B24789 /* ScrollController.m */; };
+		ECB517D3174D051E00B24789 /* GLTestScene.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB517D2174D051E00B24789 /* GLTestScene.m */; };
+		ECB517DC174D114900B24789 /* image.frag in Resources */ = {isa = PBXBuildFile; fileRef = ECB517D6174D113A00B24789 /* image.frag */; };
+		ECB517DD174D114900B24789 /* image.vert in Resources */ = {isa = PBXBuildFile; fileRef = ECB517D7174D113A00B24789 /* image.vert */; };
+		ECB517DE174D114900B24789 /* pos.vert in Resources */ = {isa = PBXBuildFile; fileRef = ECB517D8174D113A00B24789 /* pos.vert */; };
+		ECB517DF174D114900B24789 /* uni-color.frag in Resources */ = {isa = PBXBuildFile; fileRef = ECB517D9174D113A00B24789 /* uni-color.frag */; };
+		ECB517E0174D114900B24789 /* var-color.frag in Resources */ = {isa = PBXBuildFile; fileRef = ECB517DA174D113A00B24789 /* var-color.frag */; };
+		ECB517E1174D114900B24789 /* viewport2.vert in Resources */ = {isa = PBXBuildFile; fileRef = ECB517DB174D113A00B24789 /* viewport2.vert */; };
+		ECB517E3174D11E500B24789 /* pos-color.vert in Resources */ = {isa = PBXBuildFile; fileRef = ECB517E2174D11DD00B24789 /* pos-color.vert */; };
 		ECB7FB4A17445D64002A4B71 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB7FB4917445D64002A4B71 /* UIKit.framework */; };
 		ECB7FB4C17445D64002A4B71 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB7FB4B17445D64002A4B71 /* Foundation.framework */; };
 		ECB7FB4E17445D64002A4B71 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB7FB4D17445D64002A4B71 /* CoreGraphics.framework */; };
@@ -190,6 +198,15 @@
 		ECB517CC174CF95E00B24789 /* QKTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QKTag.m; path = "source-qk/qk/QKTag.m"; sourceTree = SOURCE_ROOT; };
 		ECB517CE174CFA8500B24789 /* ScrollController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollController.h; sourceTree = "<group>"; };
 		ECB517CF174CFA8500B24789 /* ScrollController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollController.m; sourceTree = "<group>"; };
+		ECB517D1174D051D00B24789 /* GLTestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLTestScene.h; sourceTree = "<group>"; };
+		ECB517D2174D051E00B24789 /* GLTestScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLTestScene.m; sourceTree = "<group>"; };
+		ECB517D6174D113A00B24789 /* image.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = image.frag; sourceTree = "<group>"; };
+		ECB517D7174D113A00B24789 /* image.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = image.vert; sourceTree = "<group>"; };
+		ECB517D8174D113A00B24789 /* pos.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = pos.vert; sourceTree = "<group>"; };
+		ECB517D9174D113A00B24789 /* uni-color.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = "uni-color.frag"; sourceTree = "<group>"; };
+		ECB517DA174D113A00B24789 /* var-color.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = "var-color.frag"; sourceTree = "<group>"; };
+		ECB517DB174D113A00B24789 /* viewport2.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = viewport2.vert; sourceTree = "<group>"; };
+		ECB517E2174D11DD00B24789 /* pos-color.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = "pos-color.vert"; sourceTree = "<group>"; };
 		ECB7FB4617445D64002A4B71 /* test-qk-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "test-qk-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECB7FB4917445D64002A4B71 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		ECB7FB4B17445D64002A4B71 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -450,12 +467,35 @@
 			path = qk;
 			sourceTree = "<group>";
 		};
+		ECB517D4174D113900B24789 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				ECB517D5174D113A00B24789 /* shaders */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		ECB517D5174D113A00B24789 /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				ECB517D6174D113A00B24789 /* image.frag */,
+				ECB517D7174D113A00B24789 /* image.vert */,
+				ECB517D8174D113A00B24789 /* pos.vert */,
+				ECB517E2174D11DD00B24789 /* pos-color.vert */,
+				ECB517D9174D113A00B24789 /* uni-color.frag */,
+				ECB517DA174D113A00B24789 /* var-color.frag */,
+				ECB517DB174D113A00B24789 /* viewport2.vert */,
+			);
+			path = shaders;
+			sourceTree = "<group>";
+		};
 		ECB7FB3D17445D64002A4B71 = {
 			isa = PBXGroup;
 			children = (
 				ECB7FB7D17445E19002A4B71 /* Default-568h@2x.png */,
 				ECB7FB7B17445E16002A4B71 /* Default@2x.png */,
 				ECB7FB7917445E0C002A4B71 /* Default.png */,
+				ECB517D4174D113900B24789 /* resources */,
 				ECB7FB7F17445F8F002A4B71 /* source-qk */,
 				ECB7FBEE17445F8F002A4B71 /* source-qk-ios */,
 				ECB7FB6617445DA2002A4B71 /* test-qk-ios */,
@@ -595,6 +635,8 @@
 				ECB7FBCF17445F8F002A4B71 /* GLScene.h */,
 				ECB7FBD017445F8F002A4B71 /* GLShader.h */,
 				ECB7FBD117445F8F002A4B71 /* GLShader.m */,
+				ECB517D1174D051D00B24789 /* GLTestScene.h */,
+				ECB517D2174D051E00B24789 /* GLTestScene.m */,
 				ECB7FBD217445F8F002A4B71 /* GLTexture.h */,
 				ECB7FBD317445F8F002A4B71 /* GLTexture.m */,
 				ECB7FBD417445F8F002A4B71 /* GLVertexShader.h */,
@@ -817,6 +859,13 @@
 				ECB7FB7A17445E0C002A4B71 /* Default.png in Resources */,
 				ECB7FB7C17445E16002A4B71 /* Default@2x.png in Resources */,
 				ECB7FB7E17445E19002A4B71 /* Default-568h@2x.png in Resources */,
+				ECB517DC174D114900B24789 /* image.frag in Resources */,
+				ECB517DD174D114900B24789 /* image.vert in Resources */,
+				ECB517DE174D114900B24789 /* pos.vert in Resources */,
+				ECB517E3174D11E500B24789 /* pos-color.vert in Resources */,
+				ECB517DF174D114900B24789 /* uni-color.frag in Resources */,
+				ECB517E0174D114900B24789 /* var-color.frag in Resources */,
+				ECB517E1174D114900B24789 /* viewport2.vert in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -900,6 +949,7 @@
 				ECB517CA174CF73400B24789 /* QKTableController.m in Sources */,
 				ECB517CD174CF95E00B24789 /* QKTag.m in Sources */,
 				ECB517D0174CFA8500B24789 /* ScrollController.m in Sources */,
+				ECB517D3174D051E00B24789 /* GLTestScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
