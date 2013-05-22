@@ -3,17 +3,17 @@
 
 
 #import "QKBinding.h"
-#import "QKBindingLabel.h"
+#import "QKLabel.h"
 
 
-@interface QKBindingLabel ()
+@interface QKLabel ()
 
 @property (nonatomic) QKBinding* binding;
 
 @end
 
 
-@implementation QKBindingLabel
+@implementation QKLabel
 
 
 #pragma mark - UILabel
@@ -24,7 +24,7 @@
     self.enabled = YES;
   }
   else {
-    text = _placeholderText;
+    text = _placeholder;
     self.enabled = NO;
   }
   [super setText:text];
@@ -34,17 +34,17 @@
 #pragma  mark - QKBindingLabel
 
 
-- (void)setPlaceholderText:(NSString*)placeholderText {
-  _placeholderText = placeholderText;
+- (void)setPlaceholder:(NSString*)placeholder {
+  _placeholder = placeholder;
   if (!self.text) {
     self.enabled = NO;
-    [super setText:placeholderText];
+    [super setText:placeholder];
   }
 }
 
 
 - (void)bindToModel:(id)model path:(NSString*)modelKeyPath transform:(BlockMap)viewTransform {
-  self.binding = [QKBinding withModel:model path:modelKeyPath transform:nil view:self path:@"text" transform:viewTransform];
+  _binding = [QKBinding withModel:model path:modelKeyPath transform:nil view:self path:@"text" transform:viewTransform];
 }
 
 

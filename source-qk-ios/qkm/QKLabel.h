@@ -5,9 +5,9 @@
 #import "qk-block-types.h"
 
 
-@interface QKBindingLabel : UILabel
+@interface QKLabel : UILabel
 
-@property (nonatomic) NSString* placeholderText;
+@property (nonatomic) NSString* placeholder;
 
 - (void)bindToModel:(id)model path:(NSString*)modelKeyPath transform:(BlockMap)viewTransform;
 

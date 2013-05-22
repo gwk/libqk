@@ -2,9 +2,9 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
-@interface QKBindingImageView : UIImageView
+@interface QKImageView : UIImageView
 
-@property (nonatomic) UIImage* placeholderImage;
+@property (nonatomic) UIImage* placeholder;
 
 - (void)bindToModel:(id)model path:(NSString*)modelKeyPath transform:(BlockMap)viewTransform;
 
