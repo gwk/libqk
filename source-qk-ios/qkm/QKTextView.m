@@ -4,6 +4,7 @@
 
 #import "qk-macros.h"
 #import "UIColor+QK.h"
+#import "UIView+QK.h"
 #import "QKBinding.h"
 #import "QKTextView.h"
 
