@@ -196,6 +196,9 @@ DEF_WITH(__VA_ARGS__) \
 - (void)set##Name:(type)name { path = name; } \
 
 
+#define SUB_PROPERTY_ALIAS(type, name, Name, sub) PROPERTY_ALIAS(type, name, Name, sub.name)
+
+
 #define PROPERTY_SUBCLASS_ALIAS(class_name, name, Name, path) \
 - (class_name*)name { return CAST(class_name, path); } \
 - (void)set##Name:(class_name*)name { path = name; } \
@@ -245,17 +248,21 @@ return nil
 #define WEAK(var)   WEAK_VAR(weak_ ## var,      var)
 #define UNSAFE(var) UNSAFE_VAR(unsafe_ ## var,  var)
 
-// if block is live, apply it to value; otherwise return alt.
-#define APPLY_BLOCK_ELSE(block, value, alt) \
-({ __typeof__(block) __b = (block); __b ? __b(value) : (alt); })
+// if block is live, apply it to arguments.
+#define APPLY_LIVE_BLOCK(block, ...) \
+{ __typeof__(block) __b = (block); if (__b) __b(__VA_ARGS__); }
 
-// if block is live, apply it to value; otherwise return nil.
-#define APPLY_BLOCK_ELSE_NIL(block, value) \
-({ __typeof__(block) __b = (block); __b ? __b(value) : nil; })
+// if block is live, apply it to arguments; otherwise return alt.
+#define APPLY_BLOCK_ELSE(block, alt, ...) \
+({ __typeof__(block) __b = (block); __b ? __b(__VA_ARGS__) : (alt); })
 
-// if block is live, apply it to value; otherwise return value.
-#define APPLY_BLOCK_OR_IDENTITY(block, value) \
-({ __typeof__(block) __b = (block); __typeof__(value) __v = (value); __b ? __b(__v) : __v; })
+// if block is live, apply it to arguments; otherwise return nil.
+#define APPLY_BLOCK_ELSE_NIL(block, ...) \
+({ __typeof__(block) __b = (block); __b ? __b(__VA_ARGS__) : nil; })
+
+// if block is live, apply it to arguments; otherwise return value.
+#define APPLY_BLOCK_OR_IDENTITY(block, ...) \
+({ __typeof__(block) __b = (block); __typeof__(__VA_ARGS__) __v = (__VA_ARGS__); __b ? __b(__v) : __v; })
 
 #pragma mark - exceptions
 
