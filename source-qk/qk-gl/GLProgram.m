@@ -65,14 +65,14 @@ DEF_INIT(Shaders:(NSArray*)shaders uniforms:(NSArray*)uniforms attributes:(NSArr
     if (loc == -1) {
       errFL(@"NOTE: no location for shader uniform: %@", name);
     }
-    return [Duo a:name b:@(loc)];
+    return [QKDuo a:name b:@(loc)];
   }];
   _attributeLocations  = [_attributes mapToDict:^(NSString *name){
     GLint loc = glGetAttribLocation(_handle, name.asUtf8);
     if (loc == -1) {
       errFL(@"NOTE: no location for shader attribute: %@", name);
     }
-    return [Duo a:name b:@(loc)];
+    return [QKDuo a:name b:@(loc)];
   }];
 
   return self;
