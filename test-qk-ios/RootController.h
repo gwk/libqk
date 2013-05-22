@@ -2,8 +2,9 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
-#import "QKApplicationDelegate.h"
+#import "QKTableController.h"
 
 
-@interface AppDelegate : QKApplicationDelegate
+@interface RootController : QKTableController
 @end
+

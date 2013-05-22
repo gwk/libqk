@@ -2,8 +2,9 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
-#import "QKApplicationDelegate.h"
+#import "QKViewController.h"
 
 
-@interface AppDelegate : QKApplicationDelegate
+@interface ScrollController : QKViewController
 @end
+
