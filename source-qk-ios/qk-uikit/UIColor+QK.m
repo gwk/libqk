@@ -8,6 +8,11 @@
 @implementation UIColor (QK)
 
 
++ (id)clear {
+  return [self clearColor];
+}
+
+
 + (id)r:(CGFloat)r g:(CGFloat)g b:(CGFloat)b a:(CGFloat)a {
   return [self colorWithRed:r green:g blue:b alpha:a];
 }
