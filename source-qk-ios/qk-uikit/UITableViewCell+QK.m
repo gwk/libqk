@@ -9,7 +9,7 @@
 
 
 + (CGFloat)heightForRow:(id)row {
-  return 64;
+  return 48;
 }
 
 
