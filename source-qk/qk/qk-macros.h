@@ -240,14 +240,15 @@ return nil
 #pragma mark - blocks
 
 
-// declare a temporary qualified version of a variable
-#define BLOCK_VAR(temp,     var) __block                __typeof__(var) temp = var
-#define WEAK_VAR(temp,      var) __weak                 __typeof__(var) temp = var
-#define UNSAFE_VAR(temp,    var) __unsafe_unretained    __typeof__(var) temp = var
+// declare a temporary qualified version of a variable.
+// prefer BACK (an unretained back-ref) over BLOCK for clarity, as BLOCK has additional semantics for non-objc types.
+#define WEAK_VAR(temp,  var) __weak               __typeof__(var) temp = var
+#define BACK_VAR(temp,  var) __unsafe_unretained  __typeof__(var) temp = var
+#define BLOCK_VAR(temp, var) __block              __typeof__(var) temp = var
 
-#define BLOCK(var)  BLOCK_VAR(block_ ## var,    var)
-#define WEAK(var)   WEAK_VAR(weak_ ## var,      var)
-#define UNSAFE(var) UNSAFE_VAR(unsafe_ ## var,  var)
+#define WEAK(var)   WEAK_VAR(weak_ ## var,    var)
+#define BACK(var)   BACK_VAR(back_ ## var,  var)
+#define BLOCK(var)  BLOCK_VAR(block_ ## var,  var)
 
 // if block is live, apply it to arguments.
 #define APPLY_LIVE_BLOCK(block, ...) \

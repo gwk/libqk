@@ -45,7 +45,6 @@
                        context:(void *)context {
   
   qk_assert(object == _model, @"QKBinding observed unexpected object: %@;\n  key path: %@;\n  binding: %@", object, keyPath, self);
-  
   [_view setValue:[object valueForKeyPath:keyPath] forKeyPath:_viewKeyPath];
 }
 
