@@ -25,7 +25,7 @@ extern const UIFlex UIFlexBottom;
 extern const UIFlex UIFlexSize;
 extern const UIFlex UIFlexHorizontal;
 extern const UIFlex UIFlexVertical;
-
+extern const UIFlex UIFlexPosition;
 
 @interface CUIView (CUI)
 

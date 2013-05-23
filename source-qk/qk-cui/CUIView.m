@@ -29,6 +29,7 @@ const UIFlex UIFlexBottom = NSViewMinYMargin;
 const UIFlex UIFlexSize       = UIFlexWidth | UIFlexHeight;
 const UIFlex UIFlexHorizontal = UIFlexLeft | UIFlexRight;
 const UIFlex UIFlexVertical   = UIFlexTop | UIFlexBottom;
+const UIFlex UIFlexPosition   = UIFlexHorizontal | UIFlexVertical;
 
 
 @implementation CUIView (CUI)
