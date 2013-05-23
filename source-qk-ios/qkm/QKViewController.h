@@ -2,6 +2,9 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#import "UIViewController+QK.h"
+
+
 @interface QKViewController : UIViewController
 
 @property (nonatomic, readonly) BOOL isVisible;

@@ -3,6 +3,7 @@
 
 
 #import "qk-block-types.h"
+#import "UILabel+QK.h"
 
 
 @interface QKLabel : UILabel

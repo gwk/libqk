@@ -2,6 +2,9 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#import "UIApplication+QK.h"
+
+
 @interface QKApplicationDelegate : UIResponder <UIApplicationDelegate>
 
 @property (nonatomic) UIWindow* window;

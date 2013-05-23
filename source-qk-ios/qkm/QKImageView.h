@@ -2,6 +2,10 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#import "UIImage+QK.h"
+#import "UIImageView+QK.h"
+
+
 @interface QKImageView : UIImageView
 
 @property (nonatomic) UIImage* placeholder;
