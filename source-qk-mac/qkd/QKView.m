@@ -31,7 +31,7 @@ DEF_INIT(Frame:(CGRect)frame scene:(id)scene format:(QKPixFmt)format) {
   INIT(super initWithFrame:frame);
   self.scene = scene;
   if (format) {
-    [self setupLayer:[[QKGLLayer alloc] initWithFormat:format scene:scene]];
+    [self setupLayer:[[GLLayer alloc] initWithFormat:format scene:scene]];
   }
   else {
     [self setupLayer:[CALayer new]];
@@ -64,8 +64,8 @@ DEF_INIT(Frame:(CGRect)frame scene:(id)scene) {
 }
 
 
-- (QKGLLayer *)glLayer {
-  return CAST(QKGLLayer, self.layer);
+- (GLLayer *)glLayer {
+  return CAST(GLLayer, self.layer);
 }
 
 

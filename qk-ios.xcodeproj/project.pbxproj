@@ -56,6 +56,7 @@
 		ECB517E0174D114900B24789 /* var-color.frag in Resources */ = {isa = PBXBuildFile; fileRef = ECB517DA174D113A00B24789 /* var-color.frag */; };
 		ECB517E1174D114900B24789 /* viewport2.vert in Resources */ = {isa = PBXBuildFile; fileRef = ECB517DB174D113A00B24789 /* viewport2.vert */; };
 		ECB517E3174D11E500B24789 /* pos-color.vert in Resources */ = {isa = PBXBuildFile; fileRef = ECB517E2174D11DD00B24789 /* pos-color.vert */; };
+		ECB517E6174D157200B24789 /* QKGLLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB517E5174D157200B24789 /* QKGLLayer.m */; };
 		ECB7FB4A17445D64002A4B71 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB7FB4917445D64002A4B71 /* UIKit.framework */; };
 		ECB7FB4C17445D64002A4B71 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB7FB4B17445D64002A4B71 /* Foundation.framework */; };
 		ECB7FB4E17445D64002A4B71 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB7FB4D17445D64002A4B71 /* CoreGraphics.framework */; };
@@ -207,6 +208,8 @@
 		ECB517DA174D113A00B24789 /* var-color.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = "var-color.frag"; sourceTree = "<group>"; };
 		ECB517DB174D113A00B24789 /* viewport2.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = viewport2.vert; sourceTree = "<group>"; };
 		ECB517E2174D11DD00B24789 /* pos-color.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = "pos-color.vert"; sourceTree = "<group>"; };
+		ECB517E4174D157200B24789 /* QKGLLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKGLLayer.h; sourceTree = "<group>"; };
+		ECB517E5174D157200B24789 /* QKGLLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKGLLayer.m; sourceTree = "<group>"; };
 		ECB7FB4617445D64002A4B71 /* test-qk-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "test-qk-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECB7FB4917445D64002A4B71 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		ECB7FB4B17445D64002A4B71 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -628,6 +631,8 @@
 				ECB7FBC817445F8F002A4B71 /* GLCanvasInfo.m */,
 				ECB7FBC917445F8F002A4B71 /* GLFragmentShader.h */,
 				ECB7FBCA17445F8F002A4B71 /* GLFragmentShader.m */,
+				ECB517E4174D157200B24789 /* QKGLLayer.h */,
+				ECB517E5174D157200B24789 /* QKGLLayer.m */,
 				ECB7FBCB17445F8F002A4B71 /* GLObject.h */,
 				ECB7FBCC17445F8F002A4B71 /* GLObject.m */,
 				ECB7FBCD17445F8F002A4B71 /* GLProgram.h */,
@@ -950,6 +955,7 @@
 				ECB517CD174CF95E00B24789 /* QKTag.m in Sources */,
 				ECB517D0174CFA8500B24789 /* ScrollController.m in Sources */,
 				ECB517D3174D051E00B24789 /* GLTestScene.m in Sources */,
+				ECB517E6174D157200B24789 /* QKGLLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

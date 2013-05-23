@@ -2,12 +2,15 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#import "GLLayer.h"
+
+
 @protocol QKScrollTrackingDelegate;
 
 
 @interface QKScrollView : UIScrollView <UIScrollViewDelegate>
 
-@property (nonatomic, weak) id<QKScrollTrackingDelegate> trackingDelegate; // tracks scroll and zoom.
+@property (nonatomic, weak) GLLayer* trackingGlLayer; // tracks scroll and zoom.
 
 - (void)addZoomSubview:(UIView*)view constantScale:(BOOL)constantScale;
 - (void)addZoomSubview:(UIView*)view;
@@ -25,9 +28,9 @@
 
 @protocol QKScrollTrackingDelegate <NSObject>
 
-- (void)setScrollBounds:(CGRect)scrollBounds
-            contentSize:(CGSize)size
-                 insets:(UIEdgeInsets)insets
-              zoomScale:(CGFloat)zoomScale;
+- (void)trackScrollBounds:(CGRect)scrollBounds
+              contentSize:(CGSize)size
+                   insets:(UIEdgeInsets)insets
+                zoomScale:(CGFloat)zoomScale;
 
 @end

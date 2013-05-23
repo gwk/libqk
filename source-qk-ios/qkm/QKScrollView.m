@@ -44,7 +44,7 @@ zoomView = _zoomViewQKScrollView;
 
 
 #define UPDATE_TRACKING_DELEGATE \
-[_trackingDelegate setScrollBounds:self.bounds contentSize:self.contentSize insets:self.contentInset zoomScale:self.zoomScale];
+[_trackingGlLayer trackScrollBounds:self.bounds contentSize:self.contentSize insets:self.contentInset zoomScale:self.zoomScale];
 //errFL(@"b: %@; cs: %@; zs: %f", NSStringFromCGRect(self.bounds), NSStringFromCGSize(self.contentSize), self.zoomScale);
 
 
@@ -175,12 +175,6 @@ zoomView = _zoomViewQKScrollView;
 
 - (void)addZoomSubview:(UIView*)view {
   [self addZoomSubview:view constantScale:NO];
-}
-
-
-- (void)setTrackingDelegate:(id<QKScrollTrackingDelegate>)trackingDelegate {
-  _trackingDelegate = trackingDelegate;
-  UPDATE_TRACKING_DELEGATE;
 }
 
 
