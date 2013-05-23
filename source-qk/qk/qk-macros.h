@@ -40,11 +40,12 @@ for (Int i = (n) - 1, _##i##_end = (m), _##i##_step = (s); i >= _##i##_end; i -=
 
 // clamp a value to low and high bounds
 // variables have _clamp suffix so as not to collide with variables inside of MAX.
+// note that the low bound takes precedent over the higher bound.
 #define CLAMP(x, a, b) ({ \
 __typeof__(x) __x_clamp = (x); \
 __typeof__(a) __a_clamp = (a); \
-__typeof__(b) __b_clamp = (b); \
-__x_clamp < __a_clamp ? __a_clamp : (__x_clamp > __b_clamp ? MAX(__a_clamp, __b_clamp) : __x_clamp); })
+__typeof__(b) __b_clamp = MAX(__a_clamp, (b)); \
+__x_clamp < __a_clamp ? __a_clamp : (__x_clamp > __b_clamp ? __b_clamp : __x_clamp); })
 
 
 #define COMPARE(a, b) ({ \
