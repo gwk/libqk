@@ -6,6 +6,7 @@
 #import "UIColor+QK.h"
 #import "UIView+QK.h"
 #import "QKBinding.h"
+#import "QKLabel.h"
 #import "QKTextView.h"
 
 
@@ -13,7 +14,7 @@
 
 @property (nonatomic) UITextView* view;
 @property (nonatomic) QKBinding* binding;
-@property (nonatomic) UILabel* placeholderLabel;
+@property (nonatomic) QKLabel* placeholderLabel;
 
 @end
 
@@ -36,7 +37,10 @@ DEF_DEALLOC_DISSOLVE {
   INIT(super initWithFrame:frame);
   _view = [UITextView withFlexFrame:self.bounds];
   _view.delegate = self;
-  _placeholderLabel = [UILabel withFlexFrame:CGRectInset(self.bounds, 8, 8)]; // UITextView has this fixed text inset.
+  _placeholderLabel = [QKLabel withFlexFrame:self.bounds];
+  _placeholderLabel.pad = UIEdgeInsetsMake(8, 8, 8, 8); // UITextView has this fixed text inset.
+  _placeholderLabel.verticalAlign = QKVerticalAlignTop;
+  _placeholderLabel.numberOfLines = 0;
   _placeholderLabel.font = _view.font;
   _placeholderLabel.textColor = [UIColor l:.5];
   _placeholderLabel.userInteractionEnabled = NO;

@@ -6,6 +6,14 @@ extern const CGSize CGSizeUnit;
 extern const CGRect CGRectUnit;
 extern const CGRect CGRect256;
 
+
+typedef enum {
+  QKVerticalAlignTop,
+  QKVerticalAlignCenter,
+  QKVerticalAlignBottom,
+} QKVerticalAlign;
+
+
 static inline CGPoint CGPointMul(CGPoint v, CGFloat s) {
   return (CGPoint){ v.x * s, v.y * s };
 }

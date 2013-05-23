@@ -3,12 +3,15 @@
 
 
 #import "qk-block-types.h"
+#import "qk-cg-util.h"
 #import "UILabel+QK.h"
 
 
 @interface QKLabel : UILabel
 
 @property (nonatomic) NSString* placeholder;
+@property (nonatomic) UIEdgeInsets pad;
+@property (nonatomic) QKVerticalAlign verticalAlign;
 
 - (void)bindToModel:(id)model path:(NSString*)modelKeyPath transform:(BlockMap)viewTransform;
 
