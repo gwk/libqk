@@ -4,6 +4,7 @@
 #import "GLProgram.h"
 #import "GLScene.h"
 #import "GLShader.h"
+#import "GLTestScene.h"
 #import "GLTexture.h"
 #import "GLVertexShader.h"
 #import "qk-gl-util.h"

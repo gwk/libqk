@@ -11,3 +11,4 @@
 #import "NSObject+QK.h"
 #import "NSOutputStream+QK.h"
 #import "NSString+QK.h"
+#import "NSTimer+QK.h"

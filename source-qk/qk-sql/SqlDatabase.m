@@ -4,7 +4,6 @@
 
 #import "sqlite3.h"
 #import "qk-foundation.h"
-#import "qk-basic.h"
 #import "qk-sql-util.h"
 #import "SqlDatabase.h"
 
