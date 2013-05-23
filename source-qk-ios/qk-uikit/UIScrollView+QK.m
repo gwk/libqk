@@ -149,8 +149,8 @@
     self.minimumZoomScale = 1;
     return;
   }
-  CGFloat bar = CGSizeAspect(bs, 1);
-  CGFloat car = CGSizeAspect(cs, 1);
+  CGFloat bar = CGSizeAspect(bs, .1);
+  CGFloat car = CGSizeAspect(cs, .1);
   if (car < bar) { // self is wide/short relative to content; zoom is constrained by x.
     self.minimumZoomScale = bs.width / cs.width;
   }
