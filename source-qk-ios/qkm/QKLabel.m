@@ -16,6 +16,14 @@
 @implementation QKLabel
 
 
+#pragma mark - NSObject
+
+
+DEF_DEALLOC_DISSOLVE {
+  DISSOLVE(_binding);
+}
+
+
 #pragma mark - UILabel
 
 

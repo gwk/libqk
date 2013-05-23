@@ -164,6 +164,10 @@ qk_check(CONFORMS_OR_NIL((obj), protocol_name), \
 // retain cycle mitigation
 #define DISSOLVE(obj) { [(obj) dissolve]; (obj) = nil; }
 
+#define DEF_DEALLOC_DISSOLVE \
+- (void)dealloc { [self dissolve]; } \
+- (void)dissolve
+
 
 #pragma mark - initialization
 
@@ -241,7 +245,7 @@ return nil
 
 
 // declare a temporary qualified version of a variable.
-// prefer BACK (an unretained back-ref) over BLOCK for clarity, as BLOCK has additional semantics for non-objc types.
+// note that in ARC, __block retains objects, so it does not prevent retain cycles; use WEAK or BACK instead.
 #define WEAK_VAR(temp,  var) __weak               __typeof__(var) temp = var
 #define BACK_VAR(temp,  var) __unsafe_unretained  __typeof__(var) temp = var
 #define BLOCK_VAR(temp, var) __block              __typeof__(var) temp = var

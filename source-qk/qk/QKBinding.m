@@ -23,13 +23,15 @@
 #pragma mark - NSObject
 
 
-- (void)dissolve {
-  [_model removeObserver:self forKeyPath:_modelKeyPath];
-}
-
-
-- (void)dealloc {
-  [self dissolve];
+DEF_DEALLOC_DISSOLVE {
+  if (_model) {
+    errFL(@"dissolve %@", self);
+    [_model removeObserver:self forKeyPath:_modelKeyPath];
+    _model = nil;
+    _modelTransform = nil;
+    _view = nil;
+    _viewTransform = nil;
+  }
 }
 
 
@@ -58,6 +60,9 @@ DEF_INIT(Model:(id)model
          view:(id)view
          path:(NSString *)viewKeyPath
          transform:(BlockMap)viewTransform) {
+  
+  qk_assert(model && modelKeyPath, @"nil model/keyPath");
+  qk_assert(view && viewKeyPath, @"nil view/keyPath");
   
   _model = model;
   _modelKeyPath = modelKeyPath;
