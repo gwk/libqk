@@ -6,6 +6,8 @@
 #import "GLTexture.h"
 
 
+static GLint maxTextureSize = 0;
+
 @implementation GLTexture
 
 
@@ -21,6 +23,17 @@ DEF_INIT(Format:(GLenum)format      // e.g. GL_RGBA
          dataType:(GLenum)dataType   // e.g. GL_FLOAT
          bytes:(const void*)bytes) {
   
+  // check texture size
+  if (!maxTextureSize) {
+    glGetIntegerv(GL_MAX_TEXTURE_SIZE, &maxTextureSize); // should be at least 2048
+    errFL(@"GLTexture maxTextureSize: %d", maxTextureSize);
+  }
+  if (size._[0] > maxTextureSize || size._[1] > maxTextureSize) {
+    errFL(@"GLTexture received oversized texture: %@", V2I32Desc(size));
+    qk_assert(0, @"bad texture"); // for release pass through busted texture.
+    size._[0] = maxTextureSize;
+    size._[1] = maxTextureSize;
+  }
   INIT(super init);
   glGenTextures(1, &_handle); qkgl_assert();
   qk_check(_handle != -1, @"could not generate texture handle");
