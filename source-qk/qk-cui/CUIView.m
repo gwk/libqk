@@ -110,6 +110,21 @@ PROPERTY_STRUCT_FIELD(CGFloat, centerY, CenterY, CGPoint, self.center, y);
 #pragma mark debugging
 
 
+- (NSString*)descFrame {
+  return NSStringFromCGRect(self.frame);
+}
+
+
+- (NSString*)descBounds {
+  return NSStringFromCGRect(self.bounds);
+}
+
+
+- (NSString*)descCenter {
+  return NSStringFromCGPoint(self.center);
+}
+
+
 - (void)inspectRec:(NSString*)indent {
   errL(indent, self, (self.isHidden ? @"(HIDDEN)" : @""));
   NSString* indent1 = [indent stringByAppendingString:@"  "];

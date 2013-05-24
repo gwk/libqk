@@ -52,6 +52,12 @@ DEC_INIT(Frame:(CGRect)frame flex:(UIFlex)flex);
 DEC_INIT(FlexFrame:(CGRect)frame);
 DEC_INIT(FlexFrame);
 
+// debugging
+
+- (NSString*)descFrame;
+- (NSString*)descBounds;
+- (NSString*)descCenter;
+
 - (void)inspect;
 - (void)inspect:(NSString*)label;
 - (void)inspectParents;
