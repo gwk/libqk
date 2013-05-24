@@ -11,11 +11,17 @@
 @property (nonatomic, readonly) CGFloat a;
 
 + (id)clear;
++ (id)w;
++ (id)k;
 
 + (id)r:(CGFloat)r g:(CGFloat)g b:(CGFloat)b a:(CGFloat)a;
 + (id)r:(CGFloat)r g:(CGFloat)g b:(CGFloat)b;
 + (id)l:(CGFloat)l a:(CGFloat)a;
 + (id)l:(CGFloat)l;
+
++ (id)r;
++ (id)g;
++ (id)b;
 
 + (id)r:(CGFloat)r;
 + (id)g:(CGFloat)g;
