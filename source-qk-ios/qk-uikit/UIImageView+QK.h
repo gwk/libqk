@@ -2,10 +2,10 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
-#import "QKHighlightingView.h"
+#import "QKLitView.h"
 
 
-@interface UIImageView (QK) <QKHighlightingView>
+@interface UIImageView (QK) <QKLitView>
 
 + (id)withImage:(UIImage *)image;
 + (id)withImageNamed:(NSString *)name;

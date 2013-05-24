@@ -5,15 +5,14 @@
 #import "qk-macros.h"
 #import "UIColor+QK.h"
 #import "UIView+QK.h"
-#import "QKScrollView.h"
-#import "QKGLView.h"
+#import "GLView.h"
 #import "GLTestScene.h"
 #import "ScrollController.h"
 
 
 @interface ScrollController ()
 
-@property (nonatomic) QKGLView* glView;
+@property (nonatomic) GLView* glView;
 @property (nonatomic) id<GLScene> scene;
 
 @end
@@ -28,7 +27,7 @@ PROPERTY_SUBCLASS_ALIAS(QKScrollView, scrollView, ScrollView, self.view);
   self.view = [QKScrollView withFlexFrame];
   self.view.backgroundColor = [UIColor r:.5];
   _scene = [GLTestScene new];
-  _glView = [QKGLView withFrame:self.view.bounds format:QKPixFmtRGBAU8 scene:_scene];
+  _glView = [GLView withFrame:self.view.bounds format:QKPixFmtRGBAU8 scene:_scene];
   _glView.autoresizingMask = UIFlexSize;
   [self.view addSubview:_glView];
   [_glView setNeedsDisplay];

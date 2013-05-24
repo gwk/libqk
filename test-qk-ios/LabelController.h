@@ -2,9 +2,11 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
-@protocol QKLitView <NSObject>
+#import "QKViewController.h"
 
-@property (nonatomic) BOOL isLit;
+
+@interface LabelController : QKViewController
+
 
 @end
 

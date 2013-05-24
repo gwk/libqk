@@ -1,6 +1,6 @@
 #import "QKApplicationDelegate.h"
 #import "QKButton.h"
-#import "QKHighlightingView.h"
+#import "QKLitView.h"
 #import "QKImageView.h"
 #import "QKLabel.h"
 #import "QKScrollView.h"

@@ -4,6 +4,7 @@
 
 #import "qk-macros.h"
 #import "qk-block-types.h"
+#import "NSObject+QK.h"
 
 
 @interface QKBinding : NSObject

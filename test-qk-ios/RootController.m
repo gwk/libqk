@@ -6,6 +6,7 @@
 #import "QKDuo.h"
 #import "ScrollController.h"
 #import "RootController.h"
+#import "LabelController.h"
 
 
 @interface RootController ()
@@ -19,6 +20,7 @@
   NSArray* rows =
   @[
     [QKDuo a:@"Scroll View" b:[ScrollController class]],
+    [QKDuo a:@"Labels" b:[LabelController class]],
     ];
   
   INIT(super initWithRows:rows cellTypes:nil);

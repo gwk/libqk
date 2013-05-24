@@ -9,7 +9,14 @@
 
 @implementation UIImageView (QK)
 
-@dynamic highlighted;
+
+#pragma mark - QKLitView
+
+
+PROPERTY_ALIAS(BOOL, isLit, IsLit, self.highlighted);
+
+
+#pragma mark - QK
 
 
 + (id)withImage:(UIImage *)image {

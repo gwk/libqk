@@ -310,6 +310,17 @@ LAZY_STATIC(type, name, __VA_ARGS__); \
 return name; \
 }
 
+
+#define DEC_DEFAULT(type, Name) \
+- (type)default##Name; \
++ (void)setDefault##Name:(type)d;
+
+#define DEF_DEFAULT(type, Name) \
+static type default##Name; \
+- (type)default##Name { return default##Name; } \
++ (void)setDefault##Name:(type)d { default##Name = d; }
+
+
 #endif // __OBJC__
 
 

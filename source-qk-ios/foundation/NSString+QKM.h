@@ -2,6 +2,9 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#import "NSString+QK.h"
+
+
 @interface NSString (QKM)
 
 
@@ -10,6 +13,11 @@
             lineBreak:(UILineBreakMode)lineBreak
               lineMin:(int)lineMin;
 
+- (CGFloat)heightForFont:(UIFont*)font
+                       w:(CGFloat)w
+                       h:(CGFloat)h
+               lineBreak:(UILineBreakMode)lineBreak
+                 lineMin:(int)lineMin;
   
 @end
 

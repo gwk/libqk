@@ -37,7 +37,7 @@ DEF_DEALLOC_DISSOLVE {
   INIT(super initWithFrame:frame);
   _view = [UITextView withFlexFrame:self.bounds];
   _view.delegate = self;
-  _placeholderLabel = [QKLabel withFlexFrame:self.bounds];
+  _placeholderLabel = [QKLabel withFrame:self.bounds flex:UIFlexSize color:_view.backgroundColor];
   _placeholderLabel.pad = UIEdgeInsetsMake(8, 8, 8, 8); // UITextView has this fixed text inset.
   _placeholderLabel.verticalAlign = QKVerticalAlignTop;
   _placeholderLabel.numberOfLines = 0;
@@ -183,8 +183,8 @@ SUB_PROPERTY_ALIAS(BOOL, secureTextEntry, SecureTextEntry, _view);
 #pragma  mark - QKTextView
 
 
-PROPERTY_ALIAS(NSString*, placeholder, Placeholder, _placeholderLabel.text);
-PROPERTY_ALIAS(UIColor*, placeholderColor, PlaceholderColor, _placeholderLabel.textColor);
+PROPERTY_ALIAS(NSString*, placeholder, Placeholder, _placeholderLabel.placeholder);
+PROPERTY_ALIAS(UIColor*, placeholderColor, PlaceholderColor, _placeholderLabel.placeholderColor);
 
 
 - (void)bindToModel:(id)model

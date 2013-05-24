@@ -3,14 +3,14 @@
 
 
 #import "qk-macros.h"
-#import "QKHighlightingView.h"
+#import "QKLitView.h"
 #import "QKButton.h"
 
 
 @interface QKButton ()
 
-@property (nonatomic) NSMutableSet* highlightingSubviews;
 @property (nonatomic) BOOL isHighlightOffPending;
+@property (nonatomic) NSMutableSet* litSubviews;
 
 @end
 
@@ -22,7 +22,7 @@
 
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-  self.highlighted = YES;
+  self.isLit = YES;
   [self.layer setNeedsDisplay]; // lets us detect when the highlight has drawn, to ensure UI feedback.
   if (_blockTouchDown) {
     _blockTouchDown();
@@ -58,70 +58,62 @@
 #pragma mark - UIView
 
 
-- (void)setBackgroundColor:(UIColor *)backgroundColor {
-  [self setColor:backgroundColor];
-  [self setHighlightedColor:backgroundColor];
+- (id)initWithFrame:(CGRect)frame {
+  INIT(super initWithFrame:frame);
+  self.userInteractionEnabled = YES;
+  return self;
 }
 
 
 - (void)willRemoveSubview:(UIView *)subview {
-  [_highlightingSubviews removeObject:subview];
+  [_litSubviews removeObject:subview];
 }
+
+
+- (void)setHighlighted:(BOOL)highlighted {
+  [super setHighlighted:highlighted];
+  for (UIView<QKLitView>* v in _litSubviews) {
+    v.isLit = highlighted;
+  }
+}
+
+
+#pragma mark - QKLitView
+
+
+#pragma mark - QKLabel
 
 
 #pragma mark - QKButton
 
 
-- (void)setColor:(UIColor *)color {
-  _color = color;
-  if (!_highlighted) {
-    [super setBackgroundColor:color];
+- (void)addLitSubview:(UIView<QKLitView> *)view {
+  [super addSubview:view];
+  if (!_litSubviews) {
+    _litSubviews = [NSMutableSet new];
   }
+  [_litSubviews addObject:view];
+  view.isLit = _isLit;
 }
 
 
-- (void)setHighlightedColor:(UIColor *)highlightedColor {
-  _highlightedColor = highlightedColor;
-  if (_highlighted) {
-    [super setBackgroundColor:highlightedColor];
-  }
-}
-
-
-- (void)setHighlighted:(BOOL)highlighted {
-  _highlighted = highlighted;
-  [super setBackgroundColor:(highlighted ? _highlightedColor : _color)];
-  for (UIView<QKHighlightingView>* v in _highlightingSubviews) {
-    v.highlighted = highlighted;
-  }
-}
-
-
+// private helper ensures (mostly) that a highlight is visible even if the touch up happens before redisplay.
 - (void)setHighlightedOff {
   if (self.layer.needsDisplay) { // delay removing the highlight until it has become visible to the user.
-    _highlighted = NO; // set the bit but do not invoke visual update yet.
+    _isLit = NO; // set the bit but do not invoke visual update yet.
     [self performSelector:@selector(removeLingeringHighlight) withObject:nil afterDelay:0.1 inModes:@[NSRunLoopCommonModes]];
   }
   else {
-    self.highlighted = NO;
+    self.isLit = NO;
   }
 }
 
 
 - (void)removeLingeringHighlight {
-  if (!_highlighted) { // still appropriate
+  if (!_isLit) { // highlighting is still appropriate.
     // self.layer.needsDisplay seems to always be reset by this time, even if the highlight is not yet visible.
     // since this does not have to be perfect, just try to set it now and be done.
-    self.highlighted = NO;
-  }
-}
-
-
-- (void)addSubview:(UIView *)view highlights:(BOOL)highlights {
-  [super addSubview:view];
-  if (highlights) {
-    [CAST_PROTO(QKHighlightingView, view) setHighlighted:_highlighted];
-    [_highlightingSubviews addObject:view];
+    self.isLit = NO;
   }
 }
 
