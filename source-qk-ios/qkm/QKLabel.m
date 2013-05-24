@@ -46,7 +46,8 @@ DEF_DEALLOC_DISSOLVE {
   self.textColor = defaultTextColor;
   self.litTextColor = defaultLitTextColor;
   self.placeholderColor = defaultPlaceholderColor;
-  _pad = UIEdgeInsetsMake(8, 8, 8, 8); // default pad matches the hard-coded pad of UITextView. 
+  _pad = UIEdgeInsetsMake(8, 8, 8, 8); // default pad matches the hard-coded pad of UITextView.
+  _verticalAlign = QKVerticalAlignCenter; // matches UILabel; also fastest to calculate.
   return self;
 }
 
@@ -61,6 +62,17 @@ DEF_DEALLOC_DISSOLVE {
 - (void)setHighlighted:(BOOL)highlighted {
   [super setHighlighted:highlighted];
   [super setBackgroundColor:(highlighted ? self.litColor : self.color)];
+}
+
+
+- (CGSize)sizeThatFits:(CGSize)size { // size is current bounds size
+  if (_lineMin == 1 && self.lineMax == 1) { // single line; fit width
+    size.width = [self widthThatFitsMax:HUGE];
+  }
+  else {
+    size.height = [self heightThatFits];
+  }
+  return size;
 }
 
 
@@ -90,26 +102,16 @@ DEF_DEALLOC_DISSOLVE {
 }
 
 
-
-
 - (CGRect)textRectForBounds:(CGRect)bounds limitedToNumberOfLines:(NSInteger)numberOfLines {
   CGRect bp = UIEdgeInsetsInsetRect(bounds, _pad);
-  if (_verticalAlign == QKVerticalAlignTop) {
+  if (_verticalAlign == QKVerticalAlignCenter) {
     return bp;
   }
   NSString* text = LIVE_ELSE(self.text, _placeholder);
   CGRect r = bp;
   r.size.height = [text heightForFont:self.font w:bp.size.width h:bp.size.height lineBreak:self.lineBreakMode lineMin:self.lineMin];
-  switch (_verticalAlign) {
-    case QKVerticalAlignCenter:
-      r.origin.y = floorf(bp.origin.y + (bp.size.height - r.size.height) * .5);
-      break;
-    case QKVerticalAlignBottom:
+  if (_verticalAlign == QKVerticalAlignBottom) {
       r.origin.y = floorf(bp.origin.y + (bp.size.height - r.size.height));
-      break;
-    case QKVerticalAlignTop:
-    default:
-      qk_assert(0, @"unhandled vertical align");
   }
   return r;
 }
@@ -188,23 +190,38 @@ PROPERTY_ALIAS(UIColor*, litTextColor, LitTextColor, self.highlightedTextColor);
 }
 
 
-- (void)fitWidth:(CGFloat)maxWidth {
-  self.width = self.text.length
-  ? [self.text widthForFont:self.font w:self.width lineBreak:self.lineBreakMode] + self.padL + self.padR
+- (CGFloat)widthThatFitsMax:(CGFloat)maxWidth {
+  return self.text.length
+  ? [self.text widthForFont:self.font w:maxWidth lineBreak:self.lineBreakMode] + self.padL + self.padR
   : 0; // collapse pad to zero
 }
 
 
-- (void)fitHeight {
-  qk_assert(self.lineMax > 0, @"fitHeight requires positive numberOfLines; %@", self);
+- (void)fitWidth:(CGFloat)maxWidth {
+  self.width = [self widthThatFitsMax:maxWidth];
+}
+
+
+- (void)fitWidth {
+  [self fitWidth:HUGE];
+}
+
+
+- (CGFloat)heightThatFits {
+  qk_assert(self.lineMax > 0, @"fitHeight requires positive lineMax; %@", self);
   if (self.text.length || _lineMin > 0) {
     CGFloat maxTextHeight = self.numberOfLines * self.font.lineHeight;
     CGFloat textHeight = [self.text heightForFont:self.font w:self.width h:maxTextHeight lineBreak:self.lineBreakMode lineMin:_lineMin];
-    self.height = textHeight + self.padT + self.padB;
+    return textHeight + self.padT + self.padB;
   }
   else { // collapse pad to zero
-    self.height = 0;
+    return 0;
   }
+}
+
+
+- (void)fitHeight {
+  self.height = [self heightThatFits];
 }
 
 

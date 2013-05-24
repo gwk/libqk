@@ -39,7 +39,6 @@ DEF_DEALLOC_DISSOLVE {
   _view.delegate = self;
   _placeholderLabel = [QKLabel withFrame:self.bounds flex:UIFlexSize color:_view.backgroundColor];
   _placeholderLabel.pad = UIEdgeInsetsMake(8, 8, 8, 8); // UITextView has this fixed text inset.
-  _placeholderLabel.verticalAlign = QKVerticalAlignTop;
   _placeholderLabel.numberOfLines = 0;
   _placeholderLabel.font = _view.font;
   _placeholderLabel.textColor = [UIColor l:.5];
@@ -66,6 +65,7 @@ DEF_DEALLOC_DISSOLVE {
   BOOL b = APPLY_BLOCK_ELSE(_blockShouldEndEditing, YES, self);
   if (b) {
     _placeholderLabel.hidden = BIT(_view.hasText);
+    [_binding updateValue:self.text];
   }
   return b;
 }
