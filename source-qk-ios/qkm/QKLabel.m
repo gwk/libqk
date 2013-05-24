@@ -46,7 +46,6 @@ DEF_DEALLOC_DISSOLVE {
   self.textColor = defaultTextColor;
   self.litTextColor = defaultLitTextColor;
   self.placeholderColor = defaultPlaceholderColor;
-  _verticalAlign = QKVerticalAlignCenter; // imitate UILabel.
   _pad = UIEdgeInsetsMake(8, 8, 8, 8); // default pad matches the hard-coded pad of UITextView. 
   return self;
 }
@@ -68,33 +67,49 @@ DEF_DEALLOC_DISSOLVE {
 #pragma mark - UILabel
 
 
-// NOTE: this implementation should be kept in sync with that of UILabel.
-+ (id)withFont:(UIFont*)font lines:(int)lines x:(CGFloat)x y:(CGFloat)y w:(CGFloat)w h:(CGFloat)h flex:(UIFlex)flex {
++ (id)withFont:(UIFont*)font x:(CGFloat)x y:(CGFloat)y w:(CGFloat)w h:(CGFloat)h min:(int)lineMin max:(int)lineMax flex:(UIFlex)flex {
+  qk_assert(lineMin >= 0 && lineMax > 0 && lineMin <= lineMax, @"invalid line min/max: %d, %d", lineMin, lineMax);
   if (h <= 0) {
-    qk_assert(lines > 0, @"lines and height are both zero");
-    h = font.lineHeight * lines + 16; // like UILabel, but add the default pad.
+    h = font.lineHeight * lineMax + 16; // add vertical pad.
   }
-  UILabel* l = [self withFrame:CGRectMake(x, y, w, h) flex:flex];
+  QKLabel* l = [self withFrame:CGRectMake(x, y, w, h) flex:flex];
   l.font = font;
-  l.numberOfLines = lines;
+  l.lineMin = lineMin;
+  l.lineMax = lineMax;
   return l;
 }
 
 
++ (id)withFontSize:(CGFloat)fontSize x:(CGFloat)x y:(CGFloat)y w:(CGFloat)w h:(CGFloat)h min:(int)lineMin max:(int)lineMax flex:(UIFlex)flex {
+  return [self withFont:[UIFont systemFontOfSize:fontSize] x:x y:y w:w h:h min:lineMin max:lineMax flex:flex];
+}
+
+
++ (id)withFontBoldSize:(CGFloat)fontSize x:(CGFloat)x y:(CGFloat)y w:(CGFloat)w h:(CGFloat)h min:(int)lineMin max:(int)lineMax flex:(UIFlex)flex {
+  return [self withFont:[UIFont boldSystemFontOfSize:fontSize] x:x y:y w:w h:h min:lineMin max:lineMax flex:flex];
+}
+
+
+
+
 - (CGRect)textRectForBounds:(CGRect)bounds limitedToNumberOfLines:(NSInteger)numberOfLines {
   CGRect bp = UIEdgeInsetsInsetRect(bounds, _pad);
+  if (_verticalAlign == QKVerticalAlignTop) {
+    return bp;
+  }
   NSString* text = LIVE_ELSE(self.text, _placeholder);
   CGRect r = bp;
-  r.size.height = [text heightForFont:self.font w:bp.size.width h:bp.size.height lineBreak:self.lineBreakMode lineMin:numberOfLines];
+  r.size.height = [text heightForFont:self.font w:bp.size.width h:bp.size.height lineBreak:self.lineBreakMode lineMin:self.lineMin];
   switch (_verticalAlign) {
-    case QKVerticalAlignTop:
-      break;
     case QKVerticalAlignCenter:
       r.origin.y = floorf(bp.origin.y + (bp.size.height - r.size.height) * .5);
       break;
     case QKVerticalAlignBottom:
       r.origin.y = floorf(bp.origin.y + (bp.size.height - r.size.height));
       break;
+    case QKVerticalAlignTop:
+    default:
+      qk_assert(0, @"unhandled vertical align");
   }
   return r;
 }
@@ -130,6 +145,14 @@ DEF_DEFAULT(UIColor*, LitTextColor);
 DEF_DEFAULT(UIColor*, PlaceholderColor);
 
 
+PROPERTY_ALIAS(int, lineMax, LineMax, self.numberOfLines);
+
+PROPERTY_STRUCT_FIELD(CGFloat, padT, PadT, UIEdgeInsets, self.pad, top);
+PROPERTY_STRUCT_FIELD(CGFloat, padL, PadL, UIEdgeInsets, self.pad, left);
+PROPERTY_STRUCT_FIELD(CGFloat, padB, PadB, UIEdgeInsets, self.pad, bottom);
+PROPERTY_STRUCT_FIELD(CGFloat, padR, PadR, UIEdgeInsets, self.pad, right);
+
+
 + (void)setDefaultPlaceHolderColor:(UIColor*)color {
   defaultPlaceholderColor = color;
 }
@@ -162,6 +185,26 @@ PROPERTY_ALIAS(UIColor*, litTextColor, LitTextColor, self.highlightedTextColor);
 
 - (void)bindToModel:(id)model path:(NSString*)modelKeyPath transform:(BlockMap)viewTransform {
   _binding = [QKBinding withModel:model path:modelKeyPath transform:nil view:self path:@"text" transform:viewTransform];
+}
+
+
+- (void)fitWidth:(CGFloat)maxWidth {
+  self.width = self.text.length
+  ? [self.text widthForFont:self.font w:self.width lineBreak:self.lineBreakMode] + self.padL + self.padR
+  : 0; // collapse pad to zero
+}
+
+
+- (void)fitHeight {
+  qk_assert(self.lineMax > 0, @"fitHeight requires positive numberOfLines; %@", self);
+  if (self.text.length || _lineMin > 0) {
+    CGFloat maxTextHeight = self.numberOfLines * self.font.lineHeight;
+    CGFloat textHeight = [self.text heightForFont:self.font w:self.width h:maxTextHeight lineBreak:self.lineBreakMode lineMin:_lineMin];
+    self.height = textHeight + self.padT + self.padB;
+  }
+  else { // collapse pad to zero
+    self.height = 0;
+  }
 }
 
 

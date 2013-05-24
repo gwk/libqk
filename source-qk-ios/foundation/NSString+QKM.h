@@ -8,16 +8,19 @@
 @interface NSString (QKM)
 
 
-- (CGSize)sizeForFont:(UIFont*)font
-                 size:(CGSize)size
-            lineBreak:(UILineBreakMode)lineBreak
-              lineMin:(int)lineMin;
+- (CGFloat)widthForFont:(UIFont*)font w:(CGFloat)w lineBreak:(NSLineBreakMode)lineBreak;
 
 - (CGFloat)heightForFont:(UIFont*)font
                        w:(CGFloat)w
                        h:(CGFloat)h
                lineBreak:(UILineBreakMode)lineBreak
                  lineMin:(int)lineMin;
-  
+
+- (CGFloat)heightForFont:(UIFont*)font
+                       w:(CGFloat)w
+               lineBreak:(UILineBreakMode)lineBreak
+                 lineMin:(int)lineMin
+                 lineMax:(int)lineMax;
+
 @end
 
