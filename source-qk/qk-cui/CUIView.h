@@ -27,6 +27,10 @@ extern const UIFlex UIFlexHorizontal;
 extern const UIFlex UIFlexVertical;
 extern const UIFlex UIFlexPosition;
 
+extern const UIFlex UIFlexWidthLeft;
+extern const UIFlex UIFlexWidthRight;
+
+
 @interface CUIView (CUI)
 
 
@@ -48,7 +52,9 @@ DEC_INIT(Frame:(CGRect)frame flex:(UIFlex)flex);
 DEC_INIT(FlexFrame:(CGRect)frame);
 DEC_INIT(FlexFrame);
 
+- (void)inspect;
 - (void)inspect:(NSString*)label;
+- (void)inspectParents;
 - (void)inspectParents:(NSString*)label;
 
 

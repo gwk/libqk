@@ -4,8 +4,9 @@
 
 @interface CALayer (QK)
 
-- (void)inspectRec:(NSString*)indent;
+- (void)inspect;
 - (void)inspect:(NSString*)label;
+- (void)inspectParents;
 - (void)inspectParents:(NSString*)label;
 
 @end

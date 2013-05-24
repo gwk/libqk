@@ -30,6 +30,8 @@ const UIFlex UIFlexSize       = UIFlexWidth | UIFlexHeight;
 const UIFlex UIFlexHorizontal = UIFlexLeft | UIFlexRight;
 const UIFlex UIFlexVertical   = UIFlexTop | UIFlexBottom;
 const UIFlex UIFlexPosition   = UIFlexHorizontal | UIFlexVertical;
+const UIFlex UIFlexWidthLeft    = UIFlexWidth | UIFlexLeft;
+const UIFlex UIFlexWidthRight   = UIFlexWidth | UIFlexRight;
 
 
 @implementation CUIView (CUI)
@@ -75,7 +77,7 @@ PROPERTY_STRUCT_FIELD(CGFloat, centerY, CenterY, CGPoint, self.center, y);
 
 - (void)setRight:(CGFloat)right {
   CGRect f = self.frame;
-  f.origin.x = f.origin.x + right - f.size.width;
+  f.origin.x = right - f.size.width;
   self.frame = f;
 }
 
@@ -88,7 +90,7 @@ PROPERTY_STRUCT_FIELD(CGFloat, centerY, CenterY, CGPoint, self.center, y);
 
 - (void)setBottom:(CGFloat)bottom {
   CGRect f = self.frame;
-  f.origin.y = f.origin.y + bottom - f.size.height;
+  f.origin.y = bottom - f.size.height;
   self.frame = f;
 }
 
@@ -109,9 +111,7 @@ PROPERTY_STRUCT_FIELD(CGFloat, centerY, CenterY, CGPoint, self.center, y);
 
 
 - (void)inspectRec:(NSString*)indent {
-  
   errL(indent, self, (self.isHidden ? @"(HIDDEN)" : @""));
-  
   NSString* indent1 = [indent stringByAppendingString:@"  "];
   for (CUIView* v  in self.subviews) {
     [v inspectRec:indent1];
@@ -119,10 +119,25 @@ PROPERTY_STRUCT_FIELD(CGFloat, centerY, CenterY, CGPoint, self.center, y);
 }
 
 
+- (void)inspect {
+  [self inspectRec:@""];
+  errL();
+}
+
+
 - (void)inspect:(NSString*)label {
   errL();
   if (label) errL(label, @":");
-  [self inspectRec:@""];
+  [self inspect];
+}
+
+
+- (void)inspectParents {
+  CUIView* v = self;
+  while (v) {
+    errL(v, (self.isHidden ? @"(HIDDEN)" : @""));
+    v = v.superview;
+  }
   errL();
 }
 
@@ -130,12 +145,7 @@ PROPERTY_STRUCT_FIELD(CGFloat, centerY, CenterY, CGPoint, self.center, y);
 - (void)inspectParents:(NSString*)label {
   errL();
   if (label) errL(label, @":");
-  CUIView* v = self;
-  while (v) {
-    errL(v, (self.isHidden ? @"(HIDDEN)" : @""));
-    v = v.superview;
-  }
-  errL();
+  [self inspectParents];
 }
 
 
