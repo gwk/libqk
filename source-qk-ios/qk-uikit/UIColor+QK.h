@@ -20,6 +20,9 @@
 + (id)r:(CGFloat)r;
 + (id)g:(CGFloat)g;
 + (id)b:(CGFloat)b;
++ (id)r:(CGFloat)r a:(CGFloat)a;
++ (id)g:(CGFloat)g a:(CGFloat)a;
++ (id)b:(CGFloat)b a:(CGFloat)a;
 
 @end
 

@@ -14,7 +14,8 @@
 
 @property (nonatomic) BOOL isLit; // QKLitView; alias for highlighted.
 
-@property (nonatomic) int lineMin; // minimum number of lines; used for size calculations. defaults to 0 (collapse).
+@property (nonatomic) CGFloat widthMax; // if > 0 then sizeToFit fits the label to a single line; otherwise to multiple lines.
+@property (nonatomic) int lineMin; // minimum number of lines; used for size calculations. defaults to 0 (collapse pad).
 @property (nonatomic) int lineMax; // alias for numberOfLines;
 
 @property (nonatomic) UIEdgeInsets pad;
@@ -43,6 +44,10 @@ DEC_DEFAULT(UIColor*, PlaceholderColor);
 + (id)withFontBoldSize:(CGFloat)fontSize x:(CGFloat)x y:(CGFloat)y w:(CGFloat)w h:(CGFloat)h min:(int)lineMin max:(int)lineMax flex:(UIFlex)flex;
 
 - (void)bindToModel:(id)model path:(NSString*)modelKeyPath transform:(BlockMap)viewTransform; // binding for text property.
+
+- (CGFloat)widthThatFits;
+- (CGFloat)heightThatFits;
+- (void)fitWidth;
 - (void)fitHeight;
 
 @end

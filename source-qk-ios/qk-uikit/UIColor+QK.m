@@ -33,19 +33,13 @@
 }
 
 
-+ (id)r:(CGFloat)r {
-  return [self colorWithRed:r green:0 blue:0 alpha:1];
-}
+#define PRIMARY(c, r, g, b) \
++ (id)c:(CGFloat)c              { return [self colorWithRed:r green:g blue:b alpha:1]; } \
++ (id)c:(CGFloat)c a:(CGFloat)a { return [self colorWithRed:r green:g blue:b alpha:a]; }
 
-
-+ (id)g:(CGFloat)g {
-  return [self colorWithRed:0 green:g blue:0 alpha:1];
-}
-
-
-+ (id)b:(CGFloat)b {
-  return [self colorWithRed:0 green:0 blue:b alpha:1];
-}
+PRIMARY(r, 1, 0, 0);
+PRIMARY(g, 0, 1, 0);
+PRIMARY(b, 0, 0, 1);
 
 
 #define GET_COLOR(c) \

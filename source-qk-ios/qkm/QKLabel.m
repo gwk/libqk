@@ -52,10 +52,8 @@ DEF_DEALLOC_DISSOLVE {
 }
 
 
-// set both for consistency; this would only be called by code unaware of qk. one or the other calls super, depending on isLit.
 - (void)setBackgroundColor:(UIColor *)backgroundColor {
-  self.color = backgroundColor;
-  self.litColor = backgroundColor;
+  self.color = backgroundColor; // calls super setBackgroundColor if !isLit
 }
 
 
@@ -66,8 +64,8 @@ DEF_DEALLOC_DISSOLVE {
 
 
 - (CGSize)sizeThatFits:(CGSize)size { // size is current bounds size
-  if (_lineMin == 1 && self.lineMax == 1) { // single line; fit width
-    size.width = [self widthThatFitsMax:HUGE];
+  if (_widthMax > 0) {
+    size.width = [self widthThatFits];
   }
   else {
     size.height = [self heightThatFits];
@@ -190,25 +188,21 @@ PROPERTY_ALIAS(UIColor*, litTextColor, LitTextColor, self.highlightedTextColor);
 }
 
 
-- (CGFloat)widthThatFitsMax:(CGFloat)maxWidth {
+- (CGFloat)widthThatFits {
   return self.text.length
-  ? [self.text widthForFont:self.font w:maxWidth lineBreak:self.lineBreakMode] + self.padL + self.padR
+  ? [self.text widthForFont:self.font w:_widthMax lineBreak:self.lineBreakMode] + self.padL + self.padR
   : 0; // collapse pad to zero
 }
 
 
-- (void)fitWidth:(CGFloat)maxWidth {
-  self.width = [self widthThatFitsMax:maxWidth];
-}
-
-
 - (void)fitWidth {
-  [self fitWidth:HUGE];
+  qk_assert(_widthMax > 0, @"fitWidth requires positive widthMax: %@", self);
+  self.width = [self widthThatFits];
 }
 
 
 - (CGFloat)heightThatFits {
-  qk_assert(self.lineMax > 0, @"fitHeight requires positive lineMax; %@", self);
+  qk_assert(self.lineMax > 0, @"fitHeight requires positive lineMax: %@", self);
   if (self.text.length || _lineMin > 0) {
     CGFloat maxTextHeight = self.numberOfLines * self.font.lineHeight;
     CGFloat textHeight = [self.text heightForFont:self.font w:self.width h:maxTextHeight lineBreak:self.lineBreakMode lineMin:_lineMin];
