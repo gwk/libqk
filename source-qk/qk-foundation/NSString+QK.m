@@ -7,7 +7,7 @@
 #import "NSString+QK.h"
 
 
-@implementation NSString (Oro)
+@implementation NSString (QK)
 
 
 + (id)withFormat:(NSString *)format, ... NS_FORMAT_FUNCTION(1, 2) {

@@ -6,15 +6,15 @@
 
 
 // return the string if it is not nil, otherwise return the blank string
-#define STRING_OR_BLANK(str) \
+#define STRING_OR_EMPTY(str) \
 ({ NSString* _str = (str); _str ? _str : @""; })
 
 // return the string preceded by a space if not nil, otherwise the blank string
-#define STRING_WITH_SPACE_PREFIX_OR_BLANK(str) \
+#define STRING_WITH_SPACE_PREFIX_OR_EMPTY(str) \
 ({ NSString* _str = (str); _str ? [@" " stringByAppendingString:_str] : @""; })
 
 
-@interface NSString (Oro)
+@interface NSString (QK)
 
 + (id)withFormat:(NSString *)format, ... NS_FORMAT_FUNCTION(1, 2);
 
