@@ -7,7 +7,7 @@
 #import "NSArray+QK.h"
 
 
-@implementation NSArray (Oro)
+@implementation NSArray (QK)
 
 
 - (id)el:(Int)index {
