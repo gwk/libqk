@@ -18,7 +18,7 @@ typedef id BlockStructCopy;
 typedef BOOL (^BlockStructFilterCopyActual)(void*, const void*); // to, from
 typedef id BlockStructFilterCopy;
 
-typedef BOOL (^BlockStructMapIntActual)(void*, Int); // to, index
+typedef void (^BlockStructMapIntActual)(void*, Int); // to, index
 typedef id BlockStructMapInt;
 
 

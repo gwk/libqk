@@ -79,6 +79,9 @@ return (TV) { (v < r._[0] ? v : r._[0]), (v > r._[1] ? v : r._[1]) }; \
 
 #define _TYPEDEF_V3_EXP(TE, TV, fmt) \
 _TYPEDEF_V(TE, TV, 3) \
+\
+static const TV TV##Unit = (TV) {{ 1, 1, 1 }}; \
+\
 static inline TV TV##Make(TE x, TE y, TE z) { return (TV) {{ x, y, z }}; } \
 \
 static inline NSString* TV##Desc(TV v) { \
@@ -88,6 +91,9 @@ return [NSString stringWithFormat:@"(" fmt @" " fmt @" " fmt @")", v._[0], v._[1
 
 #define _TYPEDEF_V4_EXP(TE, TV, fmt) \
 _TYPEDEF_V(TE, TV, 4) \
+\
+static const TV TV##Unit = (TV) {{ 1, 1, 1, 1 }}; \
+\
 static inline TV TV##Make(TE x, TE y, TE z, TE w) { return (TV) {{ x, y, z, w }}; } \
 \
 static inline NSString* TV##Desc(TV v) { \
