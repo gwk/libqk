@@ -161,7 +161,7 @@ SET_UNIFORM(I32, glUniform1iv);
   if (loc.intValue == -1) { // known missing name
     return NO;
   }
-  glVertexAttribPointer(loc.intValue, size, type, (normalize ? GL_TRUE : GL_FALSE), stride, pointer); qkgl_assert();
+  glVertexAttribPointer(loc.intValue, size, type, normalize, stride, pointer); qkgl_assert();
   return YES;
 }
 
