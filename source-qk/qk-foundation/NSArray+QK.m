@@ -103,6 +103,18 @@ EL(9);
 }
 
 
+- (NSMutableArray*)filter:(BlockFilter)block {
+  NSMutableArray* a = [NSMutableArray arrayWithCapacity:self.count];
+  for (id el in self) {
+    BOOL res = block(el);
+    if (res) {
+      [a addObject:el];
+    }
+  }
+  return a;
+}
+
+
 - (NSMutableArray*)filterMap:(BlockMap)block {
   NSMutableArray* a = [NSMutableArray arrayWithCapacity:self.count];
   for (id el in self) {

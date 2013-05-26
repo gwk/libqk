@@ -39,6 +39,7 @@ EL(9);
 - (NSMutableArray*)mapIndexed:(BlockMapObjInt)block;
 - (NSMutableDictionary*)mapToDict:(BlockMapToPair)block;
 
+- (NSMutableArray*)filter:(BlockFilter)block;
 - (NSMutableArray*)filterMap:(BlockMap)block;
 - (NSMutableDictionary*)filterMapToDict:(BlockMapToPair)block;
 
