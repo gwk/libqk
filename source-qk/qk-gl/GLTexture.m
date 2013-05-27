@@ -28,11 +28,11 @@ DEF_INIT(Format:(GLenum)format      // e.g. GL_RGBA
     glGetIntegerv(GL_MAX_TEXTURE_SIZE, &maxTextureSize); // should be at least 2048
     errFL(@"GLTexture maxTextureSize: %d", maxTextureSize);
   }
-  if (size._[0] > maxTextureSize || size._[1] > maxTextureSize) {
+  if (size.v[0] > maxTextureSize || size.v[1] > maxTextureSize) {
     errFL(@"GLTexture received oversized texture: %@", V2I32Desc(size));
     qk_assert(0, @"bad texture"); // for release pass through busted texture.
-    size._[0] = maxTextureSize;
-    size._[1] = maxTextureSize;
+    size.v[0] = maxTextureSize;
+    size.v[1] = maxTextureSize;
   }
   INIT(super init);
   glGenTextures(1, &_handle); qkgl_assert();
@@ -41,7 +41,7 @@ DEF_INIT(Format:(GLenum)format      // e.g. GL_RGBA
   _format = format;
   _size = size;
   glBindTexture(_target, _handle); qkgl_assert();
-  glTexImage2D(_target, 0, _format, _size._[0], _size._[1], 0, dataFormat, dataType, bytes); qkgl_assert();
+  glTexImage2D(_target, 0, _format, _size.v[0], _size.v[1], 0, dataFormat, dataType, bytes); qkgl_assert();
   // set default wrap and filter for convenience.
   // forgetting to set the filter appears to result in undefined behavior? (black samples).
   [self setWrap:GL_CLAMP_TO_EDGE]; // friendlier for debugging, as it allows vertices to range from 0 to 1.
@@ -140,12 +140,12 @@ DEF_INIT(Format:(GLenum)format image:(QKImage*)image) {
 
 
 - (GLint) width {
-  return _size._[0];
+  return _size.v[0];
 }
 
 
 - (GLint) height {
-  return _size._[1];
+  return _size.v[1];
 }
 
 

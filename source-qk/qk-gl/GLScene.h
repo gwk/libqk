@@ -2,14 +2,13 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
-#import "CCAGLLayer.h"
-#import "GLCanvasInfo.h"
+#import "GLLayer.h"
 
 
 @protocol GLScene <NSObject>
 
-- (void)setupGLLayer:(CCAGLLayer*)layer time:(NSTimeInterval)time info:(GLCanvasInfo*)info;
-- (void)drawInGLLayer:(CCAGLLayer*)layer time:(NSTimeInterval)time info:(GLCanvasInfo*)info;
+- (void)setupGLLayer:(GLLayer*)layer time:(NSTimeInterval)time;
+- (void)drawInGLLayer:(GLLayer*)layer time:(NSTimeInterval)time;
 
 @end
 

@@ -13,6 +13,37 @@
 @implementation GLView
 
 
+#pragma mark - UIResponder
+
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+  if ([self.eventHandler touchesBegan:event view:self]) {
+    [self.glLayer setNeedsDisplay];
+  }
+}
+
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+  if ([self.eventHandler touchesMoved:event view:self]) {
+    [self.glLayer setNeedsDisplay];
+  }
+}
+
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+  if ([self.eventHandler touchesEnded:event view:self]) {
+    [self.glLayer setNeedsDisplay];
+  }
+}
+
+
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
+  if ([self.eventHandler touchesCancelled:event view:self]) {
+    [self.glLayer setNeedsDisplay];
+  }
+}
+
+
 #pragma mark - UIView
 
 
@@ -31,11 +62,6 @@
 
 
 PROPERTY_SUBCLASS_ALIAS_RO(GLLayer, glLayer, self.layer);
-
-
-- (GLCanvasInfo*)canvasInfo {
-  return self.glLayer.canvasInfo;
-}
 
 
 - (id)initWithFrame:(CGRect)frame {

@@ -15,6 +15,7 @@
 #import "qk-gl-util.h"
 #import "QKMutableStructArray.h"
 #import "QKPixFmt.h"
+#import "GLView.h"
 #import "GLLayer.h"
 
 
@@ -123,6 +124,11 @@ Utf8 frameBufferStatusDesc(GLenum status) {
 #pragma mark - GLLayer
 
 
+- (GLEventHandler*)eventHandler {
+  return CAST(GLView, self.delegate).eventHandler;
+}
+
+
 - (BOOL)setupWithFormat:(QKPixFmt)format scene:(id<GLScene>)scene {
   _context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
   if (!_context || ![EAGLContext setCurrentContext:_context]) { // in case host does not support ES2
@@ -132,7 +138,6 @@ Utf8 frameBufferStatusDesc(GLenum status) {
   _format = format;
   _scene = scene;
   _needsSetup = YES;
-  _canvasInfo = [GLCanvasInfo new];
   _maxContentsScale = 2;
   //self.opaque = YES;
   // TODO: handle format
@@ -186,8 +191,8 @@ Utf8 frameBufferStatusDesc(GLenum status) {
   }
   glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, _renderBuffer);
   // set drawableSize
-  glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_WIDTH, (&_drawableSize._[0]));
-  glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, (&_drawableSize._[1]));
+  glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_WIDTH, (&_drawableSize.v[0]));
+  glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, (&_drawableSize.v[1]));
   // depth
   int depth = QKPixFmtDepthSize(_format);
   if (depth > 0) {
@@ -203,7 +208,7 @@ Utf8 frameBufferStatusDesc(GLenum status) {
     }
     glGenRenderbuffers(1, &_depthBuffer);
     glBindRenderbuffer(GL_RENDERBUFFER, _depthBuffer);
-    glRenderbufferStorage(GL_RENDERBUFFER, depth_enum, _drawableSize._[0], _drawableSize._[1]);
+    glRenderbufferStorage(GL_RENDERBUFFER, depth_enum, _drawableSize.v[0], _drawableSize.v[1]);
     glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _depthBuffer);
   }
   // multisampling
@@ -272,40 +277,20 @@ Utf8 frameBufferStatusDesc(GLenum status) {
     [self enableContext];
   }
   glBindFramebuffer(GL_FRAMEBUFFER, _frameBuffer);
-  glViewport(0, 0, _drawableSize._[0], _drawableSize._[1]);
+  glViewport(0, 0, _drawableSize.v[0], _drawableSize.v[1]);
   qkgl_assert();
   NSTimeInterval time = _displayLink.timestamp; // TODO: this is the timestamp of the last displayed frame
   // for frames after the first, duration is defined, and we should add:
   // + _displayLink.frameInterval + _displayLink.duration; // TODO: verify that this is correct.
   if (_needsSetup) {
-    [_scene setupGLLayer:self time:time info:_canvasInfo]; qkgl_assert();
+    [_scene setupGLLayer:self time:time]; qkgl_assert();
     _needsSetup = NO;
   }
-  [_scene drawInGLLayer:self time:time info:_canvasInfo]; qkgl_assert();
+  [_scene drawInGLLayer:self time:time]; qkgl_assert();
   glBindRenderbuffer(GL_RENDERBUFFER, _renderBuffer); qkgl_assert();
   BOOL ok = [_context presentRenderbuffer:GL_RENDERBUFFER];
   qk_assert(ok, @"presentRenderbuffer failed");
   qkgl_assert();
-}
-
-
-- (void)trackScrollBounds:(CGRect)scrollBounds
-              contentSize:(CGSize)contentSize
-                   insets:(UIEdgeInsets)insets
-                zoomScale:(CGFloat)zoomScale {
-  
-  _canvasInfo.size = contentSize;
-  _canvasInfo.visibleRect = CGRectMake(scrollBounds.origin.x / contentSize.width,
-                                       scrollBounds.origin.y / contentSize.height,
-                                       scrollBounds.size.width / contentSize.width,
-                                       scrollBounds.size.height / contentSize.height);
-#if !QK_OPTIMIZE
-  if (!UIEdgeInsetsEqualToEdgeInsets(insets, UIEdgeInsetsZero)) {
-    errFL(@"WARNING: GLLayer does not currently consider edge insets when calculating visibleRect");
-  }
-#endif
-  _canvasInfo.zoomScale = zoomScale;
-  [self setNeedsDisplay];
 }
 
 
@@ -433,22 +418,30 @@ void describeAllPFA(CGLPixelFormatObj format, GLint virtualScreen) {
   
   ASSERT_CONFORMS(self.scene, GLScene);
   CGLSetCurrentContext(ctx);
-  if (!_canvasInfo) {
-    _canvasInfo = [GLCanvasInfo new];
-  }
-  _canvasInfo.size = self.bounds.size;
-  _canvasInfo.visibleRect = CGRectMake(0, 0, 1, 1);
   if (_needsSetup) {
-    [self.scene setupGLLayer:self time:layerTime info:_canvasInfo];
+    [self.scene setupGLLayer:self time:layerTime];
     _needsSetup = NO;
   }
-  [self.scene drawInGLLayer:self time:layerTime info:_canvasInfo];
+  [self.scene drawInGLLayer:self time:layerTime];
   CGLSetCurrentContext(NULL);
   // according to the header comments, we should call super to flush correctly.
   [super drawInCGLContext:ctx pixelFormat:pixelFormat forLayerTime:layerTime displayTime:displayTime]; // calls flush
 }
 
-#endif // TARGET_OS_IPHONE
+#endif // !TARGET_OS_IPHONE
+
+
+// temporary
+- (void)trackScrollBounds:(CGRect)scrollBounds contentSize:(CGSize)contentSize zoomScale:(CGFloat)zoomScale {
+  //errFL(@"sb: %@; cs: %@; zs: %f", NSStringFromCGRect(scrollBounds), NSStringFromCGSize(contentSize), zoomScale);
+  _contentSize = contentSize;
+  _visibleRect = CGRectMake(scrollBounds.origin.x / contentSize.width,
+                            scrollBounds.origin.y / contentSize.height,
+                            scrollBounds.size.width / contentSize.width,
+                            scrollBounds.size.height / contentSize.height);
+  _zoomScale = zoomScale;
+  [self setNeedsDisplay];
+}
 
 
 @end

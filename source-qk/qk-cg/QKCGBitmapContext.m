@@ -17,11 +17,11 @@
 - (id)initFormat:(QKPixFmt)format size:(V2I32)size {
   int bpc = QKPixFmtBitsPerChannel(format);
   int channels = QKPixFmtChannels(format);
-  int bpr = (bpc / 8) * channels * size._[0]; // bytes per row
+  int bpr = (bpc / 8) * channels * size.v[0]; // bytes per row
   
   INIT(super initWithRetainedRef:
        CGBitmapContextCreate(NULL, // manage data internally
-                             size._[0], size._[1],
+                             size.v[0], size.v[1],
                              bpc, bpr,
                              (CGColorSpaceRef)[[QKCGColorSpace withFormat:format] ref],
                              QKPixFmtBitmapInfo(format)));
@@ -48,7 +48,7 @@
 
 
 - (Int)area {
-  return _size._[0] * _size._[1];
+  return _size.v[0] * _size.v[1];
 }
 
 
@@ -76,9 +76,9 @@
 - (void)fillWithImage:(UIImage*)image flipY:(BOOL)flipY {
   if (flipY) {
     CGContextScaleCTM(self.ref, 1, -1);
-    CGContextTranslateCTM(self.ref, 0, -_size._[1]);
+    CGContextTranslateCTM(self.ref, 0, -_size.v[1]);
   }
-  CGContextDrawImage(self.ref, CGRectMake(0, 0, _size._[0], _size._[1]), image.CGImage);
+  CGContextDrawImage(self.ref, CGRectMake(0, 0, _size.v[0], _size.v[1]), image.CGImage);
 }
 
 
@@ -92,7 +92,7 @@
     case QKPixFmtRGBXU8:
     case QKPixFmtRGBAU8: {
       V4U8* from = self.mutableBytes;
-      V4U8* end = from + _size._[0] * _size._[1];
+      V4U8* end = from + _size.v[0] * _size.v[1];
       V3U8* to = (V3U8*)from;
       while (from < end) {
         *to = *((V3U8*)from);

@@ -66,8 +66,8 @@
 }
 
 
-PROPERTY_STRUCT_FIELD(I32, width, Width, V2I32, _size, _[0]);
-PROPERTY_STRUCT_FIELD(I32, height, Height, V2I32, _size, _[1]);
+PROPERTY_STRUCT_FIELD(I32, width, Width, V2I32, _size, v[0]);
+PROPERTY_STRUCT_FIELD(I32, height, Height, V2I32, _size, v[1]);
 
 
 - (GLenum)glDataFormat {
@@ -143,7 +143,7 @@ LAZY_CLASS_METHOD(NSDictionary*, jnbValEncoders, @{
 
 
 - (void)validate {
-  qk_check(_size._[0] >= 0 && _size._[1] >= 0 && _size._[0] * _size._[1] * QKPixFmtBytesPerPixel(_format) == _data.length,
+  qk_check(_size.v[0] >= 0 && _size.v[1] >= 0 && _size.v[0] * _size.v[1] * QKPixFmtBytesPerPixel(_format) == _data.length,
         @"bad args; %@; data.length: %ld", self, _data.length);
 }
 

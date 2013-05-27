@@ -43,7 +43,7 @@
 		EC74E087174F92B500391A6D /* NSOutputStream+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC74DFFA174F92B500391A6D /* NSOutputStream+QK.m */; };
 		EC74E088174F92B500391A6D /* NSString+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC74DFFC174F92B500391A6D /* NSString+QK.m */; };
 		EC74E089174F92B500391A6D /* NSTimer+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC74DFFE174F92B500391A6D /* NSTimer+QK.m */; };
-		EC74E08A174F92B500391A6D /* GLCanvasInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = EC74E002174F92B500391A6D /* GLCanvasInfo.m */; };
+		EC74E08A174F92B500391A6D /* GLEventHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = EC74E002174F92B500391A6D /* GLEventHandler.m */; };
 		EC74E08B174F92B500391A6D /* GLFragmentShader.m in Sources */ = {isa = PBXBuildFile; fileRef = EC74E004174F92B500391A6D /* GLFragmentShader.m */; };
 		EC74E08C174F92B500391A6D /* GLLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = EC74E006174F92B500391A6D /* GLLayer.m */; };
 		EC74E08D174F92B500391A6D /* GLObject.m in Sources */ = {isa = PBXBuildFile; fileRef = EC74E008174F92B500391A6D /* GLObject.m */; };
@@ -105,7 +105,6 @@
 		ECB7FD0717447064002A4B71 /* libsqlite3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB7FCDD1744703A002A4B71 /* libsqlite3.a */; };
 		ECB7FD0817447064002A4B71 /* libturbojpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB7FCE61744703A002A4B71 /* libturbojpeg.a */; };
 		ECB7FD0A17447079002A4B71 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB7FD0917447079002A4B71 /* OpenGLES.framework */; };
-		ECB7FD0C17447086002A4B71 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB7FD0B17447086002A4B71 /* GLKit.framework */; };
 		ECB7FD11174471D0002A4B71 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB7FD0E174471D0002A4B71 /* AppDelegate.m */; };
 		ECB7FD12174471D0002A4B71 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB7FD0F174471D0002A4B71 /* main.m */; };
 /* End PBXBuildFile section */
@@ -193,8 +192,8 @@
 		EC74DFFD174F92B500391A6D /* NSTimer+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+QK.h"; sourceTree = "<group>"; };
 		EC74DFFE174F92B500391A6D /* NSTimer+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+QK.m"; sourceTree = "<group>"; };
 		EC74DFFF174F92B500391A6D /* qk-foundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-foundation.h"; sourceTree = "<group>"; };
-		EC74E001174F92B500391A6D /* GLCanvasInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLCanvasInfo.h; sourceTree = "<group>"; };
-		EC74E002174F92B500391A6D /* GLCanvasInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLCanvasInfo.m; sourceTree = "<group>"; };
+		EC74E001174F92B500391A6D /* GLEventHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLEventHandler.h; sourceTree = "<group>"; };
+		EC74E002174F92B500391A6D /* GLEventHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLEventHandler.m; sourceTree = "<group>"; };
 		EC74E003174F92B500391A6D /* GLFragmentShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLFragmentShader.h; sourceTree = "<group>"; };
 		EC74E004174F92B500391A6D /* GLFragmentShader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLFragmentShader.m; sourceTree = "<group>"; };
 		EC74E005174F92B500391A6D /* GLLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLLayer.h; sourceTree = "<group>"; };
@@ -342,7 +341,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECB259D11749BBF900CEAEE8 /* QuartzCore.framework in Frameworks */,
-				ECB7FD0C17447086002A4B71 /* GLKit.framework in Frameworks */,
 				ECB7FD0A17447079002A4B71 /* OpenGLES.framework in Frameworks */,
 				ECB7FC6C1744600F002A4B71 /* libz.dylib in Frameworks */,
 				ECB7FB4A17445D64002A4B71 /* UIKit.framework in Frameworks */,
@@ -504,8 +502,8 @@
 		EC74E000174F92B500391A6D /* qk-gl */ = {
 			isa = PBXGroup;
 			children = (
-				EC74E001174F92B500391A6D /* GLCanvasInfo.h */,
-				EC74E002174F92B500391A6D /* GLCanvasInfo.m */,
+				EC74E001174F92B500391A6D /* GLEventHandler.h */,
+				EC74E002174F92B500391A6D /* GLEventHandler.m */,
 				EC74E003174F92B500391A6D /* GLFragmentShader.h */,
 				EC74E004174F92B500391A6D /* GLFragmentShader.m */,
 				EC74E005174F92B500391A6D /* GLLayer.h */,
@@ -969,7 +967,7 @@
 				EC74E087174F92B500391A6D /* NSOutputStream+QK.m in Sources */,
 				EC74E088174F92B500391A6D /* NSString+QK.m in Sources */,
 				EC74E089174F92B500391A6D /* NSTimer+QK.m in Sources */,
-				EC74E08A174F92B500391A6D /* GLCanvasInfo.m in Sources */,
+				EC74E08A174F92B500391A6D /* GLEventHandler.m in Sources */,
 				EC74E08B174F92B500391A6D /* GLFragmentShader.m in Sources */,
 				EC74E08C174F92B500391A6D /* GLLayer.m in Sources */,
 				EC74E08D174F92B500391A6D /* GLObject.m in Sources */,

@@ -10,12 +10,8 @@
 
 @interface QKScrollView : UIScrollView <UIScrollViewDelegate>
 
-@property (nonatomic, weak) GLLayer* trackingGlLayer; // tracks scroll and zoom.
-
 - (void)addZoomSubview:(UIView*)view constantScale:(BOOL)constantScale;
 - (void)addZoomSubview:(UIView*)view;
-
-- (void)updateTrackingDelegate;
 
 // content size in the zoom view coordinate system.
 - (CGRect)zoomContentRect;
@@ -23,14 +19,8 @@
 
 - (void)zoomOutAnimated:(BOOL)animated;
 
-@end
-
-
-@protocol QKScrollTrackingDelegate <NSObject>
-
-- (void)trackScrollBounds:(CGRect)scrollBounds
-              contentSize:(CGSize)size
-                   insets:(UIEdgeInsets)insets
-                zoomScale:(CGFloat)zoomScale;
+// temporary
+@property (nonatomic, weak) GLLayer* trackingGlLayer; // tracks scroll and zoom.
+- (void)updateTrackingDelegate;
 
 @end

@@ -21,7 +21,7 @@
   V2I32 s = {0, 0};
   int subsamples = 0;
 
-  int code = tjDecompressHeader2(handle, (void*)jpgData.bytes, jpgData.length, &s._[0], &s._[1], &subsamples);
+  int code = tjDecompressHeader2(handle, (void*)jpgData.bytes, jpgData.length, &s.v[0], &s.v[1], &subsamples);
   CHECK_SET_ERROR_RET_NIL(code == 0, QK, ImageJPGReadHeader, @"JPG read header failed", @{
                           @"name" : name
                           });
@@ -45,9 +45,9 @@
                        (void*)jpgData.bytes, // API is not const-correct
                        jpgData.length,
                        data.mutableBytes,
-                       s._[0],
+                       s.v[0],
                        0, // pitch; set to 0 for tightly packed data
-                       s._[1],
+                       s.v[1],
                        jpgPixFmt,
                        flags);
 

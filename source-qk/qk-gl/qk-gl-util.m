@@ -107,10 +107,10 @@ V2F32 viewportOriginLetterboxed(V2F32 origin, F32 contentAR, F32 canvasAR) {
   }
   F32 ar = contentAR / canvasAR;
   if (ar > 1) { // content is wide compared to canvas; letterbox y
-    return V2F32Make(origin._[0], origin._[1] + (1 - ar) * .5);
+    return V2F32Make(origin.v[0], origin.v[1] + (1 - ar) * .5);
   }
   else { // content is narrow; letterbox x
-    return V2F32Make(origin._[0] + (1 - (1 / ar)) * .5, origin._[1]);
+    return V2F32Make(origin.v[0] + (1 - (1 / ar)) * .5, origin.v[1]);
   }
 }
 
@@ -121,10 +121,10 @@ V2F32 viewportScaleLetterboxed(V2F32 scale, F32 contentAR, F32 canvasAR) {
   }
   F32 ar = contentAR / canvasAR;
   if (ar > 1) { // content is wide compared to canvas; letterbox y
-    return V2F32Make(scale._[0], scale._[1] / ar);
+    return V2F32Make(scale.v[0], scale.v[1] / ar);
   }
   else { // content is narrow; letterbox x
-    return V2F32Make(scale._[0] * ar, scale._[1]);
+    return V2F32Make(scale.v[0] * ar, scale.v[1]);
   }
 }
 

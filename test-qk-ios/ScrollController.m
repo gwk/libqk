@@ -28,6 +28,7 @@ PROPERTY_SUBCLASS_ALIAS(GLView, glView, GlView, self.view);
 - (void)loadView {
     _scene = [GLTestScene new];
   self.glView = [GLView withFrame:CGRect256 format:QKPixFmtRGBAU8 scene:_scene];
+  self.glView.eventHandler = [GLEventHandler new];
   self.glView.autoresizingMask = UIFlexSize;
   [self.glView setNeedsDisplay];
 }

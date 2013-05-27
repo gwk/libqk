@@ -99,7 +99,7 @@
   
   int channels = png_get_channels(readPtr, infoPtr);
   Int rowsLength = png_get_rowbytes(readPtr, infoPtr);
-  CHECK_SET_ERROR_RET_NIL(rowsLength == size._[0] * channels * dstBitDepth / 8,
+  CHECK_SET_ERROR_RET_NIL(rowsLength == size.v[0] * channels * dstBitDepth / 8,
                           QK, ImagePNGRowsLength, @"unexpected rows array byte length", @{
                           @"length" : @(rowsLength),
                           @"size" : V2I32Desc(size),
@@ -107,17 +107,17 @@
                           @"depth" : @(dstBitDepth),
                           });
   
-  Int l =  rowsLength * size._[1];
+  Int l =  rowsLength * size.v[1];
   NSMutableData* data = [NSMutableData dataWithCapacity:l];
   data.length = l;
   
-  png_bytepp row_pointers = malloc(size._[1] * sizeof(png_bytep));
+  png_bytepp row_pointers = malloc(size.v[1] * sizeof(png_bytep));
   qk_check(row_pointers, @"malloc row_pointers failed");
   
   // fill out row_pointers
   const BOOL flip = YES; // make data layout match OpenGL texturing expectations.
-  for_in(i, size._[1]) {
-    row_pointers[flip ? ((size._[1] - 1) - i) : i] = data.mutableBytes + i * rowsLength;
+  for_in(i, size.v[1]) {
+    row_pointers[flip ? ((size.v[1] - 1) - i) : i] = data.mutableBytes + i * rowsLength;
   }
   // read data
   png_read_image(readPtr, row_pointers);

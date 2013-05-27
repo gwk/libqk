@@ -1,4 +1,4 @@
-#import "GLCanvasInfo.h"
+#import "GLEventHandler.h"
 #import "GLFragmentShader.h"
 #import "GLLayer.h"
 #import "GLObject.h"

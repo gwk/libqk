@@ -15,6 +15,7 @@
 @interface GLView : CUIView
 
 @property (nonatomic, readonly) GLLayer* glLayer;
+@property (nonatomic) GLEventHandler* eventHandler;
 @property (nonatomic, weak) id<GLScene> scene;
 @property (nonatomic, readonly) QKPixFmt format;
 @property (nonatomic) int redisplayInterval;
