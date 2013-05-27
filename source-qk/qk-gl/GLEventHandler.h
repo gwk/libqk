@@ -12,10 +12,12 @@
 @property (nonatomic) F32 scale;
 @property (nonatomic) F32 rotation;
 
+#if TARGET_OS_IPHONE
 - (BOOL)touchesBegan:(UIEvent*)event view:(GLView*)view;
 - (BOOL)touchesMoved:(UIEvent*)event view:(GLView*)view;
 - (BOOL)touchesEnded:(UIEvent*)event view:(GLView*)view;
 - (BOOL)touchesCancelled:(UIEvent*)event view:(GLView*)view;
+#endif
 
 @end
 

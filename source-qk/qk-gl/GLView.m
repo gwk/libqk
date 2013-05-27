@@ -16,6 +16,7 @@
 #pragma mark - UIResponder
 
 
+#if TARGET_OS_IPHONE
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
   if ([self.eventHandler touchesBegan:event view:self]) {
     [self.glLayer setNeedsDisplay];
@@ -42,6 +43,7 @@
     [self.glLayer setNeedsDisplay];
   }
 }
+#endif
 
 
 #pragma mark - UIView
@@ -72,9 +74,11 @@ PROPERTY_SUBCLASS_ALIAS_RO(GLLayer, glLayer, self.layer);
 DEF_INIT(Frame:(CGRect)frame format:(QKPixFmt)format scene:(id<GLScene>)scene) {
   INIT(super initWithFrame:frame);
   [self.glLayer setupWithFormat:format scene:scene];
+#if TARGET_OS_IPHONE
   self.opaque = YES;
   self.contentScaleFactor = [UIScreen mainScreen].scale; // CAEAGLLayer defaults to 1.0 regardless of screen.
   self.contentMode = UIViewContentModeRedraw; // for view resize on orientation change?? ios 5?
+#endif
   return self;
 }
 

@@ -8,4 +8,3 @@
 #import "QKTextView.h"
 #import "QKUITableView.h"
 #import "QKViewController.h"
-#import "source-qk-ios.h"

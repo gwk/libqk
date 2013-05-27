@@ -15,82 +15,73 @@
 		EC0D9B5B16B8588B005D2C2B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0D9B5A16B8588B005D2C2B /* Foundation.framework */; };
 		EC0D9B6916B85903005D2C2B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0D9B4D16B84FDA005D2C2B /* libz.dylib */; };
 		EC0D9BD816B9983C005D2C2B /* jnb-image-with-png.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BD616B9983C005D2C2B /* jnb-image-with-png.m */; };
-		EC0D9C4616B998CB005D2C2B /* Duo.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BE116B998CB005D2C2B /* Duo.m */; };
-		EC0D9C4716B998CB005D2C2B /* Duo.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BE116B998CB005D2C2B /* Duo.m */; };
-		EC0D9C4816B998CB005D2C2B /* qk-check.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BE516B998CB005D2C2B /* qk-check.m */; };
-		EC0D9C4916B998CB005D2C2B /* qk-check.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BE516B998CB005D2C2B /* qk-check.m */; };
-		EC0D9C4A16B998CB005D2C2B /* qk-log.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BE716B998CB005D2C2B /* qk-log.m */; };
-		EC0D9C4B16B998CB005D2C2B /* qk-log.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BE716B998CB005D2C2B /* qk-log.m */; };
-		EC0D9C4C16B998CB005D2C2B /* qk-math.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BEA16B998CB005D2C2B /* qk-math.m */; };
-		EC0D9C4D16B998CB005D2C2B /* qk-math.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BEA16B998CB005D2C2B /* qk-math.m */; };
-		EC0D9C4E16B998CB005D2C2B /* QKData.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BEE16B998CB005D2C2B /* QKData.m */; };
-		EC0D9C4F16B998CB005D2C2B /* QKData.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BEE16B998CB005D2C2B /* QKData.m */; };
-		EC0D9C5016B998CB005D2C2B /* QKImage.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BF016B998CB005D2C2B /* QKImage.m */; };
-		EC0D9C5116B998CB005D2C2B /* QKImage.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BF016B998CB005D2C2B /* QKImage.m */; };
-		EC0D9C5216B998CB005D2C2B /* QKMutableStructArray.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BF216B998CB005D2C2B /* QKMutableStructArray.m */; };
-		EC0D9C5316B998CB005D2C2B /* QKMutableStructArray.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BF216B998CB005D2C2B /* QKMutableStructArray.m */; };
-		EC0D9C5416B998CB005D2C2B /* QKPixFmt.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BF416B998CB005D2C2B /* QKPixFmt.m */; };
-		EC0D9C5516B998CB005D2C2B /* QKPixFmt.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BF416B998CB005D2C2B /* QKPixFmt.m */; };
-		EC0D9C5616B998CB005D2C2B /* QKStructArray.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BF616B998CB005D2C2B /* QKStructArray.m */; };
-		EC0D9C5716B998CB005D2C2B /* QKStructArray.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BF616B998CB005D2C2B /* QKStructArray.m */; };
-		EC0D9C5816B998CB005D2C2B /* QKSubData.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BF816B998CB005D2C2B /* QKSubData.m */; };
-		EC0D9C5916B998CB005D2C2B /* QKSubData.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BF816B998CB005D2C2B /* QKSubData.m */; };
-		EC0D9C5A16B998CB005D2C2B /* QKCFObject.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BFC16B998CB005D2C2B /* QKCFObject.m */; };
-		EC0D9C5C16B998CB005D2C2B /* qk-cg-util.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9BFF16B998CB005D2C2B /* qk-cg-util.m */; };
-		EC0D9C5E16B998CB005D2C2B /* QKCGBitmapContext.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C0216B998CB005D2C2B /* QKCGBitmapContext.m */; };
-		EC0D9C6016B998CB005D2C2B /* QKCGColorSpace.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C0416B998CB005D2C2B /* QKCGColorSpace.m */; };
-		EC0D9C6216B998CB005D2C2B /* QKCGContext.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C0616B998CB005D2C2B /* QKCGContext.m */; };
-		EC0D9C6416B998CB005D2C2B /* QKCGImage.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C0816B998CB005D2C2B /* QKCGImage.m */; };
-		EC0D9C6616B998CB005D2C2B /* NSArray+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C0B16B998CB005D2C2B /* NSArray+QK.m */; };
-		EC0D9C6716B998CB005D2C2B /* NSArray+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C0B16B998CB005D2C2B /* NSArray+QK.m */; };
-		EC0D9C6816B998CB005D2C2B /* NSBundle+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C0D16B998CB005D2C2B /* NSBundle+QK.m */; };
-		EC0D9C6916B998CB005D2C2B /* NSBundle+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C0D16B998CB005D2C2B /* NSBundle+QK.m */; };
-		EC0D9C6A16B998CB005D2C2B /* NSData+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C0F16B998CB005D2C2B /* NSData+QK.m */; };
-		EC0D9C6B16B998CB005D2C2B /* NSData+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C0F16B998CB005D2C2B /* NSData+QK.m */; };
-		EC0D9C6C16B998CB005D2C2B /* NSDate+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C1116B998CB005D2C2B /* NSDate+QK.m */; };
-		EC0D9C6D16B998CB005D2C2B /* NSDate+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C1116B998CB005D2C2B /* NSDate+QK.m */; };
-		EC0D9C6E16B998CB005D2C2B /* NSDictionary+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C1316B998CB005D2C2B /* NSDictionary+QK.m */; };
-		EC0D9C6F16B998CB005D2C2B /* NSDictionary+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C1316B998CB005D2C2B /* NSDictionary+QK.m */; };
-		EC0D9C7016B998CB005D2C2B /* NSError+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C1516B998CB005D2C2B /* NSError+QK.m */; };
-		EC0D9C7116B998CB005D2C2B /* NSError+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C1516B998CB005D2C2B /* NSError+QK.m */; };
-		EC0D9C7216B998CB005D2C2B /* NSMutableData+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C1716B998CB005D2C2B /* NSMutableData+QK.m */; };
-		EC0D9C7316B998CB005D2C2B /* NSMutableData+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C1716B998CB005D2C2B /* NSMutableData+QK.m */; };
-		EC0D9C7416B998CB005D2C2B /* NSMutableDictionary+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C1916B998CB005D2C2B /* NSMutableDictionary+QK.m */; };
-		EC0D9C7516B998CB005D2C2B /* NSMutableDictionary+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C1916B998CB005D2C2B /* NSMutableDictionary+QK.m */; };
-		EC0D9C7616B998CB005D2C2B /* NSObject+JNB.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C1B16B998CB005D2C2B /* NSObject+JNB.m */; };
-		EC0D9C7716B998CB005D2C2B /* NSObject+JNB.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C1B16B998CB005D2C2B /* NSObject+JNB.m */; };
-		EC0D9C7816B998CB005D2C2B /* NSObject+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C1D16B998CB005D2C2B /* NSObject+QK.m */; };
-		EC0D9C7916B998CB005D2C2B /* NSObject+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C1D16B998CB005D2C2B /* NSObject+QK.m */; };
-		EC0D9C7A16B998CB005D2C2B /* NSOutputStream+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C1F16B998CB005D2C2B /* NSOutputStream+QK.m */; };
-		EC0D9C7B16B998CB005D2C2B /* NSOutputStream+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C1F16B998CB005D2C2B /* NSOutputStream+QK.m */; };
-		EC0D9C7C16B998CB005D2C2B /* NSString+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C2116B998CB005D2C2B /* NSString+QK.m */; };
-		EC0D9C7D16B998CB005D2C2B /* NSString+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C2116B998CB005D2C2B /* NSString+QK.m */; };
-		EC0D9C7E16B998CB005D2C2B /* GLFragmentShader.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C2516B998CB005D2C2B /* GLFragmentShader.m */; };
-		EC0D9C8016B998CB005D2C2B /* GLObject.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C2716B998CB005D2C2B /* GLObject.m */; };
-		EC0D9C8216B998CB005D2C2B /* GLProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C2916B998CB005D2C2B /* GLProgram.m */; };
-		EC0D9C8416B998CB005D2C2B /* GLShader.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C2B16B998CB005D2C2B /* GLShader.m */; };
-		EC0D9C8616B998CB005D2C2B /* GLTexture.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C2D16B998CB005D2C2B /* GLTexture.m */; };
-		EC0D9C8816B998CB005D2C2B /* GLVertexShader.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C2F16B998CB005D2C2B /* GLVertexShader.m */; };
-		EC0D9C8A16B998CB005D2C2B /* qk-gl-util.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C3116B998CB005D2C2B /* qk-gl-util.m */; };
-		EC0D9C8C16B998CB005D2C2B /* QKImage+PNG.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C3616B998CB005D2C2B /* QKImage+PNG.m */; };
-		EC0D9C8D16B998CB005D2C2B /* QKImage+PNG.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C3616B998CB005D2C2B /* QKImage+PNG.m */; };
-		EC0D9C8E16B998CB005D2C2B /* qk-sql-util.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C3916B998CB005D2C2B /* qk-sql-util.m */; };
-		EC0D9C9016B998CB005D2C2B /* SqlDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C3C16B998CB005D2C2B /* SqlDatabase.m */; };
-		EC0D9C9216B998CB005D2C2B /* SqlStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C3E16B998CB005D2C2B /* SqlStatement.m */; };
-		EC0D9C9416B998CB005D2C2B /* NSView+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0D9C4316B998CB005D2C2B /* NSView+QK.m */; };
-		EC26861F16C31F1500FD35FB /* QKImage+JPG.m in Sources */ = {isa = PBXBuildFile; fileRef = EC26861E16C31F1500FD35FB /* QKImage+JPG.m */; };
-		EC26862016C31F1500FD35FB /* QKImage+JPG.m in Sources */ = {isa = PBXBuildFile; fileRef = EC26861E16C31F1500FD35FB /* QKImage+JPG.m */; };
-		ECB7FCB4174468B7002A4B71 /* QKErrorDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB7FCB3174468B7002A4B71 /* QKErrorDomain.m */; };
-		ECB7FCB5174468B7002A4B71 /* QKErrorDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB7FCB3174468B7002A4B71 /* QKErrorDomain.m */; };
 		ECB7FCBA17446E7A002A4B71 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB7FCB717446E7A002A4B71 /* AppDelegate.m */; };
 		ECB7FCBB17446E7A002A4B71 /* test-qk-mac.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB7FCB817446E7A002A4B71 /* test-qk-mac.m */; };
 		ECB7FCBC17446EE9002A4B71 /* libpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB7FCA217446724002A4B71 /* libpng.a */; };
 		ECB7FCBD17446F09002A4B71 /* libturbojpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB7FCB117446724002A4B71 /* libturbojpeg.a */; };
-		ECB7FCC217446F64002A4B71 /* NSUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB7FCC017446F64002A4B71 /* NSUIView.m */; };
-		ECB7FCC517446F8E002A4B71 /* GLCanvasInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB7FCC417446F8E002A4B71 /* GLCanvasInfo.m */; };
 		ECB7FCC717446FC1002A4B71 /* libturbojpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB7FCB117446724002A4B71 /* libturbojpeg.a */; };
 		ECB7FCC817446FC9002A4B71 /* libpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB7FCA217446724002A4B71 /* libpng.a */; };
 		ECB7FCC917446FDC002A4B71 /* libsqlite3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB7FCA817446724002A4B71 /* libsqlite3.a */; };
+		ECCAED9F1752DFB6006CB1B5 /* qk-check.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED0C1752DFB6006CB1B5 /* qk-check.m */; };
+		ECCAEDA01752DFB6006CB1B5 /* qk-log.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED0E1752DFB6006CB1B5 /* qk-log.m */; };
+		ECCAEDA11752DFB6006CB1B5 /* qk-math.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED111752DFB6006CB1B5 /* qk-math.m */; };
+		ECCAEDA21752DFB6006CB1B5 /* QKBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED161752DFB6006CB1B5 /* QKBinding.m */; };
+		ECCAEDA31752DFB6006CB1B5 /* QKData.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED181752DFB6006CB1B5 /* QKData.m */; };
+		ECCAEDA41752DFB6006CB1B5 /* QKDuo.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED1A1752DFB6006CB1B5 /* QKDuo.m */; };
+		ECCAEDA51752DFB6006CB1B5 /* QKErrorDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED1C1752DFB6006CB1B5 /* QKErrorDomain.m */; };
+		ECCAEDA61752DFB6006CB1B5 /* QKImage.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED1E1752DFB6006CB1B5 /* QKImage.m */; };
+		ECCAEDA71752DFB6006CB1B5 /* QKMutableStructArray.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED201752DFB6006CB1B5 /* QKMutableStructArray.m */; };
+		ECCAEDA81752DFB6006CB1B5 /* QKPixFmt.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED221752DFB6006CB1B5 /* QKPixFmt.m */; };
+		ECCAEDA91752DFB6006CB1B5 /* QKStructArray.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED241752DFB6006CB1B5 /* QKStructArray.m */; };
+		ECCAEDAA1752DFB6006CB1B5 /* QKSubData.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED261752DFB6006CB1B5 /* QKSubData.m */; };
+		ECCAEDAB1752DFB6006CB1B5 /* QKTag.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED281752DFB6006CB1B5 /* QKTag.m */; };
+		ECCAEDAC1752DFB6006CB1B5 /* CALayer+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED2B1752DFB6006CB1B5 /* CALayer+QK.m */; };
+		ECCAEDAD1752DFB6006CB1B5 /* QKTextLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED2E1752DFB6006CB1B5 /* QKTextLayer.m */; };
+		ECCAEDAE1752DFB6006CB1B5 /* QKCFObject.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED321752DFB6006CB1B5 /* QKCFObject.m */; };
+		ECCAEDAF1752DFB6006CB1B5 /* qk-cg-util.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED351752DFB6006CB1B5 /* qk-cg-util.m */; };
+		ECCAEDB01752DFB6006CB1B5 /* QKCGBitmapContext.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED381752DFB6006CB1B5 /* QKCGBitmapContext.m */; };
+		ECCAEDB11752DFB6006CB1B5 /* QKCGColorSpace.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED3A1752DFB6006CB1B5 /* QKCGColorSpace.m */; };
+		ECCAEDB21752DFB6006CB1B5 /* QKCGContext.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED3C1752DFB6006CB1B5 /* QKCGContext.m */; };
+		ECCAEDB31752DFB6006CB1B5 /* QKCGImage.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED3E1752DFB6006CB1B5 /* QKCGImage.m */; };
+		ECCAEDB41752DFB6006CB1B5 /* CCAGLLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED411752DFB6006CB1B5 /* CCAGLLayer.m */; };
+		ECCAEDB51752DFB6006CB1B5 /* CUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED431752DFB6006CB1B5 /* CUIView.m */; };
+		ECCAEDB61752DFB6006CB1B5 /* QKLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED461752DFB6006CB1B5 /* QKLayoutView.m */; };
+		ECCAEDB71752DFB6006CB1B5 /* NSArray+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED491752DFB6006CB1B5 /* NSArray+QK.m */; };
+		ECCAEDB81752DFB6006CB1B5 /* NSBundle+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED4B1752DFB6006CB1B5 /* NSBundle+QK.m */; };
+		ECCAEDB91752DFB6006CB1B5 /* NSData+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED4D1752DFB6006CB1B5 /* NSData+QK.m */; };
+		ECCAEDBA1752DFB6006CB1B5 /* NSDate+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED4F1752DFB6006CB1B5 /* NSDate+QK.m */; };
+		ECCAEDBB1752DFB6006CB1B5 /* NSDictionary+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED511752DFB6006CB1B5 /* NSDictionary+QK.m */; };
+		ECCAEDBC1752DFB6006CB1B5 /* NSError+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED531752DFB6006CB1B5 /* NSError+QK.m */; };
+		ECCAEDBD1752DFB6006CB1B5 /* NSJSONSerialization+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED551752DFB6006CB1B5 /* NSJSONSerialization+QK.m */; };
+		ECCAEDBE1752DFB6006CB1B5 /* NSMutableData+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED571752DFB6006CB1B5 /* NSMutableData+QK.m */; };
+		ECCAEDBF1752DFB6006CB1B5 /* NSMutableDictionary+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED591752DFB6006CB1B5 /* NSMutableDictionary+QK.m */; };
+		ECCAEDC01752DFB6006CB1B5 /* NSObject+JNB.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED5B1752DFB6006CB1B5 /* NSObject+JNB.m */; };
+		ECCAEDC11752DFB6006CB1B5 /* NSObject+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED5D1752DFB6006CB1B5 /* NSObject+QK.m */; };
+		ECCAEDC21752DFB6006CB1B5 /* NSOutputStream+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED5F1752DFB6006CB1B5 /* NSOutputStream+QK.m */; };
+		ECCAEDC31752DFB6006CB1B5 /* NSString+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED611752DFB6006CB1B5 /* NSString+QK.m */; };
+		ECCAEDC41752DFB6006CB1B5 /* NSTimer+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED631752DFB6006CB1B5 /* NSTimer+QK.m */; };
+		ECCAEDC51752DFB6006CB1B5 /* GLEventHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED671752DFB6006CB1B5 /* GLEventHandler.m */; };
+		ECCAEDC61752DFB6006CB1B5 /* GLFragmentShader.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED691752DFB6006CB1B5 /* GLFragmentShader.m */; };
+		ECCAEDC71752DFB6006CB1B5 /* GLLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED6B1752DFB6006CB1B5 /* GLLayer.m */; };
+		ECCAEDC81752DFB6006CB1B5 /* GLObject.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED6D1752DFB6006CB1B5 /* GLObject.m */; };
+		ECCAEDC91752DFB6006CB1B5 /* GLProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED6F1752DFB6006CB1B5 /* GLProgram.m */; };
+		ECCAEDCA1752DFB6006CB1B5 /* GLShader.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED721752DFB6006CB1B5 /* GLShader.m */; };
+		ECCAEDCB1752DFB6006CB1B5 /* GLTestScene.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED741752DFB6006CB1B5 /* GLTestScene.m */; };
+		ECCAEDCC1752DFB6006CB1B5 /* GLTexture.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED761752DFB6006CB1B5 /* GLTexture.m */; };
+		ECCAEDCD1752DFB6006CB1B5 /* GLVertexShader.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED781752DFB6006CB1B5 /* GLVertexShader.m */; };
+		ECCAEDCE1752DFB6006CB1B5 /* GLView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED7A1752DFB6006CB1B5 /* GLView.m */; };
+		ECCAEDCF1752DFB6006CB1B5 /* qk-gl-util.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED7C1752DFB6006CB1B5 /* qk-gl-util.m */; };
+		ECCAEDD01752DFB6006CB1B5 /* QKImage+JPG.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED811752DFB6006CB1B5 /* QKImage+JPG.m */; };
+		ECCAEDD11752DFB6006CB1B5 /* QKImage+PNG.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED851752DFB6006CB1B5 /* QKImage+PNG.m */; };
+		ECCAEDD21752DFB6006CB1B5 /* qk-sql-util.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED881752DFB6006CB1B5 /* qk-sql-util.m */; };
+		ECCAEDD31752DFB6006CB1B5 /* SqlDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED8B1752DFB6006CB1B5 /* SqlDatabase.m */; };
+		ECCAEDD41752DFB6006CB1B5 /* SqlStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED8D1752DFB6006CB1B5 /* SqlStatement.m */; };
+		ECCAEDD51752DFB6006CB1B5 /* QKView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED931752DFB6006CB1B5 /* QKView.m */; };
+		ECCAEDD61752DFB6006CB1B5 /* QKWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED951752DFB6006CB1B5 /* QKWindow.m */; };
+		ECCAEDD71752DFB6006CB1B5 /* NSMenu+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED981752DFB6006CB1B5 /* NSMenu+QK.m */; };
+		ECCAEDD81752DFB6006CB1B5 /* NSMenuItem+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED9A1752DFB6006CB1B5 /* NSMenuItem+QK.m */; };
+		ECCAEDD91752DFB6006CB1B5 /* NSView+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAED9C1752DFB6006CB1B5 /* NSView+QK.m */; };
+		ECCAEDDB1752E057006CB1B5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECCAEDDA1752E057006CB1B5 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -116,103 +107,6 @@
 		EC0D9B5A16B8588B005D2C2B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EC0D9BD616B9983C005D2C2B /* jnb-image-with-png.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "jnb-image-with-png.m"; sourceTree = "<group>"; };
 		EC0D9BD716B9983C005D2C2B /* jnb-image-with-png.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "jnb-image-with-png.pch"; sourceTree = "<group>"; };
-		EC0D9BE016B998CB005D2C2B /* Duo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Duo.h; sourceTree = "<group>"; };
-		EC0D9BE116B998CB005D2C2B /* Duo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Duo.m; sourceTree = "<group>"; };
-		EC0D9BE216B998CB005D2C2B /* qk-basic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-basic.h"; sourceTree = "<group>"; };
-		EC0D9BE316B998CB005D2C2B /* qk-block-types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-block-types.h"; sourceTree = "<group>"; };
-		EC0D9BE416B998CB005D2C2B /* qk-check.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-check.h"; sourceTree = "<group>"; };
-		EC0D9BE516B998CB005D2C2B /* qk-check.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "qk-check.m"; sourceTree = "<group>"; };
-		EC0D9BE616B998CB005D2C2B /* qk-log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-log.h"; sourceTree = "<group>"; };
-		EC0D9BE716B998CB005D2C2B /* qk-log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "qk-log.m"; sourceTree = "<group>"; };
-		EC0D9BE816B998CB005D2C2B /* qk-macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-macros.h"; sourceTree = "<group>"; };
-		EC0D9BE916B998CB005D2C2B /* qk-math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-math.h"; sourceTree = "<group>"; };
-		EC0D9BEA16B998CB005D2C2B /* qk-math.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "qk-math.m"; sourceTree = "<group>"; };
-		EC0D9BEB16B998CB005D2C2B /* qk-types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-types.h"; sourceTree = "<group>"; };
-		EC0D9BEC16B998CB005D2C2B /* qk-vec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-vec.h"; sourceTree = "<group>"; };
-		EC0D9BED16B998CB005D2C2B /* QKData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKData.h; sourceTree = "<group>"; };
-		EC0D9BEE16B998CB005D2C2B /* QKData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKData.m; sourceTree = "<group>"; };
-		EC0D9BEF16B998CB005D2C2B /* QKImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKImage.h; sourceTree = "<group>"; };
-		EC0D9BF016B998CB005D2C2B /* QKImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKImage.m; sourceTree = "<group>"; };
-		EC0D9BF116B998CB005D2C2B /* QKMutableStructArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKMutableStructArray.h; sourceTree = "<group>"; };
-		EC0D9BF216B998CB005D2C2B /* QKMutableStructArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKMutableStructArray.m; sourceTree = "<group>"; };
-		EC0D9BF316B998CB005D2C2B /* QKPixFmt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKPixFmt.h; sourceTree = "<group>"; };
-		EC0D9BF416B998CB005D2C2B /* QKPixFmt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKPixFmt.m; sourceTree = "<group>"; };
-		EC0D9BF516B998CB005D2C2B /* QKStructArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKStructArray.h; sourceTree = "<group>"; };
-		EC0D9BF616B998CB005D2C2B /* QKStructArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKStructArray.m; sourceTree = "<group>"; };
-		EC0D9BF716B998CB005D2C2B /* QKSubData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKSubData.h; sourceTree = "<group>"; };
-		EC0D9BF816B998CB005D2C2B /* QKSubData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKSubData.m; sourceTree = "<group>"; };
-		EC0D9BFA16B998CB005D2C2B /* qk-cf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-cf.h"; sourceTree = "<group>"; };
-		EC0D9BFB16B998CB005D2C2B /* QKCFObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKCFObject.h; sourceTree = "<group>"; };
-		EC0D9BFC16B998CB005D2C2B /* QKCFObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKCFObject.m; sourceTree = "<group>"; };
-		EC0D9BFE16B998CB005D2C2B /* qk-cg-util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-cg-util.h"; sourceTree = "<group>"; };
-		EC0D9BFF16B998CB005D2C2B /* qk-cg-util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "qk-cg-util.m"; sourceTree = "<group>"; };
-		EC0D9C0016B998CB005D2C2B /* qk-cg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-cg.h"; sourceTree = "<group>"; };
-		EC0D9C0116B998CB005D2C2B /* QKCGBitmapContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKCGBitmapContext.h; sourceTree = "<group>"; };
-		EC0D9C0216B998CB005D2C2B /* QKCGBitmapContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKCGBitmapContext.m; sourceTree = "<group>"; };
-		EC0D9C0316B998CB005D2C2B /* QKCGColorSpace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKCGColorSpace.h; sourceTree = "<group>"; };
-		EC0D9C0416B998CB005D2C2B /* QKCGColorSpace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKCGColorSpace.m; sourceTree = "<group>"; };
-		EC0D9C0516B998CB005D2C2B /* QKCGContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKCGContext.h; sourceTree = "<group>"; };
-		EC0D9C0616B998CB005D2C2B /* QKCGContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKCGContext.m; sourceTree = "<group>"; };
-		EC0D9C0716B998CB005D2C2B /* QKCGImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKCGImage.h; sourceTree = "<group>"; };
-		EC0D9C0816B998CB005D2C2B /* QKCGImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKCGImage.m; sourceTree = "<group>"; };
-		EC0D9C0A16B998CB005D2C2B /* NSArray+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+QK.h"; sourceTree = "<group>"; };
-		EC0D9C0B16B998CB005D2C2B /* NSArray+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+QK.m"; sourceTree = "<group>"; };
-		EC0D9C0C16B998CB005D2C2B /* NSBundle+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+QK.h"; sourceTree = "<group>"; };
-		EC0D9C0D16B998CB005D2C2B /* NSBundle+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+QK.m"; sourceTree = "<group>"; };
-		EC0D9C0E16B998CB005D2C2B /* NSData+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+QK.h"; sourceTree = "<group>"; };
-		EC0D9C0F16B998CB005D2C2B /* NSData+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+QK.m"; sourceTree = "<group>"; };
-		EC0D9C1016B998CB005D2C2B /* NSDate+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+QK.h"; sourceTree = "<group>"; };
-		EC0D9C1116B998CB005D2C2B /* NSDate+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+QK.m"; sourceTree = "<group>"; };
-		EC0D9C1216B998CB005D2C2B /* NSDictionary+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+QK.h"; sourceTree = "<group>"; };
-		EC0D9C1316B998CB005D2C2B /* NSDictionary+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+QK.m"; sourceTree = "<group>"; };
-		EC0D9C1416B998CB005D2C2B /* NSError+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+QK.h"; sourceTree = "<group>"; };
-		EC0D9C1516B998CB005D2C2B /* NSError+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+QK.m"; sourceTree = "<group>"; };
-		EC0D9C1616B998CB005D2C2B /* NSMutableData+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableData+QK.h"; sourceTree = "<group>"; };
-		EC0D9C1716B998CB005D2C2B /* NSMutableData+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableData+QK.m"; sourceTree = "<group>"; };
-		EC0D9C1816B998CB005D2C2B /* NSMutableDictionary+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+QK.h"; sourceTree = "<group>"; };
-		EC0D9C1916B998CB005D2C2B /* NSMutableDictionary+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+QK.m"; sourceTree = "<group>"; };
-		EC0D9C1A16B998CB005D2C2B /* NSObject+JNB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JNB.h"; sourceTree = "<group>"; };
-		EC0D9C1B16B998CB005D2C2B /* NSObject+JNB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JNB.m"; sourceTree = "<group>"; };
-		EC0D9C1C16B998CB005D2C2B /* NSObject+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+QK.h"; sourceTree = "<group>"; };
-		EC0D9C1D16B998CB005D2C2B /* NSObject+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+QK.m"; sourceTree = "<group>"; };
-		EC0D9C1E16B998CB005D2C2B /* NSOutputStream+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSOutputStream+QK.h"; sourceTree = "<group>"; };
-		EC0D9C1F16B998CB005D2C2B /* NSOutputStream+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSOutputStream+QK.m"; sourceTree = "<group>"; };
-		EC0D9C2016B998CB005D2C2B /* NSString+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+QK.h"; sourceTree = "<group>"; };
-		EC0D9C2116B998CB005D2C2B /* NSString+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+QK.m"; sourceTree = "<group>"; };
-		EC0D9C2216B998CB005D2C2B /* qk-foundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-foundation.h"; sourceTree = "<group>"; };
-		EC0D9C2416B998CB005D2C2B /* GLFragmentShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLFragmentShader.h; sourceTree = "<group>"; };
-		EC0D9C2516B998CB005D2C2B /* GLFragmentShader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLFragmentShader.m; sourceTree = "<group>"; };
-		EC0D9C2616B998CB005D2C2B /* GLObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLObject.h; sourceTree = "<group>"; };
-		EC0D9C2716B998CB005D2C2B /* GLObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLObject.m; sourceTree = "<group>"; };
-		EC0D9C2816B998CB005D2C2B /* GLProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLProgram.h; sourceTree = "<group>"; };
-		EC0D9C2916B998CB005D2C2B /* GLProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLProgram.m; sourceTree = "<group>"; };
-		EC0D9C2A16B998CB005D2C2B /* GLShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLShader.h; sourceTree = "<group>"; };
-		EC0D9C2B16B998CB005D2C2B /* GLShader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLShader.m; sourceTree = "<group>"; };
-		EC0D9C2C16B998CB005D2C2B /* GLTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLTexture.h; sourceTree = "<group>"; };
-		EC0D9C2D16B998CB005D2C2B /* GLTexture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLTexture.m; sourceTree = "<group>"; };
-		EC0D9C2E16B998CB005D2C2B /* GLVertexShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLVertexShader.h; sourceTree = "<group>"; };
-		EC0D9C2F16B998CB005D2C2B /* GLVertexShader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLVertexShader.m; sourceTree = "<group>"; };
-		EC0D9C3016B998CB005D2C2B /* qk-gl-util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-gl-util.h"; sourceTree = "<group>"; };
-		EC0D9C3116B998CB005D2C2B /* qk-gl-util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "qk-gl-util.m"; sourceTree = "<group>"; };
-		EC0D9C3216B998CB005D2C2B /* qk-gl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-gl.h"; sourceTree = "<group>"; };
-		EC0D9C3416B998CB005D2C2B /* qk-png.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-png.h"; sourceTree = "<group>"; };
-		EC0D9C3516B998CB005D2C2B /* QKImage+PNG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QKImage+PNG.h"; sourceTree = "<group>"; };
-		EC0D9C3616B998CB005D2C2B /* QKImage+PNG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "QKImage+PNG.m"; sourceTree = "<group>"; };
-		EC0D9C3816B998CB005D2C2B /* qk-sql-util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-sql-util.h"; sourceTree = "<group>"; };
-		EC0D9C3916B998CB005D2C2B /* qk-sql-util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "qk-sql-util.m"; sourceTree = "<group>"; };
-		EC0D9C3A16B998CB005D2C2B /* qk-sql.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-sql.h"; sourceTree = "<group>"; };
-		EC0D9C3B16B998CB005D2C2B /* SqlDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqlDatabase.h; sourceTree = "<group>"; };
-		EC0D9C3C16B998CB005D2C2B /* SqlDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SqlDatabase.m; sourceTree = "<group>"; };
-		EC0D9C3D16B998CB005D2C2B /* SqlStatement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqlStatement.h; sourceTree = "<group>"; };
-		EC0D9C3E16B998CB005D2C2B /* SqlStatement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SqlStatement.m; sourceTree = "<group>"; };
-		EC0D9C3F16B998CB005D2C2B /* source-qk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "source-qk.h"; sourceTree = "<group>"; };
-		EC0D9C4216B998CB005D2C2B /* NSView+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+QK.h"; sourceTree = "<group>"; };
-		EC0D9C4316B998CB005D2C2B /* NSView+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+QK.m"; sourceTree = "<group>"; };
-		EC0D9C4416B998CB005D2C2B /* qk-cocoa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-cocoa.h"; sourceTree = "<group>"; };
-		EC0D9C4516B998CB005D2C2B /* source-qk-mac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "source-qk-mac.h"; sourceTree = "<group>"; };
-		EC26861D16C31F1500FD35FB /* QKImage+JPG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QKImage+JPG.h"; sourceTree = "<group>"; };
-		EC26861E16C31F1500FD35FB /* QKImage+JPG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "QKImage+JPG.m"; sourceTree = "<group>"; };
-		EC26862116C31F2A00FD35FB /* qk-jpg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "qk-jpg.h"; sourceTree = "<group>"; };
 		ECB7FC721744605C002A4B71 /* test-qk-mac-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "test-qk-mac-Info.plist"; sourceTree = "<group>"; };
 		ECB7FC9417446724002A4B71 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		ECB7FC9717446724002A4B71 /* jnb-image-with-png */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "jnb-image-with-png"; sourceTree = "<group>"; };
@@ -232,18 +126,148 @@
 		ECB7FCAE17446724002A4B71 /* jpeglib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jpeglib.h; sourceTree = "<group>"; };
 		ECB7FCAF17446724002A4B71 /* turbojpeg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = turbojpeg.h; sourceTree = "<group>"; };
 		ECB7FCB117446724002A4B71 /* libturbojpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libturbojpeg.a; sourceTree = "<group>"; };
-		ECB7FCB2174468B7002A4B71 /* QKErrorDomain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKErrorDomain.h; sourceTree = "<group>"; };
-		ECB7FCB3174468B7002A4B71 /* QKErrorDomain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKErrorDomain.m; sourceTree = "<group>"; };
 		ECB7FCB617446E7A002A4B71 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		ECB7FCB717446E7A002A4B71 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		ECB7FCB817446E7A002A4B71 /* test-qk-mac.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "test-qk-mac.m"; sourceTree = "<group>"; };
 		ECB7FCB917446E7A002A4B71 /* test-qk-mac.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "test-qk-mac.pch"; sourceTree = "<group>"; };
-		ECB7FCBF17446F64002A4B71 /* NSUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSUIView.h; sourceTree = "<group>"; };
-		ECB7FCC017446F64002A4B71 /* NSUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSUIView.m; sourceTree = "<group>"; };
-		ECB7FCC117446F64002A4B71 /* qk-nsui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-nsui.h"; sourceTree = "<group>"; };
-		ECB7FCC317446F8E002A4B71 /* GLCanvasInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLCanvasInfo.h; sourceTree = "<group>"; };
-		ECB7FCC417446F8E002A4B71 /* GLCanvasInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLCanvasInfo.m; sourceTree = "<group>"; };
-		ECB7FCC617446FA6002A4B71 /* GLScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLScene.h; sourceTree = "<group>"; };
+		ECCAED0A1752DFB6006CB1B5 /* qk-block-types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-block-types.h"; sourceTree = "<group>"; };
+		ECCAED0B1752DFB6006CB1B5 /* qk-check.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-check.h"; sourceTree = "<group>"; };
+		ECCAED0C1752DFB6006CB1B5 /* qk-check.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "qk-check.m"; sourceTree = "<group>"; };
+		ECCAED0D1752DFB6006CB1B5 /* qk-log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-log.h"; sourceTree = "<group>"; };
+		ECCAED0E1752DFB6006CB1B5 /* qk-log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "qk-log.m"; sourceTree = "<group>"; };
+		ECCAED0F1752DFB6006CB1B5 /* qk-macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-macros.h"; sourceTree = "<group>"; };
+		ECCAED101752DFB6006CB1B5 /* qk-math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-math.h"; sourceTree = "<group>"; };
+		ECCAED111752DFB6006CB1B5 /* qk-math.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "qk-math.m"; sourceTree = "<group>"; };
+		ECCAED121752DFB6006CB1B5 /* qk-types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-types.h"; sourceTree = "<group>"; };
+		ECCAED131752DFB6006CB1B5 /* qk-vec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-vec.h"; sourceTree = "<group>"; };
+		ECCAED141752DFB6006CB1B5 /* qk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qk.h; sourceTree = "<group>"; };
+		ECCAED151752DFB6006CB1B5 /* QKBinding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKBinding.h; sourceTree = "<group>"; };
+		ECCAED161752DFB6006CB1B5 /* QKBinding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKBinding.m; sourceTree = "<group>"; };
+		ECCAED171752DFB6006CB1B5 /* QKData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKData.h; sourceTree = "<group>"; };
+		ECCAED181752DFB6006CB1B5 /* QKData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKData.m; sourceTree = "<group>"; };
+		ECCAED191752DFB6006CB1B5 /* QKDuo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKDuo.h; sourceTree = "<group>"; };
+		ECCAED1A1752DFB6006CB1B5 /* QKDuo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKDuo.m; sourceTree = "<group>"; };
+		ECCAED1B1752DFB6006CB1B5 /* QKErrorDomain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKErrorDomain.h; sourceTree = "<group>"; };
+		ECCAED1C1752DFB6006CB1B5 /* QKErrorDomain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKErrorDomain.m; sourceTree = "<group>"; };
+		ECCAED1D1752DFB6006CB1B5 /* QKImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKImage.h; sourceTree = "<group>"; };
+		ECCAED1E1752DFB6006CB1B5 /* QKImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKImage.m; sourceTree = "<group>"; };
+		ECCAED1F1752DFB6006CB1B5 /* QKMutableStructArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKMutableStructArray.h; sourceTree = "<group>"; };
+		ECCAED201752DFB6006CB1B5 /* QKMutableStructArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKMutableStructArray.m; sourceTree = "<group>"; };
+		ECCAED211752DFB6006CB1B5 /* QKPixFmt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKPixFmt.h; sourceTree = "<group>"; };
+		ECCAED221752DFB6006CB1B5 /* QKPixFmt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKPixFmt.m; sourceTree = "<group>"; };
+		ECCAED231752DFB6006CB1B5 /* QKStructArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKStructArray.h; sourceTree = "<group>"; };
+		ECCAED241752DFB6006CB1B5 /* QKStructArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKStructArray.m; sourceTree = "<group>"; };
+		ECCAED251752DFB6006CB1B5 /* QKSubData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKSubData.h; sourceTree = "<group>"; };
+		ECCAED261752DFB6006CB1B5 /* QKSubData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKSubData.m; sourceTree = "<group>"; };
+		ECCAED271752DFB6006CB1B5 /* QKTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKTag.h; sourceTree = "<group>"; };
+		ECCAED281752DFB6006CB1B5 /* QKTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKTag.m; sourceTree = "<group>"; };
+		ECCAED2A1752DFB6006CB1B5 /* CALayer+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+QK.h"; sourceTree = "<group>"; };
+		ECCAED2B1752DFB6006CB1B5 /* CALayer+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+QK.m"; sourceTree = "<group>"; };
+		ECCAED2C1752DFB6006CB1B5 /* qk-ca.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-ca.h"; sourceTree = "<group>"; };
+		ECCAED2D1752DFB6006CB1B5 /* QKTextLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKTextLayer.h; sourceTree = "<group>"; };
+		ECCAED2E1752DFB6006CB1B5 /* QKTextLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKTextLayer.m; sourceTree = "<group>"; };
+		ECCAED301752DFB6006CB1B5 /* qk-cf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-cf.h"; sourceTree = "<group>"; };
+		ECCAED311752DFB6006CB1B5 /* QKCFObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKCFObject.h; sourceTree = "<group>"; };
+		ECCAED321752DFB6006CB1B5 /* QKCFObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKCFObject.m; sourceTree = "<group>"; };
+		ECCAED341752DFB6006CB1B5 /* qk-cg-util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-cg-util.h"; sourceTree = "<group>"; };
+		ECCAED351752DFB6006CB1B5 /* qk-cg-util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "qk-cg-util.m"; sourceTree = "<group>"; };
+		ECCAED361752DFB6006CB1B5 /* qk-cg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-cg.h"; sourceTree = "<group>"; };
+		ECCAED371752DFB6006CB1B5 /* QKCGBitmapContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKCGBitmapContext.h; sourceTree = "<group>"; };
+		ECCAED381752DFB6006CB1B5 /* QKCGBitmapContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKCGBitmapContext.m; sourceTree = "<group>"; };
+		ECCAED391752DFB6006CB1B5 /* QKCGColorSpace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKCGColorSpace.h; sourceTree = "<group>"; };
+		ECCAED3A1752DFB6006CB1B5 /* QKCGColorSpace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKCGColorSpace.m; sourceTree = "<group>"; };
+		ECCAED3B1752DFB6006CB1B5 /* QKCGContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKCGContext.h; sourceTree = "<group>"; };
+		ECCAED3C1752DFB6006CB1B5 /* QKCGContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKCGContext.m; sourceTree = "<group>"; };
+		ECCAED3D1752DFB6006CB1B5 /* QKCGImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKCGImage.h; sourceTree = "<group>"; };
+		ECCAED3E1752DFB6006CB1B5 /* QKCGImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKCGImage.m; sourceTree = "<group>"; };
+		ECCAED401752DFB6006CB1B5 /* CCAGLLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCAGLLayer.h; sourceTree = "<group>"; };
+		ECCAED411752DFB6006CB1B5 /* CCAGLLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCAGLLayer.m; sourceTree = "<group>"; };
+		ECCAED421752DFB6006CB1B5 /* CUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUIView.h; sourceTree = "<group>"; };
+		ECCAED431752DFB6006CB1B5 /* CUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUIView.m; sourceTree = "<group>"; };
+		ECCAED441752DFB6006CB1B5 /* qk-cui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-cui.h"; sourceTree = "<group>"; };
+		ECCAED451752DFB6006CB1B5 /* QKLayoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKLayoutView.h; sourceTree = "<group>"; };
+		ECCAED461752DFB6006CB1B5 /* QKLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKLayoutView.m; sourceTree = "<group>"; };
+		ECCAED481752DFB6006CB1B5 /* NSArray+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+QK.h"; sourceTree = "<group>"; };
+		ECCAED491752DFB6006CB1B5 /* NSArray+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+QK.m"; sourceTree = "<group>"; };
+		ECCAED4A1752DFB6006CB1B5 /* NSBundle+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+QK.h"; sourceTree = "<group>"; };
+		ECCAED4B1752DFB6006CB1B5 /* NSBundle+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+QK.m"; sourceTree = "<group>"; };
+		ECCAED4C1752DFB6006CB1B5 /* NSData+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+QK.h"; sourceTree = "<group>"; };
+		ECCAED4D1752DFB6006CB1B5 /* NSData+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+QK.m"; sourceTree = "<group>"; };
+		ECCAED4E1752DFB6006CB1B5 /* NSDate+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+QK.h"; sourceTree = "<group>"; };
+		ECCAED4F1752DFB6006CB1B5 /* NSDate+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+QK.m"; sourceTree = "<group>"; };
+		ECCAED501752DFB6006CB1B5 /* NSDictionary+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+QK.h"; sourceTree = "<group>"; };
+		ECCAED511752DFB6006CB1B5 /* NSDictionary+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+QK.m"; sourceTree = "<group>"; };
+		ECCAED521752DFB6006CB1B5 /* NSError+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+QK.h"; sourceTree = "<group>"; };
+		ECCAED531752DFB6006CB1B5 /* NSError+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+QK.m"; sourceTree = "<group>"; };
+		ECCAED541752DFB6006CB1B5 /* NSJSONSerialization+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSJSONSerialization+QK.h"; sourceTree = "<group>"; };
+		ECCAED551752DFB6006CB1B5 /* NSJSONSerialization+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSJSONSerialization+QK.m"; sourceTree = "<group>"; };
+		ECCAED561752DFB6006CB1B5 /* NSMutableData+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableData+QK.h"; sourceTree = "<group>"; };
+		ECCAED571752DFB6006CB1B5 /* NSMutableData+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableData+QK.m"; sourceTree = "<group>"; };
+		ECCAED581752DFB6006CB1B5 /* NSMutableDictionary+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+QK.h"; sourceTree = "<group>"; };
+		ECCAED591752DFB6006CB1B5 /* NSMutableDictionary+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+QK.m"; sourceTree = "<group>"; };
+		ECCAED5A1752DFB6006CB1B5 /* NSObject+JNB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JNB.h"; sourceTree = "<group>"; };
+		ECCAED5B1752DFB6006CB1B5 /* NSObject+JNB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JNB.m"; sourceTree = "<group>"; };
+		ECCAED5C1752DFB6006CB1B5 /* NSObject+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+QK.h"; sourceTree = "<group>"; };
+		ECCAED5D1752DFB6006CB1B5 /* NSObject+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+QK.m"; sourceTree = "<group>"; };
+		ECCAED5E1752DFB6006CB1B5 /* NSOutputStream+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSOutputStream+QK.h"; sourceTree = "<group>"; };
+		ECCAED5F1752DFB6006CB1B5 /* NSOutputStream+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSOutputStream+QK.m"; sourceTree = "<group>"; };
+		ECCAED601752DFB6006CB1B5 /* NSString+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+QK.h"; sourceTree = "<group>"; };
+		ECCAED611752DFB6006CB1B5 /* NSString+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+QK.m"; sourceTree = "<group>"; };
+		ECCAED621752DFB6006CB1B5 /* NSTimer+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+QK.h"; sourceTree = "<group>"; };
+		ECCAED631752DFB6006CB1B5 /* NSTimer+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+QK.m"; sourceTree = "<group>"; };
+		ECCAED641752DFB6006CB1B5 /* qk-foundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-foundation.h"; sourceTree = "<group>"; };
+		ECCAED661752DFB6006CB1B5 /* GLEventHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLEventHandler.h; sourceTree = "<group>"; };
+		ECCAED671752DFB6006CB1B5 /* GLEventHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLEventHandler.m; sourceTree = "<group>"; };
+		ECCAED681752DFB6006CB1B5 /* GLFragmentShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLFragmentShader.h; sourceTree = "<group>"; };
+		ECCAED691752DFB6006CB1B5 /* GLFragmentShader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLFragmentShader.m; sourceTree = "<group>"; };
+		ECCAED6A1752DFB6006CB1B5 /* GLLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLLayer.h; sourceTree = "<group>"; };
+		ECCAED6B1752DFB6006CB1B5 /* GLLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLLayer.m; sourceTree = "<group>"; };
+		ECCAED6C1752DFB6006CB1B5 /* GLObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLObject.h; sourceTree = "<group>"; };
+		ECCAED6D1752DFB6006CB1B5 /* GLObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLObject.m; sourceTree = "<group>"; };
+		ECCAED6E1752DFB6006CB1B5 /* GLProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLProgram.h; sourceTree = "<group>"; };
+		ECCAED6F1752DFB6006CB1B5 /* GLProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLProgram.m; sourceTree = "<group>"; };
+		ECCAED701752DFB6006CB1B5 /* GLScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLScene.h; sourceTree = "<group>"; };
+		ECCAED711752DFB6006CB1B5 /* GLShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLShader.h; sourceTree = "<group>"; };
+		ECCAED721752DFB6006CB1B5 /* GLShader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLShader.m; sourceTree = "<group>"; };
+		ECCAED731752DFB6006CB1B5 /* GLTestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLTestScene.h; sourceTree = "<group>"; };
+		ECCAED741752DFB6006CB1B5 /* GLTestScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLTestScene.m; sourceTree = "<group>"; };
+		ECCAED751752DFB6006CB1B5 /* GLTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLTexture.h; sourceTree = "<group>"; };
+		ECCAED761752DFB6006CB1B5 /* GLTexture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLTexture.m; sourceTree = "<group>"; };
+		ECCAED771752DFB6006CB1B5 /* GLVertexShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLVertexShader.h; sourceTree = "<group>"; };
+		ECCAED781752DFB6006CB1B5 /* GLVertexShader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLVertexShader.m; sourceTree = "<group>"; };
+		ECCAED791752DFB6006CB1B5 /* GLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLView.h; sourceTree = "<group>"; };
+		ECCAED7A1752DFB6006CB1B5 /* GLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLView.m; sourceTree = "<group>"; };
+		ECCAED7B1752DFB6006CB1B5 /* qk-gl-util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-gl-util.h"; sourceTree = "<group>"; };
+		ECCAED7C1752DFB6006CB1B5 /* qk-gl-util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "qk-gl-util.m"; sourceTree = "<group>"; };
+		ECCAED7D1752DFB6006CB1B5 /* qk-gl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-gl.h"; sourceTree = "<group>"; };
+		ECCAED7F1752DFB6006CB1B5 /* qk-jpg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-jpg.h"; sourceTree = "<group>"; };
+		ECCAED801752DFB6006CB1B5 /* QKImage+JPG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QKImage+JPG.h"; sourceTree = "<group>"; };
+		ECCAED811752DFB6006CB1B5 /* QKImage+JPG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "QKImage+JPG.m"; sourceTree = "<group>"; };
+		ECCAED831752DFB6006CB1B5 /* qk-png.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-png.h"; sourceTree = "<group>"; };
+		ECCAED841752DFB6006CB1B5 /* QKImage+PNG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QKImage+PNG.h"; sourceTree = "<group>"; };
+		ECCAED851752DFB6006CB1B5 /* QKImage+PNG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "QKImage+PNG.m"; sourceTree = "<group>"; };
+		ECCAED871752DFB6006CB1B5 /* qk-sql-util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-sql-util.h"; sourceTree = "<group>"; };
+		ECCAED881752DFB6006CB1B5 /* qk-sql-util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "qk-sql-util.m"; sourceTree = "<group>"; };
+		ECCAED891752DFB6006CB1B5 /* qk-sql.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-sql.h"; sourceTree = "<group>"; };
+		ECCAED8A1752DFB6006CB1B5 /* SqlDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqlDatabase.h; sourceTree = "<group>"; };
+		ECCAED8B1752DFB6006CB1B5 /* SqlDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SqlDatabase.m; sourceTree = "<group>"; };
+		ECCAED8C1752DFB6006CB1B5 /* SqlStatement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqlStatement.h; sourceTree = "<group>"; };
+		ECCAED8D1752DFB6006CB1B5 /* SqlStatement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SqlStatement.m; sourceTree = "<group>"; };
+		ECCAED8E1752DFB6006CB1B5 /* source-qk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "source-qk.h"; sourceTree = "<group>"; };
+		ECCAED911752DFB6006CB1B5 /* qkd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qkd.h; sourceTree = "<group>"; };
+		ECCAED921752DFB6006CB1B5 /* QKView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKView.h; sourceTree = "<group>"; };
+		ECCAED931752DFB6006CB1B5 /* QKView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKView.m; sourceTree = "<group>"; };
+		ECCAED941752DFB6006CB1B5 /* QKWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKWindow.h; sourceTree = "<group>"; };
+		ECCAED951752DFB6006CB1B5 /* QKWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKWindow.m; sourceTree = "<group>"; };
+		ECCAED971752DFB6006CB1B5 /* NSMenu+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMenu+QK.h"; sourceTree = "<group>"; };
+		ECCAED981752DFB6006CB1B5 /* NSMenu+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMenu+QK.m"; sourceTree = "<group>"; };
+		ECCAED991752DFB6006CB1B5 /* NSMenuItem+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMenuItem+QK.h"; sourceTree = "<group>"; };
+		ECCAED9A1752DFB6006CB1B5 /* NSMenuItem+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMenuItem+QK.m"; sourceTree = "<group>"; };
+		ECCAED9B1752DFB6006CB1B5 /* NSView+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+QK.h"; sourceTree = "<group>"; };
+		ECCAED9C1752DFB6006CB1B5 /* NSView+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+QK.m"; sourceTree = "<group>"; };
+		ECCAED9D1752DFB6006CB1B5 /* qkd-cocoa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qkd-cocoa.h"; sourceTree = "<group>"; };
+		ECCAED9E1752DFB6006CB1B5 /* source-qk-mac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "source-qk-mac.h"; sourceTree = "<group>"; };
+		ECCAEDDA1752E057006CB1B5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,6 +275,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECCAEDDB1752E057006CB1B5 /* QuartzCore.framework in Frameworks */,
 				EC0D9B5216B85799005D2C2B /* OpenGL.framework in Frameworks */,
 				EC0D9B5016B85794005D2C2B /* GLKit.framework in Frameworks */,
 				EC0D9B4E16B84FDA005D2C2B /* libz.dylib in Frameworks */,
@@ -279,8 +304,9 @@
 		EC0D9A5E16B82EBD005D2C2B = {
 			isa = PBXGroup;
 			children = (
-				EC0D9BDE16B998CB005D2C2B /* source-qk */,
-				EC0D9C4016B998CB005D2C2B /* source-qk-mac */,
+				ECCAEDDA1752E057006CB1B5 /* QuartzCore.framework */,
+				ECCAED081752DFB6006CB1B5 /* source-qk */,
+				ECCAED8F1752DFB6006CB1B5 /* source-qk-mac */,
 				EC0D9BD516B9983C005D2C2B /* jnb-image-with-png */,
 				EC0D9BAC16B87683005D2C2B /* test-qk-mac */,
 				ECB7FC7617446724002A4B71 /* submodules */,
@@ -338,195 +364,6 @@
 				EC0D9BD716B9983C005D2C2B /* jnb-image-with-png.pch */,
 			);
 			path = "jnb-image-with-png";
-			sourceTree = "<group>";
-		};
-		EC0D9BDE16B998CB005D2C2B /* source-qk */ = {
-			isa = PBXGroup;
-			children = (
-				EC0D9BDF16B998CB005D2C2B /* qk-basic */,
-				EC0D9BF916B998CB005D2C2B /* qk-cf */,
-				EC0D9BFD16B998CB005D2C2B /* qk-cg */,
-				EC0D9C0916B998CB005D2C2B /* qk-foundation */,
-				EC0D9C2316B998CB005D2C2B /* qk-gl */,
-				EC26861C16C31F1500FD35FB /* qk-jpg */,
-				ECB7FCBE17446F64002A4B71 /* qk-nsui */,
-				EC0D9C3316B998CB005D2C2B /* qk-png */,
-				EC0D9C3716B998CB005D2C2B /* qk-sql */,
-				EC0D9C3F16B998CB005D2C2B /* source-qk.h */,
-			);
-			path = "source-qk";
-			sourceTree = "<group>";
-		};
-		EC0D9BDF16B998CB005D2C2B /* qk-basic */ = {
-			isa = PBXGroup;
-			children = (
-				EC0D9BE016B998CB005D2C2B /* Duo.h */,
-				EC0D9BE116B998CB005D2C2B /* Duo.m */,
-				EC0D9BE216B998CB005D2C2B /* qk-basic.h */,
-				EC0D9BE316B998CB005D2C2B /* qk-block-types.h */,
-				EC0D9BE416B998CB005D2C2B /* qk-check.h */,
-				EC0D9BE516B998CB005D2C2B /* qk-check.m */,
-				EC0D9BE616B998CB005D2C2B /* qk-log.h */,
-				EC0D9BE716B998CB005D2C2B /* qk-log.m */,
-				EC0D9BE816B998CB005D2C2B /* qk-macros.h */,
-				EC0D9BE916B998CB005D2C2B /* qk-math.h */,
-				EC0D9BEA16B998CB005D2C2B /* qk-math.m */,
-				EC0D9BEB16B998CB005D2C2B /* qk-types.h */,
-				EC0D9BEC16B998CB005D2C2B /* qk-vec.h */,
-				EC0D9BED16B998CB005D2C2B /* QKData.h */,
-				EC0D9BEE16B998CB005D2C2B /* QKData.m */,
-				ECB7FCB2174468B7002A4B71 /* QKErrorDomain.h */,
-				ECB7FCB3174468B7002A4B71 /* QKErrorDomain.m */,
-				EC0D9BEF16B998CB005D2C2B /* QKImage.h */,
-				EC0D9BF016B998CB005D2C2B /* QKImage.m */,
-				EC0D9BF116B998CB005D2C2B /* QKMutableStructArray.h */,
-				EC0D9BF216B998CB005D2C2B /* QKMutableStructArray.m */,
-				EC0D9BF316B998CB005D2C2B /* QKPixFmt.h */,
-				EC0D9BF416B998CB005D2C2B /* QKPixFmt.m */,
-				EC0D9BF516B998CB005D2C2B /* QKStructArray.h */,
-				EC0D9BF616B998CB005D2C2B /* QKStructArray.m */,
-				EC0D9BF716B998CB005D2C2B /* QKSubData.h */,
-				EC0D9BF816B998CB005D2C2B /* QKSubData.m */,
-			);
-			path = "qk-basic";
-			sourceTree = "<group>";
-		};
-		EC0D9BF916B998CB005D2C2B /* qk-cf */ = {
-			isa = PBXGroup;
-			children = (
-				EC0D9BFA16B998CB005D2C2B /* qk-cf.h */,
-				EC0D9BFB16B998CB005D2C2B /* QKCFObject.h */,
-				EC0D9BFC16B998CB005D2C2B /* QKCFObject.m */,
-			);
-			path = "qk-cf";
-			sourceTree = "<group>";
-		};
-		EC0D9BFD16B998CB005D2C2B /* qk-cg */ = {
-			isa = PBXGroup;
-			children = (
-				EC0D9BFE16B998CB005D2C2B /* qk-cg-util.h */,
-				EC0D9BFF16B998CB005D2C2B /* qk-cg-util.m */,
-				EC0D9C0016B998CB005D2C2B /* qk-cg.h */,
-				EC0D9C0116B998CB005D2C2B /* QKCGBitmapContext.h */,
-				EC0D9C0216B998CB005D2C2B /* QKCGBitmapContext.m */,
-				EC0D9C0316B998CB005D2C2B /* QKCGColorSpace.h */,
-				EC0D9C0416B998CB005D2C2B /* QKCGColorSpace.m */,
-				EC0D9C0516B998CB005D2C2B /* QKCGContext.h */,
-				EC0D9C0616B998CB005D2C2B /* QKCGContext.m */,
-				EC0D9C0716B998CB005D2C2B /* QKCGImage.h */,
-				EC0D9C0816B998CB005D2C2B /* QKCGImage.m */,
-			);
-			path = "qk-cg";
-			sourceTree = "<group>";
-		};
-		EC0D9C0916B998CB005D2C2B /* qk-foundation */ = {
-			isa = PBXGroup;
-			children = (
-				EC0D9C0A16B998CB005D2C2B /* NSArray+QK.h */,
-				EC0D9C0B16B998CB005D2C2B /* NSArray+QK.m */,
-				EC0D9C0C16B998CB005D2C2B /* NSBundle+QK.h */,
-				EC0D9C0D16B998CB005D2C2B /* NSBundle+QK.m */,
-				EC0D9C0E16B998CB005D2C2B /* NSData+QK.h */,
-				EC0D9C0F16B998CB005D2C2B /* NSData+QK.m */,
-				EC0D9C1016B998CB005D2C2B /* NSDate+QK.h */,
-				EC0D9C1116B998CB005D2C2B /* NSDate+QK.m */,
-				EC0D9C1216B998CB005D2C2B /* NSDictionary+QK.h */,
-				EC0D9C1316B998CB005D2C2B /* NSDictionary+QK.m */,
-				EC0D9C1416B998CB005D2C2B /* NSError+QK.h */,
-				EC0D9C1516B998CB005D2C2B /* NSError+QK.m */,
-				EC0D9C1616B998CB005D2C2B /* NSMutableData+QK.h */,
-				EC0D9C1716B998CB005D2C2B /* NSMutableData+QK.m */,
-				EC0D9C1816B998CB005D2C2B /* NSMutableDictionary+QK.h */,
-				EC0D9C1916B998CB005D2C2B /* NSMutableDictionary+QK.m */,
-				EC0D9C1A16B998CB005D2C2B /* NSObject+JNB.h */,
-				EC0D9C1B16B998CB005D2C2B /* NSObject+JNB.m */,
-				EC0D9C1C16B998CB005D2C2B /* NSObject+QK.h */,
-				EC0D9C1D16B998CB005D2C2B /* NSObject+QK.m */,
-				EC0D9C1E16B998CB005D2C2B /* NSOutputStream+QK.h */,
-				EC0D9C1F16B998CB005D2C2B /* NSOutputStream+QK.m */,
-				EC0D9C2016B998CB005D2C2B /* NSString+QK.h */,
-				EC0D9C2116B998CB005D2C2B /* NSString+QK.m */,
-				EC0D9C2216B998CB005D2C2B /* qk-foundation.h */,
-			);
-			path = "qk-foundation";
-			sourceTree = "<group>";
-		};
-		EC0D9C2316B998CB005D2C2B /* qk-gl */ = {
-			isa = PBXGroup;
-			children = (
-				ECB7FCC317446F8E002A4B71 /* GLCanvasInfo.h */,
-				ECB7FCC417446F8E002A4B71 /* GLCanvasInfo.m */,
-				EC0D9C2416B998CB005D2C2B /* GLFragmentShader.h */,
-				EC0D9C2516B998CB005D2C2B /* GLFragmentShader.m */,
-				EC0D9C2616B998CB005D2C2B /* GLObject.h */,
-				EC0D9C2716B998CB005D2C2B /* GLObject.m */,
-				EC0D9C2816B998CB005D2C2B /* GLProgram.h */,
-				EC0D9C2916B998CB005D2C2B /* GLProgram.m */,
-				ECB7FCC617446FA6002A4B71 /* GLScene.h */,
-				EC0D9C2A16B998CB005D2C2B /* GLShader.h */,
-				EC0D9C2B16B998CB005D2C2B /* GLShader.m */,
-				EC0D9C2C16B998CB005D2C2B /* GLTexture.h */,
-				EC0D9C2D16B998CB005D2C2B /* GLTexture.m */,
-				EC0D9C2E16B998CB005D2C2B /* GLVertexShader.h */,
-				EC0D9C2F16B998CB005D2C2B /* GLVertexShader.m */,
-				EC0D9C3016B998CB005D2C2B /* qk-gl-util.h */,
-				EC0D9C3116B998CB005D2C2B /* qk-gl-util.m */,
-				EC0D9C3216B998CB005D2C2B /* qk-gl.h */,
-			);
-			path = "qk-gl";
-			sourceTree = "<group>";
-		};
-		EC0D9C3316B998CB005D2C2B /* qk-png */ = {
-			isa = PBXGroup;
-			children = (
-				EC0D9C3416B998CB005D2C2B /* qk-png.h */,
-				EC0D9C3516B998CB005D2C2B /* QKImage+PNG.h */,
-				EC0D9C3616B998CB005D2C2B /* QKImage+PNG.m */,
-			);
-			path = "qk-png";
-			sourceTree = "<group>";
-		};
-		EC0D9C3716B998CB005D2C2B /* qk-sql */ = {
-			isa = PBXGroup;
-			children = (
-				EC0D9C3816B998CB005D2C2B /* qk-sql-util.h */,
-				EC0D9C3916B998CB005D2C2B /* qk-sql-util.m */,
-				EC0D9C3A16B998CB005D2C2B /* qk-sql.h */,
-				EC0D9C3B16B998CB005D2C2B /* SqlDatabase.h */,
-				EC0D9C3C16B998CB005D2C2B /* SqlDatabase.m */,
-				EC0D9C3D16B998CB005D2C2B /* SqlStatement.h */,
-				EC0D9C3E16B998CB005D2C2B /* SqlStatement.m */,
-			);
-			path = "qk-sql";
-			sourceTree = "<group>";
-		};
-		EC0D9C4016B998CB005D2C2B /* source-qk-mac */ = {
-			isa = PBXGroup;
-			children = (
-				EC0D9C4116B998CB005D2C2B /* qk-cocoa */,
-				EC0D9C4516B998CB005D2C2B /* source-qk-mac.h */,
-			);
-			path = "source-qk-mac";
-			sourceTree = "<group>";
-		};
-		EC0D9C4116B998CB005D2C2B /* qk-cocoa */ = {
-			isa = PBXGroup;
-			children = (
-				EC0D9C4216B998CB005D2C2B /* NSView+QK.h */,
-				EC0D9C4316B998CB005D2C2B /* NSView+QK.m */,
-				EC0D9C4416B998CB005D2C2B /* qk-cocoa.h */,
-			);
-			path = "qk-cocoa";
-			sourceTree = "<group>";
-		};
-		EC26861C16C31F1500FD35FB /* qk-jpg */ = {
-			isa = PBXGroup;
-			children = (
-				EC26862116C31F2A00FD35FB /* qk-jpg.h */,
-				EC26861D16C31F1500FD35FB /* QKImage+JPG.h */,
-				EC26861E16C31F1500FD35FB /* QKImage+JPG.m */,
-			);
-			path = "qk-jpg";
 			sourceTree = "<group>";
 		};
 		ECB7FC7617446724002A4B71 /* submodules */ = {
@@ -658,14 +495,251 @@
 			path = lib;
 			sourceTree = "<group>";
 		};
-		ECB7FCBE17446F64002A4B71 /* qk-nsui */ = {
+		ECCAED081752DFB6006CB1B5 /* source-qk */ = {
 			isa = PBXGroup;
 			children = (
-				ECB7FCBF17446F64002A4B71 /* NSUIView.h */,
-				ECB7FCC017446F64002A4B71 /* NSUIView.m */,
-				ECB7FCC117446F64002A4B71 /* qk-nsui.h */,
+				ECCAED091752DFB6006CB1B5 /* qk */,
+				ECCAED291752DFB6006CB1B5 /* qk-ca */,
+				ECCAED2F1752DFB6006CB1B5 /* qk-cf */,
+				ECCAED331752DFB6006CB1B5 /* qk-cg */,
+				ECCAED3F1752DFB6006CB1B5 /* qk-cui */,
+				ECCAED471752DFB6006CB1B5 /* qk-foundation */,
+				ECCAED651752DFB6006CB1B5 /* qk-gl */,
+				ECCAED7E1752DFB6006CB1B5 /* qk-jpg */,
+				ECCAED821752DFB6006CB1B5 /* qk-png */,
+				ECCAED861752DFB6006CB1B5 /* qk-sql */,
+				ECCAED8E1752DFB6006CB1B5 /* source-qk.h */,
 			);
-			path = "qk-nsui";
+			path = "source-qk";
+			sourceTree = "<group>";
+		};
+		ECCAED091752DFB6006CB1B5 /* qk */ = {
+			isa = PBXGroup;
+			children = (
+				ECCAED0A1752DFB6006CB1B5 /* qk-block-types.h */,
+				ECCAED0B1752DFB6006CB1B5 /* qk-check.h */,
+				ECCAED0C1752DFB6006CB1B5 /* qk-check.m */,
+				ECCAED0D1752DFB6006CB1B5 /* qk-log.h */,
+				ECCAED0E1752DFB6006CB1B5 /* qk-log.m */,
+				ECCAED0F1752DFB6006CB1B5 /* qk-macros.h */,
+				ECCAED101752DFB6006CB1B5 /* qk-math.h */,
+				ECCAED111752DFB6006CB1B5 /* qk-math.m */,
+				ECCAED121752DFB6006CB1B5 /* qk-types.h */,
+				ECCAED131752DFB6006CB1B5 /* qk-vec.h */,
+				ECCAED141752DFB6006CB1B5 /* qk.h */,
+				ECCAED151752DFB6006CB1B5 /* QKBinding.h */,
+				ECCAED161752DFB6006CB1B5 /* QKBinding.m */,
+				ECCAED171752DFB6006CB1B5 /* QKData.h */,
+				ECCAED181752DFB6006CB1B5 /* QKData.m */,
+				ECCAED191752DFB6006CB1B5 /* QKDuo.h */,
+				ECCAED1A1752DFB6006CB1B5 /* QKDuo.m */,
+				ECCAED1B1752DFB6006CB1B5 /* QKErrorDomain.h */,
+				ECCAED1C1752DFB6006CB1B5 /* QKErrorDomain.m */,
+				ECCAED1D1752DFB6006CB1B5 /* QKImage.h */,
+				ECCAED1E1752DFB6006CB1B5 /* QKImage.m */,
+				ECCAED1F1752DFB6006CB1B5 /* QKMutableStructArray.h */,
+				ECCAED201752DFB6006CB1B5 /* QKMutableStructArray.m */,
+				ECCAED211752DFB6006CB1B5 /* QKPixFmt.h */,
+				ECCAED221752DFB6006CB1B5 /* QKPixFmt.m */,
+				ECCAED231752DFB6006CB1B5 /* QKStructArray.h */,
+				ECCAED241752DFB6006CB1B5 /* QKStructArray.m */,
+				ECCAED251752DFB6006CB1B5 /* QKSubData.h */,
+				ECCAED261752DFB6006CB1B5 /* QKSubData.m */,
+				ECCAED271752DFB6006CB1B5 /* QKTag.h */,
+				ECCAED281752DFB6006CB1B5 /* QKTag.m */,
+			);
+			path = qk;
+			sourceTree = "<group>";
+		};
+		ECCAED291752DFB6006CB1B5 /* qk-ca */ = {
+			isa = PBXGroup;
+			children = (
+				ECCAED2A1752DFB6006CB1B5 /* CALayer+QK.h */,
+				ECCAED2B1752DFB6006CB1B5 /* CALayer+QK.m */,
+				ECCAED2C1752DFB6006CB1B5 /* qk-ca.h */,
+				ECCAED2D1752DFB6006CB1B5 /* QKTextLayer.h */,
+				ECCAED2E1752DFB6006CB1B5 /* QKTextLayer.m */,
+			);
+			path = "qk-ca";
+			sourceTree = "<group>";
+		};
+		ECCAED2F1752DFB6006CB1B5 /* qk-cf */ = {
+			isa = PBXGroup;
+			children = (
+				ECCAED301752DFB6006CB1B5 /* qk-cf.h */,
+				ECCAED311752DFB6006CB1B5 /* QKCFObject.h */,
+				ECCAED321752DFB6006CB1B5 /* QKCFObject.m */,
+			);
+			path = "qk-cf";
+			sourceTree = "<group>";
+		};
+		ECCAED331752DFB6006CB1B5 /* qk-cg */ = {
+			isa = PBXGroup;
+			children = (
+				ECCAED341752DFB6006CB1B5 /* qk-cg-util.h */,
+				ECCAED351752DFB6006CB1B5 /* qk-cg-util.m */,
+				ECCAED361752DFB6006CB1B5 /* qk-cg.h */,
+				ECCAED371752DFB6006CB1B5 /* QKCGBitmapContext.h */,
+				ECCAED381752DFB6006CB1B5 /* QKCGBitmapContext.m */,
+				ECCAED391752DFB6006CB1B5 /* QKCGColorSpace.h */,
+				ECCAED3A1752DFB6006CB1B5 /* QKCGColorSpace.m */,
+				ECCAED3B1752DFB6006CB1B5 /* QKCGContext.h */,
+				ECCAED3C1752DFB6006CB1B5 /* QKCGContext.m */,
+				ECCAED3D1752DFB6006CB1B5 /* QKCGImage.h */,
+				ECCAED3E1752DFB6006CB1B5 /* QKCGImage.m */,
+			);
+			path = "qk-cg";
+			sourceTree = "<group>";
+		};
+		ECCAED3F1752DFB6006CB1B5 /* qk-cui */ = {
+			isa = PBXGroup;
+			children = (
+				ECCAED401752DFB6006CB1B5 /* CCAGLLayer.h */,
+				ECCAED411752DFB6006CB1B5 /* CCAGLLayer.m */,
+				ECCAED421752DFB6006CB1B5 /* CUIView.h */,
+				ECCAED431752DFB6006CB1B5 /* CUIView.m */,
+				ECCAED441752DFB6006CB1B5 /* qk-cui.h */,
+				ECCAED451752DFB6006CB1B5 /* QKLayoutView.h */,
+				ECCAED461752DFB6006CB1B5 /* QKLayoutView.m */,
+			);
+			path = "qk-cui";
+			sourceTree = "<group>";
+		};
+		ECCAED471752DFB6006CB1B5 /* qk-foundation */ = {
+			isa = PBXGroup;
+			children = (
+				ECCAED481752DFB6006CB1B5 /* NSArray+QK.h */,
+				ECCAED491752DFB6006CB1B5 /* NSArray+QK.m */,
+				ECCAED4A1752DFB6006CB1B5 /* NSBundle+QK.h */,
+				ECCAED4B1752DFB6006CB1B5 /* NSBundle+QK.m */,
+				ECCAED4C1752DFB6006CB1B5 /* NSData+QK.h */,
+				ECCAED4D1752DFB6006CB1B5 /* NSData+QK.m */,
+				ECCAED4E1752DFB6006CB1B5 /* NSDate+QK.h */,
+				ECCAED4F1752DFB6006CB1B5 /* NSDate+QK.m */,
+				ECCAED501752DFB6006CB1B5 /* NSDictionary+QK.h */,
+				ECCAED511752DFB6006CB1B5 /* NSDictionary+QK.m */,
+				ECCAED521752DFB6006CB1B5 /* NSError+QK.h */,
+				ECCAED531752DFB6006CB1B5 /* NSError+QK.m */,
+				ECCAED541752DFB6006CB1B5 /* NSJSONSerialization+QK.h */,
+				ECCAED551752DFB6006CB1B5 /* NSJSONSerialization+QK.m */,
+				ECCAED561752DFB6006CB1B5 /* NSMutableData+QK.h */,
+				ECCAED571752DFB6006CB1B5 /* NSMutableData+QK.m */,
+				ECCAED581752DFB6006CB1B5 /* NSMutableDictionary+QK.h */,
+				ECCAED591752DFB6006CB1B5 /* NSMutableDictionary+QK.m */,
+				ECCAED5A1752DFB6006CB1B5 /* NSObject+JNB.h */,
+				ECCAED5B1752DFB6006CB1B5 /* NSObject+JNB.m */,
+				ECCAED5C1752DFB6006CB1B5 /* NSObject+QK.h */,
+				ECCAED5D1752DFB6006CB1B5 /* NSObject+QK.m */,
+				ECCAED5E1752DFB6006CB1B5 /* NSOutputStream+QK.h */,
+				ECCAED5F1752DFB6006CB1B5 /* NSOutputStream+QK.m */,
+				ECCAED601752DFB6006CB1B5 /* NSString+QK.h */,
+				ECCAED611752DFB6006CB1B5 /* NSString+QK.m */,
+				ECCAED621752DFB6006CB1B5 /* NSTimer+QK.h */,
+				ECCAED631752DFB6006CB1B5 /* NSTimer+QK.m */,
+				ECCAED641752DFB6006CB1B5 /* qk-foundation.h */,
+			);
+			path = "qk-foundation";
+			sourceTree = "<group>";
+		};
+		ECCAED651752DFB6006CB1B5 /* qk-gl */ = {
+			isa = PBXGroup;
+			children = (
+				ECCAED661752DFB6006CB1B5 /* GLEventHandler.h */,
+				ECCAED671752DFB6006CB1B5 /* GLEventHandler.m */,
+				ECCAED681752DFB6006CB1B5 /* GLFragmentShader.h */,
+				ECCAED691752DFB6006CB1B5 /* GLFragmentShader.m */,
+				ECCAED6A1752DFB6006CB1B5 /* GLLayer.h */,
+				ECCAED6B1752DFB6006CB1B5 /* GLLayer.m */,
+				ECCAED6C1752DFB6006CB1B5 /* GLObject.h */,
+				ECCAED6D1752DFB6006CB1B5 /* GLObject.m */,
+				ECCAED6E1752DFB6006CB1B5 /* GLProgram.h */,
+				ECCAED6F1752DFB6006CB1B5 /* GLProgram.m */,
+				ECCAED701752DFB6006CB1B5 /* GLScene.h */,
+				ECCAED711752DFB6006CB1B5 /* GLShader.h */,
+				ECCAED721752DFB6006CB1B5 /* GLShader.m */,
+				ECCAED731752DFB6006CB1B5 /* GLTestScene.h */,
+				ECCAED741752DFB6006CB1B5 /* GLTestScene.m */,
+				ECCAED751752DFB6006CB1B5 /* GLTexture.h */,
+				ECCAED761752DFB6006CB1B5 /* GLTexture.m */,
+				ECCAED771752DFB6006CB1B5 /* GLVertexShader.h */,
+				ECCAED781752DFB6006CB1B5 /* GLVertexShader.m */,
+				ECCAED791752DFB6006CB1B5 /* GLView.h */,
+				ECCAED7A1752DFB6006CB1B5 /* GLView.m */,
+				ECCAED7B1752DFB6006CB1B5 /* qk-gl-util.h */,
+				ECCAED7C1752DFB6006CB1B5 /* qk-gl-util.m */,
+				ECCAED7D1752DFB6006CB1B5 /* qk-gl.h */,
+			);
+			path = "qk-gl";
+			sourceTree = "<group>";
+		};
+		ECCAED7E1752DFB6006CB1B5 /* qk-jpg */ = {
+			isa = PBXGroup;
+			children = (
+				ECCAED7F1752DFB6006CB1B5 /* qk-jpg.h */,
+				ECCAED801752DFB6006CB1B5 /* QKImage+JPG.h */,
+				ECCAED811752DFB6006CB1B5 /* QKImage+JPG.m */,
+			);
+			path = "qk-jpg";
+			sourceTree = "<group>";
+		};
+		ECCAED821752DFB6006CB1B5 /* qk-png */ = {
+			isa = PBXGroup;
+			children = (
+				ECCAED831752DFB6006CB1B5 /* qk-png.h */,
+				ECCAED841752DFB6006CB1B5 /* QKImage+PNG.h */,
+				ECCAED851752DFB6006CB1B5 /* QKImage+PNG.m */,
+			);
+			path = "qk-png";
+			sourceTree = "<group>";
+		};
+		ECCAED861752DFB6006CB1B5 /* qk-sql */ = {
+			isa = PBXGroup;
+			children = (
+				ECCAED871752DFB6006CB1B5 /* qk-sql-util.h */,
+				ECCAED881752DFB6006CB1B5 /* qk-sql-util.m */,
+				ECCAED891752DFB6006CB1B5 /* qk-sql.h */,
+				ECCAED8A1752DFB6006CB1B5 /* SqlDatabase.h */,
+				ECCAED8B1752DFB6006CB1B5 /* SqlDatabase.m */,
+				ECCAED8C1752DFB6006CB1B5 /* SqlStatement.h */,
+				ECCAED8D1752DFB6006CB1B5 /* SqlStatement.m */,
+			);
+			path = "qk-sql";
+			sourceTree = "<group>";
+		};
+		ECCAED8F1752DFB6006CB1B5 /* source-qk-mac */ = {
+			isa = PBXGroup;
+			children = (
+				ECCAED901752DFB6006CB1B5 /* qkd */,
+				ECCAED961752DFB6006CB1B5 /* qkd-cocoa */,
+				ECCAED9E1752DFB6006CB1B5 /* source-qk-mac.h */,
+			);
+			path = "source-qk-mac";
+			sourceTree = "<group>";
+		};
+		ECCAED901752DFB6006CB1B5 /* qkd */ = {
+			isa = PBXGroup;
+			children = (
+				ECCAED911752DFB6006CB1B5 /* qkd.h */,
+				ECCAED921752DFB6006CB1B5 /* QKView.h */,
+				ECCAED931752DFB6006CB1B5 /* QKView.m */,
+				ECCAED941752DFB6006CB1B5 /* QKWindow.h */,
+				ECCAED951752DFB6006CB1B5 /* QKWindow.m */,
+			);
+			path = qkd;
+			sourceTree = "<group>";
+		};
+		ECCAED961752DFB6006CB1B5 /* qkd-cocoa */ = {
+			isa = PBXGroup;
+			children = (
+				ECCAED971752DFB6006CB1B5 /* NSMenu+QK.h */,
+				ECCAED981752DFB6006CB1B5 /* NSMenu+QK.m */,
+				ECCAED991752DFB6006CB1B5 /* NSMenuItem+QK.h */,
+				ECCAED9A1752DFB6006CB1B5 /* NSMenuItem+QK.m */,
+				ECCAED9B1752DFB6006CB1B5 /* NSView+QK.h */,
+				ECCAED9C1752DFB6006CB1B5 /* NSView+QK.m */,
+				ECCAED9D1752DFB6006CB1B5 /* qkd-cocoa.h */,
+			);
+			path = "qkd-cocoa";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -748,52 +822,67 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC0D9C4616B998CB005D2C2B /* Duo.m in Sources */,
-				EC0D9C4816B998CB005D2C2B /* qk-check.m in Sources */,
-				EC0D9C4A16B998CB005D2C2B /* qk-log.m in Sources */,
-				EC0D9C4C16B998CB005D2C2B /* qk-math.m in Sources */,
-				EC0D9C4E16B998CB005D2C2B /* QKData.m in Sources */,
-				EC0D9C5016B998CB005D2C2B /* QKImage.m in Sources */,
-				EC0D9C5216B998CB005D2C2B /* QKMutableStructArray.m in Sources */,
-				EC0D9C5416B998CB005D2C2B /* QKPixFmt.m in Sources */,
-				EC0D9C5616B998CB005D2C2B /* QKStructArray.m in Sources */,
-				EC0D9C5816B998CB005D2C2B /* QKSubData.m in Sources */,
-				EC0D9C5A16B998CB005D2C2B /* QKCFObject.m in Sources */,
-				EC0D9C5C16B998CB005D2C2B /* qk-cg-util.m in Sources */,
-				EC0D9C5E16B998CB005D2C2B /* QKCGBitmapContext.m in Sources */,
-				EC0D9C6016B998CB005D2C2B /* QKCGColorSpace.m in Sources */,
-				EC0D9C6216B998CB005D2C2B /* QKCGContext.m in Sources */,
-				EC0D9C6416B998CB005D2C2B /* QKCGImage.m in Sources */,
-				EC0D9C6616B998CB005D2C2B /* NSArray+QK.m in Sources */,
-				EC0D9C6816B998CB005D2C2B /* NSBundle+QK.m in Sources */,
-				EC0D9C6A16B998CB005D2C2B /* NSData+QK.m in Sources */,
-				EC0D9C6C16B998CB005D2C2B /* NSDate+QK.m in Sources */,
-				EC0D9C6E16B998CB005D2C2B /* NSDictionary+QK.m in Sources */,
-				EC0D9C7016B998CB005D2C2B /* NSError+QK.m in Sources */,
-				EC0D9C7216B998CB005D2C2B /* NSMutableData+QK.m in Sources */,
-				EC0D9C7416B998CB005D2C2B /* NSMutableDictionary+QK.m in Sources */,
-				EC0D9C7616B998CB005D2C2B /* NSObject+JNB.m in Sources */,
-				EC0D9C7816B998CB005D2C2B /* NSObject+QK.m in Sources */,
-				EC0D9C7A16B998CB005D2C2B /* NSOutputStream+QK.m in Sources */,
-				EC0D9C7C16B998CB005D2C2B /* NSString+QK.m in Sources */,
-				EC0D9C7E16B998CB005D2C2B /* GLFragmentShader.m in Sources */,
-				EC0D9C8016B998CB005D2C2B /* GLObject.m in Sources */,
-				EC0D9C8216B998CB005D2C2B /* GLProgram.m in Sources */,
-				EC0D9C8416B998CB005D2C2B /* GLShader.m in Sources */,
-				EC0D9C8616B998CB005D2C2B /* GLTexture.m in Sources */,
-				EC0D9C8816B998CB005D2C2B /* GLVertexShader.m in Sources */,
-				EC0D9C8A16B998CB005D2C2B /* qk-gl-util.m in Sources */,
-				EC0D9C8C16B998CB005D2C2B /* QKImage+PNG.m in Sources */,
-				EC0D9C8E16B998CB005D2C2B /* qk-sql-util.m in Sources */,
-				EC0D9C9016B998CB005D2C2B /* SqlDatabase.m in Sources */,
-				EC0D9C9216B998CB005D2C2B /* SqlStatement.m in Sources */,
-				EC0D9C9416B998CB005D2C2B /* NSView+QK.m in Sources */,
-				EC26861F16C31F1500FD35FB /* QKImage+JPG.m in Sources */,
-				ECB7FCB4174468B7002A4B71 /* QKErrorDomain.m in Sources */,
 				ECB7FCBA17446E7A002A4B71 /* AppDelegate.m in Sources */,
 				ECB7FCBB17446E7A002A4B71 /* test-qk-mac.m in Sources */,
-				ECB7FCC217446F64002A4B71 /* NSUIView.m in Sources */,
-				ECB7FCC517446F8E002A4B71 /* GLCanvasInfo.m in Sources */,
+				ECCAED9F1752DFB6006CB1B5 /* qk-check.m in Sources */,
+				ECCAEDA01752DFB6006CB1B5 /* qk-log.m in Sources */,
+				ECCAEDA11752DFB6006CB1B5 /* qk-math.m in Sources */,
+				ECCAEDA21752DFB6006CB1B5 /* QKBinding.m in Sources */,
+				ECCAEDA31752DFB6006CB1B5 /* QKData.m in Sources */,
+				ECCAEDA41752DFB6006CB1B5 /* QKDuo.m in Sources */,
+				ECCAEDA51752DFB6006CB1B5 /* QKErrorDomain.m in Sources */,
+				ECCAEDA61752DFB6006CB1B5 /* QKImage.m in Sources */,
+				ECCAEDA71752DFB6006CB1B5 /* QKMutableStructArray.m in Sources */,
+				ECCAEDA81752DFB6006CB1B5 /* QKPixFmt.m in Sources */,
+				ECCAEDA91752DFB6006CB1B5 /* QKStructArray.m in Sources */,
+				ECCAEDAA1752DFB6006CB1B5 /* QKSubData.m in Sources */,
+				ECCAEDAB1752DFB6006CB1B5 /* QKTag.m in Sources */,
+				ECCAEDAC1752DFB6006CB1B5 /* CALayer+QK.m in Sources */,
+				ECCAEDAD1752DFB6006CB1B5 /* QKTextLayer.m in Sources */,
+				ECCAEDAE1752DFB6006CB1B5 /* QKCFObject.m in Sources */,
+				ECCAEDAF1752DFB6006CB1B5 /* qk-cg-util.m in Sources */,
+				ECCAEDB01752DFB6006CB1B5 /* QKCGBitmapContext.m in Sources */,
+				ECCAEDB11752DFB6006CB1B5 /* QKCGColorSpace.m in Sources */,
+				ECCAEDB21752DFB6006CB1B5 /* QKCGContext.m in Sources */,
+				ECCAEDB31752DFB6006CB1B5 /* QKCGImage.m in Sources */,
+				ECCAEDB41752DFB6006CB1B5 /* CCAGLLayer.m in Sources */,
+				ECCAEDB51752DFB6006CB1B5 /* CUIView.m in Sources */,
+				ECCAEDB61752DFB6006CB1B5 /* QKLayoutView.m in Sources */,
+				ECCAEDB71752DFB6006CB1B5 /* NSArray+QK.m in Sources */,
+				ECCAEDB81752DFB6006CB1B5 /* NSBundle+QK.m in Sources */,
+				ECCAEDB91752DFB6006CB1B5 /* NSData+QK.m in Sources */,
+				ECCAEDBA1752DFB6006CB1B5 /* NSDate+QK.m in Sources */,
+				ECCAEDBB1752DFB6006CB1B5 /* NSDictionary+QK.m in Sources */,
+				ECCAEDBC1752DFB6006CB1B5 /* NSError+QK.m in Sources */,
+				ECCAEDBD1752DFB6006CB1B5 /* NSJSONSerialization+QK.m in Sources */,
+				ECCAEDBE1752DFB6006CB1B5 /* NSMutableData+QK.m in Sources */,
+				ECCAEDBF1752DFB6006CB1B5 /* NSMutableDictionary+QK.m in Sources */,
+				ECCAEDC01752DFB6006CB1B5 /* NSObject+JNB.m in Sources */,
+				ECCAEDC11752DFB6006CB1B5 /* NSObject+QK.m in Sources */,
+				ECCAEDC21752DFB6006CB1B5 /* NSOutputStream+QK.m in Sources */,
+				ECCAEDC31752DFB6006CB1B5 /* NSString+QK.m in Sources */,
+				ECCAEDC41752DFB6006CB1B5 /* NSTimer+QK.m in Sources */,
+				ECCAEDC51752DFB6006CB1B5 /* GLEventHandler.m in Sources */,
+				ECCAEDC61752DFB6006CB1B5 /* GLFragmentShader.m in Sources */,
+				ECCAEDC71752DFB6006CB1B5 /* GLLayer.m in Sources */,
+				ECCAEDC81752DFB6006CB1B5 /* GLObject.m in Sources */,
+				ECCAEDC91752DFB6006CB1B5 /* GLProgram.m in Sources */,
+				ECCAEDCA1752DFB6006CB1B5 /* GLShader.m in Sources */,
+				ECCAEDCB1752DFB6006CB1B5 /* GLTestScene.m in Sources */,
+				ECCAEDCC1752DFB6006CB1B5 /* GLTexture.m in Sources */,
+				ECCAEDCD1752DFB6006CB1B5 /* GLVertexShader.m in Sources */,
+				ECCAEDCE1752DFB6006CB1B5 /* GLView.m in Sources */,
+				ECCAEDCF1752DFB6006CB1B5 /* qk-gl-util.m in Sources */,
+				ECCAEDD01752DFB6006CB1B5 /* QKImage+JPG.m in Sources */,
+				ECCAEDD11752DFB6006CB1B5 /* QKImage+PNG.m in Sources */,
+				ECCAEDD21752DFB6006CB1B5 /* qk-sql-util.m in Sources */,
+				ECCAEDD31752DFB6006CB1B5 /* SqlDatabase.m in Sources */,
+				ECCAEDD41752DFB6006CB1B5 /* SqlStatement.m in Sources */,
+				ECCAEDD51752DFB6006CB1B5 /* QKView.m in Sources */,
+				ECCAEDD61752DFB6006CB1B5 /* QKWindow.m in Sources */,
+				ECCAEDD71752DFB6006CB1B5 /* NSMenu+QK.m in Sources */,
+				ECCAEDD81752DFB6006CB1B5 /* NSMenuItem+QK.m in Sources */,
+				ECCAEDD91752DFB6006CB1B5 /* NSView+QK.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -802,31 +891,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC0D9BD816B9983C005D2C2B /* jnb-image-with-png.m in Sources */,
-				EC0D9C4716B998CB005D2C2B /* Duo.m in Sources */,
-				EC0D9C4916B998CB005D2C2B /* qk-check.m in Sources */,
-				EC0D9C4B16B998CB005D2C2B /* qk-log.m in Sources */,
-				EC0D9C4D16B998CB005D2C2B /* qk-math.m in Sources */,
-				EC0D9C4F16B998CB005D2C2B /* QKData.m in Sources */,
-				EC0D9C5116B998CB005D2C2B /* QKImage.m in Sources */,
-				EC0D9C5316B998CB005D2C2B /* QKMutableStructArray.m in Sources */,
-				EC0D9C5516B998CB005D2C2B /* QKPixFmt.m in Sources */,
-				EC0D9C5716B998CB005D2C2B /* QKStructArray.m in Sources */,
-				EC0D9C5916B998CB005D2C2B /* QKSubData.m in Sources */,
-				EC0D9C6716B998CB005D2C2B /* NSArray+QK.m in Sources */,
-				EC0D9C6916B998CB005D2C2B /* NSBundle+QK.m in Sources */,
-				EC0D9C6B16B998CB005D2C2B /* NSData+QK.m in Sources */,
-				EC0D9C6D16B998CB005D2C2B /* NSDate+QK.m in Sources */,
-				EC0D9C6F16B998CB005D2C2B /* NSDictionary+QK.m in Sources */,
-				EC0D9C7116B998CB005D2C2B /* NSError+QK.m in Sources */,
-				EC0D9C7316B998CB005D2C2B /* NSMutableData+QK.m in Sources */,
-				EC0D9C7516B998CB005D2C2B /* NSMutableDictionary+QK.m in Sources */,
-				EC0D9C7716B998CB005D2C2B /* NSObject+JNB.m in Sources */,
-				EC0D9C7916B998CB005D2C2B /* NSObject+QK.m in Sources */,
-				EC0D9C7B16B998CB005D2C2B /* NSOutputStream+QK.m in Sources */,
-				EC0D9C7D16B998CB005D2C2B /* NSString+QK.m in Sources */,
-				EC0D9C8D16B998CB005D2C2B /* QKImage+PNG.m in Sources */,
-				EC26862016C31F1500FD35FB /* QKImage+JPG.m in Sources */,
-				ECB7FCB5174468B7002A4B71 /* QKErrorDomain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

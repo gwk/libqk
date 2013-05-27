@@ -31,6 +31,7 @@ static F32 minScaleDistance = 4;
 }
 
 
+#if TARGET_OS_IPHONE
 - (BOOL)touchesBegan:(UIEvent*)event view:(GLView*)view {
   return NO;
 }
@@ -95,6 +96,8 @@ static F32 minScaleDistance = 4;
 - (BOOL)touchesCancelled:(UIEvent*)event view:(GLView*)view {
   return NO;
 }
+
+#endif
 
 
 //projectionMode();
