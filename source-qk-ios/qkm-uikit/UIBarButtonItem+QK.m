@@ -18,5 +18,10 @@
 }
 
 
++ (id)withSystemItem:(UIBarButtonSystemItem)systemItem target:(id)target action:(SEL)action {
+  return [[self alloc] initWithBarButtonSystemItem:systemItem target:target action:action];
+}
+
+
 @end
 
