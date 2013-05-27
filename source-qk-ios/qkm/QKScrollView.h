@@ -2,8 +2,9 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#if QKScrollView_USE_LEGACY_GL
 #import "GLLayer.h"
-
+#endif
 
 @protocol QKScrollTrackingDelegate;
 
@@ -19,8 +20,10 @@
 
 - (void)zoomOutAnimated:(BOOL)animated;
 
+#if QKScrollView_USE_LEGACY_GL
 // temporary
 @property (nonatomic, weak) GLLayer* trackingGlLayer; // tracks scroll and zoom.
 - (void)updateTrackingDelegate;
+#endif
 
 @end

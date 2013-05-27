@@ -42,6 +42,8 @@ zoomView = _zoomViewQKScrollView;
 
 #pragma mark - UIScrollView
 
+#if QKScrollView_USE_LEGACY_GL
+
 
 #define UPDATE_TRACKING_DELEGATE \
 [_trackingGlLayer trackScrollBounds:self.bounds contentSize:self.contentSize zoomScale:self.zoomScale];
@@ -77,6 +79,7 @@ zoomView = _zoomViewQKScrollView;
   UPDATE_TRACKING_DELEGATE;
 }
 
+#endif
 
 #pragma mark - UIScrollViewDelegate
 
@@ -177,11 +180,12 @@ zoomView = _zoomViewQKScrollView;
 }
 
 
+#if QKScrollView_USE_LEGACY_GL
 - (void)updateTrackingDelegate {
   // hack for iOS 5 bug
   UPDATE_TRACKING_DELEGATE;
 }
-
+#endif
 
 - (CGRect)zoomContentRect {
   return self.zoomView.bounds;
