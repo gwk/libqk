@@ -39,7 +39,16 @@
 @implementation GLLayer
 
 
-#pragma mark - cross
+#pragma mark - NSObject
+
+
+- (void) dealloc {
+#if TARGET_OS_IPHONE
+  [self enableContext];
+  [self destroyBuffers];
+  [self disableContext];
+#endif
+}
 
 
 #pragma mark - CALayer
@@ -57,6 +66,31 @@ DEF_INIT(Format:(QKPixFmt)format scene:(id<GLScene>)scene) {
   INIT(super init);
   [self setupWithFormat:format scene:scene];
   return self;
+}
+
+
+- (void)setupWithFormat:(QKPixFmt)format scene:(id<GLScene>)scene {
+  _format = format;
+  _scene = scene;
+  _needsSetup = YES;
+  _maxContentsScale = 2;
+  //self.opaque = YES;
+  // TODO: handle format
+  self.opaque = YES;
+  self.opacity = 1;
+  self.asynchronous = NO;
+#if TARGET_OS_IPHONE
+  _context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
+  if (!_context || ![EAGLContext setCurrentContext:_context]) { // in case host does not support ES2
+    qk_assert(0, @"nil EAGLContext"); // debug
+    return;
+  }
+  self.drawableProperties =
+  @{
+    kEAGLDrawablePropertyRetainedBacking : @(NO), // once the render buffer is presented, its contents may be altered by OpenGL, and therefore must be completely redrawn.
+    kEAGLDrawablePropertyColorFormat : kEAGLColorFormatRGBA8
+    };
+#endif
 }
 
 
@@ -79,17 +113,6 @@ Utf8 frameBufferStatusDesc(GLenum status) {
     default:
       return "unknown";
   }
-}
-
-
-#pragma mark - NSObject
-
-
-- (void) dealloc {
-  LOG_METHOD;
-  [self enableContext];
-  [self destroyBuffers];
-  [self disableContext];
 }
 
 
@@ -126,30 +149,6 @@ Utf8 frameBufferStatusDesc(GLenum status) {
 
 - (GLEventHandler*)eventHandler {
   return CAST(GLView, self.delegate).eventHandler;
-}
-
-
-- (BOOL)setupWithFormat:(QKPixFmt)format scene:(id<GLScene>)scene {
-  _context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
-  if (!_context || ![EAGLContext setCurrentContext:_context]) { // in case host does not support ES2
-    qk_assert(0, @"nil EAGLContext"); // debug
-    return NO;
-  }
-  _format = format;
-  _scene = scene;
-  _needsSetup = YES;
-  _maxContentsScale = 2;
-  //self.opaque = YES;
-  // TODO: handle format
-  self.opaque = YES;
-  self.opacity = 1;
-  self.asynchronous = NO;
-  self.drawableProperties =
-  @{
-    kEAGLDrawablePropertyRetainedBacking : @(NO), // once the render buffer is presented, its contents may be altered by OpenGL, and therefore must be completely redrawn.
-    kEAGLDrawablePropertyColorFormat : kEAGLColorFormatRGBA8
-    };
-  return YES;
 }
 
 
@@ -418,6 +417,10 @@ void describeAllPFA(CGLPixelFormatObj format, GLint virtualScreen) {
   
   ASSERT_CONFORMS(self.scene, GLScene);
   CGLSetCurrentContext(ctx);
+  // temporary
+  _contentSize = self.bounds.size;
+  _visibleRect = CGRectMake(0, 0, 1, 1);
+  _zoomScale = 1;
   if (_needsSetup) {
     [self.scene setupGLLayer:self time:layerTime];
     _needsSetup = NO;

@@ -4,12 +4,16 @@
 
 #import "NSString+QK.h"
 #import "NSArray+QK.h"
+#import "qk-types.h"
 #import "GLLayer.h"
 #import "GLView.h"
 #import "GLEventHandler.h"
 
 
+#if TARGET_OS_IPHONE // silence warning on mac
 static F32 minScaleDistance = 4;
+#endif
+
 
 @interface GLEventHandler ()
 @end

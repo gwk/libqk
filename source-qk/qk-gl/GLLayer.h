@@ -19,21 +19,21 @@
 @property (nonatomic, readonly) V2I32 drawableSize;
 @property (nonatomic) int redisplayInterval;
 
-
-#if TARGET_OS_IPHONE
-@property (nonatomic) BOOL asynchronous; // mac version is atomic.
-#endif
-
 DEC_INIT(Format:(QKPixFmt)format scene:(id<GLScene>)scene);
 
-- (BOOL)setupWithFormat:(QKPixFmt)format scene:(id<GLScene>)scene;
+- (void)setupWithFormat:(QKPixFmt)format scene:(id<GLScene>)scene;
+
+#if TARGET_OS_IPHONE
+
+@property (nonatomic) BOOL asynchronous; // mac version is atomic.
 
 - (void)enableContext;
 - (void)disableContext;
-
 - (void)enableRedisplayWithInterval:(int)interval duringTracking:(BOOL)duringTracking; // typically called at viewWillAppear
 - (void)disableRedisplay; // typically called at viewWillDisappear
-- (void)render; // render immediately. to avoid excessive rendering use enableRedisplay... and disableRedisplay.
+- (void)render; // render immediately; temporary? to avoid excessive rendering use enableRedisplay... and disableRedisplay.
+#endif
+
 
 // temporary
 @property (nonatomic) CGSize contentSize;

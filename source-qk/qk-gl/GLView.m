@@ -88,6 +88,8 @@ DEF_INIT(Frame:(CGRect)frame format:(QKPixFmt)format scene:(id<GLScene>)scene) {
 }
 
 
+#if TARGET_OS_IPHONE
+
 - (void)enableContext {
   [self.glLayer enableContext];
 }
@@ -111,6 +113,8 @@ DEF_INIT(Frame:(CGRect)frame format:(QKPixFmt)format scene:(id<GLScene>)scene) {
 - (void)render {
   [self.glLayer render];
 }
+
+#endif
 
 
 @end

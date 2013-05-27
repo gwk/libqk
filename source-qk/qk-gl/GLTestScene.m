@@ -65,7 +65,7 @@
   [_solidProgram setUniform:@"scale" V2F32:scale];
   [_solidProgram setUniform:@"color" V4F32:V4F32Unit];
   [_solidProgram setAttribute:@"pos" stride:0 pointerV2F32:_spokes.bytes];
-  glDrawArrays(GL_LINE_STRIP, 0, _spokes.count);
+  glDrawArrays(GL_LINE_STRIP, 0, (int)_spokes.count);
 }
 
 
