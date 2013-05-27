@@ -356,15 +356,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		ECB517D4174D113900B24789 /* resources */ = {
+		ECB517D4174D113900B24789 /* qk-resources */ = {
 			isa = PBXGroup;
 			children = (
-				ECB517D5174D113A00B24789 /* shaders */,
+				ECB517D5174D113A00B24789 /* qk-shaders */,
 			);
-			path = resources;
+			name = "qk-resources";
+			path = "resources-qk";
 			sourceTree = "<group>";
 		};
-		ECB517D5174D113A00B24789 /* shaders */ = {
+		ECB517D5174D113A00B24789 /* qk-shaders */ = {
 			isa = PBXGroup;
 			children = (
 				ECB517D6174D113A00B24789 /* image.frag */,
@@ -375,7 +376,7 @@
 				ECB517DA174D113A00B24789 /* var-color.frag */,
 				ECB517DB174D113A00B24789 /* viewport2.vert */,
 			);
-			path = shaders;
+			path = "qk-shaders";
 			sourceTree = "<group>";
 		};
 		ECB7FB3D17445D64002A4B71 = {
@@ -384,7 +385,7 @@
 				ECB7FB7D17445E19002A4B71 /* Default-568h@2x.png */,
 				ECB7FB7B17445E16002A4B71 /* Default@2x.png */,
 				ECB7FB7917445E0C002A4B71 /* Default.png */,
-				ECB517D4174D113900B24789 /* resources */,
+				ECB517D4174D113900B24789 /* qk-resources */,
 				ECCAEBFB1752DF8E006CB1B5 /* source-qk */,
 				ECCAEC821752DF8E006CB1B5 /* source-qk-ios */,
 				ECB7FB6617445DA2002A4B71 /* test-qk-ios */,
