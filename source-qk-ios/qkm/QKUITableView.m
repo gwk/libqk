@@ -2,6 +2,7 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#import "NSArray+QK.h"
 #import "UITableViewCell+QK.h"
 #import "QKUITableView.h"
 
@@ -134,21 +135,26 @@ DEF_INIT(Frame:(CGRect)frame rows:(NSArray *)rows cellTypes:(id)cellTypes) {
   _identifierCellClasses = [NSMutableDictionary new];
   self.dataSource = self;
   self.delegate = self;
+  CGFloat rh = 1024; // pick a default rowHeight for empty table; start large for MIN reduction.
   if (IS_KIND(cellTypes, NSArray)) {
     for (Class cellClass in cellTypes) {
+      rh = MIN(rh, [cellClass heightForRow:nil]);
       [self registerClass:cellClass forCellReuseIdentifier:NSStringFromClass(cellClass)];
     }
   }
   else if (IS_KIND(cellTypes, NSDictionary)) {
     for (NSString* identifier in cellTypes) {
       Class cellClass = cellTypes[identifier];
+      rh = MIN(rh, [cellClass heightForRow:nil]);
       [self registerClass:cellClass forCellReuseIdentifier:identifier];
     }
   }
   else { // assume cellTypes is a single cell class or else nil, in which case default to base cell class.
     Class c = (cellTypes ? cellTypes : [UITableViewCell class]);
+    rh = [c heightForRow:nil];
     [self registerClass:c forCellReuseIdentifier:defaultCellIdentifier];
   }
+  self.rowHeight = rh;
   return self;
 }
 

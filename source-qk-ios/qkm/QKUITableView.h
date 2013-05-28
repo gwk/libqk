@@ -22,6 +22,7 @@ typedef void (^BlockRowDo)(NSIndexPath*, id); // takes an index path and row; pe
 @property (nonatomic, copy) BlockRowDo blockDidSelect; // BlockRowDo
 
 
+// cellTypes can be an array, a dictionary, single cell class, or nil.
 DEC_INIT(Frame:(CGRect)frame rows:(NSArray *)rows cellTypes:(id)cellTypes);
 
 - (void)setRows:(NSArray *)rows reload:(BOOL)reload;
