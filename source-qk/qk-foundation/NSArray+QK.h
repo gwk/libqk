@@ -44,6 +44,8 @@ EL(9);
 - (NSMutableDictionary*)filterMapToDict:(BlockMapToPair)block;
 
 - (Int)reduceInt:(Int)initial block:(BlockReduceToInt)block;
+- (F32)reduceF32:(F32)initial block:(BlockReduceToF32)block;
+- (F64)reduceF64:(F64)initial block:(BlockReduceToF64)block;
 
 - (id)max:(BlockMap)block;
 - (F64)minF64:(BlockMapToF64)block;

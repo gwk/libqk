@@ -158,6 +158,24 @@ EL(9);
 }
 
 
+- (F32)reduceF32:(F32)initial block:(BlockReduceToF32)block {
+  F32 val = initial;
+  for (id el in self) {
+    val = block(val, el);
+  }
+  return val;
+}
+
+
+- (F64)reduceF64:(F64)initial block:(BlockReduceToF64)block {
+  F64 val = initial;
+  for (id el in self) {
+    val = block(val, el);
+  }
+  return val;
+}
+
+
 - (id)max:(BlockMap)block {
   id max = nil;
   id maxKey = nil;

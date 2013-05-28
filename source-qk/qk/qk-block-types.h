@@ -46,3 +46,5 @@ typedef Int (^BlockMaptoInt)(id);
 typedef F64 (^BlockMapToF64)(id);
 
 typedef Int (^BlockReduceToInt)(Int, id); // agg, val
+typedef F32 (^BlockReduceToF32)(F32, id); // agg, val
+typedef F64 (^BlockReduceToF64)(F64, id); // agg, val
