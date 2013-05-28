@@ -10,6 +10,7 @@
 @implementation UIView (QK)
 
 
+PROPERTY_ALIAS(UIViewAutoresizing, flex, Flex, self.autoresizingMask);
 PROPERTY_STRUCT_FIELD(CGPoint, boundsOrigin, BoundsOrigin, CGRect, self.bounds, origin);
 PROPERTY_STRUCT_FIELD(CGSize, boundsSize, BoundsSize, CGRect, self.bounds, size);
 

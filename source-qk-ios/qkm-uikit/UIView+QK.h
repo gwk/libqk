@@ -7,6 +7,7 @@
 
 @interface UIView (QK)
 
+@property (nonatomic) UIViewAutoresizing flex;
 @property (nonatomic) CGPoint boundsOrigin;
 @property (nonatomic) CGSize boundsSize;
 
