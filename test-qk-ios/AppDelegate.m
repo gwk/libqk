@@ -4,6 +4,7 @@
 
 #import "UINavigationController+QK.h"
 #import "RootController.h"
+#import "ScrollController.h"
 #import "AppDelegate.h"
 
 
@@ -12,6 +13,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   [self setupRootController:[UINavigationController withRoot:[RootController new]]];
+  [self.rootController push:[ScrollController new]];
   return YES;
 }
 

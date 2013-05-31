@@ -8,6 +8,12 @@
 
 @interface GLProgram : GLObject
 
+@property (nonatomic, readonly) NSArray* shaders;
+@property (nonatomic, readonly) NSArray* uniforms;
+@property (nonatomic, readonly) NSArray* attributes;
+@property (nonatomic, readonly) NSDictionary* uniformLocations;
+@property (nonatomic, readonly) NSDictionary* attributeLocations;
+
 DEC_INIT(Shaders:(NSArray*)shaders uniforms:(NSArray*)uniforms attributes:(NSArray*)attributes);
 DEC_INIT(ShaderNames:(NSArray*)shaderNames uniforms:(NSArray*)uniforms attributes:(NSArray*)attributes);
 
@@ -24,6 +30,11 @@ DEC_INIT(ShaderNames:(NSArray*)shaderNames uniforms:(NSArray*)uniforms attribute
 - (BOOL)setUniform:(NSString*)name V3F32:(V3F32)val;
 - (BOOL)setUniform:(NSString*)name V4F32:(V4F32)val;
 - (BOOL)setUniform:(NSString*)name I32:(I32)val;
+- (BOOL)setUniform:(NSString *)name M2:(M2*)val;
+- (BOOL)setUniform:(NSString *)name M3:(M3*)val;
+- (BOOL)setUniform:(NSString *)name M4:(M4*)val;
+
+- (BOOL)setUniform:(NSString *)name CGAffineTransform:(CGAffineTransform)t;
 - (BOOL)setUniform:(NSString *)name texture:(GLTexture*)texture unit:(I32)unit;
 
 - (BOOL)setAttribute:(NSString*)name

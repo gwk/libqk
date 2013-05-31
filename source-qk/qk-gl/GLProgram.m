@@ -122,11 +122,14 @@ DEF_INIT(ShaderNames:(NSArray*)shaderNames uniforms:(NSArray*)uniforms attribute
 }
 
 
-#define SET_UNIFORM(T, f) \
-- (BOOL)setUniform:(NSString*)name count:(int)count T:(T*)pointer { \
+#define CHECK_UNIFORM \
 NSNumber* loc = [_uniformLocations objectForKey:name]; \
 qk_check(loc, @"bad uniform: %@", name); \
 if (loc.intValue == -1) return NO; \
+
+#define SET_UNIFORM(T, f) \
+- (BOOL)setUniform:(NSString*)name count:(int)count T:(T*)pointer { \
+CHECK_UNIFORM \
 f(loc.intValue, count, (void*)pointer); qkgl_assert(); \
 return YES; \
 } \
@@ -135,11 +138,37 @@ return YES; \
   return [self setUniform:name count:1 T:&val]; \
 }
 
+#define SET_MAT_UNIFORM(T, f) \
+- (BOOL)setUniform:(NSString*)name T:(T*)pointer { \
+CHECK_UNIFORM \
+f(loc.intValue, 1, GL_FALSE, pointer->m); \
+return YES; \
+}
+
 SET_UNIFORM(F32, glUniform1fv);
 SET_UNIFORM(V2F32, glUniform2fv);
 SET_UNIFORM(V3F32, glUniform3fv);
 SET_UNIFORM(V4F32, glUniform4fv);
 SET_UNIFORM(I32, glUniform1iv);
+
+SET_MAT_UNIFORM(M2, glUniformMatrix2fv);
+SET_MAT_UNIFORM(M3, glUniformMatrix3fv);
+SET_MAT_UNIFORM(M4, glUniformMatrix4fv);
+
+
+- (BOOL)setUniform:(NSString *)name CGAffineTransform:(CGAffineTransform)t {
+  CHECK_UNIFORM;
+  // CGAffineTransform definition is described as transpose of OpenGL matrices;
+  // OpenGL expects column-major matrices but the natural C layout is row-major, so it ends up looking normal.
+  F32 m[9] = { // column major OpenGL layout
+    t.a,  t.b,  0,
+    t.c,  t.d,  0,
+    t.tx, t.ty, 1,
+  };
+  // OpenGL ES requires that the transpose flag be false, so it is useless.
+  glUniformMatrix3fv(loc.intValue, 1, GL_FALSE, m); qkgl_assert();
+  return YES;
+}
 
 
 - (BOOL)setUniform:(NSString *)name texture:(GLTexture*)texture unit:(I32)unit {

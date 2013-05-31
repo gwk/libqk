@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		EC74E0B3174F934400391A6D /* LabelController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC74E0B2174F934400391A6D /* LabelController.m */; };
+		EC99076D17570DC60041F268 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB7FD0B17447086002A4B71 /* GLKit.framework */; };
 		ECB259D11749BBF900CEAEE8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB259D01749BBF900CEAEE8 /* QuartzCore.framework */; };
 		ECB517C7174CF58A00B24789 /* RootController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB517C6174CF58900B24789 /* RootController.m */; };
 		ECB517D0174CFA8500B24789 /* ScrollController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB517CF174CFA8500B24789 /* ScrollController.m */; };
@@ -16,7 +17,6 @@
 		ECB517DE174D114900B24789 /* pos.vert in Resources */ = {isa = PBXBuildFile; fileRef = ECB517D8174D113A00B24789 /* pos.vert */; };
 		ECB517DF174D114900B24789 /* uni-color.frag in Resources */ = {isa = PBXBuildFile; fileRef = ECB517D9174D113A00B24789 /* uni-color.frag */; };
 		ECB517E0174D114900B24789 /* var-color.frag in Resources */ = {isa = PBXBuildFile; fileRef = ECB517DA174D113A00B24789 /* var-color.frag */; };
-		ECB517E1174D114900B24789 /* viewport2.vert in Resources */ = {isa = PBXBuildFile; fileRef = ECB517DB174D113A00B24789 /* viewport2.vert */; };
 		ECB517E3174D11E500B24789 /* pos-color.vert in Resources */ = {isa = PBXBuildFile; fileRef = ECB517E2174D11DD00B24789 /* pos-color.vert */; };
 		ECB7FB4A17445D64002A4B71 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB7FB4917445D64002A4B71 /* UIKit.framework */; };
 		ECB7FB4C17445D64002A4B71 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB7FB4B17445D64002A4B71 /* Foundation.framework */; };
@@ -124,7 +124,6 @@
 		ECB517D8174D113A00B24789 /* pos.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = pos.vert; sourceTree = "<group>"; };
 		ECB517D9174D113A00B24789 /* uni-color.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = "uni-color.frag"; sourceTree = "<group>"; };
 		ECB517DA174D113A00B24789 /* var-color.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = "var-color.frag"; sourceTree = "<group>"; };
-		ECB517DB174D113A00B24789 /* viewport2.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = viewport2.vert; sourceTree = "<group>"; };
 		ECB517E2174D11DD00B24789 /* pos-color.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = "pos-color.vert"; sourceTree = "<group>"; };
 		ECB7FB4617445D64002A4B71 /* test-qk-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "test-qk-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECB7FB4917445D64002A4B71 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -341,6 +340,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC99076D17570DC60041F268 /* GLKit.framework in Frameworks */,
 				ECB259D11749BBF900CEAEE8 /* QuartzCore.framework in Frameworks */,
 				ECB7FD0A17447079002A4B71 /* OpenGLES.framework in Frameworks */,
 				ECB7FC6C1744600F002A4B71 /* libz.dylib in Frameworks */,
@@ -368,13 +368,12 @@
 		ECB517D5174D113A00B24789 /* qk-shaders */ = {
 			isa = PBXGroup;
 			children = (
-				ECB517D6174D113A00B24789 /* image.frag */,
 				ECB517D7174D113A00B24789 /* image.vert */,
-				ECB517D8174D113A00B24789 /* pos.vert */,
 				ECB517E2174D11DD00B24789 /* pos-color.vert */,
+				ECB517D8174D113A00B24789 /* pos.vert */,
+				ECB517D6174D113A00B24789 /* image.frag */,
 				ECB517D9174D113A00B24789 /* uni-color.frag */,
 				ECB517DA174D113A00B24789 /* var-color.frag */,
-				ECB517DB174D113A00B24789 /* viewport2.vert */,
 			);
 			path = "qk-shaders";
 			sourceTree = "<group>";
@@ -910,7 +909,6 @@
 				ECB517E3174D11E500B24789 /* pos-color.vert in Resources */,
 				ECB517DF174D114900B24789 /* uni-color.frag in Resources */,
 				ECB517E0174D114900B24789 /* var-color.frag in Resources */,
-				ECB517E1174D114900B24789 /* viewport2.vert in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

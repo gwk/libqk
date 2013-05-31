@@ -12,6 +12,6 @@
 #import "GLScene.h"
 
 
-@interface GLTestScene : NSObject <GLScene>
+@interface GLTestScene : NSObject <GLScene, GLSceneScroll2>
 @end
 

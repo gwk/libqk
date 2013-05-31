@@ -8,10 +8,6 @@
 
 @interface GLEventHandler : NSObject
 
-@property (nonatomic) V2F32 position;
-@property (nonatomic) F32 scale;
-@property (nonatomic) F32 rotation;
-
 #if TARGET_OS_IPHONE
 - (BOOL)touchesBegan:(UIEvent*)event view:(GLView*)view;
 - (BOOL)touchesMoved:(UIEvent*)event view:(GLView*)view;
@@ -22,3 +18,10 @@
 @end
 
 
+@protocol GLSceneScroll2 <NSObject>
+
+- (void)adjustTranslation:(V2)delta layerSize:(V2)layerSize;
+- (void)adjustScale:(F32)factor around:(V2)point layerSize:(V2)layerSize;
+- (void)adjustRotation:(F32)delta;
+
+@end
