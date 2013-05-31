@@ -13,4 +13,6 @@
 
 + (id)withFrame:(CGRect)frame flex:(UIFlex)flex  color:(UIColor*)color;
 
+- (UIImage*)renderImage;
+
 @end
