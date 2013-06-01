@@ -11,7 +11,8 @@ typedef void (^BlockTimer)(NSTimer*);
 
 - (void)dissolve;
 
-- (F32)interpolation;
+- (F32)lerpFactor;
+- (F32)lerpFactorEaseInOut;
 
 + (NSTimer*)withInterval:(NSTimeInterval)interval
                 tracking:(BOOL)tracking

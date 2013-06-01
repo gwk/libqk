@@ -53,7 +53,7 @@ static NSString* qkTimerKeyCompletion = @"qkTimerKeyCompletion";
 }
 
 
-- (F32)interpolation {
+- (F32)lerpFactor {
   NSDictionary* info = self.userInfo;
   NSDate* s = [info objectForKey:qkTimerKeyStartDate];
   NSDate* e = [info objectForKey:qkTimerKeyExpiration];
@@ -62,6 +62,13 @@ static NSString* qkTimerKeyCompletion = @"qkTimerKeyCompletion";
   NSTimeInterval total = [e timeIntervalSinceDate:s];
   NSTimeInterval elapsed = [n timeIntervalSinceDate:s];
   return elapsed / total;
+}
+
+
+- (F32)lerpFactorEaseInOut {
+    F32 t = self.lerpFactor;
+    F32 t2 = t * t;
+    return (3 * t2) - (2 * t * t2);
 }
 
 
