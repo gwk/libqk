@@ -33,8 +33,8 @@ zoomView = _zoomViewQKScrollView;
 - (id)initWithFrame:(CGRect)frame {
   INIT(super initWithFrame:frame);
   [super setDelegate:self];
-  self.zoomView = [UIView withFrame:CGRectWithS(self.contentSize)];
-  [self addSubview:self.zoomView];
+  _zoomViewQKScrollView = [UIView withFrame:CGRectWithS(self.contentSize)];
+  [self addSubview:_zoomViewQKScrollView];
   _constantScaleSet = [NSMutableSet new];
   return self;
 }
@@ -143,7 +143,7 @@ zoomView = _zoomViewQKScrollView;
 
 
 - (UIView*)viewForZoomingInScrollView:(UIScrollView *)scrollView {
-  return self.zoomView;
+  return _zoomViewQKScrollView;
 }
 
 
@@ -168,7 +168,7 @@ zoomView = _zoomViewQKScrollView;
 
 
 - (void)addZoomSubview:(UIView*)view constantScale:(BOOL)constantScale {
-  [self.zoomView addSubview:view];
+  [_zoomViewQKScrollView addSubview:view];
   if (constantScale) {
     [_constantScaleSet addObject:view];
   }
@@ -187,13 +187,29 @@ zoomView = _zoomViewQKScrollView;
 }
 #endif
 
+
 - (CGRect)zoomContentRect {
-  return self.zoomView.bounds;
+  return _zoomViewQKScrollView.bounds;
 }
 
 
 - (CGSize)zoomContentSize {
-  return self.zoomView.bounds.size;
+  return _zoomViewQKScrollView.bounds.size;
+}
+
+
+- (CGPoint)zoomContentOffset {
+  return CGPointMul(self.contentOffset, 1.0 / self.zoomScale);
+}
+
+
+- (CGPoint)zoomContentCenter {
+  return _zoomViewQKScrollView.boundsCenter;
+}
+
+
+- (CGPoint)zoomBoundsCenter {
+  return CGPointMul(self.boundsCenter, 1.0 / self.zoomScale);
 }
 
 
@@ -202,7 +218,7 @@ zoomView = _zoomViewQKScrollView;
 
 - (void)zoomToRect:(CGRect)rect animated:(BOOL)animated {
   //[self addZoomSubview:[UIView withFrame:rect color:[UIColor l:0 a:.3]]];
-  CGRect validRect = CGRectIntersection(rect, self.zoomView.bounds);
+  CGRect validRect = CGRectIntersection(rect, _zoomViewQKScrollView.bounds);
   if (CGRectIsEmpty(validRect)) {
     errFL(@"zoomToRect: invalid rect: %@", NSStringFromCGRect(rect));
     return;
