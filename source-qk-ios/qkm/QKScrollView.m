@@ -4,6 +4,7 @@
 
 #import "qk-macros.h"
 #import "qk-cg-util.h"
+#import "NSArray+QK.h"
 #import "CUIView.h"
 #import "UIScrollView+QK.h"
 #import "QKScrollView.h"
@@ -25,6 +26,27 @@
 @synthesize
 delegate = _delegateQKScrollView,
 zoomView = _zoomViewQKScrollView;
+
+
+#pragma mark - UIResponder
+
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+  [super touchesEnded:touches withEvent:event];
+  NSArray* allTouches = event.allTouches.allObjects;
+  UITouch* touch0 = [allTouches el:0];
+  if (allTouches.count == 1 && touch0.tapCount == 2) {
+    [self setZoomScale:self.zoomScale * 2 animated:YES];
+    return;
+  }
+  if (allTouches.count == 2) {
+    UITouch* touch1 = [allTouches el:1];
+    if (touch0.tapCount == 1 && touch1.tapCount == 1) {
+      [self setZoomScale:self.zoomScale * .5 animated:YES];
+      return;
+    }
+  }
+}
 
 
 #pragma mark - UIView
