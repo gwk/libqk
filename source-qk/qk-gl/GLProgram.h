@@ -30,9 +30,12 @@ DEC_INIT(ShaderNames:(NSArray*)shaderNames uniforms:(NSArray*)uniforms attribute
 - (BOOL)setUniform:(NSString*)name V3F32:(V3F32)val;
 - (BOOL)setUniform:(NSString*)name V4F32:(V4F32)val;
 - (BOOL)setUniform:(NSString*)name I32:(I32)val;
+
+#if QK_USE_GLK
 - (BOOL)setUniform:(NSString *)name M2:(M2*)val;
 - (BOOL)setUniform:(NSString *)name M3:(M3*)val;
 - (BOOL)setUniform:(NSString *)name M4:(M4*)val;
+#endif
 
 - (BOOL)setUniform:(NSString *)name CGAffineTransform:(CGAffineTransform)t;
 - (BOOL)setUniform:(NSString *)name texture:(GLTexture*)texture unit:(I32)unit;

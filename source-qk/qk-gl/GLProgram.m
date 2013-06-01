@@ -151,10 +151,11 @@ SET_UNIFORM(V3F32, glUniform3fv);
 SET_UNIFORM(V4F32, glUniform4fv);
 SET_UNIFORM(I32, glUniform1iv);
 
+#if QK_USE_GLK
 SET_MAT_UNIFORM(M2, glUniformMatrix2fv);
 SET_MAT_UNIFORM(M3, glUniformMatrix3fv);
 SET_MAT_UNIFORM(M4, glUniformMatrix4fv);
-
+#endif
 
 - (BOOL)setUniform:(NSString *)name CGAffineTransform:(CGAffineTransform)t {
   CHECK_UNIFORM;

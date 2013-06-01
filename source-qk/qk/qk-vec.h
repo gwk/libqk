@@ -12,6 +12,15 @@
 // this has the advantage that unspecified fields are zero-initialized,
 // which allows for generic conversions between dimensions.
 
+#ifndef QK_USE_GLK
+# ifdef __GLK_MATH_TYPES_H
+#   define QK_USE_GLK 1
+# else
+#   define QK_USE_GLK 0
+# endif
+#endif
+
+
 // vector functions for all types (aliases and locally defined).
 #define _V_FNS(TE, TV, dim) \
 \
@@ -170,17 +179,23 @@ TVA r; for_in(i ,dim) r.v[i] = v.v[i]; \
 return r; } \
 
 
-#ifdef __GLK_MATH_TYPES_H
+#if QK_USE_GLK
+#if defined(__STRICT_ANSI__)
+#error "GLKit vector types are not unions due to __STRICT_ANSI__ being defined."
+#endif
 typedef GLKVector2 V2F32;
 typedef GLKVector3 V3F32;
 typedef GLKVector4 V4F32;
-typedef GLKMatrix2 M2;
-typedef GLKMatrix3 M3;
-typedef GLKMatrix4 M4;
 _DEF_V_ALIASED(2, F32, @"% f");
 _DEF_V_ALIASED(3, F32, @"% f");
 _DEF_V_ALIASED(4, F32, @"% f");
+_V_FNS_F_ALIASED(2, V2F32);
+_V_FNS_F_ALIASED(3, V3F32);
+_V_FNS_F_ALIASED(4, V4F32);
 
+typedef GLKMatrix2 M2;
+typedef GLKMatrix3 M3;
+typedef GLKMatrix4 M4;
 
 #define M4Ident GLKMatrix4Identity
 #define M4TransXYZ(m, x, y, z) GLKMatrix4Translate(m, x, y, z)
@@ -192,11 +207,14 @@ _DEF_V_ALIASED(4, F32, @"% f");
 #define M4Scale(m, s) M4ScaleXYZ(m, s, s, s)
 #define M4Scale2(m, v2) M4ScaleXY(m, v2.x, v2.y)
 
-#else
+#else // !QK_USE_GLK
 _DEF_V(2, F32, @"% f");
 _DEF_V(3, F32, @"% f");
 _DEF_V(4, F32, @"% f");
-#endif
+_V_FNS_F_LOCAL(2, V2F32);
+_V_FNS_F_LOCAL(3, V3F32);
+_V_FNS_F_LOCAL(4, V4F32);
+#endif // QK_USE_GLK
 
 typedef V2F32 V2;
 static const V2 V2Zero = {{}};
@@ -229,9 +247,6 @@ _DEF_V(4, U8, @"%uc");
 _DEF_V(4, U16, @"%hu");
 _DEF_V(4, F64, @"% f");
 
-_V_FNS_F_ALIASED(2, V2F32);
-_V_FNS_F_ALIASED(3, V3F32);
-_V_FNS_F_ALIASED(4, V4F32);
 _V_FNS_F_LOCAL(2, V2F64);
 _V_FNS_F_LOCAL(3, V3F64);
 _V_FNS_F_LOCAL(4, V4F64);
