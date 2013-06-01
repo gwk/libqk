@@ -13,4 +13,11 @@
 }
 
 
+- (NSMutableDictionary*)addDictionary:(NSDictionary*)dictionary {
+  NSMutableDictionary* d = self.mutableCopy;
+  [d addEntriesFromDictionary:dictionary];
+  return d;
+}
+
+
 @end

@@ -7,5 +7,6 @@
 
 @interface NSDictionary (QK)
 
+- (NSMutableDictionary*)addDictionary:(NSDictionary*)dictionary;
 
 @end
