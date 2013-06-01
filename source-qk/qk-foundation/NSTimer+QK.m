@@ -2,7 +2,9 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#import "qk-macros.h"
 #import "NSTimer+QK.h"
+
 
 static NSString* qkTimerKeyStartDate = @"qkTimerKeyStartDate";
 static NSString* qkTimerKeyExpiration = @"qkTimerKeyExpiration";
