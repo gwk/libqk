@@ -21,6 +21,28 @@
 }
 
 
+- (id)setDefault:(id)defaultVal forKey:(id)key {
+  id val = self[key];
+  if (val) {
+    return val;
+  }
+  self[key] = defaultVal;
+  return defaultVal;
+}
+
+
+- (id)setDefaultClass:(Class)defaultClass forKey:(id)key {
+  id val = self[key];
+  if (val) {
+    return val;
+  }
+  val = [defaultClass new];
+  self[key] = val;
+  return val;
+}
+
+
+
 - (BOOL)isMutable {
   return YES;
 }

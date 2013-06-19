@@ -5,6 +5,6 @@
 #import "QKViewController.h"
 
 
-@interface ScrollController : QKViewController
+@interface TestScrollController : QKViewController
 @end
 

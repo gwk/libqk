@@ -2,11 +2,9 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
-#import "QKViewController.h"
+@interface NSMutableArray (QK)
 
-
-@interface LabelController : QKViewController
-
+- (id)pop;
 
 @end
 

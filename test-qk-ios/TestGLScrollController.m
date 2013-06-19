@@ -8,10 +8,10 @@
 #import "UIView+QK.h"
 #import "GLView.h"
 #import "GLTestScene.h"
-#import "ScrollController.h"
+#import "TestGLScrollController.h"
 
 
-@interface ScrollController ()
+@interface TestGLScrollController ()
 
 @property (nonatomic) GLView* glView;
 @property (nonatomic) id<GLScene> scene;
@@ -19,7 +19,7 @@
 @end
 
 
-@implementation ScrollController
+@implementation TestGLScrollController
 
 
 PROPERTY_SUBCLASS_ALIAS(GLView, glView, GlView, self.view);

@@ -5,14 +5,14 @@
 #import "UIColor+QK.h"
 #import "UILabel+QK.h"
 #import "QKLabel.h"
-#import "LabelController.h"
+#import "TestLabelController.h"
 
 
-@interface LabelController ()
+@interface TestLabelController ()
 @end
 
 
-@implementation LabelController
+@implementation TestLabelController
 
 
 - (void)loadView {

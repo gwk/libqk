@@ -4,9 +4,11 @@
 
 #import "UIViewController+QK.h"
 #import "QKDuo.h"
-#import "ScrollController.h"
+#import "TestScrollController.h"
+#import "TestTableController.h"
+#import "TestGLScrollController.h"
 #import "RootController.h"
-#import "LabelController.h"
+#import "TestLabelController.h"
 
 
 @interface RootController ()
@@ -19,8 +21,10 @@
 - (id)init {
   NSArray* rows =
   @[
-    [QKDuo a:@"Scroll View" b:[ScrollController class]],
-    [QKDuo a:@"Labels" b:[LabelController class]],
+    [QKDuo a:@"Scroll View" b:[TestScrollController class]],
+    [QKDuo a:@"Table View" b:[TestTableController class]],
+    [QKDuo a:@"GL Scroll View" b:[TestGLScrollController class]],
+    [QKDuo a:@"Labels" b:[TestLabelController class]],
     ];
   
   INIT(super initWithRows:rows cellTypes:nil);

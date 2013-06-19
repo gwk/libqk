@@ -27,6 +27,8 @@ EL(7);
 EL(8);
 EL(9);
 
+- (id)elAtIndexPath:(NSIndexPath*)indexPath;
+
 - (Int)lastIndex;
 
 #undef EL

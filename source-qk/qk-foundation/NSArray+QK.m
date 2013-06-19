@@ -48,6 +48,15 @@ EL(9);
 #undef EL
 
 
+- (id)elAtIndexPath:(NSIndexPath*)indexPath {
+  id e = self;
+  for_in(i, indexPath.length) {
+    e = [e objectAtIndex:[indexPath indexAtPosition:i]];
+  }
+  return e;
+}
+
+
 - (Int)lastIndex {
   return self.count - 1;
 }

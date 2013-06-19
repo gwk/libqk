@@ -3,14 +3,15 @@
 
 
 #import "qk-macros.h"
+#import "qk-block-types.h"
+#import "QKTableView.h"
 
 
 typedef CGFloat (^BlockRowHeight)(NSIndexPath*, id); // takes an index path and row; returns a height.
 typedef NSString* (^BlockRowIdentifier)(NSIndexPath*, id); // takes and index path and row; returns cell reuse identifier.
-// NOTE: cell is untyped so that block literals can specify whatever type is appropriate for each case.
-typedef void (^BlockConfigureCell)(id, NSIndexPath*, id); // takes a cell, index path and row; configures cell.
 typedef NSIndexPath* (^BlockWillSelect)(NSIndexPath*, id); // takes an index path and a row; returns index path to select or nil.
 typedef void (^BlockRowDo)(NSIndexPath*, id); // takes an index path and row; performs an action.
+
 
 @interface QKUITableView : UITableView <UITableViewDataSource, UITableViewDelegate>
 

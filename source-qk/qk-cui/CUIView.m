@@ -59,6 +59,8 @@ DEF_INIT(FlexFrame) {
 }
 
 
+PROPERTY_ALIAS(UIFlex, flex, Flex, self.autoresizingMask);
+
 PROPERTY_STRUCT_FIELD(CGPoint, origin, Origin, CGRect, self.frame, origin);
 PROPERTY_STRUCT_FIELD(CGSize, size, Size, CGRect, self.frame, size);
 PROPERTY_STRUCT_FIELD(CGFloat, x, X, CGRect, self.frame, origin.x);
@@ -104,6 +106,16 @@ PROPERTY_STRUCT_FIELD(CGFloat, centerY, CenterY, CGPoint, self.center, y);
 - (void)setBoundsCenter:(CGPoint)boundsCenter {
   CGSize s = self.bounds.size;
   self.boundsOrigin = CGPointMake(boundsCenter.x - s.width * .5, boundsCenter.y - s.height * .5);
+}
+
+
+#pragma mark subviews
+
+
+- (void)removeAllSubviews {
+  for (UIView* v in self.subviews) {
+    [v removeFromSuperview];
+  }
 }
 
 

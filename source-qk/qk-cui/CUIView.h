@@ -33,7 +33,7 @@ extern const UIFlex UIFlexWidthRight;
 
 @interface CUIView (CUI)
 
-
+@property (nonatomic) UIFlex flex;
 @property (nonatomic) CGPoint origin;
 @property (nonatomic) CGSize size;
 @property (nonatomic) CGFloat x;
@@ -51,6 +51,8 @@ DEC_WITH(Frame:(CGRect)frame);
 DEC_INIT(Frame:(CGRect)frame flex:(UIFlex)flex);
 DEC_INIT(FlexFrame:(CGRect)frame);
 DEC_INIT(FlexFrame);
+
+- (void)removeAllSubviews;
 
 // debugging
 

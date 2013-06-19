@@ -10,4 +10,7 @@
 - (void)setItem:(QKDuo*)item;
 - (void)setItemIgnoreNil:(QKDuo*)item;
 
+- (id)setDefault:(id)defaultVal forKey:(id)key;
+- (id)setDefaultClass:(Class)defaultClass forKey:(id)key;
+
 @end

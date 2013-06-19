@@ -33,6 +33,13 @@
 }
 
 
+- (void)viewDidAppear:(BOOL)animated {
+  if (_appearanceCount == 1) {
+    [self viewDidFirstAppear];
+  }
+}
+
+
 - (void)viewDidDisappear:(BOOL)animated {
   [super viewDidDisappear:animated];
   _isVisible = NO;
@@ -48,6 +55,7 @@
 
 
 - (void)viewWillFirstAppear {}
+- (void)viewDidFirstAppear {}
 
 
 - (BOOL)observesKeyboard {

@@ -7,11 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EC74E0B3174F934400391A6D /* LabelController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC74E0B2174F934400391A6D /* LabelController.m */; };
+		EC5026BD17623CE8005BB8E5 /* QKTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5026BC17623CE8005BB8E5 /* QKTableView.m */; };
+		EC74E0B3174F934400391A6D /* TestLabelController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC74E0B2174F934400391A6D /* TestLabelController.m */; };
 		EC99076D17570DC60041F268 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB7FD0B17447086002A4B71 /* GLKit.framework */; };
+		EC9D38001772157A00241446 /* QKScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9D37FF1772157A00241446 /* QKScrollView.m */; };
+		EC9D38031772169600241446 /* TestScrollController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9D38021772169600241446 /* TestScrollController.m */; };
+		EC9D3806177238FB00241446 /* NSMutableArray+QK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9D3805177238FB00241446 /* NSMutableArray+QK.m */; };
+		EC9D380917723DD700241446 /* TestTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9D380817723DD600241446 /* TestTableController.m */; };
 		ECB259D11749BBF900CEAEE8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB259D01749BBF900CEAEE8 /* QuartzCore.framework */; };
 		ECB517C7174CF58A00B24789 /* RootController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB517C6174CF58900B24789 /* RootController.m */; };
-		ECB517D0174CFA8500B24789 /* ScrollController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB517CF174CFA8500B24789 /* ScrollController.m */; };
+		ECB517D0174CFA8500B24789 /* TestGLScrollController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB517CF174CFA8500B24789 /* TestGLScrollController.m */; };
 		ECB517DC174D114900B24789 /* image.frag in Resources */ = {isa = PBXBuildFile; fileRef = ECB517D6174D113A00B24789 /* image.frag */; };
 		ECB517DD174D114900B24789 /* image.vert in Resources */ = {isa = PBXBuildFile; fileRef = ECB517D7174D113A00B24789 /* image.vert */; };
 		ECB517DE174D114900B24789 /* pos.vert in Resources */ = {isa = PBXBuildFile; fileRef = ECB517D8174D113A00B24789 /* pos.vert */; };
@@ -89,7 +94,7 @@
 		ECCAECF21752DF8E006CB1B5 /* QKButton.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAEC871752DF8E006CB1B5 /* QKButton.m */; };
 		ECCAECF31752DF8E006CB1B5 /* QKImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAEC891752DF8E006CB1B5 /* QKImageView.m */; };
 		ECCAECF41752DF8E006CB1B5 /* QKLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAEC8B1752DF8E006CB1B5 /* QKLabel.m */; };
-		ECCAECF51752DF8E006CB1B5 /* QKScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAEC8F1752DF8E006CB1B5 /* QKScrollView.m */; };
+		ECCAECF51752DF8E006CB1B5 /* QKUIScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAEC8F1752DF8E006CB1B5 /* QKUIScrollView.m */; };
 		ECCAECF61752DF8E006CB1B5 /* QKTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAEC911752DF8E006CB1B5 /* QKTableController.m */; };
 		ECCAECF71752DF8E006CB1B5 /* QKTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAEC931752DF8E006CB1B5 /* QKTextView.m */; };
 		ECCAECF81752DF8E006CB1B5 /* QKUITableView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCAEC951752DF8E006CB1B5 /* QKUITableView.m */; };
@@ -111,14 +116,24 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		EC74E0B1174F934400391A6D /* LabelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelController.h; sourceTree = "<group>"; };
-		EC74E0B2174F934400391A6D /* LabelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelController.m; sourceTree = "<group>"; };
+		EC5026BB17623CE8005BB8E5 /* QKTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKTableView.h; sourceTree = "<group>"; };
+		EC5026BC17623CE8005BB8E5 /* QKTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKTableView.m; sourceTree = "<group>"; };
+		EC74E0B1174F934400391A6D /* TestLabelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestLabelController.h; sourceTree = "<group>"; };
+		EC74E0B2174F934400391A6D /* TestLabelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestLabelController.m; sourceTree = "<group>"; };
+		EC9D37FE1772157A00241446 /* QKScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKScrollView.h; sourceTree = "<group>"; };
+		EC9D37FF1772157A00241446 /* QKScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKScrollView.m; sourceTree = "<group>"; };
+		EC9D38011772169600241446 /* TestScrollController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestScrollController.h; sourceTree = "<group>"; };
+		EC9D38021772169600241446 /* TestScrollController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestScrollController.m; sourceTree = "<group>"; };
+		EC9D3804177238FB00241446 /* NSMutableArray+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+QK.h"; sourceTree = "<group>"; };
+		EC9D3805177238FB00241446 /* NSMutableArray+QK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+QK.m"; sourceTree = "<group>"; };
+		EC9D380717723DD600241446 /* TestTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTableController.h; sourceTree = "<group>"; };
+		EC9D380817723DD600241446 /* TestTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTableController.m; sourceTree = "<group>"; };
 		ECB259D01749BBF900CEAEE8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		ECB51784174CF2CB00B24789 /* source-qk-ios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "source-qk-ios.h"; path = "source-qk-ios/source-qk-ios.h"; sourceTree = SOURCE_ROOT; };
 		ECB517C5174CF58900B24789 /* RootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootController.h; sourceTree = "<group>"; };
 		ECB517C6174CF58900B24789 /* RootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootController.m; sourceTree = "<group>"; };
-		ECB517CE174CFA8500B24789 /* ScrollController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollController.h; sourceTree = "<group>"; };
-		ECB517CF174CFA8500B24789 /* ScrollController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollController.m; sourceTree = "<group>"; };
+		ECB517CE174CFA8500B24789 /* TestGLScrollController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestGLScrollController.h; sourceTree = "<group>"; };
+		ECB517CF174CFA8500B24789 /* TestGLScrollController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestGLScrollController.m; sourceTree = "<group>"; };
 		ECB517D6174D113A00B24789 /* image.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = image.frag; sourceTree = "<group>"; };
 		ECB517D7174D113A00B24789 /* image.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = image.vert; sourceTree = "<group>"; };
 		ECB517D8174D113A00B24789 /* pos.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = pos.vert; sourceTree = "<group>"; };
@@ -291,8 +306,8 @@
 		ECCAEC8B1752DF8E006CB1B5 /* QKLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKLabel.m; sourceTree = "<group>"; };
 		ECCAEC8C1752DF8E006CB1B5 /* QKLitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKLitView.h; sourceTree = "<group>"; };
 		ECCAEC8D1752DF8E006CB1B5 /* qkm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qkm.h; sourceTree = "<group>"; };
-		ECCAEC8E1752DF8E006CB1B5 /* QKScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKScrollView.h; sourceTree = "<group>"; };
-		ECCAEC8F1752DF8E006CB1B5 /* QKScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKScrollView.m; sourceTree = "<group>"; };
+		ECCAEC8E1752DF8E006CB1B5 /* QKUIScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKUIScrollView.h; sourceTree = "<group>"; };
+		ECCAEC8F1752DF8E006CB1B5 /* QKUIScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKUIScrollView.m; sourceTree = "<group>"; };
 		ECCAEC901752DF8E006CB1B5 /* QKTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKTableController.h; sourceTree = "<group>"; };
 		ECCAEC911752DF8E006CB1B5 /* QKTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKTableController.m; sourceTree = "<group>"; };
 		ECCAEC921752DF8E006CB1B5 /* QKTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKTextView.h; sourceTree = "<group>"; };
@@ -419,18 +434,22 @@
 		ECB7FB6617445DA2002A4B71 /* test-qk-ios */ = {
 			isa = PBXGroup;
 			children = (
-				EC74E0B1174F934400391A6D /* LabelController.h */,
-				EC74E0B2174F934400391A6D /* LabelController.m */,
+				EC74E0B1174F934400391A6D /* TestLabelController.h */,
+				EC74E0B2174F934400391A6D /* TestLabelController.m */,
 				ECB517C5174CF58900B24789 /* RootController.h */,
 				ECB517C6174CF58900B24789 /* RootController.m */,
-				ECB517CE174CFA8500B24789 /* ScrollController.h */,
-				ECB517CF174CFA8500B24789 /* ScrollController.m */,
+				EC9D380717723DD600241446 /* TestTableController.h */,
+				EC9D380817723DD600241446 /* TestTableController.m */,
+				ECB517CE174CFA8500B24789 /* TestGLScrollController.h */,
+				ECB517CF174CFA8500B24789 /* TestGLScrollController.m */,
 				ECB51784174CF2CB00B24789 /* source-qk-ios.h */,
 				ECB7FB7017445DA2002A4B71 /* test-qk-ios-Info.plist */,
 				ECB7FD0D174471D0002A4B71 /* AppDelegate.h */,
 				ECB7FD0E174471D0002A4B71 /* AppDelegate.m */,
 				ECB7FD0F174471D0002A4B71 /* main.m */,
 				ECB7FD10174471D0002A4B71 /* test-qk-ios-prefix.pch */,
+				EC9D38011772169600241446 /* TestScrollController.h */,
+				EC9D38021772169600241446 /* TestScrollController.m */,
 			);
 			path = "test-qk-ios";
 			sourceTree = "<group>";
@@ -674,6 +693,8 @@
 				ECCAEC461752DF8E006CB1B5 /* NSError+QK.m */,
 				ECCAEC471752DF8E006CB1B5 /* NSJSONSerialization+QK.h */,
 				ECCAEC481752DF8E006CB1B5 /* NSJSONSerialization+QK.m */,
+				EC9D3804177238FB00241446 /* NSMutableArray+QK.h */,
+				EC9D3805177238FB00241446 /* NSMutableArray+QK.m */,
 				ECCAEC491752DF8E006CB1B5 /* NSMutableData+QK.h */,
 				ECCAEC4A1752DF8E006CB1B5 /* NSMutableData+QK.m */,
 				ECCAEC4B1752DF8E006CB1B5 /* NSMutableDictionary+QK.h */,
@@ -783,12 +804,16 @@
 				ECCAEC8B1752DF8E006CB1B5 /* QKLabel.m */,
 				ECCAEC8C1752DF8E006CB1B5 /* QKLitView.h */,
 				ECCAEC8D1752DF8E006CB1B5 /* qkm.h */,
-				ECCAEC8E1752DF8E006CB1B5 /* QKScrollView.h */,
-				ECCAEC8F1752DF8E006CB1B5 /* QKScrollView.m */,
+				EC9D37FE1772157A00241446 /* QKScrollView.h */,
+				EC9D37FF1772157A00241446 /* QKScrollView.m */,
 				ECCAEC901752DF8E006CB1B5 /* QKTableController.h */,
 				ECCAEC911752DF8E006CB1B5 /* QKTableController.m */,
+				EC5026BB17623CE8005BB8E5 /* QKTableView.h */,
+				EC5026BC17623CE8005BB8E5 /* QKTableView.m */,
 				ECCAEC921752DF8E006CB1B5 /* QKTextView.h */,
 				ECCAEC931752DF8E006CB1B5 /* QKTextView.m */,
+				ECCAEC8E1752DF8E006CB1B5 /* QKUIScrollView.h */,
+				ECCAEC8F1752DF8E006CB1B5 /* QKUIScrollView.m */,
 				ECCAEC941752DF8E006CB1B5 /* QKUITableView.h */,
 				ECCAEC951752DF8E006CB1B5 /* QKUITableView.m */,
 				ECCAEC961752DF8E006CB1B5 /* QKViewController.h */,
@@ -922,8 +947,8 @@
 				ECB7FD11174471D0002A4B71 /* AppDelegate.m in Sources */,
 				ECB7FD12174471D0002A4B71 /* main.m in Sources */,
 				ECB517C7174CF58A00B24789 /* RootController.m in Sources */,
-				ECB517D0174CFA8500B24789 /* ScrollController.m in Sources */,
-				EC74E0B3174F934400391A6D /* LabelController.m in Sources */,
+				ECB517D0174CFA8500B24789 /* TestGLScrollController.m in Sources */,
+				EC74E0B3174F934400391A6D /* TestLabelController.m in Sources */,
 				ECCAECBB1752DF8E006CB1B5 /* qk-check.m in Sources */,
 				ECCAECBC1752DF8E006CB1B5 /* qk-log.m in Sources */,
 				ECCAECBD1752DF8E006CB1B5 /* qk-math.m in Sources */,
@@ -982,7 +1007,7 @@
 				ECCAECF21752DF8E006CB1B5 /* QKButton.m in Sources */,
 				ECCAECF31752DF8E006CB1B5 /* QKImageView.m in Sources */,
 				ECCAECF41752DF8E006CB1B5 /* QKLabel.m in Sources */,
-				ECCAECF51752DF8E006CB1B5 /* QKScrollView.m in Sources */,
+				ECCAECF51752DF8E006CB1B5 /* QKUIScrollView.m in Sources */,
 				ECCAECF61752DF8E006CB1B5 /* QKTableController.m in Sources */,
 				ECCAECF71752DF8E006CB1B5 /* QKTextView.m in Sources */,
 				ECCAECF81752DF8E006CB1B5 /* QKUITableView.m in Sources */,
@@ -1001,6 +1026,11 @@
 				ECCAED051752DF8E006CB1B5 /* UITableViewCell+QK.m in Sources */,
 				ECCAED061752DF8E006CB1B5 /* UIView+QK.m in Sources */,
 				ECCAED071752DF8E006CB1B5 /* UIViewController+QK.m in Sources */,
+				EC5026BD17623CE8005BB8E5 /* QKTableView.m in Sources */,
+				EC9D38001772157A00241446 /* QKScrollView.m in Sources */,
+				EC9D38031772169600241446 /* TestScrollController.m in Sources */,
+				EC9D3806177238FB00241446 /* NSMutableArray+QK.m in Sources */,
+				EC9D380917723DD700241446 /* TestTableController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1029,6 +1059,7 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -1054,6 +1085,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
