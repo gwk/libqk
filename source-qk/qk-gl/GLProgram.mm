@@ -127,10 +127,10 @@ NSNumber* loc = [_uniformLocations objectForKey:name]; \
 qk_check(loc, @"bad uniform: %@", name); \
 if (loc.intValue == -1) return NO; \
 
-#define SET_UNIFORM(T, f) \
+#define SET_UNIFORM(T, T_GL, f) \
 - (BOOL)setUniform:(NSString*)name count:(int)count T:(T*)pointer { \
 CHECK_UNIFORM \
-f(loc.intValue, count, (void*)pointer); qkgl_assert(); \
+f(loc.intValue, count, (T_GL*)pointer); qkgl_assert(); \
 return YES; \
 } \
 \
@@ -145,11 +145,11 @@ f(loc.intValue, 1, GL_FALSE, pointer->m); \
 return YES; \
 }
 
-SET_UNIFORM(F32, glUniform1fv);
-SET_UNIFORM(V2F32, glUniform2fv);
-SET_UNIFORM(V3F32, glUniform3fv);
-SET_UNIFORM(V4F32, glUniform4fv);
-SET_UNIFORM(I32, glUniform1iv);
+SET_UNIFORM(F32,    GLfloat, glUniform1fv);
+SET_UNIFORM(V2F32,  GLfloat, glUniform2fv);
+SET_UNIFORM(V3F32,  GLfloat, glUniform3fv);
+SET_UNIFORM(V4F32,  GLfloat, glUniform4fv);
+SET_UNIFORM(I32,    GLint, glUniform1iv);
 
 #if QK_USE_GLK
 SET_MAT_UNIFORM(M2, glUniformMatrix2fv);

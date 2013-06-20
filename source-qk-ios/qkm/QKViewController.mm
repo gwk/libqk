@@ -72,7 +72,7 @@
     return;
   }
   // note: we don't care about keyboard beginning frame; we animate the view from its own starting position.
-  UIViewAnimationCurve curve = 0;
+  UIViewAnimationCurve curve = UIViewAnimationCurveEaseInOut; // overwritten
   NSTimeInterval duration = 0;
   CGRect kbFrameEnd   = CGRectZero;
   NSDictionary* info = note.userInfo;

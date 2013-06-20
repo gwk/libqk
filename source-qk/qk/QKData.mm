@@ -15,8 +15,8 @@
   Int rowLength = elSize * width;
   Int rowCount = data.length / rowLength;
   NSMutableData* r = [NSMutableData withLength:sizeof(void*) * rowCount];
-  void* sb = (void*)data.bytes;
-  void** rb = r.mutableBytes;
+  U8* sb = (U8*)data.bytes;
+  U8** rb = (U8**)r.mutableBytes;
   for_in(i, rowCount) {
     rb[i] = sb + i * rowLength;
   }
@@ -33,8 +33,8 @@
   id<QKData> data = CAST_PROTO(QKData, self);
   
   NSUInteger length = MIN(data.length, limit);
-  const char* bytes = data.bytes;
-  char* debugBytes = malloc(length);
+  const U8* bytes = (U8*)data.bytes;
+  char* debugBytes = (char*)malloc(length);
   
   // convert problematic characters to readable characters in iso latin 1
   for (int i = 0; i < length; i++) {

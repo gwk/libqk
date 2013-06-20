@@ -41,7 +41,7 @@ static const U32 QKPixFmtBitMS4 = 1 << 9;   // 4 multisample
 static const U32 QKPixFmtBitMS9 = 1 << 10;  // 9 multisample
 
 typedef enum {
-  QKPixFmtUnknown = 0,
+  QKPixFmtNone = 0,
   // alpha-only masks
   QKPixFmtAU8  = QKPixFmtBitA | QKPixFmtBitU8,
   QKPixFmtAU16 = QKPixFmtBitA | QKPixFmtBitU16,

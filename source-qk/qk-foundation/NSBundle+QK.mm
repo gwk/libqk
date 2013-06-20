@@ -12,7 +12,7 @@
 
 + (NSString*)resPath:(NSString*)resourceName ofType:(NSString*)type {
   NSString* path = [[self mainBundle] pathForResource:resourceName ofType:type];
-  qk_assert(path, @"no resource named: %@", resourceName);
+  qk_assert(path, @"no resource named: %@; ext: %@", resourceName, type);
   return path;
 }
 

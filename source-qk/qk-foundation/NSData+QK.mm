@@ -58,15 +58,15 @@
 }
 
 
-- (id)objectOfType:(Class)class fromJsonWithError:(NSError **)errorPtr {
+- (id)objectOfType:(Class)class_ fromJsonWithError:(NSError **)errorPtr {
   qk_assert(errorPtr, @"NULL error pointer");
   id result = [NSJSONSerialization JSONObjectWithData:self options:0 error:errorPtr];
   if (*errorPtr || !result) {
     return nil;
   }
   qk_assert(result, @"nil result");
-  CHECK_SET_ERROR_RET_NIL([result isKindOfClass:class], QK, JsonUnexpectedRootType, @"unexpected JSON result type", @{
-                          @"expected-type" : class,
+  CHECK_SET_ERROR_RET_NIL([result isKindOfClass:class_], QK, JsonUnexpectedRootType, @"unexpected JSON result type", @{
+                          @"expected-type" : class_,
                           @"actual-type" : [result class],
                           @"result" : result
                           });

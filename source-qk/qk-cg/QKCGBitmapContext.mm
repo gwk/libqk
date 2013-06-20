@@ -5,6 +5,7 @@
 
 #import "QKCGBitmapContext.h"
 
+#define CTX ((CGContextRef)_ref)
 
 @interface QKCGBitmapContext ()
 
@@ -38,12 +39,12 @@
 
 
 - (const void*)bytes {
-  return CGBitmapContextGetData(_ref);
+  return CGBitmapContextGetData(CTX);
 }
 
 
 - (void*)mutableBytes {
-  return CGBitmapContextGetData(_ref);
+  return CGBitmapContextGetData(CTX);
 }
 
 
@@ -75,10 +76,10 @@
 
 - (void)fillWithImage:(UIImage*)image flipY:(BOOL)flipY {
   if (flipY) {
-    CGContextScaleCTM(self.ref, 1, -1);
-    CGContextTranslateCTM(self.ref, 0, -_size.v[1]);
+    CGContextScaleCTM(CTX, 1, -1);
+    CGContextTranslateCTM(CTX, 0, -_size.v[1]);
   }
-  CGContextDrawImage(self.ref, CGRectMake(0, 0, _size.v[0], _size.v[1]), image.CGImage);
+  CGContextDrawImage(CTX, CGRectMake(0, 0, _size.v[0], _size.v[1]), image.CGImage);
 }
 
 
@@ -91,7 +92,7 @@
   switch (_format) {
     case QKPixFmtRGBXU8:
     case QKPixFmtRGBAU8: {
-      V4U8* from = self.mutableBytes;
+      V4U8* from = (V4U8*)self.mutableBytes;
       V4U8* end = from + _size.v[0] * _size.v[1];
       V3U8* to = (V3U8*)from;
       while (from < end) {

@@ -18,7 +18,7 @@
         @"out of bounds: data.length: %lu; offset: %ld; length: %ld", (unsigned long)data.length, offset, length);
   INIT(super init);
   _data = data;
-  _bytes = data.bytes + offset;
+  _bytes = (void*)((U8*)data.bytes + offset);
   _length = length;
   return self;
 }

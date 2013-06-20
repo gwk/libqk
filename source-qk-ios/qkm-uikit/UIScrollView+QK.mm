@@ -107,7 +107,7 @@
 
 
 - (void)centerOnZoomPoint:(CGPoint)point animated:(BOOL)animated {
-  [self centerOnContentPoint:CGPointMul(point, self.zoomScale) animated:animated];
+  [self centerOnContentPoint:mul(point, self.zoomScale) animated:animated];
 }
 
 
@@ -117,7 +117,7 @@
 
 
 - (void)centerOnZoomRect:(CGRect)rect animated:(BOOL)animated {
-  [self centerOnContentRect:CGRectMul(rect, self.zoomScale) animated:animated];
+  [self centerOnContentRect:mul(rect, self.zoomScale) animated:animated];
 }
 
 
@@ -128,7 +128,7 @@
 
 - (void)centerOnZoomRect:(CGRect)rect point:(CGPoint)point animated:(BOOL)animated {
   CGFloat z = self.zoomScale;
-  [self centerOnContentRect:CGRectMul(rect, z) point:CGPointMul(point, z) animated:animated];
+  [self centerOnContentRect:mul(rect, z) point:mul(point, z) animated:animated];
 }
 
 

@@ -34,13 +34,15 @@
   [self setHighlightedOff];
   if (_blockTouchUp) {
     for (UITouch* t in touches) {
-      CGPoint p = [t locationInView:t.view];
+      CGPoint p = [t locationInView:self];
+      errFL(@"button touch");
       if ([self pointInside:p withEvent:event]) {
         _blockTouchUp();
         return;
       }
     }
   }
+  errL(@"button had no touch");
   if (_blockTouchCancelled) {
     _blockTouchCancelled();
   }

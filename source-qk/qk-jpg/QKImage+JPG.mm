@@ -1,8 +1,9 @@
 // Copyright 2013 George King.
 // Permission to use this file is granted in libqk/license.txt.
 
-
-#import "turbojpeg.h"
+extern "C" {
+#include "turbojpeg.h"
+}
 #import "NSBundle+QK.h"
 #import "NSData+QK.h"
 #import "NSMutableData+QK.h"
@@ -21,7 +22,7 @@
   V2I32 s = {0, 0};
   int subsamples = 0;
 
-  int code = tjDecompressHeader2(handle, (void*)jpgData.bytes, jpgData.length, &s.v[0], &s.v[1], &subsamples);
+  int code = tjDecompressHeader2(handle, (U8*)jpgData.bytes, jpgData.length, &s.v[0], &s.v[1], &subsamples);
   CHECK_SET_ERROR_RET_NIL(code == 0, QK, ImageJPGReadHeader, @"JPG read header failed", @{
                           @"name" : name
                           });
@@ -42,9 +43,9 @@
   int flags = TJFLAG_BOTTOMUP | TJFLAG_ACCURATEDCT;
   NSMutableData* data = [NSMutableData withLength:V2I32Measure(s) * channels];
   code = tjDecompress2(handle,
-                       (void*)jpgData.bytes, // API is not const-correct
+                       (U8*)jpgData.bytes, // API is not const-correct
                        jpgData.length,
-                       data.mutableBytes,
+                       (U8*)data.mutableBytes,
                        s.v[0],
                        0, // pitch; set to 0 for tightly packed data
                        s.v[1],

@@ -89,18 +89,18 @@
   qk_assert(len_act == len, @"Utf32 buffer filled %lu; expected %lu", (unsigned long)len_act, (unsigned long)len);
   qk_assert(!range_left.length, @"Utf32 buffer could not be filled; terminated at position %lu", (unsigned long)range_left.location);
   
-  memset(bytes + len, 0, pad); // null terminate
+  memset((U8*)bytes + len, 0, pad); // null terminate
   return bytes;
 }
 
 
 - (Utf8M)asUtf8M {
-  return [self asUtfNew:NSUTF8StringEncoding pad:1];
+  return (Utf8M)[self asUtfNew:NSUTF8StringEncoding pad:1];
 }
 
 
 - (Utf32M)asUtf32M {
-  return [self asUtfNew:NSUTF32LittleEndianStringEncoding pad:4];
+  return (Utf32M)[self asUtfNew:NSUTF32LittleEndianStringEncoding pad:4];
 }
 
 
@@ -111,9 +111,9 @@
 
 - (Utf32)asUtf32 NS_RETURNS_INNER_POINTER {
   // create an autoreleased NSData object; return the bytes inner pointer, which will be released in the same scope.
-  return [[NSData dataWithBytesNoCopy:self.asUtf32M
-                              length:(self.length + 1) * 4
-                        freeWhenDone:YES] bytes];
+  return (Utf32)[[NSData dataWithBytesNoCopy:self.asUtf32M
+                                      length:(self.length + 1) * 4
+                                freeWhenDone:YES] bytes];
 }
 
 

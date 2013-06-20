@@ -14,28 +14,51 @@ typedef enum {
 } QKVerticalAlign;
 
 
-static inline CGPoint CGPointMul(CGPoint v, CGFloat s) {
-  return (CGPoint){ v.x * s, v.y * s };
+static inline CGPoint add(CGPoint a, CGPoint b) {
+  return CGPointMake(a.x + b.x, a.y + b.y);
 }
 
 
-static inline CGSize CGSizeMul(CGSize v, CGFloat s) {
-  return (CGSize){ v.width * s, v.height * s };
+static inline CGSize add(CGSize a, CGSize b) {
+  return CGSizeMake(a.width + b.width, a.height + b.height);
+}
+
+
+static inline CGPoint sub(CGPoint a, CGPoint b) {
+  return CGPointMake(a.x - b.x, a.y - b.y);
+}
+
+
+static inline CGSize sub(CGSize a, CGSize b) {
+  return CGSizeMake(a.width - b.width, a.height - b.height);
+}
+
+
+static inline CGPoint mul(CGPoint v, CGFloat s) {
+  return CGPointMake(v.x * s, v.y * s);
+}
+
+
+static inline CGSize mul(CGSize v, CGFloat s) {
+  return CGSizeMake(v.width * s, v.height * s);
 }
 
 
 static inline CGFloat CGSizeAspect(CGSize s, CGFloat eps) {
+  if (s.width < eps || s.height < eps) {
+    return 1;
+  }
   return s.width / s.height;
 }
 
 
-static inline CGRect CGRectMul(CGRect r, CGFloat s) {
-  return (CGRect){ CGPointMul(r.origin, s), CGSizeMul(r.size, s) };
+static inline CGRect mul(CGRect r, CGFloat s) {
+  return (CGRect){ mul(r.origin, s), mul(r.size, s) };
 }
 
 
 static inline CGRect CGRectWithOE(CGPoint origin, CGPoint end) {
-  return (CGRect){ origin.x, origin.y, end.x - origin.x, end.y - origin.y };
+  return CGRectMake(origin.x, origin.y, end.x - origin.x, end.y - origin.y);
 }
 
 
@@ -68,12 +91,12 @@ static inline CGRect CGRectWithRBS(CGFloat r, CGFloat b, CGSize s) {
 
 
 static inline CGRect CGRectExpand(CGRect r, CGFloat padX, CGFloat padY) {
-  return (CGRect){r.origin.x - padX, r.origin.y - padY, r.size.width + padX * 2, r.size.height + padY * 2};
+  return CGRectMake(r.origin.x - padX, r.origin.y - padY, r.size.width + padX * 2, r.size.height + padY * 2);
 }
 
 
 static inline CGRect CGRectSurround(CGPoint center, CGFloat padX, CGFloat padY) {
-    return (CGRect){center.x - padX, center.y - padY, padX * 2, padY * 2};
+  return CGRectMake(center.x - padX, center.y - padY, padX * 2, padY * 2);
 }
 
 

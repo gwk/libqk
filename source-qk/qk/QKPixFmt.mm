@@ -8,7 +8,7 @@
 
 NSString* QKPixFmtDesc(QKPixFmt format) {
   switch (format) {
-      CASE_RET_TOK_SPLIT_STR(QKPixFmt, Unknown);
+      CASE_RET_TOK_SPLIT_STR(QKPixFmt, None);
       CASE_RET_TOK_SPLIT_STR(QKPixFmt, AU8);
       CASE_RET_TOK_SPLIT_STR(QKPixFmt, AU16);
       CASE_RET_TOK_SPLIT_STR(QKPixFmt, AF32);
@@ -36,7 +36,7 @@ QKPixFmt QKPixFmtFromString(NSString* string) {
   // map two strings: bare, and prefixed
 #define FI(fmt) @#fmt : @(QKPixFmt##fmt), @"QKPixFmt" @#fmt : @(QKPixFmt##fmt)
   LAZY_STATIC(NSDictionary*, formats, @{
-              FI(Unknown),
+              FI(None),
               FI(AU8),
               FI(AU16),
               FI(AF32),
@@ -57,7 +57,7 @@ QKPixFmt QKPixFmtFromString(NSString* string) {
               FI(RGBXF32),
               });
 #undef FI
-  return [[formats objectForKey:string] intValue];
+  return (QKPixFmt)[[formats objectForKey:string] intValue];
 }
 
 

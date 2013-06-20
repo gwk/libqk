@@ -9,7 +9,7 @@
 
 
 - (Int)writeData:(id<QKData>)data {
-  return [self write:data.bytes maxLength:data.length];
+  return [self write:(U8*)data.bytes maxLength:data.length];
 }
 
 

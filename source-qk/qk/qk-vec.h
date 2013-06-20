@@ -6,6 +6,7 @@
 #import "qk-macros.h"
 #import "qk-math.h"
 
+
 // alias the GLK vector and matrix types to be shorter; add additional, similarly structured types for other scalar types.
 // the naming convention is VDT, where D is the dimension (e.g. '2'), and T is the scalar element type, (e.g. 'F32').
 // we make use of C compound literals, which look like type-casts of array literals (e.g, '(V2F32) { { 0, 0 } }').
@@ -37,9 +38,9 @@ for_in(i, dim) { if (a.v[i] < b.v[i]) return YES; if (a.v[i] > b.v[i]) return NO
 static inline BOOL TV##LTRev(TV a, TV b) { \
 for_in_rev(i, dim) { if (a.v[i] < b.v[i]) return YES; if (a.v[i] > b.v[i]) return NO; } return NO; } \
 \
-static inline TV TV##WithCGPoint(CGPoint p) { return (TV) {{ p.x, p.y }}; } \
+static inline TV TV##WithCGPoint(CGPoint p) { return (TV) {{ (TE)p.x, (TE)p.y }}; } \
 \
-static inline TV TV##WithCGSize(CGSize s) { return (TV) {{ s.width, s.height }}; } \
+static inline TV TV##WithCGSize(CGSize s) { return (TV) {{ (TE)s.width, (TE)s.height }}; } \
 \
 static inline CGPoint CGPointWith##TV(TV v) { return CGPointMake(v.v[0], v.v[1]); } \
 \
@@ -124,7 +125,7 @@ static inline NSString* TV##Desc(TV v) { \
 return [NSString stringWithFormat:@"(" fmt @" " fmt @")", v.v[0], v.v[1]]; } \
 \
 static inline TV TV##UpdateRange(TV r, TE v) { \
-return (TV) { (v < r.v[0] ? v : r.v[0]), (v > r.v[1] ? v : r.v[1]) }; \
+return (TV) {{ (v < r.v[0] ? v : r.v[0]), (v > r.v[1] ? v : r.v[1]) }}; \
 }
 
 
@@ -288,4 +289,3 @@ if (__c.v[i] < a.v[i]) a.v[i] = __c.v[i]; \
 if (__c.v[i] > b.v[i]) b.v[i] = __c.v[i]; \
 } \
 }
-

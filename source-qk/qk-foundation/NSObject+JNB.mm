@@ -20,6 +20,7 @@ NSString* const JNBErrorDomain = @"JNBErrorDomain";
 
 + (NSDictionary*)jnbValTypes {
   MUST_OVERRIDE;
+  return nil;
 }
 
 
@@ -137,7 +138,7 @@ NSString* const JNBErrorDomain = @"JNBErrorDomain";
   }
   const void* bytes = data.bytes;
   Int length = data.length;
-  Int offset_header_terminator = strnlen(bytes, length);
+  Int offset_header_terminator = strnlen((I8*)bytes, length);
   
   NSData* jsonData = (offset_header_terminator < length)
   ? [data subdataWithRange:NSRangeMake(0, offset_header_terminator)]

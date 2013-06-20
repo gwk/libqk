@@ -31,6 +31,19 @@ zoomView = _zoomViewQKScrollView;
 #pragma mark - UIResponder
 
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+  LOG_METHOD;
+  [super touchesBegan:touches withEvent:event];
+}
+
+
+- (UIView*)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
+  UIView* hitView = [super hitTest:point withEvent:event];
+  LOG(hitView);
+  return hitView;
+}
+
+
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
   [super touchesEnded:touches withEvent:event];
   NSArray* allTouches = event.allTouches.allObjects;
@@ -221,7 +234,7 @@ zoomView = _zoomViewQKScrollView;
 
 
 - (CGPoint)zoomContentOffset {
-  return CGPointMul(self.contentOffset, 1.0 / self.zoomScale);
+  return mul(self.contentOffset, 1.0 / self.zoomScale);
 }
 
 
@@ -231,7 +244,7 @@ zoomView = _zoomViewQKScrollView;
 
 
 - (CGPoint)zoomBoundsCenter {
-  return CGPointMul(self.boundsCenter, 1.0 / self.zoomScale);
+  return mul(self.boundsCenter, 1.0 / self.zoomScale);
 }
 
 

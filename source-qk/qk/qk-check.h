@@ -21,7 +21,7 @@ BREAK provides a console-driven break mechanism.
 
 
 #define _qk_fail(expr_str, ...) ({ \
-NSString* expr_line = expr_str ? [NSString stringWithFormat:@"! %s\n", expr_str] : @""; \
+NSString* expr_line = expr_str ? [NSString stringWithFormat:@"!%s\n", expr_str] : @""; \
 NSString* file_str = [[NSString stringWithUTF8String:__FILE__] lastPathComponent]; \
 NSString* msg = [NSString stringWithFormat:__VA_ARGS__]; \
 NSLog(@"ERROR: %@:%d: %s\n%@%@\n", file_str, __LINE__, __PRETTY_FUNCTION__, expr_line, msg); \
@@ -36,7 +36,7 @@ abort(); \
 # define qk_check(expr, ...) \
 ((expr) ? (void)0 : _qk_fail(#expr, __VA_ARGS__))
 
-# define qk_fail(...) _qk_fail(NULL, __VA_ARGS__)
+# define qk_fail(...) _qk_fail((char*)NULL, __VA_ARGS__)
 
 // soft checks simply print an error message
 # define qk_check_soft(expr, ...) \

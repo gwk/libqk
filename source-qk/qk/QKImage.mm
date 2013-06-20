@@ -121,7 +121,7 @@ LAZY_CLASS_METHOD(NSDictionary*, jnbValDecoders, @{
 
 LAZY_CLASS_METHOD(NSDictionary*, jnbValEncoders, @{
                   @"format" : ^(NSNumber* format) {
-  return QKPixFmtDesc(format.intValue);
+  return QKPixFmtDesc((QKPixFmt)format.intValue);
 }
                   });
 

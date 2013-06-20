@@ -53,7 +53,7 @@ DEF_INIT(ElSize:(I32)elSize from:(Int)from to:(Int)to mapIntBlock:(BlockStructMa
   BlockStructMapIntActual b = block;
   for_imn(i, from, to) {
     b(p, i);
-    p += elSize;
+    p = (U8*)p + elSize;
   }
   return [self initWithElSize:elSize data:data];
 }
@@ -61,9 +61,9 @@ DEF_INIT(ElSize:(I32)elSize from:(Int)from to:(Int)to mapIntBlock:(BlockStructMa
 
 DEF_INIT(ElSize:(I32)elSize structArray:(QKStructArray*)structArray copyBlock:(BlockStructCopy)block) {
   NSMutableData* data = [NSMutableData dataWithLength:elSize * structArray.count];
-  void* to = data.mutableBytes;
-  const void* from = structArray.bytes;
-  const void* end = structArray.bytesEnd;
+  U8* to = (U8*)data.mutableBytes;
+  const U8* from = (U8*)structArray.bytes;
+  const U8* end = (U8*)structArray.bytesEnd;
   size_t fromElSize = structArray.elSize;
   
   BlockStructCopyActual b = block;
@@ -78,9 +78,9 @@ DEF_INIT(ElSize:(I32)elSize structArray:(QKStructArray*)structArray copyBlock:(B
 
 DEF_INIT(ElSize:(I32)elSize structArray:(QKStructArray*)structArray filterCopyBlock:(BlockStructFilterCopy)block) {
   NSMutableData* data = [NSMutableData dataWithLength:elSize * structArray.count];
-  void* to = data.mutableBytes;
-  const void* from = structArray.bytes;
-  const void* end = structArray.bytesEnd;
+  U8* to = (U8*)data.mutableBytes;
+  const U8* from = (U8*)structArray.bytes;
+  const U8* end = (U8*)structArray.bytesEnd;
   size_t fromElSize = structArray.elSize;
   int count = 0;
   
@@ -145,7 +145,7 @@ DEF_INIT(ElSize:(I32)elSize structArray:(QKStructArray*)structArray filterCopyBl
 
 
 - (const void*)bytesEnd {
-  return _data.bytes + _data.length;
+  return (U8*)_data.bytes + _data.length;
 }
 
 
@@ -163,7 +163,7 @@ DEF_INIT(ElSize:(I32)elSize structArray:(QKStructArray*)structArray filterCopyBl
 
 - (void)el:(Int)index to:(void*)to {
   ASSERT_INDEX;
-  const void* ptr = _data.bytes + index * _elSize;
+  const void* ptr = (U8*)_data.bytes + index * _elSize;
   memmove(to, ptr, _elSize);
 }
 
@@ -172,7 +172,7 @@ DEF_INIT(ElSize:(I32)elSize structArray:(QKStructArray*)structArray filterCopyBl
 - (T)el##T:(Int)index { \
 qk_assert(self.elSize == sizeof(T), @"bad type: %s", #T); \
 ASSERT_INDEX; \
-const T* p = _data.bytes; \
+const T* p = (T*)_data.bytes; \
 return p[index]; \
 } \
 
@@ -202,8 +202,8 @@ EL(V2F64);
 
 
 - (void)step:(BlockStructStep)block {
-  const void* p = _data.bytes;
-  const void* end = p + _data.length;
+  const U8* p = (U8*)_data.bytes;
+  const U8* end = (U8*)p + _data.length;
   BlockStructStepActual b = block;
   while (p < end) {
     b(p);

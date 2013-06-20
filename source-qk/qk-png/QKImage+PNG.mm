@@ -85,8 +85,7 @@
     dstHasAlpha = NO;
   }
   
-  QKPixFmt format = (dstHasRGB ? QKPixFmtRGBU8 : QKPixFmtLU8) | (dstHasAlpha ? QKPixFmtBitA : 0);
-  
+  QKPixFmt format = (QKPixFmt)((dstHasRGB ? QKPixFmtRGBU8 : QKPixFmtLU8) | (dstHasAlpha ? QKPixFmtBitA : QKPixFmtNone));
   // unlike the example in the libpng documentation, we have no idea where this file may have come from;
   // therefore if it does not have a file gamma, do not do any correction.
   double  gamma = 0;
@@ -111,13 +110,13 @@
   NSMutableData* data = [NSMutableData dataWithCapacity:l];
   data.length = l;
   
-  png_bytepp row_pointers = malloc(size.v[1] * sizeof(png_bytep));
+  png_bytepp row_pointers = (png_bytepp)malloc(size.v[1] * sizeof(png_bytep));
   qk_check(row_pointers, @"malloc row_pointers failed");
   
   // fill out row_pointers
   const BOOL flip = YES; // make data layout match OpenGL texturing expectations.
   for_in(i, size.v[1]) {
-    row_pointers[flip ? ((size.v[1] - 1) - i) : i] = data.mutableBytes + i * rowsLength;
+    row_pointers[flip ? ((size.v[1] - 1) - i) : i] = (U8*)data.mutableBytes + i * rowsLength;
   }
   // read data
   png_read_image(readPtr, row_pointers);

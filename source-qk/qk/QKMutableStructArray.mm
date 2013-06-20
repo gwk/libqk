@@ -31,7 +31,7 @@
 
 
 - (void*)mutableBytesEnd {
-  return self.mutableData.mutableBytes + self.length;
+  return (void*)((U8*)self.mutableData.mutableBytes + self.length);
 }
 
 

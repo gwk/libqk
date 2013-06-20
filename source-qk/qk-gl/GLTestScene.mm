@@ -59,12 +59,12 @@
   _spokes = [QKStructArray withElSize:sizeof(V2F32) from:0 to:c   mapIntBlock:^(V2F32* v, int i){
     if (i < m) { // lower
       F64 r = i * step;
-      *v = i % 2 ? V2F32Zero : (V2F32){ s * cos(r), s * sin(r) };
+      *v = i % 2 ? V2F32Zero : V2F32Make(s * cos(r), s * sin(r));
     }
     else { // upper
       int j = i - m;
       F64 r = j * step;
-      *v = i % 2 ? V2F32Unit : (V2F32){ 1 - s * cos(r), 1 - s * sin(r) };
+      *v = i % 2 ? V2F32Unit : V2F32Make(1 - s * cos(r), 1 - s * sin(r));
     }
     //errFL(@"%d %@", i, V2Desc(*v));
   }];
@@ -122,7 +122,7 @@
   [_solidProgram use];
   [_solidProgram setUniform:@"mvp" M4:&mvp];
   [_solidProgram setUniform:@"color" V4F32:V4F32Unit];
-  [_solidProgram setAttribute:@"pos" stride:0 pointerV2F32:_spokes.bytes];
+  [_solidProgram setAttribute:@"pos" stride:0 pointerV2F32:(V2F32*)_spokes.bytes];
   glDrawArrays(GL_LINES, 0, (int)_spokes.count);
 }
 

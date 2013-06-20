@@ -7,6 +7,7 @@
 #import "TestScrollController.h"
 #import "TestTableController.h"
 #import "TestGLScrollController.h"
+#import "TestUIScrollController.h"
 #import "RootController.h"
 #import "TestLabelController.h"
 
@@ -24,6 +25,7 @@
     [QKDuo a:@"Scroll View" b:[TestScrollController class]],
     [QKDuo a:@"Table View" b:[TestTableController class]],
     [QKDuo a:@"GL Scroll View" b:[TestGLScrollController class]],
+    [QKDuo a:@"QKUI Scroll View" b:[TestUIScrollController class]],
     [QKDuo a:@"Labels" b:[TestLabelController class]],
     ];
   
