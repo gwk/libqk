@@ -12,6 +12,7 @@
 @property (nonatomic) CGPoint contentOffset;
 @property (nonatomic) BOOL scrollHorizontal;
 @property (nonatomic) BOOL scrollVertical;
+@property (nonatomic) BOOL scrollBounce;
 
 - (void)scrolled:(CGPoint)offset;
 

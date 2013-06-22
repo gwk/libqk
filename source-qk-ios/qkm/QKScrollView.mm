@@ -43,11 +43,18 @@
   CGPoint curr0 = [touch0 locationInView:self];
   CGPoint prev0 = [touch0 previousLocationInView:self];
   if (allTouches.count == 1) {
-    CGSize bs = self.bounds.size;
-    CGSize cs = self.contentSize;
-    CGPoint op = self.contentOffset; // prev
-    CGPoint oc = CGPointMake(_scrollHorizontal  ? CLAMP(op.x - (curr0.x - prev0.x), 0, cs.width - bs.width)     : op.x,
-                             _scrollVertical    ? CLAMP(op.y - (curr0.y - prev0.y), 0, cs.height - bs.height)   : op.y);
+    CGPoint op = self.contentOffset; // offset prev
+    CGPoint oc = op; // offset current
+    if (_scrollHorizontal) {
+      oc.x = op.x - (curr0.x - prev0.x);
+    }
+    if (_scrollVertical) {
+      oc.y = op.y - (curr0.y - prev0.y);
+    }
+    if (!_scrollBounce) {
+      CGPoint om = self.contentOffsetMax;
+      oc = CGPointMake(CLAMP(oc.x, 0, om.x), CLAMP(oc.y, 0, om.y));
+    }
     CGPoint delta = sub(oc, op);
     if (delta.x || delta.y) {
       self.contentOffset = oc;
@@ -60,12 +67,14 @@
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
   [_eventForwardingSubview touchesEnded:touches withEvent:event];
   _eventForwardingSubview = nil;
+  [self bounce];
 }
 
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
   [_eventForwardingSubview touchesCancelled:touches withEvent:event];
   _eventForwardingSubview = nil;
+  [self bounce];
 }
 
 
@@ -76,6 +85,8 @@
   INIT(super initWithFrame:frame);
   _scrollHorizontal = YES;
   _scrollVertical = YES;
+  _scrollBounce = YES;
+  self.backgroundColor = [UIColor l:.5];
   return self;
 }
 
@@ -90,6 +101,32 @@
 
 PROPERTY_STRUCT_FIELD(CGPoint, contentOffset, ContentOffset, CGRect, self.bounds, origin);
 PROPERTY_STRUCT_FIELD(CGFloat, contentHeight, ContentHeight, CGSize, _contentSize, height);
+
+- (CGPoint)contentOffsetMax {
+  CGSize bs = self.bounds.size;
+  CGSize cs = _contentSize;
+  return CGPointMake(cs.width - bs.width, cs.height - bs.height);
+}
+
+
+- (void)bounce {
+  if (!_scrollBounce) {
+    return;
+  }
+  CGPoint oc = self.contentOffset; // offset current
+  CGPoint om = self.contentOffsetMax;
+  if (_scrollBounce && (oc.x < 0 || oc.x > om.x || oc.y < 0 || oc.y > om.y)) { // out of bounds
+    CGPoint o = CGPointMake(CLAMP(oc.x, 0, om.x), CLAMP(oc.y, 0, om.y));
+    [UIView animateWithDuration:.25
+                          delay:0
+                        options:UIViewAnimationOptionCurveEaseOut
+                     animations:^{
+                       self.contentOffset = o;
+                     }
+                     completion:nil];
+  }
+}
+
 
 - (void)scrolled:(CGPoint)offset {}
 
