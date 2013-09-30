@@ -13,12 +13,12 @@
 - (CGFloat)heightForFont:(UIFont*)font
                        w:(CGFloat)w
                        h:(CGFloat)h
-               lineBreak:(UILineBreakMode)lineBreak
+               lineBreak:(NSLineBreakMode)lineBreak
                  lineMin:(int)lineMin;
 
 - (CGFloat)heightForFont:(UIFont*)font
                        w:(CGFloat)w
-               lineBreak:(UILineBreakMode)lineBreak
+               lineBreak:(NSLineBreakMode)lineBreak
                  lineMin:(int)lineMin
                  lineMax:(int)lineMax;
 

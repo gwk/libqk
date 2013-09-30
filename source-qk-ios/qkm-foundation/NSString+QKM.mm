@@ -18,7 +18,7 @@
 - (CGFloat)heightForFont:(UIFont*)font
                        w:(CGFloat)w
                        h:(CGFloat)h
-               lineBreak:(UILineBreakMode)lineBreak
+               lineBreak:(NSLineBreakMode)lineBreak
                  lineMin:(int)lineMin {
   
   CGSize s = [self sizeWithFont:font constrainedToSize:CGSizeMake(w, h) lineBreakMode:lineBreak];
@@ -28,7 +28,7 @@
 
 - (CGFloat)heightForFont:(UIFont*)font
                        w:(CGFloat)w
-               lineBreak:(UILineBreakMode)lineBreak
+               lineBreak:(NSLineBreakMode)lineBreak
                  lineMin:(int)lineMin
                  lineMax:(int)lineMax {
   

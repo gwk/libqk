@@ -159,7 +159,7 @@ SUB_PROPERTY_ALIAS(BOOL, secureTextEntry, SecureTextEntry, _view);
 }
 
 
-- (UITextAlignment)textAlignment {
+- (NSTextAlignment)textAlignment {
   return _view.textAlignment;
 }
 
