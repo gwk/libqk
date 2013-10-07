@@ -31,7 +31,6 @@ if   [[ $platform == 'MacOSX' ]]; then
 elif [[ $platform == 'iPhoneOS' ]]; then
   min_flag='-miphoneos-version-min=7.0'
   as="$GAS_PRE $as" # necessary for libpng arm neon instructions.
-  echo "GAS PRE: $as"
 elif [[ $platform == 'iPhoneSimulator' ]]; then
   min_flag="-mios-simulator-version-min=7.0"
 else

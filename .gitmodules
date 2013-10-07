@@ -4,3 +4,6 @@
 [submodule "submodules/libqk-built-ios"]
 	path = submodules/libqk-built-ios
 	url = git@github.com:gwk/libqk-built-ios.git
+[submodule "submodules/gas-preprocessor"]
+	path = submodules/gas-preprocessor
+	url = git@github.com:libav/gas-preprocessor.git

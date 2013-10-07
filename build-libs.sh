@@ -39,7 +39,7 @@ nasm_version=$(nasm -v | egrep --only-matching --max-count=1 'version [0-9]+(\.[
 echo "nasm $nasm_version (above $nasm_version_req required)"
 [[ "$nasm_version" > "$nasm_version_req" ]] || error "modern nasm required: $nasm_version_req; using $(nasm -v)"
 # gas-preprocessor cleans up gas code for clang, which does not understand gnu extensions.
-export GAS_PRE="$libqk/tools/gas-preprocessor.pl"
+export GAS_PRE="$libqk/submodules/gas-preprocessor/gas-preprocessor.pl"
 [[ -r $GAS_PRE ]] \
 || error "missing tools/gas-preprocessor.pl (obtained from obtained from https://github.com/yuvi/gas-preprocessor)"
 
@@ -71,8 +71,7 @@ FAT LIB COMPLETE: $os $name
 build_lib mac -Oz sqlite3
 build_lib ios -Oz sqlite3
 build_lib mac -O3 png
-build_lib ios -O3 png --enable-arm-neon=no # neon=yes or =api (default) no longer builds.
+build_lib ios -O3 png --enable-arm-neon=no
 build_lib mac -O3 turbojpeg --with-jpeg8
 build_lib ios -O3 turbojpeg --with-jpeg8 --without-simd
-# simd version used to build for arm using llvm-gcc-4.2.
 
