@@ -14,7 +14,6 @@ echo "build-lib-arch.sh: $@"
 sdk=$1;   shift
 host=$1;  shift
 arch=$1;  shift
-cpu=$1;   shift
 
 platform=${sdk%%[0-9]*}
 platform_dir=$DEV_DIR/Platforms/$platform.platform
@@ -22,52 +21,37 @@ sdk_dir=$platform_dir/Developer/SDKs/$sdk.sdk
 
 libtool=$TOOL_DIR/libtool
 
-cc_clang=$TOOL_DIR/clang
-cxx_clang=$TOOL_DIR/clang++
-ld_clang=$TOOL_DIR/ld
-
-cc_gcc=$PLATFORM_TOOL_DIR/$host-llvm-gcc-4.2
-cxx_gcc=$PLATFORM_TOOL_DIR/$host-llvm-g++-4.2
-ld_gcc=$cc_gcc
-
-c_arch_clang="-arch $arch"
-c_arch_gcc="-march=$arch"
-
-c_flags_clang=""
-c_flags_gcc=""
-
-if [[ $platform == 'iPhoneOS' ]]; then
-  c_flags_gcc="-mfloat-abi=softfp -mfpu=neon -mcpu=$cpu -mtune=$cpu"
-fi
-
-
-eval cc=\$cc_$CC_NAME
-eval cxx=\$cxx_$CC_NAME
-eval ld=\$ld_$CC_NAME
-eval c_arch=\$c_arch_$CC_NAME
-eval c_flags=\$c_flags_$CC_NAME
-
-
+cc=$TOOL_DIR/clang
+cxx=$TOOL_DIR/clang++
 as=$cc
-if [[ $platform == 'iPhoneOS' ]]; then
-  as="gas-preprocessor.pl $cc"
+ld=$TOOL_DIR/ld
+
+if   [[ $platform == 'MacOSX' ]]; then
+  min_flag=''
+elif [[ $platform == 'iPhoneOS' ]]; then
+  min_flag='-miphoneos-version-min=7.0'
+  as="$GAS_PRE $as" # necessary for libpng arm neon instructions.
+  echo "GAS PRE: $as"
+elif [[ $platform == 'iPhoneSimulator' ]]; then
+  min_flag="-mios-simulator-version-min=7.0"
+else
+  error "unkown platform: $platform"
 fi
 
+# i386
+# -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -fobjc-abi-version=2 -fobjc-legacy-dispatch  
 
 echo "
 sdk: $sdk
 host: $host
 arch: $arch
-cpu: $cpu;
-CC_NAME: $CC_NAME
 platform: $platform
 libtool: $libtool
 cc: $cc
 cxx: $cxx
 as: $as
 ld: $ld
-c_arch: $c_arch
-c_flags: $c_flags
+min_flag: $min_flag
 config_args: $config_args
 ----"
 
@@ -83,13 +67,22 @@ cd "$BUILD_DIR/$arch"
 rm -rf * # clean aggressively
 rm -rf .deps .libs # hidden directories
 
-set -x
+# even with the quiet flag, libtool is verbose, so redirect output.
+if [[ -n "$QUIET" ]]; then
+  OUT=/dev/null
+else
+  OUT=/dev/stdout
+  set -x # to print entire configure command.
+fi
+
+echo "running configure..."
 "$SRC_DIR/configure" \
 --disable-dependency-tracking \
 --prefix="$PWD/install" \
 --host=$host \
 --enable-static \
 --disable-shared \
+--with-sysroot="$sdk_dir" \
 LIBTOOL="$libtool" \
 CPP="$cc -E" \
 CC="$cc" \
@@ -97,28 +90,20 @@ CXXCPP="$cxx -E" \
 CXX="$cxx" \
 CCAS="$as" \
 LD="$ld" \
-CPPFLAGS="   -I$sdk_dir/usr/include" \
-CXXCPPFLAGS="-I$sdk_dir/usr/include" \
-CFLAGS="     -I$sdk_dir/usr/include  -isysroot $sdk_dir $CC_OPT $c_arch $c_flags" \
-CXXFLAGS="   -I$sdk_dir/usr/include  -isysroot $sdk_dir $CC_OPT $c_arch $c_flags" \
-LDFLAGS="    -L$sdk_dir/usr/lib      -isysroot $sdk_dir $c_arch" \
+CFLAGS="$CC_OPT" \
+CPPFLAGS="-arch $arch $min_flag -isysroot $sdk_dir -I$sdk_dir/usr/include" \
+LDFLAGS=" -arch $arch $min_flag -isysroot $sdk_dir -L$sdk_dir/usr/lib" \
 $CONFIG_ARGS \
 $QUIET
 
 set +x
 
-# make does not seem to respond to --quiet or --silent despite man page.
-if [[ -n "$QUIET" ]]; then
-  OUT=/dev/null
-else
-  OUT=/dev/stdout
-fi
-
 echo "running make..."
-make > $OUT
+make $QUIET > $OUT
 echo "running make install..."
-make install > $OUT
+make install $QUIET > $OUT
 
-echo "----
-COMPLETE: $sdk $host $arch $SRC_DIR
+echo "
+BUILD COMPLETE: $LIB_NAME $sdk $host $arch
+--------------
 "
