@@ -10,8 +10,22 @@ use strict;
 # implements the subset of the gas preprocessor used by x264 and ffmpeg
 # that isn't supported by Apple's gas.
 
+# obtained from https://github.com/libav/gas-preprocessor,
+# commit 35de474e7aad900b389e90e3cc7dc9bbc1f9d10a.
+
+# small additions by George King:
+#   '-debug' argument.
+#   print input and output commands.
+
+
 my @gcc_cmd = @ARGV;
 my @preprocess_c_cmd;
+
+my $debug_enabled = 0;
+if ($gcc_cmd[0] eq "-debug") {
+  $debug_enabled = 1;
+  shift @gcc_cmd;
+}
 
 my $fix_unreq = $^O eq "darwin";
 
@@ -85,6 +99,7 @@ if (!$comm) {
 my %ppc_spr = (ctr    => 9,
                vrsave => 256);
 
+print "gas-pre: preprocessing: @preprocess_c_cmd\n";
 open(ASMFILE, "-|", @preprocess_c_cmd) || die "Error running preprocessor";
 
 my $current_macro = '';
@@ -387,7 +402,9 @@ sub expand_macros {
 }
 
 close(ASMFILE) or exit 1;
-if ($ENV{GASPP_DEBUG}) {
+print "gas-pre: assembling: @gcc_cmd\n";
+if ($debug_enabled) {
+    print "gas-pre: debug output:\n";
     open(ASMFILE, ">&STDOUT");
 } else {
     open(ASMFILE, "|-", @gcc_cmd) or die "Error running assembler";
