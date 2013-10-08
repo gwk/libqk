@@ -39,9 +39,7 @@ nasm_version=$(nasm -v | egrep --only-matching --max-count=1 'version [0-9]+(\.[
 echo "nasm $nasm_version (above $nasm_version_req required)"
 [[ "$nasm_version" > "$nasm_version_req" ]] || error "modern nasm required: $nasm_version_req; using $(nasm -v)"
 # gas-preprocessor cleans up gas code for clang, which does not understand gnu extensions.
-export GAS_PRE="$libqk/submodules/gas-preprocessor/gas-preprocessor.pl"
-[[ -r $GAS_PRE ]] \
-|| error "missing tools/gas-preprocessor.pl (obtained from obtained from https://github.com/yuvi/gas-preprocessor)"
+export GAS_PRE="$libqk/tools/gas-preprocessor.pl"
 
 set -e
 
@@ -52,13 +50,13 @@ build_lib() {
   local cc_opt=$1; shift
   local name="$1"; shift
   local config_args="$@"
-  eval local src_dir=\$$name
+  eval local src_dir=\$$name # get src_dir from the argument named 'name'.
+  local install_dir="submodules/libqk-built-$os/$name"
   [[ -d "$src_dir" ]] || {
     echo "skipping missing source dir for $name: $src_dir"
     return
   }
   echo "building $os $name: $src_dir"
-  local install_dir="submodules/libqk-built-$os/$name"
   ./build-lib.sh $os $cc_opt $name "$src_dir" "$install_dir" $config_args
 
   echo "

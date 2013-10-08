@@ -23,7 +23,7 @@ libtool=$TOOL_DIR/libtool
 
 cc=$TOOL_DIR/clang
 cxx=$TOOL_DIR/clang++
-as=$cc
+as="$cc"
 ld=$TOOL_DIR/ld
 
 if   [[ $platform == 'MacOSX' ]]; then
@@ -63,7 +63,7 @@ done
 
 mkdir -p "$BUILD_DIR/$arch"
 cd "$BUILD_DIR/$arch"
-rm -rf * # clean aggressively
+rm -rf * # clean aggressively; removing the whole directory is disruptive to terminal sessions.
 rm -rf .deps .libs # hidden directories
 
 # even with the quiet flag, libtool is verbose, so redirect output.
