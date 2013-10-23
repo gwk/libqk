@@ -48,7 +48,7 @@ if [[ $OS == 'mac' ]]; then
   export PLATFORM_TOOL_DIR=$DEV_DIR/usr/bin
   lipo=lipo
 
-  "$build" MacOSX10.8 x86_64-apple-darwin x86_64
+  "$build" MacOSX10.9 x86_64-apple-darwin x86_64
 
   # fat lib is not necessary with only one arch, but this is how to do it.
   echo "creating fat lib: $INSTALL_DIR"

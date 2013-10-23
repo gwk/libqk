@@ -23,14 +23,18 @@ libtool=$TOOL_DIR/libtool
 
 cc=$TOOL_DIR/clang
 cxx=$TOOL_DIR/clang++
+
 as="$cc"
 ld=$TOOL_DIR/ld
 
+cc_flags=''
+
 if   [[ $platform == 'MacOSX' ]]; then
-  min_flag=''
+  min_flag='' # TODO
 elif [[ $platform == 'iPhoneOS' ]]; then
   min_flag='-miphoneos-version-min=7.0'
-  as="$GAS_PRE $as" # necessary for libpng arm neon instructions.
+  cc_flags='-mfpu=neon' # force libpng to use intrinsics?
+  as="$GAS_PRE $as" # necessary for libpng arm neon gas-style assembly.
 elif [[ $platform == 'iPhoneSimulator' ]]; then
   min_flag="-mios-simulator-version-min=7.0"
 else
@@ -51,6 +55,7 @@ cxx: $cxx
 as: $as
 ld: $ld
 min_flag: $min_flag
+cc_flags: $cc_flags
 config_args: $config_args
 ----"
 
@@ -83,13 +88,11 @@ echo "running configure..."
 --disable-shared \
 --with-sysroot="$sdk_dir" \
 LIBTOOL="$libtool" \
-CPP="$cc -E" \
 CC="$cc" \
-CXXCPP="$cxx -E" \
 CXX="$cxx" \
 CCAS="$as" \
 LD="$ld" \
-CFLAGS="$CC_OPT" \
+CFLAGS="$CC_OPT $cc_flags" \
 CPPFLAGS="-arch $arch $min_flag -isysroot $sdk_dir -I$sdk_dir/usr/include" \
 LDFLAGS=" -arch $arch $min_flag -isysroot $sdk_dir -L$sdk_dir/usr/lib" \
 $CONFIG_ARGS \

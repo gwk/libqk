@@ -25,10 +25,10 @@ png=$1; shift
 turbojpeg=$1; shift
 export QUIET=$1; shift
 
-if [[ "$QUIET" == '--quiet' ]]; then
+if [[ "$QUIET" == '-quiet' ]]; then
   echo "note: quiet mode enabled."
 elif [[ -n "$QUIET" ]]; then
-  error "final arg must be '--quiet' or empty; actual: '$QUIET'"
+  error "final arg must be '-quiet' or empty; actual: '$QUIET'"
 fi
 
 libqk="$PWD"
