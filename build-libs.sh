@@ -69,7 +69,7 @@ FAT LIB COMPLETE: $os $name
 build_lib mac -Oz sqlite3
 build_lib ios -Oz sqlite3
 build_lib mac -O3 png
-build_lib ios -O3 png --enable-arm-neon=no
+build_lib ios -O3 png
 build_lib mac -O3 turbojpeg --with-jpeg8
 build_lib ios -O3 turbojpeg --with-jpeg8 --without-simd
 

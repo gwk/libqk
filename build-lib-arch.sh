@@ -23,7 +23,6 @@ libtool=$TOOL_DIR/libtool
 
 cc=$TOOL_DIR/clang
 cxx=$TOOL_DIR/clang++
-
 as="$cc"
 ld=$TOOL_DIR/ld
 
@@ -33,8 +32,8 @@ if   [[ $platform == 'MacOSX' ]]; then
   min_flag='' # TODO
 elif [[ $platform == 'iPhoneOS' ]]; then
   min_flag='-miphoneos-version-min=7.0'
-  cc_flags='-mfpu=neon' # force libpng to use intrinsics?
-  as="$GAS_PRE $as" # necessary for libpng arm neon gas-style assembly.
+  cc_flags='-mfpu=neon' # libpng enables intrinsics when it detects this flag.
+  #as="$GAS_PRE $as" # may help with arm neon gas-style assembly.
 elif [[ $platform == 'iPhoneSimulator' ]]; then
   min_flag="-mios-simulator-version-min=7.0"
 else
