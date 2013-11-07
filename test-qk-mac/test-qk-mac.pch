@@ -1,9 +1,0 @@
-
-
-#ifdef __OBJC__
-# import <Cocoa/Cocoa.h>
-# import <AppKit/AppKit.h>
-# import <QuartzCore/QuartzCore.h>
-# import "source-qk.h"
-# import "source-qk-mac.h"
-#endif

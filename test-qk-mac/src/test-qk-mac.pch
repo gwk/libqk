@@ -1,0 +1,12 @@
+// Copyright 2013 George King.
+// Permission to use this file is granted in libqk/license.txt.
+
+
+#ifdef __OBJC__
+# import <Cocoa/Cocoa.h>
+# import <AppKit/AppKit.h>
+# import <QuartzCore/QuartzCore.h>
+# import <GLKit/GLKit.h>
+# import "src-qk.h"
+# import "src-qkd.h"
+#endif
