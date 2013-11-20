@@ -12,7 +12,7 @@
 
 + (NSString *)pathForDir:(NSSearchPathDirectory)dir {
   NSArray* paths = NSSearchPathForDirectoriesInDomains(dir, NSUserDomainMask, YES);
-  qk_assert(paths.count == 1, @"no single path for dir: %ld; %@", dir, paths);
+  qk_assert(paths.count == 1, @"no single path for dir: %ld; %@", (long)dir, paths);
   return paths.el0;
 }
 
