@@ -6,7 +6,6 @@
 #import "NSError+QK.h"
 #import "NSOutputStream+QK.h"
 #import "NSString+QK.h"
-#import "NSObject+JNB.h"
 #import "QKErrorDomain.h"
 #import "QKImage.h"
 
@@ -80,71 +79,9 @@ PROPERTY_STRUCT_FIELD(I32, height, Height, V2I32, _size, v[1]);
 }
 
 
-
-LAZY_CLASS_METHOD(NSDictionary*, jnbValTypes, @{
-                  @"format" : [NSString class],
-                  @"width" : [NSNumber class],
-                  @"height" : [NSNumber class],
-                  });
-
-
-LAZY_CLASS_METHOD(NSDictionary*, jnbValDecoders, @{
-                  
-                  @"format" : ^(NSString* format){
-  QKPixFmt f = QKPixFmtFromString(format);
-  if (!f) {
-    return (id)[NSError withDomain:JNBErrorDomain code:JNBErrorCodeKeyMissing desc:@"bad format" info:@{
-                @"format" : format
-                }];
-  }
-  return (id)@(f);
-},
-                  @"width" : ^(NSNumber* width) {
-  if (width.intValue < 0) {
-    return (id)[NSError withDomain:JNBErrorDomain code:JNBErrorCodeKeyMissing desc:@"bad width" info:@{
-                @"width" : width
-                }];
-  }
-  return (id)width;
-},
-                  
-                  @"height" : ^(NSNumber* height) {
-  if (height.intValue < 0) {
-    return (id)[NSError withDomain:JNBErrorDomain code:JNBErrorCodeKeyMissing desc:@"bad height" info:@{
-                @"height" : height
-                }];
-  }
-  return (id)height;
-},
-                  });
-
-
-LAZY_CLASS_METHOD(NSDictionary*, jnbValEncoders, @{
-                  @"format" : ^(NSNumber* format) {
-  return QKPixFmtDesc((QKPixFmt)format.intValue);
-}
-                  });
-
-
-- (NSError*)jnbDataDecode:(id<QKData>)data {
-  _data = data;
-  if (!data) {
-    return [NSError withDomain:JNBErrorDomain code:JNBErrorCodeDataMissing desc:@"nil data" info:nil];
-  }
-  
-  return nil;
-}
-
-
-- (NSError*)jnbDataEncode:(NSOutputStream *)stream {
-  Int written = [stream writeData:_data];
-  return written < 0 ? stream.streamError : nil;
-}
-
-
 - (void)validate {
   qk_check(_size.v[0] >= 0 && _size.v[1] >= 0 && _size.v[0] * _size.v[1] * QKPixFmtBytesPerPixel(_format) == _data.length,
-        @"bad args; %@; data.length: %ld", self, _data.length);
+           @"bad args; %@; data.length: %ld", self, _data.length);
 }
 
 
@@ -178,8 +115,8 @@ DEF_INIT(Path:(NSString*)path map:(BOOL)map alpha:(BOOL)alpha error:(NSError**)e
                              code:QKErrorCodeImageUnrecognizedPathExtension
                              desc:@"unrecognized path extension"
                              info:@{
-               @"path" : path
-               }];
+                                    @"path" : path
+                                    }];
   return nil;
 }
 

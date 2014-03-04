@@ -1,5 +1,5 @@
 // Copyright 2009 George King.
-// Permission to use this file is granted in libqk/license.txt.
+// Permission to use this file is granted in libqk-license.txt (ISC License).
 
 
 #if QK_SILENCE_ERR
@@ -64,6 +64,7 @@
 #define LOG_METHOD1(a1)     errFL(@"%p\t(%@)\t%s %s: %@",   self, [self class], __FUNCTION__, #a1, a1)
 #define LOG_METHOD1B(b1)    errFL(@"%p\t(%@)\t%s %s: %@",   self, [self class], __FUNCTION__, #b1, (b1 ? @"YES" : @"NO"))
 #define LOG_METHOD1D(d1)    errFL(@"%p\t(%@)\t%s %s: %d",   self, [self class], __FUNCTION__, #d1, d1)
+#define LOG_METHOD1LD(d1)    errFL(@"%p\t(%@)\t%s %s: %ld",   self, [self class], __FUNCTION__, #d1, d1)
 #define LOG_METHOD1F(f1)    errFL(@"%p\t(%@)\t%s %s: %f",   self, [self class], __FUNCTION__, #f1, f1)
 
 #define LOG_TIME_INTERVAL(start, ...) { \

@@ -7,6 +7,4 @@
 # import <AppKit/AppKit.h>
 # import <QuartzCore/QuartzCore.h>
 # import <GLKit/GLKit.h>
-# import "src-qk.h"
-# import "src-qkd.h"
 #endif

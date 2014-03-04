@@ -2,7 +2,7 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
-#import "AppDelegate.h"
+#import "TestMacAppDelegate.h"
 #import "CUIView.h"
 #import "CUIColor.h"
 #import "QKWindow.h"

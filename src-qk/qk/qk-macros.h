@@ -1,5 +1,5 @@
 // Copyright 2008 George King.
-// Permission to use this file is granted in libqk/license.txt.
+// Permission to use this file is granted in libqk-license.txt (ISC License).
 
 // General purpose utility macros.
 
@@ -10,33 +10,58 @@
 #import "NSError+QK.h"
 
 
-#define loop while (1)
-#define for_imns(i, m, n, s) for (Int i = (m), _##i##_end = (n), _##i##_step = (s); i < _##i##_end; i += _##i##_step)
+// basic macros
 
+#define loop while (1) // infinite loop
+
+// for Int 'i' from 'm' to 'n' in increments of 's'.
+#define for_imns(i, m, n, s) \
+for (Int i = (m), _##i##_end = (n), _##i##_step = (s); i < _##i##_end; i += _##i##_step)
+
+// produces the same values for i as above, but in reverse order.
 #define for_imns_rev(i, m, n, s) \
 for (Int i = (n) - 1, _##i##_end = (m), _##i##_step = (s); i >= _##i##_end; i -= _##i##_step)
 
-#define for_imn(i, m, n) for_imns(i, (m), (n), 1)
-#define for_in(i, n) for_imns(i, 0, (n), 1)
+// same as for_imns(i, m, n, 0).
+#define for_imn(i, m, n)      for_imns(i, (m), (n), 1)
+#define for_imn_rev(i, m, n)  for_imns_rev(i, (m), (n), 1)
 
-#define for_imn_rev(i, n) for_imns_rev(i, (m), (n), 1)
-#define for_in_rev(i, n) for_imns_rev(i, 0, (n), 1)
+// same as for_imn(i, 0, n).
+#define for_in(i, n)      for_imns(i, 0, (n), 1)
+#define for_in_rev(i, n)  for_imns_rev(i, 0, (n), 1)
+
+// returns -1, 0, or 1 based on sign of input.
+#define sign(x) ({__typeof__(x) __x = (x); __x > 0 ? 1 : (__x < 0 ? -1 : 0); })
+
+// use the cast macro to make all casts easily searchable for audits.
+#define cast(t, ...) (t)(__VA_ARGS__)
+
+// used to create switch statements that return strings for enum names.
+#define CASE_RET_TOK(t) case t: return #t
+#define CASE_RET_TOK_SPLIT(prefix, t) case prefix##t: return #t
+
+// boolean logic
+#define bit(x) (!!(x))
+#define XOR(a, b) (bit(a) ^ bit(b))
+
+// mark function as never returning. ex: NORETURN f() {...}
+#define NORETURN __attribute__((noreturn)) void
+
+// suppress compiler warnings. ex: UNUSED_FN f() {...}
+#define UNUSED_FN __attribute__((unused))
+
+// suppress unused var warnings.
+#define STRING_FROM_TOKEN(x) #x
+#define UNUSED_VAR(x) _Pragma(STRING_FROM_TOKEN(unused(x)))
+
+
+// more macros
 
 
 // used to create switch statements that return strings for enum names.
 #define CASE_RET_TOK_STR(t) case t: return @#t
-#define CASE_RET_TOK_UTF8(t) case t: return #t
 #define CASE_RET_TOK_SPLIT_STR(prefix, t) case prefix##t: return @#t
-#define CASE_RET_TOK_SPLIT_UTF8(prefix, t) case prefix##t: return #t
 
-// get a true binary value from an expression
-#define BIT(x) ((x) ? 1 : 0)
-
-#define BIT_XOR(a, b) (BIT(a) ^ BIT(b))
-
-#define SIGN(x) ({__typeof__(x) __x = (x); __x > 0 ? 1 : (__x < 0 ? -1 : 0); })
-
-#define SIGN_NORM_01(x) ({__typeof__(x) __x = (x); __x > 0 ? 1.0 : (__x < 0 ? 0.0 : 0.5); })
 
 // clamp a value to low and high bounds
 // variables have _clamp suffix so as not to collide with variables inside of MAX.
@@ -54,17 +79,15 @@ __typeof__(b) __b = (b); \
 __a == __b ? NSOrderedSame : (__a < __b ? NSOrderedAscending : NSOrderedDescending); \
 })
 
-#define COMPARE_RET_DIFF(c, a, b) c = COMPARE(a, b); if (c != NSOrderedSame) return c;
+#define COMPARE_RET_IF_DIFF(c, a, b) c = COMPARE(a, b); if (c != NSOrderedSame) return c;
 
 #define UPDATE_MAX(var, val) ({ __typeof__(val) __val = (val); if (var < __val) var = __val; })
 #define UPDATE_MIN(var, val) ({ __typeof__(val) __val = (val); if (var > __val) var = __val; })
-#define LAZY_STATIC(type, name, ...) \
-static type name; \
-if (!name) { name = (__VA_ARGS__); }
+
 
 #define LAZY_STATIC_FN(type, name, ...) \
 type name() { \
-LAZY_STATIC(type, name, __VA_ARGS__); \
+  static type name = __VA_ARGS__; \
 return name; \
 }
 
@@ -72,18 +95,18 @@ return name; \
 #ifdef __OBJC__
 
 
-#pragma mark - types
-
-
 // get a "Y" or "N" string from the boolean value of an expression
 #define BIT_YN(x) ((x) ? @"Y" : @"N")
+
+
+#pragma mark - types
 
 
 // shorthand for checking class membership and protocol conformation
 #define IS_KIND(obj, class_name) [(obj) isKindOfClass:[class_name class]]
 
 #define IS_KIND_OR_NIL(obj, class_name) \
-({ id __obj = (obj); (!__obj || IS_KIND(__obj, class_name)); })
+({ id __obj = (obj); (__obj || IS_KIND(__obj, class_name)); })
 
 #define CONFORMS(obj, protocol_name) [(obj) conformsToProtocol:@protocol(protocol_name)]
 
@@ -98,16 +121,17 @@ return name; \
 
 // return the object if it is of the specified class, or else nil
 #define KIND_OR_NIL(obj, class_name) \
-({ class_name* __obj = (id)(obj); (IS_KIND((__obj), class_name) ? (__obj) : nil); })
+({ class_name* __obj = (id)(obj); (IS_KIND((__obj), class_name) ? __obj : nil); })
 
 
 // return the object if it is of the specified class, or else NSNull
 // this is useful for specifying values for dictionaryWithObjectsForKeys:
 #define KIND_OR_NULL(obj, class_name) \
-({ id __obj = (obj); (IS_KIND((__obj), class_name) ? (__obj) : [NSNull null]); })
+({ id __obj = (obj); IS_KIND(__obj, class_name) ? __obj : [NSNull null]; })
 
 
-#define OBJ_OR_NULL(obj) ({ id __obj = (obj); __obj ? __obj : [NSNull null]; })
+#define OBJ_OR_NULL(obj) \
+({ id __obj = (obj); (__obj ? __obj : [NSNull null]); })
 
 
 // type checks
@@ -172,25 +196,29 @@ qk_check(CONFORMS_OR_NIL((obj), protocol_name), \
 #pragma mark - initialization
 
 
-// shorthand for the cocoa init idiom
+// shorthand for the cocoa init idiom.
 #define INIT(...) if (!((self = ([__VA_ARGS__])))) return nil
 
 
 #define DEC_WITH(...) \
-+ (id)with##__VA_ARGS__;
++ (instancetype)with##__VA_ARGS__;
 
 #define DEF_WITH(...) \
-+ (id)with##__VA_ARGS__ { return [[self alloc] initWith##__VA_ARGS__]; }
++ (instancetype)with##__VA_ARGS__ { return [[self alloc] initWith##__VA_ARGS__]; }
 
 
-// define + (id)with... and - (id)initWith... simultaneously.
+// define + (instancetype)with... and - (instancetype)initWith... simultaneously.
 #define DEC_INIT(...) \
-+ (id)with##__VA_ARGS__; \
-- (id)initWith##__VA_ARGS__
++ (instancetype)with##__VA_ARGS__; \
+- (instancetype)initWith##__VA_ARGS__
 
 #define DEF_INIT(...) \
 DEF_WITH(__VA_ARGS__) \
-- (id)initWith##__VA_ARGS__
+- (instancetype)initWith##__VA_ARGS__
+
+
+#define DEF_SET_AND_DISPLAY(type, name, Name) \
+- (void)set##Name:(type)name { _##name = name; [self setNeedsDisplay]; }
 
 
 #pragma mark - properties
@@ -304,21 +332,21 @@ errFL(@"THREAD_SLEEP: %f", _sleep_interval); \
 #define NSRangeCount(obj)   NSRangeTo([(obj) count])
 
 
-#define LAZY_CLASS_METHOD(type, name, ...) \
+#define LAZY_STATIC_METHOD(type, name, ...) \
 + (type)name { \
-LAZY_STATIC(type, name, __VA_ARGS__); \
+static type name = __VA_ARGS__; \
 return name; \
 }
 
 
 #define DEC_DEFAULT(type, Name) \
-- (type)default##Name; \
++ (type)default##Name; \
 + (void)setDefault##Name:(type)d;
 
 #define DEF_DEFAULT(type, Name) \
-static type default##Name; \
-- (type)default##Name { return default##Name; } \
-+ (void)setDefault##Name:(type)d { default##Name = d; }
+static type _default##Name; \
++ (type)default##Name { return _default##Name; } \
++ (void)setDefault##Name:(type)d { _default##Name = d; }
 
 
 #endif // __OBJC__
@@ -336,18 +364,6 @@ static type default##Name; \
 // NS_RETURNS_INNER_POINTER
 
 // CF_RELEASES_ARGUMENT - cf_consumed
-
-// suppress compiler warnings.
-#define UNUSED_FN __attribute__((unused))
-
-// never returns
-#define NORETURN __attribute__((noreturn))
-
-
-// suppress unused var warnings
-#define QK_STRINGIFY(x) #x
-#define UNUSED_VAR(x) _Pragma(QK_STRINGIFY(unused(x)))
-
 
 
 #ifdef __cplusplus

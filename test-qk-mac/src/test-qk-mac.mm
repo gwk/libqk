@@ -3,9 +3,9 @@
 
 
 #import "NSApplication+QK.h"
-#import "AppDelegate.h"
+#import "TestMacAppDelegate.h"
 
 
 int main(int argc, char *argv[]) {
-  return LAUNCH_APP(NSApplication, AppDelegate);
+  return LAUNCH_APP(NSApplication, TestMacAppDelegate);
 }

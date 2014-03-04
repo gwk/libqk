@@ -4,7 +4,7 @@
 
 #import "CUIView.h"
 #import "CUIColor.h"
-#import "QKButton.h"
+//#import "QKButton.h"
 #import "QKScrollView.h"
 #import "TestScrollController.h"
 
@@ -27,7 +27,7 @@ PROPERTY_SUBCLASS_ALIAS(QKScrollView, scrollView, ScrollView, self.view);
   self.scrollView.delaysContentTouches = YES;
   self.scrollView.backgroundColor = [UIColor l:.5];
   CGFloat size = 768;
-  UIView* cv = self.contentView = [UIView withFrame:CGRectMake(8, 8, size, size)];
+  UIView* cv = self.view = [UIView withFrame:CGRectMake(8, 8, size, size)];
   cv.backgroundColor = [UIColor l:.8];
   CGFloat step = 64;
   for_imns(i, step, size, step) {
@@ -38,7 +38,7 @@ PROPERTY_SUBCLASS_ALIAS(QKScrollView, scrollView, ScrollView, self.view);
     [cv addSubview:h];
     [cv addSubview:v];
   }
-  
+  /*
   QKButton* button = [QKButton withFrame:CGRectMake(32, 32, 96, 64)];
   button.text = @"Button";
   button.blockTouchDown = ^{
@@ -51,6 +51,7 @@ PROPERTY_SUBCLASS_ALIAS(QKScrollView, scrollView, ScrollView, self.view);
     errL(@"touch cancelled");
   };
   [cv addSubview:button];
+   */
   [self.scrollView addSubview:cv];
   CGSize s = cv.size;
   s.width += 16;

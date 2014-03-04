@@ -1,5 +1,5 @@
 // Copyright 2013 George King.
-// Permission to use this file is granted in libqk/license.txt.
+// Permission to use this file is granted in libqk-license.txt (ISC License).
 
 #if TARGET_OS_IPHONE
 #else
@@ -40,27 +40,27 @@ NSString* QKPixFmtDesc(QKPixFmt format) {
 QKPixFmt QKPixFmtFromString(NSString* string) {
   // map two strings: bare, and prefixed
 #define FI(fmt) @#fmt : @(QKPixFmt##fmt), @"QKPixFmt" @#fmt : @(QKPixFmt##fmt)
-  LAZY_STATIC(NSDictionary*, formats, @{
-              FI(None),
-              FI(AU8),
-              FI(AU16),
-              FI(AF32),
-              FI(LU8),
-              FI(LU16),
-              FI(LF32),
-              FI(LAU8),
-              FI(LAU16),
-              FI(LAF32),
-              FI(RGBU8),
-              FI(RGBU16),
-              FI(RGBF32),
-              FI(RGBAU8),
-              FI(RGBAU16),
-              FI(RGBAF32),
-              FI(RGBXU8),
-              FI(RGBXU16),
-              FI(RGBXF32),
-              });
+  static auto formats =
+  @{FI(None),
+    FI(AU8),
+    FI(AU16),
+    FI(AF32),
+    FI(LU8),
+    FI(LU16),
+    FI(LF32),
+    FI(LAU8),
+    FI(LAU16),
+    FI(LAF32),
+    FI(RGBU8),
+    FI(RGBU16),
+    FI(RGBF32),
+    FI(RGBAU8),
+    FI(RGBAU16),
+    FI(RGBAF32),
+    FI(RGBXU8),
+    FI(RGBXU16),
+    FI(RGBXF32),
+    };
 #undef FI
   return (QKPixFmt)[[formats objectForKey:string] intValue];
 }

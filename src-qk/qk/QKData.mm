@@ -1,5 +1,5 @@
 // Copyright 2013 George King.
-// Permission to use this file is granted in libqk/license.txt.
+// Permission to use this file is granted in libqk-license.txt (ISC License).
 
 
 #import "qk-macros.h"
@@ -37,7 +37,7 @@
   char* debugBytes = (char*)malloc(length);
   
   // convert problematic characters to readable characters in iso latin 1
-  for (int i = 0; i < length; i++) {
+  for (NSUInteger i = 0; i < length; i++) {
     int c = bytes[i];
     switch (c) {
       case 0:     c = 0xD8; break;    // null -> capital O slashed (looks like null symbol)

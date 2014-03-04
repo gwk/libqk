@@ -8,7 +8,7 @@
 #import "CUIView.h"
 #import "CUIColor.h"
 #import "QKTableView.h"
-#import "QKLabel.h"
+//#import "QKLabel.h"
 #import "TestTableController.h"
 
 
@@ -32,14 +32,16 @@ PROPERTY_SUBCLASS_ALIAS(QKTableView, tableView, TableView, self.view);
                              scrollHorizontal:YES
                                          rows:rows
                                   constructor:^(int type){
-                                    return [QKLabel withFrame:CGRectMake(0, 0, 320, 24)];
+                                    return (id)nil; //[QKLabel withFrame:CGRectMake(0, 0, 320, 24)];
                           }
                                       rowType:nil
-                                    configure:^(QKLabel* cell, NSIndexPath* path, NSString* row){
+                                    configure:nil
+                    /*
+                     ^(QKLabel* cell, NSIndexPath* path, NSString* row){
                                       cell.width = 480;
                                       cell.text = row;
-                                      cell.color = [UIColor l:(1 - ([path indexAtPosition:0] % 2) * .05)];
-  }];
+                                      cell.color = [UIColor l:(1 - ([path indexAtPosition:0] % 2) * .05) */
+                     ];
   self.tableView.backgroundColor = [UIColor r:1];
 }
 

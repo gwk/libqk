@@ -1,5 +1,5 @@
 // Copyright 2010 George King.
-// Permission to use this file is granted in libqk/license.txt.
+// Permission to use this file is granted in libqk-license.txt (ISC License).
 
 /*
 qk_check is an assertion macro intended for production use.

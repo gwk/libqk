@@ -1,5 +1,5 @@
 // Copyright 2012 George King.
-// Permission to use this file is granted in libqk/license.txt.
+// Permission to use this file is granted in libqk-license.txt (ISC License).
 
 
 #import <stdint.h>

@@ -4,8 +4,8 @@
 
 #import "CUIColor.h"
 #import "UILabel+QK.h"
-#import "QKButton.h"
-#import "QKLabel.h"
+//#import "QKButton.h"
+//#import "QKLabel.h"
 #import "TestLabelController.h"
 
 
@@ -27,7 +27,7 @@
   uil.font = [UIFont systemFontOfSize:24];
   uil.text = @"UILabel";
   [v addSubview:uil];
-  
+  /*
   QKLabel* ll = [QKLabel withFontSize:24 x:x y:uil.bottom + 4 w:w h:h min:1 max:1 flex:UIFlexWidth];
   ll.text = @"QKLabel Left Top";
   ll.verticalAlign = QKVerticalAlignTop;
@@ -57,7 +57,7 @@
     errL(@"touch cancelled");
   };
   [v addSubview:button];
-
+   */
   return v;
 }
 
