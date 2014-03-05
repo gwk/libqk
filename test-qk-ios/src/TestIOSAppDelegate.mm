@@ -12,7 +12,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  [self setupRootController:[UINavigationController withRoot:[RootController new]]];
+  [self setupWindowWithRoot:[UINavigationController withRoot:[RootController new]]];
   return YES;
 }
 

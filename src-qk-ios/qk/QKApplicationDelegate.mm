@@ -15,7 +15,7 @@
 }
 
 
-- (void)setupRootController:(UIViewController*)controller {
+- (void)setupWindowWithRoot:(UIViewController*)controller {
   _rootController = controller;
   _window = [UIWindow withFrame:[[UIScreen mainScreen] bounds]]; // NOT applicationFrame, despite the documentation!
   _window.rootViewController = _rootController;

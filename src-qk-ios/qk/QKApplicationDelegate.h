@@ -11,7 +11,7 @@
 @property (nonatomic, readonly) UIViewController* rootController;
 @property (nonatomic, readonly) UITabBarController* tabController; // cast of rootController
 
-- (void)setupRootController:(UIViewController*)controller; // creates and sets up window
+- (void)setupWindowWithRoot:(UIViewController*)controller; // creates and sets up window
 
 @end
 
