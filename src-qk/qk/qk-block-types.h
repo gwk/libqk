@@ -14,6 +14,9 @@ typedef id (^BlockCompute)();
 
 // perform an operation on a value.
 typedef void (^BlockDo)(id);
+typedef void (^BlockDoString)(NSString*);
+typedef void (^BlockDoData)(NSData*);
+typedef void (^BlockCompletion)(BOOL);
 
 // map a value to a BOOL.
 typedef BOOL (^BlockFilter)(id);

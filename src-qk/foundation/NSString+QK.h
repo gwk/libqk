@@ -3,6 +3,7 @@
 
 
 #import "qk-types.h"
+#import "qk-block-types.h"
 
 
 // return the string if it is not nil, otherwise return the blank string
@@ -34,6 +35,8 @@
 - (NSString*)numberedLinesFrom:(Int)from;
 - (NSString*)numberedLines;
 - (NSString*)numeberedLinesFrom0;
+
+- (void)walkPathDeep:(BlockDoString)block;
 
 @end
 

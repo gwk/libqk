@@ -149,6 +149,18 @@
 }
 
 
+#pragma mark paths
+
+
+- (void)walkPathDeep:(BlockDoString)block {
+  auto enumerator = [[NSFileManager defaultManager] enumeratorAtPath:self];
+  NSString* path;
+  while ((path = [enumerator nextObject])) {
+    block([self stringByAppendingPathComponent:path]);
+  }
+}
+
+
 @end
 
 
