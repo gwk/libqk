@@ -43,6 +43,16 @@
 }
 
 
+- (NSString*)litTitle {
+  return [self titleForState:UIControlStateHighlighted];
+}
+
+
+- (void)setLitTitle:(NSString *)title {
+  [self setTitle:title forState:UIControlStateHighlighted];
+}
+
+
 - (NSAttributedString*)attrTitle {
   return [self attributedTitleForState:UIControlStateNormal];
 }
@@ -50,6 +60,16 @@
 
 - (void)setAttrTitle:(NSAttributedString*)attrTitle {
   [self setAttributedTitle:attrTitle forState:UIControlStateNormal];
+}
+
+
+- (NSAttributedString*)litAttrTitle {
+  return [self attributedTitleForState:UIControlStateHighlighted];
+}
+
+
+- (void)setLitAttrTitle:(NSAttributedString*)attrTitle {
+  [self setAttributedTitle:attrTitle forState:UIControlStateHighlighted];
 }
 
 

@@ -9,7 +9,9 @@
 
 @property (nonatomic) UIImage* image;
 @property (nonatomic) NSString* title;
+@property (nonatomic) NSString* litTitle;
 @property (nonatomic) NSAttributedString* attrTitle;
+@property (nonatomic) NSAttributedString* litAttrTitle;
 @property (nonatomic) UIColor* titleColor;
 
 + (instancetype)withFrame:(CGRect)frame
