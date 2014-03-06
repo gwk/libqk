@@ -144,7 +144,7 @@
   return [self numberedLinesFrom:1];
 }
 
-- (NSString*)numeberedLinesFrom0 {
+- (NSString*)numberedLinesFrom0 {
   return [self numberedLinesFrom:0];
 }
 

@@ -34,7 +34,7 @@
 - (Int)lineCount;
 - (NSString*)numberedLinesFrom:(Int)from;
 - (NSString*)numberedLines;
-- (NSString*)numeberedLinesFrom0;
+- (NSString*)numberedLinesFrom0;
 
 - (void)walkPathDeep:(BlockDoString)block;
 
