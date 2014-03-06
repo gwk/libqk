@@ -2,6 +2,7 @@
 // Permission to use this file is granted in libqk-license.txt (ISC License).
 
 
+#import "UIButton+QK.h"
 #import "qk-block-types.h"
 
 
