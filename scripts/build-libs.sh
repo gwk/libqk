@@ -16,7 +16,7 @@
 
 error() { echo 'error:' "$@" 1>&2; exit 1; }
 
-[[ $(dirname $0) == "." ]] || error "must invoke as ./build-libs.sh"
+cd $(dirname $0)/..
 
 (( ${#@} >= 3 )) || error "usage: sqlite3-root png-root jpeg-turbo-root [--quiet]"
 
@@ -31,24 +31,22 @@ elif [[ -n "$QUIET" ]]; then
   error "final arg must be '-quiet' or empty; actual: '$QUIET'"
 fi
 
-libqk="$PWD"
-
 # note: version string compare is not great, but catches the common case.
 nasm_version_req='version 2.10.00'
 nasm_version=$(nasm -v | egrep --only-matching --max-count=1 'version [0-9]+(\.[0-9]+)*')
 echo "nasm $nasm_version (above $nasm_version_req required)"
 [[ "$nasm_version" > "$nasm_version_req" ]] || error "modern nasm required: $nasm_version_req; using $(nasm -v)"
+
 # gas-preprocessor cleans up gas code for clang, which does not understand gnu extensions.
-export GAS_PRE="$libqk/tools/gas-preprocessor.pl"
+# this is in the scripts directory, so prepend that to PATH.
+export PATH="$PWD/scripts:$PATH"
 
 set -e
 
-export PATH="$libqk/tools:$PATH"
-
 build_lib() {
   local os=$1; shift
-  local cc_opt=$1; shift
   local name="$1"; shift
+  local cc_opt=$1; shift
   local config_args="$@"
   eval local src_dir=\$$name # get src_dir from the argument named 'name'.
   local install_dir="submodules/libqk-built-$os/$name"
@@ -57,7 +55,7 @@ build_lib() {
     return
   }
   echo "building $os $name: $src_dir"
-  ./build-lib.sh $os $cc_opt $name "$src_dir" "$install_dir" $config_args
+  scripts/build-lib.sh $os $name $cc_opt "$src_dir" "$install_dir" $config_args
 
   echo "
 FAT LIB COMPLETE: $os $name
@@ -66,10 +64,10 @@ FAT LIB COMPLETE: $os $name
 "
 }
 
-build_lib mac -Oz sqlite3
-build_lib ios -Oz sqlite3
-build_lib mac -O3 png
-build_lib ios -O3 png
-build_lib mac -O3 turbojpeg --with-jpeg8
-build_lib ios -O3 turbojpeg --with-jpeg8 --without-simd
+build_lib mac sqlite3 -Oz
+build_lib ios sqlite3 -Oz
+build_lib mac png -O3
+build_lib ios png -O3
+#build_lib mac turbojpeg -O3 --with-jpeg8
+build_lib ios turbojpeg -O3 --with-jpeg8  # TODO: this should now work # --with-gas-preprocessor
 

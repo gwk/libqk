@@ -13,28 +13,26 @@ echo
 echo "build-lib-common.sh: $@"
 
 export OS="$1"; shift
-export CC_OPT="$1"; shift
 export NAME="$1"; shift
+export CC_OPT="$1"; shift
 export SRC_DIR="$1"; shift
 export INSTALL_DIR="$PWD/$1"; shift
 export CONFIG_ARGS="$@"
 
-export QK_DIR="$PWD"
-export BUILD_DIR="$QK_DIR/build/$OS-$NAME"
+export BUILD_DIR="build/$OS-$NAME"
 export DEV_DIR=/Applications/Xcode.app/Contents/Developer
 export TOOL_DIR=$DEV_DIR/Toolchains/XcodeDefault.xctoolchain/usr/bin
 
-build="$QK_DIR/build-lib-arch.sh"
+build_cmd="scripts/build-lib-arch.sh"
 
 echo "
 OS: $OS
-CC_OPT: $CC_OPT
 NAME: $NAME
+CC_OPT: $CC_OPT
 SRC_DIR: $SRC_DIR
 INSTALL_DIR: $INSTALL_DIR
 CONFIG_ARGS: $CONFIG_ARGS
 
-QK_DIR: $QK_DIR
 BUILD_DIR: $BUILD_DIR
 DEV_DIR: $DEV_DIR
 TOOL_DIR: $TOOL_DIR
@@ -48,7 +46,7 @@ if [[ $OS == 'mac' ]]; then
   export PLATFORM_TOOL_DIR=$DEV_DIR/usr/bin
   lipo=lipo
 
-  "$build" MacOSX10.9 x86_64-apple-darwin x86_64
+  "$build_cmd" MacOSX10.9 x86_64-apple-darwin x86_64
 
   # fat lib is not necessary with only one arch, but this is how to do it.
   echo "creating fat lib: $INSTALL_DIR"
@@ -65,11 +63,11 @@ elif [[ $OS == 'ios' ]]; then
   lipo=$PLATFORM_TOOL_DIR/lipo
   [[ -f $lipo ]] || error "missing lipo: $lipo"
 
-  "$build" iPhoneOS7.0         arm-apple-darwin10    armv7
-  "$build" iPhoneOS7.0         arm-apple-darwin10    armv7s
-  "$build" iPhoneOS7.0         arm-apple-darwin10    arm64
-  "$build" iPhoneSimulator7.0  i686-apple-darwin10   i386
-  "$build" iPhoneSimulator7.0  x86_64-apple-darwin   x86_64
+  "$build_cmd" iPhoneOS7.0         arm-apple-darwin10    armv7
+  "$build_cmd" iPhoneOS7.0         arm-apple-darwin10    armv7s
+  "$build_cmd" iPhoneOS7.0         arm-apple-darwin10    arm64
+  "$build_cmd" iPhoneSimulator7.0  i686-apple-darwin10   i386
+  "$build_cmd" iPhoneSimulator7.0  x86_64-apple-darwin   x86_64
 
   echo "creating fat lib: $INSTALL_DIR"
   # copy headers; API should be identical across archs should so any one will do.
@@ -82,4 +80,7 @@ elif [[ $OS == 'ios' ]]; then
   -arch i386    "$BUILD_DIR/i386/install/lib/lib$NAME.a" \
   -arch x86_64  "$BUILD_DIR/x86_64/install/lib/lib$NAME.a" \
   -create -output "$INSTALL_DIR/lib/lib$NAME.a"
+else
+  error "unknown OS: $OS"
 fi
+

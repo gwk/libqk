@@ -32,16 +32,16 @@ if   [[ $platform == 'MacOSX' ]]; then
   min_flag='' # TODO
 elif [[ $platform == 'iPhoneOS' ]]; then
   min_flag='-miphoneos-version-min=7.0'
-  cc_flags='-mfpu=neon' # libpng enables intrinsics when it detects this flag.
-  #as="$GAS_PRE $as" # may help with arm neon gas-style assembly.
+   # libpng enables intrinsics when it sees the -mfpu flag.
+   # libjpeg-turbo requries the -no-integrated-as flag as part of the gas-preprocessor hack.
+  cc_flags='-no-integrated-as -mfpu=neon'
 elif [[ $platform == 'iPhoneSimulator' ]]; then
   min_flag="-mios-simulator-version-min=7.0"
 else
   error "unkown platform: $platform"
 fi
 
-# i386
-# -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -fobjc-abi-version=2 -fobjc-legacy-dispatch  
+# TODO: add -fstrict-aliasing?
 
 echo "
 sdk: $sdk
@@ -59,7 +59,7 @@ config_args: $config_args
 ----"
 
 
-for n in SRC_DIR DEV_DIR TOOL_DIR PLATFORM_TOOL_DIR QK_DIR platform_dir sdk_dir; do
+for n in SRC_DIR DEV_DIR TOOL_DIR PLATFORM_TOOL_DIR platform_dir sdk_dir; do
   eval v=\$$n
   echo "$n: $v"
   [[ -d "$v" ]] || error "bad $n"
