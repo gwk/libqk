@@ -9,29 +9,48 @@ set -e
 
 error() { echo 'error:' "$@" 1>&2; exit 1; }
 
+cd $(dirname $0)/..
 echo
-echo "build-lib-common.sh: $@"
+echo "$0: $@"
+
+if [[ "$BUILD_QUIET" == '-quiet' ]]; then
+  echo "note: quiet mode enabled."
+elif [[ -n "$BUILD_QUIET" ]]; then
+  error "if BUILD_QUIET is defined it must be '-quiet'; actual: '$BUILD_QUIET'"
+fi
+
+# note: version string compare is not great, but catches the common case.
+nasm_version_req='version 2.10.00'
+nasm_version=$(nasm -v | egrep --only-matching --max-count=1 'version [0-9]+(\.[0-9]+)*')
+echo "nasm $nasm_version (above $nasm_version_req required)"
+[[ "$nasm_version" > "$nasm_version_req" ]] || error "modern nasm required: $nasm_version_req; using $(nasm -v)"
+
+# gas-preprocessor cleans up gas code for clang, which does not understand gnu extensions.
+# this is in the scripts directory, so prepend that to PATH.
+export PATH="$PWD/scripts:$PATH"
 
 export OS="$1"; shift
 export NAME="$1"; shift
-export CC_OPT="$1"; shift
 export SRC_DIR="$1"; shift
-export INSTALL_DIR="$PWD/$1"; shift
-export CONFIG_ARGS="$@"
+export CONFIG_ARGS="$1"; shift
+export CC_FLAGS="$1"; shift
 
-export BUILD_DIR="build/$OS-$NAME"
+[[ -z "$@" ]] || error "excess arguments: $@"
+
 export DEV_DIR=/Applications/Xcode.app/Contents/Developer
 export TOOL_DIR=$DEV_DIR/Toolchains/XcodeDefault.xctoolchain/usr/bin
+export BUILD_DIR="build/$OS-$NAME"
+export INSTALL_DIR="submodules/libqk-built-$OS/$NAME"
 
 build_cmd="scripts/build-lib-arch.sh"
 
 echo "
 OS: $OS
 NAME: $NAME
-CC_OPT: $CC_OPT
 SRC_DIR: $SRC_DIR
 INSTALL_DIR: $INSTALL_DIR
 CONFIG_ARGS: $CONFIG_ARGS
+CC_FLAGS: $CC_FLAGS
 
 BUILD_DIR: $BUILD_DIR
 DEV_DIR: $DEV_DIR
@@ -84,3 +103,8 @@ else
   error "unknown OS: $OS"
 fi
 
+echo "
+FAT LIB COMPLETE: $os $name
+----------------
+
+"

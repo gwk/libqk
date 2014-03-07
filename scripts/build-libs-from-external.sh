@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-./build-libs.sh ~/external/sqlite-autoconf-* ~/external/libpng-1.6.6 ~/external/libjpeg-turbo-1.3.0 $@
+set -ex
+$0/../build-libs.sh ~/external/sqlite-autoconf-3* ~/external/libpng-1.* ~/external/libjpeg-turbo-1.3*

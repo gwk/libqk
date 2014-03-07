@@ -26,7 +26,7 @@ cxx=$TOOL_DIR/clang++
 as="$cc"
 ld=$TOOL_DIR/ld
 
-cc_flags=''
+platform_cc_flags=''
 
 if   [[ $platform == 'MacOSX' ]]; then
   min_flag='' # TODO
@@ -34,7 +34,7 @@ elif [[ $platform == 'iPhoneOS' ]]; then
   min_flag='-miphoneos-version-min=7.0'
    # libpng enables intrinsics when it sees the -mfpu flag.
    # libjpeg-turbo requries the -no-integrated-as flag as part of the gas-preprocessor hack.
-  cc_flags='-no-integrated-as -mfpu=neon'
+  platform_cc_flags='-no-integrated-as -mfpu=neon'
 elif [[ $platform == 'iPhoneSimulator' ]]; then
   min_flag="-mios-simulator-version-min=7.0"
 else
@@ -51,10 +51,9 @@ platform: $platform
 libtool: $libtool
 cc: $cc
 cxx: $cxx
-as: $as
 ld: $ld
 min_flag: $min_flag
-cc_flags: $cc_flags
+platform_cc_flags: $platform_cc_flags
 config_args: $config_args
 ----"
 
@@ -71,7 +70,7 @@ rm -rf * # clean aggressively; removing the whole directory is disruptive to ter
 rm -rf .deps .libs # hidden directories
 
 # even with the quiet flag, libtool is verbose, so redirect output.
-if [[ -n "$QUIET" ]]; then
+if [[ -n "$BUILD_QUIET" ]]; then
   OUT=/dev/null
 else
   OUT=/dev/stdout
@@ -89,20 +88,19 @@ echo "running configure..."
 LIBTOOL="$libtool" \
 CC="$cc" \
 CXX="$cxx" \
-CCAS="$as" \
 LD="$ld" \
-CFLAGS="$CC_OPT $cc_flags" \
+CFLAGS="$CC_FLAGS $platform_cc_flags" \
 CPPFLAGS="-arch $arch $min_flag -isysroot $sdk_dir -I$sdk_dir/usr/include" \
 LDFLAGS=" -arch $arch $min_flag -isysroot $sdk_dir -L$sdk_dir/usr/lib" \
 $CONFIG_ARGS \
-$QUIET
+$BUILD_QUIET
 
 set +x
 
 echo "running make..."
-make $QUIET > $OUT
+make $BUILD_QUIET $BUILD_PARALLEL > $OUT
 echo "running make install..."
-make install $QUIET > $OUT
+make install $BUILD_QUIET $BUILD_PARALLEL > $OUT
 
 echo "
 BUILD COMPLETE: $LIB_NAME $sdk $host $arch
