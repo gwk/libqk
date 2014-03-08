@@ -26,23 +26,29 @@ echo "nasm $nasm_version (above $nasm_version_req required)"
 [[ "$nasm_version" > "$nasm_version_req" ]] || error "modern nasm required: $nasm_version_req; using $(nasm -v)"
 
 # gas-preprocessor cleans up gas code for clang, which does not understand gnu extensions.
+# this is required for libjpeg-turbo.
 # this is in the scripts directory, so prepend that to PATH.
 export PATH="$PWD/scripts:$PATH"
 
-export OS="$1"; shift
-export NAME="$1"; shift
-export SRC_DIR="$1"; shift
-export CONFIG_ARGS="$1"; shift
-export CC_FLAGS="$1"; shift
+export OS=$1; shift
+export NAME=$1; shift
+export SRC_DIR=$1; shift
+export BUILD_SYSTEM=$1; shift
+
+if [[ $BUILD_SYSTEM == "ac" ]]; then # autoconf
+  export CONFIG_ARGS=$1; shift
+  export CC_FLAGS=$1; shift
+  build_cmd="scripts/build-lib-arch.sh"
+elif [[ $BUILD_SYSTEM == "script" ]]; then
+  build_cmd=$1; shift
+fi
 
 [[ -z "$@" ]] || error "excess arguments: $@"
 
 export DEV_DIR=/Applications/Xcode.app/Contents/Developer
 export TOOL_DIR=$DEV_DIR/Toolchains/XcodeDefault.xctoolchain/usr/bin
-export BUILD_DIR="build/$OS-$NAME"
-export INSTALL_DIR="submodules/libqk-built-$OS/$NAME"
-
-build_cmd="scripts/build-lib-arch.sh"
+export BUILD_DIR="_tmp_build/$OS-$NAME"
+export INSTALL_DIR="submodules/libqk-built-$OS"
 
 echo "
 OS: $OS
@@ -55,9 +61,10 @@ CC_FLAGS: $CC_FLAGS
 BUILD_DIR: $BUILD_DIR
 DEV_DIR: $DEV_DIR
 TOOL_DIR: $TOOL_DIR
+
+build_cmd: $build_cmd
 "
 
-[[ -d "$INSTALL_DIR" ]] && rm -rf "$INSTALL_DIR"
 mkdir -p "$INSTALL_DIR/lib"
 
 #### MAC ####
@@ -68,7 +75,7 @@ if [[ $OS == 'mac' ]]; then
   "$build_cmd" MacOSX10.9 x86_64-apple-darwin x86_64
 
   # fat lib is not necessary with only one arch, but this is how to do it.
-  echo "creating fat lib: $INSTALL_DIR"
+  echo "creating fat lib for $NAME: $INSTALL_DIR"
   cp -RP "$BUILD_DIR/x86_64/install/include" "$INSTALL_DIR/include"
 
   $lipo \
@@ -88,23 +95,24 @@ elif [[ $OS == 'ios' ]]; then
   "$build_cmd" iPhoneSimulator7.0  i686-apple-darwin10   i386
   "$build_cmd" iPhoneSimulator7.0  x86_64-apple-darwin   x86_64
 
-  echo "creating fat lib: $INSTALL_DIR"
-  # copy headers; API should be identical across archs should so any one will do.
+  echo "creating fat lib for $NAME in: $INSTALL_DIR"
+  # copy headers; API should be identical across archs so any one will do.
   cp -RP "$BUILD_DIR/armv7/install/include" "$INSTALL_DIR/include"
 
   $lipo \
+  -create \
   -arch armv7   "$BUILD_DIR/armv7/install/lib/lib$NAME.a" \
   -arch armv7s  "$BUILD_DIR/armv7s/install/lib/lib$NAME.a" \
   -arch arm64   "$BUILD_DIR/arm64/install/lib/lib$NAME.a" \
   -arch i386    "$BUILD_DIR/i386/install/lib/lib$NAME.a" \
   -arch x86_64  "$BUILD_DIR/x86_64/install/lib/lib$NAME.a" \
-  -create -output "$INSTALL_DIR/lib/lib$NAME.a"
+  -output "$INSTALL_DIR/lib/lib$NAME.a"
 else
   error "unknown OS: $OS"
 fi
 
 echo "
-FAT LIB COMPLETE: $os $name
+FAT LIB COMPLETE: $OS $NAME
 ----------------
 
 "

@@ -20,15 +20,15 @@ cd $(dirname $0)/..
 
 (( ${#@} >= 3 )) || error "usage: sqlite3-root png-root jpeg-turbo-root"
 
-export BUILD_QUIET='-quiet' # either -quiet or nothing.
+#export BUILD_QUIET='-quiet' # either -quiet or nothing.
 export BUILD_PARALLEL='-j8' # passed to make.
 
 set -e
 
-scripts/build-lib.sh mac sqlite3 $1 "" -Oz
-scripts/build-lib.sh ios sqlite3 $1 "" -Oz
-scripts/build-lib.sh mac png     $2 "" -O3
-scripts/build-lib.sh ios png     $2 "" -O3
-scripts/build-lib.sh mac turbojpeg $3 "--with-jpeg8" -O3
-scripts/build-lib.sh ios turbojpeg $3 "--with-jpeg8" -O3
+scripts/build-lib.sh mac sqlite3    $1 ac "" -Oz
+scripts/build-lib.sh ios sqlite3    $1 ac "" -Oz
+scripts/build-lib.sh mac png        $2 ac "" -O3
+scripts/build-lib.sh ios png        $2 ac "" -O3
+scripts/build-lib.sh mac turbojpeg  $3 ac "--with-jpeg8" -O3
+scripts/build-lib.sh ios turbojpeg  $3 ac "--with-jpeg8" -O3
 

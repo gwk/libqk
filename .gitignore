@@ -1,5 +1,5 @@
 # generic
-build
+_tmp_build
 
 # Xcode
 xcuserdata
@@ -13,6 +13,4 @@ project.xcworkspace
 __pycache__
 
 # libqk
-libs-*
-install
 misc
