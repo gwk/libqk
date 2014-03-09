@@ -2,7 +2,7 @@
 # Copyright 2013 George King.
 # Permission to use this file is granted in libqk/license.txt.
 
-# build a static lib from source using autoconf configure and make.
+# build opencv from source using cmake and xcodebuild.
 # this script is invoked by build-lib.sh.
 
 set -e
@@ -40,12 +40,20 @@ cmake \
 -DCMAKE_TOOLCHAIN_FILE=platforms/ios/cmake/Toolchains/Toolchain-"$platform"_Xcode.cmake \
 -DWITH_JPEG=OFF \
 -DWITH_PNG=OFF \
+-DWITH_IMAGEIO=OFF \
 -DBUILD_opencv_world=ON \
 -DBUILD_opencv_highgui=OFF \
 -DBUILD_opencv_nonfree=OFF \
 -DBUILD_opencv_legacy=OFF \
+-DBUILD_ZLIB=OFF \
+-DBUILD_TIFF=OFF \
+-DBUILD_JASPER=OFF \
+-DBUILD_JPEG=OFF \
+-DBUILD_PNG=OFF \
+-DBUILD_OPENEXR=OFF \
 -DCMAKE_INSTALL_PREFIX="$PWD/install" \
 $SRC_DIR > $BUILD_OUT
+
 
 echo "running xcode build..."
 xcodebuild \

@@ -57,7 +57,7 @@ _COLS(9);
 - (void)bindIndex:(I32)index F64:(F64)value;
 - (void)bindIndex:(I32)index string:(NSString*)value;
 - (Int)getInt:(I32)index;
-- (Int)getI64:(I32)index;
+- (I64)getI64:(I32)index;
 - (F64)getF64:(I32)index;
 - (NSString*)getString:(I32)index;
 - (NSArray*)getStrings:(I32)count;

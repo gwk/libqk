@@ -195,7 +195,7 @@ qk_assert(index >= 0 && index < self.columnCount, @"bad index: %d; columnCount: 
 }
 
 
-- (Int)getI64:(I32)index {
+- (I64)getI64:(I32)index {
   _ASSERT_VALID_INDEX;
   return sqlite3_column_int64(_handle, index);
 }

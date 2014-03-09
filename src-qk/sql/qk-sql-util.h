@@ -2,7 +2,7 @@
 // Permission to use this file is granted in libqk-license.txt (ISC License).
 
 
-#import "sqlite3.h"
+#import <sqlite3.h>
 
 
 // error description helpers

@@ -14,7 +14,7 @@ echo
 echo "$0 $@"
 
 if [[ "$BUILD_QUIET" == '--quiet' ]]; then
-  echo "note: quiet mode enabled."
+  #echo "note: quiet mode enabled."
 elif [[ -n "$BUILD_QUIET" ]]; then
   error "if BUILD_QUIET is defined it must be '--quiet'; actual: '$BUILD_QUIET'"
 fi
@@ -53,6 +53,11 @@ if [[ -n "$BUILD_QUIET" ]]; then
   export BUILD_OUT=/dev/null
 else
   export BUILD_OUT=/dev/stdout
+fi
+
+if [[ $SRC_DIR == "-" ]]; then
+  echo "skipping $NAME."
+  exit
 fi
 
 echo "

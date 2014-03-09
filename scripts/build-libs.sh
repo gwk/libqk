@@ -19,18 +19,21 @@ error() { echo 'error:' "$@" 1>&2; exit 1; }
 
 cd $(dirname $0)/..
 
-(( ${#@} == 4 )) || error "usage: sqlite3-root png-root jpeg-turbo-root opencv-root"
+(( ${#@} == 5 )) || error "usage: glm-root sqlite3-root png-root jpeg-turbo-root opencv-root"
 
 export BUILD_QUIET='--quiet' # either --quiet or nothing.
 export BUILD_JOBS=8 # passed to make.
 
 set -e
 
-scripts/build-lib.sh mac sqlite3    $1 ac "" -Oz
-scripts/build-lib.sh ios sqlite3    $1 ac "" -Oz
-scripts/build-lib.sh mac png        $2 ac "" -O3
-scripts/build-lib.sh ios png        $2 ac "" -O3
-scripts/build-lib.sh mac turbojpeg  $3 ac "--with-jpeg8" -O3
-scripts/build-lib.sh ios turbojpeg  $3 ac "--with-jpeg8" -O3
+scripts/copy-glm.sh mac "$1"
+scripts/copy-glm.sh ios "$1"
 
-scripts/build-lib.sh ios opencv $4 build-opencv-ios.sh
+scripts/build-lib.sh mac sqlite3    "$2" ac "" -Oz
+scripts/build-lib.sh ios sqlite3    "$2" ac "" -Oz
+scripts/build-lib.sh mac png        "$3" ac "" -O3
+scripts/build-lib.sh ios png        "$3" ac "" -O3
+scripts/build-lib.sh mac turbojpeg  "$4" ac "--with-jpeg8" -O3
+scripts/build-lib.sh ios turbojpeg  "$4" ac "--with-jpeg8" -O3
+
+scripts/build-lib.sh ios opencv "$5" build-opencv-ios.sh

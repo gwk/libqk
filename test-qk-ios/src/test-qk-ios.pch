@@ -5,3 +5,10 @@
 # import <UIKit/UIKit.h>
 # import <GLKit/GLKit.h>
 #endif
+
+#ifdef __cplusplus
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wshadow"
+#import <glm/glm.hpp>
+#pragma clang diagnostic pop
+#endif
