@@ -11,19 +11,18 @@ error() { echo 'error:' "$@" 1>&2; exit 1; }
 
 cd $(dirname $0)/..
 echo
-echo "$0: $@"
+echo "$0 $@"
 
-if [[ "$BUILD_QUIET" == '-quiet' ]]; then
+if [[ "$BUILD_QUIET" == '--quiet' ]]; then
   echo "note: quiet mode enabled."
 elif [[ -n "$BUILD_QUIET" ]]; then
-  error "if BUILD_QUIET is defined it must be '-quiet'; actual: '$BUILD_QUIET'"
+  error "if BUILD_QUIET is defined it must be '--quiet'; actual: '$BUILD_QUIET'"
 fi
 
 # note: version string compare is not great, but catches the common case.
 nasm_version_req='version 2.10.00'
 nasm_version=$(nasm -v | egrep --only-matching --max-count=1 'version [0-9]+(\.[0-9]+)*')
-echo "nasm $nasm_version (above $nasm_version_req required)"
-[[ "$nasm_version" > "$nasm_version_req" ]] || error "modern nasm required: $nasm_version_req; using $(nasm -v)"
+[[ "$nasm_version" > "$nasm_version_req" ]] || error "modern nasm required: $nasm_version_req; found $nasm_version"
 
 # gas-preprocessor cleans up gas code for clang, which does not understand gnu extensions.
 # this is required for libjpeg-turbo.
@@ -39,16 +38,22 @@ if [[ $BUILD_SYSTEM == "ac" ]]; then # autoconf
   export CONFIG_ARGS=$1; shift
   export CC_FLAGS=$1; shift
   build_cmd="scripts/build-lib-arch.sh"
-elif [[ $BUILD_SYSTEM == "script" ]]; then
-  build_cmd=$1; shift
+else
+  build_cmd="scripts/$BUILD_SYSTEM"
 fi
-
 [[ -z "$@" ]] || error "excess arguments: $@"
 
 export DEV_DIR=/Applications/Xcode.app/Contents/Developer
 export TOOL_DIR=$DEV_DIR/Toolchains/XcodeDefault.xctoolchain/usr/bin
 export BUILD_DIR="_tmp_build/$OS-$NAME"
 export INSTALL_DIR="submodules/libqk-built-$OS"
+
+# even with the quiet flag, libtool is verbose, so redirect output.
+if [[ -n "$BUILD_QUIET" ]]; then
+  export BUILD_OUT=/dev/null
+else
+  export BUILD_OUT=/dev/stdout
+fi
 
 echo "
 OS: $OS
@@ -57,11 +62,9 @@ SRC_DIR: $SRC_DIR
 INSTALL_DIR: $INSTALL_DIR
 CONFIG_ARGS: $CONFIG_ARGS
 CC_FLAGS: $CC_FLAGS
-
 BUILD_DIR: $BUILD_DIR
 DEV_DIR: $DEV_DIR
 TOOL_DIR: $TOOL_DIR
-
 build_cmd: $build_cmd
 "
 
@@ -96,8 +99,10 @@ elif [[ $OS == 'ios' ]]; then
   "$build_cmd" iPhoneSimulator7.0  x86_64-apple-darwin   x86_64
 
   echo "creating fat lib for $NAME in: $INSTALL_DIR"
+
   # copy headers; API should be identical across archs so any one will do.
-  cp -RP "$BUILD_DIR/armv7/install/include" "$INSTALL_DIR/include"
+  mkdir -p $INSTALL_DIR/include
+  cp -RP $BUILD_DIR/armv7/install/include/* $INSTALL_DIR/include
 
   $lipo \
   -create \

@@ -2,14 +2,12 @@
 # Copyright 2013 George King.
 # Permission to use this file is granted in libqk/license.txt.
 
-# build a static lib from autoconf/make based source.
-# invoke this from the lib source root (i.e. where the configure script is).
+# build a static lib from source using autoconf configure and make.
+# this script is invoked by build-lib.sh.
 
 set -e
-
+echo "$0 $@"
 error() { echo 'error:' "$@" 1>&2; exit 1; }
-
-echo "build-lib-arch.sh: $@"
 
 sdk=$1;   shift
 host=$1;  shift
@@ -43,7 +41,7 @@ fi
 
 # TODO: add -fstrict-aliasing?
 
-echo "
+echo "\
 sdk: $sdk
 host: $host
 arch: $arch
@@ -69,15 +67,9 @@ cd "$BUILD_DIR/$arch"
 rm -rf * # clean aggressively; removing the whole directory is disruptive to terminal sessions.
 rm -rf .deps .libs # hidden directories
 
-# even with the quiet flag, libtool is verbose, so redirect output.
-if [[ -n "$BUILD_QUIET" ]]; then
-  OUT=/dev/null
-else
-  OUT=/dev/stdout
-  set -x # to print entire configure command.
-fi
-
 echo "running configure..."
+[[ -z "$BUILD_QUIET" ]] && set -x
+
 "$SRC_DIR/configure" \
 --disable-dependency-tracking \
 --prefix="$PWD/install" \
@@ -95,14 +87,12 @@ LDFLAGS=" -arch $arch $min_flag -isysroot $sdk_dir -L$sdk_dir/usr/lib" \
 $CONFIG_ARGS \
 $BUILD_QUIET
 
-set +x
-
 echo "running make..."
-make $BUILD_QUIET $BUILD_PARALLEL > $OUT
+make --jobs=$BUILD_JOBS > $BUILD_OUT
 echo "running make install..."
-make install $BUILD_QUIET $BUILD_PARALLEL > $OUT
+make install > $BUILD_OUT
 
 echo "
-BUILD COMPLETE: $LIB_NAME $sdk $host $arch
+BUILD COMPLETE: $OS $NAME $sdk $host $arch
 --------------
 "
