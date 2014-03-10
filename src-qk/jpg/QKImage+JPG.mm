@@ -23,9 +23,8 @@
   int subsamples = 0;
 
   int code = tjDecompressHeader2(handle, (U8*)jpgData.bytes, jpgData.length, &s.v[0], &s.v[1], &subsamples);
-  CHECK_SET_ERROR_RET_NIL(code == 0, QK, ImageJPGReadHeader, @"JPG read header failed", @{
-                          @"name" : name
-                          });
+  CHECK_SET_ERROR_RET_NIL(code == 0, QK, ImageJPGReadHeader, @"JPG read header failed",
+                          @{@"name" : name});
 
   int jpgPixFmt;
   QKPixFmt fmt;
@@ -52,9 +51,8 @@
                        jpgPixFmt,
                        flags);
 
-  CHECK_SET_ERROR_RET_NIL(code == 0, QK, ImageJPGDecompress, @"JPG decompression failed", @{
-                          @"name" : name
-                          });
+  CHECK_SET_ERROR_RET_NIL(code == 0, QK, ImageJPGDecompress, @"JPG decompression failed",
+                          @{@"name" : name});
     
   tjDestroy(handle);
 
@@ -79,7 +77,6 @@ DEF_INIT(JpgPath:(NSString*)path map:(BOOL)map alpha:(BOOL)alpha error:(NSError*
   qk_check(!e, @"JPG resource failed to load: %@", e);
   return i;
 }
-
 
 
 @end

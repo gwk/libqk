@@ -123,7 +123,7 @@
   free(row_pointers);
   png_read_end(readPtr, NULL); // can be omitted if no processing of post-IDAT text/time/etc. is desired
   
-  // get background color if available; currently unused so just print it
+  // get background color if available; currently unused so just print it.
   if (0 && png_get_valid(readPtr, infoPtr, PNG_INFO_bKGD)) {
     // NOTE: png_get_bKGD takes a pointer to a pointer; always sets valid RGB values.
     // always returns raw bKGD data, regardless of any bit depth transformations.

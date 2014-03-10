@@ -12,7 +12,9 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  [self setupWindowWithRoot:[UINavigationController withRoot:[RootController new]]];
+  auto n = [UINavigationController withRoot:[RootController new]];
+  [self setupWindowWithRoot:n];
+  n.navigationBar.translucent = NO;
   return YES;
 }
 

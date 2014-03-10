@@ -182,6 +182,9 @@
 		EC9C226418CCBEE900D6F6EA /* libpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC9C214918CCBAFE00D6F6EA /* libpng.a */; };
 		EC9C226518CCBEE900D6F6EA /* libsqlite3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC9C214A18CCBAFE00D6F6EA /* libsqlite3.a */; };
 		EC9C226618CCBEE900D6F6EA /* libturbojpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC9C214B18CCBAFE00D6F6EA /* libturbojpeg.a */; };
+		EC9C226918CE007300D6F6EA /* TestJpgController.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC9C226818CE007300D6F6EA /* TestJpgController.mm */; };
+		EC9C226B18CE149E00D6F6EA /* nebula.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EC9C226A18CE149E00D6F6EA /* nebula.jpg */; };
+		EC9C226C18CE149E00D6F6EA /* nebula.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EC9C226A18CE149E00D6F6EA /* nebula.jpg */; };
 		ECCAEDDB1752E057006CB1B5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECCAEDDA1752E057006CB1B5 /* QuartzCore.framework */; };
 		ECDCABCE18298F03008CEB6D /* TestMacAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = ECDCABCB18298F03008CEB6D /* TestMacAppDelegate.mm */; };
 		ECDCABCF18298F03008CEB6D /* test-qk-mac.mm in Sources */ = {isa = PBXBuildFile; fileRef = ECDCABCC18298F03008CEB6D /* test-qk-mac.mm */; };
@@ -1023,6 +1026,9 @@
 		EC9C225D18CCBAFF00D6F6EA /* libpng.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libpng.a; sourceTree = "<group>"; };
 		EC9C225E18CCBAFF00D6F6EA /* libsqlite3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libsqlite3.a; sourceTree = "<group>"; };
 		EC9C225F18CCBAFF00D6F6EA /* libturbojpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libturbojpeg.a; sourceTree = "<group>"; };
+		EC9C226718CE007300D6F6EA /* TestJpgController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestJpgController.h; sourceTree = "<group>"; };
+		EC9C226818CE007300D6F6EA /* TestJpgController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TestJpgController.mm; sourceTree = "<group>"; };
+		EC9C226A18CE149E00D6F6EA /* nebula.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = nebula.jpg; path = ../../../Pictures/astronomy/nebula.jpg; sourceTree = "<group>"; };
 		ECB7FC721744605C002A4B71 /* test-qk-mac-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "test-qk-mac-Info.plist"; sourceTree = "<group>"; };
 		ECCAEDDA1752E057006CB1B5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		ECDCABCA18298F03008CEB6D /* TestMacAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestMacAppDelegate.h; sourceTree = "<group>"; };
@@ -1163,6 +1169,8 @@
 				EC102E2D182AD07100BBAB20 /* test-qk-ios.pch */,
 				EC102E2E182AD07100BBAB20 /* TestGLScrollController.h */,
 				EC102E2F182AD07100BBAB20 /* TestGLScrollController.mm */,
+				EC9C226718CE007300D6F6EA /* TestJpgController.h */,
+				EC9C226818CE007300D6F6EA /* TestJpgController.mm */,
 				EC102E30182AD07100BBAB20 /* TestLabelController.h */,
 				EC102E31182AD07100BBAB20 /* TestLabelController.mm */,
 				EC102E32182AD07100BBAB20 /* TestScrollController.h */,
@@ -2386,6 +2394,7 @@
 		ECDCABD518299E94008CEB6D /* res-qk */ = {
 			isa = PBXGroup;
 			children = (
+				EC9C226A18CE149E00D6F6EA /* nebula.jpg */,
 				ECDCABD618299E94008CEB6D /* qk-shaders */,
 			);
 			path = "res-qk";
@@ -2484,6 +2493,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC9C226B18CE149E00D6F6EA /* nebula.jpg in Resources */,
 				ECDCACA518299E94008CEB6D /* pos-color.vert in Resources */,
 				ECDCACA818299E94008CEB6D /* var-color.frag in Resources */,
 				ECDCACA718299E94008CEB6D /* uni-color.frag in Resources */,
@@ -2497,6 +2507,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC9C226C18CE149E00D6F6EA /* nebula.jpg in Resources */,
 				EC102E3C182AD07100BBAB20 /* Images.xcassets in Resources */,
 				EC102ECB182AF1C500BBAB20 /* image.frag in Resources */,
 				EC102ECC182AF1C500BBAB20 /* image.vert in Resources */,
@@ -2667,6 +2678,7 @@
 				EC68679518C653A00037AFE2 /* QKImage.mm in Sources */,
 				EC68673F18C652550037AFE2 /* NSData+QK.mm in Sources */,
 				EC68675318C652550037AFE2 /* NSString+QK.mm in Sources */,
+				EC9C226918CE007300D6F6EA /* TestJpgController.mm in Sources */,
 				EC68677918C652550037AFE2 /* QKData.mm in Sources */,
 				EC68678D18C652550037AFE2 /* SqlStatement.mm in Sources */,
 				EC68674518C652550037AFE2 /* NSError+QK.mm in Sources */,

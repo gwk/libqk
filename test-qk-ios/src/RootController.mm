@@ -9,6 +9,7 @@
 #import "TestGLScrollController.h"
 #import "RootController.h"
 #import "TestLabelController.h"
+#import "TestJpgController.h"
 
 
 @interface RootController ()
@@ -20,12 +21,11 @@
 
 - (id)init {
   NSArray* rows =
-  @[
-    [QKDuo a:@"Scroll View" b:[TestScrollController class]],
+  @[[QKDuo a:@"Scroll View" b:[TestScrollController class]],
     [QKDuo a:@"Table View" b:[TestTableController class]],
     [QKDuo a:@"GL Scroll View" b:[TestGLScrollController class]],
     [QKDuo a:@"Labels" b:[TestLabelController class]],
-    ];
+    [QKDuo a:@"JPEG" b:[TestJpgController class]]];
   
   INIT(super initWithRows:rows cellTypes:nil);
   BLOCK(self);

@@ -12,17 +12,18 @@ typedef unsigned int GLenum;
 
 @property (nonatomic, readonly) QKPixFmt format;
 @property (nonatomic, readonly) V2I32 size;
-@property (nonatomic, readonly) id<QKData> data;
+@property (nonatomic, readonly) NSData* data; // underlying data.
 
 - (const void*)bytes;
 - (Int)length;
 - (BOOL)isMutable;
 
+- (UIImage*)uiImage;
 - (NSString*)formatDesc;
 - (GLenum)glDataFormat;
 - (GLenum)glDataType;
 
-DEC_INIT(Format:(QKPixFmt)format size:(V2I32)size data:(id<QKData>)data);
+DEC_INIT(Format:(QKPixFmt)format size:(V2I32)size data:(NSData*)data);
 DEC_INIT(Path:(NSString*)path map:(BOOL)map alpha:(BOOL)alpha error:(NSError**)errorPtr);
 
 + (QKImage*)named:(NSString*)resourceName alpha:(BOOL)alpha;

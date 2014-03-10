@@ -3,6 +3,7 @@
 
 
 #import "NSBundle+QK.h"
+#import "NSData+QK.h"
 #import "NSError+QK.h"
 #import "NSOutputStream+QK.h"
 #import "NSString+QK.h"
@@ -85,7 +86,7 @@ PROPERTY_STRUCT_FIELD(I32, height, Height, V2I32, _size, v[1]);
 }
 
 
-DEF_INIT(Format:(QKPixFmt)format size:(V2I32)size data:(id<QKData>)data) {
+DEF_INIT(Format:(QKPixFmt)format size:(V2I32)size data:(NSData*)data) {
   INIT(super init);
   _format = format;
   _size = size;
@@ -114,9 +115,7 @@ DEF_INIT(Path:(NSString*)path map:(BOOL)map alpha:(BOOL)alpha error:(NSError**)e
   *errorPtr = [NSError withDomain:QKErrorDomain
                              code:QKErrorCodeImageUnrecognizedPathExtension
                              desc:@"unrecognized path extension"
-                             info:@{
-                                    @"path" : path
-                                    }];
+                             info:@{@"path" : path}];
   return nil;
 }
 
@@ -124,6 +123,36 @@ DEF_INIT(Path:(NSString*)path map:(BOOL)map alpha:(BOOL)alpha error:(NSError**)e
 + (QKImage*)named:(NSString*)resourceName alpha:(BOOL)alpha {
   return [self withPath:[NSBundle resPath:resourceName] map:YES alpha:alpha error:nil];
 }
+
+
+- (UIImage*)uiImage {
+  auto provider = CGDataProviderCreateWithCFData((__bridge CFDataRef)_data);
+  auto colorSpace = QKPixFmtCreateCGColorSpace(_format);
+  
+  auto image =
+  CGImageCreate(_size.v[0],
+                _size.v[1],
+                8, // bits per component
+                QKPixFmtBitsPerPixel(_format),
+                QKPixFmtBytesPerPixel(_format) * _size.v[0],
+                colorSpace,
+                QKPixFmtBitmapInfo(_format),
+                provider,
+                NULL, // decode
+                false, // shouldInterpolate
+                kCGRenderingIntentDefault); // intent
+  
+  if (!image) {
+    errFL(@"could not create CGImageRef from QKImage: %@", self);
+  }
+  auto i = [UIImage imageWithCGImage:image];
+  CGDataProviderRelease(provider);
+  CGColorSpaceRelease(colorSpace);
+  CGImageRelease(image);
+  return i;
+}
+
+
 
 @end
 

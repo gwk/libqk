@@ -70,6 +70,7 @@ QKPixFmt QKPixFmtFromString(NSString* string);
 
 int QKPixFmtBitsPerChannel(QKPixFmt format);
 int QKPixFmtChannels(QKPixFmt format);
+int QKPixFmtBitsPerPixel(QKPixFmt format);
 int QKPixFmtBytesPerPixel(QKPixFmt format);
 
 int QKPixFmtBitmapInfo(QKPixFmt format);
@@ -81,4 +82,6 @@ int QKPixFmtColorSize(QKPixFmt format);
 int QKPixFmtAlphaSize(QKPixFmt format);
 int QKPixFmtDepthSize(QKPixFmt format);
 int QKPixFmtMultisamples(QKPixFmt format);
+
+CGColorSpaceRef QKPixFmtCreateCGColorSpace(QKPixFmt format);
 

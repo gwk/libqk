@@ -93,8 +93,15 @@ int QKPixFmtChannels(QKPixFmt format) {
 }
 
 
+int QKPixFmtBitsPerPixel(QKPixFmt format) {
+  return QKPixFmtBitsPerChannel(format) * QKPixFmtChannels(format);
+}
+
+
 int QKPixFmtBytesPerPixel(QKPixFmt format) {
-  return QKPixFmtBitsPerChannel(format) * QKPixFmtChannels(format) / 8;
+  int bpp = QKPixFmtBitsPerPixel(format);
+  qk_assert(bpp % 8 == 0, @"irregular bits per pixel: %d", bpp);
+  return bpp / 8;
 }
 
 
@@ -181,5 +188,12 @@ int QKPixFmtMultisamples(QKPixFmt format) {
   if (format & QKPixFmtBitMS4) return 4;
   if (format & QKPixFmtBitMS9) return 9;
   return 0;
+}
+
+
+CGColorSpaceRef QKPixFmtCreateCGColorSpace(QKPixFmt format) {
+  if (format & QKPixFmtBitRGB) return CGColorSpaceCreateDeviceRGB();
+  if (format & QKPixFmtBitL) return CGColorSpaceCreateDeviceGray();
+  return NULL;
 }
 
