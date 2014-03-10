@@ -10,33 +10,34 @@
 
 
 @interface TestScrollController ()
+
+@property (nonatomic) UIScrollView* scrollView;
+
 @end
 
 
 @implementation TestScrollController
 
 
-PROPERTY_SUBCLASS_ALIAS(QKScrollView, scrollView, ScrollView, self.view);
-
-
 #pragma mark - UIView
 
 
-- (void)loadView {
-  self.scrollView = [QKScrollView withFlexFrame];
-  self.scrollView.delaysContentTouches = YES;
-  self.scrollView.backgroundColor = [UIColor l:.5];
+- (void)viewDidLoad {
+  _scrollView = [QKScrollView withFlexFrame:self.view.bounds];
+  [self.view addSubview:_scrollView];
+  _scrollView.delaysContentTouches = YES;
+  _scrollView.backgroundColor = [UIColor l:.5];
   CGFloat size = 768;
-  UIView* cv = self.view = [UIView withFrame:CGRectMake(8, 8, size, size)];
-  cv.backgroundColor = [UIColor l:.8];
+  _scrollView.contentSize = CGSizeMake(size, size);
+  _scrollView.contentInset = UIEdgeInsetsMake(8, 8, 8, 8);
   CGFloat step = 64;
   for_imns(i, step, size, step) {
     UIView* h = [UIView withFrame:CGRectMake(0, i, size, 2)];
     UIView* v = [UIView withFrame:CGRectMake(i, 0, 2, size)];
     h.backgroundColor = [UIColor l:.6];
     v.backgroundColor = [UIColor l:.6];
-    [cv addSubview:h];
-    [cv addSubview:v];
+    [_scrollView addSubview:h];
+    [_scrollView addSubview:v];
   }
   /*
   QKButton* button = [QKButton withFrame:CGRectMake(32, 32, 96, 64)];
@@ -52,12 +53,6 @@ PROPERTY_SUBCLASS_ALIAS(QKScrollView, scrollView, ScrollView, self.view);
   };
   [cv addSubview:button];
    */
-  [self.scrollView addSubview:cv];
-  CGSize s = cv.size;
-  s.width += 16;
-  s.height += 16;
-  self.scrollView.contentSize = s;
-  LOG_RECT(self.insetFrame);
 }
 
 
