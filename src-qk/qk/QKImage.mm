@@ -9,20 +9,8 @@
 #import "NSString+QK.h"
 #import "QKErrorDomain.h"
 #import "QKImage.h"
-
-#ifdef PNG_H
-# define LIB_PNG_AVAILABLE 1
-# import "QKImage+PNG.h"
-#else
-# define LIB_PNG_AVAILABLE 0
-#endif
-
-#ifdef __TURBOJPEG_H__
-# define LIB_JPG_AVAILABLE 1
-# import "QKImage+JPG.h"
-#else
-# define LIB_JPG_AVAILABLE 0
-#endif
+#import "QKImage+PNG.h"
+#import "QKImage+JPG.h"
 
 
 @interface QKImage ()
@@ -44,9 +32,8 @@
 
 
 - (const void*)bytes {
-  return _data.bytes;
+  return self.data.bytes;
 }
-
 
 - (Int)length {
   return _data.length;
@@ -96,19 +83,19 @@ DEF_INIT(Format:(QKPixFmt)format size:(V2I32)size data:(NSData*)data) {
 }
 
 
-DEF_INIT(Path:(NSString*)path map:(BOOL)map alpha:(BOOL)alpha error:(NSError**)errorPtr) {
+DEF_INIT(Path:(NSString*)path map:(BOOL)map fmt:(QKPixFmt)fmt error:(NSError**)errorPtr) {
   CHECK_SET_ERROR_RET_NIL(path, QK, NilPath, @"nil path", nil);
   
   NSString* ext = path.pathExtension; UNUSED_VAR(ext);
   
 #if LIB_PNG_AVAILABLE
   if ([ext isEqualToString:@"png"]) {
-    return [self initWithPngPath:path map:map alpha:alpha error:errorPtr];
+    return [self initWithPngPath:path map:map fmt:fmt error:errorPtr];
   }
 #endif
 #if LIB_JPG_AVAILABLE
   if ([ext isEqualToString:@"jpg"]) {
-    return [self initWithJpgPath:path map:map alpha:alpha error:errorPtr];
+    return [self initWithJpgPath:path map:map fmt:fmt error:errorPtr];
   }
 #endif
   qk_check(errorPtr, @"QKImage: unrecognized path extension: %@", path);
@@ -120,11 +107,12 @@ DEF_INIT(Path:(NSString*)path map:(BOOL)map alpha:(BOOL)alpha error:(NSError**)e
 }
 
 
-+ (QKImage*)named:(NSString*)resourceName alpha:(BOOL)alpha {
-  return [self withPath:[NSBundle resPath:resourceName] map:YES alpha:alpha error:nil];
++ (QKImage*)named:(NSString*)resourceName fmt:(QKPixFmt)fmt {
+  return [self withPath:[NSBundle resPath:resourceName] map:YES fmt:fmt error:nil];
 }
 
 
+#if TARGET_OS_IPHONE
 - (UIImage*)uiImage {
   auto provider = CGDataProviderCreateWithCFData((__bridge CFDataRef)_data);
   auto colorSpace = QKPixFmtCreateCGColorSpace(_format);
@@ -151,7 +139,7 @@ DEF_INIT(Path:(NSString*)path map:(BOOL)map alpha:(BOOL)alpha error:(NSError**)e
   CGImageRelease(image);
   return i;
 }
-
+#endif
 
 
 @end

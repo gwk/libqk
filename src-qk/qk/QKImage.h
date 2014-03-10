@@ -18,16 +18,19 @@ typedef unsigned int GLenum;
 - (Int)length;
 - (BOOL)isMutable;
 
-- (UIImage*)uiImage;
 - (NSString*)formatDesc;
 - (GLenum)glDataFormat;
 - (GLenum)glDataType;
 
 DEC_INIT(Format:(QKPixFmt)format size:(V2I32)size data:(NSData*)data);
-DEC_INIT(Path:(NSString*)path map:(BOOL)map alpha:(BOOL)alpha error:(NSError**)errorPtr);
+DEC_INIT(Path:(NSString*)path map:(BOOL)map fmt:(QKPixFmt)fmt error:(NSError**)errorPtr);
 
-+ (QKImage*)named:(NSString*)resourceName alpha:(BOOL)alpha;
++ (QKImage*)named:(NSString*)resourceName fmt:(QKPixFmt)fmt;
 
 - (void)validate;
+
+#if TARGET_OS_IPHONE
+- (UIImage*)uiImage;
+#endif
 
 @end

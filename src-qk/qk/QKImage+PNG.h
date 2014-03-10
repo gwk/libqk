@@ -4,9 +4,10 @@
 
 @interface QKImage (PNG)
 
+#if LIB_PNG_AVAILABLE
 DEC_INIT(PngPath:(NSString*)path map:(BOOL)map alpha:(BOOL)alpha error:(NSError**)errorPtr);
-
 + (QKImage*)pngNamed:(NSString*)resourceName alpha:(BOOL)alpha;
+#endif
 
 @end
 

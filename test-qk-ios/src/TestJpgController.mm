@@ -20,12 +20,14 @@
 
 
 - (void)viewDidLoad {
+  self.view.backgroundColor = [UIColor l:.5];
   _imageView = [UIImageView withFlexFrame:self.view.bounds];
   [self.view addSubview:_imageView];
   _imageView.contentMode = UIViewContentModeScaleAspectFill;
+  _imageView.contentMode = UIViewContentModeTopLeft;
   NSError* e;
-  auto image = [QKImage withJpgPath:[NSBundle resPath:@"nebula.jpg"] map:NO alpha:YES error:&e];
-  qk_check(!e, @"jpg open failed");
+  auto image = [QKImage withJpgPath:[NSBundle resPath:@"nebula.jpg"] map:NO fmt:QKPixFmtLU8 div:8 error:&e];
+  qk_check(!e, @"jpg open failed: %@", e);
   _imageView.image = image.uiImage;
 }
 

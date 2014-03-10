@@ -14,6 +14,7 @@
 
 
 @implementation QKImage (PNG)
+#if LIB_PNG_AVAILABLE
 
 
 + (void)logPngVersionInfo {
@@ -221,5 +222,6 @@ DEF_INIT(PngPath:(NSString*)path map:(BOOL)map alpha:(BOOL)alpha error:(NSError*
 }
 
 
+#endif
 @end
 

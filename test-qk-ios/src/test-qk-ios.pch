@@ -6,6 +6,8 @@
 # import <GLKit/GLKit.h>
 #endif
 
+#import <turbojpeg.h>
+
 #ifdef __cplusplus
 #define GLM_FORCE_RADIANS
 #import <glm/fwd.hpp>

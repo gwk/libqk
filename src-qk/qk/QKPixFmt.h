@@ -2,6 +2,23 @@
 // Permission to use this file is granted in libqk-license.txt (ISC License).
 
 
+#ifdef PNG_H
+# define LIB_PNG_AVAILABLE 1
+#else
+# define LIB_PNG_AVAILABLE 0
+#endif
+
+#ifdef __TURBOJPEG_H__
+# define LIB_JPG_AVAILABLE 1
+#else
+# define LIB_JPG_AVAILABLE 0
+#endif
+
+
+#if LIB_JPG_AVAILABLE
+#import <turbojpeg.h>
+#endif
+
 #import "qk-types.h"
 
 
@@ -85,3 +102,6 @@ int QKPixFmtMultisamples(QKPixFmt format);
 
 CGColorSpaceRef QKPixFmtCreateCGColorSpace(QKPixFmt format);
 
+#if LIB_JPG_AVAILABLE
+TJPF QKPixFmtTJPF(QKPixFmt format);
+#endif

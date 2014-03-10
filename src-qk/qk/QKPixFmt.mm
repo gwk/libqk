@@ -1,6 +1,7 @@
 // Copyright 2013 George King.
 // Permission to use this file is granted in libqk-license.txt (ISC License).
 
+
 #if TARGET_OS_IPHONE
 #else
 #import <OpenGL/gl3.h>
@@ -196,4 +197,18 @@ CGColorSpaceRef QKPixFmtCreateCGColorSpace(QKPixFmt format) {
   if (format & QKPixFmtBitL) return CGColorSpaceCreateDeviceGray();
   return NULL;
 }
+
+
+#if LIB_JPG_AVAILABLE
+TJPF QKPixFmtTJPF(QKPixFmt format) {
+  switch (format) {
+    case QKPixFmtLU8: return TJPF_GRAY;
+    case QKPixFmtRGBU8: return TJPF_RGB;
+    case QKPixFmtRGBAU8: return TJPF_RGBA;
+    case QKPixFmtRGBXU8: return TJPF_RGBX;
+    default:
+      qk_fail(@"no jpg format for QKPixFmt: %@", QKPixFmtDesc(format));
+  }
+}
+#endif
 
