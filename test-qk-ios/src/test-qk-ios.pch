@@ -7,6 +7,8 @@
 #endif
 
 #ifdef __cplusplus
+#define GLM_FORCE_RADIANS
+#import <glm/fwd.hpp>
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wshadow"
 #import <glm/glm.hpp>
