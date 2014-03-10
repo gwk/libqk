@@ -26,7 +26,8 @@
   _imageView.contentMode = UIViewContentModeScaleAspectFill;
   _imageView.contentMode = UIViewContentModeTopLeft;
   NSError* e;
-  auto image = [QKImage withJpgPath:[NSBundle resPath:@"nebula.jpg"] map:NO fmt:QKPixFmtLU8 div:8 error:&e];
+  auto image = [QKImage withJpgPath:[NSBundle resPath:@"helix-nebula.jpg"] map:NO fmt:QKPixFmtRGBU8 div:1 error:&e];
+  [image rotateQCW];
   qk_check(!e, @"jpg open failed: %@", e);
   _imageView.image = image.uiImage;
 }

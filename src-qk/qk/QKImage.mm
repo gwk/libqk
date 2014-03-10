@@ -35,6 +35,12 @@
   return self.data.bytes;
 }
 
+
+- (void*)mutableBytes {
+  return self.data.mutableBytes;
+}
+
+
 - (Int)length {
   return _data.length;
 }
@@ -69,11 +75,11 @@ PROPERTY_STRUCT_FIELD(I32, height, Height, V2I32, _size, v[1]);
 
 - (void)validate {
   qk_check(_size.v[0] >= 0 && _size.v[1] >= 0 && _size.v[0] * _size.v[1] * QKPixFmtBytesPerPixel(_format) == _data.length,
-           @"bad args; %@; data.length: %ld", self, _data.length);
+           @"bad args; %@; data.length: %ld", self, self.length);
 }
 
 
-DEF_INIT(Format:(QKPixFmt)format size:(V2I32)size data:(NSData*)data) {
+DEF_INIT(Format:(QKPixFmt)format size:(V2I32)size data:(NSMutableData*)data) {
   INIT(super init);
   _format = format;
   _size = size;
@@ -109,6 +115,66 @@ DEF_INIT(Path:(NSString*)path map:(BOOL)map fmt:(QKPixFmt)fmt error:(NSError**)e
 
 + (QKImage*)named:(NSString*)resourceName fmt:(QKPixFmt)fmt {
   return [self withPath:[NSBundle resPath:resourceName] map:YES fmt:fmt error:nil];
+}
+
+
+- (void)transpose {
+  Int pl = QKPixFmtBytesPerPixel(_format); // pixel length
+  Int w = _size.v[0];
+  Int h = _size.v[1];
+  Byte* p = (Byte*)self.mutableBytes;
+  if (w == h) { // square is easy to do in place
+    for_in(j, h) {
+      for_imn(i, j, w) {
+        Int o = pl * (w * j + i);
+        Int t = pl * (w * i + j);
+        for_in(k, pl) {
+          std::swap(p[o + k], p[t + k]);
+        }
+      }
+    }
+  }
+  else { // fancy algorithms exist, but for now use a temp copy.
+    NSMutableData* d = [NSMutableData dataWithCapacity:_data.length];
+    Byte* col = (Byte*)malloc(h * pl); // col buffer.
+    for_in(i, w) {
+      for_in(j, h) {
+        Int o = pl * (w * j + i);
+        for_in(k, pl) {
+          col[pl * j + k] = p[o + k];
+        }
+      }
+      [d appendBytes:col length:h * pl];
+    }
+    qk_assert(d.length == _data.length, @"wrong length");
+    free(col);
+    _data = d;
+  }
+  std::swap(_size.v[0], _size.v[1]);
+}
+
+
+- (void)flipH {
+  Int pl = QKPixFmtBytesPerPixel(_format); // pixel length
+  Int w = _size.v[0];
+  Int h = _size.v[1];
+  Byte* p = (Byte*)self.mutableBytes;
+  for_in(j, h) {
+    for_in(i, w / 2) {
+      Int o = pl * (w * j + i);
+      Int t = pl * (w * j + (w - (i + 1)));
+      for_in(k, pl) {
+        std::swap(p[o + k], p[t + k]);
+      }
+    }
+  }
+}
+
+
+- (void)rotateQCW {
+  // rotate a quarter turn (90 degrees) clockwise.
+  [self transpose];
+  [self flipH];
 }
 
 

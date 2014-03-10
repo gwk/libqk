@@ -9,8 +9,8 @@
 #import "QKImage+JPG.h"
 
 
-@implementation QKImage (JPG)
 #if LIB_JPG_AVAILABLE
+@implementation QKImage (JPG)
 
 
 - (id)initWithJpgData:(id<QKData>)jpgData fmt:(QKPixFmt)fmt div:(int)div name:(NSString*)name error:(NSError**)errorPtr {
@@ -84,6 +84,5 @@ DEF_INIT(JpgPath:(NSString*)path map:(BOOL)map fmt:(QKPixFmt)fmt error:(NSError*
 }
 
 
-#endif
 @end
-
+#endif

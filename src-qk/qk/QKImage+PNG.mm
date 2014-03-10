@@ -3,8 +3,6 @@
 // Derived from readpng.c, which is licensed under the terms of libqk/license-readpng.txt.
 
 
-#import <zlib.h>
-#import <png.h>
 #import "NSBundle+QK.h"
 #import "NSData+QK.h"
 #import "NSString+QK.h"
@@ -13,8 +11,10 @@
 #import "QKImage+PNG.h"
 
 
-@implementation QKImage (PNG)
 #if LIB_PNG_AVAILABLE
+#import <zlib.h>
+
+@implementation QKImage (PNG)
 
 
 + (void)logPngVersionInfo {
@@ -222,6 +222,6 @@ DEF_INIT(PngPath:(NSString*)path map:(BOOL)map alpha:(BOOL)alpha error:(NSError*
 }
 
 
-#endif
 @end
 
+#endif

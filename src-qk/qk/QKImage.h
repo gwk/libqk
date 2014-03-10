@@ -12,9 +12,10 @@ typedef unsigned int GLenum;
 
 @property (nonatomic, readonly) QKPixFmt format;
 @property (nonatomic, readonly) V2I32 size;
-@property (nonatomic, readonly) NSData* data; // underlying data.
+@property (nonatomic, readonly) NSMutableData* data; // underlying data.
 
 - (const void*)bytes;
+- (void*)mutableBytes;
 - (Int)length;
 - (BOOL)isMutable;
 
@@ -22,12 +23,15 @@ typedef unsigned int GLenum;
 - (GLenum)glDataFormat;
 - (GLenum)glDataType;
 
-DEC_INIT(Format:(QKPixFmt)format size:(V2I32)size data:(NSData*)data);
+DEC_INIT(Format:(QKPixFmt)format size:(V2I32)size data:(NSMutableData*)data);
 DEC_INIT(Path:(NSString*)path map:(BOOL)map fmt:(QKPixFmt)fmt error:(NSError**)errorPtr);
 
 + (QKImage*)named:(NSString*)resourceName fmt:(QKPixFmt)fmt;
 
 - (void)validate;
+- (void)transpose;
+- (void)flipH;
+- (void)rotateQCW;
 
 #if TARGET_OS_IPHONE
 - (UIImage*)uiImage;
