@@ -7,8 +7,9 @@
 + (NSString*)resPath:(NSString*)resourceName ofType:(NSString*)type;
 + (NSString*)resPath:(NSString*)resourceName;
 
-+ (id)jsonNamed:(NSString*)resourceName options:(NSJSONReadingOptions)options;
++ (NSData*)dataNamed:(NSString*)resourceName;
 
++ (id)jsonNamed:(NSString*)resourceName options:(NSJSONReadingOptions)options;
 + (NSDictionary*)dictNamed:(NSString*)resourceName options:(NSJSONReadingOptions)options;
 + (NSArray*)arrayNamed:(NSString*)resourceName options:(NSJSONReadingOptions)options;
 

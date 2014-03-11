@@ -13,4 +13,7 @@ void  executeAsync(BlockCompute asyncBlock, BlockDo syncBlock);
 
 - (void)dissolve;
 
+- (void)executeAction:(BlockAction)block;
+- (void)executeDelay:(NSTimeInterval)delay action:(BlockAction)block;
+
 @end

@@ -33,4 +33,15 @@ void  executeAsync(BlockCompute asyncBlock, BlockDo syncBlock) {
 - (void)dissolve {}
 
 
+- (void)executeAction:(BlockAction)block {
+  qk_assert(block, @"nil block");
+  block();
+}
+
+
+- (void)executeDelay:(NSTimeInterval)delay action:(BlockAction)block {
+  [self performSelector:@selector(executeAction:) withObject:block afterDelay:delay];
+}
+
+
 @end
