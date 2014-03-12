@@ -20,7 +20,7 @@
 
 
 - (id)init {
-  NSArray* rows =
+  auto rows =
   @[[QKDuo a:@"Scroll View" b:[TestScrollController class]],
     [QKDuo a:@"Table View" b:[TestTableController class]],
     [QKDuo a:@"GL Scroll View" b:[TestGLScrollController class]],
@@ -42,4 +42,3 @@
 
 
 @end
-

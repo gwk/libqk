@@ -185,6 +185,8 @@
 		EC9C22F318CE67B600D6F6EA /* QKImage+PNG.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC9C22EF18CE67B600D6F6EA /* QKImage+PNG.mm */; };
 		EC9C22FE18CF5DAD00D6F6EA /* helix-nebula.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EC9C22FD18CF5DAD00D6F6EA /* helix-nebula.jpg */; };
 		EC9C22FF18CF5DAD00D6F6EA /* helix-nebula.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EC9C22FD18CF5DAD00D6F6EA /* helix-nebula.jpg */; };
+		EC9C233118CFC97800D6F6EA /* dancing-squirrel.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EC9C233018CFC97800D6F6EA /* dancing-squirrel.jpg */; };
+		EC9C233218CFC97800D6F6EA /* dancing-squirrel.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EC9C233018CFC97800D6F6EA /* dancing-squirrel.jpg */; };
 		ECCAEDDB1752E057006CB1B5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECCAEDDA1752E057006CB1B5 /* QuartzCore.framework */; };
 		ECDCABCE18298F03008CEB6D /* TestMacAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = ECDCABCB18298F03008CEB6D /* TestMacAppDelegate.mm */; };
 		ECDCABCF18298F03008CEB6D /* test-qk-mac.mm in Sources */ = {isa = PBXBuildFile; fileRef = ECDCABCC18298F03008CEB6D /* test-qk-mac.mm */; };
@@ -1029,6 +1031,7 @@
 		EC9C22EE18CE67B600D6F6EA /* QKImage+PNG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QKImage+PNG.h"; sourceTree = "<group>"; };
 		EC9C22EF18CE67B600D6F6EA /* QKImage+PNG.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "QKImage+PNG.mm"; sourceTree = "<group>"; };
 		EC9C22FD18CF5DAD00D6F6EA /* helix-nebula.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "helix-nebula.jpg"; sourceTree = "<group>"; };
+		EC9C233018CFC97800D6F6EA /* dancing-squirrel.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "dancing-squirrel.jpg"; sourceTree = "<group>"; };
 		ECB7FC721744605C002A4B71 /* test-qk-mac-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "test-qk-mac-Info.plist"; sourceTree = "<group>"; };
 		ECCAEDDA1752E057006CB1B5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		ECDCABCA18298F03008CEB6D /* TestMacAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestMacAppDelegate.h; sourceTree = "<group>"; };
@@ -2379,6 +2382,7 @@
 			isa = PBXGroup;
 			children = (
 				EC9C22FD18CF5DAD00D6F6EA /* helix-nebula.jpg */,
+				EC9C233018CFC97800D6F6EA /* dancing-squirrel.jpg */,
 				ECDCABD618299E94008CEB6D /* qk-shaders */,
 			);
 			path = "res-qk";
@@ -2480,6 +2484,7 @@
 				ECDCACA518299E94008CEB6D /* pos-color.vert in Resources */,
 				ECDCACA818299E94008CEB6D /* var-color.frag in Resources */,
 				ECDCACA718299E94008CEB6D /* uni-color.frag in Resources */,
+				EC9C233118CFC97800D6F6EA /* dancing-squirrel.jpg in Resources */,
 				ECDCACA618299E94008CEB6D /* pos.vert in Resources */,
 				EC9C22FE18CF5DAD00D6F6EA /* helix-nebula.jpg in Resources */,
 				ECDCACA418299E94008CEB6D /* image.vert in Resources */,
@@ -2495,6 +2500,7 @@
 				EC102ECB182AF1C500BBAB20 /* image.frag in Resources */,
 				EC9C22FF18CF5DAD00D6F6EA /* helix-nebula.jpg in Resources */,
 				EC102ECC182AF1C500BBAB20 /* image.vert in Resources */,
+				EC9C233218CFC97800D6F6EA /* dancing-squirrel.jpg in Resources */,
 				EC102ECD182AF1C500BBAB20 /* pos-color.vert in Resources */,
 				EC102ECE182AF1C500BBAB20 /* pos.vert in Resources */,
 				EC102ECF182AF1C500BBAB20 /* uni-color.frag in Resources */,
