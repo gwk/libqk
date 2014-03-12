@@ -6,9 +6,9 @@
 
 #import "TestIOSAppDelegate.h"
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char* argv[]) {
   @autoreleasepool {
       return UIApplicationMain(argc, argv, nil, NSStringFromClass([TestIOSAppDelegate class]));
   }
 }
+
