@@ -206,6 +206,10 @@ qk_check(CONFORMS_OR_NIL((obj), protocol_name), \
 #define DEF_WITH(...) \
 + (instancetype)with##__VA_ARGS__ { return [[self alloc] initWith##__VA_ARGS__]; }
 
+// if there are multiple init methods with the same name the compiler refuses to choose, because alloc returns id.
+// use an explicit cast of the new instance to guide it to correct init signature.
+#define DEF_WITH_CAST(class_name, ...) \
++ (instancetype)with##__VA_ARGS__ { return [(class_name*)[self alloc] initWith##__VA_ARGS__]; }
 
 // define + (instancetype)with... and - (instancetype)initWith... simultaneously.
 #define DEC_INIT(...) \
@@ -214,6 +218,11 @@ qk_check(CONFORMS_OR_NIL((obj), protocol_name), \
 
 #define DEF_INIT(...) \
 DEF_WITH(__VA_ARGS__) \
+- (instancetype)initWith##__VA_ARGS__
+
+
+#define DEF_INIT_CAST(class_name, ...) \
+DEF_WITH_CAST(class_name, __VA_ARGS__) \
 - (instancetype)initWith##__VA_ARGS__
 
 
