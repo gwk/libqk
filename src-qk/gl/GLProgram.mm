@@ -61,14 +61,14 @@ DEF_INIT(Shaders:(NSArray*)shaders uniforms:(NSArray*)uniforms attributes:(NSArr
   // GLSL will optimize out unused uniforms/attributes, which is annyoing during development and debugging.
   // to mitigate this, we print a note when names are missing, rather than throw an error.
   _uniformLocations = [_uniforms mapToDict:^(NSString *name){
-    GLint loc = glGetUniformLocation(_handle, name.asUtf8);
+    GLint loc = glGetUniformLocation(self.handle, name.asUtf8);
     if (loc == -1) {
       errFL(@"NOTE: no location for shader uniform: %@", name);
     }
     return [QKDuo a:name b:@(loc)];
   }];
   _attributeLocations  = [_attributes mapToDict:^(NSString *name){
-    GLint loc = glGetAttribLocation(_handle, name.asUtf8);
+    GLint loc = glGetAttribLocation(self.handle, name.asUtf8);
     if (loc == -1) {
       errFL(@"NOTE: no location for shader attribute: %@", name);
     }
