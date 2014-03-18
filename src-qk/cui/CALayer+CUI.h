@@ -7,6 +7,7 @@
 
 @interface CALayer (CUI)
 
-@property (nonatomic) CUIColor* backgroundCUIColor;
+@property (nonatomic) CUIColor* backgroundCUIColor; // TODO: rename to just color?
+
 
 @end

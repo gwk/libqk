@@ -56,6 +56,7 @@ DEC_WITH(Frame:(CGRect)frame);
 DEC_INIT(Frame:(CGRect)frame flex:(UIFlex)flex);
 DEC_INIT(FlexFrame:(CGRect)frame);
 DEC_INIT(FlexFrame);
+DEC_INIT(Size:(CGSize)size);
 DEC_INIT(FlexSize:(CGSize)size);
 
 DEC_WITH(Frame:(CGRect)frame flex:(UIFlex)flex  color:(CUIColor*)color);

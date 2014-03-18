@@ -64,6 +64,11 @@ DEF_INIT(FlexFrame) {
 }
 
 
+DEF_INIT(Size:(CGSize)size) {
+  return [self initWithFrame:CGRectWithS(size)];
+}
+
+
 DEF_INIT(FlexSize:(CGSize)size) {
   return [self initWithFlexFrame:CGRectWithS(size)];
 }
