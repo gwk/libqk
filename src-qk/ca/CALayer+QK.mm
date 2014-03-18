@@ -9,6 +9,42 @@
 @implementation CALayer (QK)
 
 
+PROPERTY_STRUCT_FIELD(CGPoint, origin, Origin, CGRect, self.frame, origin);
+PROPERTY_STRUCT_FIELD(CGSize, size, Size, CGRect, self.frame, size);
+PROPERTY_STRUCT_FIELD(CGFloat, x, X, CGRect, self.frame, origin.x);
+PROPERTY_STRUCT_FIELD(CGFloat, y, Y, CGRect, self.frame, origin.y);
+PROPERTY_STRUCT_FIELD(CGFloat, w, W, CGRect, self.frame, size.width);
+PROPERTY_STRUCT_FIELD(CGFloat, h, H, CGRect, self.frame, size.height);
+PROPERTY_STRUCT_FIELD(CGFloat, px, Px, CGPoint, self.position, x);
+PROPERTY_STRUCT_FIELD(CGFloat, py, Py, CGPoint, self.position, y);
+
+
+- (CGFloat)r {
+  CGRect f = self.frame;
+  return f.origin.x + f.size.width;
+}
+
+
+- (void)setR:(CGFloat)r {
+  CGRect f = self.frame;
+  f.origin.x = r - f.size.width;
+  self.frame = f;
+}
+
+
+- (CGFloat)b {
+  CGRect f = self.frame;
+  return f.origin.y + f.size.height;
+}
+
+
+- (void)setB:(CGFloat)b {
+  CGRect f = self.frame;
+  f.origin.y = b - f.size.height;
+  self.frame = f;
+}
+
+
 #pragma mark debugging
 
 
