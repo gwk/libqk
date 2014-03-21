@@ -2,6 +2,8 @@
 // Permission to use this file is granted in libqk-license.txt (ISC License).
 
 
+#import <QuartzCore/QuartzCore.h>
+
 #import "CUIColor.h"
 
 

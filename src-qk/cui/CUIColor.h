@@ -6,6 +6,7 @@
 # define CUIColor UIColor
 #else
 # define CUIColor NSColor
+#import <AppKit/NSColor.h>
 #endif
 
 @interface CUIColor (CUI)
