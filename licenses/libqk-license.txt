@@ -1,4 +1,4 @@
-Copyright 2007-2013 George King.
+Copyright 2007-2014 George King.
 
 ISC License
 
