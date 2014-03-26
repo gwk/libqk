@@ -406,7 +406,6 @@
 		EC68679318C653A00037AFE2 /* QKImage.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = QKImage.mm; sourceTree = "<group>"; };
 		EC68679618C6546D0037AFE2 /* CCAGLLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCAGLLayer.h; sourceTree = "<group>"; };
 		EC68679718C6546D0037AFE2 /* CCAGLLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CCAGLLayer.mm; sourceTree = "<group>"; };
-		EC9C1FD718CCBAFE00D6F6EA /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		EC9C1FDA18CCBAFE00D6F6EA /* common.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = common.hpp; sourceTree = "<group>"; };
 		EC9C1FDC18CCBAFE00D6F6EA /* _features.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = _features.hpp; sourceTree = "<group>"; };
 		EC9C1FDD18CCBAFE00D6F6EA /* _fixes.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = _fixes.hpp; sourceTree = "<group>"; };
@@ -757,7 +756,6 @@
 		EC9C214918CCBAFE00D6F6EA /* libpng.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libpng.a; sourceTree = "<group>"; };
 		EC9C214A18CCBAFE00D6F6EA /* libsqlite3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libsqlite3.a; sourceTree = "<group>"; };
 		EC9C214B18CCBAFE00D6F6EA /* libturbojpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libturbojpeg.a; sourceTree = "<group>"; };
-		EC9C214D18CCBAFE00D6F6EA /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		EC9C215018CCBAFE00D6F6EA /* common.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = common.hpp; sourceTree = "<group>"; };
 		EC9C215218CCBAFE00D6F6EA /* _features.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = _features.hpp; sourceTree = "<group>"; };
 		EC9C215318CCBAFE00D6F6EA /* _fixes.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = _fixes.hpp; sourceTree = "<group>"; };
@@ -1498,7 +1496,6 @@
 		EC9C1FD618CCBAFE00D6F6EA /* libqk-built-ios */ = {
 			isa = PBXGroup;
 			children = (
-				EC9C1FD718CCBAFE00D6F6EA /* .gitignore */,
 				EC9C1FD818CCBAFE00D6F6EA /* include */,
 				EC9C214718CCBAFE00D6F6EA /* lib */,
 			);
@@ -2032,7 +2029,6 @@
 		EC9C214C18CCBAFE00D6F6EA /* libqk-built-mac */ = {
 			isa = PBXGroup;
 			children = (
-				EC9C214D18CCBAFE00D6F6EA /* .gitignore */,
 				EC9C214E18CCBAFE00D6F6EA /* include */,
 				EC9C225C18CCBAFF00D6F6EA /* lib */,
 			);
@@ -2719,10 +2715,9 @@
 				);
 				INFOPLIST_FILE = "$(TARGET_NAME)/$(TARGET_NAME)-info.plist";
 				INSTALL_PATH = /bin;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -2765,9 +2760,8 @@
 				);
 				INFOPLIST_FILE = "$(TARGET_NAME)/$(TARGET_NAME)-info.plist";
 				INSTALL_PATH = /bin;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -2852,7 +2846,6 @@
 					"/Users/gwk/work/libqk/submodules/libqk-built-ios/lib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -2896,7 +2889,6 @@
 					"/Users/gwk/work/libqk/submodules/libqk-built-ios/lib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
