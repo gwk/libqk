@@ -12,6 +12,7 @@ error() { echo 'error:' "$@" 1>&2; exit 1; }
 sdk=$1;   shift
 host=$1;  shift
 arch=$1;  shift
+[[ -z "$@" ]] || error "excess arguments: $@"
 
 platform=${sdk%%[0-9]*}
 xcode_sdk=$(echo $platform | tr '[:upper:]' '[:lower:]') # lowercase.

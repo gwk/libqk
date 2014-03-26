@@ -12,6 +12,7 @@ error() { echo 'error:' "$@" 1>&2; exit 1; }
 sdk=$1;   shift
 host=$1;  shift
 arch=$1;  shift
+[[ -z "$@" ]] || error "excess arguments: $@"
 
 platform=${sdk%%[0-9]*}
 platform_dir=$DEV_DIR/Platforms/$platform.platform
@@ -27,12 +28,9 @@ ld=$TOOL_DIR/ld
 platform_cc_flags=''
 
 if   [[ $platform == 'MacOSX' ]]; then
-  min_flag='' # TODO
+  min_flag='-mmacosx-version-min=10.9'
 elif [[ $platform == 'iPhoneOS' ]]; then
   min_flag='-miphoneos-version-min=7.0'
-   # libpng enables intrinsics when it sees the -mfpu flag.
-   # libjpeg-turbo requries the -no-integrated-as flag as part of the gas-preprocessor hack.
-  platform_cc_flags='-no-integrated-as -mfpu=neon'
 elif [[ $platform == 'iPhoneSimulator' ]]; then
   min_flag="-mios-simulator-version-min=7.0"
 else
@@ -86,6 +84,7 @@ CPPFLAGS="-arch $arch $min_flag -isysroot $sdk_dir -I$sdk_dir/usr/include" \
 LDFLAGS=" -arch $arch $min_flag -isysroot $sdk_dir -L$sdk_dir/usr/lib" \
 $CONFIG_ARGS \
 $BUILD_QUIET
+set +x
 
 echo "running make..."
 make --jobs=$BUILD_JOBS > $BUILD_OUT
@@ -93,6 +92,6 @@ echo "running make install..."
 make install > $BUILD_OUT
 
 echo "
-BUILD COMPLETE: $OS $NAME $sdk $host $arch
+AC BUILD COMPLETE: $OS $NAME $sdk $host $arch
 --------------
 "

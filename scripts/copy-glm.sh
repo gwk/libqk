@@ -15,9 +15,8 @@ SRC_DIR=$1; shift
 INSTALL_DIR="submodules/libqk-built-$OS"
 dst_dir=$INSTALL_DIR/include/glm
 
-[[ -z "$BUILD_QUIET" ]] && set -x
-
 echo "copying files..."
+[[ -z "$BUILD_QUIET" ]] && set -x
 rm -rf "$dst_dir"
 cp -r "$SRC_DIR/glm" "$dst_dir"
 rm "$dst_dir/CMakeLists.txt"
