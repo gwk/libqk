@@ -75,7 +75,7 @@ DEF_INIT(Tracking:(BOOL)tracking block:(BlockDisplayLink)block) {
   WEAK(self);
   qk_assert(!_timer, @"timer already exists");
   _timer = [NSTimer withInterval:(1.0 / 60.0) tracking:_tracking block:^(NSTimer* t){
-    _block(weak_self);
+    self.block(weak_self);
   }];
 }
 
