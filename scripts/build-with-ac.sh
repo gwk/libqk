@@ -25,8 +25,6 @@ cxx=$TOOL_DIR/clang++
 as="$cc"
 ld=$TOOL_DIR/ld
 
-platform_cc_flags=''
-
 if   [[ $platform == 'MacOSX' ]]; then
   min_flag='-mmacosx-version-min=10.9'
 elif [[ $platform == 'iPhoneOS' ]]; then
@@ -79,7 +77,8 @@ LIBTOOL="$libtool" \
 CC="$cc" \
 CXX="$cxx" \
 LD="$ld" \
-CFLAGS="$CC_FLAGS $platform_cc_flags" \
+CFLAGS="$CC_FLAGS" \
+CCASFLAGS="$CC_AS_FLAGS" \
 CPPFLAGS="-arch $arch $min_flag -isysroot $sdk_dir -I$sdk_dir/usr/include" \
 LDFLAGS=" -arch $arch $min_flag -isysroot $sdk_dir -L$sdk_dir/usr/lib" \
 $CONFIG_ARGS \

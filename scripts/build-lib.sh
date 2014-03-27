@@ -35,6 +35,7 @@ export SRC_DIR=$1; shift
 export BUILD_SCRIPT=$1; shift
 export CONFIG_ARGS=$1; shift
 export CC_FLAGS=$1; shift
+export CC_AS_FLAGS=$1; shift
 
 export DEV_DIR=/Applications/Xcode.app/Contents/Developer
 export TOOL_DIR=$DEV_DIR/Toolchains/XcodeDefault.xctoolchain/usr/bin

@@ -29,13 +29,11 @@ set -e
 scripts/copy-glm.sh mac "$1"
 scripts/copy-glm.sh ios "$1"
 
-scripts/build-lib.sh mac sqlite3    "$2" build-with-ac.sh '' '-Oz'
-scripts/build-lib.sh ios sqlite3    "$2" build-with-ac.sh '' '-Oz'
-scripts/build-lib.sh mac png        "$3" build-with-ac.sh '' '-O3'
-scripts/build-lib.sh ios png        "$3" build-with-ac.sh '' '-O3 -mfpu=neon' # enables intrinsics.
-scripts/build-lib.sh mac turbojpeg  "$4" build-with-ac.sh '--with-jpeg8' '-O3'
+scripts/build-lib.sh mac sqlite3    "$2" build-with-ac.sh '' '-Oz' ''
+scripts/build-lib.sh ios sqlite3    "$2" build-with-ac.sh '' '-Oz' ''
+scripts/build-lib.sh mac png        "$3" build-with-ac.sh '' '-O3' ''
+scripts/build-lib.sh ios png        "$3" build-with-ac.sh '' '-O3 -mfpu=neon' ''
+scripts/build-lib.sh mac turbojpeg  "$4" build-with-ac.sh '--with-jpeg8' '-O3' ''
+scripts/build-lib.sh ios turbojpeg  "$4" build-with-ac.sh '--with-jpeg8' '-O3' '-no-integrated-as'
 
-# as of Xcode 5.1, simd builds are broken. -no-integrated-asm was required as part of the gas-preprocessor hack, but this now causes errors. reverting to non-simd builds for now.
-scripts/build-lib.sh ios turbojpeg  "$4" build-with-ac.sh '--with-jpeg8 --without-simd' '-O3'
-
-scripts/build-lib.sh ios opencv "$5" build-opencv-ios.sh
+scripts/build-lib.sh ios opencv "$5" build-opencv-ios.sh '' '' ''
