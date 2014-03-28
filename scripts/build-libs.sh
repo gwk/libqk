@@ -35,5 +35,6 @@ scripts/build-lib.sh mac png        "$3" build-with-ac.sh '' '-O3' ''
 scripts/build-lib.sh ios png        "$3" build-with-ac.sh '' '-O3 -mfpu=neon' ''
 scripts/build-lib.sh mac turbojpeg  "$4" build-with-ac.sh '--with-jpeg8' '-O3' ''
 scripts/build-lib.sh ios turbojpeg  "$4" build-with-ac.sh '--with-jpeg8' '-O3' '-no-integrated-as'
-
-scripts/build-lib.sh ios opencv "$5" build-opencv-ios.sh '' '' ''
+scripts/build-lib.sh mac opencv     "$5" build-opencv.sh '' '' ''
+scripts/build-lib.sh ios opencv     "$5" build-opencv.sh '' '' ''
+    
