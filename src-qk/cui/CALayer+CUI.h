@@ -9,7 +9,8 @@
 
 @interface CALayer (CUI)
 
-@property (nonatomic) CUIColor* backgroundCUIColor; // TODO: rename to just color?
+@property (nonatomic) CUIColor* color;
 
+DEC_INIT(Frame:(CGRect)frame color:(CUIColor*)color);
 
 @end
