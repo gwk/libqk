@@ -15,6 +15,11 @@ int lowest_bit_64(U64 x);
 int lowest_bit_32(U32 x);
 
 
+static inline F64 sqr(F64 x) {
+  return x * x;
+}
+
+
 static inline int highest_bit(Uns x) {
   if (Int_is_64_bits) {
     return highest_bit_64(x);
