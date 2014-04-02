@@ -13,6 +13,7 @@
 - (void)pop;
 - (void)popAndClearSender:(id)sender;
 - (void)present:(UIViewController*)controller;
+- (void)presentRoot:(UIViewController*)controller;
 - (void)dismiss;
 - (void)dismissPresented;
 - (NSString*)closeButtonTitle;
