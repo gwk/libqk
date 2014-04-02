@@ -3,7 +3,7 @@
 
 
 #import "UIImage+QK.h"
-#import "qk-check.h"
+#import "qk-macros.h"
 
 
 @implementation UIImage (QK)

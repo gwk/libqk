@@ -2,6 +2,7 @@
 // Permission to use this file is granted in libqk-license.txt (ISC License).
 
 
+#import "qk-macros.h"
 #import "NSBundle+QK.h"
 #import "NSData+QK.h"
 #import "NSMutableData+QK.h"

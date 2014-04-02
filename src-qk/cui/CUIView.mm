@@ -2,6 +2,7 @@
 // Permission to use this file is granted in libqk-license.txt (ISC License).
 
 
+#import "qk-log.h"
 #import "qk-cg-util.h"
 #import "NSString+QK.h"
 #import "CUIView.h"

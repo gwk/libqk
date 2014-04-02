@@ -134,10 +134,6 @@
 		EC68676918C652550037AFE2 /* GLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC6866F518C652550037AFE2 /* GLView.mm */; };
 		EC68676A18C652550037AFE2 /* qk-gl-util.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC6866F718C652550037AFE2 /* qk-gl-util.mm */; };
 		EC68676B18C652550037AFE2 /* qk-gl-util.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC6866F718C652550037AFE2 /* qk-gl-util.mm */; };
-		EC68677018C652550037AFE2 /* qk-check.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC68670118C652550037AFE2 /* qk-check.mm */; };
-		EC68677118C652550037AFE2 /* qk-check.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC68670118C652550037AFE2 /* qk-check.mm */; };
-		EC68677218C652550037AFE2 /* qk-log.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC68670318C652550037AFE2 /* qk-log.mm */; };
-		EC68677318C652550037AFE2 /* qk-log.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC68670318C652550037AFE2 /* qk-log.mm */; };
 		EC68677418C652550037AFE2 /* qk-math.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC68670618C652550037AFE2 /* qk-math.mm */; };
 		EC68677518C652550037AFE2 /* qk-math.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC68670618C652550037AFE2 /* qk-math.mm */; };
 		EC68677618C652550037AFE2 /* QKBinding.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC68670B18C652550037AFE2 /* QKBinding.mm */; };
@@ -365,16 +361,12 @@
 		EC6866F618C652550037AFE2 /* qk-gl-util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-gl-util.h"; sourceTree = "<group>"; };
 		EC6866F718C652550037AFE2 /* qk-gl-util.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "qk-gl-util.mm"; sourceTree = "<group>"; };
 		EC6866FF18C652550037AFE2 /* qk-block-types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-block-types.h"; sourceTree = "<group>"; };
-		EC68670018C652550037AFE2 /* qk-check.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-check.h"; sourceTree = "<group>"; };
-		EC68670118C652550037AFE2 /* qk-check.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "qk-check.mm"; sourceTree = "<group>"; };
 		EC68670218C652550037AFE2 /* qk-log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-log.h"; sourceTree = "<group>"; };
-		EC68670318C652550037AFE2 /* qk-log.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "qk-log.mm"; sourceTree = "<group>"; };
 		EC68670418C652550037AFE2 /* qk-macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-macros.h"; sourceTree = "<group>"; };
 		EC68670518C652550037AFE2 /* qk-math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-math.h"; sourceTree = "<group>"; };
 		EC68670618C652550037AFE2 /* qk-math.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "qk-math.mm"; sourceTree = "<group>"; };
 		EC68670718C652550037AFE2 /* qk-types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-types.h"; sourceTree = "<group>"; };
 		EC68670818C652550037AFE2 /* qk-vec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-vec.h"; sourceTree = "<group>"; };
-		EC68670918C652550037AFE2 /* qk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qk.h; sourceTree = "<group>"; };
 		EC68670A18C652550037AFE2 /* QKBinding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKBinding.h; sourceTree = "<group>"; };
 		EC68670B18C652550037AFE2 /* QKBinding.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = QKBinding.mm; sourceTree = "<group>"; };
 		EC68670C18C652550037AFE2 /* QKData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKData.h; sourceTree = "<group>"; };
@@ -1430,16 +1422,12 @@
 			isa = PBXGroup;
 			children = (
 				EC6866FF18C652550037AFE2 /* qk-block-types.h */,
-				EC68670018C652550037AFE2 /* qk-check.h */,
-				EC68670118C652550037AFE2 /* qk-check.mm */,
 				EC68670218C652550037AFE2 /* qk-log.h */,
-				EC68670318C652550037AFE2 /* qk-log.mm */,
 				EC68670418C652550037AFE2 /* qk-macros.h */,
 				EC68670518C652550037AFE2 /* qk-math.h */,
 				EC68670618C652550037AFE2 /* qk-math.mm */,
 				EC68670718C652550037AFE2 /* qk-types.h */,
 				EC68670818C652550037AFE2 /* qk-vec.h */,
-				EC68670918C652550037AFE2 /* qk.h */,
 				EC68670A18C652550037AFE2 /* QKBinding.h */,
 				EC68670B18C652550037AFE2 /* QKBinding.mm */,
 				EC68678E18C653600037AFE2 /* QKCFObject.h */,
@@ -2517,14 +2505,12 @@
 				EC6866A418C651BD0037AFE2 /* NSMenu+QK.mm in Sources */,
 				EC6866A318C651BD0037AFE2 /* NSApplication+QK.mm in Sources */,
 				EC68679018C653600037AFE2 /* QKCFObject.mm in Sources */,
-				EC68677218C652550037AFE2 /* qk-log.mm in Sources */,
 				EC68674218C652550037AFE2 /* NSDictionary+QK.mm in Sources */,
 				EC68675818C652550037AFE2 /* GLFragmentShader.mm in Sources */,
 				EC6866A618C651BD0037AFE2 /* NSView+QK.mm in Sources */,
 				EC68674818C652550037AFE2 /* NSMutableArray+QK.mm in Sources */,
 				EC68675218C652550037AFE2 /* NSString+QK.mm in Sources */,
 				EC6866A518C651BD0037AFE2 /* NSMenuItem+QK.mm in Sources */,
-				EC68677018C652550037AFE2 /* qk-check.mm in Sources */,
 				EC68674C18C652550037AFE2 /* NSMutableDictionary+QK.mm in Sources */,
 				EC68673018C652550037AFE2 /* CALayer+CUI.m in Sources */,
 				EC68676A18C652550037AFE2 /* qk-gl-util.mm in Sources */,
@@ -2593,13 +2579,11 @@
 				EC68674B18C652550037AFE2 /* NSMutableData+QK.mm in Sources */,
 				EC68678318C652550037AFE2 /* QKStructArray.mm in Sources */,
 				EC68678518C652550037AFE2 /* QKSubData.mm in Sources */,
-				EC68677118C652550037AFE2 /* qk-check.mm in Sources */,
 				EC68677D18C652550037AFE2 /* QKErrorDomain.mm in Sources */,
 				EC68668B18C651B30037AFE2 /* UIColor+QK.mm in Sources */,
 				EC9C22F318CE67B600D6F6EA /* QKImage+PNG.mm in Sources */,
 				EC68667F18C651B30037AFE2 /* QKImageView.mm in Sources */,
 				EC68674318C652550037AFE2 /* NSDictionary+QK.mm in Sources */,
-				EC68677318C652550037AFE2 /* qk-log.mm in Sources */,
 				EC68668A18C651B30037AFE2 /* UIButton+QK.mm in Sources */,
 				EC68673B18C652550037AFE2 /* NSArray+QK.mm in Sources */,
 				EC68668918C651B30037AFE2 /* UIBarButtonItem+QK.mm in Sources */,
@@ -2702,7 +2686,6 @@
 				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(TARGET_NAME)/src/$(TARGET_NAME).pch";
-				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
@@ -2752,7 +2735,6 @@
 				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(TARGET_NAME)/src/$(TARGET_NAME).pch";
-				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
@@ -2778,6 +2760,8 @@
 		EC0D9A8816B82EBD005D2C2B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				COMBINE_HIDPI_IMAGES = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2797,6 +2781,8 @@
 		EC0D9A8916B82EBD005D2C2B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				COMBINE_HIDPI_IMAGES = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2855,6 +2841,7 @@
 					"/Users/gwk/work/libqk/submodules/libqk-built-ios/lib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -2898,6 +2885,7 @@
 					"/Users/gwk/work/libqk/submodules/libqk-built-ios/lib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;

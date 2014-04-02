@@ -11,6 +11,7 @@
 #endif
 
 
+#import "qk-log.h"
 #import "qk-macros.h"
 #import "qk-gl-util.h"
 #import "QKMutableStructArray.h"

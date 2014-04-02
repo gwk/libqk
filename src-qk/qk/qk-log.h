@@ -86,6 +86,18 @@ errFL(@"%s: %@", #array, [array map:^id(id var) { return __VA_ARGS__; }])
 #define LOGPY(x) { fprintf(stderr, "%s: ", #x); PyObject_Print((x), stderr, 0); fputc('\n', stderr); }
 
 
-void qk_err_item(NSString* item, NSString* end);
-void qk_err_items(NSArray* items, NSString* sep, NSString* end);
+static inline void qk_err_item(NSString* item, NSString* end) {
+  fputs(item.description.UTF8String, stderr);
+  if (end) {
+    fputs(end.UTF8String, stderr);
+  }
+}
+
+
+static inline void qk_err_items(NSArray* items, NSString* sep, NSString* end) {
+  NSString* string = [items componentsJoinedByString:sep]; // this method calls description on each element
+  qk_err_item(string, end);
+}
+
+
 

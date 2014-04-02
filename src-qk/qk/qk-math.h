@@ -3,7 +3,7 @@
 
 
 #import "qk-types.h"
-#import "qk-check.h"
+#import "qk-macros.h"
 
 
 Int logstar(Int n);

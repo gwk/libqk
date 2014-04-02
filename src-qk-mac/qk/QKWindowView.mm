@@ -4,6 +4,8 @@
 // TODO: either use this to actually y-invert coordinate space or else remove it entirely.
 // isFlipped does not propagate to subviews.
 
+
+#import "qk-log.h"
 #import "QKWindowView.h"
 
 

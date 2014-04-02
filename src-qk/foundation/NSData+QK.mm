@@ -2,7 +2,7 @@
 // Permission to use this file is granted in libqk-license.txt (ISC License).
 
 
-#import "qk-check.h"
+#import "qk-macros.h"
 #import "NSArray+QK.h"
 #import "NSBundle+QK.h"
 #import "NSError+QK.h"

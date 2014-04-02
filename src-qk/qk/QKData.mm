@@ -3,6 +3,7 @@
 
 
 #import "qk-macros.h"
+#import "qk-log.h"
 #import "NSMutableData+QK.h"
 #import "QKData.h"
 

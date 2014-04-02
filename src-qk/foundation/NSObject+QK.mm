@@ -3,7 +3,7 @@
 
 
 #import "qk-log.h"
-#import "qk-check.h"
+#import "qk-macros.h"
 #import "NSObject+QK.h"
 
 

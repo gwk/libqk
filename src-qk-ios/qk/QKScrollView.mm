@@ -3,6 +3,7 @@
 
 
 #import "qk-macros.h"
+#import "qk-log.h"
 #import "qk-cg-util.h"
 #import "NSString+QK.h"
 #import "NSArray+QK.h"

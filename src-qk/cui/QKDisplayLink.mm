@@ -2,6 +2,7 @@
 // Permission to use this file is granted in libqk-license.txt (ISC License).
 
 
+#import "qk-macros.h"
 #import "NSTimer+QK.h"
 #import "QKDisplayLink.h"
 

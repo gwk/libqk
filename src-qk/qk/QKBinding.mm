@@ -2,6 +2,8 @@
 // Permission to use this file is granted in libqk-license.txt (ISC License).
 
 
+#import "qk-macros.h"
+#import "qk-log.h"
 #import "QKBinding.h"
 
 

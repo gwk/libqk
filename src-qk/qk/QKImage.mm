@@ -2,6 +2,7 @@
 // Permission to use this file is granted in libqk-license.txt (ISC License).
 
 #import <algorithm>
+#import "qk-log.h"
 #import "NSBundle+QK.h"
 #import "NSData+QK.h"
 #import "NSError+QK.h"
