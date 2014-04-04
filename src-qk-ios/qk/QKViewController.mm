@@ -18,6 +18,12 @@
 #pragma mark - UIViewController
 
 
+- (void)loadView {
+  [super loadView];
+  self.view.backgroundColor = [UIColor l:.5];
+}
+
+
 - (void)viewWillAppear:(BOOL)animated {
   errFL(@"viewWillAppear:%@ %@", BIT_YN(animated), self.class);
   [super viewWillAppear:animated];

@@ -33,6 +33,36 @@
 }
 
 
+- (UIImage*)backgroundImage {
+  return [self backgroundImageForState:UIControlStateNormal];
+}
+
+
+- (void)setBackgroundImage:(UIImage*)image {
+  [self setBackgroundImage:image forState:UIControlStateNormal];
+}
+
+
+- (UIImage*)litBackgroundImage {
+  return [self backgroundImageForState:UIControlStateHighlighted];
+}
+
+
+- (void)setLitBackgroundImage:(UIImage*)image {
+  [self setBackgroundImage:image forState:UIControlStateHighlighted];
+}
+
+
+- (UIImage*)disabledBackgroundImage {
+  return [self backgroundImageForState:UIControlStateDisabled];
+}
+
+
+- (void)setDisabledBackgroundImage:(UIImage*)image {
+  [self setBackgroundImage:image forState:UIControlStateDisabled];
+}
+
+
 - (NSString*)title {
   return [self titleForState:UIControlStateNormal];
 }
@@ -80,6 +110,16 @@
 
 - (void)setTitleColor:(UIColor *)color {
   [self setTitleColor:color forState:UIControlStateNormal];
+}
+
+
+- (UIColor*)litTitleColor {
+  return [self titleColorForState:UIControlStateHighlighted];
+}
+
+
+- (void)setLitTitleColor:(UIColor *)color {
+  [self setTitleColor:color forState:UIControlStateHighlighted];
 }
 
 

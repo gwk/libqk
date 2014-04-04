@@ -9,11 +9,27 @@
 @implementation UIImage (QK)
 
 
-+ (UIImage *)named:(NSString*)name {
++ (UIImage*)named:(NSString*)name {
     qk_assert(name, @"nil image name");    
     UIImage* image = [self imageNamed:name];
     qk_assert(image, @"no image for name: %@", name);
     return image;
+}
+
+
++ (UIImage*)withColor:(UIColor *)color size:(CGSize)size {
+  UIGraphicsBeginImageContext(size);
+  auto ctx = UIGraphicsGetCurrentContext();
+  CGContextSetFillColorWithColor(ctx, color.CGColor);
+  CGContextFillRect(ctx, (CGRect){CGPointZero, size});
+  auto image = UIGraphicsGetImageFromCurrentImageContext();
+  UIGraphicsEndImageContext();
+  return image;
+}
+
+
++ (UIImage*)withColor:(UIColor*)color {
+  return [self withColor:color size:CGSizeMake(1, 1)];
 }
 
 
@@ -27,8 +43,7 @@ typedef struct {
 } RGBA8;
 
 
-- (UIImage *)lumImageOpaque {
-  
+- (UIImage*)lumImageOpaque {
   
   CGFloat scale = self.scale;
   auto cg_img_src = self.CGImage;

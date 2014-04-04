@@ -4,8 +4,10 @@
 
 @interface UIImage (QK)
 
-+ (UIImage *)named:(NSString*)name;
++ (UIImage*)withColor:(UIColor *)color size:(CGSize)size;
++ (UIImage*)withColor:(UIColor*)color;
++ (UIImage*)named:(NSString*)name;
 
-- (UIImage *)lumImageOpaque;
+- (UIImage*)lumImageOpaque;
 
 @end
