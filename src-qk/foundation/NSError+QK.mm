@@ -9,9 +9,14 @@
 
 
 + (NSError*)withDomain:(NSString*)domain code:(int)code desc:(NSString*)desc info:(NSDictionary*)info {
-  NSMutableDictionary* d = info.mutableCopy;
+  NSMutableDictionary* d = [NSMutableDictionary dictionaryWithDictionary:info];
   [d setObject:desc forKey:NSLocalizedDescriptionKey];
   return [self errorWithDomain:domain code:code userInfo:d];
+}
+
+
++ (NSError*)withDesc:(NSString*)desc {
+  return [self withDomain:@"GenericErrorDomain" code:0 desc:desc info:nil];
 }
 
 

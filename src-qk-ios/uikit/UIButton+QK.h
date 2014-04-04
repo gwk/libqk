@@ -13,6 +13,7 @@
 @property (nonatomic) NSAttributedString* attrTitle;
 @property (nonatomic) NSAttributedString* litAttrTitle;
 @property (nonatomic) UIColor* titleColor;
+@property (nonatomic) UIColor* disabledTitleColor;
 
 + (instancetype)withFrame:(CGRect)frame
                      flex:(UIFlex)flex

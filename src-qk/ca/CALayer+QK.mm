@@ -10,6 +10,30 @@
 @implementation CALayer (QK)
 
 
+DEF_INIT(Frame:(CGRect)frame) {
+  INIT(self init);
+  self.frame = frame;
+  return self;
+}
+
+
+DEF_INIT(Frame:(CGRect)frame color:(CUIColor*)color) {
+  INIT(self initWithFrame:frame);
+  self.color = color;
+  return self;
+}
+
+
+- (CUIColor*)color {
+  return [CUIColor colorWithCGColor:self.backgroundColor];
+}
+
+
+- (void)setColor:(CUIColor*)color {
+  self.backgroundColor = color.CGColor;
+}
+
+
 PROPERTY_STRUCT_FIELD(CGPoint, origin, Origin, CGRect, self.frame, origin);
 PROPERTY_STRUCT_FIELD(CGSize, size, Size, CGRect, self.frame, size);
 PROPERTY_STRUCT_FIELD(CGFloat, x, X, CGRect, self.frame, origin.x);

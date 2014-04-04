@@ -5,6 +5,7 @@
 @interface NSError (QK)
 
 + (NSError*)withDomain:(NSString*)domain code:(int)code desc:(NSString*)desc info:(NSDictionary*)info;
++ (NSError*)withDesc:(NSString*)desc;
 
 @end
 

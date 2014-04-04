@@ -2,12 +2,10 @@
 // Permission to use this file is granted in libqk-license.txt (ISC License).
 
 
-@interface CALayer (QK)
+#import "CUIColor.h"
 
-- (void)inspect;
-- (void)inspect:(NSString*)label;
-- (void)inspectParents;
-- (void)inspectParents:(NSString*)label;
+
+@interface CALayer (QK)
 
 @property(nonatomic) CGFloat x;
 @property(nonatomic) CGFloat y;
@@ -17,6 +15,16 @@
 @property(nonatomic) CGFloat b;
 @property(nonatomic) CGFloat px;
 @property(nonatomic) CGFloat py;
+
+@property (nonatomic) CUIColor* color; // background color.
+
+DEC_INIT(Frame:(CGRect)frame);
+DEC_INIT(Frame:(CGRect)frame color:(CUIColor*)color);
+
+- (void)inspect;
+- (void)inspect:(NSString*)label;
+- (void)inspectParents;
+- (void)inspectParents:(NSString*)label;
 
 @end
 
