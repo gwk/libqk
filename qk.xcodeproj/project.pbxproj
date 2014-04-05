@@ -74,8 +74,6 @@
 		EC68672D18C652550037AFE2 /* QKCGContext.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC6866B518C652550037AFE2 /* QKCGContext.mm */; };
 		EC68672E18C652550037AFE2 /* QKCGImage.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC6866B718C652550037AFE2 /* QKCGImage.mm */; };
 		EC68672F18C652550037AFE2 /* QKCGImage.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC6866B718C652550037AFE2 /* QKCGImage.mm */; };
-		EC68673018C652550037AFE2 /* CALayer+CUI.m in Sources */ = {isa = PBXBuildFile; fileRef = EC6866BA18C652550037AFE2 /* CALayer+CUI.m */; };
-		EC68673118C652550037AFE2 /* CALayer+CUI.m in Sources */ = {isa = PBXBuildFile; fileRef = EC6866BA18C652550037AFE2 /* CALayer+CUI.m */; };
 		EC68673218C652550037AFE2 /* CUIColor.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC6866BC18C652550037AFE2 /* CUIColor.mm */; };
 		EC68673318C652550037AFE2 /* CUIColor.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC6866BC18C652550037AFE2 /* CUIColor.mm */; };
 		EC68673418C652550037AFE2 /* CUIView.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC6866BE18C652550037AFE2 /* CUIView.mm */; };
@@ -299,8 +297,6 @@
 		EC6866B518C652550037AFE2 /* QKCGContext.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = QKCGContext.mm; sourceTree = "<group>"; };
 		EC6866B618C652550037AFE2 /* QKCGImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKCGImage.h; sourceTree = "<group>"; };
 		EC6866B718C652550037AFE2 /* QKCGImage.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = QKCGImage.mm; sourceTree = "<group>"; };
-		EC6866B918C652550037AFE2 /* CALayer+CUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+CUI.h"; sourceTree = "<group>"; };
-		EC6866BA18C652550037AFE2 /* CALayer+CUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+CUI.m"; sourceTree = "<group>"; };
 		EC6866BB18C652550037AFE2 /* CUIColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUIColor.h; sourceTree = "<group>"; };
 		EC6866BC18C652550037AFE2 /* CUIColor.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CUIColor.mm; sourceTree = "<group>"; };
 		EC6866BD18C652550037AFE2 /* CUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUIView.h; sourceTree = "<group>"; };
@@ -1337,8 +1333,6 @@
 		EC6866B818C652550037AFE2 /* cui */ = {
 			isa = PBXGroup;
 			children = (
-				EC6866B918C652550037AFE2 /* CALayer+CUI.h */,
-				EC6866BA18C652550037AFE2 /* CALayer+CUI.m */,
 				EC68679618C6546D0037AFE2 /* CCAGLLayer.h */,
 				EC68679718C6546D0037AFE2 /* CCAGLLayer.mm */,
 				EC6866BB18C652550037AFE2 /* CUIColor.h */,
@@ -2512,7 +2506,6 @@
 				EC68675218C652550037AFE2 /* NSString+QK.mm in Sources */,
 				EC6866A518C651BD0037AFE2 /* NSMenuItem+QK.mm in Sources */,
 				EC68674C18C652550037AFE2 /* NSMutableDictionary+QK.mm in Sources */,
-				EC68673018C652550037AFE2 /* CALayer+CUI.m in Sources */,
 				EC68676A18C652550037AFE2 /* qk-gl-util.mm in Sources */,
 				EC68679418C653A00037AFE2 /* QKImage.mm in Sources */,
 				EC68674E18C652550037AFE2 /* NSObject+QK.mm in Sources */,
@@ -2637,7 +2630,6 @@
 				EC68676718C652550037AFE2 /* GLVertexShader.mm in Sources */,
 				EC68676918C652550037AFE2 /* GLView.mm in Sources */,
 				EC68668518C651B30037AFE2 /* QKViewController.mm in Sources */,
-				EC68673118C652550037AFE2 /* CALayer+CUI.m in Sources */,
 				EC68677F18C652550037AFE2 /* QKMutableStructArray.mm in Sources */,
 				EC102E45182AD07100BBAB20 /* TestScrollController.mm in Sources */,
 				EC68676318C652550037AFE2 /* GLTestScene.mm in Sources */,
