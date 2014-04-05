@@ -13,7 +13,7 @@
 
 
 - (NSString*)description {
-  return [NSString withFormat:@"<QKStructArray %p: es:%u count:%lu>", self, self.elSize, self.count];
+  return fmt(@"<QKStructArray %p: es:%u count:%lu>", self, self.elSize, self.count);
 }
 
 

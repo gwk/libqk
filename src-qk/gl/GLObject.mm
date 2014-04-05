@@ -16,7 +16,7 @@
 
 
 - (NSString*)description {
-  return [NSString withFormat:@"<%@ %p: %d>", self.class, self, _handle];
+  return fmt(@"<%@ %p: %d>", self.class, self, _handle);
 }
 
 

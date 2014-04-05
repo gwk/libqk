@@ -25,7 +25,7 @@
 
 
 - (NSString*)description {
-  return [NSString withFormat:@"<%@ %p: %@ %@>", self.class, self, QKPixFmtDesc(_format), V2I32Desc(_size)];
+  return fmt(@"<%@ %p: %@ %@>", self.class, self, QKPixFmtDesc(_format), V2I32Desc(_size));
 }
 
 

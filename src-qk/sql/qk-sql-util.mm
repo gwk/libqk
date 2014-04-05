@@ -10,7 +10,7 @@
 #endif
 
 NSString* sql_failure_str(sqlite3* db, int code) {
-  return [NSString withFormat:@"SQLite failure: %@\n%s\n", sql_code_description(code), sqlite3_errmsg(db)];
+  return fmt(@"SQLite failure: %@\n%s\n", sql_code_description(code), sqlite3_errmsg(db));
 }
 
 

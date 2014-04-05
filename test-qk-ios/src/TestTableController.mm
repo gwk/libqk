@@ -27,7 +27,7 @@ PROPERTY_SUBCLASS_ALIAS(QKTableView, tableView, TableView, self.view);
 
 
 - (void)loadView {
-  NSArray* rows = [NSArray mapIntTo:64 block:^(Int i){ return [NSString withFormat:@"%ld", i]; }];
+  NSArray* rows = [NSArray mapIntTo:64 block:^(Int i){ return fmt(@"%ld", i]; });
   
   self.tableView = [QKTableView withFlexFrame:CGRect256
                              scrollHorizontal:YES

@@ -33,7 +33,7 @@
 
 
 - (NSString*)description {
-  return [NSString withFormat:@"<%@ %p %d; %@>", self.class, self, _handle, _shaders];
+  return fmt(@"<%@ %p %d; %@>", self.class, self, _handle, _shaders);
 }
 
 

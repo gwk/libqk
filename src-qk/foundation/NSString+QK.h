@@ -6,6 +6,8 @@
 #import "qk-block-types.h"
 
 
+#define fmt(...) [NSString stringWithFormat:__VA_ARGS__]
+
 // return the string if it is not nil, otherwise return the blank string
 #define STRING_OR_EMPTY(str) \
 ({ NSString* _str = (str); _str ? _str : @""; })

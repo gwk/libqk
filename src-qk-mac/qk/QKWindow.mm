@@ -35,7 +35,7 @@
 
 
 - (NSString*)description {
-  return [NSString withFormat:@"<%@ %p: %@>", self.class, self, NSStringFromCGRect(self.frame)];
+  return fmt(@"<%@ %p: %@>", self.class, self, NSStringFromCGRect(self.frame));
 }
 
 
