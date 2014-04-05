@@ -20,7 +20,7 @@
   self.view.backgroundColor = [UIColor l:.5];
   UIView* v = [UIView withFlexFrame];
   CGFloat x = 4 + self.insetTop;
-  CGFloat w = v.width - x * 2;
+  CGFloat w = v.w - x * 2;
   CGFloat h = 60;
 
   UILabel* uil = [UILabel withFrame:CGRectMake(x, x, w, h) flex:UIFlexWidth];

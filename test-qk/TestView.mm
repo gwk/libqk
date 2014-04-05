@@ -56,7 +56,7 @@ void drawPoint(CGContextRef ctx, CGPoint p, CGFloat width) {
 
 
 - (void)layoutSublayersOfLayer:(CALayer *)layer {
-  CGSize s = self.boundsSize;
+  CGSize s = self.bs;
   _a = CGPointMake(s.width / 2, 0);
   _b = CGPointMake(0, s.height);
   _c = CGPointMake(s.width, s.height);

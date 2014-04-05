@@ -37,19 +37,20 @@ extern const UIFlex UIFlexWidthRight;
 @interface CUIView (CUI)
 
 @property(nonatomic) UIFlex flex;
-@property(nonatomic) CGPoint origin;
-@property(nonatomic) CGSize size;
+@property(nonatomic) CGPoint o;
+@property(nonatomic) CGSize s;
 @property(nonatomic) CGFloat x;
 @property(nonatomic) CGFloat y;
-@property(nonatomic) CGFloat width;
-@property(nonatomic) CGFloat height;
-@property(nonatomic) CGFloat centerX;
-@property(nonatomic) CGFloat centerY;
-@property(nonatomic) CGFloat right;
-@property(nonatomic) CGFloat bottom;
-@property(nonatomic) CGPoint boundsCenter;
-@property(nonatomic) CGPoint boundsOrigin;
-@property(nonatomic) CGSize boundsSize;
+@property(nonatomic) CGFloat w;
+@property(nonatomic) CGFloat h;
+@property(nonatomic) CGPoint c;
+@property(nonatomic) CGFloat cx;
+@property(nonatomic) CGFloat cy;
+@property(nonatomic) CGFloat r;
+@property(nonatomic) CGFloat b;
+@property(nonatomic) CGPoint bc;
+@property(nonatomic) CGPoint bo;
+@property(nonatomic) CGSize bs;
 
 
 DEC_WITH(Frame:(CGRect)frame);

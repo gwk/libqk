@@ -46,7 +46,7 @@ DEF_INIT(View:(CUIView *)view
          position:(CGPoint)position
          activate:(BOOL)activate) {
   
-  if (view.width < 1 || view.height < 1) {
+  if (view.w < 1 || view.h < 1) {
     errFL(@"WARNING: view is degenerate: %@", view);
   }
   INIT(super initWithContentRect:view.frame styleMask:styleMask backing:NSBackingStoreBuffered defer:YES);

@@ -40,9 +40,6 @@ const UIFlex UIFlexWidthRight = UIFlexWidth | UIFlexRight;
 
 @implementation CUIView (CUI)
 
-// implemented differently in UIView+QK and NSView+QK; AppKit already defines the setters.
-@dynamic boundsOrigin, boundsSize;
-
 
 DEF_WITH(Frame:(CGRect)frame);
 
@@ -84,52 +81,55 @@ DEC_WITH(Frame:(CGRect)frame flex:(UIFlex)flex  color:(CUIColor*)color) {
 
 
 PROPERTY_ALIAS(UIFlex, flex, Flex, self.autoresizingMask);
+PROPERTY_ALIAS(CGPoint, c, C, self.center);
 
-PROPERTY_STRUCT_FIELD(CGPoint, origin, Origin, CGRect, self.frame, origin);
-PROPERTY_STRUCT_FIELD(CGSize, size, Size, CGRect, self.frame, size);
+PROPERTY_STRUCT_FIELD(CGPoint, o, O, CGRect, self.frame, origin);
+PROPERTY_STRUCT_FIELD(CGSize, s, S, CGRect, self.frame, size);
 PROPERTY_STRUCT_FIELD(CGFloat, x, X, CGRect, self.frame, origin.x);
 PROPERTY_STRUCT_FIELD(CGFloat, y, Y, CGRect, self.frame, origin.y);
-PROPERTY_STRUCT_FIELD(CGFloat, width, Width, CGRect, self.frame, size.width);
-PROPERTY_STRUCT_FIELD(CGFloat, height, Height, CGRect, self.frame, size.height);
-PROPERTY_STRUCT_FIELD(CGFloat, centerX, CenterX, CGPoint, self.center, x);
-PROPERTY_STRUCT_FIELD(CGFloat, centerY, CenterY, CGPoint, self.center, y);
+PROPERTY_STRUCT_FIELD(CGFloat, w, W, CGRect, self.frame, size.width);
+PROPERTY_STRUCT_FIELD(CGFloat, h, H, CGRect, self.frame, size.height);
+PROPERTY_STRUCT_FIELD(CGFloat, cx, Cx, CGPoint, self.center, x);
+PROPERTY_STRUCT_FIELD(CGFloat, cy, Cy, CGPoint, self.center, y);
+PROPERTY_STRUCT_FIELD(CGPoint, bo, Bo, CGRect, self.bounds, origin);
+PROPERTY_STRUCT_FIELD(CGSize, bs, Bs, CGRect, self.bounds, size);
 
 
-- (CGFloat)right {
+- (CGFloat)r {
   CGRect f = self.frame;
   return f.origin.x + f.size.width;
 }
 
 
-- (void)setRight:(CGFloat)right {
+- (void)setR:(CGFloat)r {
   CGRect f = self.frame;
-  f.origin.x = right - f.size.width;
+  f.origin.x = r - f.size.width;
   self.frame = f;
 }
 
 
-- (CGFloat)bottom {
+- (CGFloat)b {
   CGRect f = self.frame;
   return f.origin.y + f.size.height;
 }
 
 
-- (void)setBottom:(CGFloat)bottom {
+- (void)setB:(CGFloat)b {
   CGRect f = self.frame;
-  f.origin.y = bottom - f.size.height;
+  f.origin.y = b - f.size.height;
   self.frame = f;
 }
 
 
-- (CGPoint)boundsCenter {
+- (CGPoint)bc {
   CGRect b = self.bounds;
   return CGPointMake(b.origin.x + b.size.width * .5, b.origin.y + b.size.height * .5);
 }
 
 
-- (void)setBoundsCenter:(CGPoint)boundsCenter {
+- (void)setBc:(CGPoint)bc {
   CGSize s = self.bounds.size;
-  self.boundsOrigin = CGPointMake(boundsCenter.x - s.width * .5, boundsCenter.y - s.height * .5);
+  self.bo = CGPointMake(bc.x - s.width * .5, bc.y - s.height * .5);
 }
 
 

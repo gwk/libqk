@@ -85,13 +85,13 @@ DEF_INIT(FlexFrame:(CGRect)frame
       cell = _blockCellConstructor(type);
       cell.flex = flex;
     }
-    cell.frame = CGRectMake(0, y, w, cell.height);
+    cell.frame = CGRectMake(0, y, w, cell.h);
     APPLY_LIVE_BLOCK(_blockConfigureCell, cell, path, row);
-    if (cell.width > w) {
-      w = cell.width;
+    if (cell.w > w) {
+      w = cell.w;
     }
     [self addSubview:cell];
-    y = cell.bottom;
+    y = cell.b;
   }
   self.contentSize = CGSizeMake(w, y);
 }

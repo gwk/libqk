@@ -24,18 +24,6 @@
 }
 
 
-// NSView already defines setBoundsOrigin; define the accessor to match the PROPERTY_STRUCT_FIELD declaration in UIView+QK.
-- (CGPoint)boundsOrigin {
-  return self.bounds.origin;
-}
-
-
-// NSView already defines setBoundsSize; define the accessor to match the PROPERTY_STRUCT_FIELD declaration in UIView+QK.
-- (CGSize)boundsSize {
-  return self.bounds.size;
-}
-
-
 + (Class)layerClass {
   return [CALayer class];
 }

@@ -11,10 +11,6 @@
 @implementation UIView (QK)
 
 
-PROPERTY_STRUCT_FIELD(CGPoint, boundsOrigin, BoundsOrigin, CGRect, self.bounds, origin);
-PROPERTY_STRUCT_FIELD(CGSize, boundsSize, BoundsSize, CGRect, self.bounds, size);
-
-
 - (void)setupLayer {} // no-op for ios.
 
 

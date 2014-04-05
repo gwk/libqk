@@ -36,7 +36,7 @@
 
 
 - (void)setContentOffsetClamped:(CGPoint)contentOffset animated:(BOOL)animated {
-  CGSize bs = self.boundsSize;
+  CGSize bs = self.bs;
   CGSize cs = self.contentSize;
   CGPoint o = CGPointMake(CLAMP(contentOffset.x, 0, cs.width - bs.width),
                           CLAMP(contentOffset.y, 0, cs.height - bs.height));
@@ -53,7 +53,7 @@
 
 
 - (void)centerOnContentPoint:(CGPoint)point animated:(BOOL)animated {
-  CGSize bs = self.boundsSize;
+  CGSize bs = self.bs;
   // bounds half: the 'center' of bounds.size; not offset by origin like boundsCenter
   CGPoint bh = CGPointMake(bs.width * .5, bs.height * .5);
   CGPoint o = CGPointMake(point.x - bh.x, point.y - bh.y);
@@ -67,7 +67,7 @@
 
 
 - (void)centerOnContentRect:(CGRect)rect animated:(BOOL)animated {
-  CGSize bs = self.boundsSize;
+  CGSize bs = self.bs;
   CGPoint o = CGPointMake(rect.origin.x - (bs.width - rect.size.width) * .5,
                           rect.origin.y - (bs.height - rect.size.height) * .5);
   [self setContentOffsetClamped:o animated:animated];
@@ -82,7 +82,7 @@
 // center on the rect, and make the point within it visible.
 // if rect does not contain point then ignore point (perhaps this could be improved).
 - (void)centerOnContentRect:(CGRect)rect point:(CGPoint)point animated:(BOOL)animated {
-  CGSize bs = self.boundsSize;
+  CGSize bs = self.bs;
   CGRect cb = self.contentBounds;
   // offset for rectangle
   CGPoint o = CGPointMake(rect.origin.x - (bs.width - rect.size.width) * .5,
@@ -141,7 +141,7 @@
 
 
 - (void)constrainMinZoomToInsideContent {
-  CGSize bs = self.boundsSize;
+  CGSize bs = self.bs;
   CGSize cs = self.contentSize;
   if (bs.width < 1 || bs.height < 1 || cs.width < 1 || cs.height < 1) {
     errFL(@"constrainMinZoomToInsideContent: degenerate: bounds.size: %@; contentFrameSize: %@",

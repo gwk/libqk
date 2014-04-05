@@ -92,7 +92,7 @@
 
 - (void)setContentSize:(CGSize)contentSize {
   [super setContentSize:contentSize];
-  _zoomViewQKScrollView.size = self.contentSize;
+  _zoomViewQKScrollView.s = self.contentSize;
 }
 
 
@@ -218,12 +218,12 @@
 
 
 - (CGPoint)zoomContentCenter {
-  return _zoomViewQKScrollView.boundsCenter;
+  return _zoomViewQKScrollView.bc;
 }
 
 
 - (CGPoint)zoomBoundsCenter {
-  return mul(self.boundsCenter, 1.0 / self.zoomScale);
+  return mul(self.bc, 1.0 / self.zoomScale);
 }
 
 

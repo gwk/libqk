@@ -32,21 +32,21 @@
     }
 #endif
     if (_direction == QKLayoutHorizontal) {
-      v.origin = p;
-      l = v.right;
+      v.o = p;
+      l = v.r;
       p.x = l + _margin;
     }
     else if (_direction == QKLayoutVertical) {
-      v.origin = p;
-      l = v.bottom;
+      v.o = p;
+      l = v.b;
       p.y = l + _margin;
     }
   }
   if (_direction == QKLayoutHorizontal) {
-    self.width = l;
+    self.w = l;
   }
   else if (_direction == QKLayoutVertical) {
-    self.height = l;
+    self.h = l;
   }
   APPLY_LIVE_BLOCK(_blockPost);
 }
