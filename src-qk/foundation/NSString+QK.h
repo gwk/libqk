@@ -40,6 +40,32 @@
 
 - (void)walkPathDeep:(BlockDoString)block;
 
+#if TARGET_OS_IPHONE
+
++ (NSDictionary*)attributesForFont:(UIFont*)font
+                         lineBreak:(NSLineBreakMode)lineBreak
+                         alignment:(NSTextAlignment)alignment;
+
+- (CGSize)sizeForFont:(UIFont*)font
+            lineBreak:(NSLineBreakMode)lineBreak
+                    w:(CGFloat)w
+                    h:(CGFloat)h;
+
+- (CGFloat)widthForFont:(UIFont*)font lineBreak:(NSLineBreakMode)lineBreak w:(CGFloat)w;
+
+- (CGFloat)heightForFont:(UIFont*)font
+               lineBreak:(NSLineBreakMode)lineBreak
+                       w:(CGFloat)w
+                       h:(CGFloat)h
+                 lineMin:(int)lineMin;
+
+- (void)drawInRect:(CGRect)rect
+              font:(UIFont*)font
+         lineBreak:(NSLineBreakMode)lineBreak
+         alignment:(NSTextAlignment)alignment;
+
+#endif // TARGET_OS_IPHONE
+
 @end
 
 

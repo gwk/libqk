@@ -34,7 +34,6 @@
 		EC102ECF182AF1C500BBAB20 /* uni-color.frag in Resources */ = {isa = PBXBuildFile; fileRef = ECDCABDB18299E94008CEB6D /* uni-color.frag */; };
 		EC102ED0182AF1C500BBAB20 /* var-color.frag in Resources */ = {isa = PBXBuildFile; fileRef = ECDCABDC18299E94008CEB6D /* var-color.frag */; };
 		EC68667C18C651B30037AFE2 /* CADisplayLink+QK.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC68664A18C651B30037AFE2 /* CADisplayLink+QK.mm */; };
-		EC68667D18C651B30037AFE2 /* NSString+QKI.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC68664D18C651B30037AFE2 /* NSString+QKI.mm */; };
 		EC68667E18C651B30037AFE2 /* QKApplicationDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC68665018C651B30037AFE2 /* QKApplicationDelegate.mm */; };
 		EC68667F18C651B30037AFE2 /* QKImageView.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC68665218C651B30037AFE2 /* QKImageView.mm */; };
 		EC68668018C651B30037AFE2 /* QKScrollView.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC68665418C651B30037AFE2 /* QKScrollView.mm */; };
@@ -229,8 +228,6 @@
 		EC102EA9182AD86B00BBAB20 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
 		EC68664918C651B30037AFE2 /* CADisplayLink+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CADisplayLink+QK.h"; sourceTree = "<group>"; };
 		EC68664A18C651B30037AFE2 /* CADisplayLink+QK.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "CADisplayLink+QK.mm"; sourceTree = "<group>"; };
-		EC68664C18C651B30037AFE2 /* NSString+QKI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+QKI.h"; sourceTree = "<group>"; };
-		EC68664D18C651B30037AFE2 /* NSString+QKI.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "NSString+QKI.mm"; sourceTree = "<group>"; };
 		EC68664F18C651B30037AFE2 /* QKApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKApplicationDelegate.h; sourceTree = "<group>"; };
 		EC68665018C651B30037AFE2 /* QKApplicationDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = QKApplicationDelegate.mm; sourceTree = "<group>"; };
 		EC68665118C651B30037AFE2 /* QKImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKImageView.h; sourceTree = "<group>"; };
@@ -1174,7 +1171,6 @@
 			isa = PBXGroup;
 			children = (
 				EC68664818C651B30037AFE2 /* ca */,
-				EC68664B18C651B30037AFE2 /* foundation */,
 				EC68664E18C651B30037AFE2 /* qk */,
 				EC68666118C651B30037AFE2 /* uikit */,
 			);
@@ -1188,15 +1184,6 @@
 				EC68664A18C651B30037AFE2 /* CADisplayLink+QK.mm */,
 			);
 			path = ca;
-			sourceTree = "<group>";
-		};
-		EC68664B18C651B30037AFE2 /* foundation */ = {
-			isa = PBXGroup;
-			children = (
-				EC68664C18C651B30037AFE2 /* NSString+QKI.h */,
-				EC68664D18C651B30037AFE2 /* NSString+QKI.mm */,
-			);
-			path = foundation;
 			sourceTree = "<group>";
 		};
 		EC68664E18C651B30037AFE2 /* qk */ = {
@@ -2602,7 +2589,6 @@
 				EC68669018C651B30037AFE2 /* UIScrollView+QK.mm in Sources */,
 				EC68667C18C651B30037AFE2 /* CADisplayLink+QK.mm in Sources */,
 				EC68678118C652550037AFE2 /* QKPixFmt.mm in Sources */,
-				EC68667D18C651B30037AFE2 /* NSString+QKI.mm in Sources */,
 				EC68678918C652550037AFE2 /* qk-sql-util.mm in Sources */,
 				EC68674F18C652550037AFE2 /* NSObject+QK.mm in Sources */,
 				EC68676118C652550037AFE2 /* GLShader.mm in Sources */,
