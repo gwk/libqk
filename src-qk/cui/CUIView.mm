@@ -72,6 +72,11 @@ DEF_INIT(FlexSize:(CGSize)size) {
 }
 
 
+DEF_INIT(Size:(CGSize)size flex:(UIFlex)flex) {
+  return [self initWithFrame:CGRectWithS(size) flex:flex];
+}
+
+
 DEC_WITH(Frame:(CGRect)frame flex:(UIFlex)flex  color:(CUIColor*)color) {
   CUIView* v = [self withFrame:frame flex:flex];
   v.opaque = (color.a >= .999);
