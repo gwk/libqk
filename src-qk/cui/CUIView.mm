@@ -96,6 +96,8 @@ PROPERTY_STRUCT_FIELD(CGFloat, w, W, CGRect, self.frame, size.width);
 PROPERTY_STRUCT_FIELD(CGFloat, h, H, CGRect, self.frame, size.height);
 PROPERTY_STRUCT_FIELD(CGFloat, cx, Cx, CGPoint, self.center, x);
 PROPERTY_STRUCT_FIELD(CGFloat, cy, Cy, CGPoint, self.center, y);
+PROPERTY_STRUCT_FIELD(CGFloat, bcx, Bcx, CGPoint, self.bc, x);
+PROPERTY_STRUCT_FIELD(CGFloat, bcy, Bcy, CGPoint, self.bc, y);
 PROPERTY_STRUCT_FIELD(CGPoint, bo, Bo, CGRect, self.bounds, origin);
 PROPERTY_STRUCT_FIELD(CGSize, bs, Bs, CGRect, self.bounds, size);
 

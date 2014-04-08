@@ -49,6 +49,8 @@ extern const UIFlex UIFlexWidthRight;
 @property(nonatomic) CGFloat r;
 @property(nonatomic) CGFloat b;
 @property(nonatomic) CGPoint bc;
+@property(nonatomic) CGFloat bcx;
+@property(nonatomic) CGFloat bcy;
 @property(nonatomic) CGPoint bo;
 @property(nonatomic) CGSize bs;
 
