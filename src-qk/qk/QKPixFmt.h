@@ -103,5 +103,5 @@ int QKPixFmtMultisamples(QKPixFmt format);
 CGColorSpaceRef QKPixFmtCreateCGColorSpace(QKPixFmt format);
 
 #if LIB_JPG_AVAILABLE
-TJPF QKPixFmtTJPF(QKPixFmt format);
+enum TJPF QKPixFmtTJPF(QKPixFmt format);
 #endif
