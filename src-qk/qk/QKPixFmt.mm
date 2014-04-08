@@ -67,7 +67,7 @@ QKPixFmt QKPixFmtFromString(NSString* string) {
 }
 
 
-int QKPixFmtBitsPerChannel(QKPixFmt format) {
+Int QKPixFmtBitsPerChannel(QKPixFmt format) {
   if (format & QKPixFmtBitF32) {
     return 32;
   }
@@ -79,8 +79,8 @@ int QKPixFmtBitsPerChannel(QKPixFmt format) {
 }
 
 
-int QKPixFmtChannels(QKPixFmt format) {
-  int comps = 0;
+Int QKPixFmtChannels(QKPixFmt format) {
+  Int comps = 0;
   if (format & QKPixFmtBitRGB) {
     comps = 3;
   }
@@ -94,19 +94,19 @@ int QKPixFmtChannels(QKPixFmt format) {
 }
 
 
-int QKPixFmtBitsPerPixel(QKPixFmt format) {
+Int QKPixFmtBitsPerPixel(QKPixFmt format) {
   return QKPixFmtBitsPerChannel(format) * QKPixFmtChannels(format);
 }
 
 
-int QKPixFmtBytesPerPixel(QKPixFmt format) {
-  int bpp = QKPixFmtBitsPerPixel(format);
-  qk_assert(bpp % 8 == 0, @"irregular bits per pixel: %d", bpp);
+Int QKPixFmtBytesPerPixel(QKPixFmt format) {
+  Int bpp = QKPixFmtBitsPerPixel(format);
+  qk_assert(bpp % 8 == 0, @"irregular bits per pixel: %ld", bpp);
   return bpp / 8;
 }
 
 
-int QKPixFmtBitmapInfo(QKPixFmt format) {
+CGBitmapInfo QKPixFmtBitmapInfo(QKPixFmt format) {
   CGBitmapInfo info;
   if (format & (QKPixFmtBitL | QKPixFmtBitRGB)) {
     if (format & QKPixFmtBitA) {
@@ -136,7 +136,7 @@ int QKPixFmtBitmapInfo(QKPixFmt format) {
 // GL_RED, GL_RED_INTEGER, GL_RG, GL_RG_INTEGER, GL_RGB, GL_RGB_INTEGER, GL_RGBA, GL_RGBA_INTEGER, GL_ALPHA,
 // GL_DEPTH_COMPONENT, GL_DEPTH_STENCIL, GL_LUMINANCE_ALPHA, GL_LUMINANCE.
 
-int QKPixFmtGlDataFormat(QKPixFmt format) {
+GLenum QKPixFmtGlDataFormat(QKPixFmt format) {
   switch (format) {
     case QKPixFmtRGBU8: return GL_RGB;
     case QKPixFmtRGBAU8: return GL_RGBA;
@@ -152,7 +152,7 @@ int QKPixFmtGlDataFormat(QKPixFmt format) {
 // GL_UNSIGNED_INT_2_10_10_10_REV, GL_UNSIGNED_INT_10F_11F_11F_REV, GL_UNSIGNED_INT_5_9_9_9_REV,
 // GL_UNSIGNED_INT_24_8, GL_FLOAT_32_UNSIGNED_INT_24_8_REV.
 
-int QKPixFmtGlDataType(QKPixFmt format) {
+GLenum QKPixFmtGlDataType(QKPixFmt format) {
   switch (format) {
     case QKPixFmtRGBU8:
     case QKPixFmtRGBAU8: return GL_UNSIGNED_BYTE;
@@ -162,7 +162,7 @@ int QKPixFmtGlDataType(QKPixFmt format) {
 }
 
 
-int QKPixFmtColorSize(QKPixFmt format) {
+Int QKPixFmtColorSize(QKPixFmt format) {
   if (format & (QKPixFmtBitL | QKPixFmtBitRGB)) {
     return QKPixFmtBitsPerChannel(format);
   }
@@ -170,7 +170,7 @@ int QKPixFmtColorSize(QKPixFmt format) {
 }
 
 
-int QKPixFmtAlphaSize(QKPixFmt format) {
+Int QKPixFmtAlphaSize(QKPixFmt format) {
   if (format & QKPixFmtBitA) {
     return QKPixFmtBitsPerChannel(format);
   }
@@ -178,14 +178,14 @@ int QKPixFmtAlphaSize(QKPixFmt format) {
 }
 
 
-int QKPixFmtDepthSize(QKPixFmt format) {
+Int QKPixFmtDepthSize(QKPixFmt format) {
   if (format & QKPixFmtBitD16) return 16;
   if (format & QKPixFmtBitD24) return 24;
   return 0;
 }
 
 
-int QKPixFmtMultisamples(QKPixFmt format) {
+Int QKPixFmtMultisamples(QKPixFmt format) {
   if (format & QKPixFmtBitMS4) return 4;
   if (format & QKPixFmtBitMS9) return 9;
   return 0;

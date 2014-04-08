@@ -85,20 +85,20 @@ typedef enum {
 NSString* QKPixFmtDesc(QKPixFmt format);
 QKPixFmt QKPixFmtFromString(NSString* string);
 
-int QKPixFmtBitsPerChannel(QKPixFmt format);
-int QKPixFmtChannels(QKPixFmt format);
-int QKPixFmtBitsPerPixel(QKPixFmt format);
-int QKPixFmtBytesPerPixel(QKPixFmt format);
+Int QKPixFmtBitsPerChannel(QKPixFmt format);
+Int QKPixFmtChannels(QKPixFmt format);
+Int QKPixFmtBitsPerPixel(QKPixFmt format);
+Int QKPixFmtBytesPerPixel(QKPixFmt format);
 
-int QKPixFmtBitmapInfo(QKPixFmt format);
+CGBitmapInfo QKPixFmtBitmapInfo(QKPixFmt format);
 
-int QKPixFmtGlDataFormat(QKPixFmt format);
-int QKPixFmtGlDataType(QKPixFmt format);
+GLenum QKPixFmtGlDataFormat(QKPixFmt format);
+GLenum QKPixFmtGlDataType(QKPixFmt format);
 
-int QKPixFmtColorSize(QKPixFmt format);
-int QKPixFmtAlphaSize(QKPixFmt format);
-int QKPixFmtDepthSize(QKPixFmt format);
-int QKPixFmtMultisamples(QKPixFmt format);
+Int QKPixFmtColorSize(QKPixFmt format);
+Int QKPixFmtAlphaSize(QKPixFmt format);
+Int QKPixFmtDepthSize(QKPixFmt format);
+Int QKPixFmtMultisamples(QKPixFmt format);
 
 CGColorSpaceRef QKPixFmtCreateCGColorSpace(QKPixFmt format);
 
