@@ -4,6 +4,7 @@
 
 #if TARGET_OS_IPHONE
 # define CUIColor UIColor
+#import <UIKit/UIKit.h>
 #else
 # define CUIColor NSColor
 #import <AppKit/NSColor.h>

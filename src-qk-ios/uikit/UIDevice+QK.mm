@@ -5,6 +5,7 @@
 #import <sys/types.h>
 #import <sys/sysctl.h>
 
+#import "NSString+QK.h"
 #import "UIDevice+QK.h"
 
 

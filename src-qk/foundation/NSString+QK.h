@@ -69,6 +69,8 @@
 @end
 
 
+#ifdef __cplusplus
+
 // autoreleased copies of strings
 Utf8 Utf8AR(Utf8 string);
 Utf32 Utf32AR(Utf32 string);
@@ -78,3 +80,5 @@ Utf8 Utf8With32(Utf32 string);
 
 Utf32 Utf32MWith8(Utf8 string);
 Utf8 Utf8MWith32(Utf32 string);
+
+#endif // __cplusplus

@@ -72,9 +72,6 @@ static inline CGRect inset(CGRect r, CUIEdgeInsets i) {
 }
 
 
-#endif // __cplusplus
-
-
 static inline CGFloat CGSizeAspect(CGSize s, CGFloat eps) {
   if (s.width < eps || s.height < eps) {
     return 1;
@@ -130,3 +127,7 @@ CGSize CGSizeWithAspectEnclosingSize(CGFloat aspect, CGSize s);
 CGSize CGSizeWithAspectEnclosedBySize(CGFloat aspect, CGSize s);
 CGRect CGRectWithAspectEnclosingRect(CGFloat aspect, CGRect r);
 CGRect CGRectWithAspectEnclosedByRect(CGFloat aspect, CGRect r);
+
+
+#endif // __cplusplus
+
