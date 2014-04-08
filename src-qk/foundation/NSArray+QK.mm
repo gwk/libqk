@@ -15,7 +15,7 @@
 }
 
 - (id)elOrNil:(Int)index {
-  return (index < self.count) ? [self objectAtIndex:index] : nil;
+  return (index < (Int)self.count) ? [self objectAtIndex:index] : nil;
 }
 
 

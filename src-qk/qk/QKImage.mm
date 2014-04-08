@@ -75,7 +75,7 @@ PROPERTY_STRUCT_FIELD(I32, height, Height, V2I32, _size, v[1]);
 
 
 - (void)validate {
-  qk_check(_size.v[0] >= 0 && _size.v[1] >= 0 && _size.v[0] * _size.v[1] * QKPixFmtBytesPerPixel(_format) == _data.length,
+  qk_check(_size.v[0] >= 0 && _size.v[1] >= 0 && _size.v[0] * _size.v[1] * QKPixFmtBytesPerPixel(_format) == (Int)_data.length,
            @"bad args; %@; data.length: %ld", self, self.length);
 }
 
