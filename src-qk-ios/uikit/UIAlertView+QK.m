@@ -19,4 +19,10 @@
     return alert;
 }
 
+
++ (UIAlertView*)showWithError:(NSError*)error {
+  return [self showWithTitle:@"Error" message:error.description cancelTitle:@"QK"];
+}
+
+
 @end

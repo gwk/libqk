@@ -5,5 +5,6 @@
 @interface UIAlertView (QK)
 
 + (UIAlertView*)showWithTitle:(NSString*)title message:(NSString*)message cancelTitle:(NSString*)cancelTitle;
++ (UIAlertView*)showWithError:(NSError*)error;
 
 @end
