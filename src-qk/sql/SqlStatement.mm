@@ -36,7 +36,7 @@ qk_assert(code == exp_code, @"%@\n%@\n" fmt, sql_failure_str(_db.handle, code), 
 }
 
 
-- (id)initWithDatabase:(SqlDatabase*)db query:(NSString*)query {
+DEF_INIT(Database:(SqlDatabase*)db query:(NSString*)query) {
   INIT(super init);
   _db = db;
   Utf8 tail = NULL;
@@ -170,7 +170,7 @@ STEP1(F64);
 
 
 - (void)bindIndex:(I32)index U64:(U64)value {
-  qk_assert(value <= max_I64, @"U64 value exceeds max_I64; cannot store in sqlite: %llu", value);
+  qk_check(value <= max_I64, @"U64 value exceeds max_I64; cannot store in sqlite: %llu", value);
   int code = sqlite3_bind_int64(_handle, index, value);
   _ASSERT_OK(@"bind I64: %d", index);
 }
@@ -185,6 +185,14 @@ STEP1(F64);
 - (void)bindIndex:(I32)index string:(NSString*)value {
   int code = sqlite3_bind_text(_handle, index, value.asUtf8, -1, SQLITE_TRANSIENT);
   _ASSERT_OK(@"bind string: %d; '%@'", index, value);
+}
+
+
+- (void)bindIndex:(I32)index data:(NSData*)value {
+  NSUInteger l = value.length;
+  qk_check(l < max_I32, @"data length exceeds max_I32; cannot store in sqlite: %p", value);
+  int code = sqlite3_bind_blob(_handle, index, value.bytes, (int)value.length, SQLITE_TRANSIENT);
+  _ASSERT_OK(@"bind data: %d; %@", index, value);
 }
 
 
@@ -216,7 +224,7 @@ qk_assert(index >= 0 && index < self.columnCount, @"bad index: %d; columnCount: 
 
 - (NSString*)getString:(I32)index {
   _ASSERT_VALID_INDEX;
-  return [NSString withUtf8:(Utf8)sqlite3_column_text(_handle, index)];
+  return [NSString withUtf8:(Utf8)sqlite3_column_text(_handle, index)]; // might be faster to use _blob and _bytes instead of _text.
 }
 
 
@@ -236,9 +244,14 @@ qk_assert(index >= 0 && index < self.columnCount, @"bad index: %d; columnCount: 
 }
 
 
+- (NSData*)getData:(I32)index {
+  _ASSERT_VALID_INDEX;
+  return [NSData dataWithBytes:sqlite3_column_blob(_handle, index) length:sqlite3_column_bytes(_handle, index)];
+}
+
 #define _COL(I, T, N) - (T) C##I##N { return [self get##N:I]; }
 #define _COLP(I, T) _COL(I, T, T)
-#define _COLS(I) _COLP(I, Int); _COLP(I, I64); _COLP(I, F64); _COL(I, NSString*, String);
+#define _COLS(I) _COLP(I, Int); _COLP(I, I64); _COLP(I, F64); _COL(I, NSString*, String); _COL(I, NSData*, Data)
 
 _COLS(0);
 _COLS(1);

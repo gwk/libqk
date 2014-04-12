@@ -9,11 +9,8 @@
 @class SqlStatement;
 
 // block types to perform an arbitrary actions on a statement as it steps through rows
-
 typedef void (^BlockStepSql)(SqlStatement* statement);
-
 typedef id (^BlockMapSql)(SqlStatement* statement);
-
 
 @interface SqlStatement : NSObject
 
@@ -23,7 +20,7 @@ typedef id (^BlockMapSql)(SqlStatement* statement);
 
 #define _COL(I, T, N) @property (nonatomic) T C##I##N
 #define _COLP(I, T) _COL(I, T, T)
-#define _COLS(I) _COLP(I, Int); _COLP(I, I64); _COLP(I, F64); _COL(I, NSString*, String);
+#define _COLS(I) _COLP(I, Int); _COLP(I, I64); _COLP(I, F64); _COL(I, NSString*, String); _COL(I, NSData*, Data)
 
 _COLS(0);
 _COLS(1);
@@ -40,8 +37,7 @@ _COLS(9);
 #undef _COLP
 #undef _COLS
 
-
-- (id)initWithDatabase:(SqlDatabase*)db query:(NSString*)query;
+DEC_INIT(Database:(SqlDatabase*)db query:(NSString*)query);
 
 - (void)reset;
 - (int)columnCount;
@@ -58,6 +54,7 @@ _COLS(9);
 - (void)bindIndex:(I32)index U64:(U64)value;
 - (void)bindIndex:(I32)index F64:(F64)value;
 - (void)bindIndex:(I32)index string:(NSString*)value;
+- (void)bindIndex:(I32)index data:(NSData*)value;
 - (Int)getInt:(I32)index;
 - (I64)getI64:(I32)index;
 - (F64)getF64:(I32)index;
