@@ -36,10 +36,12 @@ description:@"%@%@", expr_line, msg]; \
 abort(); \
 })
 
+# define qk_fail(...) _qk_fail((char*)NULL, __VA_ARGS__)
+
+#define qk_warn(...) NSLog(@"WARNING: " __VA_ARGS__)
+
 # define qk_check(expr, ...) \
 ((expr) ? (void)0 : _qk_fail(#expr, __VA_ARGS__))
-
-# define qk_fail(...) _qk_fail((char*)NULL, __VA_ARGS__)
 
 // soft checks simply print an error message
 # define qk_check_soft(expr, ...) \
