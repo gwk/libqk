@@ -30,6 +30,9 @@
 #define LOGP(x)         errFL(@"%s: %p", #x, (x))
 #define LOGI(x)         errFL(@"%s: %ld", #x, (Int)(x))
 #define LOGU(x)         errFL(@"%s: %lu", #x, (Uns)(x))
+#define LOGLLI(x)       errFL(@"%s: %lld", #x, (x))
+#define LOGLLU(x)       errFL(@"%s: %llu", #x (x))
+
 #define LOGF(x)         errFL(@"%s: %f", #x, (x))
 #define LOGB(x)         errFL(@"%s: %@", #x, (x) ? @"YES" : @"NO")
 
