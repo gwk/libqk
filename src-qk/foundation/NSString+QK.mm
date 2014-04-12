@@ -94,16 +94,6 @@
 }
 
 
-- (Utf8M)asUtf8M {
-  return (Utf8M)[self asUtfNew:NSUTF8StringEncoding pad:1];
-}
-
-
-- (Utf32M)asUtf32M {
-  return (Utf32M)[self asUtfNew:NSUTF32LittleEndianStringEncoding pad:4];
-}
-
-
 - (Utf8)asUtf8 NS_RETURNS_INNER_POINTER {
   return self.UTF8String;
 }
@@ -114,6 +104,27 @@
   return (Utf32)[[NSData dataWithBytesNoCopy:self.asUtf32M
                                       length:(self.length + 1) * 4
                                 freeWhenDone:YES] bytes];
+}
+
+
+- (Utf8M)asUtf8M {
+  return (Utf8M)[self asUtfNew:NSUTF8StringEncoding pad:1];
+}
+
+
+- (Utf32M)asUtf32M {
+  return (Utf32M)[self asUtfNew:NSUTF32LittleEndianStringEncoding pad:4];
+}
+
+
+- (NSData*)asUtf8Data {
+  Utf8 s = self.asUtf8;
+  return [NSData dataWithBytes:s length:strlen(s)];
+}
+
+
+- (NSData*)asUtf32Data {
+  return [NSData dataWithBytes:self.asUtf32 length:self.length * 4];
 }
 
 
