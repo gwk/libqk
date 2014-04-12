@@ -13,7 +13,7 @@
 }
 
 
-// override creates mutable copy
+// override of QKStructArray creates a mutable copy.
 + (NSData *)copyData:(NSData*)data {
   return data ? data.mutableCopy : [NSMutableData new];
 }
