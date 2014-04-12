@@ -19,6 +19,7 @@ typedef id (^BlockMapSql)(SqlStatement* statement);
 
 @property (nonatomic, readonly) SqlDatabase* db;
 @property (nonatomic, readonly) NSString* query;
+@property (nonatomic, readonly) sqlite3_stmt* handle;
 
 #define _COL(I, T, N) @property (nonatomic) T C##I##N
 #define _COLP(I, T) _COL(I, T, T)
@@ -54,6 +55,7 @@ _COLS(9);
 - (NSMutableArray*)filterMap:(BlockMapSql)block;
 - (void)bindIndex:(I32)index Int:(Int)value;
 - (void)bindIndex:(I32)index I64:(I64)value;
+- (void)bindIndex:(I32)index U64:(U64)value;
 - (void)bindIndex:(I32)index F64:(F64)value;
 - (void)bindIndex:(I32)index string:(NSString*)value;
 - (Int)getInt:(I32)index;

@@ -39,3 +39,11 @@ typedef const wchar_t* Utf32;
 typedef char* AsciiM;
 typedef char* Utf8M;
 typedef wchar_t* Utf32M;
+
+
+static const Int min_Int = LONG_MIN;
+static const Int max_Int = LONG_MAX;
+static const Uns max_Uns = ULONG_MAX;
+static const I64 min_I64 = LLONG_MIN;
+static const I64 max_I64 = LLONG_MAX;
+static const U64 max_U64 = ULLONG_MAX;

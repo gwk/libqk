@@ -169,6 +169,13 @@ STEP1(F64);
 }
 
 
+- (void)bindIndex:(I32)index U64:(U64)value {
+  qk_assert(value <= max_I64, @"U64 value exceeds max_I64; cannot store in sqlite: %llu", value);
+  int code = sqlite3_bind_int64(_handle, index, value);
+  _ASSERT_OK(@"bind I64: %d", index);
+}
+
+
 - (void)bindIndex:(I32)index F64:(F64)value {
   int code = sqlite3_bind_double(_handle, index, value);
   _ASSERT_OK(@"bind F64: %d", index);
