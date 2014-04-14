@@ -22,16 +22,15 @@
 
 
 - (void)dealloc {
-  int code = sqlite3_close_v2(_handle);
-  qk_check(code == SQLITE_OK, @"SQLite database close failed: %@; %@", sql_code_description(code), _path);
+  [self close];
 }
 
 
-- (id)initWithPath:(NSString*)path
+DEF_INIT(Path:(NSString*)path
          writeable:(BOOL)writeable
-            create:(BOOL)create
-             mutex:(BOOL)mutex
-       sharedCache:(BOOL)sharedCache {
+         create:(BOOL)create
+         mutex:(BOOL)mutex
+         sharedCache:(BOOL)sharedCache) {
   
   INIT(super init);
   qk_check(path, @"nil path");
@@ -51,9 +50,9 @@
 }
 
 
-+ (id)withPath:(NSString*)path writeable:(BOOL)writeable create:(BOOL)create {
+DEF_INIT(Path:(NSString*)path writeable:(BOOL)writeable create:(BOOL)create) {
   // choose safe options by default.
-  return [[self alloc] initWithPath:path writeable:writeable create:create mutex:YES sharedCache:NO];
+  return [self initWithPath:path writeable:writeable create:create mutex:YES sharedCache:NO];
 }
 
 
@@ -102,6 +101,13 @@
   }
   [_commitStatement execute];
 }
+
+
+- (void)close {
+  int code = sqlite3_close_v2(_handle);
+  qk_check(code == SQLITE_OK, @"SQLite database close failed: %@; %@", sql_code_description(code), _path);
+}
+
 
 
 - (I64)lastId {
