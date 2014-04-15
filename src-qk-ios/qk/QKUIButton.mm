@@ -19,12 +19,6 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
   INIT(super initWithFrame:frame);
-  self.disabledBackgroundImage = [UIImage withColor:[UIColor l:.65]];
-  self.backgroundImage = [UIImage withColor:[UIColor l:.7]];
-  self.litBackgroundImage = [UIImage withColor:[UIColor l:.75]];
-  self.disabledTitleColor = [UIColor l:.8];
-  self.titleColor  = [UIColor l:.9];
-  self.litTitleColor = [UIColor w];
   [self addTarget:self action:@selector(touchDown) forControlEvents:UIControlEventTouchDown];
   [self addTarget:self action:@selector(touchUp) forControlEvents:UIControlEventTouchUpInside];
   [self addTarget:self action:@selector(touchCanceled) forControlEvents:UIControlEventTouchCancel];
@@ -33,6 +27,16 @@
 
 
 #pragma mark - QKUIButton
+
+
+- (void)setBasicColors {
+  self.disabledBackgroundImage = [UIImage withColor:[UIColor l:.65]];
+  self.backgroundImage = [UIImage withColor:[UIColor l:.7]];
+  self.litBackgroundImage = [UIImage withColor:[UIColor l:.75]];
+  self.disabledTitleColor = [UIColor l:.8];
+  self.titleColor  = [UIColor l:.9];
+  self.litTitleColor = [UIColor w];
+}
 
 
 - (void)touchDown {
