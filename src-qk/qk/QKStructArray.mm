@@ -98,6 +98,12 @@ DEF_INIT(ElSize:(I32)elSize structArray:(QKStructArray*)structArray filterCopyBl
 }
 
 
+- (void)privateResetElSize:(I32)elSize {
+  qk_assert(_data.length == 0, @"do not reset elSize for non-empty data: %@", self);
+  _elSize = elSize;
+}
+
+
 - (NSData*)rowPointersForWidth:(Int)width {
   return [self rowPointersForElSize:_elSize width:width];
 }
@@ -125,7 +131,8 @@ DEF_INIT(ElSize:(I32)elSize structArray:(QKStructArray*)structArray filterCopyBl
 
 
 - (Int)count {
-  return _data.length / _elSize;
+  Int l = _data.length;
+  return l ? l / _elSize : 0;
 }
 
 

@@ -14,6 +14,7 @@
 
 DEC_INIT(ElSize:(I32)elSize count:(Int)count);
 
+- (void)resetWithElSize:(I32)elSize;
 
 - (void)replaceElementsInRange:(NSRange)range withBytes:(const void*)bytes count:(Int)count;
 - (void)removeElementsInRange:(NSRange)range;

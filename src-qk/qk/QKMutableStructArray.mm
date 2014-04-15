@@ -5,6 +5,13 @@
 #import "QKMutableStructArray.h"
 
 
+@interface QKStructArray (Private)
+
+- (void)privateResetElSize:(I32)elSize;
+
+@end
+
+
 @implementation QKMutableStructArray
 
 
@@ -37,6 +44,12 @@
 
 - (void)setCount:(Int)count {
   self.mutableData.length = count * self.elSize;
+}
+
+
+- (void)resetWithElSize:(I32)elSize {
+  [self.mutableData setLength:0];
+  [self privateResetElSize:elSize];
 }
 
 
