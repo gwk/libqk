@@ -12,29 +12,37 @@
 #if TARGET_OS_IPHONE
 #import "UIView+QK.h"
 
-const UIFlex UIFlexNone   = UIViewAutoresizingNone;
-const UIFlex UIFlexWidth  = UIViewAutoresizingFlexibleWidth;
-const UIFlex UIFlexHeight = UIViewAutoresizingFlexibleHeight;
-const UIFlex UIFlexLeft   = UIViewAutoresizingFlexibleLeftMargin;
-const UIFlex UIFlexRight  = UIViewAutoresizingFlexibleRightMargin;
-const UIFlex UIFlexTop    = UIViewAutoresizingFlexibleTopMargin;
-const UIFlex UIFlexBottom = UIViewAutoresizingFlexibleBottomMargin;
+const UIFlex UIFlexN = UIViewAutoresizingNone;
+const UIFlex UIFlexW = UIViewAutoresizingFlexibleWidth;
+const UIFlex UIFlexH = UIViewAutoresizingFlexibleHeight;
+const UIFlex UIFlexL = UIViewAutoresizingFlexibleLeftMargin;
+const UIFlex UIFlexR = UIViewAutoresizingFlexibleRightMargin;
+const UIFlex UIFlexT = UIViewAutoresizingFlexibleTopMargin;
+const UIFlex UIFlexB = UIViewAutoresizingFlexibleBottomMargin;
+
+const UIAxis UIAxisH = UILayoutConstraintAxisHorizontal;
+const UIAxis UIAxisV = UILayoutConstraintAxisVertical;
+
 #else
-const UIFlex UIFlexNone   = NSViewNotSizable;
-const UIFlex UIFlexWidth  = NSViewWidthSizable;
-const UIFlex UIFlexHeight = NSViewHeightSizable;
-const UIFlex UIFlexLeft   = NSViewMinXMargin;
-const UIFlex UIFlexRight  = NSViewMaxXMargin;
-const UIFlex UIFlexTop    = NSViewMaxYMargin;
-const UIFlex UIFlexBottom = NSViewMinYMargin;
+const UIFlex UIFlexN = NSViewNotSizable;
+const UIFlex UIFlexW = NSViewWidthSizable;
+const UIFlex UIFlexH = NSViewHeightSizable;
+const UIFlex UIFlexL = NSViewMinXMargin;
+const UIFlex UIFlexR = NSViewMaxXMargin;
+const UIFlex UIFlexT = NSViewMaxYMargin;
+const UIFlex UIFlexB = NSViewMinYMargin;
+
+const UIAxis UIAxisH = NSLayoutConstraintOrientationHorizontal;
+const UIAxis UIAxisV = NSLayoutConstraintOrientationVertical;
+
 #endif
 
-const UIFlex UIFlexSize       = UIFlexWidth | UIFlexHeight;
-const UIFlex UIFlexHorizontal = UIFlexLeft | UIFlexRight;
-const UIFlex UIFlexVertical   = UIFlexTop | UIFlexBottom;
-const UIFlex UIFlexPosition   = UIFlexHorizontal | UIFlexVertical;
-const UIFlex UIFlexWidthLeft  = UIFlexWidth | UIFlexLeft;
-const UIFlex UIFlexWidthRight = UIFlexWidth | UIFlexRight;
+const UIFlex UIFlexSize = UIFlexW | UIFlexH;
+const UIFlex UIFlexHori = UIFlexL | UIFlexR;
+const UIFlex UIFlexVert = UIFlexT | UIFlexB;
+const UIFlex UIFlexPos = UIFlexHori| UIFlexVert;
+const UIFlex UIFlexWL = UIFlexW | UIFlexL;
+const UIFlex UIFlexWR = UIFlexW | UIFlexR;
 
 
 
@@ -140,6 +148,42 @@ PROPERTY_STRUCT_FIELD(CGSize, bs, Bs, CGRect, self.bounds, size);
 }
 
 
+- (UILayoutPriority)priorityH {
+#if TARGET_OS_IPHONE
+    return [self contentHuggingPriorityForAxis:UIAxisH];
+#else
+    return [self contentHuggingPriorityForOrientation:UIAxisH];
+#endif
+}
+
+
+- (void)setPriorityH:(UILayoutPriority)priorityH {
+#if TARGET_OS_IPHONE
+    return [self setContentHuggingPriority:priorityH forAxis:UIAxisH];
+#else
+    return [self setContentHuggingPriority:priorityH forOrientation:UIAxisH];
+#endif
+}
+
+
+- (UILayoutPriority)priorityV {
+#if TARGET_OS_IPHONE
+    return [self contentHuggingPriorityForAxis:UIAxisV];
+#else
+    return [self contentHuggingPriorityForOrientation:UIAxisV];
+#endif
+}
+
+
+- (void)setPriorityV:(UILayoutPriority)priorityV {
+#if TARGET_OS_IPHONE
+    return [self setContentHuggingPriority:priorityV forAxis:UIAxisV];
+#else
+    return [self setContentHuggingPriority:priorityV forOrientation:UIAxisV];
+#endif
+}
+
+
 #pragma mark subviews
 
 
@@ -169,15 +213,13 @@ PROPERTY_STRUCT_FIELD(CGSize, bs, Bs, CGRect, self.bounds, size);
 
 
 - (NSString*)descFlex {
-  static NSDictionary* bits =
-  @{
-    @(UIFlexWidth)  : @"W",
-    @(UIFlexHeight) : @"H",
-    @(UIFlexLeft)   : @"L",
-    @(UIFlexRight)  : @"R",
-    @(UIFlexTop)    : @"T",
-    @(UIFlexBottom) : @"B",
-    };
+    static NSDictionary* bits =
+    @{@(UIFlexW) : @"W",
+      @(UIFlexH) : @"H",
+      @(UIFlexL) : @"L",
+      @(UIFlexR) : @"R",
+      @(UIFlexT) : @"T",
+      @(UIFlexB) : @"B"};
   UIFlex f = self.flex;
   NSMutableArray* a = [NSMutableArray new];
   for (NSNumber* bit in bits) {

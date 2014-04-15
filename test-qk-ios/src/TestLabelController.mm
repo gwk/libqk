@@ -23,7 +23,7 @@
   CGFloat w = v.w - x * 2;
   CGFloat h = 60;
 
-  UILabel* uil = [UILabel withFrame:CGRectMake(x, x, w, h) flex:UIFlexWidth];
+  UILabel* uil = [UILabel withFrame:CGRectMake(x, x, w, h) flex:UIFlexW];
   uil.font = [UIFont systemFontOfSize:24];
   uil.text = @"UILabel";
   [v addSubview:uil];

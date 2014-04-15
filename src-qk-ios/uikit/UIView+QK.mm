@@ -3,12 +3,20 @@
 
 
 #import "qk-macros.h"
+#import "qk-cg-util.h"
 #import "UIImageView+QK.h"
 #import "CUIColor.h"
 #import "CUIView.h"
 
 
 @implementation UIView (QK)
+
+
++ (instancetype)forAutolayout {
+    UIView* v = [[self alloc] initWithFrame:CGRect256];
+    v.translatesAutoresizingMaskIntoConstraints = NO;
+    return v;
+}
 
 
 - (void)setupLayer {} // no-op for ios.
@@ -58,6 +66,27 @@
                        completionBlock(completed);
                      }
                    }];
+}
+
+
+- (void)constrainViews:(NSDictionary *)views
+               strings:(NSArray *)strings
+               metrics:(NSDictionary *)metrics
+               options:(NSLayoutFormatOptions)options {
+  for (NSString* s in strings) {
+    NSArray* a = [NSLayoutConstraint constraintsWithVisualFormat:s options:options metrics:metrics views:views];
+    [self addConstraints:a];
+  }
+}
+
+
+- (void)constrainViews:(NSDictionary *)views strings:(NSArray *)strings metrics:(NSDictionary *)metrics {
+  [self constrainViews:views strings:strings metrics:metrics options:0];
+}
+
+
+- (void)constrainViews:(NSDictionary *)views strings:(NSArray *)strings {
+  [self constrainViews:views strings:strings metrics:nil options:0];
 }
 
 

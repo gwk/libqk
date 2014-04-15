@@ -124,7 +124,7 @@ return nil; \
 
 // throw an exception for non-designated initialization paths.
 // place this macro in the implementation of a subclass method that is implemented by superclass but should never get called.
-#define NON_DESIGNATED_INIT(designated_name) \
+#define NOT_DESIGNATED_INIT(designated_name) \
 [NSException raise:NSInternalInconsistencyException format:@"%s: non-designated initializer: instead use %@", __FUNCTION__, designated_name]; \
 return nil
 

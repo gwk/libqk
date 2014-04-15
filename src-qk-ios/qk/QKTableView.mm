@@ -73,7 +73,7 @@ DEF_INIT(FlexFrame:(CGRect)frame
   [self removeAllSubviews];
   [_positions removeAllObjects];
   CGFloat w = self.bounds.size.width; // if h-scroll, this may expand dynamically with flex.
-  UIFlex flex = self.scrollHorizontal ? UIFlexNone : UIFlexWidth;
+  UIFlex flex = self.scrollHorizontal ? UIFlexN : UIFlexW;
   CGFloat y = 0;
   for_in(i, _rows.count) {
     NSIndexPath* path = [NSIndexPath indexPathWithIndex:i];

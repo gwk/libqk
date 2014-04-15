@@ -67,7 +67,7 @@ PROPERTY_SUBCLASS_ALIAS_RO(GLLayer, glLayer, self.layer);
 
 
 - (id)initWithFrame:(CGRect)frame {
-  NON_DESIGNATED_INIT(@"initWithFrame:format:scene:");
+  NOT_DESIGNATED_INIT(@"initWithFrame:format:scene:");
 }
 
 

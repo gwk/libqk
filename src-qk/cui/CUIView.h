@@ -9,30 +9,37 @@
 #if TARGET_OS_IPHONE
 #import "UIView+QK.h"
 # define CUIView UIView
+typedef UILayoutConstraintAxis UIAxis;
+
 #else
 #import "NSView+QK.h"
 # define CUIView NSView
 typedef NSUInteger UIViewAutoresizing;
+typedef NSLayoutConstraintOrientation UIAxis;
+typedef NSLayoutPriority UILayoutPriority; // this is dirty, but good enough for now.
+
 #endif
 
 typedef UIViewAutoresizing UIFlex;
 
-extern const UIFlex UIFlexNone;
-extern const UIFlex UIFlexWidth;
-extern const UIFlex UIFlexHeight;
-extern const UIFlex UIFlexLeft;
-extern const UIFlex UIFlexRight;
-extern const UIFlex UIFlexTop;
-extern const UIFlex UIFlexBottom;
+extern const UIFlex UIFlexN;
+extern const UIFlex UIFlexW;
+extern const UIFlex UIFlexH;
+extern const UIFlex UIFlexL;
+extern const UIFlex UIFlexR;
+extern const UIFlex UIFlexT;
+extern const UIFlex UIFlexB;
 
 extern const UIFlex UIFlexSize;
-extern const UIFlex UIFlexHorizontal;
-extern const UIFlex UIFlexVertical;
-extern const UIFlex UIFlexPosition;
+extern const UIFlex UIFlexHori;
+extern const UIFlex UIFlexVert;
+extern const UIFlex UIFlexPos;
 
-extern const UIFlex UIFlexWidthLeft;
-extern const UIFlex UIFlexWidthRight;
+extern const UIFlex UIFlexWL;
+extern const UIFlex UIFlexWR;
 
+extern const UIAxis UIAxisH;
+extern const UIAxis UIAxisV;
 
 @interface CUIView (CUI)
 
@@ -53,6 +60,8 @@ extern const UIFlex UIFlexWidthRight;
 @property(nonatomic) CGFloat bcy;
 @property(nonatomic) CGPoint bo;
 @property(nonatomic) CGSize bs;
+@property(nonatomic) UILayoutPriority priorityH;
+@property(nonatomic) UILayoutPriority priorityV;
 
 
 DEC_WITH(Frame:(CGRect)frame);

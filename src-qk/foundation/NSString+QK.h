@@ -85,4 +85,3 @@ Utf32 Utf32MWith8(Utf8 string);
 Utf8 Utf8MWith32(Utf32 string);
 
 #endif // __cplusplus
-
