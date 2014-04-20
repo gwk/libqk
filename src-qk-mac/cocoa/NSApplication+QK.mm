@@ -11,13 +11,12 @@ static NSObject<NSApplicationDelegate>* appDelegate; // global variable retains 
 @implementation NSApplication (QK)
 
 
-+ (int)launchWithDelegateClass:(Class)delegateClass {
++ (int)launchWithDelegateClass:(Class)delegateClass activationPolicy:(NSApplicationActivationPolicy)activationPolicy {
   @autoreleasepool {
     ASSERT_WCHAR_IS_UTF32;
     
-    [NSApplication sharedApplication]; // initialize the app
-    [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular]; // necessary?
-    [NSApp activateIgnoringOtherApps:NO]; // necessary?
+    [self sharedApplication]; // initialize the app and set NSApp.
+    [NSApp setActivationPolicy:activationPolicy];
     
     // app delegate saved to global so that object is retained for lifetime of app
     appDelegate = [delegateClass new];
@@ -37,7 +36,7 @@ static NSObject<NSApplicationDelegate>* appDelegate; // global variable retains 
     NSMenuItem *appMenuBarItem = [NSMenuItem new];
     [appMenuBarItem setSubmenu:appMenu];
     
-    NSMenu *menuBar = [NSMenu new];
+    NSMenu* menuBar = [NSMenu new];
     [menuBar addItem:appMenuBarItem];
     [NSApp setMainMenu:menuBar];
     

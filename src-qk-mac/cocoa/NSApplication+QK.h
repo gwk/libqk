@@ -4,10 +4,8 @@
 
 #import <Cocoa/Cocoa.h>
 
-#define LAUNCH_APP(appClass, delegateClass) [appClass launchWithDelegateClass:[delegateClass class]]
-
 @interface NSApplication (QK)
 
-+ (int)launchWithDelegateClass:(Class)delegateClass;
++ (int)launchWithDelegateClass:(Class)delegateClass activationPolicy:(NSApplicationActivationPolicy)activationPolicy;
 
 @end
