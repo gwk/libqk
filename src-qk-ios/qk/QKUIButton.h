@@ -12,5 +12,7 @@
 @property (nonatomic, copy) BlockAction blockTouchUp;
 @property (nonatomic, copy) BlockAction blockTouchCanceled;
 
+- (void)setupBasicColors;
+
 @end
 

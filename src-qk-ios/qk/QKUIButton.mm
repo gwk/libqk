@@ -29,7 +29,7 @@
 #pragma mark - QKUIButton
 
 
-- (void)setBasicColors {
+- (void)setupBasicColors {
   self.disabledBackgroundImage = [UIImage withColor:[UIColor l:.65]];
   self.backgroundImage = [UIImage withColor:[UIColor l:.7]];
   self.litBackgroundImage = [UIImage withColor:[UIColor l:.75]];
