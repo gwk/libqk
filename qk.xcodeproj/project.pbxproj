@@ -180,6 +180,8 @@
 		EC9C22FF18CF5DAD00D6F6EA /* helix-nebula.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EC9C22FD18CF5DAD00D6F6EA /* helix-nebula.jpg */; };
 		EC9C233118CFC97800D6F6EA /* dancing-squirrel.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EC9C233018CFC97800D6F6EA /* dancing-squirrel.jpg */; };
 		EC9C233218CFC97800D6F6EA /* dancing-squirrel.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EC9C233018CFC97800D6F6EA /* dancing-squirrel.jpg */; };
+		ECB12BF019084DFB00C36C87 /* NSFileManager+QK.mm in Sources */ = {isa = PBXBuildFile; fileRef = ECB12BEF19084DFB00C36C87 /* NSFileManager+QK.mm */; };
+		ECB12BF119084DFB00C36C87 /* NSFileManager+QK.mm in Sources */ = {isa = PBXBuildFile; fileRef = ECB12BEF19084DFB00C36C87 /* NSFileManager+QK.mm */; };
 		ECCAEDDB1752E057006CB1B5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECCAEDDA1752E057006CB1B5 /* QuartzCore.framework */; };
 		ECDCABCE18298F03008CEB6D /* TestMacAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = ECDCABCB18298F03008CEB6D /* TestMacAppDelegate.mm */; };
 		ECDCABCF18298F03008CEB6D /* test-qk-mac.mm in Sources */ = {isa = PBXBuildFile; fileRef = ECDCABCC18298F03008CEB6D /* test-qk-mac.mm */; };
@@ -1015,6 +1017,8 @@
 		EC9C22EF18CE67B600D6F6EA /* QKImage+PNG.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "QKImage+PNG.mm"; sourceTree = "<group>"; };
 		EC9C22FD18CF5DAD00D6F6EA /* helix-nebula.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "helix-nebula.jpg"; sourceTree = "<group>"; };
 		EC9C233018CFC97800D6F6EA /* dancing-squirrel.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "dancing-squirrel.jpg"; sourceTree = "<group>"; };
+		ECB12BEE19084DFB00C36C87 /* NSFileManager+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+QK.h"; sourceTree = "<group>"; };
+		ECB12BEF19084DFB00C36C87 /* NSFileManager+QK.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "NSFileManager+QK.mm"; sourceTree = "<group>"; };
 		ECB7FC721744605C002A4B71 /* test-qk-mac-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "test-qk-mac-Info.plist"; sourceTree = "<group>"; };
 		ECCAEDDA1752E057006CB1B5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		ECDCABCA18298F03008CEB6D /* TestMacAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestMacAppDelegate.h; sourceTree = "<group>"; };
@@ -1349,6 +1353,8 @@
 				EC6866CD18C652550037AFE2 /* NSDictionary+QK.mm */,
 				EC6866CE18C652550037AFE2 /* NSError+QK.h */,
 				EC6866CF18C652550037AFE2 /* NSError+QK.mm */,
+				ECB12BEE19084DFB00C36C87 /* NSFileManager+QK.h */,
+				ECB12BEF19084DFB00C36C87 /* NSFileManager+QK.mm */,
 				EC6866D018C652550037AFE2 /* NSJSONSerialization+QK.h */,
 				EC6866D118C652550037AFE2 /* NSJSONSerialization+QK.mm */,
 				EC6866D218C652550037AFE2 /* NSMutableArray+QK.h */,
@@ -2516,6 +2522,7 @@
 				EC6866A718C651BD0037AFE2 /* QKWindow.mm in Sources */,
 				EC68676418C652550037AFE2 /* GLTexture.mm in Sources */,
 				EC68673A18C652550037AFE2 /* NSArray+QK.mm in Sources */,
+				ECB12BF019084DFB00C36C87 /* NSFileManager+QK.mm in Sources */,
 				EC68677618C652550037AFE2 /* QKBinding.mm in Sources */,
 				EC68673218C652550037AFE2 /* CUIColor.mm in Sources */,
 				EC68674A18C652550037AFE2 /* NSMutableData+QK.mm in Sources */,
@@ -2594,6 +2601,7 @@
 				EC68676118C652550037AFE2 /* GLShader.mm in Sources */,
 				EC68672B18C652550037AFE2 /* QKCGColorSpace.mm in Sources */,
 				EC68669218C651B30037AFE2 /* UIView+QK.mm in Sources */,
+				ECB12BF119084DFB00C36C87 /* NSFileManager+QK.mm in Sources */,
 				EC68679118C653600037AFE2 /* QKCFObject.mm in Sources */,
 				EC68668418C651B30037AFE2 /* QKUITableView.mm in Sources */,
 				EC68668818C651B30037AFE2 /* UIApplication+QK.mm in Sources */,
