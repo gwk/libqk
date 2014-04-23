@@ -18,6 +18,7 @@ typedef void (^BlockDoString)(NSString*);
 typedef void (^BlockDoData)(NSData*);
 typedef void (^BlockDoBool)(BOOL);
 typedef void (^BlockCompletion)(BOOL);
+typedef void (^BlockFinish)(NSError*);
 
 // map a value to a BOOL.
 typedef BOOL (^BlockFilter)(id);
