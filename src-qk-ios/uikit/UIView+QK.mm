@@ -73,20 +73,27 @@
                strings:(NSArray *)strings
                metrics:(NSDictionary *)metrics
                options:(NSLayoutFormatOptions)options {
-  for (NSString* s in strings) {
-    NSArray* a = [NSLayoutConstraint constraintsWithVisualFormat:s options:options metrics:metrics views:views];
-    [self addConstraints:a];
-  }
+    for (NSString* s in strings) {
+        NSArray* a = nil;
+        @try {
+            a = [NSLayoutConstraint constraintsWithVisualFormat:s options:options metrics:metrics views:views];
+            [self addConstraints:a];
+        }
+        @catch (NSException* exc) {
+            NSLog(@"autolayout exception: %@\n  string: %@\n  constraints: %@", exc, s, a);
+            @throw exc;
+        }
+    }
 }
 
 
 - (void)constrainViews:(NSDictionary *)views strings:(NSArray *)strings metrics:(NSDictionary *)metrics {
-  [self constrainViews:views strings:strings metrics:metrics options:0];
+    [self constrainViews:views strings:strings metrics:metrics options:0];
 }
 
 
 - (void)constrainViews:(NSDictionary *)views strings:(NSArray *)strings {
-  [self constrainViews:views strings:strings metrics:nil options:0];
+    [self constrainViews:views strings:strings metrics:nil options:0];
 }
 
 
