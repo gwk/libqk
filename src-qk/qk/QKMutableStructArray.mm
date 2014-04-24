@@ -47,8 +47,13 @@
 }
 
 
-- (void)resetWithElSize:(I32)elSize {
+- (void)clear {
   [self.mutableData setLength:0];
+}
+
+
+- (void)resetWithElSize:(I32)elSize {
+  [self clear];
   [self privateResetElSize:elSize];
 }
 
