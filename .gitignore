@@ -13,4 +13,6 @@ project.xcworkspace
 __pycache__
 
 # libqk
+_build
+_built
 misc
