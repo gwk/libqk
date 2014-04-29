@@ -1,5 +1,5 @@
 // Copyright 2013 George King.
-// Permission to use this file is granted in libqk-license.txt (ISC License).
+// Permission to use this file is granted in license-libqk.txt (ISC License).
 
 
 // UIScrollView can be rather confusing to use once zooming is enabled.

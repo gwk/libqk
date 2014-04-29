@@ -1,5 +1,5 @@
 // Copyright 2013 George King.
-// Permission to use this file is granted in libqk-license.txt (ISC License).
+// Permission to use this file is granted in license-libqk.txt (ISC License).
 // Derived from readpng.c, which is licensed under the terms of libqk/license-readpng.txt.
 
 

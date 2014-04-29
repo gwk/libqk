@@ -1,5 +1,5 @@
 // Copyright 2013 George King.
-// Permission to use this file is granted in libqk-license.txt (ISC License).
+// Permission to use this file is granted in license-libqk.txt (ISC License).
 
 
 #import "NSApplication+QK.h"
@@ -7,5 +7,5 @@
 
 
 int main(int argc, char *argv[]) {
-  return LAUNCH_APP(NSApplication, TestMacAppDelegate);
+  return [NSApplication launchWithDelegateClass:[TestMacAppDelegate class] activationPolicy:NSApplicationActivationPolicyRegular];
 }

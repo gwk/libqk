@@ -1,5 +1,5 @@
 // Copyright 2008 George King.
-// Permission to use this file is granted in libqk-license.txt (ISC License).
+// Permission to use this file is granted in license-libqk.txt (ISC License).
 
 // General purpose utility macros.
 
