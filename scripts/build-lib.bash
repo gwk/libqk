@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Copyright 2013 George King.
-# Permission to use this file is granted in libqk/license.txt.
+# Permission to use this file is granted in license-libqk.txt (ISC License).
 
 # build a static lib from autoconf/make based source.
 # this script is sourced by the platform-specific scripts.
@@ -39,7 +39,7 @@ export CC_AS_FLAGS=$1; shift
 
 export DEV_DIR=/Applications/Xcode.app/Contents/Developer
 export TOOL_DIR=$DEV_DIR/Toolchains/XcodeDefault.xctoolchain/usr/bin
-export BUILD_DIR="_tmp_build/$OS-$NAME"
+export BUILD_DIR="_build/$OS-$NAME"
 export INSTALL_DIR="submodules/libqk-built-$OS"
 
 # even with the quiet flag, libtool is verbose, so redirect output.

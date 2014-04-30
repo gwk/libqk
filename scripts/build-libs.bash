@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Copyright 2013 George King.
-# Permission to use this file is granted in libqk/license.txt.
+# Permission to use this file is granted in license-libqk.txt (ISC License).
 
 # build fat static libs from autoconf/make based source.
 
@@ -26,15 +26,15 @@ export BUILD_JOBS=8 # passed to make.
 
 set -e
 
-scripts/copy-glm.sh mac "$1"
-scripts/copy-glm.sh ios "$1"
+scripts/copy-glm.bash mac "$1"
+scripts/copy-glm.bash ios "$1"
 
-scripts/build-lib.sh mac sqlite3    "$2" build-with-ac.sh '' '-Oz' ''
-scripts/build-lib.sh ios sqlite3    "$2" build-with-ac.sh '' '-Oz' ''
-scripts/build-lib.sh mac png        "$3" build-with-ac.sh '' '-O3' ''
-scripts/build-lib.sh ios png        "$3" build-with-ac.sh '' '-O3 -mfpu=neon' ''
-scripts/build-lib.sh mac turbojpeg  "$4" build-with-ac.sh '--with-jpeg8' '-O3' ''
-scripts/build-lib.sh ios turbojpeg  "$4" build-with-ac.sh '--with-jpeg8' '-O3' '-no-integrated-as'
-scripts/build-lib.sh mac opencv     "$5" build-opencv.sh '' '' ''
-scripts/build-lib.sh ios opencv     "$5" build-opencv.sh '' '' ''
+scripts/build-lib.bash mac sqlite3    "$2" build-with-ac.bash '' '-Oz' ''
+scripts/build-lib.bash ios sqlite3    "$2" build-with-ac.bash '' '-Oz' ''
+scripts/build-lib.bash mac png        "$3" build-with-ac.bash '' '-O3' ''
+scripts/build-lib.bash ios png        "$3" build-with-ac.bash '' '-O3 -mfpu=neon' ''
+scripts/build-lib.bash mac turbojpeg  "$4" build-with-ac.bash '--with-jpeg8' '-O3' ''
+scripts/build-lib.bash ios turbojpeg  "$4" build-with-ac.bash '--with-jpeg8' '-O3' '-no-integrated-as'
+scripts/build-lib.bash mac opencv     "$5" build-opencv.bash '' '' ''
+scripts/build-lib.bash ios opencv     "$5" build-opencv.bash '' '' ''
     

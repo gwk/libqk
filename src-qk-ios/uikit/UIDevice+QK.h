@@ -1,5 +1,5 @@
 // Copyright 2014 George King.
-// Permission to use this file is granted in libqk-license.txt (ISC License).
+// Permission to use this file is granted in license-libqk.txt (ISC License).
 
 
 @interface UIDevice (QK)

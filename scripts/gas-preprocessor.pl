@@ -1,8 +1,9 @@
 #!/usr/bin/env perl
-# by David Conrad
+# Copyright 2010 David Conrad.
+# This code is licensed under GPLv2 or later; go to gnu.org to read it.
+
 # modifications by D. R. Commander, Copyright (C)2013
-# This code is licensed under GPLv2 or later; go to gnu.org to read it
-#  (not that it much matters for an asm preprocessor)
+
 # usage: set your assembler to be something like "perl gas-preprocessor.pl gcc"
 use strict;
 use File::Temp qw(tempfile);

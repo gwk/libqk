@@ -1,13 +1,17 @@
 # Copyright 2010 George King.
-# Permission to use this file is granted in libqk/license.txt.
+# Permission to use this file is granted in license-libqk.txt (ISC License).
 
 # project configuration info
 
 {
-  'project'   : 'libqk',
-  'copyright' : 'George King',
-  'licenses'  : [
-    'Permission to use this file is granted in libqk/license.txt.',
+  'project' : 'libqk',
+  'copyrights' : [
+    'George King',
+    'David Conrad',
+  ],
+  'licenses' : [
+    'Permission to use this file is granted in license-libqk.txt (ISC License).',
+    'This code is licensed under GPLv2 or later; go to gnu.org to read it.', # gas-preprocessor.pl only
   ],
   'objc-acronym' : 'QK',
 }

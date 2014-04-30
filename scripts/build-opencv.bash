@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # Copyright 2013 George King.
-# Permission to use this file is granted in libqk/license.txt.
+# Permission to use this file is granted in license-libqk.txt (ISC License).
 
 # build opencv from source using cmake and xcodebuild.
-# this script is invoked by build-lib.sh.
+# this script is invoked by build-lib.bash.
 
 set -e
 echo "$0 $@"
