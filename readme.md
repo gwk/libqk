@@ -7,14 +7,13 @@ libqk
 libqk is a utility library for OSX and iOS Objective-C application programming.
 It is highly experimental; some parts are stable, some parts are unstable, and some parts are completely broken.
 
-
 ## Features
 
-### Build scripts for creating the fat static libs for both platforms (including fat iOS/Simulator libs):
-* libjpeg/libturbojpg
+### Build scripts for creatingthe fat static libsfor both platforms (including fat iOS/Simulator libs) for the following third-party libraries, for both platforms:
+* libjpeg/libturbojpglibturbojpeg
 * libpng
 * libsqlite3
-* opencv
+* opencv (currently builds with most options disabled)
 
 The image libraries are useful for situations that require manipulating image data directly, e.g. creating OpenGL textures. Core Graphics can load both PNG and JPG files, but imposes its own limited pixel formats on the resulting image data. 
 
