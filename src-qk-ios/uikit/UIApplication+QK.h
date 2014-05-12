@@ -3,5 +3,7 @@
 
 
 @interface UIApplication (QK)
-@end
 
++ (BOOL)soundCheck:(BlockDoBool)block;
+
+@end
