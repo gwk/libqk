@@ -39,6 +39,7 @@ _COLS(9);
 
 DEC_INIT(Database:(SqlDatabase*)db query:(NSString*)query);
 
+- (void)close; // finalize the statement (cannot name this method finalize because it conflicts with deprecated NSObect method).
 - (void)reset;
 - (int)columnCount;
 - (void)execute;

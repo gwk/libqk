@@ -106,6 +106,7 @@ DEF_INIT(Path:(NSString*)path writeable:(BOOL)writeable create:(BOOL)create) {
 - (void)close {
   int code = sqlite3_close_v2(_handle);
   qk_check(code == SQLITE_OK, @"SQLite database close failed: %@; %@", sql_code_description(code), _path);
+  _handle = NULL;
 }
 
 

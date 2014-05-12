@@ -31,8 +31,7 @@ qk_assert(code == exp_code, @"%@\n%@\n" fmt, sql_failure_str(_db.handle, code), 
 
 
 - (void)dealloc {
-  int code = sqlite3_finalize(_handle);
-  _CHECK_OK(@"finalize");
+  [self close];
 }
 
 
@@ -44,6 +43,13 @@ DEF_INIT(Database:(SqlDatabase*)db query:(NSString*)query) {
   _CHECK_OK(@"prepare: %@", query);
   qk_assert(!*tail, @"prepared query has unused tail: '%s'", tail);
   return self;
+}
+
+
+- (void)close {
+  int code = sqlite3_finalize(_handle);
+  _CHECK_OK(@"finalize");
+  _handle = NULL;
 }
 
 
