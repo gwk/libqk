@@ -36,6 +36,10 @@
 - (NSData*)asUtf8Data;
 - (NSData*)asUtf32Data;
 
+- (NSArray*)splitBySpace;
+- (NSArray*)splitByWS;
+- (NSArray*)splitByWSNL;
+
 - (Int)lineCount;
 - (NSString*)numberedLinesFrom:(Int)from;
 - (NSString*)numberedLines;

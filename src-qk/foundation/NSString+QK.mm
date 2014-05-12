@@ -160,6 +160,24 @@
 }
 
 
+#pragma mark - split
+
+
+- (NSArray*)splitBySpace {
+    return [self componentsSeparatedByString:@" "];
+}
+
+
+- (NSArray*)splitByWS {
+    return [self componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+}
+
+
+- (NSArray*)splitByWSNL {
+    return [self componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
+
+
 #pragma mark paths
 
 
