@@ -6,6 +6,7 @@
 
 - (id)pop;
 - (instancetype)reverse;
+- (void)insert:(id)el comparator:(NSComparator)comparator;
 
 @end
 

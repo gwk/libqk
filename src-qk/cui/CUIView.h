@@ -75,6 +75,7 @@ DEC_INIT(Size:(CGSize)size flex:(UIFlex)flex);
 DEC_WITH(Frame:(CGRect)frame flex:(UIFlex)flex  color:(CUIColor*)color);
 
 - (void)removeAllSubviews;
+- (void)insertSubview:(CUIView*)subview comparator:(NSComparator)comparator;
 
 // debugging
 

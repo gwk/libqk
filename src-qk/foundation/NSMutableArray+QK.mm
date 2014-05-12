@@ -30,5 +30,18 @@
 }
 
 
+- (void)insert:(id)el comparator:(NSComparator)comparator {
+    // for now just do linear search.
+    for_in(i, self.count) {
+        NSComparisonResult r = comparator(el, self[i]);
+        if (r == NSOrderedAscending) {
+            [self insertObject:el atIndex:i];
+            return;
+        }
+    }
+    [self addObject:el];
+}
+
+
 @end
 

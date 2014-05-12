@@ -194,6 +194,20 @@ PROPERTY_STRUCT_FIELD(CGSize, bs, Bs, CGRect, self.bounds, size);
 }
 
 
+- (void)insertSubview:(CUIView*)subview comparator:(NSComparator)comparator {
+    // for now just do linear search.
+    NSArray* views = self.subviews;
+    for_in(i, views.count) {
+        NSComparisonResult r = comparator(subview, views[i]);
+        if (r == NSOrderedAscending) {
+            [self insertSubview:subview atIndex:i];
+            return;
+        }
+    }
+    [self addSubview:subview];
+}
+
+
 #pragma mark debugging
 
 
