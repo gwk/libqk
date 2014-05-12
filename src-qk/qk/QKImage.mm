@@ -55,6 +55,25 @@
 #pragma mark - QKImage
 
 
++ (NSDictionary*)propertiesForImageAtPath:(NSString*)path {
+  NSURL* url = [NSURL fileURLWithPath:path];
+  if (!url) {
+    NSLog(@"ERROR: bad path: %@", path);
+    return nil;
+  }
+  CGImageSourceRef source = CGImageSourceCreateWithURL((__bridge CFURLRef)url, NULL);
+  if (!source) {
+    CGImageSourceStatus status = CGImageSourceGetStatus(source);
+    NSLog(@"Error: could not create image source; status: %d; path: %@", status, path);
+    return nil;
+  }
+  NSDictionary* d = (__bridge NSDictionary*)CGImageSourceCopyPropertiesAtIndex(source, 0, NULL);
+  return d;
+}
+
+// NSString* locKey = [[NSBundle bundleWithIdentifier:@"com.apple.ImageIO.framework"] localizedStringForKey:key value:key table: @"CGImageSource"];
+
+
 - (NSString*)formatDesc {
   return QKPixFmtDesc(_format);
 }
@@ -80,11 +99,12 @@ PROPERTY_STRUCT_FIELD(I32, height, Height, V2I32, _size, v[1]);
 }
 
 
-DEF_INIT(Format:(QKPixFmt)format size:(V2I32)size data:(NSMutableData*)data) {
+DEF_INIT(Format:(QKPixFmt)format size:(V2I32)size data:(NSMutableData*)data meta:(NSMutableDictionary*)meta) {
   INIT(super init);
   _format = format;
   _size = size;
   _data = data;
+  _meta = meta;
   [self validate];
   return self;
 }

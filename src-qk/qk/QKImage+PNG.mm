@@ -153,7 +153,7 @@
     }
     errFL(@"PNG backgroundColor: %@", V3U8Desc(backgroundColor));
   }
-  return [self initWithFormat:format size:size data:data];
+  return [self initWithFormat:format size:size data:data meta:nil];
 }
 
 

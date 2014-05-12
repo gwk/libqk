@@ -13,6 +13,9 @@ typedef unsigned int GLenum;
 @property (nonatomic, readonly) QKPixFmt format;
 @property (nonatomic, readonly) V2I32 size;
 @property (nonatomic, readonly) NSMutableData* data; // underlying data.
+@property (nonatomic, readonly) NSMutableDictionary* meta; // metadata, e.g. jpeg exif.
+
++ (NSDictionary*)propertiesForImageAtPath:(NSString*)path;
 
 - (const void*)bytes;
 - (void*)mutableBytes;
@@ -23,7 +26,7 @@ typedef unsigned int GLenum;
 - (GLenum)glDataFormat;
 - (GLenum)glDataType;
 
-DEC_INIT(Format:(QKPixFmt)format size:(V2I32)size data:(NSMutableData*)data);
+DEC_INIT(Format:(QKPixFmt)format size:(V2I32)size data:(NSMutableData*)data meta:(NSMutableDictionary*)meta);
 DEC_INIT(Path:(NSString*)path map:(BOOL)map fmt:(QKPixFmt)fmt error:(NSError**)errorPtr);
 
 + (QKImage*)named:(NSString*)resourceName fmt:(QKPixFmt)fmt;

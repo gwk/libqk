@@ -2,6 +2,7 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
+#import "qk-log.h"
 #import "NSBundle+QK.h"
 #import "UIImage+QK.h"
 #import "UIView+QK.h"
@@ -24,11 +25,13 @@
   _imageView = [UIImageView withFlexFrame:self.view.bounds];
   [self.view addSubview:_imageView];
   _imageView.contentMode = UIViewContentModeScaleAspectFit;
+  NSString* path = [NSBundle resPath:@"dancing-squirrel.jpg"];
   NSError* e;
-  auto image = [QKImage withJpgPath:[NSBundle resPath:@"dancing-squirrel.jpg"] map:NO fmt:QKPixFmtRGBU8 div:1 error:&e];
-  [image rotateQCW];
+  auto image = [QKImage withJpgPath:path map:NO fmt:QKPixFmtRGBU8 div:1 error:&e];
+  //[image rotateQCW];
   qk_check(!e, @"jpg open failed: %@", e);
   _imageView.image = image.uiImage;
+  LOG([QKImage propertiesForImageAtPath:path]);
 }
 
 

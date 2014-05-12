@@ -2,10 +2,11 @@
 #import <turbojpeg.h>
 
 #ifdef __OBJC__
-# import <Foundation/Foundation.h>
-# import <QuartzCore/QuartzCore.h>
-# import <UIKit/UIKit.h>
-# import <GLKit/GLKit.h>
+#import <Foundation/Foundation.h>
+#import <ImageIO/ImageIO.h>
+#import <QuartzCore/QuartzCore.h>
+#import <UIKit/UIKit.h>
+#import <GLKit/GLKit.h>
 #endif
 
 #ifdef __cplusplus

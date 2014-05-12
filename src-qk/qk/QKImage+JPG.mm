@@ -57,7 +57,7 @@
     
   tjDestroy(handle);
 
-  return [self initWithFormat:fmt size:size data:data];
+  return [self initWithFormat:fmt size:size data:data meta:nil];
 }
 
 

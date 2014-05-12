@@ -182,6 +182,7 @@
 		EC9C233218CFC97800D6F6EA /* dancing-squirrel.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EC9C233018CFC97800D6F6EA /* dancing-squirrel.jpg */; };
 		ECB12BF019084DFB00C36C87 /* NSFileManager+QK.mm in Sources */ = {isa = PBXBuildFile; fileRef = ECB12BEF19084DFB00C36C87 /* NSFileManager+QK.mm */; };
 		ECB12BF119084DFB00C36C87 /* NSFileManager+QK.mm in Sources */ = {isa = PBXBuildFile; fileRef = ECB12BEF19084DFB00C36C87 /* NSFileManager+QK.mm */; };
+		ECB12BF61908652300C36C87 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB12BF51908652300C36C87 /* ImageIO.framework */; };
 		ECCAEDDB1752E057006CB1B5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECCAEDDA1752E057006CB1B5 /* QuartzCore.framework */; };
 		ECDCABCE18298F03008CEB6D /* TestMacAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = ECDCABCB18298F03008CEB6D /* TestMacAppDelegate.mm */; };
 		ECDCABCF18298F03008CEB6D /* test-qk-mac.mm in Sources */ = {isa = PBXBuildFile; fileRef = ECDCABCC18298F03008CEB6D /* test-qk-mac.mm */; };
@@ -1019,6 +1020,7 @@
 		EC9C233018CFC97800D6F6EA /* dancing-squirrel.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "dancing-squirrel.jpg"; sourceTree = "<group>"; };
 		ECB12BEE19084DFB00C36C87 /* NSFileManager+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+QK.h"; sourceTree = "<group>"; };
 		ECB12BEF19084DFB00C36C87 /* NSFileManager+QK.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "NSFileManager+QK.mm"; sourceTree = "<group>"; };
+		ECB12BF51908652300C36C87 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/ImageIO.framework; sourceTree = DEVELOPER_DIR; };
 		ECB7FC721744605C002A4B71 /* test-qk-mac-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "test-qk-mac-Info.plist"; sourceTree = "<group>"; };
 		ECCAEDDA1752E057006CB1B5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		ECDCABCA18298F03008CEB6D /* TestMacAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestMacAppDelegate.h; sourceTree = "<group>"; };
@@ -1056,6 +1058,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECB12BF61908652300C36C87 /* ImageIO.framework in Frameworks */,
 				EC68679A18C657290037AFE2 /* GLKit.framework in Frameworks */,
 				EC102EA6182AD58800BBAB20 /* OpenGLES.framework in Frameworks */,
 				EC102EA7182AD58800BBAB20 /* QuartzCore.framework in Frameworks */,
@@ -1125,6 +1128,7 @@
 		EC102D68182AC97000BBAB20 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ECB12BF51908652300C36C87 /* ImageIO.framework */,
 				EC102EA9182AD86B00BBAB20 /* libz.dylib */,
 				EC102EA1182AD58800BBAB20 /* GLKit.framework */,
 				EC102EA2182AD58800BBAB20 /* OpenGLES.framework */,
