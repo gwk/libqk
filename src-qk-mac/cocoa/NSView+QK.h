@@ -15,4 +15,6 @@
 - (void)setNeedsDisplay;
 - (void)setNeedsLayout;
 
+- (void)insertSubview:(NSView*)view atIndex:(Int)index;
+
 @end

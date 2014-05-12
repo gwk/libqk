@@ -3,6 +3,7 @@
 
 
 #import "qk-macros.h"
+#import "NSArray+QK.h"
 #import "CALayer+QK.h"
 #import "CUIColor.h"
 #import "NSView+QK.h"
@@ -60,6 +61,20 @@ PROPERTY_ALIAS(BOOL, opaque, Opaque, self.layer.opaque);
 
 - (void)setNeedsLayout {
   [self setNeedsLayout:YES];
+}
+
+
+- (void)insertSubview:(NSView*)view atIndex:(Int)index {
+  // matches UIView method.
+  auto views = self.subviews;
+  qk_assert(index >= 0 && index <= views.count, @"invalid subview insertion index: %ld", index);
+  NSView* v = [self.subviews elOrNil:index];
+  if (v) {
+    [self addSubview:view positioned:NSWindowBelow relativeTo:view];
+  }
+  else {
+    [self addSubview:view];
+  }
 }
 
 
