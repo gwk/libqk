@@ -148,7 +148,7 @@ PROPERTY_STRUCT_FIELD(CGSize, bs, Bs, CGRect, self.bounds, size);
 }
 
 
-- (UILayoutPriority)priorityH {
+- (UILayoutPriority)huggingH {
 #if TARGET_OS_IPHONE
     return [self contentHuggingPriorityForAxis:UIAxisH];
 #else
@@ -157,16 +157,16 @@ PROPERTY_STRUCT_FIELD(CGSize, bs, Bs, CGRect, self.bounds, size);
 }
 
 
-- (void)setPriorityH:(UILayoutPriority)priorityH {
+- (void)setHuggingH:(UILayoutPriority)huggingH {
 #if TARGET_OS_IPHONE
-    return [self setContentHuggingPriority:priorityH forAxis:UIAxisH];
+    return [self setContentHuggingPriority:huggingH forAxis:UIAxisH];
 #else
-    return [self setContentHuggingPriority:priorityH forOrientation:UIAxisH];
+    return [self setContentHuggingPriority:huggingH forOrientation:UIAxisH];
 #endif
 }
 
 
-- (UILayoutPriority)priorityV {
+- (UILayoutPriority)huggingV {
 #if TARGET_OS_IPHONE
     return [self contentHuggingPriorityForAxis:UIAxisV];
 #else
@@ -175,11 +175,47 @@ PROPERTY_STRUCT_FIELD(CGSize, bs, Bs, CGRect, self.bounds, size);
 }
 
 
-- (void)setPriorityV:(UILayoutPriority)priorityV {
+- (void)setHuggingV:(UILayoutPriority)huggingV {
 #if TARGET_OS_IPHONE
-    return [self setContentHuggingPriority:priorityV forAxis:UIAxisV];
+    return [self setContentHuggingPriority:huggingV forAxis:UIAxisV];
 #else
-    return [self setContentHuggingPriority:priorityV forOrientation:UIAxisV];
+    return [self setContentHuggingPriority:huggingV forOrientation:UIAxisV];
+#endif
+}
+
+
+- (UILayoutPriority)compressionH {
+#if TARGET_OS_IPHONE
+    return [self contentCompressionResistancePriorityForAxis:UIAxisH];
+#else
+    return [self contentCompressionResistancePriorityForOrientation:UIAxisH];
+#endif
+}
+
+
+- (void)setCompressionH:(UILayoutPriority)compressionH {
+#if TARGET_OS_IPHONE
+    return [self setContentCompressionResistancePriority:compressionH forAxis:UIAxisH];
+#else
+    return [self setContentCompressionResistancePriority:compressionH forOrientation:UIAxisH];
+#endif
+}
+
+
+- (UILayoutPriority)compressionV {
+#if TARGET_OS_IPHONE
+    return [self contentCompressionResistancePriorityForAxis:UIAxisV];
+#else
+    return [self contentCompressionResistancePriorityForOrientation:UIAxisV];
+#endif
+}
+
+
+- (void)setCompressionV:(UILayoutPriority)compressionV {
+#if TARGET_OS_IPHONE
+    return [self setContentCompressionResistancePriority:compressionV forAxis:UIAxisV];
+#else
+    return [self setContentCompressionResistancePriority:compressionV forOrientation:UIAxisV];
 #endif
 }
 

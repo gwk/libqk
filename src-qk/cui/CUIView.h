@@ -60,9 +60,10 @@ extern const UIAxis UIAxisV;
 @property(nonatomic) CGFloat bcy;
 @property(nonatomic) CGPoint bo;
 @property(nonatomic) CGSize bs;
-@property(nonatomic) UILayoutPriority priorityH;
-@property(nonatomic) UILayoutPriority priorityV;
-
+@property(nonatomic) UILayoutPriority huggingH;
+@property(nonatomic) UILayoutPriority huggingV;
+@property(nonatomic) UILayoutPriority compressionH;
+@property(nonatomic) UILayoutPriority compressionV;
 
 DEC_WITH(Frame:(CGRect)frame);
 DEC_INIT(Frame:(CGRect)frame flex:(UIFlex)flex);
