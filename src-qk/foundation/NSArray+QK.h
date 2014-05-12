@@ -59,5 +59,6 @@ EL(9);
 - (NSMutableArray*)sortedGroupedWithComparator:(NSComparator)comparator;
 
 - (NSArray*)subarrayTo:(Int)to;
+- (NSArray*)reversed;
 
 @end

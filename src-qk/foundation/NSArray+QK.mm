@@ -4,6 +4,7 @@
 
 #import "qk-macros.h"
 #import "NSMutableDictionary+QK.h"
+#import "NSMutableArray+QK.h"
 #import "NSArray+QK.h"
 
 
@@ -282,6 +283,12 @@ EL(9);
 
 - (NSArray*)subarrayTo:(Int)to {
     return [self subarrayWithRange:NSRangeMake(0, to)];
+}
+
+- (NSArray*)reversed {
+    NSMutableArray* a = self.mutableCopy;
+    [a reverse];
+    return a.copy;
 }
 
 
