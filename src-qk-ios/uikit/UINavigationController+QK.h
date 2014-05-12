@@ -7,6 +7,7 @@
 + (instancetype)withRoot:(UIViewController*)rootController;
 
 - (void)push:(UIViewController*)controller;
+- (void)replaceTopWith:(UIViewController*)controller;
 
 @end
 

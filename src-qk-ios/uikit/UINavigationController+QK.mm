@@ -18,5 +18,11 @@
 }
 
 
+- (void)replaceTopWith:(UIViewController*)controller {
+    NSMutableArray* a = self.viewControllers.mutableCopy;
+    [a replaceObjectAtIndex:a.lastIndex withObject:controller];
+    [self setViewControllers:a animated:YES];
+}
+
 @end
 
