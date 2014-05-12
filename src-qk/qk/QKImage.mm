@@ -67,7 +67,8 @@
     NSLog(@"Error: could not create image source; status: %d; path: %@", status, path);
     return nil;
   }
-  NSDictionary* d = (__bridge NSDictionary*)CGImageSourceCopyPropertiesAtIndex(source, 0, NULL);
+  NSDictionary* d = (__bridge_transfer NSDictionary*)CGImageSourceCopyPropertiesAtIndex(source, 0, NULL);
+  CFRelease(source);
   return d;
 }
 
