@@ -8,6 +8,7 @@
 @interface UIView (QK)
 
 + (instancetype)forAutolayout;
+- (instancetype)initForAutoLayout;
 
 - (void)setupLayer;
 - (UIImage*)renderedImage;

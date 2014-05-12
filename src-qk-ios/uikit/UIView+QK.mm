@@ -13,9 +13,14 @@
 
 
 + (instancetype)forAutolayout {
-    UIView* v = [[self alloc] initWithFrame:CGRect256];
-    v.translatesAutoresizingMaskIntoConstraints = NO;
-    return v;
+    return [[self alloc] initForAutoLayout];
+}
+
+
+- (instancetype)initForAutoLayout {
+    INIT(self initWithFrame:CGRect256);
+    self.translatesAutoresizingMaskIntoConstraints = NO;
+    return self;
 }
 
 
