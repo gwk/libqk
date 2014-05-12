@@ -63,12 +63,12 @@
 #define LOG_LINE            errFL(@"LOG_LINE: %04d %s", __LINE__, __FILE__)
 #define LOG_FN errFL(@"LOG_FN: %s", __FUNCTION__)
 
-#define LOG_METHOD          errFL(@"%p\t(%@)\t%s",          self, [self class], __FUNCTION__)
-#define LOG_METHOD1(a1)     errFL(@"%p\t(%@)\t%s %s: %@",   self, [self class], __FUNCTION__, #a1, a1)
-#define LOG_METHOD1B(b1)    errFL(@"%p\t(%@)\t%s %s: %@",   self, [self class], __FUNCTION__, #b1, (b1 ? @"YES" : @"NO"))
-#define LOG_METHOD1D(d1)    errFL(@"%p\t(%@)\t%s %s: %d",   self, [self class], __FUNCTION__, #d1, d1)
-#define LOG_METHOD1LD(d1)    errFL(@"%p\t(%@)\t%s %s: %ld", self, [self class], __FUNCTION__, #d1, d1)
-#define LOG_METHOD1F(f1)    errFL(@"%p\t(%@)\t%s %s: %f",   self, [self class], __FUNCTION__, #f1, f1)
+#define LOG_METHOD        errFL(@"%p\t(%@)\t%s",         self, [self class], __FUNCTION__)
+#define LOG_METHOD1(x)    errFL(@"%p\t(%@)\t%s %s: %@",  self, [self class], __FUNCTION__, #x, x)
+#define LOG_METHOD1B(x)   errFL(@"%p\t(%@)\t%s %s: %@",  self, [self class], __FUNCTION__, #x, (x ? @"Y" : @"N"))
+#define LOG_METHOD1LI(x)  errFL(@"%p\t(%@)\t%s %s: %ld", self, [self class], __FUNCTION__, #x, x)
+#define LOG_METHOD1LU(x)  errFL(@"%p\t(%@)\t%s %s: %lu", self, [self class], __FUNCTION__, #x, x)
+#define LOG_METHOD1F(x)   errFL(@"%p\t(%@)\t%s %s: %f",  self, [self class], __FUNCTION__, #x, x)
 
 #define LOG_ERROR(e) errFL(@"%p\t%@\t%s: error: %@", self, [self class], __FUNCTION__, e)
 
