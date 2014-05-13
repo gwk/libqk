@@ -40,7 +40,7 @@ PROPERTY_ALIAS(BOOL, opaque, Opaque, self.layer.opaque);
   self.layer.delegate = self;
   self.layer.autoresizingMask = kCALayerWidthSizable | kCALayerHeightSizable;
   self.layer.needsDisplayOnBoundsChange = YES;
-  self.wantsLayer = YES; // set wantsLayer after layer for layer-hosting view behavior (programmatic layer).
+  self.wantsLayer = YES; // for layer-hosting view behavior (programmatic layer), call setWantsLayer: after setLayer:.
   
   // TODO: does GLLayer ignore this?
   self.layerContentsRedrawPolicy = NSViewLayerContentsRedrawBeforeViewResize;
