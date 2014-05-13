@@ -3,6 +3,7 @@
 
 
 #import <stdint.h>
+#import <string.h>
 #import <stdbool.h>
 
 
@@ -34,11 +35,11 @@ typedef double F64;
 
 typedef const char* Ascii;
 typedef const char* Utf8;
-typedef const wchar_t* Utf32;
+typedef uint32_t* Utf32;
 
 typedef char* AsciiM;
 typedef char* Utf8M;
-typedef wchar_t* Utf32M;
+typedef uint32_t* Utf32M;
 
 static const Int min_Int = LONG_MIN;
 static const Int max_Int = LONG_MAX;
