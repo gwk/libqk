@@ -9,15 +9,43 @@ const CGRect CGRectUnit = { 0, 0, 1, 1};
 const CGRect CGRect256 = { 0, 0, 256, 256 };
 
 
+CGColorSpaceRef QKColorSpaceRGB() {
+  static CGColorSpaceRef s = CGColorSpaceCreateDeviceRGB();
+  return s;
+}
+
+
+CGColorSpaceRef QKColorSpaceLum() {
+  static CGColorSpaceRef s = CGColorSpaceCreateDeviceGray();
+  return s;
+}
+
+
+CGColorSpaceRef QKColorSpaceDev(BOOL rgb) {
+  return rgb ? QKColorSpaceRGB() : QKColorSpaceLum();
+}
+
+
+CGColorSpaceRef QKColorSpaceWithFormat(QKPixFmt format) {
+  if (format & QKPixFmtBitRGB) {
+    return QKColorSpaceRGB();
+  }
+  if (format & QKPixFmtBitL) {
+    return QKColorSpaceLum();
+  }
+  return NULL; // mask format; no color space.
+}
+
+
 CGSize CGSizeWithAspectEnclosingSize(CGFloat aspect, CGSize s) {
   if (!aspect) {
     return s;
   }
   CGFloat r_aspect = CGSizeAspect(s, 0);
-  if (r_aspect < aspect) { // e is wide/short relative to r; expand r width
+  if (r_aspect < aspect) { // e is wide/short relative to r; expand r width.
     return CGSizeMake(s.height * aspect, s.height);
   }
-  else { // e is thin/tall relative to r; expand r height
+  else { // e is thin/tall relative to r; expand r height.
     return CGSizeMake(s.width, s.width / aspect);
   }
 }

@@ -2,8 +2,8 @@
 // Permission to use this file is granted in license-libqk.txt (ISC License).
 
 
-#import "CUIView.h"
-#import "CUIColor.h"
+#import "CRView.h"
+#import "CRColor.h"
 #import "qk-cg-util.h"
 #import "QKDisplayLink.h"
 #import "TestView.h"
@@ -23,7 +23,7 @@
 - (id)initWithFrame:(CGRect)frame {
   INIT(super initWithFrame:frame);
   [self setupLayer];
-  self.backgroundColor = [CUIColor l:.8];
+  self.backgroundColor = [CRColor l:.8];
   WEAK(self);
   self.displayLink = [QKDisplayLink withTracking:NO block:^(QKDisplayLink* l){
     [weak_self setNeedsDisplay];
@@ -35,8 +35,8 @@
 
 void drawPoint(CGContextRef ctx, CGPoint p, CGFloat width) {
   float n = 1<<8;
-  CUIColor* c = [CUIColor l:(rand() % int(.5 * n + 1)) / n];
-  //CUIColor* c = [CUIColor k];
+  CRColor* c = [CRColor l:(rand() % int(.5 * n + 1)) / n];
+  //CRColor* c = [CRColor k];
   CGContextSetFillColorWithColor(ctx, c.CGColor);
   CGRect r = (CGRect){ p, {width, width} };
   CGContextFillRect(ctx, r);

@@ -3,14 +3,14 @@
 
 
 #if TARGET_OS_IPHONE
-# define CUIColor UIColor
+# define CRColor UIColor
 #import <UIKit/UIKit.h>
 #else
-# define CUIColor NSColor
+# define CRColor NSColor
 #import <AppKit/NSColor.h>
 #endif
 
-@interface CUIColor (CUI)
+@interface CRColor (CR)
 
 @property (nonatomic, readonly) CGFloat r;
 @property (nonatomic, readonly) CGFloat g;

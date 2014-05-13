@@ -16,7 +16,7 @@
   LOG_METHOD;
   INIT(super initWithFrame:frame);
   [self setupLayer];
-  //self.backgroundColor = [CUIColor r:.5];
+  //self.backgroundColor = [CRColor r:.5];
   return self;
 }
 

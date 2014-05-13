@@ -2,13 +2,13 @@
 // Permission to use this file is granted in license-libqk.txt (ISC License).
 
 
-#import "CUIColor.h"
+#import "CRColor.h"
 
 
 @interface NSView (QK)
 
 @property (nonatomic) CGPoint center;
-@property (nonatomic) CUIColor* backgroundColor;
+@property (nonatomic) CRColor* backgroundColor;
 @property (nonatomic) BOOL opaque;
 
 - (void)setupLayer;

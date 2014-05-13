@@ -3,7 +3,7 @@
 
 
 #import "qk-macros.h"
-#import "CUIColor.h"
+#import "CRColor.h"
 
 
 @interface CALayer (QK)
@@ -17,10 +17,12 @@
 @property(nonatomic) CGFloat px;
 @property(nonatomic) CGFloat py;
 
-@property (nonatomic) CUIColor* color; // background color.
+@property (nonatomic) CRColor* color; // background color.
+
+CGFloat CRScreenScale();
 
 DEC_INIT(Frame:(CGRect)frame);
-DEC_INIT(Frame:(CGRect)frame color:(CUIColor*)color);
+DEC_INIT(Frame:(CGRect)frame color:(CRColor*)color);
 
 - (void)inspect;
 - (void)inspect:(NSString*)label;

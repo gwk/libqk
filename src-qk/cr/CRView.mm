@@ -6,7 +6,7 @@
 #import "qk-cg-util.h"
 #import "NSString+QK.h"
 #import "CALayer+QK.h"
-#import "CUIView.h"
+#import "CRView.h"
 
 
 #if TARGET_OS_IPHONE
@@ -45,7 +45,7 @@ const UIFlex UIFlexWL = UIFlexW | UIFlexL;
 const UIFlex UIFlexWR = UIFlexW | UIFlexR;
 
 
-CGContextRef CUICurrentCtx() {
+CGContextRef CRCurrentCtx() {
 #if TARGET_OS_IPHONE
   return UIGraphicsGetCurrentContext();
 #else
@@ -54,7 +54,7 @@ CGContextRef CUICurrentCtx() {
 }
 
 
-@implementation CUIView (CUI)
+@implementation CRView (CR)
 
 
 DEF_WITH(Frame:(CGRect)frame);
@@ -93,8 +93,8 @@ DEF_INIT(Size:(CGSize)size flex:(UIFlex)flex) {
 }
 
 
-DEC_WITH(Frame:(CGRect)frame flex:(UIFlex)flex  color:(CUIColor*)color) {
-  CUIView* v = [self withFrame:frame flex:flex];
+DEC_WITH(Frame:(CGRect)frame flex:(UIFlex)flex  color:(CRColor*)color) {
+  CRView* v = [self withFrame:frame flex:flex];
   v.opaque = (color.a >= .999);
   v.backgroundColor = color;
   return v;
@@ -232,13 +232,13 @@ PROPERTY_STRUCT_FIELD(CGSize, bs, Bs, CGRect, self.bounds, size);
 
 
 - (void)removeAllSubviews {
-  for (CUIView* v in self.subviews) {
+  for (CRView* v in self.subviews) {
     [v removeFromSuperview];
   }
 }
 
 
-- (void)insertSubview:(CUIView*)subview comparator:(NSComparator)comparator {
+- (void)insertSubview:(CRView*)subview comparator:(NSComparator)comparator {
     // for now just do linear search.
     NSArray* views = self.subviews;
     for_in(i, views.count) {
@@ -292,7 +292,7 @@ PROPERTY_STRUCT_FIELD(CGSize, bs, Bs, CGRect, self.bounds, size);
 - (void)inspectRec:(NSString*)indent {
   errL(indent, self, (self.isHidden ? @"(HIDDEN)" : @""));
   NSString* indent1 = [indent stringByAppendingString:@"  "];
-  for (CUIView* v  in self.subviews) {
+  for (CRView* v  in self.subviews) {
     [v inspectRec:indent1];
   }
 }
@@ -312,7 +312,7 @@ PROPERTY_STRUCT_FIELD(CGSize, bs, Bs, CGRect, self.bounds, size);
 
 
 - (void)inspectParents {
-  CUIView* v = self;
+  CRView* v = self;
   while (v) {
     errL(v, (self.isHidden ? @"(HIDDEN)" : @""));
     v = v.superview;

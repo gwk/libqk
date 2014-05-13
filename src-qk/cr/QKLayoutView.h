@@ -3,7 +3,7 @@
 
 
 #import "qk-block-types.h"
-#import "CUIView.h"
+#import "CRView.h"
 
 typedef enum {
   QKLayoutNone,
@@ -11,7 +11,7 @@ typedef enum {
   QKLayoutVertical,
 } QKLayoutDirection;
 
-@interface QKLayoutView : CUIView
+@interface QKLayoutView : CRView
 
 @property (nonatomic, copy) BlockAction blockPre; // first step of layoutSubviews.
 @property (nonatomic, copy) BlockAction blockPost; // last step of layoutSubviews.

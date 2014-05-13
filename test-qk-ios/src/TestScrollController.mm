@@ -2,8 +2,8 @@
 // Permission to use this file is granted in license-libqk.txt (ISC License).
 
 
-#import "CUIView.h"
-#import "CUIColor.h"
+#import "CRView.h"
+#import "CRColor.h"
 //#import "QKButton.h"
 #import "QKScrollView.h"
 #import "TestScrollController.h"

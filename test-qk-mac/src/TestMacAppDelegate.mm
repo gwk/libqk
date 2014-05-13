@@ -3,8 +3,8 @@
 
 
 #import "TestMacAppDelegate.h"
-#import "CUIView.h"
-#import "CUIColor.h"
+#import "CRView.h"
+#import "CRColor.h"
 #import "QKWindow.h"
 #import "TestView.h"
 
@@ -15,7 +15,7 @@
 @implementation TestMacAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification {
-  CUIView* v = [TestView withFlexSize:CGSizeMake(512, 512)];
+  CRView* v = [TestView withFlexSize:CGSizeMake(512, 512)];
   _window = [QKWindow withView:v
                       delegate:nil
                      closeable:NO

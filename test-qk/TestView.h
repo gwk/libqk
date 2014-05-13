@@ -2,8 +2,8 @@
 // Permission to use this file is granted in license-libqk.txt (ISC License).
 
 
-#import "CUIView.h"
+#import "CRView.h"
 
-@interface TestView : CUIView
+@interface TestView : CRView
 
 @end

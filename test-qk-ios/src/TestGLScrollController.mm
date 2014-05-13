@@ -4,8 +4,8 @@
 
 #import "qk-macros.h"
 #import "qk-cg-util.h"
-#import "CUIColor.h"
-#import "CUIView.h"
+#import "CRColor.h"
+#import "CRView.h"
 #import "GLView.h"
 #import "GLTestScene.h"
 #import "TestGLScrollController.h"

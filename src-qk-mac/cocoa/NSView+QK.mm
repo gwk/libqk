@@ -5,7 +5,7 @@
 #import "qk-macros.h"
 #import "NSArray+QK.h"
 #import "CALayer+QK.h"
-#import "CUIColor.h"
+#import "CRColor.h"
 #import "NSView+QK.h"
 
 
@@ -30,7 +30,7 @@
 }
 
 
-PROPERTY_ALIAS(CUIColor*, backgroundColor, BackgroundColor, self.layer.color);
+PROPERTY_ALIAS(CRColor*, backgroundColor, BackgroundColor, self.layer.color);
 PROPERTY_ALIAS(BOOL, opaque, Opaque, self.layer.opaque);
 
 

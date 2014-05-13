@@ -2,10 +2,10 @@
 // Permission to use this file is granted in license-libqk.txt (ISC License).
 
 
-#import "CUIColor.h"
+#import "CRColor.h"
 
 
-@implementation CUIColor (CUI)
+@implementation CRColor (CR)
 
 
 + (instancetype)clear { return [self clearColor]; }

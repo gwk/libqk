@@ -17,19 +17,19 @@ DEF_INIT(Frame:(CGRect)frame) {
 }
 
 
-DEF_INIT(Frame:(CGRect)frame color:(CUIColor*)color) {
+DEF_INIT(Frame:(CGRect)frame color:(CRColor*)color) {
   INIT(self initWithFrame:frame);
   self.color = color;
   return self;
 }
 
 
-- (CUIColor*)color {
-  return [CUIColor colorWithCGColor:self.backgroundColor];
+- (CRColor*)color {
+  return [CRColor colorWithCGColor:self.backgroundColor];
 }
 
 
-- (void)setColor:(CUIColor*)color {
+- (void)setColor:(CRColor*)color {
   self.backgroundColor = color.CGColor;
 }
 

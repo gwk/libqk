@@ -3,6 +3,7 @@
 
 
 #import "qk-macros.h"
+#import "QKPixFmt.h"
 
 
 extern const CGSize CGSizeUnit;
@@ -16,11 +17,19 @@ typedef enum {
   QKVertAlignmentBottom,
 } QKVertAlignment;
 
+
 #if TARGET_OS_IPHONE
-typedef UIEdgeInsets CUIEdgeInsets;
+typedef UIEdgeInsets CREdgeInsets;
 #else
-typedef NSEdgeInsets CUIEdgeInsets;
+typedef NSEdgeInsets CREdgeInsets;
 #endif
+
+
+extern CGColorSpaceRef QKColorSpaceRGB();
+extern CGColorSpaceRef QKColorSpaceLum();
+extern CGColorSpaceRef QKColorSpaceDev(BOOL rgb);
+extern CGColorSpaceRef QKColorSpaceWithFormat(QKPixFmt format);
+
 
 #if __cplusplus
 
@@ -63,7 +72,7 @@ static inline CGPoint clamp(CGPoint p, CGSize s) {
 }
 
 
-static inline CGRect inset(CGRect r, CUIEdgeInsets i) {
+static inline CGRect inset(CGRect r, CREdgeInsets i) {
   r.origin.x += i.left;
   r.origin.y += i.top;
   r.size.width -= i.left + i.right;

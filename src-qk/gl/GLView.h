@@ -7,10 +7,10 @@
 #import "QKPixFmt.h"
 #import "GLScene.h"
 #import "GLLayer.h"
-#import "CUIView.h"
+#import "CRView.h"
 
 
-@interface GLView : CUIView
+@interface GLView : CRView
 
 @property (nonatomic, readonly) GLLayer* glLayer;
 @property (nonatomic) GLEventHandler* eventHandler;

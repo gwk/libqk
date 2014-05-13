@@ -2,7 +2,7 @@
 // Permission to use this file is granted in license-libqk.txt (ISC License).
 
 
-#import "CUIColor.h"
+#import "CRColor.h"
 #import "UILabel+QK.h"
 //#import "QKButton.h"
 //#import "QKLabel.h"

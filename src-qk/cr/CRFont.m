@@ -1,9 +1,9 @@
-// Copyright 2013 George King.
+// Copyright 2014 George King.
 // Permission to use this file is granted in license-libqk.txt (ISC License).
 
 
-#import "CCAGLLayer.h"
+#import "CRFont.h"
 
-@implementation CCAGLLayer (CCA)
+@implementation CRFont (CR)
 
 @end

@@ -3,13 +3,13 @@
 
 
 #import "qk-vec.h"
-#import "CCAGLLayer.h"
+#import "CRGLLayer.h"
 #import "QKPixFmt.h"
 #import "GLEventHandler.h"
 
 @protocol GLScene;
 
-@interface GLLayer : CCAGLLayer
+@interface GLLayer : CRGLLayer
 
 
 @property (nonatomic, readonly) QKPixFmt format;

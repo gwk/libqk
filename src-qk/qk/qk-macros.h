@@ -315,6 +315,9 @@ DEF_WITH_CAST(class_name, __VA_ARGS__) \
 #define DEF_SET_AND_DISPLAY(type, name, Name) \
 - (void)set##Name:(type)name { _##name = name; [self setNeedsDisplay]; }
 
+#define DEF_PROPERTY_SET_CF(type, name, Name) \
+- (void)set##Name:(type)name { type old = _##name; _##name = (type)CFRetain(name); if (old) CFRelease(old); }
+
 
 #pragma mark - properties
 

@@ -3,17 +3,17 @@
 
 
 #import "qk-macros.h"
-#import "CUIColor.h"
+#import "CRColor.h"
 
 
 #if TARGET_OS_IPHONE
 #import "UIView+QK.h"
-# define CUIView UIView
+# define CRView UIView
 typedef UILayoutConstraintAxis UIAxis;
 
 #else
 #import "NSView+QK.h"
-# define CUIView NSView
+# define CRView NSView
 typedef NSUInteger UIViewAutoresizing;
 typedef NSLayoutConstraintOrientation UIAxis;
 typedef NSLayoutPriority UILayoutPriority; // this is dirty, but good enough for now.
@@ -41,9 +41,9 @@ extern const UIFlex UIFlexWR;
 extern const UIAxis UIAxisH;
 extern const UIAxis UIAxisV;
 
-extern CGContextRef CUICurrentCtx();
+extern CGContextRef CRCurrentCtx();
 
-@interface CUIView (CUI)
+@interface CRView (CR)
 
 @property(nonatomic) UIFlex flex;
 @property(nonatomic) CGPoint o;
@@ -75,10 +75,10 @@ DEC_INIT(Size:(CGSize)size);
 DEC_INIT(FlexSize:(CGSize)size);
 DEC_INIT(Size:(CGSize)size flex:(UIFlex)flex);
 
-DEC_WITH(Frame:(CGRect)frame flex:(UIFlex)flex  color:(CUIColor*)color);
+DEC_WITH(Frame:(CGRect)frame flex:(UIFlex)flex  color:(CRColor*)color);
 
 - (void)removeAllSubviews;
-- (void)insertSubview:(CUIView*)subview comparator:(NSComparator)comparator;
+- (void)insertSubview:(CRView*)subview comparator:(NSComparator)comparator;
 
 // debugging
 

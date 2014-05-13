@@ -5,7 +5,7 @@
 #import "qk-macros.h"
 #import "qk-log.h"
 #import "NSString+QK.h"
-#import "CUIView.h"
+#import "CRView.h"
 #import "QKWindowView.h"
 #import "QKWindow.h"
 
@@ -39,7 +39,7 @@
 }
 
 
-DEF_INIT(View:(CUIView *)view
+DEF_INIT(View:(CRView *)view
          delegate:(id<QKWindowDelegate>)delegate
          styleMask:(NSUInteger)styleMask
          screenMode:(QKWindowScreenMode)screenMode
@@ -84,7 +84,7 @@ DEF_INIT(View:(CUIView *)view
 }
 
 
-DEF_INIT(View:(CUIView*)view
+DEF_INIT(View:(CRView*)view
          delegate:(id<QKWindowDelegate>)delegate
          closeable:(BOOL)closeable
          miniaturizable:(BOOL)miniaturizable
@@ -131,7 +131,7 @@ DEF_INIT(View:(CUIView*)view
 }
 
 
-- (void)setView:(CUIView *)view {
+- (void)setView:(CRView *)view {
   [_view removeFromSuperview];
   _view = view;
   [self.contentView addSubview:_view];

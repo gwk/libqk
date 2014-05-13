@@ -7,7 +7,7 @@
 #import "qk-cg-util.h"
 #import "NSString+QK.h"
 #import "NSArray+QK.h"
-#import "CUIView.h"
+#import "CRView.h"
 #import "UIScrollView+QK.h"
 #import "QKScrollView.h"
 

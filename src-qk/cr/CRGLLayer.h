@@ -6,12 +6,12 @@
 
 
 #if TARGET_OS_IPHONE
-# define CCAGLLayer CAEAGLLayer
+# define CRGLLayer CAEAGLLayer
 #else
-# define CCAGLLayer CAOpenGLLayer
+# define CRGLLayer CAOpenGLLayer
 #endif
 
 
-@interface CCAGLLayer (CCA)
+@interface CRGLLayer (CR)
 
 @end

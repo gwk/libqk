@@ -25,7 +25,7 @@
   APPLY_LIVE_BLOCK(_blockPre);
   CGPoint p = self.bounds.origin;
   CGFloat l = 0; // length
-  for (CUIView* v in self.subviews) {
+  for (CRView* v in self.subviews) {
 #if TARGET_OS_IPHONE
     if (_fit) {
       [v sizeToFit];
