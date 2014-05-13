@@ -327,7 +327,6 @@ void describeAllPFA(CGLPixelFormatObj format, GLint virtualScreen) {
   descPFA(format, virtualScreen, kCGLPFAClosestPolicy);
   descPFA(format, virtualScreen, kCGLPFAColorFloat);
   descPFA(format, virtualScreen, kCGLPFAColorSize);
-  descPFA(format, virtualScreen, kCGLPFACompliant);
   descPFA(format, virtualScreen, kCGLPFADepthSize);
   descPFA(format, virtualScreen, kCGLPFADisplayMask);
   descPFA(format, virtualScreen, kCGLPFADoubleBuffer);
@@ -336,23 +335,14 @@ void describeAllPFA(CGLPixelFormatObj format, GLint virtualScreen) {
   descPFA(format, virtualScreen, kCGLPFAMultisample);
   descPFA(format, virtualScreen, kCGLPFANoRecovery);
   descPFA(format, virtualScreen, kCGLPFAOpenGLProfile);
-  descPFA(format, virtualScreen, kCGLPFARemotePBuffer);
   descPFA(format, virtualScreen, kCGLPFARendererID);
   descPFA(format, virtualScreen, kCGLPFASampleAlpha);
   descPFA(format, virtualScreen, kCGLPFASampleBuffers);
   descPFA(format, virtualScreen, kCGLPFASamples);
-  descPFA(format, virtualScreen, kCGLPFASingleRenderer);
   descPFA(format, virtualScreen, kCGLPFAStencilSize);
   descPFA(format, virtualScreen, kCGLPFAStereo);
   descPFA(format, virtualScreen, kCGLPFASupersample);
   descPFA(format, virtualScreen, kCGLPFAVirtualScreenCount);
-  descPFA(format, virtualScreen, kCGLPFAWindow);
-  // descPFA(format, virtualScreen, kCGLPFAFullScreen);   // deprecated
-  // descPFA(format, virtualScreen, kCGLPFAMPSafe);       // deprecated
-  // descPFA(format, virtualScreen, kCGLPFAMultiScreen);  // deprecated
-  // descPFA(format, virtualScreen, kCGLPFAOffScreen);    // deprecated
-  // descPFA(format, virtualScreen, kCGLPFAPBuffer);      // deprecated
-  // descPFA(format, virtualScreen, kCGLPFARobust);       // deprecated
   errL(@"");
 }
 
