@@ -48,7 +48,9 @@ DEF_INIT(Database:(SqlDatabase*)db query:(NSString*)query) {
 
 - (void)close {
   int code = sqlite3_finalize(_handle);
-  _CHECK_OK(@"finalize");
+  if (code != SQLITE_OK) {
+    NSLog(@"SqlStatement close: %@\n%@", sql_failure_str(_db.handle, code), self.query);
+  }
   _handle = NULL;
 }
 
