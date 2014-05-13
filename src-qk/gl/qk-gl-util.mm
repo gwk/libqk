@@ -67,7 +67,6 @@ int qkgl_max_vertex_attributes() {
 
 
 NSString* qkgl_error_string(GLenum error_code) {
-#if TARGET_OS_IPHONE
   switch (error_code) {
       CASE_RET_TOK_STR(GL_INVALID_ENUM);
       CASE_RET_TOK_STR(GL_INVALID_VALUE);
@@ -77,9 +76,6 @@ NSString* qkgl_error_string(GLenum error_code) {
     default:
       return [NSString stringWithFormat:@"UNKNOWN: 0x%X", error_code];
   }
-#else
-  return [NSString withUtf8:(Utf8)gluErrorString(error_code)];
-#endif
 }
 
 
