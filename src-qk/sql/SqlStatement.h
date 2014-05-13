@@ -1,9 +1,8 @@
 // Copyright 2013 George King.
 // Permission to use this file is granted in license-libqk.txt (ISC License).
 
-
-#import "qk-vec.h"
-
+#import "qk-types.h"
+#import "qk-macros.h"
 
 @class SqlDatabase;
 @class SqlStatement;

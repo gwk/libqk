@@ -1,8 +1,6 @@
 // Copyright 2013 George King.
 // Permission to use this file is granted in license-libqk.txt (ISC License).
 
-
-#import "qk-types.h"
 #import "NSArray+QK.h"
 #import "NSString+QK.h"
 #import "qk-sql-util.h"
