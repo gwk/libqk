@@ -6,5 +6,9 @@
 
 
 @interface QKTextLayer : CALayer
+
+@property (nonatomic) NSString* text;
+@property (nonatomic) NSDictionary* attrs;
+
 @end
 

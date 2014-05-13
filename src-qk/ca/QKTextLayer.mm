@@ -10,5 +10,11 @@
 
 
 @implementation QKTextLayer
+
+
+- (void)drawInContext:(CGContextRef)ctx {
+}
+
+
 @end
 
