@@ -23,16 +23,13 @@
 #endif
 
 
-#define _qk_fail(expr_str, ...) ({ \
-NSString* expr_line = expr_str ? [NSString stringWithFormat:@"!%s\n", expr_str] : @""; \
+#define _qk_fail(expr_str, fmt, ...) ({ \
+NSString* expr_line = expr_str ? [NSString stringWithFormat:@"failed expr: '%s'\n  ", expr_str] : @""; \
 NSString* file_str = [[NSString stringWithUTF8String:__FILE__] lastPathComponent]; \
-NSString* msg = [NSString stringWithFormat:__VA_ARGS__]; \
-NSLog(@"ERROR: %@:%d: %s\n%@%@\n", file_str, __LINE__, __PRETTY_FUNCTION__, expr_line, msg); \
-[[NSAssertionHandler currentHandler] \
-handleFailureInFunction:[NSString stringWithUTF8String:__PRETTY_FUNCTION__] \
-file:file_str \
-lineNumber:__LINE__ \
-description:@"%@%@", expr_line, msg]; \
+NSString* msg = [NSString stringWithFormat:@"ERROR: %@:%d: %s\n  %@" fmt, \
+file_str, __LINE__, __PRETTY_FUNCTION__, expr_line, ##__VA_ARGS__]; \
+NSLog(@"%@", msg); \
+[NSException raise:NSInternalInconsistencyException format:@"%@", msg]; \
 abort(); \
 })
 

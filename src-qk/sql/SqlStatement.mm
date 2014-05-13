@@ -11,10 +11,10 @@
 
 
 #define _CHECK(exp_code, fmt, ...) \
-qk_check(code == exp_code, @"%@\n%@\n" fmt, sql_failure_str(_db.handle, code), self.query, ##__VA_ARGS__)
+qk_check(code == exp_code, @"%@\n  query: '%@'\n  " fmt, sql_failure_str(_db.handle, code), self.query, ##__VA_ARGS__)
 
 #define _ASSERT(exp_code, fmt, ...) \
-qk_assert(code == exp_code, @"%@\n%@\n" fmt, sql_failure_str(_db.handle, code), self.query, ##__VA_ARGS__)
+qk_assert(code == exp_code, @"%@\n  query: '%@'\n  " fmt, sql_failure_str(_db.handle, code), self.query, ##__VA_ARGS__)
 
 #define _CHECK_OK(...) _CHECK(SQLITE_OK, __VA_ARGS__)
 #define _ASSERT_OK(...) _ASSERT(SQLITE_OK, __VA_ARGS__)
@@ -49,7 +49,7 @@ DEF_INIT(Database:(SqlDatabase*)db query:(NSString*)query) {
 - (void)close {
   int code = sqlite3_finalize(_handle);
   if (code != SQLITE_OK) {
-    NSLog(@"SqlStatement close: %@\n%@", sql_failure_str(_db.handle, code), self.query);
+    NSLog(@"SqlStatement close: %@\n  query: '%@'", sql_failure_str(_db.handle, code), self.query);
   }
   _handle = NULL;
 }
