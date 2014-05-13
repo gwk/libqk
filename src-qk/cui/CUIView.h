@@ -41,6 +41,8 @@ extern const UIFlex UIFlexWR;
 extern const UIAxis UIAxisH;
 extern const UIAxis UIAxisV;
 
+extern CGContextRef CUICurrentCtx();
+
 @interface CUIView (CUI)
 
 @property(nonatomic) UIFlex flex;

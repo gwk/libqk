@@ -45,6 +45,14 @@ const UIFlex UIFlexWL = UIFlexW | UIFlexL;
 const UIFlex UIFlexWR = UIFlexW | UIFlexR;
 
 
+CGContextRef CUICurrentCtx() {
+#if TARGET_OS_IPHONE
+  return UIGraphicsGetCurrentContext();
+#else
+  return (CGContextRef)[[NSGraphicsContext currentContext] graphicsPort];
+#endif
+}
+
 
 @implementation CUIView (CUI)
 
