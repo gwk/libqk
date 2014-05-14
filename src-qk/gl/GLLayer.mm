@@ -194,7 +194,7 @@ Utf8 frameBufferStatusDesc(GLenum status) {
   glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_WIDTH, (&_drawableSize.v[0]));
   glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, (&_drawableSize.v[1]));
   // depth
-  int depth = QKPixFmtDepthSize(_format);
+  Int depth = QKPixFmtDepthSize(_format);
   if (depth > 0) {
     GLenum depth_enum = 0;
     if (depth <= 16) {
@@ -212,7 +212,7 @@ Utf8 frameBufferStatusDesc(GLenum status) {
     glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _depthBuffer);
   }
   // multisampling
-  int samples = QKPixFmtMultisamples(_format);
+  Int samples = QKPixFmtMultisamples(_format);
   if (samples > 0) {
     errFL(@"multisampling is not yet implemented.");
     // TODO: http://developer.apple.com/library/ios/#documentation/3DDrawing/Conceptual/OpenGLES_ProgrammingGuide/WorkingwithEAGLContexts/WorkingwithEAGLContexts.html
