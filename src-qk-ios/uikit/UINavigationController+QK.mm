@@ -2,6 +2,7 @@
 // Permission to use this file is granted in license-libqk.txt (ISC License).
 
 
+#import "NSArray+QK.h"
 #import "UINavigationController+QK.h"
 
 

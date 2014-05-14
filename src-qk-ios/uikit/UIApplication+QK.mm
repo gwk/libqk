@@ -1,7 +1,9 @@
 // Copyright 2013 George King.
 // Permission to use this file is granted in license-libqk.txt (ISC License).
 
-
+#import <AudioToolbox/AudioToolbox.h>
+#import "qk-macros.h"
+#import "NSTimer+QK.h"
 #import "UIApplication+QK.h"
 
 
@@ -45,7 +47,6 @@ void soundCheckFailed(SystemSoundID soundId, BlockDoBool block) {
 
 
 + (BOOL)soundCheck:(BlockDoBool)block {
-    LOG_METHOD;
     qk_assert(block, @"nil block");
     SystemSoundID soundId = 0;
     NSURL* url = [[NSBundle mainBundle] URLForResource:@"soundCheck" withExtension:@"caf"];
