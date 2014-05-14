@@ -312,36 +312,33 @@ DEF_WITH_CAST(class_name, __VA_ARGS__) \
 - (instancetype)initWith##__VA_ARGS__
 
 
-#define DEF_SET_AND_DISPLAY(type, name, Name) \
+#define DEF_SET_NEEDS_DISPLAY(type, name, Name) \
 - (void)set##Name:(type)name { _##name = name; [self setNeedsDisplay]; }
 
-#define DEF_PROPERTY_SET_CF(type, name, Name) \
-- (void)set##Name:(type)name { type old = _##name; _##name = (type)CFRetain(name); if (old) CFRelease(old); }
+#define DEF_SET_CF_RETAIN(type, name, Name) \
+- (void)set##Name:(type)name { type old = _##name; _##name = (type)(name ? CFRetain(name) : NULL); if (old) CFRelease(old); }
 
 
 #pragma mark - properties
 
 
-#define PROPERTY_ALIAS(type, name, Name, path) \
+#define PROPERTY_ALIAS(type, name, Name, path, ...) \
 - (type)name { return (type)path; } \
-- (void)set##Name:(type)name { path = name; } \
+- (void)set##Name:(type)name { path = name; __VA_ARGS__ } \
 
 
-#define SUB_PROPERTY_ALIAS(type, name, Name, sub) PROPERTY_ALIAS(type, name, Name, sub.name)
-
-
-#define PROPERTY_SUBCLASS_ALIAS(class_name, name, Name, path) \
+#define PROPERTY_SUBCLASS_ALIAS(class_name, name, Name, path, ...) \
 - (class_name*)name { return CAST(class_name, path); } \
-- (void)set##Name:(class_name*)name { path = name; } \
+- (void)set##Name:(class_name*)name { path = name; __VA_ARGS__ } \
 
 
 #define PROPERTY_SUBCLASS_ALIAS_RO(class_name, name, path) \
 - (class_name*)name { return CAST(class_name, path); } \
 
 
-#define PROPERTY_STRUCT_FIELD(type, name, Name, structType, structPath, fieldPath) \
+#define PROPERTY_STRUCT_FIELD(type, name, Name, structType, structPath, fieldPath, ...) \
 - (type)name { return structPath.fieldPath; } \
-- (void)set##Name:(type)name { structType temp = structPath; temp.fieldPath = name; structPath = temp; } \
+- (void)set##Name:(type)name { structType temp = structPath; temp.fieldPath = name; structPath = temp; __VA_ARGS__ } \
 
 
 #pragma mark - delegates

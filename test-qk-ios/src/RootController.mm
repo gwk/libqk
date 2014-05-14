@@ -9,6 +9,7 @@
 #import "TestGLScrollController.h"
 #import "RootController.h"
 #import "TestLabelController.h"
+#import "TestRichLabelController.h"
 #import "TestJpgController.h"
 
 
@@ -25,6 +26,7 @@
     [QKDuo a:@"Table View" b:[TestTableController class]],
     [QKDuo a:@"GL Scroll View" b:[TestGLScrollController class]],
     [QKDuo a:@"Labels" b:[TestLabelController class]],
+    [QKDuo a:@"Rich Labels" b:[TestRichLabelController class]],
     [QKDuo a:@"JPEG" b:[TestJpgController class]]];
   
   INIT(super initWithRows:rows cellTypes:nil);

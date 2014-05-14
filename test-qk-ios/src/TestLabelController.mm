@@ -16,36 +16,31 @@
 @implementation TestLabelController
 
 
-- (UIView*)makeContentView {
+- (void)viewDidLoad {
   self.view.backgroundColor = [UIColor l:.5];
-  UIView* v = [UIView withFlexFrame];
-  CGFloat x = 4 + self.insetTop;
-  CGFloat w = v.w - x * 2;
-  CGFloat h = 60;
+#if 0
+  CGFloat x = 4;
+  CGFloat y = 4 + self.insetTop;
 
-  UILabel* uil = [UILabel withFrame:CGRectMake(x, x, w, h) flex:UIFlexW];
-  uil.font = [UIFont systemFontOfSize:24];
-  uil.text = @"UILabel";
-  [v addSubview:uil];
-  /*
-  QKLabel* ll = [QKLabel withFontSize:24 x:x y:uil.bottom + 4 w:w h:h min:1 max:1 flex:UIFlexWidth];
+  QKLabel* ll = [QKLabel withFontSize:24 x:x y:uil.bottom + 4 w:w h:h min:1 max:1 flex:UIFlexW];
+  [self.view addSubview:ll];
   ll.text = @"QKLabel Left Top";
   ll.verticalAlign = QKVerticalAlignTop;
-  [v addSubview:ll];
   
-  QKLabel* lc = [QKLabel withFontSize:24 x:x y:ll.bottom + 4 w:w h:h min:1 max:1 flex:UIFlexWidth];
+  QKLabel* lc = [QKLabel withFontSize:24 x:x y:ll.bottom + 4 w:w h:h min:1 max:1 flex:UIFlexW];
+  [self.view addSubview:lc];
   lc.text = @"QKLabel Center";
   lc.textAlignment = NSTextAlignmentCenter;
   lc.verticalAlign = QKVerticalAlignCenter;
-  [v addSubview:lc];
   
-  QKLabel* lr = [QKLabel withFontSize:24 x:x y:lc.bottom + 4 w:w h:h min:1 max:1 flex:UIFlexWidth];
+  QKLabel* lr = [QKLabel withFontSize:24 x:x y:lc.bottom + 4 w:w h:h min:1 max:1 flex:UIFlexW];
+  [self.view addSubview:lr];
   lr.text = @"QKLabel Right Bottom";
   lr.textAlignment = NSTextAlignmentRight;
   lr.verticalAlign = QKVerticalAlignBottom;
-  [v addSubview:lr];
   
-  QKButton* button = [QKButton withFontSize:24 x:x y:lr.bottom + 4 w:w h:h min:1 max:1 flex:UIFlexWidth];
+  QKButton* button = [QKButton withFontSize:24 x:x y:lr.bottom + 4 w:w h:h min:1 max:1 flex:UIFlexW];
+  [self.view addSubview:button];
   button.text = @"Button";
   button.blockTouchDown = ^{
     errL(@"touch down");
@@ -56,9 +51,7 @@
   button.blockTouchCancelled = ^{
     errL(@"touch cancelled");
   };
-  [v addSubview:button];
-   */
-  return v;
+#endif
 }
 
 

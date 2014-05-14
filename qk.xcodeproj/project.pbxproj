@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC023D8319231FC20059C606 /* QKRichLabel.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC023D8219231FC20059C606 /* QKRichLabel.mm */; };
+		EC023D8419231FC20059C606 /* QKRichLabel.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC023D8219231FC20059C606 /* QKRichLabel.mm */; };
 		EC0D9A9116B830F1005D2C2B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0D9A9016B830F1005D2C2B /* Cocoa.framework */; };
 		EC0D9A9316B830F7005D2C2B /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0D9A9216B830F7005D2C2B /* AppKit.framework */; };
 		EC0D9B4E16B84FDA005D2C2B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0D9B4D16B84FDA005D2C2B /* libz.dylib */; };
@@ -33,6 +35,9 @@
 		EC102ECE182AF1C500BBAB20 /* pos.vert in Resources */ = {isa = PBXBuildFile; fileRef = ECDCABDA18299E94008CEB6D /* pos.vert */; };
 		EC102ECF182AF1C500BBAB20 /* uni-color.frag in Resources */ = {isa = PBXBuildFile; fileRef = ECDCABDB18299E94008CEB6D /* uni-color.frag */; };
 		EC102ED0182AF1C500BBAB20 /* var-color.frag in Resources */ = {isa = PBXBuildFile; fileRef = ECDCABDC18299E94008CEB6D /* var-color.frag */; };
+		EC2A71AE19239AD4006748E7 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC2A71AD19239AD4006748E7 /* CoreText.framework */; };
+		EC2A71B019239B27006748E7 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC2A71AF19239B27006748E7 /* AudioToolbox.framework */; };
+		EC2A71B31923AFD1006748E7 /* TestRichLabelController.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC2A71B21923AFD1006748E7 /* TestRichLabelController.mm */; };
 		EC68667C18C651B30037AFE2 /* CADisplayLink+QK.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC68664A18C651B30037AFE2 /* CADisplayLink+QK.mm */; };
 		EC68667E18C651B30037AFE2 /* QKApplicationDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC68665018C651B30037AFE2 /* QKApplicationDelegate.mm */; };
 		EC68667F18C651B30037AFE2 /* QKImageView.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC68665218C651B30037AFE2 /* QKImageView.mm */; };
@@ -189,9 +194,13 @@
 		ECFDCDA41922A4960081451D /* QKTextLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = ECFDCDA21922A4960081451D /* QKTextLayer.mm */; };
 		ECFDCDA71922A4B90081451D /* CRFont.m in Sources */ = {isa = PBXBuildFile; fileRef = ECFDCDA61922A4B90081451D /* CRFont.m */; };
 		ECFDCDA81922A4B90081451D /* CRFont.m in Sources */ = {isa = PBXBuildFile; fileRef = ECFDCDA61922A4B90081451D /* CRFont.m */; };
+		ECFDCDAB1922BE050081451D /* NSAttributedString+QK.mm in Sources */ = {isa = PBXBuildFile; fileRef = ECFDCDAA1922BE050081451D /* NSAttributedString+QK.mm */; };
+		ECFDCDAC1922BE050081451D /* NSAttributedString+QK.mm in Sources */ = {isa = PBXBuildFile; fileRef = ECFDCDAA1922BE050081451D /* NSAttributedString+QK.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EC023D8119231FC20059C606 /* QKRichLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKRichLabel.h; sourceTree = "<group>"; };
+		EC023D8219231FC20059C606 /* QKRichLabel.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = QKRichLabel.mm; sourceTree = "<group>"; };
 		EC0D9A6916B82EBD005D2C2B /* test-qk-mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "test-qk-mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC0D9A9016B830F1005D2C2B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		EC0D9A9216B830F7005D2C2B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -225,6 +234,11 @@
 		EC102EA3182AD58800BBAB20 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		EC102EA4182AD58800BBAB20 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		EC102EA9182AD86B00BBAB20 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
+		EC2A71AC19232018006748E7 /* QKLitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKLitView.h; sourceTree = "<group>"; };
+		EC2A71AD19239AD4006748E7 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreText.framework; sourceTree = DEVELOPER_DIR; };
+		EC2A71AF19239B27006748E7 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/AudioToolbox.framework; sourceTree = DEVELOPER_DIR; };
+		EC2A71B11923AFD1006748E7 /* TestRichLabelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestRichLabelController.h; sourceTree = "<group>"; };
+		EC2A71B21923AFD1006748E7 /* TestRichLabelController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TestRichLabelController.mm; sourceTree = "<group>"; };
 		EC68664918C651B30037AFE2 /* CADisplayLink+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CADisplayLink+QK.h"; sourceTree = "<group>"; };
 		EC68664A18C651B30037AFE2 /* CADisplayLink+QK.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "CADisplayLink+QK.mm"; sourceTree = "<group>"; };
 		EC68664F18C651B30037AFE2 /* QKApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKApplicationDelegate.h; sourceTree = "<group>"; };
@@ -1027,6 +1041,8 @@
 		ECFDCDA21922A4960081451D /* QKTextLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = QKTextLayer.mm; sourceTree = "<group>"; };
 		ECFDCDA51922A4B90081451D /* CRFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRFont.h; sourceTree = "<group>"; };
 		ECFDCDA61922A4B90081451D /* CRFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRFont.m; sourceTree = "<group>"; };
+		ECFDCDA91922BE050081451D /* NSAttributedString+QK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+QK.h"; sourceTree = "<group>"; };
+		ECFDCDAA1922BE050081451D /* NSAttributedString+QK.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "NSAttributedString+QK.mm"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1050,6 +1066,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC2A71B019239B27006748E7 /* AudioToolbox.framework in Frameworks */,
+				EC2A71AE19239AD4006748E7 /* CoreText.framework in Frameworks */,
 				ECB12BF61908652300C36C87 /* ImageIO.framework in Frameworks */,
 				EC68679A18C657290037AFE2 /* GLKit.framework in Frameworks */,
 				EC102EA6182AD58800BBAB20 /* OpenGLES.framework in Frameworks */,
@@ -1120,6 +1138,8 @@
 		EC102D68182AC97000BBAB20 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EC2A71AF19239B27006748E7 /* AudioToolbox.framework */,
+				EC2A71AD19239AD4006748E7 /* CoreText.framework */,
 				ECB12BF51908652300C36C87 /* ImageIO.framework */,
 				EC102EA9182AD86B00BBAB20 /* libz.dylib */,
 				EC102EA1182AD58800BBAB20 /* GLKit.framework */,
@@ -1159,6 +1179,8 @@
 				EC9C226818CE007300D6F6EA /* TestJpgController.mm */,
 				EC102E30182AD07100BBAB20 /* TestLabelController.h */,
 				EC102E31182AD07100BBAB20 /* TestLabelController.mm */,
+				EC2A71B11923AFD1006748E7 /* TestRichLabelController.h */,
+				EC2A71B21923AFD1006748E7 /* TestRichLabelController.mm */,
 				EC102E32182AD07100BBAB20 /* TestScrollController.h */,
 				EC102E33182AD07100BBAB20 /* TestScrollController.mm */,
 				EC102E34182AD07100BBAB20 /* TestTableController.h */,
@@ -1312,8 +1334,11 @@
 				EC6866BE18C652550037AFE2 /* CRView.mm */,
 				EC6866BF18C652550037AFE2 /* QKDisplayLink.h */,
 				EC6866C018C652550037AFE2 /* QKDisplayLink.mm */,
+				EC023D8119231FC20059C606 /* QKRichLabel.h */,
+				EC023D8219231FC20059C606 /* QKRichLabel.mm */,
 				EC6866C118C652550037AFE2 /* QKLayoutView.h */,
 				EC6866C218C652550037AFE2 /* QKLayoutView.mm */,
+				EC2A71AC19232018006748E7 /* QKLitView.h */,
 				ECFDCDA11922A4960081451D /* QKTextLayer.h */,
 				ECFDCDA21922A4960081451D /* QKTextLayer.mm */,
 				ECFDCDA51922A4B90081451D /* CRFont.h */,
@@ -1327,6 +1352,8 @@
 			children = (
 				EC6866C418C652550037AFE2 /* NSArray+QK.h */,
 				EC6866C518C652550037AFE2 /* NSArray+QK.mm */,
+				ECFDCDA91922BE050081451D /* NSAttributedString+QK.h */,
+				ECFDCDAA1922BE050081451D /* NSAttributedString+QK.mm */,
 				EC6866C618C652550037AFE2 /* NSBundle+QK.h */,
 				EC6866C718C652550037AFE2 /* NSBundle+QK.mm */,
 				EC6866C818C652550037AFE2 /* NSData+QK.h */,
@@ -2515,6 +2542,7 @@
 				EC68673418C652550037AFE2 /* CRView.mm in Sources */,
 				EC68674618C652550037AFE2 /* NSJSONSerialization+QK.mm in Sources */,
 				EC68678818C652550037AFE2 /* qk-sql-util.mm in Sources */,
+				EC023D8319231FC20059C606 /* QKRichLabel.mm in Sources */,
 				EC68678C18C652550037AFE2 /* SqlStatement.mm in Sources */,
 				ECFDCD9F1922A48E0081451D /* CALayer+QK.mm in Sources */,
 				EC68676218C652550037AFE2 /* GLTestScene.mm in Sources */,
@@ -2527,6 +2555,7 @@
 				EC68678618C652550037AFE2 /* QKTag.mm in Sources */,
 				EC68675618C652550037AFE2 /* GLEventHandler.mm in Sources */,
 				EC68677418C652550037AFE2 /* qk-math.mm in Sources */,
+				ECFDCDAB1922BE050081451D /* NSAttributedString+QK.mm in Sources */,
 				EC68673E18C652550037AFE2 /* NSData+QK.mm in Sources */,
 				EC9C22F218CE67B600D6F6EA /* QKImage+PNG.mm in Sources */,
 				EC68672818C652550037AFE2 /* qk-cg-util.mm in Sources */,
@@ -2553,10 +2582,13 @@
 				EC68667F18C651B30037AFE2 /* QKImageView.mm in Sources */,
 				EC68674318C652550037AFE2 /* NSDictionary+QK.mm in Sources */,
 				EC68668A18C651B30037AFE2 /* UIButton+QK.mm in Sources */,
+				ECFDCDAC1922BE050081451D /* NSAttributedString+QK.mm in Sources */,
+				EC2A71B31923AFD1006748E7 /* TestRichLabelController.mm in Sources */,
 				EC68673B18C652550037AFE2 /* NSArray+QK.mm in Sources */,
 				EC68668918C651B30037AFE2 /* UIBarButtonItem+QK.mm in Sources */,
 				EC68668318C651B30037AFE2 /* QKUIButton.mm in Sources */,
 				EC68677518C652550037AFE2 /* qk-math.mm in Sources */,
+				EC023D8419231FC20059C606 /* QKRichLabel.mm in Sources */,
 				EC68675118C652550037AFE2 /* NSOutputStream+QK.mm in Sources */,
 				ECFDCDA01922A48E0081451D /* CALayer+QK.mm in Sources */,
 				EC68669118C651B30037AFE2 /* UITableViewCell+QK.mm in Sources */,
@@ -2770,12 +2802,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
@@ -2784,9 +2812,7 @@
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
-				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -2818,12 +2844,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
@@ -2834,8 +2856,6 @@
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNUSED_FUNCTION = YES;

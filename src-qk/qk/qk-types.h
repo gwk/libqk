@@ -6,6 +6,9 @@
 #import <string.h>
 #import <stdbool.h>
 
+#if __cplusplus && __OBJC__
+#define OBJCPP 1
+#endif
 
 #define Int_is_64_bits (sizeof(long) == 8)
 
