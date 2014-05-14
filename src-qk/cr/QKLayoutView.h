@@ -1,15 +1,8 @@
 // Copyright 2013 George King.
 // Permission to use this file is granted in license-libqk.txt (ISC License).
 
-
 #import "qk-block-types.h"
 #import "CRView.h"
-
-typedef enum {
-  QKLayoutNone,
-  QKLayoutHorizontal,
-  QKLayoutVertical,
-} QKLayoutDirection;
 
 @interface QKLayoutView : CRView
 

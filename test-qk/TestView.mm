@@ -2,9 +2,9 @@
 // Permission to use this file is granted in license-libqk.txt (ISC License).
 
 
+#import "qk-cr.h"
 #import "CRView.h"
 #import "CRColor.h"
-#import "qk-cg-util.h"
 #import "QKDisplayLink.h"
 #import "TestView.h"
 

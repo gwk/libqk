@@ -5,12 +5,6 @@
 #import "CRFont.h"
 #import "CRColor.h"
 
-#if OBJCPP
-NSMutableDictionary* strAttrs(CRFont* font = nil,
-                              CRColor* color = nil,
-                              NSTextAlignment align = NSTextAlignmentNatural);
-#endif
-
 
 @interface NSAttributedString (QK)
 

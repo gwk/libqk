@@ -1,14 +1,44 @@
 // Copyright 2013 George King.
 // Permission to use this file is granted in license-libqk.txt (ISC License).
 
+#if TARGET_OS_IPHONE
+#import <UIKit/UIKit.h>
+#else
+#import <AppKit/AppKit.h>
+#endif
 
 #import "qk-macros.h"
 #import "QKPixFmt.h"
 
+#if TARGET_OS_IPHONE
 
-extern const CGSize CGSizeUnit;
-extern const CGRect CGRectUnit;
-extern const CGRect CGRect256;
+#define CRView UIView
+#define CRFont UIFont
+#define CRColor UIColor
+
+typedef UIViewAutoresizing CRFlex;
+typedef UILayoutConstraintAxis UIAxis; // TODO: rename CRAxis.
+typedef UIEdgeInsets CREdgeInsets;
+
+#else
+
+#define CRView NSView
+#define CRFont NSFont
+#define CRColor NSColor
+
+typedef NSUInteger UIViewAutoresizing; // TODO: rename CRFlex.
+typedef NSLayoutConstraintOrientation UIAxis; // TODO: rename CRAxis.
+typedef NSLayoutPriority UILayoutPriority; // TODO: rename CRLayoutPriority.
+typedef NSEdgeInsets CREdgeInsets;
+
+#define NSTextAlignmentLeft NSLeftTextAlignment
+#define NSTextAlignmentRight NSRightTextAlignment
+#define NSTextAlignmentCenter NSCenterTextAlignment
+#define NStextAlignmentJustified NSJustifiedTextAlignment
+#define NSTextAlignmentNatural NSNaturalTextAlignment
+
+#endif
+
 
 
 typedef enum {
@@ -18,11 +48,16 @@ typedef enum {
 } QKVertAlignment;
 
 
-#if TARGET_OS_IPHONE
-typedef UIEdgeInsets CREdgeInsets;
-#else
-typedef NSEdgeInsets CREdgeInsets;
-#endif
+typedef enum {
+  QKLayoutNone,
+  QKLayoutHorizontal,
+  QKLayoutVertical,
+} QKLayoutDirection; // TODO: replace with CRAxis?
+
+
+extern const CGSize CGSizeUnit;
+extern const CGRect CGRectUnit;
+extern const CGRect CGRect256;
 
 
 extern CGColorSpaceRef QKColorSpaceRGB();
@@ -31,7 +66,12 @@ extern CGColorSpaceRef QKColorSpaceDev(BOOL rgb);
 extern CGColorSpaceRef QKColorSpaceWithFormat(QKPixFmt format);
 
 
-#if __cplusplus
+#if OBJCPP
+
+NSMutableDictionary* strAttrs(CRFont* font = nil,
+                              CRColor* color = nil,
+                              NSTextAlignment align = NSTextAlignmentNatural);
+
 
 static inline CGPoint add(CGPoint a, CGPoint b) {
   return CGPointMake(a.x + b.x, a.y + b.y);

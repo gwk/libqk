@@ -2,7 +2,6 @@
 // Permission to use this file is granted in libqk/license.txt.
 
 
-#import "qk-macros.h"
 #import "QKTextLayer.h"
 #import "QKRichLabel.h"
 
@@ -29,10 +28,11 @@
   INIT(super initWithFrame:frame);
 #if TARGET_OS_IPHONE
   self.contentScaleFactor = [[UIScreen mainScreen] scale];
+  self.contentMode = UIViewContentModeRedraw;
 #else
   // TODO: make the view/layer screen-aware?
+  // TODO: specify redraw behavior?
 #endif
-  self.contentMode = UIViewContentModeRedraw;
   return self;
 }
 

@@ -1,14 +1,7 @@
 // Copyright 2013 George King.
 // Permission to use this file is granted in license-libqk.txt (ISC License).
 
-
-#if TARGET_OS_IPHONE
-# define CRColor UIColor
-#import <UIKit/UIKit.h>
-#else
-# define CRColor NSColor
-#import <AppKit/NSColor.h>
-#endif
+#import "qk-cr.h"
 
 @interface CRColor (CR)
 

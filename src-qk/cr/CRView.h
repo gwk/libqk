@@ -2,23 +2,15 @@
 // Permission to use this file is granted in license-libqk.txt (ISC License).
 
 
-#import "qk-macros.h"
+#import "qk-cr.h"
 #import "CRColor.h"
-
 
 #if TARGET_OS_IPHONE
 #import "UIView+QK.h"
-# define CRView UIView
-typedef UILayoutConstraintAxis UIAxis;
-
 #else
 #import "NSView+QK.h"
-# define CRView NSView
-typedef NSUInteger UIViewAutoresizing;
-typedef NSLayoutConstraintOrientation UIAxis;
-typedef NSLayoutPriority UILayoutPriority; // this is dirty, but good enough for now.
-
 #endif
+
 
 typedef UIViewAutoresizing UIFlex;
 

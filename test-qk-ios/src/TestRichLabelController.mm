@@ -26,7 +26,7 @@
   auto l = [QKRichLabel withFrame:CGRectMake(x, y, w, h) flex:UIFlexW];
   [self.view addSubview:l];
   l.backgroundColor = [CRColor w];
-  l.richText = [NSAttributedString withString:nil
+  l.richText = [NSAttributedString withString:@"hi"
                                          attrs:strAttrs([CRFont boldSystemFontOfSize:24],
                                                         [CRColor k],
                                                         NSTextAlignmentCenter)];

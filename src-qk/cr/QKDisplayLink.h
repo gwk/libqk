@@ -1,16 +1,7 @@
 // Copyright 2013 George King.
 // Permission to use this file is granted in license-libqk.txt (ISC License).
 
-
 #import "qk-macros.h"
-
-
-#if TARGET_OS_IPHONE
-#define CCADisplayLink CADisplayLink
-#else
-#define CCADisplayLink NSTimer
-#endif
-
 
 @class QKDisplayLink;
 

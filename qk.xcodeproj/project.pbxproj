@@ -66,8 +66,6 @@
 		EC6866A618C651BD0037AFE2 /* NSView+QK.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC68669D18C651BD0037AFE2 /* NSView+QK.mm */; };
 		EC6866A718C651BD0037AFE2 /* QKWindow.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC6866A018C651BD0037AFE2 /* QKWindow.mm */; };
 		EC6866A818C651BD0037AFE2 /* QKWindowView.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC6866A218C651BD0037AFE2 /* QKWindowView.mm */; };
-		EC68672818C652550037AFE2 /* qk-cg-util.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC6866B118C652550037AFE2 /* qk-cg-util.mm */; };
-		EC68672918C652550037AFE2 /* qk-cg-util.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC6866B118C652550037AFE2 /* qk-cg-util.mm */; };
 		EC68673218C652550037AFE2 /* CRColor.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC6866BC18C652550037AFE2 /* CRColor.mm */; };
 		EC68673318C652550037AFE2 /* CRColor.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC6866BC18C652550037AFE2 /* CRColor.mm */; };
 		EC68673418C652550037AFE2 /* CRView.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC6866BE18C652550037AFE2 /* CRView.mm */; };
@@ -179,6 +177,8 @@
 		ECB12BF119084DFB00C36C87 /* NSFileManager+QK.mm in Sources */ = {isa = PBXBuildFile; fileRef = ECB12BEF19084DFB00C36C87 /* NSFileManager+QK.mm */; };
 		ECB12BF61908652300C36C87 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB12BF51908652300C36C87 /* ImageIO.framework */; };
 		ECCAEDDB1752E057006CB1B5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECCAEDDA1752E057006CB1B5 /* QuartzCore.framework */; };
+		ECDC7C1C1924158300738BD9 /* qk-cr.mm in Sources */ = {isa = PBXBuildFile; fileRef = ECDC7C1B1924158300738BD9 /* qk-cr.mm */; };
+		ECDC7C1D1924158300738BD9 /* qk-cr.mm in Sources */ = {isa = PBXBuildFile; fileRef = ECDC7C1B1924158300738BD9 /* qk-cr.mm */; };
 		ECDCABCE18298F03008CEB6D /* TestMacAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = ECDCABCB18298F03008CEB6D /* TestMacAppDelegate.mm */; };
 		ECDCABCF18298F03008CEB6D /* test-qk-mac.mm in Sources */ = {isa = PBXBuildFile; fileRef = ECDCABCC18298F03008CEB6D /* test-qk-mac.mm */; };
 		ECDCACA318299E94008CEB6D /* image.frag in Resources */ = {isa = PBXBuildFile; fileRef = ECDCABD718299E94008CEB6D /* image.frag */; };
@@ -295,8 +295,6 @@
 		EC6866A018C651BD0037AFE2 /* QKWindow.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = QKWindow.mm; sourceTree = "<group>"; };
 		EC6866A118C651BD0037AFE2 /* QKWindowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKWindowView.h; sourceTree = "<group>"; };
 		EC6866A218C651BD0037AFE2 /* QKWindowView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = QKWindowView.mm; sourceTree = "<group>"; };
-		EC6866B018C652550037AFE2 /* qk-cg-util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-cg-util.h"; sourceTree = "<group>"; };
-		EC6866B118C652550037AFE2 /* qk-cg-util.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "qk-cg-util.mm"; sourceTree = "<group>"; };
 		EC6866BB18C652550037AFE2 /* CRColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRColor.h; sourceTree = "<group>"; };
 		EC6866BC18C652550037AFE2 /* CRColor.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CRColor.mm; sourceTree = "<group>"; };
 		EC6866BD18C652550037AFE2 /* CRView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRView.h; sourceTree = "<group>"; };
@@ -1023,6 +1021,8 @@
 		ECB12BF51908652300C36C87 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/ImageIO.framework; sourceTree = DEVELOPER_DIR; };
 		ECB7FC721744605C002A4B71 /* test-qk-mac-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "test-qk-mac-Info.plist"; sourceTree = "<group>"; };
 		ECCAEDDA1752E057006CB1B5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		ECDC7C1A1924158300738BD9 /* qk-cr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "qk-cr.h"; sourceTree = "<group>"; };
+		ECDC7C1B1924158300738BD9 /* qk-cr.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "qk-cr.mm"; sourceTree = "<group>"; };
 		ECDCABCA18298F03008CEB6D /* TestMacAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestMacAppDelegate.h; sourceTree = "<group>"; };
 		ECDCABCB18298F03008CEB6D /* TestMacAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TestMacAppDelegate.mm; sourceTree = "<group>"; };
 		ECDCABCC18298F03008CEB6D /* test-qk-mac.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "test-qk-mac.mm"; sourceTree = "<group>"; };
@@ -1302,7 +1302,6 @@
 		EC6866A918C652550037AFE2 /* src-qk */ = {
 			isa = PBXGroup;
 			children = (
-				EC6866AF18C652550037AFE2 /* cg */,
 				EC6866B818C652550037AFE2 /* cr */,
 				EC6866C318C652550037AFE2 /* foundation */,
 				EC6866E018C652550037AFE2 /* gl */,
@@ -1310,15 +1309,6 @@
 				EC68671D18C652550037AFE2 /* sql */,
 			);
 			path = "src-qk";
-			sourceTree = "<group>";
-		};
-		EC6866AF18C652550037AFE2 /* cg */ = {
-			isa = PBXGroup;
-			children = (
-				EC6866B018C652550037AFE2 /* qk-cg-util.h */,
-				EC6866B118C652550037AFE2 /* qk-cg-util.mm */,
-			);
-			path = cg;
 			sourceTree = "<group>";
 		};
 		EC6866B818C652550037AFE2 /* cr */ = {
@@ -1332,6 +1322,8 @@
 				EC6866BC18C652550037AFE2 /* CRColor.mm */,
 				EC6866BD18C652550037AFE2 /* CRView.h */,
 				EC6866BE18C652550037AFE2 /* CRView.mm */,
+				ECDC7C1A1924158300738BD9 /* qk-cr.h */,
+				ECDC7C1B1924158300738BD9 /* qk-cr.mm */,
 				EC6866BF18C652550037AFE2 /* QKDisplayLink.h */,
 				EC6866C018C652550037AFE2 /* QKDisplayLink.mm */,
 				EC023D8119231FC20059C606 /* QKRichLabel.h */,
@@ -2509,6 +2501,7 @@
 				EC68674818C652550037AFE2 /* NSMutableArray+QK.mm in Sources */,
 				EC68675218C652550037AFE2 /* NSString+QK.mm in Sources */,
 				EC6866A518C651BD0037AFE2 /* NSMenuItem+QK.mm in Sources */,
+				ECDC7C1C1924158300738BD9 /* qk-cr.mm in Sources */,
 				EC68674C18C652550037AFE2 /* NSMutableDictionary+QK.mm in Sources */,
 				EC68676A18C652550037AFE2 /* qk-gl-util.mm in Sources */,
 				EC68679418C653A00037AFE2 /* QKImage.mm in Sources */,
@@ -2558,7 +2551,6 @@
 				ECFDCDAB1922BE050081451D /* NSAttributedString+QK.mm in Sources */,
 				EC68673E18C652550037AFE2 /* NSData+QK.mm in Sources */,
 				EC9C22F218CE67B600D6F6EA /* QKImage+PNG.mm in Sources */,
-				EC68672818C652550037AFE2 /* qk-cg-util.mm in Sources */,
 				EC68675C18C652550037AFE2 /* GLObject.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2596,7 +2588,6 @@
 				EC102E46182AD07100BBAB20 /* TestTableController.mm in Sources */,
 				EC68677B18C652550037AFE2 /* QKDuo.mm in Sources */,
 				EC68675918C652550037AFE2 /* GLFragmentShader.mm in Sources */,
-				EC68672918C652550037AFE2 /* qk-cg-util.mm in Sources */,
 				EC68676518C652550037AFE2 /* GLTexture.mm in Sources */,
 				EC68678B18C652550037AFE2 /* SqlDatabase.mm in Sources */,
 				EC68674918C652550037AFE2 /* NSMutableArray+QK.mm in Sources */,
@@ -2620,6 +2611,7 @@
 				EC68668818C651B30037AFE2 /* UIApplication+QK.mm in Sources */,
 				EC68668118C651B30037AFE2 /* QKTableController.mm in Sources */,
 				EC102E42182AD07100BBAB20 /* RootController.mm in Sources */,
+				ECDC7C1D1924158300738BD9 /* qk-cr.mm in Sources */,
 				EC68675F18C652550037AFE2 /* GLProgram.mm in Sources */,
 				EC102E3D182AD07100BBAB20 /* TestIOSAppDelegate.mm in Sources */,
 				EC68674D18C652550037AFE2 /* NSMutableDictionary+QK.mm in Sources */,

@@ -2,7 +2,7 @@
 // Permission to use this file is granted in license-libqk.txt (ISC License).
 
 
-#import "qk-cg-util.h"
+#import "qk-cr.h"
 
 const CGSize CGSizeUnit = { 1, 1};
 const CGRect CGRectUnit = { 0, 0, 1, 1};
