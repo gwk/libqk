@@ -11,7 +11,6 @@
 
 @property (nonatomic) BOOL isLit; // QKLitView; alias for highlighted. TODO.
 @property (nonatomic) NSAttributedString* richText;
-//@property (nonatomic) NSTextAlignment alignment;
 @property (nonatomic) QKVertAlignment vertAlignment;
 
 @end

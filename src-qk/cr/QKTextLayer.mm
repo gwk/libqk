@@ -89,6 +89,9 @@
   auto lineOrigins = (CGPoint*)malloc(sizeof(CGPoint) * lineCount);
   CTFrameGetLineOrigins(frame, CFRangeMake(0, lineCount), lineTextOrigins);
   
+  // calculate line origins.
+  // we do this as a separate pass because in the future we might like to process each text run with a callback,
+  // for example to draw highlighting under specifc words.
   for_in(lineIndex, lineCount) {
     auto line = (__bridge CTLineRef)lines[lineIndex];
     // ellipsize the last line if necessary.
@@ -120,6 +123,7 @@
     lineOrigin.y = (textRect.origin.y + textRect.size.height - lineOrigin.y) + vertSpace;
     lineOrigins[lineIndex] = lineOrigin;
   }
+  // draw lines.
   for_in (lineIndex, lineCount) {
     auto line = (__bridge CTLineRef)lines[lineIndex];
     CGPoint lineOrigin = lineOrigins[lineIndex];

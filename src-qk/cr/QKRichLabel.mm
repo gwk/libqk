@@ -26,6 +26,7 @@
 
 - (id)initWithFrame:(CGRect)frame {
   INIT(super initWithFrame:frame);
+  [self setupLayer];
 #if TARGET_OS_IPHONE
   self.contentScaleFactor = [[UIScreen mainScreen] scale];
   self.contentMode = UIViewContentModeRedraw;
