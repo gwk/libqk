@@ -107,11 +107,12 @@
         auto longText = [_richText attributedSubstringFromRange:longRange];
         auto longLine = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)longText);
         auto truncLine = CTLineCreateTruncatedLine(longLine, textRect.size.width, kCTLineTruncationEnd, truncSuffix);
+        CFRelease(longLine);
+        CFRelease(truncSuffix);
         if (truncLine) { // skip if truncation fails.
           NSMutableArray *a = lines.mutableCopy;
           a[lineIndex] = (__bridge_transfer id)truncLine; // truncLine is now borrowed, just like line was.
           lines = a;
-          line = truncLine;
         }
       }
     }
