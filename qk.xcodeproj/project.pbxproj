@@ -369,7 +369,6 @@
 		EC68670F18C652550037AFE2 /* QKDuo.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = QKDuo.mm; sourceTree = "<group>"; };
 		EC68671018C652550037AFE2 /* QKErrorDomain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKErrorDomain.h; sourceTree = "<group>"; };
 		EC68671118C652550037AFE2 /* QKErrorDomain.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = QKErrorDomain.mm; sourceTree = "<group>"; };
-		EC68671218C652550037AFE2 /* QKLitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKLitView.h; sourceTree = "<group>"; };
 		EC68671318C652550037AFE2 /* QKMutableStructArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKMutableStructArray.h; sourceTree = "<group>"; };
 		EC68671418C652550037AFE2 /* QKMutableStructArray.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = QKMutableStructArray.mm; sourceTree = "<group>"; };
 		EC68671518C652550037AFE2 /* QKPixFmt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKPixFmt.h; sourceTree = "<group>"; };
@@ -1434,7 +1433,6 @@
 				EC9C22ED18CE67B600D6F6EA /* QKImage+JPG.mm */,
 				EC9C22EE18CE67B600D6F6EA /* QKImage+PNG.h */,
 				EC9C22EF18CE67B600D6F6EA /* QKImage+PNG.mm */,
-				EC68671218C652550037AFE2 /* QKLitView.h */,
 				EC68671318C652550037AFE2 /* QKMutableStructArray.h */,
 				EC68671418C652550037AFE2 /* QKMutableStructArray.mm */,
 				EC68671518C652550037AFE2 /* QKPixFmt.h */,
