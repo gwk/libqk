@@ -36,6 +36,8 @@
 - (NSData*)asUtf8Data;
 - (NSData*)asUtf32Data;
 
+- (NSRange)range;
+
 - (NSArray*)splitBySpace;
 - (NSArray*)splitByWS;
 - (NSArray*)splitByWSNL;

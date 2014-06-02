@@ -128,6 +128,11 @@
 }
 
 
+- (NSRange)range {
+    return NSRangeMake(0, self.length);
+}
+
+
 #pragma mark - lines
 
 
