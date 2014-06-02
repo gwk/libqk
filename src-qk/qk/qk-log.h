@@ -65,10 +65,10 @@
 
 #define LOG_METHOD        errFL(@"%p\t(%@)\t%s",         self, [self class], __FUNCTION__)
 #define LOG_METHOD1(x)    errFL(@"%p\t(%@)\t%s %s: %@",  self, [self class], __FUNCTION__, #x, x)
-#define LOG_METHOD1B(x)   errFL(@"%p\t(%@)\t%s %s: %@",  self, [self class], __FUNCTION__, #x, (x ? @"Y" : @"N"))
-#define LOG_METHOD1LI(x)  errFL(@"%p\t(%@)\t%s %s: %ld", self, [self class], __FUNCTION__, #x, x)
-#define LOG_METHOD1LU(x)  errFL(@"%p\t(%@)\t%s %s: %lu", self, [self class], __FUNCTION__, #x, x)
-#define LOG_METHOD1F(x)   errFL(@"%p\t(%@)\t%s %s: %f",  self, [self class], __FUNCTION__, #x, x)
+#define LOG_METHOD1B(x)   errFL(@"%p\t(%@)\t%s %s: %@",  self, [self class], __FUNCTION__, #x, ((x) ? @"Y" : @"N"))
+#define LOG_METHOD1LI(x)  errFL(@"%p\t(%@)\t%s %s: %ld", self, [self class], __FUNCTION__, #x, (Int)(x))
+#define LOG_METHOD1LU(x)  errFL(@"%p\t(%@)\t%s %s: %lu", self, [self class], __FUNCTION__, #x, (Uns)(x))
+#define LOG_METHOD1F(x)   errFL(@"%p\t(%@)\t%s %s: %f",  self, [self class], __FUNCTION__, #x, (Flt)(x))
 
 #define LOG_ERROR(e) errFL(@"%p\t%@\t%s: error: %@", self, [self class], __FUNCTION__, e)
 
