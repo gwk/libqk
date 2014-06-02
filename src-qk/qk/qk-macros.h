@@ -312,7 +312,7 @@ DEF_WITH_CAST(class_name, __VA_ARGS__) \
 - (instancetype)initWith##__VA_ARGS__
 
 
-#define DEF_SET_NEEDS_DISPLAY(type, name, Name) \
+#define DEF_SET_AND_DISPLAY(type, name, Name) \
 - (void)set##Name:(type)name { _##name = name; [self setNeedsDisplay]; }
 
 #define DEF_SET_CF_RETAIN(type, name, Name) \
