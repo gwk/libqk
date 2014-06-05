@@ -233,7 +233,7 @@ return name; \
 #define IS_KIND(obj, class_name) [(obj) isKindOfClass:[class_name class]]
 
 #define IS_KIND_OR_NIL(obj, class_name) \
-({ id __obj = (obj); (__obj || IS_KIND(__obj, class_name)); })
+({ id __obj = (obj); (!__obj || IS_KIND(__obj, class_name)); })
 
 #define CONFORMS(obj, protocol_name) [(obj) conformsToProtocol:@protocol(protocol_name)]
 
