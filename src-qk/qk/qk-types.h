@@ -1,10 +1,10 @@
 // Copyright 2012 George King.
 // Permission to use this file is granted in license-libqk.txt (ISC License).
 
-
 #import <stdint.h>
 #import <string.h>
 #import <stdbool.h>
+
 
 #if __cplusplus && __OBJC__
 #define OBJCPP 1

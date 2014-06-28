@@ -15,10 +15,6 @@
 #endif
 
 
-#if LIB_JPG_AVAILABLE
-#import <turbojpeg.h>
-#endif
-
 #import "qk-types.h"
 
 

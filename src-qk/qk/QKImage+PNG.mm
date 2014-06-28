@@ -2,7 +2,7 @@
 // Permission to use this file is granted in license-libqk.txt (ISC License).
 // Derived from readpng.c, which is licensed under the terms of libqk/license-readpng.txt.
 
-
+#import "qk-log.h"
 #import "NSBundle+QK.h"
 #import "NSData+QK.h"
 #import "NSString+QK.h"
@@ -26,7 +26,7 @@
 // displayExponent == LUT_exponent * CRT_exponent
 - (id)initWithPngReadPtr:(png_structp)readPtr
                  infoPtr:(png_infop)infoPtr
-                   alpha:(BOOL)alpha
+                     fmt:(QKPixFmt)fmt
             gammaCorrect:(BOOL)gammaCorrect
          displayExponent:(F64)displayExponent
                     name:(NSString*)name
@@ -54,10 +54,9 @@
   BOOL srcHasRGB = colorType | PNG_COLOR_MASK_COLOR;
   BOOL srcHasAlpha = colorType | PNG_COLOR_MASK_ALPHA;
   
-  // many options here; eventually we could allow for a target forrmat, but for now:
   // expand palette images to RGB, low-bit-depth grayscale images to 8 bits, transparency chunks to full alpha channel;
   // strip 16-bit-per-sample images to 8 bits per sample; and convert grayscale to RGB.
-  int dstBitDepth = srcBitDepth;
+  int dstBitDepth = cast(int, QKPixFmtBitsPerChannel(fmt));
   int dstHasRGB = srcHasRGB;
   int dstHasAlpha = srcHasAlpha;
   
@@ -81,7 +80,7 @@
     png_set_gray_to_rgb(readPtr);
     dstHasRGB = YES;
   }
-  if (!alpha) {
+  if (!(fmt & QKPixFmtBitA)) {
     png_set_strip_alpha(readPtr);
     dstHasAlpha = NO;
   }
@@ -172,7 +171,7 @@ void qkpng_error_fn(png_structp png_ptr, png_const_charp error_msg) {
 //void qkpng_warning_fn(png_structp png_ptr, png_const_charp warning_msg) {}
 
 
-- (id)initWithPngFile:(FILE*)file alpha:(BOOL)alpha name:(NSString*)name error:(NSError**)errorPtr {
+- (id)initWithPngFile:(FILE*)file fmt:(QKPixFmt)fmt name:(NSString*)name error:(NSError**)errorPtr {
   U8 sig[8];
   fread(sig, 1, 8, file);
   CHECK_SET_ERROR_RET_NIL(png_check_sig(sig, 8), QK, ImagePNGSignature, @"bad PNG signature", @{
@@ -189,7 +188,7 @@ void qkpng_error_fn(png_structp png_ptr, png_const_charp error_msg) {
   
   self = [self initWithPngReadPtr:readPtr
                           infoPtr:infoPtr
-                            alpha:alpha
+                              fmt:fmt
                      gammaCorrect:NO
                   displayExponent:0
                              name:name
@@ -200,23 +199,23 @@ void qkpng_error_fn(png_structp png_ptr, png_const_charp error_msg) {
 }
 
 
-DEF_INIT(PngPath:(NSString*)path map:(BOOL)map alpha:(BOOL)alpha error:(NSError**)errorPtr) {
+DEF_INIT(PngPath:(NSString*)path map:(BOOL)map fmt:(QKPixFmt)fmt error:(NSError**)errorPtr) {
   // TODO: implement in-memory loading and mmap loading.
   FILE* file = fopen(path.asUtf8, "rb");
   CHECK_SET_ERROR_RET_NIL(file, QK, ImagePNGOpenFile, @"could not open file", @{
                           @"path" : path
                           });
-  self = [self initWithPngFile:file alpha:alpha name:path error:errorPtr];
+  self = [self initWithPngFile:file fmt:fmt name:path error:errorPtr];
   fclose(file);
   return self;
 }
 
 
-+ (QKImage*)pngNamed:(NSString*)resourceName alpha:(BOOL)alpha {
++ (QKImage*)pngNamed:(NSString*)resourceName fmt:(QKPixFmt)fmt {
   NSString* path = [NSBundle resPath:resourceName ofType:nil];
   qk_check(path, @"no image named: %@", resourceName);
   NSError* e = nil;
-  QKImage* i = [self withPngPath:path map:YES alpha:alpha error:&e];
+  QKImage* i = [self withPngPath:path map:YES fmt:fmt error:&e];
   qk_check(i && !e, @"error loading image named: %@\n  %@", resourceName, e);
   return i;
 }

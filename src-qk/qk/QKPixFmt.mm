@@ -1,12 +1,10 @@
 // Copyright 2013 George King.
 // Permission to use this file is granted in license-libqk.txt (ISC License).
 
-
 #if TARGET_OS_IPHONE
 #else
 #import <OpenGL/gl3.h>
 #endif
-
 
 #import "qk-macros.h"
 #import "QKPixFmt.h"
@@ -123,7 +121,7 @@ CGBitmapInfo QKPixFmtBitmapInfo(QKPixFmt format) {
     info = kCGImageAlphaOnly;
   }
   else {
-    qk_fail(@"bad format: %@", QKPixFmtDesc(format));
+    qk_fail(@"bad format for bitmap: %@", QKPixFmtDesc(format));
   }
   if (format & QKPixFmtBitF32) {
     info |= kCGBitmapFloatComponents;

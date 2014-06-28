@@ -2,14 +2,10 @@
 // Permission to use this file is granted in license-libqk.txt (ISC License).
 
 // General purpose utility macros.
-
-/*
- qk_check is an assertion macro intended for production use.
- qk_assert is exactly like check, unless QK_OPTIMIZE is true, in which case it is a no-op.
- qk_fail is identical to check, but is not predicated on a conditional.
- all of these macros throw an objective-c exception.
- */
-
+// qk_check is an assertion macro intended for production use.
+// qk_assert is exactly like check, unless QK_OPTIMIZE is true, in which case it is a no-op.
+// qk_fail is identical to check, but is not predicated on a conditional.
+// all of these macros throw an objective-c exception.
 
 #import "qk-types.h"
 

@@ -14,13 +14,26 @@
 		EC0D9B5216B85799005D2C2B /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0D9B5116B85799005D2C2B /* OpenGL.framework */; };
 		EC102D6A182AC97000BBAB20 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC102D69182AC97000BBAB20 /* Foundation.framework */; };
 		EC102D6C182AC97000BBAB20 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC102D6B182AC97000BBAB20 /* CoreGraphics.framework */; };
-		EC102EA6182AD58800BBAB20 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC102EA2182AD58800BBAB20 /* OpenGLES.framework */; };
-		EC102EA7182AD58800BBAB20 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC102EA3182AD58800BBAB20 /* QuartzCore.framework */; };
-		EC102EA8182AD58800BBAB20 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC102EA4182AD58800BBAB20 /* UIKit.framework */; };
-		EC102EAA182AD86B00BBAB20 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC102EA9182AD86B00BBAB20 /* libz.dylib */; };
 		EC2A71AE19239AD4006748E7 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC2A71AD19239AD4006748E7 /* CoreText.framework */; };
 		EC2A71B019239B27006748E7 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC2A71AF19239B27006748E7 /* AudioToolbox.framework */; };
-		EC68679A18C657290037AFE2 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC102EA1182AD58800BBAB20 /* GLKit.framework */; };
+		EC7EC7C9195EE53600B54EAF /* QKDuo.mm in Sources */ = {isa = PBXBuildFile; fileRef = ECC46FA1193D414500F426CE /* QKDuo.mm */; };
+		EC7EC7CA195EE54300B54EAF /* QKPixFmt.mm in Sources */ = {isa = PBXBuildFile; fileRef = ECC46FAD193D414500F426CE /* QKPixFmt.mm */; };
+		EC7EC7CC195EE56000B54EAF /* QKSubData.mm in Sources */ = {isa = PBXBuildFile; fileRef = ECC46FB1193D414500F426CE /* QKSubData.mm */; };
+		EC7EC7CD195EE57500B54EAF /* QKImage+JPG.mm in Sources */ = {isa = PBXBuildFile; fileRef = ECC46FA5193D414500F426CE /* QKImage+JPG.mm */; };
+		EC7EC7CE195EE57500B54EAF /* QKImage+PNG.mm in Sources */ = {isa = PBXBuildFile; fileRef = ECC46FA7193D414500F426CE /* QKImage+PNG.mm */; };
+		EC7EC7CF195EE57500B54EAF /* QKImage.mm in Sources */ = {isa = PBXBuildFile; fileRef = ECC46FA9193D414500F426CE /* QKImage.mm */; };
+		EC7EC7D0195EE61A00B54EAF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC102D6B182AC97000BBAB20 /* CoreGraphics.framework */; };
+		EC7EC7D1195EE63600B54EAF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECCAEDDA1752E057006CB1B5 /* QuartzCore.framework */; };
+		EC7EC7D3195EE68E00B54EAF /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC7EC7D2195EE68E00B54EAF /* GLKit.framework */; };
+		EC7EC7D5195EE6A100B54EAF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC7EC7D4195EE6A100B54EAF /* UIKit.framework */; };
+		EC7EC7D7195EE6AA00B54EAF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC7EC7D6195EE6AA00B54EAF /* QuartzCore.framework */; };
+		EC7EC7D9195EE6B500B54EAF /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC7EC7D8195EE6B500B54EAF /* OpenGLES.framework */; };
+		EC7EC7DA195EE6CB00B54EAF /* libpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC9C225D18CCBAFF00D6F6EA /* libpng.a */; };
+		EC7EC7DB195EE6D300B54EAF /* libturbojpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC9C225F18CCBAFF00D6F6EA /* libturbojpeg.a */; };
+		EC7EC7DC195EE6E300B54EAF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0D9B4D16B84FDA005D2C2B /* libz.dylib */; };
+		EC7EC7DD195EE72800B54EAF /* NSError+QK.mm in Sources */ = {isa = PBXBuildFile; fileRef = ECC46F67193D414500F426CE /* NSError+QK.mm */; };
+		EC7EC7DE195EE74A00B54EAF /* QKErrorDomain.mm in Sources */ = {isa = PBXBuildFile; fileRef = ECC46FA3193D414500F426CE /* QKErrorDomain.mm */; };
+		EC7EC7E0195EE76700B54EAF /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC7EC7DF195EE76700B54EAF /* ImageIO.framework */; };
 		EC9C226018CCBED100D6F6EA /* libpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC9C225D18CCBAFF00D6F6EA /* libpng.a */; };
 		EC9C226118CCBED100D6F6EA /* libsqlite3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC9C225E18CCBAFF00D6F6EA /* libsqlite3.a */; };
 		EC9C226218CCBED100D6F6EA /* libturbojpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC9C225F18CCBAFF00D6F6EA /* libturbojpeg.a */; };
@@ -197,8 +210,23 @@
 		ECC470D8193D41CB00F426CE /* TestTableController.mm in Sources */ = {isa = PBXBuildFile; fileRef = ECC470CD193D41CB00F426CE /* TestTableController.mm */; };
 		ECC470E1193D41E000F426CE /* test-qk-mac.mm in Sources */ = {isa = PBXBuildFile; fileRef = ECC470DC193D41E000F426CE /* test-qk-mac.mm */; };
 		ECC470E2193D41E000F426CE /* TestMacAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = ECC470DF193D41E000F426CE /* TestMacAppDelegate.mm */; };
+		ECC47927195DAE52000DB0EC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC102D69182AC97000BBAB20 /* Foundation.framework */; };
+		ECC47932195DAE63000DB0EC /* jnb-img.mm in Sources */ = {isa = PBXBuildFile; fileRef = ECC4790F195DA86C000DB0EC /* jnb-img.mm */; };
+		ECC47933195DAE67000DB0EC /* NSObject+JNB.mm in Sources */ = {isa = PBXBuildFile; fileRef = ECC47912195DA86C000DB0EC /* NSObject+JNB.mm */; };
 		ECCAEDDB1752E057006CB1B5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECCAEDDA1752E057006CB1B5 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		ECC47924195DAE52000DB0EC /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		EC0D9A6916B82EBD005D2C2B /* test-qk-mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "test-qk-mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -211,15 +239,14 @@
 		EC102D67182AC97000BBAB20 /* test-qk-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "test-qk-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC102D69182AC97000BBAB20 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EC102D6B182AC97000BBAB20 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		EC102D6D182AC97000BBAB20 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		EC102D8B182AC97000BBAB20 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		EC102EA1182AD58800BBAB20 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/GLKit.framework; sourceTree = DEVELOPER_DIR; };
-		EC102EA2182AD58800BBAB20 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
-		EC102EA3182AD58800BBAB20 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
-		EC102EA4182AD58800BBAB20 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		EC102EA9182AD86B00BBAB20 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
 		EC2A71AD19239AD4006748E7 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreText.framework; sourceTree = DEVELOPER_DIR; };
 		EC2A71AF19239B27006748E7 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/AudioToolbox.framework; sourceTree = DEVELOPER_DIR; };
+		EC7EC7D2195EE68E00B54EAF /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/GLKit.framework; sourceTree = DEVELOPER_DIR; };
+		EC7EC7D4195EE6A100B54EAF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		EC7EC7D6195EE6AA00B54EAF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		EC7EC7D8195EE6B500B54EAF /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
+		EC7EC7DF195EE76700B54EAF /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		EC9C1FDA18CCBAFE00D6F6EA /* common.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = common.hpp; sourceTree = "<group>"; };
 		EC9C1FDC18CCBAFE00D6F6EA /* _features.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = _features.hpp; sourceTree = "<group>"; };
 		EC9C1FDD18CCBAFE00D6F6EA /* _fixes.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = _fixes.hpp; sourceTree = "<group>"; };
@@ -1047,6 +1074,12 @@
 		ECC470DE193D41E000F426CE /* TestMacAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestMacAppDelegate.h; sourceTree = "<group>"; };
 		ECC470DF193D41E000F426CE /* TestMacAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TestMacAppDelegate.mm; sourceTree = "<group>"; };
 		ECC470E0193D41E000F426CE /* test-qk-mac-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "test-qk-mac-Info.plist"; sourceTree = "<group>"; };
+		ECC4790F195DA86C000DB0EC /* jnb-img.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "jnb-img.mm"; sourceTree = "<group>"; };
+		ECC47910195DA86C000DB0EC /* jnb-img.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "jnb-img.pch"; sourceTree = "<group>"; };
+		ECC47911195DA86C000DB0EC /* NSObject+JNB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+JNB.h"; sourceTree = "<group>"; };
+		ECC47912195DA86C000DB0EC /* NSObject+JNB.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "NSObject+JNB.mm"; sourceTree = "<group>"; };
+		ECC47918195DAE24000DB0EC /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		ECC47926195DAE52000DB0EC /* jnb-img */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "jnb-img"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECCAEDDA1752E057006CB1B5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -1071,20 +1104,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC7EC7D9195EE6B500B54EAF /* OpenGLES.framework in Frameworks */,
+				EC7EC7D7195EE6AA00B54EAF /* QuartzCore.framework in Frameworks */,
+				EC7EC7D5195EE6A100B54EAF /* UIKit.framework in Frameworks */,
+				EC7EC7D3195EE68E00B54EAF /* GLKit.framework in Frameworks */,
 				EC2A71B019239B27006748E7 /* AudioToolbox.framework in Frameworks */,
 				EC2A71AE19239AD4006748E7 /* CoreText.framework in Frameworks */,
 				ECB12BF61908652300C36C87 /* ImageIO.framework in Frameworks */,
-				EC68679A18C657290037AFE2 /* GLKit.framework in Frameworks */,
-				EC102EA6182AD58800BBAB20 /* OpenGLES.framework in Frameworks */,
-				EC102EA7182AD58800BBAB20 /* QuartzCore.framework in Frameworks */,
-				EC102EA8182AD58800BBAB20 /* UIKit.framework in Frameworks */,
 				EC102D6C182AC97000BBAB20 /* CoreGraphics.framework in Frameworks */,
 				EC102D6A182AC97000BBAB20 /* Foundation.framework in Frameworks */,
-				EC102EAA182AD86B00BBAB20 /* libz.dylib in Frameworks */,
 				EC9C226318CCBEE900D6F6EA /* libopencv.a in Frameworks */,
 				EC9C226418CCBEE900D6F6EA /* libpng.a in Frameworks */,
 				EC9C226518CCBEE900D6F6EA /* libsqlite3.a in Frameworks */,
 				EC9C226618CCBEE900D6F6EA /* libturbojpeg.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ECC47923195DAE52000DB0EC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC7EC7E0195EE76700B54EAF /* ImageIO.framework in Frameworks */,
+				EC7EC7DC195EE6E300B54EAF /* libz.dylib in Frameworks */,
+				EC7EC7D0195EE61A00B54EAF /* CoreGraphics.framework in Frameworks */,
+				ECC47927195DAE52000DB0EC /* Foundation.framework in Frameworks */,
+				EC7EC7D1195EE63600B54EAF /* QuartzCore.framework in Frameworks */,
+				EC7EC7DA195EE6CB00B54EAF /* libpng.a in Frameworks */,
+				EC7EC7DB195EE6D300B54EAF /* libturbojpeg.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1095,6 +1141,7 @@
 			isa = PBXGroup;
 			children = (
 				ECC46F28193D413A00F426CE /* res-qk */,
+				ECC4790E195DA86C000DB0EC /* src-jnb-img */,
 				ECC46F42193D414500F426CE /* src-qk */,
 				ECC47027193D414F00F426CE /* src-qk-ios */,
 				ECC47073193D415700F426CE /* src-qk-mac */,
@@ -1113,6 +1160,7 @@
 			children = (
 				EC0D9A6916B82EBD005D2C2B /* test-qk-mac.app */,
 				EC102D67182AC97000BBAB20 /* test-qk-ios.app */,
+				ECC47926195DAE52000DB0EC /* jnb-img */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1134,18 +1182,18 @@
 		EC102D68182AC97000BBAB20 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EC7EC7DF195EE76700B54EAF /* ImageIO.framework */,
+				EC7EC7D8195EE6B500B54EAF /* OpenGLES.framework */,
+				EC7EC7D6195EE6AA00B54EAF /* QuartzCore.framework */,
+				EC7EC7D4195EE6A100B54EAF /* UIKit.framework */,
+				EC7EC7D2195EE68E00B54EAF /* GLKit.framework */,
 				EC2A71AF19239B27006748E7 /* AudioToolbox.framework */,
 				EC2A71AD19239AD4006748E7 /* CoreText.framework */,
 				ECB12BF51908652300C36C87 /* ImageIO.framework */,
-				EC102EA9182AD86B00BBAB20 /* libz.dylib */,
-				EC102EA1182AD58800BBAB20 /* GLKit.framework */,
-				EC102EA2182AD58800BBAB20 /* OpenGLES.framework */,
-				EC102EA3182AD58800BBAB20 /* QuartzCore.framework */,
-				EC102EA4182AD58800BBAB20 /* UIKit.framework */,
 				EC102D69182AC97000BBAB20 /* Foundation.framework */,
 				EC102D6B182AC97000BBAB20 /* CoreGraphics.framework */,
-				EC102D6D182AC97000BBAB20 /* UIKit.framework */,
 				EC102D8B182AC97000BBAB20 /* XCTest.framework */,
+				ECC47918195DAE24000DB0EC /* CoreFoundation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2392,6 +2440,17 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		ECC4790E195DA86C000DB0EC /* src-jnb-img */ = {
+			isa = PBXGroup;
+			children = (
+				ECC4790F195DA86C000DB0EC /* jnb-img.mm */,
+				ECC47910195DA86C000DB0EC /* jnb-img.pch */,
+				ECC47911195DA86C000DB0EC /* NSObject+JNB.h */,
+				ECC47912195DA86C000DB0EC /* NSObject+JNB.mm */,
+			);
+			path = "src-jnb-img";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2429,6 +2488,23 @@
 			productReference = EC102D67182AC97000BBAB20 /* test-qk-ios.app */;
 			productType = "com.apple.product-type.application";
 		};
+		ECC47925195DAE52000DB0EC /* jnb-img */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ECC4792F195DAE52000DB0EC /* Build configuration list for PBXNativeTarget "jnb-img" */;
+			buildPhases = (
+				ECC47922195DAE52000DB0EC /* Sources */,
+				ECC47923195DAE52000DB0EC /* Frameworks */,
+				ECC47924195DAE52000DB0EC /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "jnb-img";
+			productName = "jnb-img";
+			productReference = ECC47926195DAE52000DB0EC /* jnb-img */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -2454,6 +2530,7 @@
 			targets = (
 				EC0D9A6816B82EBD005D2C2B /* test-qk-mac */,
 				EC102D66182AC97000BBAB20 /* test-qk-ios */,
+				ECC47925195DAE52000DB0EC /* jnb-img */,
 			);
 		};
 /* End PBXProject section */
@@ -2658,6 +2735,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		ECC47922195DAE52000DB0EC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC7EC7DD195EE72800B54EAF /* NSError+QK.mm in Sources */,
+				ECC47933195DAE67000DB0EC /* NSObject+JNB.mm in Sources */,
+				ECC47932195DAE63000DB0EC /* jnb-img.mm in Sources */,
+				EC7EC7C9195EE53600B54EAF /* QKDuo.mm in Sources */,
+				EC7EC7CA195EE54300B54EAF /* QKPixFmt.mm in Sources */,
+				EC7EC7CC195EE56000B54EAF /* QKSubData.mm in Sources */,
+				EC7EC7CD195EE57500B54EAF /* QKImage+JPG.mm in Sources */,
+				EC7EC7CE195EE57500B54EAF /* QKImage+PNG.mm in Sources */,
+				EC7EC7CF195EE57500B54EAF /* QKImage.mm in Sources */,
+				EC7EC7DE195EE74A00B54EAF /* QKErrorDomain.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
@@ -2697,10 +2791,6 @@
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-				);
 				INFOPLIST_FILE = "$(TARGET_NAME)/$(TARGET_NAME)-info.plist";
 				INSTALL_PATH = /bin;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
@@ -2746,10 +2836,6 @@
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-				);
 				INFOPLIST_FILE = "$(TARGET_NAME)/$(TARGET_NAME)-info.plist";
 				INSTALL_PATH = /bin;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
@@ -2765,14 +2851,12 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"submodules/libqk-built-mac/include",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/test-qk-mac/test-qk-mac-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"submodules/libqk-built-mac/lib",
-					"/Users/gwk/work/libqk/submodules/libqk-built-mac/lib",
 				);
 				WRAPPER_EXTENSION = app;
 			};
@@ -2786,14 +2870,12 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"submodules/libqk-built-mac/include",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/test-qk-mac/test-qk-mac-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"submodules/libqk-built-mac/lib",
-					"/Users/gwk/work/libqk/submodules/libqk-built-mac/lib",
 				);
 				WRAPPER_EXTENSION = app;
 			};
@@ -2810,10 +2892,6 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -2825,15 +2903,11 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"submodules/libqk-built-ios/include",
 				);
 				INFOPLIST_FILE = "test-qk-ios/test-qk-ios-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LIBRARY_SEARCH_PATHS = (
-					"submodules/libqk-built-ios/lib",
-					"/Users/gwk/work/libqk/submodules/libqk-built-ios/lib",
-				);
+				LIBRARY_SEARCH_PATHS = "submodules/libqk-built-ios/lib";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2854,29 +2928,90 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"submodules/libqk-built-ios/include",
 				);
 				INFOPLIST_FILE = "test-qk-ios/test-qk-ios-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LIBRARY_SEARCH_PATHS = (
-					"submodules/libqk-built-ios/lib",
-					"/Users/gwk/work/libqk/submodules/libqk-built-ios/lib",
-				);
+				LIBRARY_SEARCH_PATHS = "submodules/libqk-built-ios/lib";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		ECC47930195DAE52000DB0EC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "src-jnb-img/jnb-img.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"submodules/libqk-built-mac/include",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"submodules/libqk-built-mac/lib",
+					"$(PROJECT_DIR)/submodules/libqk-built-mac/lib",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		ECC47931195DAE52000DB0EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "src-jnb-img/jnb-img.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"submodules/libqk-built-mac/include",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"submodules/libqk-built-mac/lib",
+					"$(PROJECT_DIR)/submodules/libqk-built-mac/lib",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -2906,6 +3041,15 @@
 			buildConfigurations = (
 				EC102D9A182AC97000BBAB20 /* Debug */,
 				EC102D9B182AC97000BBAB20 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ECC4792F195DAE52000DB0EC /* Build configuration list for PBXNativeTarget "jnb-img" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ECC47930195DAE52000DB0EC /* Debug */,
+				ECC47931195DAE52000DB0EC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
