@@ -2,6 +2,14 @@
 // Permission to use this file is granted in license-libqk.txt (ISC License).
 
 
+#if TARGET_OS_IPHONE
+#import <OpenGLES/ES2/gl.h>
+#import <OpenGLES/ES2/glext.h>
+#else
+#define GL_DO_NOT_WARN_IF_MULTI_GL_VERSION_HEADERS_INCLUDED
+#import <OpenGL/glu.h>
+#endif
+
 #import "qk-types.h"
 #import "qk-vec.h"
 

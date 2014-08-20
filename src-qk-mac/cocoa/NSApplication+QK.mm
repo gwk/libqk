@@ -20,7 +20,7 @@ static NSObject<NSApplicationDelegate>* appDelegate; // global variable retains 
     
     // app delegate saved to global so that object is retained for lifetime of app
     appDelegate = [delegateClass new];
-    [NSApp setDelegate:appDelegate];
+    [NSApp setDelegate:(id)appDelegate];
     
     NSProcessInfo* processInfo = [NSProcessInfo processInfo];
 

@@ -14,8 +14,6 @@
 		EC0D9B5216B85799005D2C2B /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0D9B5116B85799005D2C2B /* OpenGL.framework */; };
 		EC102D6A182AC97000BBAB20 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC102D69182AC97000BBAB20 /* Foundation.framework */; };
 		EC102D6C182AC97000BBAB20 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC102D6B182AC97000BBAB20 /* CoreGraphics.framework */; };
-		EC2A71AE19239AD4006748E7 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC2A71AD19239AD4006748E7 /* CoreText.framework */; };
-		EC2A71B019239B27006748E7 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC2A71AF19239B27006748E7 /* AudioToolbox.framework */; };
 		EC7EC7C9195EE53600B54EAF /* QKDuo.mm in Sources */ = {isa = PBXBuildFile; fileRef = ECC46FA1193D414500F426CE /* QKDuo.mm */; };
 		EC7EC7CA195EE54300B54EAF /* QKPixFmt.mm in Sources */ = {isa = PBXBuildFile; fileRef = ECC46FAD193D414500F426CE /* QKPixFmt.mm */; };
 		EC7EC7CC195EE56000B54EAF /* QKSubData.mm in Sources */ = {isa = PBXBuildFile; fileRef = ECC46FB1193D414500F426CE /* QKSubData.mm */; };
@@ -24,10 +22,6 @@
 		EC7EC7CF195EE57500B54EAF /* QKImage.mm in Sources */ = {isa = PBXBuildFile; fileRef = ECC46FA9193D414500F426CE /* QKImage.mm */; };
 		EC7EC7D0195EE61A00B54EAF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC102D6B182AC97000BBAB20 /* CoreGraphics.framework */; };
 		EC7EC7D1195EE63600B54EAF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECCAEDDA1752E057006CB1B5 /* QuartzCore.framework */; };
-		EC7EC7D3195EE68E00B54EAF /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC7EC7D2195EE68E00B54EAF /* GLKit.framework */; };
-		EC7EC7D5195EE6A100B54EAF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC7EC7D4195EE6A100B54EAF /* UIKit.framework */; };
-		EC7EC7D7195EE6AA00B54EAF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC7EC7D6195EE6AA00B54EAF /* QuartzCore.framework */; };
-		EC7EC7D9195EE6B500B54EAF /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC7EC7D8195EE6B500B54EAF /* OpenGLES.framework */; };
 		EC7EC7DA195EE6CB00B54EAF /* libpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC9C225D18CCBAFF00D6F6EA /* libpng.a */; };
 		EC7EC7DB195EE6D300B54EAF /* libturbojpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC9C225F18CCBAFF00D6F6EA /* libturbojpeg.a */; };
 		EC7EC7DC195EE6E300B54EAF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0D9B4D16B84FDA005D2C2B /* libz.dylib */; };
@@ -41,7 +35,6 @@
 		EC9C226418CCBEE900D6F6EA /* libpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC9C214918CCBAFE00D6F6EA /* libpng.a */; };
 		EC9C226518CCBEE900D6F6EA /* libsqlite3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC9C214A18CCBAFE00D6F6EA /* libsqlite3.a */; };
 		EC9C226618CCBEE900D6F6EA /* libturbojpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC9C214B18CCBAFE00D6F6EA /* libturbojpeg.a */; };
-		ECB12BF61908652300C36C87 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB12BF51908652300C36C87 /* ImageIO.framework */; };
 		ECC46F32193D413A00F426CE /* dancing-squirrel.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ECC46F29193D413A00F426CE /* dancing-squirrel.jpg */; };
 		ECC46F33193D413A00F426CE /* dancing-squirrel.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ECC46F29193D413A00F426CE /* dancing-squirrel.jpg */; };
 		ECC46F34193D413A00F426CE /* helix-nebula.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ECC46F2A193D413A00F426CE /* helix-nebula.jpg */; };
@@ -214,6 +207,13 @@
 		ECC47932195DAE63000DB0EC /* jnb-img.mm in Sources */ = {isa = PBXBuildFile; fileRef = ECC4790F195DA86C000DB0EC /* jnb-img.mm */; };
 		ECC47933195DAE67000DB0EC /* NSObject+JNB.mm in Sources */ = {isa = PBXBuildFile; fileRef = ECC47912195DA86C000DB0EC /* NSObject+JNB.mm */; };
 		ECCAEDDB1752E057006CB1B5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECCAEDDA1752E057006CB1B5 /* QuartzCore.framework */; };
+		ECD2850D19A515FD0098D8BE /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECD2850C19A515FD0098D8BE /* OpenGLES.framework */; };
+		ECD2850F19A517200098D8BE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECD2850E19A517200098D8BE /* AudioToolbox.framework */; };
+		ECD2851119A517290098D8BE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECD2851019A517290098D8BE /* QuartzCore.framework */; };
+		ECD2851319A517340098D8BE /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECD2851219A517340098D8BE /* CoreText.framework */; };
+		ECD2851519A5173E0098D8BE /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECD2851419A5173E0098D8BE /* GLKit.framework */; };
+		ECD2851919A517750098D8BE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECD2851819A517750098D8BE /* UIKit.framework */; };
+		ECD2851D19A517970098D8BE /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECD2851C19A517970098D8BE /* ImageIO.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -239,13 +239,6 @@
 		EC102D67182AC97000BBAB20 /* test-qk-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "test-qk-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC102D69182AC97000BBAB20 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EC102D6B182AC97000BBAB20 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		EC102D8B182AC97000BBAB20 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		EC2A71AD19239AD4006748E7 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreText.framework; sourceTree = DEVELOPER_DIR; };
-		EC2A71AF19239B27006748E7 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/AudioToolbox.framework; sourceTree = DEVELOPER_DIR; };
-		EC7EC7D2195EE68E00B54EAF /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/GLKit.framework; sourceTree = DEVELOPER_DIR; };
-		EC7EC7D4195EE6A100B54EAF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		EC7EC7D6195EE6AA00B54EAF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
-		EC7EC7D8195EE6B500B54EAF /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
 		EC7EC7DF195EE76700B54EAF /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		EC9C1FDA18CCBAFE00D6F6EA /* common.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = common.hpp; sourceTree = "<group>"; };
 		EC9C1FDC18CCBAFE00D6F6EA /* _features.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = _features.hpp; sourceTree = "<group>"; };
@@ -863,7 +856,6 @@
 		EC9C225D18CCBAFF00D6F6EA /* libpng.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libpng.a; sourceTree = "<group>"; };
 		EC9C225E18CCBAFF00D6F6EA /* libsqlite3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libsqlite3.a; sourceTree = "<group>"; };
 		EC9C225F18CCBAFF00D6F6EA /* libturbojpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libturbojpeg.a; sourceTree = "<group>"; };
-		ECB12BF51908652300C36C87 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/ImageIO.framework; sourceTree = DEVELOPER_DIR; };
 		ECC46F29193D413A00F426CE /* dancing-squirrel.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "dancing-squirrel.jpg"; sourceTree = "<group>"; };
 		ECC46F2A193D413A00F426CE /* helix-nebula.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "helix-nebula.jpg"; sourceTree = "<group>"; };
 		ECC46F2C193D413A00F426CE /* image.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = image.frag; sourceTree = "<group>"; };
@@ -1081,6 +1073,15 @@
 		ECC47918195DAE24000DB0EC /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		ECC47926195DAE52000DB0EC /* jnb-img */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "jnb-img"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECCAEDDA1752E057006CB1B5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		ECD2850C19A515FD0098D8BE /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.0.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
+		ECD2850E19A517200098D8BE /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.0.sdk/System/Library/Frameworks/AudioToolbox.framework; sourceTree = DEVELOPER_DIR; };
+		ECD2851019A517290098D8BE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		ECD2851219A517340098D8BE /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.0.sdk/System/Library/Frameworks/CoreText.framework; sourceTree = DEVELOPER_DIR; };
+		ECD2851419A5173E0098D8BE /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.0.sdk/System/Library/Frameworks/GLKit.framework; sourceTree = DEVELOPER_DIR; };
+		ECD2851619A517460098D8BE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.0.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		ECD2851819A517750098D8BE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		ECD2851A19A517840098D8BE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		ECD2851C19A517970098D8BE /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.0.sdk/System/Library/Frameworks/ImageIO.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1104,15 +1105,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC7EC7D9195EE6B500B54EAF /* OpenGLES.framework in Frameworks */,
-				EC7EC7D7195EE6AA00B54EAF /* QuartzCore.framework in Frameworks */,
-				EC7EC7D5195EE6A100B54EAF /* UIKit.framework in Frameworks */,
-				EC7EC7D3195EE68E00B54EAF /* GLKit.framework in Frameworks */,
-				EC2A71B019239B27006748E7 /* AudioToolbox.framework in Frameworks */,
-				EC2A71AE19239AD4006748E7 /* CoreText.framework in Frameworks */,
-				ECB12BF61908652300C36C87 /* ImageIO.framework in Frameworks */,
+				ECD2850F19A517200098D8BE /* AudioToolbox.framework in Frameworks */,
 				EC102D6C182AC97000BBAB20 /* CoreGraphics.framework in Frameworks */,
+				ECD2851319A517340098D8BE /* CoreText.framework in Frameworks */,
 				EC102D6A182AC97000BBAB20 /* Foundation.framework in Frameworks */,
+				ECD2851519A5173E0098D8BE /* GLKit.framework in Frameworks */,
+				ECD2851D19A517970098D8BE /* ImageIO.framework in Frameworks */,
+				ECD2850D19A515FD0098D8BE /* OpenGLES.framework in Frameworks */,
+				ECD2851119A517290098D8BE /* QuartzCore.framework in Frameworks */,
+				ECD2851919A517750098D8BE /* UIKit.framework in Frameworks */,
 				EC9C226318CCBEE900D6F6EA /* libopencv.a in Frameworks */,
 				EC9C226418CCBEE900D6F6EA /* libpng.a in Frameworks */,
 				EC9C226518CCBEE900D6F6EA /* libsqlite3.a in Frameworks */,
@@ -1182,17 +1183,18 @@
 		EC102D68182AC97000BBAB20 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ECD2851C19A517970098D8BE /* ImageIO.framework */,
+				ECD2851A19A517840098D8BE /* Foundation.framework */,
+				ECD2851819A517750098D8BE /* UIKit.framework */,
+				ECD2851619A517460098D8BE /* CoreGraphics.framework */,
+				ECD2851419A5173E0098D8BE /* GLKit.framework */,
+				ECD2851219A517340098D8BE /* CoreText.framework */,
+				ECD2851019A517290098D8BE /* QuartzCore.framework */,
+				ECD2850E19A517200098D8BE /* AudioToolbox.framework */,
+				ECD2850C19A515FD0098D8BE /* OpenGLES.framework */,
 				EC7EC7DF195EE76700B54EAF /* ImageIO.framework */,
-				EC7EC7D8195EE6B500B54EAF /* OpenGLES.framework */,
-				EC7EC7D6195EE6AA00B54EAF /* QuartzCore.framework */,
-				EC7EC7D4195EE6A100B54EAF /* UIKit.framework */,
-				EC7EC7D2195EE68E00B54EAF /* GLKit.framework */,
-				EC2A71AF19239B27006748E7 /* AudioToolbox.framework */,
-				EC2A71AD19239AD4006748E7 /* CoreText.framework */,
-				ECB12BF51908652300C36C87 /* ImageIO.framework */,
 				EC102D69182AC97000BBAB20 /* Foundation.framework */,
 				EC102D6B182AC97000BBAB20 /* CoreGraphics.framework */,
-				EC102D8B182AC97000BBAB20 /* XCTest.framework */,
 				ECC47918195DAE24000DB0EC /* CoreFoundation.framework */,
 			);
 			name = Frameworks;

@@ -26,8 +26,6 @@
 
 @implementation QKWindow
 
-@dynamic delegate; // redeclaration of super property.
-
 
 - (void)dealloc {
   [[NSNotificationCenter defaultCenter] removeObserver:self];

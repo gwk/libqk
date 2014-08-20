@@ -18,7 +18,6 @@ typedef enum {
 @interface QKWindow : NSWindow
 
 @property (nonatomic) CRView* view;
-@property (nonatomic) id<QKWindowDelegate> delegate;
 @property (nonatomic, readonly) QKWindowScreenMode screenMode;
 @property (nonatomic) BOOL coversScreen;
 @property (nonatomic) CGPoint position; // top-down coordinate for visible screen rect.
